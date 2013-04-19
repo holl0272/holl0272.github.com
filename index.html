@@ -1,5 +1,385 @@
-  <h1>Eric Holland</h1>
-  <h2>Web Developer</h2>
-  <p>
-    I <i>love</i> to code!
-  </p>
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>eHolland | Portfolio</title>
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <script src="js/vendor/custom.modernizr.js"></script>
+
+</head>
+<body>
+
+<div class="row">
+  <div class="large-12 columns">
+    <section id="my_story"></section>
+  </div>
+</div>
+<!-- NAV -->
+
+<div class="row">
+  <div class="large-12 columns">
+    <div id="nav" style="margin-top: 10px;">
+      <div class="contain-to-grid sticky">
+      <nav class="top-bar">
+        <ul class="title-area">
+
+          <!-- Title Area -->
+          <li class="name">
+            <h1><a href="#my_story" class="smoothScroll">ericholland.me</a></h1>
+          </li>
+        </ul>
+
+        <section class="top-bar-section">
+
+          <!-- Left Nav Section -->
+          <ul class="left">
+            <li class="divider"></li>
+            <li><a href="#my_code" class="smoothScroll">My Code</a></li>
+            <li class="divider"></li>
+            <li><a href="#my_apps" class="smoothScroll">My Apps</a></li>
+            <li class="divider"></li>
+          </ul>
+
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <li class="divider"></li>
+            <li class="has-dropdown"><a href="#follow_me" class="smoothScroll">Follow Me</a>
+              <ul class="dropdown">
+                <li><label>Blog</label></li>
+                <li class="link"><a href="http://dork-asaurus.tumblr.com/" target="_blank">Tumblr</a></li>
+                <li class="divider"></li>
+                <li><label>Development</label></li>
+                <li class="link"><a href="https://github.com/holl0272" target="_blank">GitHub</a></li></br></br>
+                <li class="divider"></li>
+                <li><label>Social</label></li>
+                <li class="link"><a href="http://www.facebook.com/eric.holland.58173" target="_blank">Facebook</a></li>
+                <li class="link"><a href="http://www.linkedin.com/in/eholland/" target="_blank">LinkedIn </a></li>
+                <li class="link"><a href="https://twitter.com/dork_a_saurus" target="_blank">Twitter</a></li>
+                <li class="divider"></li>
+                <li><label>Contact Me</label></li>
+                <li class="link"><a href="mailto:holl0272@hotmail.com?Subject=Hey%20Eric,%20I%20Love%20Your%20Portfolio">Email</a></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+  </div>
+</div>
+<!-- END NAV -->
+
+<!-- ABOUT ME -->
+
+<div class="row">
+  <div class="large-12 columns">
+    <div id="about_me">
+      <div class="row">
+        <div class="large-7 columns">
+          <a href="http://bobsandbangs.com" target="blank"><img src="./img/splash.png"></a><br>
+        </div>
+
+        <div class="large-5 columns">
+          <div class="panel radius">
+            <h2 class="hide-for-small">My Story</h2><hr/>
+          <h5 class="subheader">I'm a Midwest transplant hailing from Minnesota where I began my professional career nearly a decade ago in corporate healthcare. I crave knowledge and perpetually seek opportunities to challenge myself. My passion for learning has propelled me into the technology arena where I am committed to becoming a full-stack web developer.</h5>
+          </div>
+
+        <div class="row">
+          <div class="large-12 small-12 columns">
+            <div class="panel radius" id="code_panel">
+                <h5><a href="https://github.com/holl0272" target="_blank" class="small button round right" id="git_btn">GITHUB Profile</a></h5>
+
+                <h6 class="subheader">Click here to view all of my code through GitHub.</h6>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- END ABOUT ME -->
+
+<!-- CODE CONTENT -->
+<div class="row">
+  <div class="large-12 columns">
+    <section id="my_code"></section>
+  </div>
+</div>
+
+<div class="code_panel row">
+  <div class="large-12 columns">
+    <div class="row">
+
+      <div class="large-9 columns">
+        <div class="panel radius">
+          <div class="row">
+            <div class="large-12 small-12 columns">
+              <h2>HTML / CSS</h2><hr/>
+                <h4 class="subheader">I understand the structural markup and visual language of web development through HTML5 & CSS3 as well as HAML and SASS.</h4>
+                <a href="#" data-reveal-id="hcModal" class="right">Click for more info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="large-3 small-6 columns" href="#" data-reveal-id="hcModal">
+        <div class="icon" style="background-color: #123CC1;">
+          <div class="code"> &#60 &#47 &#62 </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="code_panel row">
+  <div class="large-12 columns">
+    <div class="row">
+
+      <div class="large-3 small-6 columns" href="#" data-reveal-id="jsModal">
+        <div class="icon" style="background-color: #117CD9;">
+          <div class="code"> &#40 &#41&#59 </div>
+        </div>
+      </div>
+
+      <div class="large-9 columns">
+        <div class="panel radius">
+          <div class="row">
+            <div class="large-12 small-12 columns">
+              <h2>JS / jQuery / AJAX</h2><hr/>
+                <h4 class="subheader">While I can transform web sites dynamically with the good and the bad of Javascript, I can also code in both CoffeeScript as well as Ember.js</h4>
+                <a href="#" data-reveal-id="jsModal" class="right">Click for more info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="code_panel row">
+  <div class="large-12 columns">
+    <div class="row">
+
+      <div class="large-9 columns">
+        <div class="panel radius">
+          <div class="row">
+            <div class="large-12 small-12 columns">
+              <h2>Ruby on Rails</h2><hr/>
+                <h4 class="subheader">A proficiency in Ruby on Rails has enabled me to build full-stack web applications, all of which stem from my mind which is full of ideas.</h4>
+                <a href="#" data-reveal-id="rubyModal" class="right">Click for more info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="large-3 small-6 columns" href="#" data-reveal-id="rubyModal">
+        <div class="icon" style="background-color: #0D9FD9;">
+          <div class="code"> &#60&#37&#61 </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="code_panel row">
+  <div class="large-12 columns">
+    <div class="row">
+
+      <div class="large-3 small-6 columns" href="#" data-reveal-id="compModal">
+        <div class="icon" style="background-color: #0FC9F2;">
+          <div class="code" id="comp_sci"> &#43 </div>
+        </div>
+      </div>
+
+      <div class="large-9 columns">
+        <div class="panel radius">
+          <div class="row">
+            <div class="large-12 small-12 columns">
+              <h2>Computer Science</h2><hr/>
+                <h4 class="subheader">I've built a strong foundation for web dev through computer science by learning data structure fundamentals and algorithm processes.</h4>
+                <a href="#" data-reveal-id="compModal" class="right">Click for more info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- CODE CONTENT -->
+
+<!-- MY APPS -->
+<div class="row">
+  <div class="large-12 columns">
+    <section id="my_apps"></section>
+  </div>
+</div>
+
+<ul data-orbit>
+  <li>
+    <img src="./img/app1.png" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="./img/app2.png" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="./img/app3.png" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="./img/app4.png" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="./img/app5.png" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="./img/app6.png" />
+    <div class="orbit-caption">...</div>
+  </li>
+</ul>
+
+<!-- END MY APPS -->
+
+<!-- FOOTER -->
+<section id="follow_me">
+  <div id="footer">
+    <footer id="footer">
+      <div class="row" id="foot">
+        <hr />
+        <div class="large-5 columns" id="copyright">
+          <p>&copy; 2013 by Eric Holland. All Rights Reserved</p>
+        </div>
+        <div class="large-7 columns">
+          <ul class="inline-list right">
+           <li><a href="https://github.com/holl0272" target="_blank" class="foot_links">GitHub <i class="foundicon-github"></i></a></li>
+           <li><a href="https://twitter.com/dork_a_saurus" target="_blank" class="foot_links">Twitter <i class="foundicon-twitter"></i></a></li>
+           <li><a href="www.linkedin.com/in/eholland/" target="_blank" class="foot_links">LinkedIn <i class="foundicon-linkedin"></i></a></li>
+           <li><a href="http://www.facebook.com/eric.holland.58173" target="_blank" class="foot_links">facebook <i class="foundicon-facebook"></i></a></li>
+           <li><a href="http://dork-asaurus.tumblr.com/" target="_blank" class="foot_links">tumblr. <i class="foundicon-tumblr"></i></a></li>
+         </ul>
+       </div>
+     </div>
+    </footer>
+  </div>
+</section>
+<!-- END FOOTER -->
+
+  </div>
+</div>
+
+<!-- MODALS -->
+
+<div id="hcModal" class="reveal-modal">
+  <h2>HTML / CSS</h2><hr/>
+  <h3 class="subheader">I can...</h3>
+  <ul class="modal_list">
+    <li>Ability to use the browser web inspector to view page source, and debug code.</li>
+    <li>Design static HTML sites using the common tags as well as applying new HTML5 tags for advanced techniques.</li>
+    <li>Define CSS Box Model, and demonstrates ability to properly manipulate elements using padding, margin, and border.</li>
+    <li>Apply best practices such as including CSS in a separate file, and avoid using both embedded and inline CSS styles.</li>
+  </ul>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="jsModal" class="reveal-modal">
+  <h2>JS / jQuery / AJAX</h2><hr/>
+  <h3 class="subheader">I can...</h3>
+  <ul class="modal_list">
+    <li>Navigate and use the jQuery API documentation effectively.</li>
+    <li>Integrate both JavaScript and Rails to make web applications more interactive.</li>
+    <li>Integrate events such as “ready” and mouse and keyboard events into web application.</li>
+    <li>Assign values to variables, understand data types, conditionals, loops, and functions.</li>
+    <li>Create objects and translate them into JSON and manipulate the DOM using jQuery selectors.</li>
+    <li>Write JavaScript that allows the browser to communicate with the server without reloading the current page.</li>
+    <li>Trigger JavaScript events that interact with databases to create dynamic pages that load quickly and seamlessly.</li>
+</ul>
+  <a href="#" data-reveal-id="adv_jsModal" class="button round secondary right">Advanced Skills</a>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+    <div id="adv_jsModal" class="reveal-modal">
+      <h2>Additional JavaScript Skills
+      <h3 class="subheader">I can also...</h3>
+      <ul class="modal_list">
+        <li>Create more structured and maintainable code by applying the Enber.js framework to applications.</li>
+        <li>Incorporate multiple libraries including but not limited to Chardin, Gritter, Woodmark and Sidr.</li>
+        <li>Recognize various other JavaScript frameworks such as Node.js</li>
+      <ul class="modal_list">
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+<div id="rubyModal" class="reveal-modal">
+  <h2>Ruby on Rails</h2><hr/>
+  <h3 class="subheader">I can...</h3>
+  <ul class="modal_list">
+    <li>TDD through Rspec and Capybara.</li>
+    <li>Integrate forms into your web applications.</li>
+    <li>Apply branch, merge, fork and clone commands in Github.</li>
+    <li>Apply the MVC framework and deploy applications to Heroku.</li></li>
+    <li>Integrate authentication (login) into your web application.</li>
+    <li>Worth with various relational database solutions (Postgres, MySQL, SQL).</li>
+    <li>Build custom apps by integrating routing, controllers, views, and databases.</li>
+    <li>Apply advanced UI components by integrating skinny controllers and fat models.</li>
+  </ul>
+  <a href="#" data-reveal-id="adv_rubyModal" class="button round secondary right">Advanced Skills</a>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+    <div id="adv_rubyModal" class="reveal-modal">
+      <h2>Additional Ruby on Rails Skills</h2><hr/>
+      <h3 class="subheader">I can also...</h3>
+      <ul class="modal_list">
+        <li>Retrieve and apply Gems in a Ruby program.</li>
+        <li>Retrieve data from various third party APIs.</li>
+        <li>Implement payments into Rails applications using Stripe.</li>
+        <li>Create asynchronous solutions by applying messaging to an application.</li>
+        <li>Reduce expensive calls to the database by applying caching to an application.</li>
+        <li>Apply Bootstrap, Foundation, SASS, and HAML to create cleaner front-end solutions.</li>
+        <li>Use external APIs such as email APIs, SMS text messaging, Google map integration, Twitter, and Flickr.</li>
+      </ul>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+  <div id="compModal" class="reveal-modal">
+  <h2>Computer Science</h2><hr/>
+  <h3 class="subheader">I can...</h3>
+  <ul class="modal_list">
+    <li>Create efficient and elegant solutions to problems by applying fundamental computer science concepts to apps.</li>
+    <li>Differentiate between various data structures and their purpose (linked lists, stacks, hashtables, etc.)</li>
+    <li>Build programs using the appropriate data structures and algorithms to optimize for performance.</li>
+    <li>Evaluate the Big “O” runtime of various algorithms used within applications.</li>
+  </ul>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<!-- END MODALS -->
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+
+  <script src="js/foundation.min.js"></script>
+
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>

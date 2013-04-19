@@ -1,0 +1,57 @@
+body {
+  margin-top: 30px;
+  background: url('../img/background.png');
+  background:repeat-n;
+  background: stretch;
+}
+
+.panel.radius {
+  border-radius: 10px;
+}
+
+#about_me {
+  padding-top: 50px;
+  margin-bottom: 100px;
+}
+
+#code_panel {
+  margin-top: 20px;
+}
+
+#my_code {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.code_panel.row {
+  margin-bottom: 30px;
+}
+
+.icon {
+height: 225px;
+width: 225px;
+border-radius: 112px;
+line-height: 40px;
+color: white;
+font-weight: 800;
+font-size: 80px;
+text-align: center;
+margin: auto;
+position: absolute;
+}
+
+.code {
+z-index: 1;
+position: relative;
+margin-top: 85px;
+}
+
+#comp_sci {
+margin-top: 75px;
+font-size: 150px;
+}
+
+.modal_list {
+  margin-left: 30px;
+  line-height: 40px;
+}

@@ -1,0 +1,21 @@
+.link {
+  font-size: 18px;
+  margin-bottom: -15px;
+}
+
+.top-bar .name h1 a {
+  font-size: 25px;
+}
+
+.top-bar-section li a:not(.button) {
+  font-size: 18px;
+}
+
+#nav a:hover {
+  color: #000;
+  cursor: default;
+  font-weight: bold;
+  background: #eee;
+  }
+
+.
