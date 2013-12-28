@@ -43,12 +43,10 @@
 .mobile_box_btn img {
   width: 300px;
 }
-/*
 .mobile_box_btn a:hover {
   font-style: italic;
   font-weight: bold;
 }
-*/
 .mobile_box_btn a:hover img {
   opacity: 0.6;
 }
@@ -59,6 +57,7 @@
   color: #e8d606;
   font-size: 1.3em;
   font-family: 'Josefin Sans', sans-serif;
+  padding: 0;
 }
 .mobile_box_btn {
   margin-bottom: 15px;
