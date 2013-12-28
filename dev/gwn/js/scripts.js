@@ -1,3 +1,9 @@
+var ua = navigator.userAgent.toLowerCase();
+var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+if(isAndroid) {
+    alert('android');
+};
+
 function adjustStyle(width) {
   width = parseInt(width);
     if (width < 824) {
@@ -13,9 +19,3 @@ $(function() {
         adjustStyle($(this).width());
     });
 });
-
-var ua = navigator.userAgent.toLowerCase();
-var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-if(isAndroid) {
-    alert('android');
-};
