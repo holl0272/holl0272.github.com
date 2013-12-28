@@ -35,23 +35,24 @@
 }
 .box_btn span {
   font-size: 1.25em;
+  font-weight: bold;
 }
 .mobile_box_btn img {
   width: 300px;
 }
 .mobile_box_btn a:hover {
   font-style: italic;
-  font-weight: bold;
 }
 .mobile_box_btn a:hover img {
   opacity: 0.6;
 }
 .mobile_box_btn span {
-  top: 5px;
+  top: 10px;
   left: 70px;
   position: absolute;
   color: #e8d606;
   font-size: 1.3em;
+  font-weight: bold;
   font-family: 'Josefin Sans', sans-serif;
 }
 .mobile_box_btn {

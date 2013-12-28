@@ -67,7 +67,7 @@ a {
 }
 .box_btn span font{
   color: #11013b;
-  line-height: 1 !important;
+  line-height: normal !important;
 }
 .box_btn a:hover span{
   font-style: italic;
