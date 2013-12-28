@@ -1,0 +1,85 @@
+#body {
+  text-align: center;
+}
+#gwn_logo {
+  text-align: center;
+  float: none;
+  margin: -25px 0 0 -75px;
+}
+#gwn_logo img {
+  width: 350px;
+}
+#heading {
+  text-align: center;
+  float: none;
+  margin: -60px 0 0;
+}
+#title {
+  font-weight: 900;
+  font-size: 1.7em !important;
+}
+#sub_title {
+  font-weight: 700;
+}
+#box_btns {
+  display: none;
+}
+#mobile_btns {
+  display: inline-block;
+}
+.box_btn {
+  margin: 0;
+}
+.box_btn img {
+  width: 140px;
+}
+.box_btn span {
+  font-size: 1.25em;
+}
+.mobile_box_btn img {
+  width: 300px;
+}
+.mobile_box_btn a:hover {
+  font-style: italic;
+  font-weight: bold;
+}
+.mobile_box_btn a:hover img {
+  opacity: 0.6;
+}
+.mobile_box_btn span {
+  top: 10px;
+  left: 70px;
+  position: absolute;
+  color: #e8d606;
+  font-size: 1.3em;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.mobile_box_btn {
+  margin-bottom: 15px;
+  position: relative;
+}
+#call_to_action {
+  width: 140px;
+  float: right;
+  margin: 0 5px 0 0;
+}
+.title_txt li {
+  font-size: 0.45em;
+}
+ul#vertical-list {
+  list-style-position:inside;
+  margin:0;
+  padding:0;
+  line-height: 4;
+  text-align: left;
+}
+ul#horizontal-nav li {
+  display: block;
+}
+#horizontal-nav a:hover {
+  color: #e8d606;
+  font-weight: 700;
+}
+.pipe {
+  display: none !important;
+}

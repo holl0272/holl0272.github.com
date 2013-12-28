@@ -1,0 +1,112 @@
+html,
+body {
+  height: 100%;
+  background-image: url('../images/splash_bg.jpg');
+}
+a {
+  text-decoration: none;
+}
+#container {
+   height: auto;
+   position: relative;
+   padding-bottom: 100px;
+}
+#header {
+  display: inline-block;
+  min-width:100%;
+}
+#gwn_logo {
+  float:left;
+}
+#heading {
+  float: right;
+  margin-right: 5%;
+  padding-top: 1.5%;
+}
+.title_txt {
+  font-family: 'Lato', sans-serif;
+  color: #cccdce;
+}
+#title {
+  font-weight: 900;
+  font-size: 3em;
+}
+#sub_title {
+  font-weight: 400;
+  color: #e8d606;
+  font-size: 1em;
+}
+#call_to_action {
+  margin-top: 2%;
+  font-weight: 900;
+  font-size: 1.5em;
+}
+#body {
+  width: 95%;
+  margin: 3% auto 0;
+}
+#mobile_btns {
+  display: none;
+}
+#box_btns {
+  text-align: center;
+}
+.box_btn {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  position: relative;
+}
+.box_btn span {
+  left:10px;
+  text-align: left;
+  padding-top: 10px;
+  position: absolute;
+  color: #e8d606;
+  font-size: 1.5em;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.box_btn span font{
+  color: #11013b;
+}
+.box_btn a:hover span{
+  font-style: italic;
+  font-weight: bold;
+}
+.box_btn a:hover img {
+  opacity: 0.6;
+}
+#footer {
+  text-align: center;
+  position: absolute;
+  bottom:0;
+  height:auto;
+  width:100%;
+  background: #11013b;
+}
+#shopping_cart {
+  margin: 0 10px -5px 0;
+}
+#horizontal-nav a {
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #cccdce;
+}
+#horizontal-nav a:hover {
+  color: #e8d606;
+  font-style: normal;
+}
+#horizontal-nav a font {
+  font-weight: 700;
+  padding-left: 10px;
+}
+ul#horizontal-nav {
+  list-style: none;
+  margin: 12px 0;
+  color: #cccdce;
+}
+ul#horizontal-nav li {
+  display: inline;
+  white-space:nowrap;
+  padding-right: 30px;
+}
