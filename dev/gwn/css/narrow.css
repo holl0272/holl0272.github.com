@@ -1,6 +1,3 @@
-a {
-  line-height: normal !important;
-}
 #body {
   text-align: center;
 }
@@ -46,10 +43,12 @@ a {
 .mobile_box_btn img {
   width: 300px;
 }
+/*
 .mobile_box_btn a:hover {
   font-style: italic;
   font-weight: bold;
 }
+*/
 .mobile_box_btn a:hover img {
   opacity: 0.6;
 }
