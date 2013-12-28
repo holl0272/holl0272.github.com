@@ -52,7 +52,7 @@
 }
 .mobile_box_btn span {
   left: 70px;
-  margin: 10px 0 !important;
+  margin: 10px 0;
   position: absolute;
   color: #e8d606;
   font-size: 1.3em;
