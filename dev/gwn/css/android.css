@@ -1,3 +1,4 @@
-#test {
+.mobile_box_btn span {
+  margin: 0 !important;
   color: red;
 }
