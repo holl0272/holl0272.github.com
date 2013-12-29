@@ -2,10 +2,10 @@
   margin: 0;
 }
 .mobile_box_btn a:hover {
-  margin: 0 10px -10px 0 !important;
+  margin-bottom: -10px !important;
 }
 .box_btn span {
   font-size: 1em;
-  padding-top: 0px;
+  padding-top: 0;
   font-weight: bold;
 }
