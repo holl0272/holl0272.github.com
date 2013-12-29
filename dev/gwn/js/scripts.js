@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 var ua = navigator.userAgent.toLowerCase();
 var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
 if(isAndroid) {
@@ -19,4 +21,6 @@ $(function() {
     $(window).resize(function() {
         adjustStyle($(this).width());
     });
+});
+
 });
