@@ -1,8 +1,8 @@
 .mobile_box_btn span {
   margin: 0;
 }
-.mobile_box_btn a:hover {
-  margin-bottom: -10px !important;
+.mobile_box_btn a:hover span {
+  margin-top: 10px !important;
 }
 .box_btn span {
   font-size: 1em;
