@@ -1,4 +1,10 @@
 .mobile_box_btn span {
-  margin: 0 !important;
-  color: red;
+  margin: 0;
+}
+.mobile_box_btn a:hover {
+  margin-top: 10px;
+}
+.box_btn span {
+  font-size: 1.5em;
+  font-weight: bold;
 }
