@@ -6,9 +6,6 @@
 }
 .box_btn span {
   font-size: 1.25em;
-  line-height: 12pt;
+  line-height: 16pt;
   font-weight: bold;
-}
-.box_btn a:hover span {
-  margin-top: 10px !important;
 }
