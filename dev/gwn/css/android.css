@@ -9,8 +9,6 @@
   padding-top: 0;
   font-weight: bold;
 }
-.box_btn a:hover font{
+.box_btn a:hover span {
   margin-top: 10px !important;
-  font-style: italic;
-  font-weight: bold;
 }
