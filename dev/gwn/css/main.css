@@ -65,9 +65,9 @@ a {
   font-size: 1.5em;
   font-family: 'Josefin Sans', sans-serif;
 }
-.box_btn span font{
+.box_btn span font {
   color: #11013b;
-  line-height: normal !important;
+  font-size: 0.95em;
 }
 .box_btn a:hover span{
   font-style: italic;
