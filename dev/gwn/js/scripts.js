@@ -2,7 +2,7 @@ var ua = navigator.userAgent.toLowerCase();
 var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
 if(isAndroid) {
   $("#device-stylesheet").attr("href", "css/android.css");
-  alert('v1');
+  alert('v2');
 };
 
 function adjustStyle(width) {
