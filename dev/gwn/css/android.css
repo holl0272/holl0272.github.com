@@ -1,5 +1,6 @@
 .mobile_box_btn span {
   margin: 0;
+  padding-top: 0 !important;
 }
 .mobile_box_btn a:hover span {
   margin-top: 7px;
@@ -11,8 +12,5 @@
   font-weight: bold;
 }
 .box_btn a:hover span{
-  margin-top: -5px !important;
-}
-ul#horizontal-nav li {
   margin-top: -5px !important;
 }
