@@ -1,6 +1,7 @@
 .mobile_box_btn span {
+  border: 1px solid blue;
   margin: 0;
-  padding-top: 0 !important;
+  padding: 0 !important;
 }
 .mobile_box_btn a:hover span {
   margin-top: 7px;
