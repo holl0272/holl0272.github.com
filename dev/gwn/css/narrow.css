@@ -2,7 +2,7 @@
   text-align: center;
 }
 #narrow_fix {
-  width: 310px;
+  width: 315px;
   margin: 0 auto;
 }
 #gwn_logo {
@@ -16,7 +16,7 @@
 #heading {
   text-align: left;
   float: none;
-  margin: -60px 0 0 5px;
+  margin: -60px 0 0 10px;
 }
 #title {
   font-weight: 900;

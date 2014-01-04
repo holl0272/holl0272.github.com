@@ -13,3 +13,6 @@
 .box_btn a:hover span{
   margin-top: -5px !important;
 }
+ul#horizontal-nav li {
+  margin-top: -5px !important;
+}
