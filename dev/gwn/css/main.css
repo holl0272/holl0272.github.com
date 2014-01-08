@@ -114,7 +114,7 @@ ul#horizontal-nav {
   color: #cccdce;
 }
 ul#horizontal-nav li {
-  display: inline;
+  display: inline-block;
   white-space:nowrap;
   padding-right: 30px;
 }
