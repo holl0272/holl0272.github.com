@@ -1,5 +1,6 @@
 #container {
   text-align: center;
+  position: relative;
 }
 #narrow_fix {
   width: 315px;
@@ -92,4 +93,7 @@ ul#horizontal-nav li {
 }
 .pipe {
   display: none !important;
+}
+#footer {
+  position: absolute;
 }
