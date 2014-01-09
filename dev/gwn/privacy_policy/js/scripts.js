@@ -14,9 +14,6 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6
 if(isFirefox) {
   $("#browser-stylesheet").attr("href", "css/firefox.css");
 };
-if(isSafari) {
-  $("#browser-stylesheet").attr("href", "css/safari.css");
-};
 
 function adjustStyle(width) {
   width = parseInt(width);
@@ -33,5 +30,14 @@ $(function() {
 });
 
 $('#footer').show();
+
+$(".not_selected").hover(
+  function() {
+    $('#current_page a').css('color','white'));
+  }, function() {
+    $('#current_page a').css('color','yellow'));
+  }
+);
+
 
 });
