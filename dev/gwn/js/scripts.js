@@ -21,7 +21,10 @@ if(isSafari) {
 function adjustStyle(width) {
   width = parseInt(width);
     if (width < 480) {
-        $("#size-stylesheet").attr("href", "css/narrow.css");
+      $("#size-stylesheet").attr("href", "css/narrow.css");
+    }
+    else {
+      $("#size-stylesheet").attr("href", "css/wide.css");
     }
 }
 
