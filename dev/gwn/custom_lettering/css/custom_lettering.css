@@ -1,0 +1,59 @@
+table {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #666666;
+}
+table td{
+  vertical-align: top;
+}
+td span {
+  color: #11013b;
+  font-weight: bold
+}
+#container {
+  width: 75%;
+  margin: 3% auto 0;
+}
+#left_content {
+  width: 10%;
+}
+#box_btns {
+  float: left;
+}
+.box_btn {
+  display: block;
+  margin: 0 15px 10px 0;
+}
+#custom_lettering_box {
+  opacity: 1;
+}
+#right_content {
+  padding: 50px 30px;
+  text-align: left;
+  background-color: white;
+}
+#straight {
+  padding-top: 8px;
+}
+#custom_logo_rules {
+  margin-left: 50px;
+}
+.font {
+  padding: 2px;
+}
+.font, .lettering, .graphic {
+  width: 180px;
+  text-align: center;
+}
+.square {
+  padding: 0 10px 10px 25px;
+}
+.square_color {
+  padding-top: 2px;
+}
+.spacer_colors {
+  width: 50px;
+}
+.spacer_graphics {
+  height: 30px;
+}

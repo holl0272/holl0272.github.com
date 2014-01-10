@@ -130,5 +130,6 @@ li#current_page  a {
   color: #e8d606;
 }
 li#current_page  a:hover {
+  color: #cccdce !important;
   cursor: default;
 }

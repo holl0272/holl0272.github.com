@@ -11,8 +11,20 @@ var isFirefox = typeof InstallTrigger !== 'undefined';  // Firefox 1.0+
 var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;   // At least Safari 3+
 var isChrome = !!window.chrome && !isOpera;     // Chrome 1+
 var isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6
+if(isOpera) {
+  $("#browser-stylesheet").attr("href", "css/opera.css");
+};
 if(isFirefox) {
   $("#browser-stylesheet").attr("href", "css/firefox.css");
+};
+if(isSafari) {
+  $("#browser-stylesheet").attr("href", "css/safari.css");
+};
+if(isChrome) {
+  $("#browser-stylesheet").attr("href", "css/chrome.css");
+};
+if(isIE) {
+  $("#browser-stylesheet").attr("href", "css/ie.css");
 };
 
 function adjustStyle(width) {
@@ -39,6 +51,5 @@ $(".not_selected").hover(
     $('#current_page a').css('color','#e8d606');
   }
 );
-
 
 });
