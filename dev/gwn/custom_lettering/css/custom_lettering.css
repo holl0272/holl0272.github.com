@@ -6,9 +6,8 @@ table {
 table td{
   vertical-align: top;
 }
-td span {
+td p span {
   color: #11013b;
-  font-weight: bold
 }
 #container {
   width: 75%;
