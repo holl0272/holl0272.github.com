@@ -1,0 +1,135 @@
+* {
+margin: 0;
+padding: 0;
+}
+html, body {
+  height: 100%;
+  background-image: url('../images/splash_bg.jpg');
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+ cursor:pointer;
+}
+#wrapper{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding-bottom: 100px;
+}
+#header {
+  width:75%;
+  display: inline-block;
+}
+#gwn_logo {
+  float:left;
+  margin-left:-50px;
+}
+#heading {
+  float: right;
+  text-align: left;
+  padding-top: 1.5%;
+}
+.title_txt {
+  font-family: 'Lato', sans-serif;
+  color: #cccdce;
+}
+#title {
+  font-weight: 900;
+  font-size: 3rem;
+  line-height: 1;
+}
+#sub_title {
+  font-weight: 400;
+  color: #e8d606;
+  font-size: 1rem;
+}
+#call_to_action {
+  text-align: left;
+  margin-left: 2%;
+  font-weight: 400;
+  font-size: 1rem;
+}
+#container {
+  width: 78.5%;
+  height: auto;
+  margin: 3% auto 0;
+}
+#mobile_btns {
+  display: none;
+}
+#box_btns {
+  text-align: left;
+}
+.box_btn {
+  display: inline-block;
+  margin: 0 10px 20px 10px;
+  position: relative;
+}
+.box_btn span {
+  left:10px;
+  text-align: left;
+  padding-top: 10px;
+  position: absolute;
+  color: #e8d606;
+  font-size: 1.5rem;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.box_btn span font {
+  color: #11013b;
+  font-size: 0.95em;
+}
+.box_btn a:hover span{
+  font-weight: bold;
+}
+.box_btn a:hover img {
+  opacity: 0.8;
+}
+.yellow.box_btn img {
+  opacity: .9;
+}
+.yellow.box_btn a:hover img {
+  opacity: 1;
+}
+#footer {
+  text-align: center;
+  position: fixed;
+  bottom:0;
+  height:auto;
+  width:100%;
+  background: #11013b;
+}
+#shopping_cart {
+  margin: 0 10px -5px 0;
+}
+#horizontal-nav a {
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #cccdce;
+}
+#horizontal-nav a:hover {
+  color: #e8d606;
+}
+#horizontal-nav a font {
+  font-weight: 700;
+  padding-left: 10px;
+}
+ul#horizontal-nav {
+  list-style: none;
+  margin: 12px 0;
+  color: #cccdce;
+}
+ul#horizontal-nav li {
+  display: inline-block;
+  white-space:nowrap;
+  padding-right: 30px;
+}
+li#current_page  a {
+  color: #e8d606;
+}
+li#current_page  a:hover {
+  color: #cccdce !important;
+  cursor: default;
+}

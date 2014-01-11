@@ -6,6 +6,12 @@ table {
 table td{
   vertical-align: top;
 }
+ol {
+  margin-left: 20px;
+}
+span, ol, td p span  {
+  color: #11013b;
+}
 td p span {
   color: #11013b;
 }
@@ -23,7 +29,7 @@ td p span {
   display: block;
   margin: 0 15px 10px 0;
 }
-#custom_lettering_box {
+#order_fast_box {
   opacity: 1;
 }
 #right_content {
@@ -31,28 +37,12 @@ td p span {
   text-align: left;
   background-color: white;
 }
-#straight {
-  padding-top: 8px;
-}
-#custom_logo_rules {
+.shipping_options {
   margin-left: 50px;
 }
-.font {
-  padding: 2px;
-}
-.font, .lettering, .graphic {
-  width: 180px;
+#ups_zones_map {
   text-align: center;
 }
-.square {
-  padding: 0 10px 10px 25px;
-}
-.square_color {
-  padding-top: 2px;
-}
-.spacer_colors {
-  width: 50px;
-}
-.spacer_graphics {
-  height: 30px;
+#text_only a {
+  color: blue;
 }
