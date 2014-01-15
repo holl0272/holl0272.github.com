@@ -44,16 +44,4 @@ $(function() {
 
 $('#footer').show();
 
-$(".select_btn").hover(
-  function() {
-    $(this).parent().find('.price').css('margin-top','11px');
-    $(this).parent().parent().next().css('padding-left','1px');
-    $(this).parent().parent().find('img').css('width','140px').css('border','2px solid #e8d606');
-  }, function() {
-    $(this).parent().find('.price').css('margin-top','7px');
-    $(this).parent().parent().next().css('padding-left','0px');
-    $(this).parent().parent().find('img').css('width','145px').css('border','none');
-  }
-);
-
 });
