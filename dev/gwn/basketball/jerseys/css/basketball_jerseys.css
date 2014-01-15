@@ -31,13 +31,13 @@ table td{
 }
 .select_btn {
   float: right;
-  margin: -2px;
   padding: 5px;
   color: #e8d606;
   background-color: #11013b;
   font-family: 'Lato', sans-serif;
 }
 .select_btn:hover{
+  margin: -1px;
   border: 1px solid yellow;
 }
 .price_select {
