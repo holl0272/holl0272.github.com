@@ -50,6 +50,7 @@
   width: 300px;
 }
 .mobile_box_btn a:hover {
+  font-style: italic;
   font-weight: bold;
 }
 .mobile_box_btn a:hover img {
@@ -72,7 +73,6 @@
   width: 140px;
   float: right;
   margin: 0 5px 0 0;
-  font-size: 1.5rem;
 }
 .title_txt li {
   font-size: 0.45em;
@@ -86,6 +86,10 @@ ul#vertical-list {
 }
 ul#horizontal-nav li {
   display: block;
+}
+#horizontal-nav a:hover {
+  color: #e8d606;
+  font-weight: 700;
 }
 .pipe {
   display: none !important;

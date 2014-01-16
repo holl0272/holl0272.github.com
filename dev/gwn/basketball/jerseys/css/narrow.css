@@ -2,10 +2,6 @@
   text-align: center;
   position: relative;
 }
-#narrow_fix {
-  width: 315px;
-  margin: 0 auto;
-}
 #gwn_logo {
   text-align: center;
   float: none;
@@ -15,33 +11,19 @@
   width: 350px;
 }
 #heading {
-  text-align: left;
-  float: none;
-  margin: -60px 0 0 10px;
+  display: none;
 }
-#title {
-  font-weight: 900;
-  font-size: 1.7em !important;
+#container {
+  margin: -50px auto 25px;
 }
-#sub_title {
-  font-weight: 700;
-  font-size: .8em !important;
+#right_content {
+  text-align: center;
 }
 #box_btns {
   display: none;
 }
 #mobile_btns {
-  display: inline-block;
-}
-.box_btn {
-  margin: 0;
-}
-.box_btn img {
-  width: 140px;
-}
-.box_btn span {
-  font-size: 1.25em;
-  font-weight: bold;
+  display: block;
 }
 .mobile_box_btn {
   vertical-align: middle;
@@ -50,32 +32,34 @@
   width: 300px;
 }
 .mobile_box_btn a:hover {
-  font-style: italic;
   font-weight: bold;
 }
 .mobile_box_btn a:hover img {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 .mobile_box_btn span {
   left: 70px;
-  margin: 10px 0 !important;
+  margin: 12px 0 0 !important;
   position: absolute;
   color: #e8d606;
   font-size: 1.3em;
   font-family: 'Josefin Sans', sans-serif;
   padding: 0;
 }
+.mobile_box_btn span#home_mobile_btn {
+  left: 7px;
+  font-size: 1.2em;
+}
 .mobile_box_btn {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   position: relative;
 }
-#call_to_action {
-  width: 140px;
-  float: right;
-  margin: 0 5px 0 0;
+.jersey {
+  float: none;
+  margin: 0 0 65px 0;
 }
-.title_txt li {
-  font-size: 0.45em;
+.price_select {
+  margin: 0 75px;
 }
 ul#vertical-list {
   list-style-position:inside;
@@ -86,10 +70,6 @@ ul#vertical-list {
 }
 ul#horizontal-nav li {
   display: block;
-}
-#horizontal-nav a:hover {
-  color: #e8d606;
-  font-weight: 700;
 }
 .pipe {
   display: none !important;
