@@ -3,6 +3,7 @@ $(document).ready(function(){
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
+  alert('android');
   $("#device-stylesheet").attr("href", "css/basketball_android.css");
 };
 
@@ -30,7 +31,7 @@ if(isIE) {
 function adjustStyle(width) {
   width = parseInt(width);
     if (width < 508) {
-      $("#size-stylesheet").attr("href", "css/narrow.css");
+      $("#size-stylesheet").attr("href", "css/basketball_narrow.css");
     }
     else {
       $("#size-stylesheet").attr("href", "css/wide.css");
