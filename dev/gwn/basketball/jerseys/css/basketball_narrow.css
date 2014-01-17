@@ -1,0 +1,88 @@
+#wrapper {
+  text-align: center;
+  position: relative;
+}
+#gwn_logo {
+  text-align: center;
+  float: none;
+  margin: -25px 0 10px -50px;
+}
+#gwn_logo img {
+  width: 300px;
+}
+#heading {
+  display: none;
+}
+#container {
+  text-align: center;
+  margin-top: -50px;
+  margin-bottom: 25px;
+}
+#right_content {
+  text-align: center;
+}
+#box_btns {
+  display: none;
+}
+#mobile_btns {
+  margin: 0 auto;
+  display: block;
+}
+.mobile_box_btn {
+  vertical-align: middle;
+}
+.mobile_box_btn img {
+  width: 100% !important;
+  position: relative;
+}
+.mobile_box_btn a:hover {
+  font-weight: bold;
+}
+.mobile_box_btn a:hover img {
+  opacity: 0.8;
+}
+.mobile_box_btn span {
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  right: 0;
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  margin: auto;
+  color: #e8d606;
+  font-size: 1.1em;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.mobile_box_btn span#home_mobile_btn {
+  left: 0;
+}
+.mobile_box_btn {
+  margin-bottom: 5px;
+  position: relative;
+}
+.jersey {
+  float: none;
+  margin-bottom: 25px;
+  width: 250px;
+}
+.price_select {
+  margin: 0 53px;
+}
+ul#vertical-list {
+  list-style-position:inside;
+  margin:0;
+  padding:0;
+  line-height: 4;
+  text-align: left;
+}
+ul#horizontal-nav li {
+  display: block;
+}
+.pipe {
+  display: none !important;
+}
+#footer {
+  position: absolute;
+}

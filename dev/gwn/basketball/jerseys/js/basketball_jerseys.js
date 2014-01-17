@@ -3,7 +3,7 @@ $(document).ready(function(){
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
-  $("#device-stylesheet").attr("href", "css/android.css");
+  $("#device-stylesheet").attr("href", "css/basketball_android.css");
 };
 
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;  // Opera 8.0+
