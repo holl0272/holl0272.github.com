@@ -77,6 +77,9 @@ a:hover {
   font-family: 'Josefin Sans', sans-serif;
 }
 .box_btn span font {
+  font-size: 1.4rem;
+}
+.yellow.box_btn span font {
   color: #11013b;
   font-size: 0.95em;
 }
