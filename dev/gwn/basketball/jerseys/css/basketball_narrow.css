@@ -52,10 +52,11 @@
   position: absolute;
   margin: auto;
   color: #e8d606;
-  font-size: 1.1em;
+  font-size: 1.3em;
   font-family: 'Josefin Sans', sans-serif;
 }
 .mobile_box_btn span#home_mobile_btn {
+  font-size: 1.1em;
   left: 0;
 }
 .mobile_box_btn {
