@@ -18,7 +18,7 @@ table td{
   line-height: 1;
   margin: 10px 0;
   color: #cccdce;
-  font-weight: 100;
+  font-size: 1rem;
   font-family: 'Lato', sans-serif;
 }
 .price {
@@ -58,4 +58,7 @@ table td{
 }
 #right_content {
   text-align: left;
+}
+.clear {
+  clear:both;
 }

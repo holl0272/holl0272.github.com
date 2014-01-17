@@ -34,7 +34,14 @@ function adjustStyle(width) {
     }
     else {
       $("#size-stylesheet").attr("href", "css/wide.css");
+    };
+
+    if(width <= 970) {
+      $('#heading').css({'float':'left','margin-top':'-40px'});
     }
+    else  {
+      $('#heading').css({'float':'right','margin-top':'0'});
+    };
 }
 
 $(function() {
