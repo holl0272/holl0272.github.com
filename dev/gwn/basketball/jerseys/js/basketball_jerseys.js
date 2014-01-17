@@ -3,7 +3,7 @@ $(document).ready(function(){
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
-  alert('android');
+  alert('android2');
   $("#device-stylesheet").attr("href", "css/basketball_android.css");
 };
 
