@@ -33,7 +33,7 @@ function adjustStyle(width) {
       $("#size-stylesheet").attr("href", "css/baseball_narrow.css");
     }
     else {
-      $("#size-stylesheet").attr("href", "css/wide.css");
+      $("#size-stylesheet").attr("href", "");
     };
 
     if(width <= 970) {
