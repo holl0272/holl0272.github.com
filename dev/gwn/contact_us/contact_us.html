@@ -8,9 +8,6 @@
   <meta name="author" content="f-robots.com">
   <meta charset="utf-8">
 
-  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="js/contact_us.js"></script>
-
   <link rel="shortcut icon" type="image/png" href="../images/favicon.gif">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="../css/main.css">
@@ -18,6 +15,10 @@
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
   <link rel="stylesheet" id="browser-stylesheet">
+
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="js/contact_us.js"></script>
+
 </head>
 <body>
 
@@ -34,7 +35,20 @@
     </div>
   </div>
 
-    <table id="container">
+  <div id="container">
+    <table>
+      <tr>
+        <td colspan="2">
+          <div id="mobile_btns">
+            <div class="mobile_box_btn">
+              <image src="images/plain_grey_box_mobile.jpg" alt="Contact Us" id="contact_us_mobile_btn"><span>FAQ'S</span>
+            </div>
+            <div class="mobile_box_btn">
+              <a href="../index.html" title="Choose A Different Sport"><image src="images/plain_grey_box_mobile.jpg" alt="Choose A Different Sport" id="home_mobile_box"><span id="home_mobile_btn">< CHOOSE A DIFFERENT SPORT</span></a>
+            </div>
+          </div>
+        </td>
+      </tr>
       <tr>
         <td id="left_content">
           <div id="box_btns">
@@ -51,70 +65,44 @@
             <tr>
               <td>
                 <h3>Our Coroprate Address</h3>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                3530 W. 16TH Street<br>
-                Indianapolis, IN  46222<br>
-              </td>
-            </tr>
-            <tr>
-              <td>
                 <p>
-                  &nbsp;
+                  3530 W. 16TH Street<br>
+                  Indianapolis, IN  46222<br>
                 </p>
+                  <br>
               </td>
             </tr>
             <tr>
               <td>
                 <h3>Fax</h3>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                +1 (317) 638-2980
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+                <P>
+                  +1 (317) 638-2980
+                </P>
+                  <br>
               </td>
             </tr>
             <tr>
               <td>
                 <h3>Customer Service</h3>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                +1 (877) 796-6639
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+                <P>
+                  +1 (877) 796-6639
+                </P>
+                  <br>
               </td>
             </tr>
             <tr>
               <td>
                 <h3>Email</h3>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href="mailto:contactus@gamewearnow.com?subject=GameWearNow%20Question">contactus@gamewearnow.com</a>
+                <P>
+                  <a href="mailto:contactus@gamewearnow.com?subject=GameWearNow%20Question">contactus@gamewearnow.com</a>
+                </P>
               </td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
-</div>
+  </div>
 
   <div id="footer">
     <ul id="horizontal-nav">
@@ -129,6 +117,6 @@
       <li id="current_page"><a href="#">CONTACT US <font>(877) 796-6639</font></a></li>
     </ul>
   </div>
-
+</div>
 </body>
 </html>
