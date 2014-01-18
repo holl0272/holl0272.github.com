@@ -2,6 +2,9 @@
   text-align: center;
   position: relative;
 }
+#ups_zones_map {
+  display: none;
+}
 #gwn_logo {
   text-align: center;
   float: none;
@@ -59,6 +62,9 @@
   color: #e8d606;
   font-size: 1.3em;
   font-family: 'Josefin Sans', sans-serif;
+}
+.shipping_options {
+  margin-left: 30px;
 }
 .break {
   display: none;

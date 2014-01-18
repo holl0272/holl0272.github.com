@@ -16,14 +16,13 @@
 #container {
   text-align: center;
   margin-top: -50px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 #left_content {
   display: none;
 }
 #right_content {
-  padding: 30px;
-  padding-right: 10px;
+  padding: 30px 10px 30px 20px;
 }
 #mobile_btns {
   margin: 0 auto;
@@ -60,12 +59,6 @@
   color: #e8d606;
   font-size: 1.3em;
   font-family: 'Josefin Sans', sans-serif;
-}
-.mobile_box_btn span#home_mobile_btn {
-  font-size: 1.1em;
-}
-.break {
-  display: none;
 }
 ul#vertical-list {
   list-style-position:inside;
