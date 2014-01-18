@@ -3,7 +3,7 @@ $(document).ready(function(){
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
-  $("#device-stylesheet").attr("href", "css/android.css");
+  $("#device-stylesheet").attr("href", "css/privacy_policy_android.css");
 };
 
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;  // Opera 8.0+
@@ -29,11 +29,20 @@ if(isIE) {
 
 function adjustStyle(width) {
   width = parseInt(width);
-    if (width < 480) {
-      $("#size-stylesheet").attr("href", "css/narrow.css");
+    if (width < 508) {
+      $("#size-stylesheet").attr("href", "css/privacy_policy_narrow.css");
     }
+    else {
       $("#size-stylesheet").attr("href", "css/wide.css");
-};
+    };
+
+    if(width <= 970) {
+      $('#heading').css({'float':'left','margin-top':'-40px'});
+    }
+    else  {
+      $('#heading').css({'float':'right','margin-top':'0'});
+    };
+}
 
 $(function() {
     adjustStyle($(this).width());

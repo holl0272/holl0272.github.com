@@ -4,6 +4,7 @@ padding: 0;
 }
 html, body {
   height: 100%;
+  min-width: 380px;
   background-image: url('../images/splash_bg.jpg');
 }
 a {
