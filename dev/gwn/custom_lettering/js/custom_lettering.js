@@ -3,7 +3,7 @@ $(document).ready(function(){
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
-  $("#device-stylesheet").attr("href", "css/android.css");
+  $("#device-stylesheet").attr("href", "css/custom_lettering_android.css");
 };
 
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;  // Opera 8.0+
@@ -30,9 +30,26 @@ if(isIE) {
 function adjustStyle(width) {
   width = parseInt(width);
     if (width < 480) {
-      $("#size-stylesheet").attr("href", "css/narrow.css");
+      $("#size-stylesheet").attr("href", "css/custom_lettering_narrow.css");
     }
-      $("#size-stylesheet").attr("href", "css/wide.css");
+    else {
+      $("#size-stylesheet").attr("href", "");
+    };
+
+    if(width <= 970) {
+      $('#heading').css({'float':'left','margin-top':'-40px'});
+      $('.mobile_Tbl').show();
+      $('.desktop_Tbl').hide();
+      $('.spacer_colors').hide();
+      $('#name_Tbl').attr('align','middle');
+    }
+    else  {
+      $('#heading').css({'float':'right','margin-top':'0'});
+      $('.mobile_Tbl').hide();
+      $('.desktop_Tbl').show();
+      $('.spacer_colors').show();
+      $('#name_Tbl').attr('align','left');
+    };
 };
 
 $(function() {

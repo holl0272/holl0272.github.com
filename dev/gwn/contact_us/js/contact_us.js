@@ -42,7 +42,7 @@ function adjustStyle(width) {
     else  {
       $('#heading').css({'float':'right','margin-top':'0'});
     };
-}
+};
 
 $(function() {
     adjustStyle($(this).width());

@@ -18,6 +18,10 @@
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
   <link rel="stylesheet" id="browser-stylesheet">
+
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="js/custom_lettering.js"></script>
+
 </head>
 <body>
 
@@ -34,12 +38,25 @@
     </div>
   </div>
 
-    <table id="container">
+  <div id="container">
+    <table>
+      <tr>
+        <td colspan="2">
+          <div id="mobile_btns">
+            <div class="mobile_box_btn">
+              <image src="images/plain_grey_box_mobile.jpg" alt="Custom Lettering" id="custom_lettering_mobile_btn"><span>CUSTOM LETTERING</span>
+            </div>
+            <div class="mobile_box_btn">
+              <a href="../index.html" title="Choose A Different Sport"><image src="images/plain_grey_box_mobile.jpg" alt="Choose A Different Sport" id="home_mobile_box"><span id="home_mobile_btn">HOME</span></a>
+            </div>
+          </div>
+        </td>
+      </tr>
       <tr>
         <td id="left_content">
           <div id="box_btns">
             <div class="yellow box_btn">
-              <image src="images/custom_lettering.jpg" alt="Privacy Policy" id="custom_lettering_box"><span><font>CUSTOM<br>LETTERING<br>OPTIONS</font></span>
+              <image src="images/custom_lettering.jpg" alt="Custom Lettering" id="custom_lettering_box"><span><font>CUSTOM<br>LETTERING<br>OPTIONS</font></span>
             </div>
             <div class="box_btn">
               <a href="../index.html" title="Home"><image src="images/plain_grey_box.jpg" alt="Home" id="home_box"><span>< HOME</span></a>
@@ -50,34 +67,16 @@
           <table id="text_only">
             <tr>
               <td>
-                <h3>
-                  Choose from our 6 lettering options - and several fonts and stock graphics<br>Or, send us your custom logo
-                </h3>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
+                <h3>Choose from our 6 lettering options - and several fonts and stock graphics<br>Or, send us your custom logo</h3>
+                  <br>
                 <p>
                   <span>Font choices for Team Names and Individual Names</span>
                 </p>
+                  <br>
               </td>
             </tr>
             <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
+              <td id="name_Tbl">
                 <table>
                   <tr>
                     <td class="font">
@@ -105,13 +104,7 @@
                     </td>
                   </tr>
                 </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+                  <br>
               </td>
             </tr>
             <tr>
@@ -119,31 +112,15 @@
                 <p>
                   <span>Lettering style choices for Team Names</span>
                 </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
+                  <br>
                 <p>
                   Lettering layout options
                 </p>
+                  <br>
               </td>
             </tr>
             <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
+              <td class="desktop_Tbl">
                 <table>
                   <tr>
                     <td class="lettering">
@@ -160,13 +137,29 @@
                     </td>
                   </tr>
                 </table>
+                 <br>
               </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+              <td align="middle" class="mobile_Tbl">
+                <table>
+                  <tr>
+                    <td class="lettering">
+                      <image src="images/straight.gif" alt="Straight" id="straight" style="padding-bottom:8px;">
+                    </td>
+                  <tr>
+                    <td class="lettering">
+                      <image src="images/vert_arch.gif" alt="Vert Arch" id="vert_arch">
+                    </td>
+                  </tr>
+                    <td class="lettering">
+                      <image src="images/straight_top.gif" alt="Straight Top" id="straight_top">
+                    </td>
+                  <tr>
+                    <td class="lettering">
+                      <image src="images/bowtie.gif" alt="Bowtie" id="bowtie">
+                    </td>
+                  </tr>
+                </table>
+                  <br>
               </td>
             </tr>
             <tr>
@@ -174,17 +167,11 @@
                 <p>
                   Stock sports graphics
                 </p>
+                  <br>
               </td>
             </tr>
             <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
+              <td class="desktop_Tbl">
                 <table>
                   <tr>
                     <td class="graphic">
@@ -264,13 +251,67 @@
                     </td>
                   </tr>
                 </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+                  <br>
+               </td>
+               <td align="middle" class="mobile_Tbl">
+                <table>
+                  <tr>
+                    <td class="graphic">
+                      <image src="images/baseball_graphic.gif" alt="Baseball Graphic" id="baseball_graphic" style="padding-bottom:10px;">
+                    </td>
+                    <td class="graphic">
+                      <image src="images/baseball_script.gif" alt="Baseball Script" id="baseball_script">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="graphic">
+                      <image src="images/basketball_graphic.gif" alt="Basketball Graphic" id="basketball_graphic">
+                    </td>
+                    <td class="graphic">
+                      <image src="images/basketball_script.gif" alt="Basketball Script" id="basketball_script">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="graphic">
+                      <image src="images/football_graphic.gif" alt="Football Graphic" id="football_graphic">
+                    </td>
+                    <td class="graphic">
+                      <image src="images/football_helmet_graphic.gif" alt="Football Helmet Graphic" id="football_helmet_graphic">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="graphic">
+                      <image src="images/football_script.gif" alt="Football Script" id="football_script">
+                    </td>
+                    <td class="graphic">
+                      <image src="images/lacrosse_script.gif" alt="Lacrosse Script" id="lacrosse_script">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="graphic">
+                      <image src="images/lacrosse_graphic.gif" alt="Lacrosse Graphic" id="lacrosse_graphic">
+                    </td>
+                    <td class="graphic">
+                      <image src="images/soccer_graphic.gif" alt="Soccer Graphic" id="soccer_graphic">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="graphic">
+                      <image src="images/softball_graphic.gif" alt="Softball Graphic" id="softball_graphic">
+                    </td>
+                    <td class="graphic">
+                      <image src="images/softball_script.gif" alt="Softball Script" id="softball_script">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="graphic">
+                      <image src="images/volleyball_graphic.gif" alt="Volleyball Graphic" id="volleyball_graphic">
+                    </td>
+                    <td class="graphic">
+                      <image src="images/volleyball_script.gif" alt="Volleyball Script" id="volleyball_script">
+                    </td>
+                  </tr>
+                </table>
               </td>
             </tr>
             <tr>
@@ -278,13 +319,7 @@
                 <p>
                   <span>Or, you can choose to send us a .gif or .jpg image of your Custom Logo</span>
                 </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+                  <br>
               </td>
             </tr>
             <tr>
@@ -294,13 +329,7 @@
                   <li>Logos are printed in one color</li>
                   <li>Please respect all copyright laws</li>
                 </ul>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+                  <br>
               </td>
             </tr>
             <tr>
@@ -308,13 +337,7 @@
                 <p>
                   <span>Lettering Choices for Individual Names</span>
                 </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+                  <br>
               </td>
             </tr>
             <tr>
@@ -329,13 +352,7 @@
                     </td>
                   </tr>
                 </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+                  <br>
               </td>
             </tr>
             <tr>
@@ -343,13 +360,7 @@
                 <p>
                   <span>Lettering Colors</span>
                 </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+                  <br>
               </td>
             </tr>
             <tr>
@@ -362,7 +373,7 @@
                     <td class="square_color">
                       Black
                     </td>
-                    <td class="spacer">
+                    <td class="spacer_colors">
                       <p>
                         &nbsp;
                       </p>
@@ -381,7 +392,7 @@
                     <td class="square_color">
                       Light Grey
                     </td>
-                    <td class="spacer">
+                    <td class="spacer_colors">
                       <p>
                         &nbsp;
                       </p>
@@ -400,7 +411,7 @@
                     <td class="square_color">
                       White
                     </td>
-                    <td class="spacer">
+                    <td class="spacer_colors">
                       <p>
                         &nbsp;
                       </p>
@@ -419,7 +430,7 @@
                     <td class="square_color">
                       Columbia Blue
                     </td>
-                    <td class="spacer">
+                    <td class="spacer_colors">
                       <p>
                         &nbsp;
                       </p>
@@ -438,7 +449,7 @@
                     <td class="square_color">
                       Royal
                     </td>
-                    <td class="spacer">
+                    <td class="spacer_colors">
                       <p>
                         &nbsp;
                       </p>
@@ -457,7 +468,7 @@
                     <td class="square_color">
                       Navy
                     </td>
-                    <td class="spacer">
+                    <td class="spacer_colors">
                       <p>
                         &nbsp;
                       </p>
@@ -489,20 +500,7 @@
                     </td>
                   </tr>
                 </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  &nbsp;
-                </p>
+                  <br>
               </td>
             </tr>
             <tr>
@@ -516,8 +514,7 @@
         </td>
       </tr>
     </table>
-
-</div>
+  </div>
 
   <div id="footer">
     <ul id="horizontal-nav">
@@ -532,6 +529,6 @@
       <li><a href="../contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
     </ul>
   </div>
-
+</div>
 </body>
 </html>

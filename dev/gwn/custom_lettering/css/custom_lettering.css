@@ -31,6 +31,9 @@ td p span {
   text-align: left;
   background-color: white;
 }
+.mobile_Tbl tr .graphic img {
+  padding-bottom: 25px;
+}
 #straight {
   padding-top: 8px;
 }
