@@ -3,7 +3,7 @@ $(document).ready(function(){
  if(window.innerWidth <= 800 && window.innerHeight <= 600) {
    $("#init-stylesheet").attr("href", "css/narrow.css");
  } else {
-   $("#init-stylesheet").attr("href", "css/main.css");
+   $("#init-stylesheet").attr("href", "");
  };
 
 var device = navigator.userAgent.toLowerCase();
@@ -57,8 +57,6 @@ $(function() {
     });
 });
 
-$('#footer').show();
-
 $('.resize').each(function( index, element ) {
 
   $("<div id='hidden-resizer' style='font-size:22px;' />").hide().appendTo(document.body);
@@ -77,7 +75,8 @@ $('.resize').each(function( index, element ) {
   $(this).css("font-size", size).html(resizer.html());
 
   $('#hidden-resizer').remove();
-
   });
+
+$('#wrapper').show();
 
 });
