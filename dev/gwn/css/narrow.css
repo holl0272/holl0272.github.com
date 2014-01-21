@@ -100,10 +100,12 @@ ul#vertical-list {
   text-align: left;
 }
 ul#horizontal-nav {
-  padding-left: 25px;
+text-align: center;
+border:1px solid red;
 }
 ul#horizontal-nav li {
   display: block;
+  padding-right: 0px;
 }
 .pipe {
   display: none !important;

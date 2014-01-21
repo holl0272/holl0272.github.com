@@ -82,6 +82,7 @@ ul#vertical-list {
 }
 ul#horizontal-nav li {
   display: block;
+  padding-right: 0px;
 }
 .pipe {
   display: none !important;
