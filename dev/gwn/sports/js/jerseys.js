@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+   $("#init-stylesheet").attr("href", "../../css/narrow.css");
+ } else {
+   $("#init-stylesheet").attr("href", "");
+ };
+
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
@@ -12,19 +18,19 @@ var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Const
 var isChrome = !!window.chrome && !isOpera;     // Chrome 1+
 var isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6
 if(isOpera) {
-  $("#browser-stylesheet").attr("href", "../css/opera.css");
+  $("#browser-stylesheet").attr("href", "../../css/opera.css");
 };
 if(isFirefox) {
-  $("#browser-stylesheet").attr("href", "../css/firefox.css");
+  $("#browser-stylesheet").attr("href", "../../css/firefox.css");
 };
 if(isSafari) {
-  $("#browser-stylesheet").attr("href", "../css/safari.css");
+  $("#browser-stylesheet").attr("href", "../../css/safari.css");
 };
 if(isChrome) {
-  $("#browser-stylesheet").attr("href", "../css/chrome.css");
+  $("#browser-stylesheet").attr("href", "../../css/chrome.css");
 };
 if(isIE) {
-  $("#browser-stylesheet").attr("href", "../css/ie.css");
+  $("#browser-stylesheet").attr("href", "../../css/ie.css");
 };
 
 function adjustStyle(width) {
@@ -51,6 +57,6 @@ $(function() {
     });
 });
 
-$('#footer').show();
+$('#wrapper').show();
 
 });
