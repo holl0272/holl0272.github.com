@@ -85,9 +85,10 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 #call_to_action {
-  width: 135px;
+  width: 145px;
   float: right;
   padding: 5px 0 0 0;
+  margin-left: 0;
 }
 .title_txt li {
   font-size: 0.70em;
