@@ -37,6 +37,9 @@
   margin: 0 auto;
   display: block;
 }
+.home_mobile_box span {
+  font-size: 1.3em;
+}
 .mobile_box_btn {
   vertical-align: middle;
   margin-bottom: 5px;

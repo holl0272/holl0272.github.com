@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+ if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+   $("#init-stylesheet").attr("href", "css/narrow.css");
+ } else {
+   $("#init-stylesheet").attr("href", "css/main.css");
+ };
+
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
