@@ -77,6 +77,4 @@ $('.resize').each(function( index, element ) {
   $('#hidden-resizer').remove();
   });
 
-$('#wrapper').show();
-
 });
