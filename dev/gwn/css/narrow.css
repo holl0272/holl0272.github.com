@@ -101,7 +101,6 @@ ul#vertical-list {
 }
 ul#horizontal-nav {
 text-align: center;
-border:1px solid red;
 }
 ul#horizontal-nav li {
   display: block;
