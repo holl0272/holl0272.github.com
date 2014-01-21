@@ -74,15 +74,19 @@ a:hover {
   padding-top: 10px;
   position: absolute;
   color: #e8d606;
-  font-size: 1.5rem;
+  font-size: 22px;
   font-family: 'Josefin Sans', sans-serif;
+  display: inline-block;
+  max-height: 140px;
+  overflow: hidden;
 }
-.box_btn span font {
-  font-size: 1.4rem;
+.resize {
+  display: block;
+  max-width: 140px;
+  overflow: hidden;
 }
-.yellow.box_btn span font {
+.yellow.box_btn span {
   color: #11013b;
-  font-size: 0.95em;
 }
 .box_btn a:hover span{
   font-weight: bold;

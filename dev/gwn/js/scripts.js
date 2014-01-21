@@ -34,8 +34,15 @@ function adjustStyle(width) {
     }
     else {
       $("#size-stylesheet").attr("href", "css/wide.css");
+    };
+
+    if(width <= 970) {
+      $('#heading').css({'float':'left','margin-top':'-40px'});
     }
-}
+    else  {
+      $('#heading').css({'float':'right','margin-top':'0'});
+    };
+};
 
 $(function() {
     adjustStyle($(this).width());
@@ -45,5 +52,26 @@ $(function() {
 });
 
 $('#footer').show();
+
+$('.resize').each(function( index, element ) {
+
+  $("<div id='hidden-resizer' style='font-size:22px;' />").hide().appendTo(document.body);
+
+  var size;
+  var desired_width = 140;
+  var htmlSpan = $(this).html();
+  var resizer = $("#hidden-resizer");
+  resizer.html(htmlSpan);
+
+  while(resizer.width() > desired_width) {
+  size = parseInt(resizer.css("font-size"));
+  resizer.css("font-size", size - 1);
+  };
+
+  $(this).css("font-size", size).html(resizer.html());
+
+  $('#hidden-resizer').remove();
+
+  });
 
 });
