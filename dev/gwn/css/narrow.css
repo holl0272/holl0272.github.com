@@ -99,6 +99,9 @@ ul#vertical-list {
   line-height: 4;
   text-align: left;
 }
+ul#horizontal-nav {
+  padding-left: 25px;
+}
 ul#horizontal-nav li {
   display: block;
 }

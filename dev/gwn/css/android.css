@@ -1,17 +1,8 @@
 .mobile_box_btn span {
-  border: 0px solid blue;
-  margin: -5px;
-  padding: 0 !important;
+  font-size: 1.3em;
+  margin: 2px 0 0 0;
 }
-.mobile_box_btn a:hover span {
-  margin-top: 7px;
-}
-.box_btn span {
-  margin-top: -10px;
-  font-size: 1.25em;
-  line-height: 16pt;
-  font-weight: bold;
-}
-.box_btn a:hover span{
-  margin-top: -5px !important;
+.mobile_box_btn span#home_mobile_btn {
+  font-size: 1.1em;
+  margin: 4px 0 0 0;
 }
