@@ -28,9 +28,6 @@
   margin-bottom: 25px;
 }
 #desktop_content {
-  text-align: center;
-}
-#box_btns {
   display: none;
 }
 #mobile_btns {
@@ -38,15 +35,12 @@
   display: block;
 }
 .home_mobile_box span {
-  font-size: 1.3em;
+  font-size: 1.3em !important;
 }
 .mobile_box_btn {
   vertical-align: middle;
   margin-bottom: 5px;
   position: relative;
-}
-.box_btn {
-  margin: 0;
 }
 .box_btn img {
   width: 140px;
@@ -85,14 +79,13 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 #call_to_action {
-  width: 140px;
-  float: right;
-  padding: 5px 0 0 0;
-  margin-left: 0;
-  border:1px solid yellow;
+  margin-top: 10px;
 }
 .title_txt li {
   font-size: 0.70em;
+}
+.yellow.box_btn {
+  margin-top: 10px;
 }
 .yellow.box_btn span {
   font-weight: normal;

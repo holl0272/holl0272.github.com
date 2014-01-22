@@ -140,3 +140,6 @@ li#current_page  a {
 li#current_page  a:hover {
   cursor: default;
 }
+.clear {
+  clear: both;
+}
