@@ -1,6 +1,7 @@
 if(window.innerWidth <= 800 && window.innerHeight <= 600) {
  $("#init-stylesheet").attr("href", "css/custom_lettering_narrow.css");
  $('#wrapper').hide();
+ alert('yes');
 };
 
 $(document).ready(function(){
