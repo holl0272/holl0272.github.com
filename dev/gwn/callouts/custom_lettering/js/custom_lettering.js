@@ -1,3 +1,8 @@
+if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+ $("#init-stylesheet").attr("href", "css/custom_lettering_narrow.css");
+ $('#wrapper').hide();
+};
+
 $(document).ready(function(){
 
 var device = navigator.userAgent.toLowerCase();
@@ -27,9 +32,11 @@ if(isIE) {
   $("#browser-stylesheet").attr("href", "css/ie.css");
 };
 
+   $('#wrapper').show();
+
 function adjustStyle(width) {
   width = parseInt(width);
-    if (width < 480) {
+    if (width < 508) {
       $("#size-stylesheet").attr("href", "css/custom_lettering_narrow.css");
     }
     else {
@@ -58,7 +65,5 @@ $(function() {
         adjustStyle($(this).width());
     });
 });
-
-$('#footer').show();
 
 });

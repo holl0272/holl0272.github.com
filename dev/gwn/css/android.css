@@ -1,11 +1,6 @@
 .mobile_box_btn span {
   font-size: 1.3em;
   margin-top: 5px !important;
-  border:1px solid red;
-}
-#home_mobile_btn {
-  font-size: 1.3em !important;
-  border: 1px solid blue;
 }
 .box_btn span {
   margin-top: -5px;

@@ -84,6 +84,7 @@ ul#vertical-list {
 }
 ul#horizontal-nav li {
   display: block;
+  padding-right: 0px;
 }
 #horizontal-nav a:hover {
   color: #e8d606;
