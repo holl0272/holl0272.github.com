@@ -108,6 +108,10 @@
                       <p>
                         YOUR NAME:
                       </p>
+                        <br>
+                    </td>
+                    <td>
+                      <input type="text" style="width:150px;"/>
                     </td>
                   </tr>
                   <tr>
@@ -115,6 +119,10 @@
                       <p>
                         EMAIL ADDRESS:
                       </p>
+                        <br>
+                    </td>
+                    <td>
+                      <input type="text" style="width:150px;"/>
                     </td>
                   </tr>
                   <tr>
@@ -122,13 +130,27 @@
                       <p>
                         CATEGORY:
                       </p>
+                        <br>
+                    </td>
+                    <td>
+                      <select>
+                        <option selected="">Please select a category from the list below</option>
+                        <option value="I have a unique or large order">I have a unique or large order</option>
+                        <option value="Question about my order">Question about my order</option>
+                        <option value="Suggestion">Suggestion</option>
+                        <option value="Other Question">Other Question</option>
+                      </select>
                     </td>
                   </tr>
-                  <tr>
+                  <tr id="other_field" style="display:none;">
                     <td>
                       <p>
                         OTHER:
                       </p>
+                        <br>
+                    </td>
+                    <td>
+                      <input type="text" style="width:260px;"/>
                     </td>
                   </tr>
                   <tr>
@@ -136,6 +158,10 @@
                       <p>
                         MESSAGE:
                       </p>
+                        <br>
+                    </td>
+                    <td>
+                      <textarea rows="4" cols="50"></textarea>
                     </td>
                   </tr>
                 </table>

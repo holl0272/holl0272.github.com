@@ -6,6 +6,9 @@ table {
 table td{
   vertical-align: top;
 }
+#email_form td {
+  padding:5px;
+}
 #container {
   width: 75%;
   margin: 3% auto 0;

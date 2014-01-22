@@ -58,6 +58,15 @@ $(function() {
     });
 });
 
+$('select').change(function() {
+  if($('select option').filter(':selected').text() == "Other Question") {
+    $('#other_field').show();
+  }
+  else {
+    $('#other_field').hide();
+  };
+});
+
 $(".not_selected").hover(
   function() {
     $('#current_page a').css('color','#cccdce');
