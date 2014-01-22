@@ -1,0 +1,36 @@
+table {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #666666;
+}
+table td{
+  vertical-align: top;
+}
+#container {
+  width: 75%;
+  margin: 3% auto 0;
+}
+#left_content {
+  width: 10%;
+}
+#box_btns {
+  float: left;
+}
+.box_btn {
+  display: block;
+  margin: 0 15px 10px 0;
+}
+#home_box {
+  vertical-align: bottom;
+}
+#home_box_btn {
+  margin-bottom: 0;
+}
+#right_content {
+  padding: 30px;
+  text-align: left;
+  background-color: white;
+}
+#text_only a {
+  color: blue;
+}

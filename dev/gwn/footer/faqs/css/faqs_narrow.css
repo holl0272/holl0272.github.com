@@ -1,0 +1,87 @@
+#wrapper {
+  text-align: center;
+  position: relative;
+}
+#gwn_logo {
+  text-align: center;
+  float: none;
+  margin: -25px 0 0 -50px;
+}
+#gwn_logo img {
+  width: 300px !important;
+}
+#heading {
+  display: none;
+}
+#container {
+  text-align: center;
+  margin-top: -50px;
+  margin-bottom: 50px;
+}
+#left_content {
+  display: none;
+}
+#right_content {
+  padding: 30px 10px 30px 20px;
+}
+#mobile_btns {
+  margin: 0 auto;
+  display: block;
+}
+#mobile_btns {
+  display: inline-block;
+}
+.mobile_box_btn {
+  vertical-align: middle;
+  margin-bottom: 5px;
+  position: relative;
+}
+.mobile_box_btn img {
+  width: 100% !important;
+  position: relative;
+}
+.mobile_box_btn a:hover {
+  font-weight: bold;
+}
+.mobile_box_btn a:hover img {
+  opacity: 0.8;
+}
+.mobile_box_btn span {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  margin: auto;
+  color: #e8d606;
+  font-size: 1.3em;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.break {
+  display: none;
+}
+ul#vertical-list {
+  list-style-position:inside;
+  margin:0;
+  padding:0;
+  line-height: 4;
+  text-align: left;
+}
+ul#horizontal-nav li {
+  display: block;
+}
+#horizontal-nav a:hover {
+  color: #e8d606;
+}
+.pipe {
+  display: none !important;
+}
+#footer {
+  position: absolute;
+}
+#shopping_cart  {
+  display: none;
+}

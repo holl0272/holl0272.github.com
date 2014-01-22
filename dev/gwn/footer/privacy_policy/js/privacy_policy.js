@@ -1,14 +1,9 @@
-if(window.innerWidth <= 800 && window.innerHeight <= 600) {
-  $("#init-stylesheet").attr("href", "css/narrow.css");
-  $('#wrapper').hide();
-};
-
 $(document).ready(function(){
 
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
-  $("#device-stylesheet").attr("href", "css/android.css");
+  $("#device-stylesheet").attr("href", "css/privacy_policy_android.css");
 };
 
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;  // Opera 8.0+
@@ -32,12 +27,10 @@ if(isIE) {
   $("#browser-stylesheet").attr("href", "css/ie.css");
 };
 
-   $('#wrapper').show();
-
 function adjustStyle(width) {
   width = parseInt(width);
     if (width < 508) {
-      $("#size-stylesheet").attr("href", "css/narrow.css");
+      $("#size-stylesheet").attr("href", "css/privacy_policy_narrow.css");
     }
     else {
       $("#size-stylesheet").attr("href", "");
@@ -58,24 +51,14 @@ $(function() {
     });
 });
 
-$('.resize').each(function( index, element ) {
+$('#footer').show();
 
-  $("<div id='hidden-resizer' style='font-size:22px;' />").hide().appendTo(document.body);
-
-  var size;
-  var desired_width = 140;
-  var htmlSpan = $(this).html();
-  var resizer = $("#hidden-resizer");
-  resizer.html(htmlSpan);
-
-  while(resizer.width() > desired_width) {
-  size = parseInt(resizer.css("font-size"));
-  resizer.css("font-size", size - 1);
-  };
-
-  $(this).css("font-size", size).html(resizer.html());
-
-  $('#hidden-resizer').remove();
-  });
+$(".not_selected").hover(
+  function() {
+    $('#current_page a').css('color','#cccdce');
+  }, function() {
+    $('#current_page a').css('color','#e8d606');
+  }
+);
 
 });

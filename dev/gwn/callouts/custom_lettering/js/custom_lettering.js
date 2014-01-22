@@ -1,14 +1,9 @@
-if(window.innerWidth <= 800 && window.innerHeight <= 600) {
-  $("#init-stylesheet").attr("href", "css/narrow.css");
-  $('#wrapper').hide();
-};
-
 $(document).ready(function(){
 
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
-  $("#device-stylesheet").attr("href", "css/android.css");
+  $("#device-stylesheet").attr("href", "css/custom_lettering_android.css");
 };
 
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;  // Opera 8.0+
@@ -32,12 +27,10 @@ if(isIE) {
   $("#browser-stylesheet").attr("href", "css/ie.css");
 };
 
-   $('#wrapper').show();
-
 function adjustStyle(width) {
   width = parseInt(width);
-    if (width < 508) {
-      $("#size-stylesheet").attr("href", "css/narrow.css");
+    if (width < 480) {
+      $("#size-stylesheet").attr("href", "css/custom_lettering_narrow.css");
     }
     else {
       $("#size-stylesheet").attr("href", "");
@@ -45,9 +38,17 @@ function adjustStyle(width) {
 
     if(width <= 970) {
       $('#heading').css({'float':'left','margin-top':'-40px'});
+      $('.mobile_Tbl').show();
+      $('.desktop_Tbl').hide();
+      $('.spacer_colors').hide();
+      $('#name_Tbl').attr('align','middle');
     }
     else  {
       $('#heading').css({'float':'right','margin-top':'0'});
+      $('.mobile_Tbl').hide();
+      $('.desktop_Tbl').show();
+      $('.spacer_colors').show();
+      $('#name_Tbl').attr('align','left');
     };
 };
 
@@ -58,24 +59,6 @@ $(function() {
     });
 });
 
-$('.resize').each(function( index, element ) {
-
-  $("<div id='hidden-resizer' style='font-size:22px;' />").hide().appendTo(document.body);
-
-  var size;
-  var desired_width = 140;
-  var htmlSpan = $(this).html();
-  var resizer = $("#hidden-resizer");
-  resizer.html(htmlSpan);
-
-  while(resizer.width() > desired_width) {
-  size = parseInt(resizer.css("font-size"));
-  resizer.css("font-size", size - 1);
-  };
-
-  $(this).css("font-size", size).html(resizer.html());
-
-  $('#hidden-resizer').remove();
-  });
+$('#footer').show();
 
 });
