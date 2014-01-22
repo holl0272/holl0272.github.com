@@ -9,5 +9,5 @@
   font-weight: bold;
 }
 .box_btn a:hover span{
-  margin-top: -5px !important;
+  /*margin-top: -5px !important;*/
 }
