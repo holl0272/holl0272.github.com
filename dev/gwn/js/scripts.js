@@ -1,6 +1,7 @@
  if(window.innerWidth <= 800 && window.innerHeight <= 600) {
    $("#init-stylesheet").attr("href", "css/narrow.css");
-   $('#wrapper').hide()
+   $('#wrapper').hide();
+   alert('testhome');
  };
 
 $(document).ready(function(){
