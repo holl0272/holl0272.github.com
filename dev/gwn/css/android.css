@@ -3,11 +3,11 @@
   margin: 2px 0 0 0;
 }
 .box_btn span {
-  margin-top: -10px;
+  /*margin-top: -10px;*/
   font-size: 1.25em;
   line-height: 16pt;
   font-weight: bold;
 }
 .box_btn a:hover span{
-  /*margin-top: -5px !important;*/
+  margin-top: -5px !important;
 }
