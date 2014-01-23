@@ -13,6 +13,9 @@
 #heading {
   display: none;
 }
+#email_form {
+  display: none;
+}
 #container {
   text-align: center;
   margin-top: -50px;

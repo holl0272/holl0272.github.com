@@ -9,7 +9,6 @@
   <meta charset="utf-8">
 
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="js/contact_us.js"></script>
 
   <link rel="shortcut icon" type="image/png" href="../../images/favicon.gif">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
@@ -19,6 +18,8 @@
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
   <link rel="stylesheet" id="browser-stylesheet">
+
+  <script src="js/contact_us.js"></script>
 
 </head>
 <body>
@@ -42,7 +43,7 @@
         <td colspan="2">
           <div id="mobile_btns">
             <div class="mobile_box_btn">
-              <image src="../images/plain_grey_box_mobile.jpg" alt="Contact Us" id="contact_us_mobile_btn"><span>FAQ'S</span>
+              <image src="../images/plain_grey_box_mobile.jpg" alt="Contact Us" id="contact_us_mobile_btn"><span>CONTACT US</span>
             </div>
             <div class="mobile_box_btn">
               <a href="../../index.html" title="Choose A Different Sport"><image src="../images/plain_grey_box_mobile.jpg" alt="Choose A Different Sport" id="home_mobile_box"><span id="home_mobile_btn">HOME</span></a>
@@ -65,7 +66,7 @@
           <table id="text_only">
             <tr>
               <td>
-                <h3>Our Corporate Address</h3>
+                <h3 style="color:red;">Our Corporate Address</h3>
                 <p>
                   3530 W. 16TH Street<br>
                   Indianapolis, IN  46222<br>
@@ -102,69 +103,71 @@
             </tr>
             <tr>
               <td>
-                <table id="email_form">
-                  <tr>
-                    <td>
-                      <p>
-                        YOUR NAME:
-                      </p>
-                        <br>
-                    </td>
-                    <td>
-                      <input type="text" style="width:150px;"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p>
-                        EMAIL ADDRESS:
-                      </p>
-                        <br>
-                    </td>
-                    <td>
-                      <input type="text" style="width:150px;"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p>
-                        CATEGORY:
-                      </p>
-                        <br>
-                    </td>
-                    <td>
-                      <select>
-                        <option selected="">Please select a category from the list below</option>
-                        <option value="I have a unique or large order">I have a unique or large order</option>
-                        <option value="Question about my order">Question about my order</option>
-                        <option value="Suggestion">Suggestion</option>
-                        <option value="Other Question">Other Question</option>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr id="other_field" style="display:none;">
-                    <td>
-                      <p>
-                        OTHER:
-                      </p>
-                        <br>
-                    </td>
-                    <td>
-                      <input type="text" style="width:260px;"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p>
-                        MESSAGE:
-                      </p>
-                        <br>
-                    </td>
-                    <td>
-                      <textarea rows="4" cols="50"></textarea>
-                    </td>
-                  </tr>
-                </table>
+                <form id="email_form">
+                  <table>
+                    <tr>
+                      <td>
+                        <p>
+                          YOUR NAME:
+                        </p>
+                          <br>
+                      </td>
+                      <td>
+                        <input type="text" style="width:150px;"/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>
+                          EMAIL ADDRESS:
+                        </p>
+                          <br>
+                      </td>
+                      <td>
+                        <input type="text" style="width:150px;"/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>
+                          CATEGORY:
+                        </p>
+                          <br>
+                      </td>
+                      <td>
+                        <select>
+                          <option selected="">Please select a category from the list below</option>
+                          <option value="I have a unique or large order">I have a unique or large order</option>
+                          <option value="Question about my order">Question about my order</option>
+                          <option value="Suggestion">Suggestion</option>
+                          <option value="Other Question">Other Question</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr id="other_field" style="display:none;">
+                      <td>
+                        <p>
+                          OTHER:
+                        </p>
+                          <br>
+                      </td>
+                      <td>
+                        <input type="text" style="width:260px;"/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>
+                          MESSAGE:
+                        </p>
+                          <br>
+                      </td>
+                      <td>
+                        <textarea rows="4" cols="50"></textarea>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
               </td>
             </tr>
           </table>

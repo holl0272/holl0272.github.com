@@ -1,4 +1,5 @@
 if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+ $("#email_form").hide();
  $("#init-stylesheet").attr("href", "css/contact_us_narrow.css");
  $('#wrapper').hide();
 };
@@ -38,9 +39,11 @@ function adjustStyle(width) {
   width = parseInt(width);
     if (width < 508) {
       $("#size-stylesheet").attr("href", "css/contact_us_narrow.css");
+      $("#email_form").hide();
     }
     else {
       $("#size-stylesheet").attr("href", "");
+      $("#email_form").show();
     };
 
     if(width <= 970) {
