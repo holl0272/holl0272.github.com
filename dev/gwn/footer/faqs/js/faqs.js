@@ -1,8 +1,3 @@
-if(window.innerWidth <= 800 && window.innerHeight <= 600) {
- $("#init-stylesheet").attr("href", "css/faqs_narrow.css");
- $('#wrapper').hide();
-};
-
 $(document).ready(function(){
 
 var device = navigator.userAgent.toLowerCase();
