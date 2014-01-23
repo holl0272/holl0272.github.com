@@ -63,6 +63,16 @@ padding: 0 10px 5px 0;
   font-size: 1.3em;
   font-family: 'Josefin Sans', sans-serif;
 }
+.select_btn {
+  padding: 5px;
+  color: #e8d606 !important;
+  background-color: #11013b;
+  font-family: 'Lato', sans-serif;
+}
+.select_btn:hover{
+  margin: -2px;
+  border: 2px solid yellow;
+}
 ul#vertical-list {
   list-style-position:inside;
   margin:0;

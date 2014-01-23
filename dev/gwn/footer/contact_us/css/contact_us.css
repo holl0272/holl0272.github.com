@@ -40,4 +40,14 @@ table td{
 #text_only a {
   color: blue;
 }
+.select_btn {
+  padding: 5px;
+  color: #e8d606 !important;
+  background-color: #11013b;
+  font-family: 'Lato', sans-serif;
+}
+.select_btn:hover{
+  margin: -2px;
+  border: 2px solid yellow;
+}
 
