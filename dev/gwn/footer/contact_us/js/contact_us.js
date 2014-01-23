@@ -37,20 +37,43 @@ if(isIE) {
 
 function adjustStyle(width) {
   width = parseInt(width);
-    if (width < 508) {
-      $("#size-stylesheet").attr("href", "css/contact_us_narrow.css");
+    if (width < 408) {
       $("#email_form").hide();
     }
     else {
-      $("#size-stylesheet").attr("href", "");
       $("#email_form").show();
+    };
+
+    if (width <= 630) {
+      $("#size-stylesheet").attr("href", "css/contact_us_narrow.css");
+    }
+    else {
+      $("#size-stylesheet").attr("href", "");
     };
 
     if(width <= 970) {
       $('#heading').css({'float':'left','margin-top':'-40px'});
+      $('.collapse').hide();
+      $('.collapsed').show();
+        if($('.collapsed select option').filter(':selected').text() == "Other Question") {
+          $('.other_field_collapsed').show();
+          $('#other_field').hide();
+        }
+        else  {
+          $('.other_field_collapsed').hide();
+        };
     }
     else  {
       $('#heading').css({'float':'right','margin-top':'0'});
+      $('.collapse').show();
+      $('.collapsed').hide();
+        if($('.collapse select option').filter(':selected').text() == "Other Question") {
+          $('#other_field').show();
+          $('.other_field_collapsed').hide();
+        }
+        else  {
+          $('#other_field').hide();
+        };
     };
 };
 
@@ -61,12 +84,25 @@ $(function() {
     });
 });
 
-$('select').change(function() {
-  if($('select option').filter(':selected').text() == "Other Question") {
+$('.collapse select').change(function() {
+  var collapseOption = $('.collapse select option').filter(':selected').text();
+  $('.collapsed select>option[value="' + collapseOption + '"]').prop('selected', true);
+  if(collapseOption == "Other Question") {
     $('#other_field').show();
   }
   else {
     $('#other_field').hide();
+  };
+});
+
+$('.collapsed select').change(function() {
+  var collapsedOption = $('.collapsed select option').filter(':selected').text();
+  $('.collapse select>option[value="' + collapsedOption + '"]').prop('selected', true);
+  if(collapsedOption == "Other Question") {
+    $('.other_field_collapsed').show();
+  }
+  else {
+    $('.other_field_collapsed').hide();
   };
 });
 
