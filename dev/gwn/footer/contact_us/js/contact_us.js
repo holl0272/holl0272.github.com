@@ -53,6 +53,7 @@ function adjustStyle(width) {
 
     if(width <= 970) {
       $('#heading').css({'float':'left','margin-top':'-40px'});
+      $('#email_form td').css('padding', '0 10px 5px 0');
       $('.collapse').hide();
       $('.collapsed').show();
         if($('.collapsed select option').filter(':selected').text() == "Other Question") {
@@ -65,6 +66,7 @@ function adjustStyle(width) {
     }
     else  {
       $('#heading').css({'float':'right','margin-top':'0'});
+      $('#email_form td').css('padding', '5px 10px 5px 0');
       $('.collapse').show();
       $('.collapsed').hide();
         if($('.collapse select option').filter(':selected').text() == "Other Question") {

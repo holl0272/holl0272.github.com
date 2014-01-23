@@ -13,8 +13,8 @@
 #heading {
   display: none;
 }
-#email_form {
-  display: none;
+#email_form td {
+padding: 0 10px 5px 0;
 }
 #container {
   text-align: center;
