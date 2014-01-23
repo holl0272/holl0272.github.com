@@ -35,6 +35,9 @@ if(isIE) {
 
    $('#wrapper').show();
 
+if(window.innerWidth > 800 && window.innerHeight > 600) {
+ $("#email_form").show();
+
 function adjustStyle(width) {
   width = parseInt(width);
     if (width < 408) {
