@@ -62,7 +62,11 @@ shipDate.setDate(shipDate.getDate() + turnaround);
 
 var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var day = weekdays[shipDate.getDay()];
-  if(day == "Sunday") {
+  if(day == "Saturday") {
+    shipDate.setDate(shipDate.getDate() + 2);
+    day = weekdays[shipDate.getDay()];
+  }
+  else if(day == "Sunday") {
     shipDate.setDate(shipDate.getDate() + 1);
     day = weekdays[shipDate.getDay()];
   };
