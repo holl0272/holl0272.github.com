@@ -25,6 +25,15 @@ table td{
   text-align: left;
   background-color: white;
 }
+#faq_links {
+  list-style: none;
+}
 #text_only a {
   color: blue;
+}
+.top_link {
+  float: right;
+  padding-top: 5px;
+  font-size: x-small;
+  color: #666666 !important;
 }

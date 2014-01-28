@@ -39,12 +39,15 @@
 .mobile_box_btn img {
   width: 100% !important;
   position: relative;
+  opacity: .8;
 }
+/*
 .mobile_box_btn a:hover {
   font-weight: bold;
 }
+*/
 .mobile_box_btn a:hover img {
-  opacity: 0.8;
+  opacity: 1;
 }
 .mobile_box_btn span {
   top: 0;
@@ -62,6 +65,9 @@
 }
 .break {
   display: none;
+}
+.top_link {
+  margin-bottom: 20px;
 }
 ul#vertical-list {
   list-style-position:inside;

@@ -1,0 +1,75 @@
+.jersey_name {
+  color: #e8d606;
+}
+.cancel_btn {
+  float: right;
+  padding: 5px;
+  color: #e8d606;
+  margin-top: 10px;
+  background-color: #11013b;
+  font-family: 'Lato', sans-serif;
+}
+.cancel_btn:hover{
+  margin: -1px;
+  border: 1px solid yellow;
+  margin-top: 9px;
+}
+#prod_descript {
+  float: right;
+  padding: 20px 20px 0 20px;
+}
+.prod_img {
+  padding: 10px;
+}
+#color_select {
+  padding-top: 20px;
+}
+#order_prices {
+  width:100%;
+  text-align: center;
+  margin-top: -5px;
+  color: #cccdce;
+}
+.spacer {
+  padding-left: 25px;
+}
+#selections {
+  background-color: gray;
+  text-align: left;
+  margin-top: 20px;
+  color: #e8d606;
+  padding: 10px;
+  line-height: 2;
+}
+#selections font,
+#sub_selections table font {
+  color: #cccdce;
+}
+#price_calc {
+  text-align: center;
+  background-color: #e8d606;
+  padding: 10px;
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+}
+#sub_selections table {
+  color: #e8d606;
+  text-align: center;
+}
+#next_step {
+  text-align: center;
+  margin-top:25px;
+}
+.next_btn {
+  padding: 5px;
+  color: #11013b;
+  background-color: #e8d606;
+  font-family: 'Lato', sans-serif;
+}
+.next_btn:hover{
+  color: #e8d606;
+  background-color: #11013b;
+}
+.input_num {
+  width: 25px;
+}

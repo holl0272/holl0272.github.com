@@ -56,6 +56,25 @@ $(function() {
     });
 });
 
+var shipDate = new Date();
+var turnaround = 2;
+shipDate.setDate(shipDate.getDate() + turnaround);
+
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var day = weekdays[shipDate.getDay()];
+  if(day == "Sunday") {
+    shipDate.setDate(shipDate.getDate() + 1);
+    day = weekdays[shipDate.getDay()];
+  };
+var date = shipDate.getDate();
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var month = months[shipDate.getMonth()];
+var year = shipDate.getFullYear();
+
+var displayDate = day +', ' + month + ' ' + date + ', '+ year;
+
+$('#shippingDate').html(displayDate);
+
 });
 
 $(window).load(function() {

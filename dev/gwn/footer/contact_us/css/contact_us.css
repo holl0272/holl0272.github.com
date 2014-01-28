@@ -12,6 +12,10 @@ table td{
 #email_form td {
   padding: 5px 10px 5px 0;
 }
+#email_form {
+  margin-top: -5px;
+  padding-left: 50px;
+}
 #container {
   width: 75%;
   margin: 3% auto 0;

@@ -37,6 +37,16 @@ td p span {
   text-align: left;
   background-color: white;
 }
+#shipping_line {
+  font-style: italic;
+  padding: 0 5px 0 25px;
+}
+#shippingDate {
+  font-weight: bold;
+}
+#break {
+  display: none;
+}
 .shipping_options {
   margin-left: 50px;
 }

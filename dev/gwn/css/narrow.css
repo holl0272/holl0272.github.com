@@ -60,12 +60,15 @@
 .mobile_box_btn img {
   width: 100% !important;
   position: relative;
+  opacity: .8;
 }
+/*
 .mobile_box_btn a:hover {
   font-weight: bold;
 }
+*/
 .mobile_box_btn a:hover img {
-  opacity: 0.8;
+  opacity: 1;
 }
 .mobile_box_btn span {
   top: 0;

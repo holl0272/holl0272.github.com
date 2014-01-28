@@ -88,18 +88,25 @@ a:hover {
 .yellow.box_btn span {
   color: #11013b;
 }
+/*
 .box_btn a:hover span{
   font-weight: bold;
 }
-.box_btn a:hover img {
-  opacity: 0.8;
+*/
+.box_btn img {
+  opacity: .8;
 }
+.box_btn a:hover img {
+  opacity: 1;
+}
+/*
 .yellow.box_btn img {
   opacity: .9;
 }
 .yellow.box_btn a:hover img {
   opacity: 1;
 }
+*/
 #footer {
   text-align: center;
   position: fixed;
