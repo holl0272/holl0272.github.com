@@ -116,6 +116,68 @@ $('#urlParams_price_6').html(cost_IV);
 $('#urlParams_price_12').html(cost_XII);
 $('#urlParams_price_36').html(cost_XXXIV);
 
+$('#price_per_item').html(cost);
+
+//ORPER OPTIONS
+
+//setup before functions
+var typingTimer;                //timer identifier
+var doneTypingInterval = 2000;  //time in ms, 5 second for example
+
+//on keyup, start the countdown
+$('#order_qty').keyup(function(){
+  $('#calculated').hide();
+  $('#calculating').show();
+  $('#sub_selections table tr').remove();
+  typingTimer = setTimeout(doneTyping, doneTypingInterval);
+});
+
+//on keydown, clear the countdown
+$('#order_qty').keydown(function(){
+  clearTimeout(typingTimer);
+});
+
+//user is "finished typing," do something
+function doneTyping () {
+  var price_per = 0;
+  var order_qty = parseInt($('#order_qty').val());
+
+  if((order_qty >= 6) && (order_qty <= 11)) {
+    price_per = cost_IV;
+  }
+  else if((order_qty >= 12) && (order_qty <= 35)) {
+    price_per = cost_XII;
+  }
+  else if(order_qty >= 36) {
+    price_per = cost_XXXIV;
+  }
+  else{
+    price_per = cost;
+  };
+
+  $('#price_per_item').html(price_per);
+  $('#calculating').hide();
+  $('#calculated').show();
+  $('#order_qty').blur();
+
+  buildRows(order_qty);
+};
+
+function buildRows (order_qty) {
+  var jersey_row = "<tr><td class='row_number'><font></font></td><td>Size</td><td><select><option value='m' selected>M</option><option value='l'>L</option><option value='xl'>XL</option><option value='xxl'>XXL</option><option value='xxXl'>XXXL</option></select></td><td>Number</td><td><input type='text' class='input_num'></td><td>Name On Jersey</td><td><input type='text' class='input_num'></td><td>Quantity</td><td><input type='text' class='input_num'></td></tr>"
+
+  for (var i = 1; i <= order_qty; i++) {
+     $('#sub_selections table').append(jersey_row);
+  };
+
+  $(".row_number").each(function(i) {
+    var n = ++i;
+    var row_number = ("0" + n).slice(-2);
+    $(this).find("font").text(row_number);
+  });
+};
+
+
 //MISC SCRIPTS
 $('.notApplicable').prop('disabled', true);
 

@@ -533,7 +533,7 @@
           <div id="selections">
             <font>ORDER OPTIONS</font><br>
             HOW MANY JERSEYS DO YOU WANT TO ORDER?
-            <input type="text" class="input_num" style="float:right;"><br>
+            <input type="text" class="input_num" style="float:right;" id="order_qty"><br>
             DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
             <select style="float:right;">
               <option value="yes" selected>Yes</option>
@@ -571,45 +571,23 @@
             <div class="clear"></div>
           </div>
           <div id="price_calc">
-            Your cost be jersey based on your above choices: <b>$44.00</b>
+            <table>
+              <tr>
+                <td>
+                Your cost per jersey based on your above choices:
+                </td>
+                <td id="calculated">
+                <b>$<span id="price_per_item"></span></b>
+                </td>
+                <td id="calculating">
+                  <image src="images/loader.gif" alt="Loader">
+                </td>
+              </tr>
+            </table>
           </div>
           <div id="sub_selections">
             <table style="width:100%;">
-              <tr>
-                <td>
-                  <font>01</font>
-                </td>
-                <td>
-                  Size
-                </td>
-                <td>
-                  <select>
-                    <option value="m" selected>M</option>
-                    <option value="l">L</option>
-                    <option value="xl">XL</option>
-                    <option value="xxl">XXL</option>
-                    <option value="xxXl">XXXL</option>
-                  </select>
-                </td>
-                <td>
-                  Number
-                </td>
-                <td>
-                  <input type="text" class="input_num">
-                </td>
-                <td>
-                  Name On Jersey
-                </td>
-                <td>
-                  <input type="text" class="input_num">
-                </td>
-                <td>
-                  Quantity
-                </td>
-                <td>
-                  <input type="text" class="input_num">
-                </td>
-              </tr>
+
             </table>
           </div>
           <div id="next_step">

@@ -52,6 +52,19 @@
   font-size: 1.3rem;
   margin-bottom: 25px;
 }
+#price_calc table {
+  margin: auto;
+  border-spacing: 10px;
+}
+#price_calc table td {
+  vertical-align: middle;
+}
+#calculating {
+  display: none;
+}
+#calculating img {
+  margin-bottom: -5px;
+}
 #sub_selections table {
   color: #e8d606;
   text-align: center;
