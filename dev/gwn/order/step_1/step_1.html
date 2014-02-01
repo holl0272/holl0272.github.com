@@ -533,40 +533,47 @@
           <div id="selections">
             <font>ORDER OPTIONS</font><br>
             HOW MANY JERSEYS DO YOU WANT TO ORDER?
-            <input type="text" class="input_num" style="float:right;" id="order_qty"><br>
+            <input type="text" class="input_num" style="float:right;" id="order_qty" placeholder="0"><br>
             DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
-            <select style="float:right;">
-              <option value="yes" selected>Yes</option>
-              <option value="no">No</option>
+            <select style="float:right;" id="print_numbers_select">
+              <option value="no" selected>No</option>
+              <option value="yes">Yes</option>
             </select><br>
-            WANT TO PRINT NUMBERS ON FRONT AND BACK?
-            <select style="float:right;">
-              <option value="front" selected>Front Only</option>
-              <option value="back">Back Only</option>
-              <option value="front_back">Front & Back</option>
-              <option value="na" class="notApplicable">N/A</option>
-            </select><br>
+            <span id="print_numbers_yes">
+              WANT TO PRINT NUMBERS ON FRONT AND BACK?
+              <span class="add_on  reversable" id="numbers_front_back_cost">[ Additional: $<span></span>.00 ]</span>
+              <select style="float:right;" id="numbers_front_back">
+                <option value="front" selected>Front Only</option>
+                <option value="back">Back Only</option>
+                <option value="front_back">Front & Back</option>
+              </select><br>
+            </span>
             DO YOU WANT TO PRINT NAMES ON THE BACK OF JERSEYS?
-            <select style="float:right;">
-              <option value="yes" selected>Yes</option>
-              <option value="no">No</option>
+            <span class="add_on  reversable" id="print_name_on_back_cost">[ Additional: $<span></span>.00 ]</span>
+            <select style="float:right;" id="print_name_on_back">
+              <option value="no" selected>No</option>
+              <option value="yes">Yes</option>
             </select><br>
-            PRINT ON BOTH SIDES OF THE JERSEY? (Reversible jerseys only)
-            <select style="float:right;">
-              <option value="yes" selected>Yes</option>
-              <option value="no">No</option>
-              <option value="na" class="notApplicable">N/A</option>
-            </select><br>
+            <span id="reversible">
+              PRINT ON BOTH SIDES OF THE JERSEY? &nbsp;(Reversible jerseys only)
+              <span class="add_on" id="reversible_only_cost">[ 2X Additional Fees ]</span>
+              <select style="float:right;" id="reversible_only">
+                <option value="no" selected>No</option>
+                <option value="yes">Yes</option>
+              </select><br>
+            </span>
             WHAT DO YOU WANT FOR YOUR TEAM NAME DESIGN?
-            <select style="float:right;">
+            <span class="add_on  reversable" id="team_name_design_cost">[ Additional: $<span></span>.00 ]</span>
+            <select style="float:right;" id="team_name_design">
               <option value="none" selected>None</option>
               <option value="letters">Letters Only</option>
               <option value="letters_graphic">Letters & Graphic</option>
             </select><br>
-            DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO? (One time $35 fee)
-            <select style="float:right;">
-              <option value="yes" selected>Yes</option>
-              <option value="no">No</option>
+            DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
+            <span class="add_on" id="custom_logo_cost">[ One time $<span></span> fee ]</span>
+            <select style="float:right;" id="custom_logo">
+              <option value="no" selected>No</option>
+              <option value="yes">Yes</option>
             </select><br>
             <div class="clear"></div>
           </div>
@@ -577,7 +584,7 @@
                 Your cost per jersey based on your above choices:
                 </td>
                 <td id="calculated">
-                <b>$<span id="price_per_item"></span></b>
+                <b>$<span id="price_per_jersey"></span></b>
                 </td>
                 <td id="calculating">
                   <image src="images/loader.gif" alt="Loader">

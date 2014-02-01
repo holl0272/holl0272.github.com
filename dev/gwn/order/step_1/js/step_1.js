@@ -92,84 +92,122 @@ else if(name == dazzleMicro) {
 }
 else if(name == reversibleJersey) {
   $('#reversibleJersey').show();
+
 }
 else if(name == tShirt) {
   $('#tShirt').show();
+  $('#reversible').hide();
 }
 else if(name == meshShorts) {
   $('#meshShorts').show();
+  $('#reversible').hide();
 };
 
 //COST
-var cost = (urlParams["price"] / 100).toFixed(2);
-var cost_IV = ((urlParams["price"] / 100)*.95).toFixed(2);
-var cost_XII = ((urlParams["price"] / 100)*.90).toFixed(2);
-var cost_XXXIV = ((urlParams["price"] / 100)*.85).toFixed(2);
+var cost = (urlParams["price"] / 100);
+var cost_IV = ((urlParams["price"] / 100)*.95);
+var cost_XII = ((urlParams["price"] / 100)*.90);
+var cost_XXXIV = ((urlParams["price"] / 100)*.85);
 
 if(urlParams["name"] == "T-Shirt") {
-  cost_IV = (((urlParams["price"] / 100)*.95)+.01).toFixed(2);
-  cost_XXXIV = (((urlParams["price"] / 100)*.85)+.01).toFixed(2);
+  cost_IV = (((urlParams["price"] / 100)*.95)+.01);
+  cost_XXXIV = (((urlParams["price"] / 100)*.85)+.01);
 };
 
-$('#urlParams_price_1').html(cost);
-$('#urlParams_price_6').html(cost_IV);
-$('#urlParams_price_12').html(cost_XII);
-$('#urlParams_price_36').html(cost_XXXIV);
+$('#urlParams_price_1').html((cost).toFixed(2));
+$('#urlParams_price_6').html((cost_IV).toFixed(2));
+$('#urlParams_price_12').html((cost_XII).toFixed(2));
+$('#urlParams_price_36').html((cost_XXXIV).toFixed(2));
 
-$('#price_per_item').html(cost);
+$('#price_per_jersey').html((cost).toFixed(2));
 
-//ORPER OPTIONS
-
-//setup before functions
-var typingTimer;                //timer identifier
-var doneTypingInterval = 2000;  //time in ms, 5 second for example
-
-//on keyup, start the countdown
-$('#order_qty').keyup(function(){
+//TOGGLE ANIMATED CALCULATION GRAPHIC
+function calculating() {
   $('#calculated').hide();
   $('#calculating').show();
+};
+function calculated() {
+  $('#calculating').hide();
+  $('#calculated').show();
+};
+function re_calculate() {
+  var qty = parseInt($('#order_qty').val());
+  calculateCost(qty);
+};
+function reversableCosts() {
+  $('.reversable > span').each(function() {
+    var multiplier = $(this).text() * 2;
+    $(this).text(multiplier);
+  });
+};
+
+/*
+    .:| ORPER OPTIONS |:.
+*/
+
+//HOW MANY JERSEYS DO YOU WANT TO ORDER?
+var typingTimer;
+var doneTypingInterval = 2500;
+//on keyup, start the countdown
+$('#order_qty').keyup(function(){
+  calculating();
   $('#sub_selections table tr').remove();
   typingTimer = setTimeout(doneTyping, doneTypingInterval);
 });
-
 //on keydown, clear the countdown
 $('#order_qty').keydown(function(){
   clearTimeout(typingTimer);
 });
+//user is "finished typing"
+function doneTyping() {
+  var qty = parseInt($('#order_qty').val());
+  calculateCost(qty);
+  calculated();
+  $('#order_qty').blur();
+  buildRows(qty);
+};
 
-//user is "finished typing," do something
-function doneTyping () {
-  var price_per = 0;
-  var order_qty = parseInt($('#order_qty').val());
-
-  if((order_qty >= 6) && (order_qty <= 11)) {
+function calculateCost(qty) {
+  var price_per;
+  if((qty >= 6) && (qty <= 11)) {
     price_per = cost_IV;
   }
-  else if((order_qty >= 12) && (order_qty <= 35)) {
+  else if((qty >= 12) && (qty <= 35)) {
     price_per = cost_XII;
   }
-  else if(order_qty >= 36) {
+  else if(qty >= 36) {
     price_per = cost_XXXIV;
   }
   else{
     price_per = cost;
   };
 
-  $('#price_per_item').html(price_per);
-  $('#calculating').hide();
-  $('#calculated').show();
-  $('#order_qty').blur();
+    if(reversibleOnly() == 2) {
+      price_per += addNumbers() * 2;
+      price_per += addNameOnBack() * 2;
+      price_per += teamNameDesign() * 2;
+      reversableCosts();
+    }
+    else {
+      price_per += addNumbers();
+      price_per += addNameOnBack();
+      price_per += teamNameDesign();
+    };
 
-  buildRows(order_qty);
+    if((customLogo() == 35) && (qty > 0)) {
+      price_per += customLogo()/qty;
+    };
+
+  $('#price_per_jersey').html((price_per).toFixed(2));
 };
 
-function buildRows (order_qty) {
+function buildRows(qty) {
   var jersey_row = "<tr><td class='row_number'><font></font></td><td>Size</td><td><select><option value='m' selected>M</option><option value='l'>L</option><option value='xl'>XL</option><option value='xxl'>XXL</option><option value='xxXl'>XXXL</option></select></td><td>Number</td><td><input type='text' class='input_num'></td><td>Name On Jersey</td><td><input type='text' class='input_num'></td><td>Quantity</td><td><input type='text' class='input_num'></td></tr>"
-
-  for (var i = 1; i <= order_qty; i++) {
+  //builds rows X quty input
+  for (var i = 1; i <= qty; i++) {
      $('#sub_selections table').append(jersey_row);
   };
-
+  //leading 0 for single digits
   $(".row_number").each(function(i) {
     var n = ++i;
     var row_number = ("0" + n).slice(-2);
@@ -177,6 +215,120 @@ function buildRows (order_qty) {
   });
 };
 
+//DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
+function addNumbers() {
+  var numbers_one_side = 2;  //add $2
+  var numbers_both_sides = 4; //add $4
+  if($('#print_numbers_select').val() == "yes") {
+    if(($('#numbers_front_back').val() == "front") || ($('#numbers_front_back').val() == "back"))  {
+      $('#numbers_front_back_cost').show();
+      $('#numbers_front_back_cost span').html(numbers_one_side);
+      return numbers_one_side;
+    }
+    else if($('#numbers_front_back').val() == "front_back") {
+      $('#numbers_front_back_cost span').html(numbers_both_sides);
+      return numbers_both_sides;
+    }
+  }
+  else {
+    $('#numbers_front_back_cost').hide();
+    return 0;
+  }
+};
+
+$('#print_numbers_select').on('change', function() {
+  if($(this).val() == "yes"){
+    $('#print_numbers_yes').show();
+  }
+  else {
+    $('#print_numbers_yes').hide();
+    $("#numbers_front_back option:eq(0)").prop('selected', true);
+  };
+  re_calculate();
+});
+
+//WANT TO PRINT NUMBERS ON FRONT AND BACK?
+$('#numbers_front_back').on('change', function() {
+  re_calculate();
+});
+
+//DO YOU WANT TO PRINT NAMES ON THE BACK OF JERSEYS?
+function addNameOnBack() {
+  var name_on_back = 4;  //add $4
+  if($('#print_name_on_back').val() == "yes") {
+    $('#print_name_on_back_cost').show();
+    $('#print_name_on_back_cost span').html(name_on_back);
+    return name_on_back;
+  }
+  else {
+    $('#print_name_on_back_cost').hide();
+    return 0;
+  }
+};
+
+$('#print_name_on_back').on('change', function() {
+  re_calculate();
+});
+
+//PRINT ON BOTH SIDES OF THE JERSEY? (Reversible jerseys only)
+function reversibleOnly() {
+  var reversible_only = 2;  //multiply add_ons 2X
+  if($('#reversible_only').val() == "yes") {
+    $('#reversible_only_cost').show();
+    return reversible_only;
+  }
+  else {
+    $('#reversible_only_cost').hide();
+    return 0;
+  };
+};
+
+$('#reversible_only').on('change', function() {
+  re_calculate();
+});
+
+
+//WHAT DO YOU WANT FOR YOUR TEAM NAME DESIGN?
+function teamNameDesign() {
+  var team_name_design = 4;  //add $4
+  if($('#team_name_design').val() != "none") {
+    $('#team_name_design_cost').show();
+    $('#team_name_design_cost span').html(team_name_design);
+    return team_name_design;
+  }
+  else {
+    $('#team_name_design_cost').hide();
+    return 0;
+  }
+};
+
+$('#team_name_design').on('change', function() {
+  re_calculate();
+});
+
+//DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
+function customLogo() {
+  var custom_logo = 35;  //add $4
+  if($('#custom_logo').val() == "yes") {
+    $('#custom_logo_cost').show();
+    $('#custom_logo_cost span').html(custom_logo);
+    return custom_logo;
+  }
+  else {
+    $('#custom_logo_cost').hide();
+    return 0;
+  }
+};
+
+$('#custom_logo').on('change', function() {
+  if($('#order_qty').val() == ""){
+    $('#order_qty').val(1);
+    doneTyping();
+  }
+  else {
+    re_calculate();
+  };
+});
 
 //MISC SCRIPTS
 $('.notApplicable').prop('disabled', true);
