@@ -158,6 +158,10 @@ $('#order_qty').keyup(function(){
 $('#order_qty').keydown(function(){
   clearTimeout(typingTimer);
 });
+
+$('#order_qty').on('click', function(){
+  $(this).prop('placeholder', "");
+});
 //user is "finished typing"
 function doneTyping() {
   var qty = parseInt($('#order_qty').val());
@@ -195,7 +199,10 @@ function calculateCost(qty) {
     };
 
     if((customLogo() == 35) && (qty > 0)) {
-      price_per += customLogo()/qty;
+      var per_jersey = customLogo()/qty;
+      price_per += per_jersey;
+      $('#custom_logo_cost font').html(qty);
+      $('#custom_logo_cost span').html((per_jersey).toFixed(2));
     };
 
   $('#price_per_jersey').html((price_per).toFixed(2));
@@ -274,11 +281,13 @@ $('#print_name_on_back').on('change', function() {
 function reversibleOnly() {
   var reversible_only = 2;  //multiply add_ons 2X
   if($('#reversible_only').val() == "yes") {
+    $('#reversible_only_note').hide();
     $('#reversible_only_cost').show();
     return reversible_only;
   }
   else {
     $('#reversible_only_cost').hide();
+    $('#reversible_only_note').show();
     return 0;
   };
 };
@@ -308,14 +317,15 @@ $('#team_name_design').on('change', function() {
 
 //DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
 function customLogo() {
-  var custom_logo = 35;  //add $4
+  var custom_logo = 35;
   if($('#custom_logo').val() == "yes") {
+    $('#custom_logo_note').hide();
     $('#custom_logo_cost').show();
-    $('#custom_logo_cost span').html(custom_logo);
     return custom_logo;
   }
   else {
     $('#custom_logo_cost').hide();
+    $('#custom_logo_note').show();
     return 0;
   }
 };

@@ -72,6 +72,9 @@
   color: #e8d606;
   text-align: center;
 }
+#custom_logo_cost font {
+  color: #e8d606;
+}
 #sub_selections .input_num {
   width: 85px;
 }
@@ -84,6 +87,9 @@
 }
 .add_on {
   display: none;
+  padding-left: 10px;
+}
+.remove_span {
   padding-left: 10px;
 }
 #next_step {
