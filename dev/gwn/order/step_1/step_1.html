@@ -74,32 +74,97 @@
           </div>
           <div style="background-color: white; width:100%; display:inline-block;  margin: 10px 0 5px 0;">
             <div style="float:left;">
-              <image src="images/product_shot.jpg" alt="Product Front" class="prod_img">
-              <image src="images/product_shot.jpg" alt="Product Back" class="prod_img">
+              <image src="" alt="Product Image" id="product_img">
             </div>
 
-            <div id="description">
+            <div id="description_container">
 
-              <div class="prod_description" id="gameDazzle">
-                100% polyester dazzle cloth inside and outside<br>
-                Piping detail<br>
-                Double thickness body<br>
-                Mitered rib v-neck<br>
-                Oversized "pro-cut" with wide shoulder design<br>
-                M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                <div id="gameDazzle" class="description">
+                  100% polyester dazzle cloth inside and outside<br>
+                  Piping detail<br>
+                  Double thickness body<br>
+                  Mitered rib v-neck<br>
+                  Oversized "pro-cut" with wide shoulder design<br>
+                  M - XXXL<br>
+                  Add $2 for XXL<br>
+                  Add $4 for XXXL<br>
+                </div>
+
+                <div id="dazzleMicro" class="description">
+                  100% polyester trico mini-mesh outside<br>
+                  100% polyester dazzle cloth inside<br>
+                  Double thickness body<br>
+                  Mitered rib v-neck<br>
+                  Oversized "pro-cut" with wide shoulder design<br>
+                  M - XXXL<br>
+                  Add $2 for XXL<br>
+                  Add $4 for XXXL<br>
+                </div>
+
+                <div id="reversibleJersey" class="description" >
+                  100% nylon trico mesh (colors)<br>
+                  100% polyester tricot mesh (white)<br>
+                  Double thickness body<br>
+                  V-neck design<br>
+                  Youth M - L<br>
+                  Adult S - XXXL<br>
+                  Add $2 for XXL<br>
+                  Add $4 for XXXL<br>
+                </div>
+
+                <div id="tShirt" class="description" >
+                  Heavyweight 50/50 Cotton/Polyester<br>
+                  Set-in sleeves<br>
+                  Youth M - L<br>
+                  Adult S - XXXL<br>
+                  Add $2 for XXL<br>
+                  Add $4 for XXXL<br>
+                </div>
+
+                <div id="meshShorts" class="description" >
+                  100% nylong mini-mesh<br>
+                  9" inseam<br>
+                  Double thickness<br>
+                  M - XXL<br>
+                  Add $2 for XXL<br>
+                </div>
+
                 <div id="color_select">
                   <div style="float:left;">
                     <div style="float:left; padding: 2px 15px 0 0;">
-                      <input type="radio" >
+                      <input type="radio" value="scarlet">
                     </div>
                     <div style="float: right;">
-                      <image src="images/red_square.gif" alt="Red Square">
+                      <image src="images/color_squares/scarlet_square.gif" alt="Scarlet Square" id="scarlet" class="color_square">
                     </div>
                     <div class="clear"></div>
                     <div style="float: right;">
-                      Red
+                      Scarlet
+                    </div>
+                  </div>
+                  <div style="float:left; margin-left: 25px;">
+                    <div style="float:left; padding: 2px 15px 0 0;">
+                      <input type="radio" value="black">
+                    </div>
+                    <div style="float: right;">
+                      <image src="images/color_squares/black_square.gif" alt="Black Square" id="black" class="color_square">
+                    </div>
+                    <div class="clear"></div>
+                    <div style="float: right;">
+                      Black
+                    </div>
+                  </div>
+<!--
+                  <div style="float:left; margin-left: 25px;">
+                    <div style="float:left; padding: 2px 15px 0 0;">
+                      <input type="radio" value="columbia_blue">
+                    </div>
+                    <div style="float: right;">
+                      <image src="images/color_squares/columbia_blue_square.gif" alt="Columbia Blue Square" id="columbia_blue" class="color_square">
+                    </div>
+                    <div class="clear"></div>
+                    <div style="float: right;">
+                      Blue
                     </div>
                   </div>
                   <div style="float:left; margin-left: 25px;">
@@ -107,19 +172,20 @@
                       <input type="radio" >
                     </div>
                     <div style="float: right;">
-                      <image src="images/navy_square.gif" alt="Navy Square">
+                      <image src="images/color_squares/kelly_green_square.gif" alt="Kelly Green Square" id="kelly_green" class="color_square">
                     </div>
                     <div class="clear"></div>
                     <div style="float: right;">
-                      Navy
+                      Green
                     </div>
                   </div>
+-->
                   <div style="float:left; margin-left: 25px;">
                     <div style="float:left; padding: 2px 15px 0 0;">
-                      <input type="radio" >
+                      <input type="radio" value="maroon">
                     </div>
                     <div style="float: right;">
-                      <image src="images/maroon_square.gif" alt="Maroon Square">
+                      <image src="images/color_squares/maroon_square.gif" alt="Maroon Square" id="maroon" class="color_square">
                     </div>
                     <div class="clear"></div>
                     <div style="float: right;">
@@ -128,20 +194,34 @@
                   </div>
                   <div style="float:left; margin-left: 25px;">
                     <div style="float:left; padding: 2px 15px 0 0;">
-                      <input type="radio" >
+                      <input type="radio" value="navy">
                     </div>
                     <div style="float: right;">
-                      <image src="images/black_square.gif" alt="Black Square">
+                      <image src="images/color_squares/navy_square.gif" alt="Navy Square" id="navy" class="color_square">
                     </div>
                     <div class="clear"></div>
                     <div style="float: right;">
-                      Black
+                      Navy
                     </div>
                   </div>
+<!--
+                  <div style="float:left; margin-left: 25px;">
+                    <div style="float:left; padding: 2px 15px 0 0;">
+                      <input type="radio" value="navy_gold">
+                    </div>
+                    <div style="float: right;">
+                      <image src="images/color_squares/color_squares/navy_gold_square.gif" alt="Navy Gold Square" id="navy_gold" class="color_square">
+                    </div>
+                    <div class="clear"></div>
+                    <div style="float: right;">
+                      Navy
+                    </div>
+                  </div>
+-->
                   <div class="clear"></div>
                 </div>
               </div>
-
+<!--
               <div class="prod_description" id="dazzleMicro">
                 100% polyester trico mini-mesh outside<br>
                 100% polyester dazzle cloth inside<br>
@@ -154,14 +234,14 @@
                 <div id="color_select">
                   <div style="float:left;">
                     <div style="float:left; padding: 2px 15px 0 0;">
-                      <input type="radio" >
+                      <input type="radio" value="black">
                     </div>
                     <div style="float: right;">
-                      <image src="images/red_square.gif" alt="Red Square">
+                      <image src="images/scarlet_square.gif" alt="Scarlet Square">
                     </div>
                     <div class="clear"></div>
                     <div style="float: right;">
-                      Red
+                      Scarlet
                     </div>
                   </div>
                   <div style="float:left; margin-left: 25px;">
@@ -231,11 +311,11 @@
                       <input type="radio" >
                     </div>
                     <div style="float: right;">
-                      <image src="images/red_square.gif" alt="Red Square">
+                      <image src="images/scarlet_square.gif" alt="Scarlet Square">
                     </div>
                     <div class="clear"></div>
                     <div style="float: right;">
-                      Red
+                      Scarlet
                     </div>
                   </div>
                   <div style="float:left; margin-left: 25px;">
@@ -305,11 +385,11 @@
                       <input type="radio" >
                     </div>
                     <div style="float: right;">
-                      <image src="images/red_square.gif" alt="Red Square">
+                      <image src="images/scarlet_square.gif" alt="Scarlet Square">
                     </div>
                     <div class="clear"></div>
                     <div style="float: right;">
-                      Red
+                      Scarlet
                     </div>
                   </div>
                   <div style="float:left; margin-left: 25px;">
@@ -361,18 +441,7 @@
                       Black
                     </div>
                   </div>
-                  <div style="float:left; margin-left: 25px;">
-                    <div style="float:left; padding: 2px 15px 0 0;">
-                      <input type="radio" >
-                    </div>
-                    <div style="float: right;">
-                      <image src="images/kelly_green_square.gif" alt="Kelly Green Square">
-                    </div>
-                    <div class="clear"></div>
-                    <div style="float: right;">
-                      Green
-                    </div>
-                  </div>
+
                   <div style="float:left; margin-left: 25px;">
                     <div style="float:left; padding: 2px 15px 0 0;">
                       <input type="radio" >
@@ -518,7 +587,7 @@
                 M - XXL<br>
                 Add $2 for XXL<br>
               </div>
-
+-->
             </div>
           </div>
           <div class="clear"></div>

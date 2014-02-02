@@ -82,7 +82,7 @@ var reversibleJersey = "Reversible Jersey";
 var tShirt = "T-Shirt";
 var meshShorts = "Mesh Shorts";
 
-$('.prod_description').hide();
+$('.description').hide();
 
 if(name == gameDazzle) {
   $('#gameDazzle').show();
@@ -120,6 +120,45 @@ $('#urlParams_price_12').html((cost_XII).toFixed(2));
 $('#urlParams_price_36').html((cost_XXXIV).toFixed(2));
 
 $('#price_per_jersey').html((cost).toFixed(2));
+
+//COLOR SWATCHES
+//init color selection
+$('input[type=radio]').first().prop('checked', true);
+//chage image on radio select
+
+$('input[type=radio]').change(function() {
+  if (this.checked) {
+    $('#color_select').find('input[type=radio]').not(this).prop('checked', false);
+  }
+  imageDisplay();
+});
+
+$('.color_square').on('click', function() {
+  var square_id = $(this).prop('id');
+  $("input[value="+square_id+"]").prop('checked', true);
+  $('#color_select').find('input[type=radio]').not("input[value="+square_id+"]").prop('checked', false);
+  imageDisplay();
+});
+
+//IMAGE
+//init image selection
+imageDisplay();
+//captures the image color based on the radio selection
+function imageColor() {
+  var selectedColor = "";
+  var selected = $("#color_select input[type='radio']:checked");
+  if (selected.length > 0) {
+    selectedColor = selected.val();
+  }
+  return selectedColor;
+};
+//concatenate the image source
+function imageDisplay() {
+  var img = urlParams["img"]
+  var color = imageColor();
+  var img_source = "images/products/"+img+color+".gif";
+  $('#product_img').attr('src', img_source);
+}
 
 //TOGGLE ANIMATED CALCULATION GRAPHIC
 function calculating() {
