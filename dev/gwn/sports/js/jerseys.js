@@ -58,4 +58,54 @@ $(function() {
     });
 });
 
+function randomColor() {
+  var black = "black";
+  var cardinal = "cardinal";
+  var columbia_blue = "columbia_blue";
+  var dark_green = "dark_green";
+  var gold = "gold";
+  var kelly_green = "kelly_green";
+  var light_grey = "light_grey";
+  var maroon = "maroon";
+  var navy = "navy";
+  var navy_gold = "navy_gold";
+  var orange = "orange";
+  var purple = "purple";
+  var royal = "royal";
+  var scarlet = "scarlet";
+  var white = "white";
+
+  var dazzle = [];
+  dazzle.push(black, columbia_blue, maroon, navy, scarlet);
+  var dazzleColor = Math.floor(Math.random()*dazzle.length);
+  var dazzle_img_source = "../../../images/products/dazzle_"+dazzle[dazzleColor]+".gif";
+  $('#dazzle_image').attr('src', dazzle_img_source);
+
+  var gamedazzle = [];
+  gamedazzle.push(black, maroon, navy, scarlet);
+  var gamedazzleColor = Math.floor(Math.random()*gamedazzle.length);
+  var game_dazzle_img_source = "../../../images/products/gamedazzle_"+gamedazzle[gamedazzleColor]+".gif";
+  $('#game_dazzle_image').attr('src', game_dazzle_img_source);
+
+  var rev = [];
+  rev.push(black, kelly_green, maroon, navy, navy_gold, purple, scarlet);
+  var revColor = Math.floor(Math.random()*rev.length);
+  var rev_img_source = "../../../images/products/rev_"+rev[revColor]+".gif";
+  $('#rev_image').attr('src', rev_img_source);
+
+  var tshirt = [];
+  tshirt.push(black, cardinal, dark_green, gold, kelly_green, navy, purple, scarlet);
+  var tshirtColor = Math.floor(Math.random()*tshirt.length);
+  var tshirt_img_source = "../../../images/products/tshirt_"+tshirt[tshirtColor]+"_solid.gif";
+  $('#tshirt_image').attr('src', tshirt_img_source);
+
+  var shorts = [];
+  shorts.push(black, navy, scarlet);
+  var shortsColor = Math.floor(Math.random()*shorts.length);
+  var shorts_img_source = "../../../images/products/shorts_"+shorts[shortsColor]+"_solid.gif";
+  $('#shorts_image').attr('src', shorts_img_source);
+}
+
+randomColor();
+
 });

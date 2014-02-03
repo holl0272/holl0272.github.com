@@ -82,25 +82,59 @@ var reversibleJersey = "Reversible Jersey";
 var tShirt = "T-Shirt";
 var meshShorts = "Mesh Shorts";
 
+function shortsDisplay() {
+  if(name == meshShorts) {
+    $('.shorts_show').show();
+    $('.shorts_hide').hide();
+  };
+};
+
 $('.description').hide();
+$('.color_option').hide();
 
 if(name == gameDazzle) {
   $('#gameDazzle').show();
+    $('#black_option').show();
+    $('#maroon_option').show();
+    $('#navy_option').show();
+    $('#scarlet_option').show();
 }
 else if(name == dazzleMicro) {
   $('#dazzleMicro').show();
+    $('#black_option').show();
+    $('#columbia_blue_option').show();
+    $('#maroon_option').show();
+    $('#navy_option').show();
+    $('#scarlet_option').show();
 }
 else if(name == reversibleJersey) {
   $('#reversibleJersey').show();
-
+    $('#black_option').show();
+    $('#kelly_green_option').show();
+    $('#maroon_option').show();
+    $('#navy_option').show();
+    $('#navy_gold_option').show();
+    $('#purple_option').show();
+    $('#scarlet_option').show();
 }
 else if(name == tShirt) {
   $('#tShirt').show();
   $('#reversible').hide();
+    $('#black_solid_option').show();
+    $('#cardinal_solid_option').show();
+    $('#dark_green_solid_option').show();
+    $('#kelly_green_solid_option').show();
+    $('#gold_solid_option').show();
+    $('#navy_solid_option').show();
+    $('#purple_solid_option').show();
+    $('#scarlet_solid_option').show();
 }
 else if(name == meshShorts) {
   $('#meshShorts').show();
-  $('#reversible').hide();
+    $('#black_solid_option').show();
+    $('#navy_solid_option').show();
+    $('#scarlet_solid_option').show();
+  shortsDisplay();
 };
 
 //COST
@@ -122,10 +156,12 @@ $('#urlParams_price_36').html((cost_XXXIV).toFixed(2));
 $('#price_per_jersey').html((cost).toFixed(2));
 
 //COLOR SWATCHES
-//init color selection
-$('input[type=radio]').first().prop('checked', true);
-//chage image on radio select
 
+//init color selection
+$('input[type=radio]').filter(":visible").first().prop('checked', true);
+//remove margin on first child
+$('#color_select').filter(":visible").first().css('margin-left',0);
+//chage image on radio select
 $('input[type=radio]').change(function() {
   if (this.checked) {
     $('#color_select').find('input[type=radio]').not(this).prop('checked', false);
@@ -156,7 +192,7 @@ function imageColor() {
 function imageDisplay() {
   var img = urlParams["img"]
   var color = imageColor();
-  var img_source = "images/products/"+img+color+".gif";
+  var img_source = "../../images/products/"+img+color+".gif";
   $('#product_img').attr('src', img_source);
 }
 
@@ -186,7 +222,7 @@ function reversableCosts() {
 
 //HOW MANY JERSEYS DO YOU WANT TO ORDER?
 var typingTimer;
-var doneTypingInterval = 2500;
+var doneTypingInterval = 3000;
 //on keyup, start the countdown
 $('#order_qty').keyup(function(){
   calculating();
@@ -248,16 +284,86 @@ function calculateCost(qty) {
 };
 
 function buildRows(qty) {
-  var jersey_row = "<tr><td class='row_number'><font></font></td><td>Size</td><td><select><option value='m' selected>M</option><option value='l'>L</option><option value='xl'>XL</option><option value='xxl'>XXL</option><option value='xxXl'>XXXL</option></select></td><td>Number</td><td><input type='text' class='input_num'></td><td>Name On Jersey</td><td><input type='text' class='input_num'></td><td>Quantity</td><td><input type='text' class='input_num'></td></tr>"
+  var row_number = "<td class='row_number'><font></font></td>";
+  var product_size = "<td>Size<select><option value='m' selected>M</option><option value='l'>L</option><option value='xl'>XL</option><option value='xxl'>XXL</option><option value='xxXl'>XXXL</option></select></td>";
+  var product_number = "<td>Number</td><td><input type='text' class='input_num'></td>";
+  var name_on_jersey = "<td>Name On Jersey</td><td><input type='text' class='input_num'></td>";
+  var product_qty = "<td>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font></font>";
+    var qty_btns = "<span class='btns'><button class='plus_one'> + </button><button class='less_one'> - </button></td><span>";
+
+  if(name != meshShorts) {
+    var jersey_row = "<tr>"+row_number+product_size+product_number+name_on_jersey+product_qty+qty_btns+"</tr>";
+  }
+  else {
+    var jersey_row = "<tr>"+row_number+product_size+product_qty+qty_btns+"</tr>";
+  };
+
   //builds rows X quty input
   for (var i = 1; i <= qty; i++) {
      $('#sub_selections table').append(jersey_row);
   };
   //leading 0 for single digits
-  $(".row_number").each(function(i) {
-    var n = ++i;
-    var row_number = ("0" + n).slice(-2);
-    $(this).find("font").text(row_number);
+  function numberRows() {
+    $(".row_number").each(function(i) {
+      var n = ++i;
+      var row_number = ("0" + n).slice(-2);
+      $(this).find("font").text(row_number);
+    });
+  };
+  numberRows()
+
+  $(".row_qty").each(function() {
+    var qty_txt = $(this).val();
+    $(this).next("font").text(qty_txt);
+  });
+
+  function togglePlusLess() {
+    $('#sub_selections table tr td .btns').show();
+    if($('#sub_selections table tr').filter(":visible").length > 1) {
+      $('#sub_selections table tr').filter(":visible").find('.row_qty').next().addClass('count');
+      $('#sub_selections table tr').filter(":visible").last().find('.row_qty').next().removeClass('count');
+      var sum = 0;
+        $('.count').each(function() {
+          sum += Number($(this).text());
+        });
+      var lastRowQty = qty - sum;
+      $('#sub_selections table tr td').filter(":visible").last().find('.row_qty').val(lastRowQty).next().text(lastRowQty);
+    }
+    else if($('#sub_selections table tr').filter(":visible").length == 1) {
+      $('#sub_selections table tr td').filter(":visible").find('.row_qty').val(qty).next().text(qty);
+    };
+  };
+
+  togglePlusLess();
+
+  $('.plus_one').on('click', function() {
+    var qty_plus = Number($(this).parent().prev().prev().val());
+    var increase = qty_plus + 1;
+    var rowTwoQty = Number($('#sub_selections table tr').filter(":visible").last().find('.row_qty').val());
+    var decreaseRowTwoQty = rowTwoQty - 1;
+
+    if(increase <= qty){
+      $(this).parent().prev().text(increase);
+      $(this).parent().prev().prev().val(increase);
+      if(($('#sub_selections table tr').filter(":visible").length == 2) && (rowTwoQty > 1)) {
+        $('#sub_selections table tr').filter(":visible").last().find('.row_qty').val(decreaseRowTwoQty).next().text(decreaseRowTwoQty);
+      }
+      else {
+        $('#sub_selections table tr').filter(":visible").last().hide();
+      };
+              togglePlusLess();
+    };
+  });
+
+  $('.less_one').on('click', function() {
+    var qty_less = Number($(this).parent().prev().prev().val());
+    var decrease = qty_less - 1;
+    if(decrease > 0){
+      $(this).parent().prev().text(decrease);
+      $(this).parent().prev().prev().val(decrease);
+      $('#sub_selections table tr').filter(":hidden").first().show();
+      togglePlusLess();
+    };
   });
 };
 
