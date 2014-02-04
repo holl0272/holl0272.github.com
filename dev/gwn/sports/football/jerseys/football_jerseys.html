@@ -65,37 +65,61 @@
           <div id="jerseys" height="auto">
             <div class="jersey">
               <div class="jersey_name">Mesh Jersey<br>&nbsp;</div>
-              <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+              <image src="" alt="Mesh Jersey" class="product_shot" id="mesh_image">
               <div class="price_select">
                 <span class="price">$14.00 each</span>
-                <a href="#" class="select_btn">SELECT</a>
+                <form action="../../../order/step_1/step_1.html" method="get" id="mesh-jersey">
+                  <input type="hidden" name="sport" value="football">
+                  <input type="hidden" name="name" value="Mesh Jersey">
+                  <input type="hidden" name="img" value="mesh_">
+                  <input type="hidden" name="price" value="1400">
+                  <a href="#" class="select_btn" onclick="document.getElementById('mesh-jersey').submit();">SELECT</a>
+                </form>
               </div>
               <div class="clear"></div>
             </div>
             <div class="jersey">
               <div class="jersey_name">Classic Jersey<br>&nbsp;</div>
-              <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+              <image src="" alt="Classic Jersey" class="product_shot" id="classic_image">
               <div class="price_select">
                 <span class="price">$16.00 each</span>
-                <a href="#" class="select_btn">SELECT</a>
+                <form action="../../../order/step_1/step_1.html" method="get" id="classic-jersey">
+                  <input type="hidden" name="sport" value="football">
+                  <input type="hidden" name="name" value="Classic Jersey">
+                  <input type="hidden" name="img" value="classic_">
+                  <input type="hidden" name="price" value="1600">
+                  <a href="#" class="select_btn" onclick="document.getElementById('classic-jersey').submit();">SELECT</a>
+                </form>
               </div>
               <div class="clear"></div>
             </div>
             <div class="jersey">
               <div class="jersey_name">T-Shirt<br>&nbsp;</div>
-              <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+              <image src="" alt="T-Shirt" class="product_shot" id="tshirt_image">
               <div class="price_select">
                 <span class="price">$6.50 each</span>
-                <a href="#" class="select_btn">SELECT</a>
+                <form action="../../../order/step_1/step_1.html" method="get" id="t-Shirt">
+                  <input type="hidden" name="sport" value="football">
+                  <input type="hidden" name="name" value="T-Shirt">
+                  <input type="hidden" name="img" value="tshirt_">
+                  <input type="hidden" name="price" value="650">
+                  <a href="#" class="select_btn" onclick="document.getElementById('t-Shirt').submit();">SELECT</a>
+                </form>
               </div>
               <div class="clear"></div>
             </div>
             <div class="jersey">
               <div class="jersey_name">Mesh Shorts<br>&nbsp;</div>
-              <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+              <image src="" alt="Shorts" class="product_shot" id="shorts_image">
               <div class="price_select">
                 <span class="price">$14.00 each</span>
-                <a href="#" class="select_btn">SELECT</a>
+                <form action="../../../order/step_1/step_1.html" method="get" id="mesh-shorts">
+                  <input type="hidden" name="sport" value="football">
+                  <input type="hidden" name="name" value="Mesh Shorts">
+                  <input type="hidden" name="img" value="shorts_">
+                  <input type="hidden" name="price" value="1400">
+                  <a href="#" class="select_btn" onclick="document.getElementById('mesh-shorts').submit();">SELECT</a>
+                </form>
               </div>
               <div class="clear"></div>
             </div>

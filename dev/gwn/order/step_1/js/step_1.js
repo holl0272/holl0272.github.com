@@ -75,6 +75,14 @@ var urlParams;
 var name = urlParams["name"];
 $('#urlParams_name').html(name);
 
+//SPORT BOX
+var sport = urlParams["sport"];
+$('.sport_box').hide();
+$('.sport_box_mobile').hide();
+$("#"+sport+"_box").show();
+$("#"+sport+"_box_mobile").show();
+
+
 //DESCRIPTIONS
 var classicJersey = "Classic Jersey";
 var dazzleMicro = "Dazzle-Micro<br>Mesh Jersey";
@@ -326,11 +334,11 @@ function calculateCost(qty) {
 
 function buildRows(qty) {
   var row_number = "<td class='row_number'><font></font></td>";
-  var product_size = "<td>Size<select><option value='m' selected>M</option><option value='l'>L</option><option value='xl'>XL</option><option value='xxl'>XXL</option><option value='xxXl'>XXXL</option></select></td>";
-  var product_number = "<td>Number</td><td><input type='text' class='input_num'></td>";
-  var name_on_jersey = "<td>Name On Jersey</td><td><input type='text' class='input_num'></td>";
-  var product_qty = "<td>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font></font>";
-    var qty_btns = "<span class='btns'><button class='plus_one'> + </button><button class='less_one'> - </button></td><span>";
+  var product_size = "<td>Size<select style='margin-left: 10px;''><option value='m' selected>M</option><option value='l'>L</option><option value='xl'>XL</option><option value='xxl'>XXL</option><option value='xxXl'>XXXL</option></select></td>";
+  var product_number = "<td>Number</td><td><input type='text' class='input_num' style='width: 25px;'></td>";
+  var name_on_jersey = "<td>Name On Jersey</td><td><input type='text' class='input_num' style='width: 150px;'></td>";
+  var product_qty = "<td>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
+    var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; float:right; padding-left:5px; cursor: pointer;'> - </span></td><span>";
 
   if(name != meshShorts) {
     var jersey_row = "<tr>"+row_number+product_size+product_number+name_on_jersey+product_qty+qty_btns+"</tr>";
