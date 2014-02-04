@@ -59,6 +59,7 @@ $(function() {
 });
 
 function randomColor() {
+  var birch = "birch";
   var black = "black";
   var cardinal = "cardinal";
   var columbia_blue = "columbia_blue";
@@ -70,10 +71,17 @@ function randomColor() {
   var navy = "navy";
   var navy_gold = "navy_gold";
   var orange = "orange";
+  var oxford = "oxford";
   var purple = "purple";
   var royal = "royal";
   var scarlet = "scarlet";
   var white = "white";
+
+  var classic = [];
+  classic.push(cardinal, gold, navy, oxford, scarlet, white);
+  var classicColor = Math.floor(Math.random()*classic.length);
+  var classic_img_source = "../../../images/products/classic_"+classic[classicColor]+"_solid.gif";
+  $('#classic_image').attr('src', classic_img_source);
 
   var dazzle = [];
   dazzle.push(black, columbia_blue, maroon, navy, scarlet);
@@ -81,17 +89,35 @@ function randomColor() {
   var dazzle_img_source = "../../../images/products/dazzle_"+dazzle[dazzleColor]+".gif";
   $('#dazzle_image').attr('src', dazzle_img_source);
 
+  var fullbutton = [];
+  fullbutton.push(black, navy, scarlet);
+  var fullbuttonColor = Math.floor(Math.random()*fullbutton.length);
+  var full_button_img_source = "../../../images/products/fullbutton_"+fullbutton[fullbuttonColor]+"_solid.gif";
+  $('#full_button_image').attr('src', full_button_img_source);
+
   var gamedazzle = [];
   gamedazzle.push(black, maroon, navy, scarlet);
   var gamedazzleColor = Math.floor(Math.random()*gamedazzle.length);
   var game_dazzle_img_source = "../../../images/products/gamedazzle_"+gamedazzle[gamedazzleColor]+".gif";
   $('#game_dazzle_image').attr('src', game_dazzle_img_source);
 
+  var mesh = [];
+  mesh.push(black, gold, navy, purple, scarlet, white);
+  var meshColor = Math.floor(Math.random()*mesh.length);
+  var mesh_img_source = "../../../images/products/mesh_"+mesh[meshColor]+"_solid.gif";
+  $('#mesh_image').attr('src', mesh_img_source);
+
   var rev = [];
   rev.push(black, kelly_green, maroon, navy, navy_gold, purple, scarlet);
   var revColor = Math.floor(Math.random()*rev.length);
   var rev_img_source = "../../../images/products/rev_"+rev[revColor]+".gif";
   $('#rev_image').attr('src', rev_img_source);
+
+  var twobutton = [];
+  twobutton.push(birch, black, navy, purple, scarlet);
+  var twobuttonColor = Math.floor(Math.random()*twobutton.length);
+  var two_button_img_source = "../../../images/products/twobutton_"+twobutton[twobuttonColor]+"_solid.gif";
+  $('#two_button_image').attr('src', two_button_img_source);
 
   var tshirt = [];
   tshirt.push(black, cardinal, dark_green, gold, kelly_green, navy, purple, scarlet);

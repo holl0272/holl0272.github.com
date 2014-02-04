@@ -76,11 +76,15 @@ var name = urlParams["name"];
 $('#urlParams_name').html(name);
 
 //DESCRIPTIONS
-var gameDazzle = "Game Dazzle<br>Reversible Jersey";
+var classicJersey = "Classic Jersey";
 var dazzleMicro = "Dazzle-Micro<br>Mesh Jersey";
-var reversibleJersey = "Reversible Jersey";
-var tShirt = "T-Shirt";
+var fullButton = "Full-Button<br>Mesh Jersey";
+var gameDazzle = "Game Dazzle<br>Reversible Jersey";
+var meshJersey = "Mesh Jersey";
 var meshShorts = "Mesh Shorts";
+var reversibleJersey = "Reversible Jersey";
+var twoButton = "Two Button<br>Jersey";
+var tShirt = "T-Shirt";
 
 function shortsDisplay() {
   if(name == meshShorts) {
@@ -92,12 +96,15 @@ function shortsDisplay() {
 $('.description').hide();
 $('.color_option').hide();
 
-if(name == gameDazzle) {
-  $('#gameDazzle').show();
-    $('#black_option').show();
-    $('#maroon_option').show();
-    $('#navy_option').show();
-    $('#scarlet_option').show();
+if(name == classicJersey) {
+  $('#classicJersey').show();
+  $('#reversible').hide();
+    $('#cardinal_solid_option').show();
+    $('#gold_solid_option').show();
+    $('#navy_solid_option').show();
+    $('#oxford_solid_option').show();
+    $('#scarlet_solid_option').show();
+    $('#white_solid_option').show();
 }
 else if(name == dazzleMicro) {
   $('#dazzleMicro').show();
@@ -106,6 +113,37 @@ else if(name == dazzleMicro) {
     $('#maroon_option').show();
     $('#navy_option').show();
     $('#scarlet_option').show();
+}
+else if(name == fullButton) {
+  $('#fullButton').show();
+  $('#reversible').hide();
+    $('#black_solid_option').show();
+    $('#navy_solid_option').show();
+    $('#scarlet_solid_option').show();
+}
+else if(name == gameDazzle) {
+  $('#gameDazzle').show();
+    $('#black_option').show();
+    $('#maroon_option').show();
+    $('#navy_option').show();
+    $('#scarlet_option').show();
+}
+else if(name == meshJersey) {
+  $('#meshJersey').show();
+  $('#reversible').hide();
+    $('#black_solid_option').show();
+    $('#gold_solid_option').show();
+    $('#navy_solid_option').show();
+    $('#purple_solid_option').show();
+    $('#scarlet_solid_option').show();
+    $('#white_solid_option').show();
+}
+else if(name == meshShorts) {
+  $('#meshShorts').show();
+    $('#black_solid_option').show();
+    $('#navy_solid_option').show();
+    $('#scarlet_solid_option').show();
+  shortsDisplay();
 }
 else if(name == reversibleJersey) {
   $('#reversibleJersey').show();
@@ -116,6 +154,15 @@ else if(name == reversibleJersey) {
     $('#navy_gold_option').show();
     $('#purple_option').show();
     $('#scarlet_option').show();
+}
+else if(name == twoButton) {
+  $('#twoButton').show();
+  $('#reversible').hide();
+    $('#birch_solid_option').show();
+    $('#black_solid_option').show();
+    $('#navy_solid_option').show();
+    $('#purple_solid_option').show();
+    $('#scarlet_solid_option').show();
 }
 else if(name == tShirt) {
   $('#tShirt').show();
@@ -128,13 +175,7 @@ else if(name == tShirt) {
     $('#navy_solid_option').show();
     $('#purple_solid_option').show();
     $('#scarlet_solid_option').show();
-}
-else if(name == meshShorts) {
-  $('#meshShorts').show();
-    $('#black_solid_option').show();
-    $('#navy_solid_option').show();
-    $('#scarlet_solid_option').show();
-  shortsDisplay();
+    $('#white_solid_option').show();
 };
 
 //COST
