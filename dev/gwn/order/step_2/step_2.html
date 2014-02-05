@@ -101,19 +101,180 @@
           </div>
         </td>
         <td id="right_content">
+          <div id="selections">
+            <font>DESIGN OPTIONS</font><br>
+            CHOOSE YOUR LETTERING COLOR
+            <select style="float:right;" id="">
+              <option value="color" selected>&#60; Color &#62;</option>
+              <option value="black">Black</option>
+              <option value="light_grey">Light Grey</option>
+              <option value="white">White</option>
+              <option value="columbia_blue">Columbia Blue</option>
+              <option value="royal">Royal</option>
+              <option value="navy">Navy</option>
+              <option value="purple">Purple</option>
+              <option value="gold">Gold</option>
+              <option value="orange">Orange</option>
+              <option value="scarlet">Scarlet</option>
+              <option value="cardinal">Cardinal</option>
+              <option value="maroon">Maroon</option>
+              <option value="kelly_green">Kelly Green</option>
+              <option value="dark_green">Dark Green</option>
+            </select><br>
+            LETTERING COLOR FOR THE INSIDE (Reversible jersey only)
+                <!--<br><span class="results">[reversible: <b><font class="form_rev"></font></b>]</span>-->
+            <select style="float:right;" id="">
+              <option value="color" selected>&#60; Color &#62;</option>
+              <option value="black">Black</option>
+              <option value="light_grey">Light Grey</option>
+              <option value="white">White</option>
+              <option value="columbia_blue">Columbia Blue</option>
+              <option value="royal">Royal</option>
+              <option value="navy">Navy</option>
+              <option value="purple">Purple</option>
+              <option value="gold">Gold</option>
+              <option value="orange">Orange</option>
+              <option value="scarlet">Scarlet</option>
+              <option value="cardinal">Cardinal</option>
+              <option value="maroon">Maroon</option>
+              <option value="kelly_green">Kelly Green</option>
+              <option value="dark_green">Dark Green</option>
+            </select><br>
+            LETTERING FONT FOR TEAM NAMES AND PLAYER NAMES
+              <!--<br><span class="results">[team/player name: <b><font class="form_team_name"></font></b>/<b><font class="form_print_names"></font></b>]</span>-->
+            <select style="float:right;" id="">
+              <option value="color" selected>&#60; Font &#62;</option>
+              <option value="pro_narrow">PRO NARROW</option>
+              <option value="pro_narrow">IMPACT</option>
+              <option value="pro_narrow">VARSITY</option>
+              <option value="pro_narrow">Brush Script</option>
+              <option value="pro_narrow">&#935; &#916; &#934; &#915; &#936;</option>
+            </select><br>
+            ENTER YOUR TEAM NAME
+              <!--<br><span class="results">[team name: <b><font class="form_team_name"></font></b>]</span>-->
+            <input type="text" style="float:right;" id="" placeholder="EAGLES"><br>
+            CUSTOM TEAM NAME &#38; GRAPHIC OPTIONS
+              <!--<br><span class="results">[team name/custom logo: <b><font class="form_team_name"></font></b> / <b><font class="form_logo"></font></b>]</span>-->
+            <select style="float:right;" id="">
+              <option value="options" selected>&#60; Options &#62;</option>
+              <option value="script_graphic">Basketball Script Graphic</option>
+              <option value="graphic">Basketball Graphic</option>
+              <option value="custom_logo">Custom Logo</option>
+            </select><br>
+            TEAM NAME PLACEMENT
+              <!--<br><span class="results">[team name: <b><font class="form_team_name"></font></b>]</span>-->
+            <select style="float:right;" id="">
+              <option value="placement" selected>&#60; Placement &#62;</option>
+              <option value="front">Across Front</option>
+              <option value="chest">Left Chest</option>
+            </select><br>
+            TEAM NAME LETTERING STYLE
+              <!--<br><span class="results">[team name: <b><font class="form_team_name"></font></b>]</span>-->
+            <select style="float:right;" id="">
+              <option value="style" selected>&#60; Style &#62;</option>
+              <option value="straigh">STRAIGHT</option>
+              <option value="vert_arch">VERT ARCH</option>
+              <option value="straight_top">STRAIGHT TOP</option>
+              <option value="bowtie">BOWTIE</option>
+            </select><br>
+            PLAYER NAME LETTERING STYLE
+              <!--<br><span class="results">[player name: <b><font class="form_print_names"></font></b>]</span>-->
+            <select style="float:right;" id="">
+              <option value="style" selected>&#60; Style &#62;</option>
+              <option value="straigh">STRAIGHT</option>
+              <option value="vert_arch">VERT ARCH</option>
+            </select><br>
+
+<div class="dev">
+            HOW MANY <span class="shorts_show">SHORTS</span><span class="shorts_hide">JERSEYS</span> DO YOU WANT TO ORDER?
+            <input type="text" class="input_num" style="float:right;" id="order_qty" placeholder="0"><br>
+            <div class="shorts_hide">
+            DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
+            <select style="float:right;" id="print_numbers_select">
+              <option value="no" selected>No</option>
+              <option value="yes">Yes</option>
+            </select><br>
+            <span id="print_numbers_yes">
+              WANT TO PRINT NUMBERS ON FRONT AND BACK?
+              <span class="add_on  reversable" id="numbers_front_back_cost">[ Additional: $<span></span>.00 ]</span>
+              <select style="float:right;" id="numbers_front_back">
+                <option value="front" selected>Front Only</option>
+                <option value="back">Back Only</option>
+                <option value="front_back">Front & Back</option>
+              </select><br>
+            </span>
+            DO YOU WANT TO PRINT NAMES ON THE BACK OF JERSEYS?
+            <span class="add_on  reversable" id="print_name_on_back_cost">[ Additional: $<span></span>.00 ]</span>
+            <select style="float:right;" id="print_name_on_back">
+              <option value="no" selected>No</option>
+              <option value="yes">Yes</option>
+            </select><br>
+            <span id="reversible">
+              PRINT ON BOTH SIDES OF THE JERSEY?
+              <span class="remove_span" id="reversible_only_note">( Reversible jerseys only )</span>
+              <span class="add_on" id="reversible_only_cost">[ 2X Additional Fees ]</span>
+              <select style="float:right;" id="reversible_only">
+                <option value="no" selected>No</option>
+                <option value="yes">Yes</option>
+              </select><br>
+            </span>
+            WHAT DO YOU WANT FOR YOUR TEAM NAME DESIGN?
+            <span class="add_on  reversable" id="team_name_design_cost">[ Additional: $<span></span>.00 ]</span>
+            <select style="float:right;" id="team_name_design">
+              <option value="none" selected>None</option>
+              <option value="letters">Letters Only</option>
+              <option value="letters_graphic">Letters & Graphic</option>
+            </select><br>
+            DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
+            <span class="remove_span" id="custom_logo_note">( One time $35 fee )</span>
+            <span class="add_on" id="custom_logo_cost">[ $35 fee/<font></font> jerseys  =  $<span></span>/per jersey ]</span>
+            <select style="float:right;" id="custom_logo">
+              <option value="no" selected>No</option>
+              <option value="yes">Yes</option>
+            </select><br>
+</div>
+
+
+          </div>
+            <div class="clear"></div>
+          </div>
+          <div id="price_calc">
+            <table>
+              <tr>
+                <td>
+                <!--Your cost per jersey based on your above choices:-->
+                Your jersey preview will change based on your above choices.
+                </td>
+
+<div class="dev">
+                <td id="calculated">
+                <!--<b>$<span id="price_per_jersey"></span></b>-->
+                </td>
+                <td id="calculating">
+                  <image src="images/loader.gif" alt="Loader">
+                </td>
+</div>
+
+              </tr>
+            </table>
+          </div>
+
           <div style="width:100%;">
             <div style="float:left;" class="jersey_name" id="urlParams_name">
               <!--urlParams["name"]-->
             </div>
             <div style="float: right;">
-              <a href="javascript:history.back()" class="cancel_btn">CANCEL X</a>
+              <a href="#" class="cancel_btn">CLEAR ALL X</a>
             </div>
             <div class="clear"></div>
           </div>
           <div style="background-color: white; width:100%; display:inline-block;  margin: 10px 0 10px 0;">
-            <div id="image_container">
-              <image src="" alt="Product Image" id="product_img"><!--urlParams["img"]-->
+            <div id="image_container" stye="float:none;"> <!--dev style-->
+              <image src="" alt="Product Image" id="product_img" style="border: 1px solid lightgrey;"><!--dev style--><!--urlParams["img"]-->
+                <image src="" alt="Back Image" id="product_img" style="float: right; margin-right: 30px;"><!--urlParams["img"]-->
             </div>
+
+<div class="dev">
             <div id="description_container">
               <!--urlParams["name"]-->
               <div id="classicJersey" class="description">
@@ -197,7 +358,11 @@
                 Add $2 for XXL<br>
               </div>
             </div>
+</div>
+
             <div class="clear"></div>
+
+<div class="dev">
             <div id="color_container">
               <div id="color_select">
                 <div class="color_option" id="birch_solid_option">
@@ -562,87 +727,32 @@
                 </div>
               </div>
             </div>
+</div>
+
+          <div id="disclaimer">
+            <span>Your tean name will not appear in this preview</span>
           </div>
 
+          </div>
+
+<div class="dev">
           <div id="order_prices">
             <span>$<font id="urlParams_price_1"></font> each</span>
             <span class="spacer">Order 6 for $<font id="urlParams_price_6"></font> each</span>
             <span class="spacer">Order 12 for $<font id="urlParams_price_12"></font> each</span>
             <span class="spacer">Order 36 or more for $<font id="urlParams_price_36"></font></span>
           </div>
-          <div id="selections">
-            <font>ORDER OPTIONS</font><br>
-            HOW MANY <span class="shorts_show">SHORTS</span><span class="shorts_hide">JERSEYS</span> DO YOU WANT TO ORDER?
-            <input type="text" class="input_num" style="float:right;" id="order_qty" placeholder="0"><br>
-            <div class="shorts_hide">
-            DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
-            <select style="float:right;" id="print_numbers_select">
-              <option value="no" selected>No</option>
-              <option value="yes">Yes</option>
-            </select><br>
-            <span id="print_numbers_yes">
-              WANT TO PRINT NUMBERS ON FRONT AND BACK?
-              <span class="add_on  reversable" id="numbers_front_back_cost">[ Additional: $<span></span>.00 ]</span>
-              <select style="float:right;" id="numbers_front_back">
-                <option value="front" selected>Front Only</option>
-                <option value="back">Back Only</option>
-                <option value="front_back">Front & Back</option>
-              </select><br>
-            </span>
-            DO YOU WANT TO PRINT NAMES ON THE BACK OF JERSEYS?
-            <span class="add_on  reversable" id="print_name_on_back_cost">[ Additional: $<span></span>.00 ]</span>
-            <select style="float:right;" id="print_name_on_back">
-              <option value="no" selected>No</option>
-              <option value="yes">Yes</option>
-            </select><br>
-            <span id="reversible">
-              PRINT ON BOTH SIDES OF THE JERSEY?
-              <span class="remove_span" id="reversible_only_note">( Reversible jerseys only )</span>
-              <span class="add_on" id="reversible_only_cost">[ 2X Additional Fees ]</span>
-              <select style="float:right;" id="reversible_only">
-                <option value="no" selected>No</option>
-                <option value="yes">Yes</option>
-              </select><br>
-            </span>
-            WHAT DO YOU WANT FOR YOUR TEAM NAME DESIGN?
-            <span class="add_on  reversable" id="team_name_design_cost">[ Additional: $<span></span>.00 ]</span>
-            <select style="float:right;" id="team_name_design">
-              <option value="none" selected>None</option>
-              <option value="letters">Letters Only</option>
-              <option value="letters_graphic">Letters & Graphic</option>
-            </select><br>
-            DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
-            <span class="remove_span" id="custom_logo_note">( One time $35 fee )</span>
-            <span class="add_on" id="custom_logo_cost">[ $35 fee/<font></font> jerseys  =  $<span></span>/per jersey ]</span>
-            <select style="float:right;" id="custom_logo">
-              <option value="no" selected>No</option>
-              <option value="yes">Yes</option>
-            </select><br>
-          </div>
-            <div class="clear"></div>
-          </div>
-          <div id="price_calc">
-            <table>
-              <tr>
-                <td>
-                Your cost per jersey based on your above choices:
-                </td>
-                <td id="calculated">
-                <b>$<span id="price_per_jersey"></span></b>
-                </td>
-                <td id="calculating">
-                  <image src="images/loader.gif" alt="Loader">
-                </td>
-              </tr>
-            </table>
-          </div>
+</div>
+
+
+
           <div id="sub_selections">
             <table style="width:100%;">
 
             </table>
           </div>
-          <div id="next_step">
-            <a href="#" class="next_btn">NEXT STEP</a>
+          <div id="finalize_order">
+            <a href="#" class="finalize_btn">FINALIZE ORDER</a>
           </div>
         </td>
       </tr>

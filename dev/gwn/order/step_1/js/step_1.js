@@ -212,11 +212,13 @@ $('#price_per_jersey').html((cost).toFixed(2));
 //COLOR SWATCHES
 
 //init color selection
+if($(':radio').filter(':checked').length == 0) {
 var firstRadioSelect = $('input[type=radio]').filter(":visible").first();
 var firstColorSwatch = firstRadioSelect.val();
     firstRadioSelect.prop('checked', true);
     //populates this first color input in the submit form
     $('#step_1_color').val(firstColorSwatch);
+};
 
 //remove margin on first child
 $('#color_select').filter(":visible").first().css('margin-left',0);
@@ -310,6 +312,11 @@ function doneTyping() {
   buildRows(qty);
   //populates the qty input in the submit form
   $('#step_1_print_qty').val(qty);
+};
+
+//re-run row build if returning from order_step_2
+if($('#order_qty').val() != ""){
+  doneTyping();
 };
 
 function calculateCost(qty) {
