@@ -260,12 +260,14 @@ function imageDisplay() {
 
 //TOGGLE ANIMATED CALCULATION GRAPHIC
 function calculating() {
+  $('#next_step').hide();
   $('#calculated').hide();
   $('#calculating').show();
 };
 function calculated() {
   $('#calculating').hide();
   $('#calculated').show();
+  nextStep();
 };
 function re_calculate() {
   var qty = parseInt($('#order_qty').val());
@@ -534,6 +536,12 @@ function reversibleOnly() {
 };
 
 $('#reversible_only').on('change', function() {
+  if($(this).val() == "yes"){
+    $('#step_1_rev').val('yes');
+  }
+  else {
+    $('#step_1_rev').val('no');
+  };
   re_calculate();
 });
 
@@ -589,8 +597,18 @@ $('#custom_logo').on('change', function() {
   };
 });
 
-//MISC SCRIPTS
-$('.notApplicable').prop('disabled', true);
+//NEXT STEP
+function nextStep() {
+  var qty = Number($('#order_qty').val())
+  if(qty == 0) {
+    $('#next_step').hide();
+  }
+  else{
+    $('#next_step').show();
+  }
+};
+
+nextStep();
 
 });
 
@@ -603,6 +621,7 @@ $('#step_1_img').val(img);
 $('#step_1_price').val(price);
 //SELECTION VALUES
   //quantity populates on doneTyping()
+  //rev init no regardless of product but toggles on #reversible_only change
   //color checked populates on radio change
   //print_numbers YES/NO toggles on #print_numbers_select change
   //number_placement dictated by #numbers_front_back select
