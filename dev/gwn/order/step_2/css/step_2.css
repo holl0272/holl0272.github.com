@@ -1,0 +1,147 @@
+.jersey_name {
+  color: #e8d606;
+}
+.cancel_btn {
+  float: right;
+  padding: 5px;
+  color: #e8d606;
+  margin-top: 10px;
+  background-color: #11013b;
+  font-family: 'Lato', sans-serif;
+}
+.cancel_btn:hover{
+  margin: -1px;
+  border: 1px solid yellow;
+  margin-top: 9px;
+}
+.sport_box {
+  margin: 0 15px 10px 0
+}
+
+#description_container {
+  float: right;
+  padding: 50px 50px 0 0;
+}
+#image_container {
+  float:left;
+  margin: 30px 0 10px 30px;
+}
+#product_img {
+  width: 288px;
+  height: 240px;
+}
+#color_container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+#color_select {
+  display: inline-block;
+  padding: 0 20px 10px 0;
+}
+.color_option {
+  text-align:center;
+  margin-left: 20px;
+  display: inline-block;
+}
+.color_selectors {
+  display:inline-block;
+}
+.color_radio {
+  float:left;
+  padding: 12px 15px 0px 0;
+}
+.color_img {
+  float: left;
+  padding-top: 10px;
+}
+.color {
+  text-align:center;
+}
+#order_prices {
+  width:100%;
+  text-align: center;
+  margin-top: -5px;
+  color: #cccdce;
+}
+.spacer {
+  padding-left: 25px;
+}
+#selections {
+  background: -webkit-linear-gradient(#737373, #323232); /* For Safari */
+  background: -o-linear-gradient(#737373, #323232); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#737373, #323232); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#737373, #323232); /* Standard syntax (must be last) */
+  text-align: left;
+  margin-top: 20px;
+  color: #e8d606;
+  padding: 10px;
+  line-height: 2;
+}
+#selections font,
+#sub_selections table font {
+  color: #cccdce;
+}
+.shorts_show {
+  display: none;
+}
+#price_calc {
+  text-align: center;
+  background-color: #e8d606;
+  padding: 10px;
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+}
+#price_calc table {
+  margin: auto;
+  border-spacing: 10px;
+}
+#price_calc table td {
+  vertical-align: middle;
+}
+#calculating {
+  display: none;
+}
+#calculating img {
+  margin-bottom: -5px;
+}
+#sub_selections table {
+  color: #e8d606;
+  text-align: center;
+}
+#custom_logo_cost font {
+  color: #e8d606;
+}
+#sub_selections .input_num {
+  width: 85px;
+}
+#order_qty {
+  text-align: center;
+  width: 45px;
+}
+#print_numbers_yes {
+  display: none;
+}
+.add_on {
+  display: none;
+  padding-left: 10px;
+}
+.remove_span {
+  padding-left: 10px;
+}
+#next_step {
+  text-align: center;
+  margin-top:25px;
+}
+.next_btn {
+  padding: 5px;
+  color: #11013b;
+  background-color: #e8d606;
+  font-family: 'Lato', sans-serif;
+}
+.next_btn:hover{
+  color: #e8d606;
+  background-color: #11013b;
+}
+.input_num {
+  width: 85px;
+}

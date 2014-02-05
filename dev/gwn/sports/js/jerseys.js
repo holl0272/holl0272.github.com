@@ -78,7 +78,7 @@ function randomColor() {
   var white = "white";
 
   var classic = [];
-  classic.push(cardinal, /*gold,*/ navy, oxford, scarlet, white);
+  classic.push(cardinal, gold, navy, oxford, scarlet, white);
   var classicColor = Math.floor(Math.random()*classic.length);
   var classic_img_source = "../../../images/products/classic_"+classic[classicColor]+"_solid.gif";
   $('#classic_image').attr('src', classic_img_source);
