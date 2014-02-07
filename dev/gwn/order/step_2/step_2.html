@@ -9,12 +9,15 @@
   <meta charset="utf-8">
 
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/lightbox-2.6.min.js"></script>
 
   <link rel="shortcut icon" type="image/png" href="../../images/favicon.gif">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../sports/css/jerseys.css">
   <link rel="stylesheet" href="css/step_2.css">
+  <link rel="stylesheet" href="css/lightbox.css">
   <link rel="stylesheet" id="init-stylesheet">
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
@@ -38,6 +41,7 @@
 
   <div id="container">
     <table>
+<!--
       <tr>
         <td colspan="2">
           <div id="mobile_btns">
@@ -70,6 +74,7 @@
           </div>
         </td>
       </tr>
+-->
       <tr>
         <td id="left_content">
           <div id="box_btns">
@@ -96,7 +101,7 @@
                 <image src="../../images/volleyball.jpg" alt="Volleyball Jerseys" id="soccer_box"><span><font>VOLLEYBALL</font><br>JERSEYS</span>
               </div>
             <div class="box_btn">
-              <a href="javascript:history.back()" title="Home"><image src="../../sports/images/plain_grey_box.jpg" alt="Home" id="home_box"><span>BACK TO<br>YOUR ORDER<br>OPTIONS</span></a>
+              <a href="javascript:history.back(-1)" title="Home"><image src="../../sports/images/plain_grey_box.jpg" alt="Home" id="home_box"><span>BACK TO<br>YOUR ORDER<br>OPTIONS</span></a>
             </div>
           </div>
         </td>
@@ -104,87 +109,119 @@
           <div id="selections">
             <font>DESIGN OPTIONS</font><br>
             CHOOSE YOUR LETTERING COLOR
-            <select style="float:right;" id="">
-              <option value="color" selected>&#60; Color &#62;</option>
-              <option value="black">Black</option>
-              <option value="light_grey">Light Grey</option>
-              <option value="white">White</option>
-              <option value="columbia_blue">Columbia Blue</option>
-              <option value="royal">Royal</option>
-              <option value="navy">Navy</option>
-              <option value="purple">Purple</option>
-              <option value="gold">Gold</option>
-              <option value="orange">Orange</option>
-              <option value="scarlet">Scarlet</option>
-              <option value="cardinal">Cardinal</option>
-              <option value="maroon">Maroon</option>
-              <option value="kelly_green">Kelly Green</option>
-              <option value="dark_green">Dark Green</option>
-            </select><br>
+            <div class="dropdown">
+              <img src="images/info.png" class="info_btn">
+              <select style="float:left;" id="color_1_select">
+                <option value="color" selected>&#60; Color 1 &#62;</option>
+                <option value="black">Black</option>
+                <option value="light_grey">Light Grey</option>
+                <option value="white">White</option>
+                <option value="columbia_blue">Columbia Blue</option>
+                <option value="royal">Royal</option>
+                <option value="navy">Navy</option>
+                <option value="purple">Purple</option>
+                <option value="gold">Gold</option>
+                <option value="orange">Orange</option>
+                <option value="scarlet">Scarlet</option>
+                <option value="cardinal">Cardinal</option>
+                <option value="maroon">Maroon</option>
+                <option value="kelly_green">Kelly Green</option>
+                <option value="dark_green">Dark Green</option>
+              </select>
+              <div class="clear"></div>
+            </div><br>
             LETTERING COLOR FOR THE INSIDE (Reversible jersey only)
                 <!--<br><span class="results">[reversible: <b><font class="form_rev"></font></b>]</span>-->
-            <select style="float:right;" id="">
-              <option value="color" selected>&#60; Color &#62;</option>
-              <option value="black">Black</option>
-              <option value="light_grey">Light Grey</option>
-              <option value="white">White</option>
-              <option value="columbia_blue">Columbia Blue</option>
-              <option value="royal">Royal</option>
-              <option value="navy">Navy</option>
-              <option value="purple">Purple</option>
-              <option value="gold">Gold</option>
-              <option value="orange">Orange</option>
-              <option value="scarlet">Scarlet</option>
-              <option value="cardinal">Cardinal</option>
-              <option value="maroon">Maroon</option>
-              <option value="kelly_green">Kelly Green</option>
-              <option value="dark_green">Dark Green</option>
-            </select><br>
+            <div class="dropdown">
+              <img src="images/info.png" class="info_btn">
+              <select style="float:right;" id="color_2_select">
+                <option value="color" selected>&#60; Color 2 &#62;</option>
+                <option value="black">Black</option>
+                <option value="light_grey">Light Grey</option>
+                <option value="white">White</option>
+                <option value="columbia_blue">Columbia Blue</option>
+                <option value="royal">Royal</option>
+                <option value="navy">Navy</option>
+                <option value="purple">Purple</option>
+                <option value="gold">Gold</option>
+                <option value="orange">Orange</option>
+                <option value="scarlet">Scarlet</option>
+                <option value="cardinal">Cardinal</option>
+                <option value="maroon">Maroon</option>
+                <option value="kelly_green">Kelly Green</option>
+                <option value="dark_green">Dark Green</option>
+              </select>
+              <div class="clear"></div>
+            </div><br>
             LETTERING FONT FOR TEAM NAMES AND PLAYER NAMES
               <!--<br><span class="results">[team/player name: <b><font class="form_team_name"></font></b>/<b><font class="form_print_names"></font></b>]</span>-->
-            <select style="float:right;" id="">
-              <option value="color" selected>&#60; Font &#62;</option>
-              <option value="pro_narrow">PRO NARROW</option>
-              <option value="pro_narrow">IMPACT</option>
-              <option value="pro_narrow">VARSITY</option>
-              <option value="pro_narrow">Brush Script</option>
-              <option value="pro_narrow">&#935; &#916; &#934; &#915; &#936;</option>
-            </select><br>
+            <div class="dropdown">
+              <a href="images/info/fonts.png" data-lightbox="fonts" title="6 Font Options"><img src="images/info.png" class="info_btn"></a>
+                <a href="images/info/pro_narrow.png" data-lightbox="fonts" title="Font Option:  PRO IMPACT"></a>
+                <a href="images/info/impact.png" data-lightbox="fonts" title="Font Option:  IMPACT"></a>
+                <a href="images/info/varsity.png" data-lightbox="fonts" title="Font Option:  VARSITY"></a>
+                <a href="images/info/brush_script.png" data-lightbox="fonts" title="Font Option:  BRUSH SCRIPT"></a>
+                <a href="images/info/greek.png" data-lightbox="fonts" title="Font Option:  GREEK"></a>
+              <select style="float:right;" id="font_select">
+                <option value="color" selected>&#60; Font &#62;</option>
+                <option value="pro_narrow">PRO NARROW</option>
+                <option value="pro_narrow">IMPACT</option>
+                <option value="pro_narrow">VARSITY</option>
+                <option value="pro_narrow">Brush Script</option>
+                <option value="pro_narrow">&#935; &#916; &#934; &#915; &#936;</option>
+              </select>
+              <div class="clear"></div>
+            </div><br>
             ENTER YOUR TEAM NAME
               <!--<br><span class="results">[team name: <b><font class="form_team_name"></font></b>]</span>-->
-            <input type="text" style="float:right;" id="" placeholder="EAGLES"><br>
+              <input type="text" style=" width: 125px; float:right; margin: 3px 25px 0 0;" id="team_name_input" placeholder="EAGLES"><br>
             CUSTOM TEAM NAME &#38; GRAPHIC OPTIONS
               <!--<br><span class="results">[team name/custom logo: <b><font class="form_team_name"></font></b> / <b><font class="form_logo"></font></b>]</span>-->
-            <select style="float:right;" id="">
-              <option value="options" selected>&#60; Options &#62;</option>
-              <option value="script_graphic">Basketball Script Graphic</option>
-              <option value="graphic">Basketball Graphic</option>
-              <option value="custom_logo">Custom Logo</option>
-            </select><br>
+            <div class="dropdown">
+              <img src="images/info.png" class="info_btn">
+              <select style="float:right;" id="graphic_select">
+                <option value="options" selected>&#60; Options &#62;</option>
+                <option value="script_graphic">Basketball Script Graphic</option>
+                <option value="graphic">Basketball Graphic</option>
+                <option value="custom_logo">Custom Logo</option>
+              </select>
+              <div class="clear"></div>
+            </div><br>
             TEAM NAME PLACEMENT
               <!--<br><span class="results">[team name: <b><font class="form_team_name"></font></b>]</span>-->
-            <select style="float:right;" id="">
-              <option value="placement" selected>&#60; Placement &#62;</option>
-              <option value="front">Across Front</option>
-              <option value="chest">Left Chest</option>
-            </select><br>
+            <div class="dropdown">
+              <img src="images/info.png" class="info_btn">
+              <select style="float:right;" id="placement_select">
+                <option value="placement" selected>&#60; Placement &#62;</option>
+                <option value="front">Across Front</option>
+                <option value="chest">Left Chest</option>
+              </select>
+              <div class="clear"></div>
+            </div><br>
             TEAM NAME LETTERING STYLE
               <!--<br><span class="results">[team name: <b><font class="form_team_name"></font></b>]</span>-->
-            <select style="float:right;" id="">
-              <option value="style" selected>&#60; Style &#62;</option>
-              <option value="straigh">STRAIGHT</option>
-              <option value="vert_arch">VERT ARCH</option>
-              <option value="straight_top">STRAIGHT TOP</option>
-              <option value="bowtie">BOWTIE</option>
-            </select><br>
+            <div class="dropdown">
+              <img src="images/info.png" class="info_btn">
+              <select style="float:right;" id="team_name_style_select">
+                <option value="style" selected>&#60; Style &#62;</option>
+                <option value="straigh">STRAIGHT</option>
+                <option value="vert_arch">VERT ARCH</option>
+                <option value="straight_top">STRAIGHT TOP</option>
+                <option value="bowtie">BOWTIE</option>
+              </select>
+              <div class="clear"></div>
+            </div><br>
             PLAYER NAME LETTERING STYLE
               <!--<br><span class="results">[player name: <b><font class="form_print_names"></font></b>]</span>-->
-            <select style="float:right;" id="">
-              <option value="style" selected>&#60; Style &#62;</option>
-              <option value="straigh">STRAIGHT</option>
-              <option value="vert_arch">VERT ARCH</option>
-            </select><br>
-
+            <div class="dropdown">
+              <img src="images/info.png" class="info_btn">
+              <select style="float:right;" id="player_name_style_select">
+                <option value="style" selected>&#60; Style &#62;</option>
+                <option value="straigh">STRAIGHT</option>
+                <option value="vert_arch">VERT ARCH</option>
+              </select>
+              <div class="clear"></div>
+            </div><br>
 <div class="dev">
             HOW MANY <span class="shorts_show">SHORTS</span><span class="shorts_hide">JERSEYS</span> DO YOU WANT TO ORDER?
             <input type="text" class="input_num" style="float:right;" id="order_qty" placeholder="0"><br>
@@ -264,8 +301,13 @@
               <!--urlParams["name"]-->
             </div>
             <div style="float: right;">
-              <a href="javascript:window.history.go(-3)" class="cancel_btn">CANCEL&nbsp;&nbsp;X</a>
-              <a href="#" class="reset_btn">RESET</a>
+              <div style="float: right;">
+                <a href="javascript: window.history.go(-3)" class="cancel_btn">CANCEL&nbsp;&nbsp;X</a>
+              </div>
+                <div class="btn_spacer">&nbsp;</div>
+              <div style="float: left;">
+                <a href="#" class="reset_btn">RESET</a>
+              </div>
             </div>
             <div class="clear"></div>
           </div>

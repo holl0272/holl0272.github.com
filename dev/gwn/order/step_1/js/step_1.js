@@ -53,7 +53,7 @@ if(isIE) {
 };
 
    $('#wrapper').show();
-
+/*
 function adjustStyle(width) {
   width = parseInt(width);
     if (width < 508) {
@@ -77,7 +77,7 @@ $(function() {
         adjustStyle($(this).width());
     });
 });
-
+*/
 //NAME
 $('#urlParams_name').html(name);
 
@@ -256,7 +256,8 @@ function imageColor() {
 //concatenate the image source
 function imageDisplay() {
   var color = imageColor();
-  var captionColor = color.replace('_', ' ').split('_solid')[0];
+  var captionColor  = color;
+      captionColor = color.replace(/_/g, " ").replace('solid', '');
   var captionProduct = name.replace('<br>', '&nbsp;');
   var caption = (captionColor+" "+captionProduct).replace(/(^|\s)\S/g, function(match) {
     return match.toUpperCase();

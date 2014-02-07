@@ -66,7 +66,7 @@ if(isIE) {
 };
 
    $('#wrapper').show();
-
+/*
 function adjustStyle(width) {
   width = parseInt(width);
     if (width < 508) {
@@ -90,7 +90,7 @@ $(function() {
         adjustStyle($(this).width());
     });
 });
-
+*/
 //NAME
 $('#urlParams_name').html(name);
 
@@ -616,8 +616,28 @@ function nextStep() {
     $('#next_step').show();
   }
 };
-
 nextStep();
+
+//RESET BUTTON
+$('.reset_btn').on('click', function() {
+  $('select').each(function() {
+    var selectID = $(this).attr('id');
+    var firstOption = $("#"+selectID+" option:first").val();
+    $("#"+selectID+" option[value="+firstOption+"]").attr('selected', 'selected');
+  });
+  $('#team_name_input').val('').attr('placeholder','EAGLES');
+});
+
+$('#team_name_input').on('click', function(){
+  $(this).attr('placeholder','');
+});
+
+$('#team_name_input').on('blur', function(){
+  if($(this).val() == "") {
+    $(this).attr('placeholder','EAGLES');
+  };
+});
+
 
 });
 

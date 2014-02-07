@@ -9,23 +9,28 @@
   background-color: #11013b;
   font-family: 'Lato', sans-serif;
 }
-.cancel_btn:hover {
+.cancel_btn:hover, .reset_btn:hover {
   margin: -1px;
   border: 1px solid yellow;
   margin-top: 9px;
 }
-.reset_btn {
-  margin-right: 10px;
+.dropdown {
+  float: right;
+  padding-top: 3px;
 }
-.reset_btn:hover {
-  margin-right: 9px;
-  border: 1px solid yellow;
-  margin-top: 9px;
+.info_btn {
+  float:right;
+  width:20px;
+  height:20px;
+  margin: -1px 0 0 5px;
+}
+.btn_spacer {
+  float: right;
+  margin-right: 10px;
 }
 .sport_box {
   margin: 0 15px 10px 0
 }
-
 #description_container {
   float: right;
   padding: 50px 50px 0 0;
