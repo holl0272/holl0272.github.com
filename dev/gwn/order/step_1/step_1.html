@@ -9,12 +9,15 @@
   <meta charset="utf-8">
 
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/lightbox-2.6.min.js"></script>
 
   <link rel="shortcut icon" type="image/png" href="../../images/favicon.gif">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../sports/css/jerseys.css">
   <link rel="stylesheet" href="css/step_1.css">
+  <link rel="stylesheet" href="css/lightbox.css">
   <link rel="stylesheet" id="init-stylesheet">
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
@@ -106,13 +109,19 @@
               <!--urlParams["name"]-->
             </div>
             <div style="float: right;">
-              <a href="javascript:history.back()" class="cancel_btn">CANCEL X</a>
+              <div style="float: right;">
+                <a href="javascript: window.history.go(-1)" class="cancel_btn">CANCEL&nbsp;&nbsp;X</a>
+              </div>
+                <div class="btn_spacer">&nbsp;</div>
+              <div style="float: left;">
+                <a href="#" class="reset_btn">RESET</a>
+              </div>
             </div>
             <div class="clear"></div>
           </div>
           <div style="background-color: white; width:100%; display:inline-block;  margin: 10px 0 10px 0;">
             <div id="image_container">
-              <image src="" alt="Product Image" id="product_img"><!--urlParams["img"]-->
+              <a href="" data-lightbox="" title=""><image src="" alt="Product Image" id="product_img"></a><!--urlParams["img"]-->
             </div>
             <div id="description_container">
               <!--urlParams["name"]-->

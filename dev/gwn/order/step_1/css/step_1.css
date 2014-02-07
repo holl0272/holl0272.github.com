@@ -1,7 +1,7 @@
 .jersey_name {
   color: #e8d606;
 }
-.cancel_btn {
+.cancel_btn, .reset_btn {
   float: right;
   padding: 5px;
   color: #e8d606;
@@ -9,7 +9,7 @@
   background-color: #11013b;
   font-family: 'Lato', sans-serif;
 }
-.cancel_btn:hover{
+.cancel_btn:hover, .reset_btn:hover {
   margin: -1px;
   border: 1px solid yellow;
   margin-top: 9px;
@@ -17,7 +17,10 @@
 .sport_box {
   margin: 0 15px 10px 0
 }
-
+.btn_spacer {
+  float: right;
+  margin-right: 10px;
+}
 #description_container {
   float: right;
   padding: 50px 50px 0 0;
@@ -29,6 +32,9 @@
 #product_img {
   width: 288px;
   height: 240px;
+}
+#image_container img {
+    cursor:url(../images/zoom.cur.png), -moz-zoom-in;
 }
 #color_container {
   text-align: center;

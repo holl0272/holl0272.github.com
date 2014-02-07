@@ -256,8 +256,15 @@ function imageColor() {
 //concatenate the image source
 function imageDisplay() {
   var color = imageColor();
+  var captionColor = color.replace('_', ' ').split('_solid')[0];
+  var captionProduct = name.replace('<br>', '&nbsp;');
+  var caption = (captionColor+" "+captionProduct).replace(/(^|\s)\S/g, function(match) {
+    return match.toUpperCase();
+    });
   var img_source = "../../images/products/"+img+color+".gif";
+  var lightbox_img = "../../images/products/large/"+img+color+".gif";
   $('#product_img').attr('src', img_source);
+  $('#product_img').parent().attr('href', lightbox_img).attr('data-lightbox', img+color).attr('title', caption);
 }
 
 //TOGGLE ANIMATED CALCULATION GRAPHIC
@@ -372,7 +379,7 @@ function buildRows(qty) {
   };
   //builds rows X quty input
   for (var i = 1; i <= qty; i++) {
-     $('#sub_selections table').append(jersey_row);
+    $('#sub_selections table').append(jersey_row);
   };
   //leading 0 for single digits
   function numberRows() {
@@ -614,8 +621,23 @@ function nextStep() {
     $('#next_step').show();
   }
 };
-
 nextStep();
+
+//RESET BUTTON
+$('.reset_btn').on('click', function() {
+  $('select').each(function() {
+    var selectID = $(this).attr('id');
+    var firstOption = $("#"+selectID+" option:first").val();
+    $("#"+selectID+" option[value="+firstOption+"]").attr('selected', 'selected');
+  });
+  $('#order_qty').val('').attr('placeholder','0');
+  nextStep();
+  re_calculate();
+  $('#print_numbers_select').change();
+  $('#sub_selections table tr').remove();
+  $('input[type=radio]').prop('checked', false).filter(":visible").first().prop('checked', true);
+  imageDisplay();
+});
 
 });
 
