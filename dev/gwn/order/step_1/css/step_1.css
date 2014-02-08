@@ -1,7 +1,7 @@
 .jersey_name {
   color: #e8d606;
 }
-.cancel_btn, .reset_btn {
+.cancel_btn, .reset_btn, .save_btn, .clear_btn {
   float: right;
   padding: 5px;
   color: #e8d606;
@@ -9,7 +9,7 @@
   background-color: #11013b;
   font-family: 'Lato', sans-serif;
 }
-.cancel_btn:hover, .reset_btn:hover {
+.cancel_btn:hover, .reset_btn:hover, .save_btn:hover, .clear_btn:hover {
   margin: -1px;
   border: 1px solid yellow;
   margin-top: 9px;
@@ -33,7 +33,7 @@
   width: 288px;
   height: 240px;
 }
-#image_container img {
+#image_container a {
     cursor:url(../images/zoom.cur.png), -moz-zoom-in;
 }
 #color_container {
@@ -136,7 +136,7 @@
 }
 #next_step {
   text-align: center;
-  margin-top:25px;
+  margin-top:50px;
 }
 .next_btn {
   padding: 5px;
@@ -147,6 +147,8 @@
 .next_btn:hover{
   color: #e8d606;
   background-color: #11013b;
+  margin: -1px;
+  border: 1px solid yellow;
 }
 .input_num {
   width: 85px;

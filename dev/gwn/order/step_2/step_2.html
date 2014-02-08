@@ -26,6 +26,12 @@
 </head>
 <body>
 
+<!-- <br><span class="results">[reversible: <b><font class="form_rev"></font></b>]</span>
+<br><span class="results">[numbers: <b><font class="form_print_numbers"></font></b>]</span>
+<br><span class="results">[print player name: <b><font class="form_print_names"></font></b>]</span>
+<br><span class="results">[print team name: <b><font class="form_team_name"></font></b>]</span>
+<br><span class="results">[custom logo: <b><font class="form_logo"></font></b>]</span> -->
+
 <div id="wrapper">
 
   <div id="header">
@@ -101,128 +107,145 @@
                 <image src="../../images/volleyball.jpg" alt="Volleyball Jerseys" id="soccer_box"><span><font>VOLLEYBALL</font><br>JERSEYS</span>
               </div>
             <div class="box_btn">
-              <a href="javascript:history.back(-1)" title="Home"><image src="../../sports/images/plain_grey_box.jpg" alt="Home" id="home_box"><span>BACK TO<br>YOUR ORDER<br>OPTIONS</span></a>
+              <a href="javascript:window.history.back(-1)" title="Home" id="return_to_step_1"><image src="../../sports/images/plain_grey_box.jpg" alt="Home" id="home_box"><span>BACK TO<br>YOUR ORDER<br>OPTIONS</span></a>
             </div>
           </div>
         </td>
         <td id="right_content">
           <div id="selections">
             <font>DESIGN OPTIONS</font><br>
-            CHOOSE YOUR LETTERING COLOR
-            <div class="dropdown">
-              <img src="images/info.png" class="info_btn">
-              <select style="float:left;" id="color_1_select">
-                <option value="color" selected>&#60; Color 1 &#62;</option>
-                <option value="black">Black</option>
-                <option value="light_grey">Light Grey</option>
-                <option value="white">White</option>
-                <option value="columbia_blue">Columbia Blue</option>
-                <option value="royal">Royal</option>
-                <option value="navy">Navy</option>
-                <option value="purple">Purple</option>
-                <option value="gold">Gold</option>
-                <option value="orange">Orange</option>
-                <option value="scarlet">Scarlet</option>
-                <option value="cardinal">Cardinal</option>
-                <option value="maroon">Maroon</option>
-                <option value="kelly_green">Kelly Green</option>
-                <option value="dark_green">Dark Green</option>
-              </select>
-              <div class="clear"></div>
-            </div><br>
-            LETTERING COLOR FOR THE INSIDE (Reversible jersey only)
-                <!--<br><span class="results">[reversible: <b><font class="form_rev"></font></b>]</span>-->
-            <div class="dropdown">
-              <img src="images/info.png" class="info_btn">
-              <select style="float:right;" id="color_2_select">
-                <option value="color" selected>&#60; Color 2 &#62;</option>
-                <option value="black">Black</option>
-                <option value="light_grey">Light Grey</option>
-                <option value="white">White</option>
-                <option value="columbia_blue">Columbia Blue</option>
-                <option value="royal">Royal</option>
-                <option value="navy">Navy</option>
-                <option value="purple">Purple</option>
-                <option value="gold">Gold</option>
-                <option value="orange">Orange</option>
-                <option value="scarlet">Scarlet</option>
-                <option value="cardinal">Cardinal</option>
-                <option value="maroon">Maroon</option>
-                <option value="kelly_green">Kelly Green</option>
-                <option value="dark_green">Dark Green</option>
-              </select>
-              <div class="clear"></div>
-            </div><br>
-            LETTERING FONT FOR TEAM NAMES AND PLAYER NAMES
-              <!--<br><span class="results">[team/player name: <b><font class="form_team_name"></font></b>/<b><font class="form_print_names"></font></b>]</span>-->
-            <div class="dropdown">
-              <a href="images/info/fonts.png" data-lightbox="fonts" title="6 Font Options"><img src="images/info.png" class="info_btn"></a>
-                <a href="images/info/pro_narrow.png" data-lightbox="fonts" title="Font Option:  PRO IMPACT"></a>
-                <a href="images/info/impact.png" data-lightbox="fonts" title="Font Option:  IMPACT"></a>
-                <a href="images/info/varsity.png" data-lightbox="fonts" title="Font Option:  VARSITY"></a>
-                <a href="images/info/brush_script.png" data-lightbox="fonts" title="Font Option:  BRUSH SCRIPT"></a>
-                <a href="images/info/greek.png" data-lightbox="fonts" title="Font Option:  GREEK"></a>
-              <select style="float:right;" id="font_select">
-                <option value="color" selected>&#60; Font &#62;</option>
-                <option value="pro_narrow">PRO NARROW</option>
-                <option value="pro_narrow">IMPACT</option>
-                <option value="pro_narrow">VARSITY</option>
-                <option value="pro_narrow">Brush Script</option>
-                <option value="pro_narrow">&#935; &#916; &#934; &#915; &#936;</option>
-              </select>
-              <div class="clear"></div>
-            </div><br>
-            ENTER YOUR TEAM NAME
-              <!--<br><span class="results">[team name: <b><font class="form_team_name"></font></b>]</span>-->
-              <input type="text" style=" width: 125px; float:right; margin: 3px 25px 0 0;" id="team_name_input" placeholder="EAGLES"><br>
-            CUSTOM TEAM NAME &#38; GRAPHIC OPTIONS
-              <!--<br><span class="results">[team name/custom logo: <b><font class="form_team_name"></font></b> / <b><font class="form_logo"></font></b>]</span>-->
-            <div class="dropdown">
-              <img src="images/info.png" class="info_btn">
-              <select style="float:right;" id="graphic_select">
-                <option value="options" selected>&#60; Options &#62;</option>
-                <option value="script_graphic">Basketball Script Graphic</option>
-                <option value="graphic">Basketball Graphic</option>
-                <option value="custom_logo">Custom Logo</option>
-              </select>
-              <div class="clear"></div>
-            </div><br>
-            TEAM NAME PLACEMENT
-              <!--<br><span class="results">[team name: <b><font class="form_team_name"></font></b>]</span>-->
-            <div class="dropdown">
-              <img src="images/info.png" class="info_btn">
-              <select style="float:right;" id="placement_select">
-                <option value="placement" selected>&#60; Placement &#62;</option>
-                <option value="front">Across Front</option>
-                <option value="chest">Left Chest</option>
-              </select>
-              <div class="clear"></div>
-            </div><br>
-            TEAM NAME LETTERING STYLE
-              <!--<br><span class="results">[team name: <b><font class="form_team_name"></font></b>]</span>-->
-            <div class="dropdown">
-              <img src="images/info.png" class="info_btn">
-              <select style="float:right;" id="team_name_style_select">
-                <option value="style" selected>&#60; Style &#62;</option>
-                <option value="straigh">STRAIGHT</option>
-                <option value="vert_arch">VERT ARCH</option>
-                <option value="straight_top">STRAIGHT TOP</option>
-                <option value="bowtie">BOWTIE</option>
-              </select>
-              <div class="clear"></div>
-            </div><br>
-            PLAYER NAME LETTERING STYLE
-              <!--<br><span class="results">[player name: <b><font class="form_print_names"></font></b>]</span>-->
-            <div class="dropdown">
-              <img src="images/info.png" class="info_btn">
-              <select style="float:right;" id="player_name_style_select">
-                <option value="style" selected>&#60; Style &#62;</option>
-                <option value="straigh">STRAIGHT</option>
-                <option value="vert_arch">VERT ARCH</option>
-              </select>
-              <div class="clear"></div>
-            </div><br>
-<div class="dev">
+            <div id="resulting_rows">
+              CHOOSE YOUR <span class="logo_span">CUSTOM LOGO</span><span class="non_logo_span">LETTERING</span> COLOR
+              <div class="dropdown">
+                <img src="images/info.png" class="info_btn">
+                <select style="float:left;" id="color_1_select">
+                  <option value="color" selected>&#60; Color 1 &#62;</option>
+                  <option value="black">Black</option>
+                  <option value="light_grey">Light Grey</option>
+                  <option value="white">White</option>
+                  <option value="columbia_blue">Columbia Blue</option>
+                  <option value="royal">Royal</option>
+                  <option value="navy">Navy</option>
+                  <option value="purple">Purple</option>
+                  <option value="gold">Gold</option>
+                  <option value="orange">Orange</option>
+                  <option value="scarlet">Scarlet</option>
+                  <option value="cardinal">Cardinal</option>
+                  <option value="maroon">Maroon</option>
+                  <option value="kelly_green">Kelly Green</option>
+                  <option value="dark_green">Dark Green</option>
+                </select>
+                <div class="clear"></div>
+              </div><br>
+              <div id="rev_row">
+                LETTERING COLOR FOR THE INSIDE (Reversible jersey only)
+                <div class="dropdown">
+                  <img src="images/info.png" class="info_btn">
+                  <select style="float:right;" id="color_2_select">
+                    <option value="color" selected>&#60; Color 2 &#62;</option>
+                    <option value="black">Black</option>
+                    <option value="light_grey">Light Grey</option>
+                    <option value="white">White</option>
+                    <option value="columbia_blue">Columbia Blue</option>
+                    <option value="royal">Royal</option>
+                    <option value="navy">Navy</option>
+                    <option value="purple">Purple</option>
+                    <option value="gold">Gold</option>
+                    <option value="orange">Orange</option>
+                    <option value="scarlet">Scarlet</option>
+                    <option value="cardinal">Cardinal</option>
+                    <option value="maroon">Maroon</option>
+                    <option value="kelly_green">Kelly Green</option>
+                    <option value="dark_green">Dark Green</option>
+                  </select>
+                  <div class="clear"></div>
+                </div><br>
+              </div>
+              <div id="font_row">
+                LETTERING FONT FOR <span id="team_name_span">TEAM NAME</span><span id="both_spans">&nbsp;AND&nbsp;</span><span id="player_names_span">PLAYER NAMES</span>
+                <div class="dropdown">
+                  <a href="images/info/fonts.png" data-lightbox="fonts" title="6 Font Options"><img src="images/info.png" class="info_btn"></a>
+                    <a href="images/info/pro_narrow.png" data-lightbox="fonts" title="Font Option:  PRO IMPACT"></a>
+                    <a href="images/info/impact.png" data-lightbox="fonts" title="Font Option:  IMPACT"></a>
+                    <a href="images/info/varsity.png" data-lightbox="fonts" title="Font Option:  VARSITY"></a>
+                    <a href="images/info/brush_script.png" data-lightbox="fonts" title="Font Option:  BRUSH SCRIPT"></a>
+                    <a href="images/info/greek.png" data-lightbox="fonts" title="Font Option:  GREEK"></a>
+                  <select style="float:right;" id="font_select">
+                    <option value="color" selected>&#60; Font &#62;</option>
+                    <option value="pro_narrow">PRO NARROW</option>
+                    <option value="pro_narrow">IMPACT</option>
+                    <option value="pro_narrow">VARSITY</option>
+                    <option value="pro_narrow">Brush Script</option>
+                    <option value="pro_narrow">&#935; &#916; &#934; &#915; &#936;</option>
+                  </select>
+                  <div class="clear"></div>
+                </div><br>
+              </div>
+              <div id="team_name_row">
+                ENTER YOUR TEAM NAME
+                <input type="text" style=" width: 125px; float:right; margin: 7px 25px 0 0;" id="team_name_input" placeholder="EAGLES"><br>
+              </div>
+              <div id="graphic_row">
+                TEAM NAME & GRAPHIC OPTIONS
+                <div class="dropdown">
+                  <img src="images/info.png" class="info_btn">
+                  <select style="float:right;" id="graphic_select">
+                    <option value="options" selected>&#60; Options &#62;</option>
+                    <option value="script_graphic">Basketball Script Graphic</option>
+                    <option value="graphic">Basketball Graphic</option>
+                  </select>
+                  <div class="clear"></div>
+                </div><br>
+              </div>
+              <div id="placement_row">
+                <span class="logo_span">CUSTOM LOGO</span><span class="non_logo_span">TEAM NAME</span> PLACEMENT
+                <div class="dropdown">
+                  <img src="images/info.png" class="info_btn">
+                  <select style="float:right;" id="placement_select">
+                    <option value="placement" selected>&#60; Placement &#62;</option>
+                    <option value="front">Across Front</option>
+                    <option value="chest">Left Chest</option>
+                  </select>
+                  <div class="clear"></div>
+                </div><br>
+              </div>
+              <div class="logo_row">
+                UPLOAD YOUR LOGO
+                <input type="text" style=" width: 125px; float:right; margin: 7px 25px 0 0;" id="team_name_input" placeholder="UPLOAD SCRIPT HERE"><br>
+              </div>
+              <div id="team_lettering_row">
+                TEAM NAME LETTERING STYLE
+                <div class="dropdown">
+                  <img src="images/info.png" class="info_btn">
+                  <select style="float:right;" id="team_name_style_select">
+                    <option value="style" selected>&#60; Style &#62;</option>
+                    <option value="straigh">STRAIGHT</option>
+                    <option value="vert_arch">VERT ARCH</option>
+                    <option value="straight_top">STRAIGHT TOP</option>
+                    <option value="bowtie">BOWTIE</option>
+                  </select>
+                  <div class="clear"></div>
+                </div><br>
+              </div>
+              <div id="print_names_row">
+                PLAYER NAME LETTERING STYLE
+                <div class="dropdown">
+                  <img src="images/info.png" class="info_btn">
+                  <select style="float:right;" id="player_name_style_select">
+                    <option value="style" selected>&#60; Style &#62;</option>
+                    <option value="straigh">STRAIGHT</option>
+                    <option value="vert_arch">VERT ARCH</option>
+                  </select>
+                  <div class="clear"></div>
+                </div><br>
+              </div>
+            </div>
+            <div id="no_results" style="display:none;">
+              YOUR CURRENT ORDER DOES NOT REQUIRE ANY DESIGN OPTIONS
+              <br>
+              RETURN <a href="javascript:window.history.back(-1)" style="color: #e8d606;"><b>&nbsp;BACK TO YOUR ORDER OPTIONS&nbsp;</b></a> TO MAKE ADDITIONAL SELECTIONS
+            </div>
+<!--
             HOW MANY <span class="shorts_show">SHORTS</span><span class="shorts_hide">JERSEYS</span> DO YOU WANT TO ORDER?
             <input type="text" class="input_num" style="float:right;" id="order_qty" placeholder="0"><br>
             <div class="shorts_hide">
@@ -269,9 +292,7 @@
               <option value="no" selected>No</option>
               <option value="yes">Yes</option>
             </select><br>
-</div>
-
-
+-->
           </div>
             <div class="clear"></div>
           </div>
@@ -282,16 +303,14 @@
                 <!--Your cost per jersey based on your above choices:-->
                 Your jersey preview will change based on your above choices.
                 </td>
-
-<div class="dev">
+<!--
                 <td id="calculated">
-                <!--<b>$<span id="price_per_jersey"></span></b>-->
+                <b>$<span id="price_per_jersey"></span></b>
                 </td>
                 <td id="calculating">
                   <image src="images/loader.gif" alt="Loader">
                 </td>
-</div>
-
+-->
               </tr>
             </table>
           </div>
@@ -305,8 +324,12 @@
                 <a href="javascript: window.history.go(-3)" class="cancel_btn">CANCEL&nbsp;&nbsp;X</a>
               </div>
                 <div class="btn_spacer">&nbsp;</div>
-              <div style="float: left;">
+              <div style="float: right;">
                 <a href="#" class="reset_btn">RESET</a>
+              </div>
+                <div class="btn_spacer">&nbsp;</div>
+              <div style="float: right;">
+                <a href="#" class="save_btn">SAVE</a>
               </div>
             </div>
             <div class="clear"></div>
@@ -316,10 +339,8 @@
               <image src="" alt="Product Image" id="product_img" style="border: 1px solid lightgrey;"><!--dev style--><!--urlParams["img"]-->
                 <image src="" alt="Back Image" id="product_img" style="float: right; margin-right: 30px;"><!--urlParams["img"]-->
             </div>
-
-<div class="dev">
+<!--
             <div id="description_container">
-              <!--urlParams["name"]-->
               <div id="classicJersey" class="description">
                 100% heavyweight cotton<br>
                 Double ply shoulder yoke<br>
@@ -401,12 +422,9 @@
                 Add $2 for XXL<br>
               </div>
             </div>
-</div>
-
+-->
             <div class="clear"></div>
-
-<div class="dev">
-            <div id="color_container">
+            <div id="color_container" style="display:none;">
               <div id="color_select">
                 <div class="color_option" id="birch_solid_option">
                   <div class="color_selectors">
@@ -770,30 +788,22 @@
                 </div>
               </div>
             </div>
-</div>
-
           <div id="disclaimer">
             <span>Your tean name will not appear in this preview</span>
           </div>
-
           </div>
-
-<div class="dev">
+<!--
           <div id="order_prices">
             <span>$<font id="urlParams_price_1"></font> each</span>
             <span class="spacer">Order 6 for $<font id="urlParams_price_6"></font> each</span>
             <span class="spacer">Order 12 for $<font id="urlParams_price_12"></font> each</span>
             <span class="spacer">Order 36 or more for $<font id="urlParams_price_36"></font></span>
           </div>
-</div>
-
-
-
           <div id="sub_selections">
             <table style="width:100%;">
-
             </table>
           </div>
+-->
           <div id="finalize_order">
             <a href="#" class="finalize_btn">FINALIZE ORDER</a>
           </div>
@@ -801,7 +811,6 @@
       </tr>
     </table>
   </div>
-
   <div id="footer">
     <ul id="horizontal-nav">
       <li><a href="#" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>

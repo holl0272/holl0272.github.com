@@ -1,7 +1,7 @@
 .jersey_name {
   color: #e8d606;
 }
-.cancel_btn, .reset_btn {
+.cancel_btn, .reset_btn, .save_btn {
   float: right;
   padding: 5px;
   color: #e8d606;
@@ -9,14 +9,14 @@
   background-color: #11013b;
   font-family: 'Lato', sans-serif;
 }
-.cancel_btn:hover, .reset_btn:hover {
+.cancel_btn:hover, .reset_btn:hover, .save_btn:hover {
   margin: -1px;
   border: 1px solid yellow;
   margin-top: 9px;
 }
 .dropdown {
   float: right;
-  padding-top: 3px;
+  padding-top: 7px;
 }
 .info_btn {
   float:right;
@@ -156,10 +156,15 @@
 .finalize_btn:hover{
   color: #e8d606;
   background-color: #11013b;
+  margin: -1px;
+  border: 1px solid yellow;
 }
 input {
   text-align:center;
 }
 .dev {
   display: none;
+}
+.results {
+  color: red;
 }

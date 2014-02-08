@@ -18,6 +18,7 @@ var urlParams;
 })();
 
 //URL VARS
+var url = urlParams["url"];
 var name = urlParams["name"];
 var sport = urlParams["sport"];
 var img = urlParams["img"];
@@ -31,12 +32,20 @@ var print_names = urlParams["print_names"];
 var team_name = urlParams["team_name"];
 var logo = urlParams["logo"];
 
+// var hashCount = 0
+// function backOneStep() {
+//   var index = -(hashCount + 1);
+//   alert(index);
+//   window.history.back(index);
+// };
+
 $(document).ready(function(){
 
   $('.form_rev').html(rev);
   $('.form_team_name').html(team_name);
   $('.form_logo').html(logo);
   $('.form_print_names').html(print_names);
+  $('.form_print_numbers').html(print_numbers);
 
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
@@ -100,6 +109,67 @@ $('.sport_box_mobile').hide();
 $("#"+sport+"_box").show();
 $("#"+sport+"_box_mobile").show();
 
+//STEP ONE RESULTS DISPLAY ROWS
+//color row
+if((print_names == 'no') && (print_numbers == 'no') && (team_name == 'none') && (logo == 'no')) {
+  $('#resulting_rows').hide();
+  $('#no_results').show();
+}
+if((print_names == 'no') && (print_numbers == 'no') && (team_name == 'none') && (logo == 'yes')) {
+  $('.logo_span').show();
+  $('.non_logo_span').hide();
+}
+else{
+  $('.logo_span').hide();
+};
+//rev row
+if(rev == 'no') {
+  $('#rev_row').hide();
+};
+//font row
+$('#both_spans').hide();
+if((print_names == 'no') && ((team_name == 'none') || (team_name == 'letters_graphic'))) {
+  $('#font_row').hide();
+}
+if((print_names == 'yes') && (team_name == 'letters')) {
+  $('#both_spans').show();
+};
+if(print_names == 'no') {
+  $('#player_names_span').hide();
+};
+if((team_name == 'none') || (team_name == 'letters_graphic')) {
+  $('#team_name_span').hide();
+};
+//team name and placement rows
+if(team_name == 'none') {
+  $('#team_name_row').hide();
+  $('#placement_row').hide();
+};
+//graphic row
+if(team_name != 'letters_graphic') {
+  $('#graphic_row').hide();
+};
+if(logo == 'yes') {
+  $('#placement_row').show();
+  $('#graphic_row').hide();
+}
+else {
+  $('.logo_row').hide();
+}
+//team name lettering row
+if((team_name == 'none') || (team_name == 'letters_graphic')) {
+  $('#team_lettering_row').hide();
+};
+// player names lettering row
+if((print_names == 'no')) {
+  $('#print_names_row').hide();
+};
+
+if(((team_name != 'none') || (print_names != 'none')) && (logo == 'yes')) {
+  $('.logo_span').hide();
+  $('.non_logo_span').show();
+  $('.logo_row').show();
+};
 
 //DESCRIPTIONS
 var classicJersey = "Classic Jersey";
@@ -124,7 +194,7 @@ $('.color_option').hide();
 
 if(name == classicJersey) {
   $('#classicJersey').show();
-  $('#reversible').hide();
+  $('#rev_row').hide();
     $('#cardinal_solid_option').show();
     $('#gold_solid_option').show();
     $('#navy_solid_option').show();
@@ -142,7 +212,7 @@ else if(name == dazzleMicro) {
 }
 else if(name == fullButton) {
   $('#fullButton').show();
-  $('#reversible').hide();
+  $('#rev_row').hide();
     $('#black_solid_option').show();
     $('#navy_solid_option').show();
     $('#scarlet_solid_option').show();
@@ -156,7 +226,7 @@ else if(name == gameDazzle) {
 }
 else if(name == meshJersey) {
   $('#meshJersey').show();
-  $('#reversible').hide();
+  $('#rev_row').hide();
     $('#black_solid_option').show();
     $('#gold_solid_option').show();
     $('#navy_solid_option').show();
@@ -183,7 +253,7 @@ else if(name == reversibleJersey) {
 }
 else if(name == twoButton) {
   $('#twoButton').show();
-  $('#reversible').hide();
+  $('#rev_row').hide();
     $('#birch_solid_option').show();
     $('#black_solid_option').show();
     $('#navy_solid_option').show();
@@ -192,7 +262,7 @@ else if(name == twoButton) {
 }
 else if(name == tShirt) {
   $('#tShirt').show();
-  $('#reversible').hide();
+  $('#rev_row').hide();
     $('#black_solid_option').show();
     $('#cardinal_solid_option').show();
     $('#dark_green_solid_option').show();
@@ -223,7 +293,6 @@ $('#urlParams_price_36').html((cost_XXXIV).toFixed(2));
 $('#price_per_jersey').html((cost).toFixed(2));
 
 //COLOR SWATCHES
-
 //init color selection
 $(":radio[value="+color+"]").prop('checked', true);
 
@@ -618,14 +687,20 @@ function nextStep() {
 };
 nextStep();
 
+//SAVE BUTTON
+$('.save_btn').on('click', function(e) {
+  e.preventDefault();
+});
+
 //RESET BUTTON
-$('.reset_btn').on('click', function() {
+$('.reset_btn').on('click', function(e) {
   $('select').each(function() {
     var selectID = $(this).attr('id');
     var firstOption = $("#"+selectID+" option:first").val();
     $("#"+selectID+" option[value="+firstOption+"]").attr('selected', 'selected');
   });
   $('#team_name_input').val('').attr('placeholder','EAGLES');
+  e.preventDefault();
 });
 
 $('#team_name_input').on('click', function(){
@@ -638,8 +713,19 @@ $('#team_name_input').on('blur', function(){
   };
 });
 
+//CANCEL BUTTON
+$('.cancel_btn').on('click', function() {
+  var href = "../../sports/"+sport+"/jerseys/"+sport+"_jerseys.html";
+  window.location = href;
+});
+
+//FINALIZE BUTTON
+$('.finalize_btn').on('click', function(e) {
+  e.preventDefault();
+});
 
 });
+
 
 //CAPTURE VALUES AND SUBMIT FORM TO STEP 2
 function captureValues() {

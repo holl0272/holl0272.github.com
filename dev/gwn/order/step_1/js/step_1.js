@@ -103,6 +103,7 @@ function shortsDisplay() {
   if(name == meshShorts) {
     $('.shorts_show').show();
     $('.shorts_hide').hide();
+    $("#image_container a > img").unwrap();
   };
 };
 
@@ -271,6 +272,7 @@ function imageDisplay() {
 //TOGGLE ANIMATED CALCULATION GRAPHIC
 function calculating() {
   $('#next_step').hide();
+  $('#save_clear_btns').hide();
   $('#calculated').hide();
   $('#calculating').show();
 };
@@ -305,6 +307,7 @@ $('#order_qty').keyup(function(){
 });
 //on keydown, clear the countdown
 $('#order_qty').keydown(function(){
+
   clearTimeout(typingTimer);
 });
 
@@ -354,11 +357,17 @@ function calculateCost(qty) {
       price_per += teamNameDesign();
     };
 
-    if((customLogo() == 35) && (qty > 0)) {
-      var per_jersey = customLogo()/qty;
-      price_per += per_jersey;
-      $('#custom_logo_cost font').html(qty);
-      $('#custom_logo_cost span').html((per_jersey).toFixed(2));
+    if((customLogo() != 0) && (qty > 0)) {
+      if(customLogo() == 35) {
+        var per_jersey = customLogo()/qty;
+        price_per += per_jersey;
+        $('#custom_logo_cost font').html(qty);
+        $('#custom_logo_cost span').html((per_jersey).toFixed(2));
+      };
+      if(customLogo() == 24) {
+        $('#custom_logo_cost').hide();
+        $('#custom_logo_cost_waived').show();
+      };
     };
 
   $('#price_per_jersey').html((price_per).toFixed(2));
@@ -366,11 +375,11 @@ function calculateCost(qty) {
 
 function buildRows(qty) {
   var row_number = "<td class='row_number'><font></font></td>";
-  var product_size = "<td>Size<select style='margin-left: 10px;''><option value='m' selected>M</option><option value='l'>L</option><option value='xl'>XL</option><option value='xxl'>XXL</option><option value='xxXl'>XXXL</option></select></td>";
-  var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input'><input type='text' class='input_num' style='width: 25px;'></td>";
-  var name_on_jersey = "<td>Name On Jersey</td><td><input type='text' class='input_num' style='width: 150px;'></td>";
+  var product_size = "<td>Size<select style='margin-left: 10px;' class='size_select'><option value='m' selected>M</option><option value='l'>L</option><option value='xl'>XL</option><option value='xxl'>XXL</option><option value='xxXl'>XXXL</option></select></td>";
+  var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input'><input type='text' class='number_input' style='width: 25px;'></td>";
+  var name_on_jersey = "<td>Name On Jersey</td><td><input type='text' class='name_input' style='width: 150px;'></td>";
   var product_qty = "<td>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
-    var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; float:right; padding-left:5px; cursor: pointer;'> - </span></td><span>";
+  var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; float:right; padding-left:5px; cursor: pointer;'> - </span></td><span>";
 
   if(name != meshShorts) {
     var jersey_row = "<tr>"+row_number+product_size+product_number+name_on_jersey+product_qty+qty_btns+"</tr>";
@@ -442,7 +451,7 @@ function buildRows(qty) {
       else {
         $('#sub_selections table tr').filter(":visible").last().hide();
       };
-              togglePlusLess();
+      togglePlusLess();
     };
   });
 
@@ -583,24 +592,31 @@ $('#team_name_design').on('change', function() {
 
 //DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
 function customLogo() {
-  var custom_logo = 35;
+  var qty = Number($('#order_qty').val());
+  var custom_logo = 24;
   if($('#custom_logo').val() == "yes") {
     $('#custom_logo_note').hide();
     $('#custom_logo_cost').show();
+    if(qty <= 24) {
+      custom_logo = 35;
+    };
     return custom_logo;
   }
   else {
     $('#custom_logo_cost').hide();
+    $('#custom_logo_cost_waived').hide();
     $('#custom_logo_note').show();
     return 0;
   }
 };
 
 $('#custom_logo').on('change', function() {
+  var qty = Number($('#order_qty').val());
   if($(this).val() == "yes"){
     $('#step_1_logo').val('yes');
   }
   else {
+    $('#step_1_logo').val('no');
     $('#step_1_print_names').val('no');
   };
   if($('#order_qty').val() == ""){
@@ -614,18 +630,25 @@ $('#custom_logo').on('change', function() {
 
 //NEXT STEP
 function nextStep() {
-  var qty = Number($('#order_qty').val())
-  if(qty == 0) {
+  var qty = Number($('#order_qty').val());
+  if((qty == 0) || (isNaN(qty))) {
     $('#next_step').hide();
+    $('#save_clear_btns').hide();
   }
   else{
     $('#next_step').show();
+    $('#save_clear_btns').show();
   }
 };
 nextStep();
 
+//SAVE BUTTON
+$('.save_btn').on('click', function(e) {
+  e.preventDefault();
+});
+
 //RESET BUTTON
-$('.reset_btn').on('click', function() {
+$('.reset_btn').on('click', function(e) {
   $('select').each(function() {
     var selectID = $(this).attr('id');
     var firstOption = $("#"+selectID+" option:first").val();
@@ -638,6 +661,21 @@ $('.reset_btn').on('click', function() {
   $('#sub_selections table tr').remove();
   $('input[type=radio]').prop('checked', false).filter(":visible").first().prop('checked', true);
   imageDisplay();
+  e.preventDefault();
+});
+
+//CANCEL BUTTON
+$('.cancel_btn').on('click', function() {
+  var href = "../../sports/"+sport+"/jerseys/"+sport+"_jerseys.html";
+  window.location = href;
+});
+
+//CLEAR ALL JERSEY ROW DATA
+$('.clear_btn').on('click', function(e) {
+  var qty = parseInt($('#order_qty').val());
+  $('#sub_selections table tr').remove();
+  buildRows(qty)
+  e.preventDefault();
 });
 
 });
@@ -645,6 +683,7 @@ $('.reset_btn').on('click', function() {
 //CAPTURE VALUES AND SUBMIT FORM TO STEP 2
 function captureValues() {
 //url vars
+$('#step_1_url').val(window.location.href)
 $('#step_1_sport').val(sport);
 $('#step_1_name').val(name);
 $('#step_1_img').val(img);

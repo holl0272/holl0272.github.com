@@ -112,7 +112,7 @@
             </div>
             <div style="float: right;">
               <div style="float: right;">
-                <a href="javascript: window.history.go(-1)" class="cancel_btn">CANCEL&nbsp;&nbsp;X</a>
+                <a href="#" class="cancel_btn">CANCEL&nbsp;&nbsp;X</a>
               </div>
                 <div class="btn_spacer">&nbsp;</div>
               <div style="float: left;">
@@ -625,6 +625,7 @@
             DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
             <span class="remove_span" id="custom_logo_note">( One time $35 fee )</span>
             <span class="add_on" id="custom_logo_cost">[ $35 fee/<font></font> jerseys  =  $<span></span>/per jersey ]</span>
+            <span class="add_on" id="custom_logo_cost_waived">[ $35 fee is waived for >24 jerseys ]</span>
             <select style="float:right;" id="custom_logo">
               <option value="no" selected>No</option>
               <option value="yes">Yes</option>
@@ -651,9 +652,14 @@
             <table style="width:100%;">
               <!--js buildRows(qty)-->
             </table>
+            <div style="width:100%;" id="save_clear_btns">
+              <a href='#' class='save_btn' style="float:left;">SAVE</a>
+              <a href='#' class='clear_btn' style="float:right;">CLEAR ALL</a>
+            </div>
           </div>
           <div id="next_step">
             <form action="../step_2/step_2.html" method="get" id="step_1_form">
+              <input type="hidden" name="url" id="step_1_url" value="">
               <input type="hidden" name="sport" id="step_1_sport" value="">
               <input type="hidden" name="name" id="step_1_name" value="">
               <input type="hidden" name="img" id="step_1_img" value="">
