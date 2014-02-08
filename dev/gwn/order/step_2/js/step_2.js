@@ -114,13 +114,9 @@ $("#"+sport+"_box_mobile").show();
 if((print_names == 'no') && (print_numbers == 'no') && (team_name == 'none') && (logo == 'no')) {
   $('#resulting_rows').hide();
   $('#no_results').show();
-}
+};
 if((print_names == 'no') && (print_numbers == 'no') && (team_name == 'none') && (logo == 'yes')) {
-  $('.logo_span').show();
   $('.non_logo_span').hide();
-}
-else{
-  $('.logo_span').hide();
 };
 //rev row
 if(rev == 'no') {
@@ -152,6 +148,7 @@ if(team_name != 'letters_graphic') {
 if(logo == 'yes') {
   $('#placement_row').show();
   $('#graphic_row').hide();
+  $('#team_lettering_row').hide();
 }
 else {
   $('.logo_row').hide();
@@ -165,11 +162,11 @@ if((print_names == 'no')) {
   $('#print_names_row').hide();
 };
 
-if(((team_name != 'none') || (print_names != 'none')) && (logo == 'yes')) {
-  $('.logo_span').hide();
-  $('.non_logo_span').show();
-  $('.logo_row').show();
-};
+// if(((team_name != 'none') || (print_names != 'none')) && (logo == 'yes')) {
+//   $('.logo_span').hide();
+//   $('.non_logo_span').show();
+//   $('.logo_row').show();
+// };
 
 //DESCRIPTIONS
 var classicJersey = "Classic Jersey";
