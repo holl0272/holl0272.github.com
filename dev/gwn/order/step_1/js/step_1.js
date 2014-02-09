@@ -90,13 +90,13 @@ $("#"+sport+"_box_mobile").show();
 
 //DESCRIPTIONS
 var classicJersey = "Classic Jersey";
-var dazzleMicro = "Dazzle-Micro<br>Mesh Jersey";
-var fullButton = "Full-Button<br>Mesh Jersey";
-var gameDazzle = "Game Dazzle<br>Reversible Jersey";
+var dazzleMicro = "Dazzle-Micro Mesh Jersey";
+var fullButton = "Full-Button Mesh Jersey";
+var gameDazzle = "Game Dazzle Reversible Jersey";
 var meshJersey = "Mesh Jersey";
 var meshShorts = "Mesh Shorts";
 var reversibleJersey = "Reversible Jersey";
-var twoButton = "Two Button<br>Jersey";
+var twoButton = "Two Button Jersey";
 var tShirt = "T-Shirt";
 
 function shortsDisplay() {

@@ -9,10 +9,18 @@
   background-color: #11013b;
   font-family: 'Lato', sans-serif;
 }
+.reset_btn {
+  margin-top: 0;
+  line-height: 1;
+}
 .cancel_btn:hover, .reset_btn:hover, .save_btn:hover, .clear_btn:hover {
   margin: -1px;
   border: 1px solid yellow;
   margin-top: 9px;
+}
+.reset_btn:hover {
+  margin-top: 0;
+  margin: -1px;
 }
 .sport_box {
   margin: 0 15px 10px 0
