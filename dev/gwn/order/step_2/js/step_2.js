@@ -120,24 +120,10 @@ if((print_names == 'no') && (print_numbers == 'no') && (team_name == 'none') && 
 };
 //rev row
 if(rev == 'no') {
-  var oneColor = "<option value='oneColor' selected=''>&#60; Color &#62;</option>";
-  $('#color_1_select').prepend(oneColor);
   $('#rev_row').hide();
 }
 else {
   if(color != "navy_gold") {
-
-
-  // var captionColor  = color;
-  //     captionColor = color.replace(/_/g, " ").replace('solid', '');
-  // var captionProduct = name.replace('<br>', '&nbsp;');
-  // var caption = (captionColor+" "+captionProduct).replace(/(^|\s)\S/g, function(match) {
-  //   return match.toUpperCase();
-  //   });
-
-
-
-
     var upperCaseFirstColor = color;
         upperCaseFirstColor = color.replace(/_/g, " ").replace('solid', '');
         upperCaseFirstColor = upperCaseFirstColor.toLowerCase().replace(/\b[a-z]/g, function(letter) {
@@ -390,6 +376,15 @@ function reversableCosts() {
 /*
     .:| ORPER OPTIONS |:.
 */
+
+$('select').change(function() {
+  if($(this).val() != "default") {
+    $(this).prev().find('img').attr('src', 'images/check.png');
+  }
+  else {
+    $(this).prev().find('img').attr('src', 'images/info.png');
+  }
+});
 
 //HOW MANY JERSEYS DO YOU WANT TO ORDER?
 var typingTimer;
