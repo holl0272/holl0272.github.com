@@ -120,7 +120,39 @@ if((print_names == 'no') && (print_numbers == 'no') && (team_name == 'none') && 
 };
 //rev row
 if(rev == 'no') {
+  var oneColor = "<option value='oneColor' selected=''>&#60; Color &#62;</option>";
+  $('#color_1_select').prepend(oneColor);
   $('#rev_row').hide();
+}
+else {
+  if(color != "navy_gold") {
+
+
+  // var captionColor  = color;
+  //     captionColor = color.replace(/_/g, " ").replace('solid', '');
+  // var captionProduct = name.replace('<br>', '&nbsp;');
+  // var caption = (captionColor+" "+captionProduct).replace(/(^|\s)\S/g, function(match) {
+  //   return match.toUpperCase();
+  //   });
+
+
+
+
+    var upperCaseFirstColor = color;
+        upperCaseFirstColor = color.replace(/_/g, " ").replace('solid', '');
+        upperCaseFirstColor = upperCaseFirstColor.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+            return letter.toUpperCase();
+        });
+    var colorOne = "<option value='colorOne' selected=''>"+upperCaseFirstColor+" Side</option>";
+    $('#color_1_select').prepend(colorOne);
+  }
+  else{
+    var colorOne = "<option value='colorOne' selected=''>Navy Side</option>";
+    $('#color_1_select').prepend(colorOne);
+    var colorTwo = "<option value='colorOne' selected=''>Gold Side</option>";
+    $('#color_2_select').find(':first-child').remove()
+    $('#color_2_select').prepend(colorTwo);
+  };
 };
 //font row
 $('#both_spans').hide();
