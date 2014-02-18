@@ -129,7 +129,8 @@ else {
         upperCaseFirstColor = upperCaseFirstColor.toLowerCase().replace(/\b[a-z]/g, function(letter) {
             return letter.toUpperCase();
         });
-    var colorOne = "<option value='colorOne' selected=''>"+upperCaseFirstColor+" Side</option>";
+    var colorOne = "<option value='default' selected=''>"+upperCaseFirstColor+" Side</option>";
+    $('#color_1_select').find(':first-child').remove()
     $('#color_1_select').prepend(colorOne);
   }
   else{
@@ -348,7 +349,9 @@ function imageColor() {
 function imageDisplay() {
   var color = imageColor();
   var img_source = "../../images/products/"+img+color+".gif";
+  var img_back_source = "../../images/products/back/"+img+color+".gif";
   $('#product_img').attr('src', img_source);
+  $('#product_back_img').attr('src', img_back_source);
 }
 
 //TOGGLE ANIMATED CALCULATION GRAPHIC

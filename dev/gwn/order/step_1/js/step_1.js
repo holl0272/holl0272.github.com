@@ -92,10 +92,14 @@ $("#"+sport+"_box_mobile").show();
 var classicJersey = "Classic Jersey";
 var dazzleMicro = "Dazzle-Micro Mesh Jersey";
 var fullButton = "Full-Button Mesh Jersey";
+var gameDay = "Football Game Day Jersey";
 var gameDazzle = "Game Dazzle Reversible Jersey";
 var meshJersey = "Mesh Jersey";
 var meshShorts = "Mesh Shorts";
+var mwReversible = "Moisture Wicking Reversible Jersey";
+var mwtShirt = "Moisture Wicking T-Shirt";
 var reversibleJersey = "Reversible Jersey";
+var three_quarter_sleeve = "3/4 Sleeve Jersey";
 var twoButton = "Two Button Jersey";
 var tShirt = "T-Shirt";
 
@@ -135,6 +139,15 @@ else if(name == fullButton) {
     $('#navy_solid_option').show();
     $('#scarlet_solid_option').show();
 }
+else if(name == gameDay) {
+  $('#gameDay').show();
+  $('#reversible').hide();
+    $('#black_solid_option').show();
+    $('#maroon_solid_option').show();
+    $('#navy_solid_option').show();
+    $('#purple_solid_option').show();
+    $('#scarlet_solid_option').show();
+}
 else if(name == gameDazzle) {
   $('#gameDazzle').show();
     $('#black_option').show();
@@ -159,6 +172,22 @@ else if(name == meshShorts) {
     $('#scarlet_solid_option').show();
   shortsDisplay();
 }
+else if(name == mwReversible) {
+  $('#mwReversible').show();
+    $('#black_option').show();
+    $('#navy_option').show();
+    $('#purple_option').show();
+    $('#scarlet_option').show();
+}
+else if(name == mwtShirt) {
+  $('#mwtShirt').show();
+  $('#reversible').hide();
+    $('#black_solid_option').show();
+    $('#birch_solid_option').show();
+    $('#gold_solid_option').show();
+    $('#scarlet_solid_option').show();
+    $('#white_solid_option').show();
+}
 else if(name == reversibleJersey) {
   $('#reversibleJersey').show();
     $('#black_option').show();
@@ -167,6 +196,14 @@ else if(name == reversibleJersey) {
     $('#navy_option').show();
     $('#navy_gold_option').show();
     $('#purple_option').show();
+    $('#scarlet_option').show();
+}
+else if(name == three_quarter_sleeve) {
+  $('#three_quarter_sleeve').show();
+  $('#reversible').hide();
+    $('#black_option').show();
+    $('#navy_gold_option').show();
+    $('#navy_option').show();
     $('#scarlet_option').show();
 }
 else if(name == twoButton) {
