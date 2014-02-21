@@ -78,7 +78,6 @@ function randomColor() {
   var royal = "royal";
   var scarlet = "scarlet";
   var white = "white";
-  var white_gold = "white_gold";
 
   var classic = [];
   classic.push(cardinal, gold, navy, oxford, scarlet, white);
@@ -123,7 +122,7 @@ function randomColor() {
   $('#mw_rev_image').attr('src', mwrev_img_source);
 
   var mwt = [];
-  mwt.push(black, birch, gold, scarlet, white);
+  mwt.push(black, charcoal, optic_yellow, scarlet, white);
   var mwtColor = Math.floor(Math.random()*mwt.length);
   var mwt_img_source = "../../../images/products/mwt_"+mwt[mwtColor]+"_solid.gif";
   $('#mwt_image').attr('src', mwt_img_source);

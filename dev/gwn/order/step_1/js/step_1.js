@@ -183,8 +183,8 @@ else if(name == mwtShirt) {
   $('#mwtShirt').show();
   $('#reversible').hide();
     $('#black_solid_option').show();
-    $('#birch_solid_option').show();
-    $('#gold_solid_option').show();
+    $('#charcoal_solid_option').show();
+    $('#optic_yellow_solid_option').show();
     $('#scarlet_solid_option').show();
     $('#white_solid_option').show();
 }
@@ -202,7 +202,7 @@ else if(name == three_quarter_sleeve) {
   $('#three_quarter_sleeve').show();
   $('#reversible').hide();
     $('#black_option').show();
-    $('#navy_gold_option').show();
+    $('#gold_option').show();
     $('#navy_option').show();
     $('#scarlet_option').show();
 }
@@ -302,8 +302,10 @@ function imageDisplay() {
     });
   var img_source = "../../images/products/"+img+color+".gif";
   var lightbox_img = "../../images/products/large/"+img+color+".gif";
-  $('#product_img').attr('src', img_source);
-  $('#product_img').parent().attr('href', lightbox_img).attr('data-lightbox', img+color).attr('title', caption);
+  var lightbox_img_back = "../../images/products/back/large/"+img+color+".gif";
+  $('#product_img_front').attr('src', img_source);
+  $('#product_img_front').parent().attr('href', lightbox_img).attr('data-lightbox', img+color).attr('title', caption);
+  $('#product_img_back').attr('href', lightbox_img_back).attr('data-lightbox', img+color).attr('title', caption+' (Back)');
 }
 
 //TOGGLE ANIMATED CALCULATION GRAPHIC
