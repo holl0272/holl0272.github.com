@@ -336,6 +336,15 @@ $('.color_square').on('click', function() {
 //IMAGE
 //init image selection
 imageDisplay();
+//error handeling
+$('.product_img').error(function(){
+  $(this).attr('src', '../../images/products/no_preview.gif').parent().css('cursor', 'default');
+  var thisImg = $(this).attr('id');
+  $("#image_container > a #"+thisImg).unwrap();
+});
+$('.lightbox_img').error(function() {
+  $(this).parent().attr('href','../../images/products/large/no_preview.gif');
+});
 //captures the image color based on the radio selection
 function imageColor() {
   var selectedColor = "";
@@ -348,11 +357,23 @@ function imageColor() {
 //concatenate the image source
 function imageDisplay() {
   var color = imageColor();
-  var img_source = "../../images/products/"+img+color+".gif";
-  var img_back_source = "../../images/products/back/"+img+color+".gif";
-  $('#product_img').attr('src', img_source);
-  $('#product_back_img').attr('src', img_back_source);
-}
+  var captionColor  = color;
+      captionColor = color.replace(/_/g, " ").replace('solid', '');
+  var captionProduct = name.replace('<br>', '&nbsp;');
+  var caption = (captionColor+" "+captionProduct).replace(/(^|\s)\S/g, function(match) {
+    return match.toUpperCase();
+    });
+  var img_source_front = "../../images/products/"+img+color+".gif";
+  var img_source_back = "../../images/products/back/"+img+color+".gif";
+  $('#product_img_front').attr('src', img_source_front);
+  $('#product_img_back').attr('src', img_source_back);
+  var lightbox_img_front = "../../images/products/large/"+img+color+".gif";
+  var lightbox_img_back = "../../images/products/back/large/"+img+color+".gif";
+  $('#product_img_front').parent().attr('href', lightbox_img_front).attr('title', caption+' (Front)');
+  $('#product_img_back').parent().attr('href', lightbox_img_back).attr('title', caption+' (Back)');
+  $('#product_img_front_large').attr('src', lightbox_img_front);
+  $('#product_img_back_large').attr('src', lightbox_img_back);
+};
 
 //TOGGLE ANIMATED CALCULATION GRAPHIC
 function calculating() {

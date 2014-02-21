@@ -333,10 +333,18 @@
           </div>
           <div style="background-color: white; width:100%; display:inline-block;  margin: 10px 0 10px 0;">
             <div id="image_container" stye="float:none;"> <!--dev style-->
-              <image src="" alt="Product Image" id="product_img"><!--urlParams["img"]-->
-              <image src="" alt="Back Image" id="product_back_img" style="float: right; margin-right: 30px;"><!--urlParams["img"]-->
+              <a href="" data-lightbox="product_img_front" title="">
+                <image src="" alt="Product Image Front" id="product_img_front" class="product_img">
+                <image style="display:none;" src="" id="product_img_front_large" class="lightbox_img">
+              </a><!--urlParams["img"]-->
+              <a href="" data-lightbox="product_img_back" title="">
+                <image src="" alt="Product Image Back" id="product_img_back" style="float: right; margin-right: 30px;" class="product_img">
+                <image style="display:none;" src="" id="product_img_back_large" class="lightbox_img">
+              </a>
             </div>
 <!--
+
+
             <div id="description_container">
               <div id="classicJersey" class="description">
                 100% heavyweight cotton<br>
@@ -860,7 +868,6 @@
                     <a href="images/info/varsity.gif" data-lightbox="fonts" title="Font Option:  VARSITY"></a>
                     <a href="images/info/brush.gif" data-lightbox="fonts" title="Font Option:  BRUSH SCRIPT"></a>
                     <a href="images/info/greek.gif" data-lightbox="fonts" title="Font Option:  GREEK"></a>
-
                     <a href="images/info/baseball_graphic.gif" data-lightbox="graphics" title="Stock Image:  BASEBALL GRAPHIC"></a>
                     <a href="images/info/baseball_script.gif" data-lightbox="graphics" title="Stock Image:  BASEBALL SCRIPT GRAPHIC"></a>
                     <a href="images/info/basketball_graphic.gif" data-lightbox="graphics" title="Stock Image:  BASKETBALL GRAPHIC"></a>
@@ -875,12 +882,10 @@
                     <a href="images/info/softball_script.gif" data-lightbox="graphics" title="Stock Image:  SOFTBALL SCRIPT GRAPHIC"></a>
                     <a href="images/info/volleyball_graphic.gif" data-lightbox="graphics" title="Stock Image:  VOLLEYBALL GRAPHIC"></a>
                     <a href="images/info/volleyball_script.gif" data-lightbox="graphics" title="Stock Image:  VOLLEYBALL SCRIPT GRAPHIC"></a>
-
                     <a href="images/info/straight.gif" data-lightbox="team_lettering" title="Lettering Style:  STRAIGHT"></a>
                     <a href="images/info/vert_arch.gif" data-lightbox="team_lettering" title="Lettering Style:  VERTICAL ARCH"></a>
                     <a href="images/info/straight_top.gif" data-lightbox="team_lettering" title="Lettering Style:  STRAIGHT TOP"></a>
                     <a href="images/info/bowtie.gif" data-lightbox="team_lettering" title="Lettering Style:  BOWTIE"></a>
-
                     <a href="images/info/straight.gif" data-lightbox="player_lettering" title="Lettering Style:  STRAIGHT"></a>
                     <a href="images/info/vert_arch.gif" data-lightbox="player_lettering" title="Lettering Style:  VERTICAL ARCH"></a>
 

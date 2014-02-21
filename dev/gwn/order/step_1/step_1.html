@@ -119,8 +119,13 @@
           </div>
           <div style="background-color: white; width:100%; display:inline-block;  margin: 10px 0 10px 0;">
             <div id="image_container">
-              <a href="" data-lightbox="" title=""><image src="" alt="Product Image Front" id="product_img_front"></a><!--urlParams["img"]-->
-              <a href="" data-lightbox="" title="" id="product_img_back"></a>
+              <a href="" data-lightbox="" title=""><!--urlParams["img"]-->
+                <image src="" alt="Product Image Front" id="product_img_front" class="product_img">
+                <image style="display:none;" src="" id="product_img_front_large" class="lightbox_img">
+              </a>
+              <a href="" data-lightbox="" title="" id="product_img_back">
+                <image style="display:none;" src="" id="product_img_back_large" class="lightbox_img">
+              </a>
             </div>
             <div id="description_container">
               <!--urlParams["name"]-->

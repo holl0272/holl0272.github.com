@@ -107,7 +107,7 @@ function shortsDisplay() {
   if(name == meshShorts) {
     $('.shorts_show').show();
     $('.shorts_hide').hide();
-    $("#image_container a > img").unwrap();
+    //$("#image_container a > img").unwrap();
   };
 };
 
@@ -282,6 +282,15 @@ $('.color_square').on('click', function() {
 //IMAGE
 //init image selection
 imageDisplay();
+//error handeling
+$('.product_img').error(function(){
+  $(this).attr('src', '../../images/products/no_preview.gif').parent().css('cursor', 'default');
+  var thisImg = $(this).attr('id');
+  $("#image_container > a #"+thisImg).unwrap();
+});
+$('.lightbox_img').error(function() {
+  $(this).parent().attr('href','../../images/products/large/no_preview.gif');
+});
 //captures the image color based on the radio selection
 function imageColor() {
   var selectedColor = "";
@@ -291,6 +300,7 @@ function imageColor() {
   }
   return selectedColor;
 };
+
 //concatenate the image source
 function imageDisplay() {
   var color = imageColor();
@@ -304,9 +314,15 @@ function imageDisplay() {
   var lightbox_img = "../../images/products/large/"+img+color+".gif";
   var lightbox_img_back = "../../images/products/back/large/"+img+color+".gif";
   $('#product_img_front').attr('src', img_source);
+  $('#product_img_front_large').attr('src', lightbox_img);
+  $('#product_img_back_large').attr('src', lightbox_img_back);
   $('#product_img_front').parent().attr('href', lightbox_img).attr('data-lightbox', img+color).attr('title', caption);
   $('#product_img_back').attr('href', lightbox_img_back).attr('data-lightbox', img+color).attr('title', caption+' (Back)');
 }
+
+
+
+
 
 //TOGGLE ANIMATED CALCULATION GRAPHIC
 function calculating() {
