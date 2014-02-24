@@ -228,6 +228,13 @@ else if(name == tShirt) {
     $('#scarlet_solid_option').show();
     $('#white_solid_option').show();
 };
+//set value of step_1_rev_product
+if($('#reversible').css('display') == "none") {
+  $('#step_1_rev_product').val('no')
+}
+else{
+  $('#step_1_rev_product').val('yes')
+};
 
 //COST
 var cost = (price / 100);
@@ -319,10 +326,6 @@ function imageDisplay() {
   $('#product_img_front').parent().attr('href', lightbox_img).attr('data-lightbox', img+color).attr('title', caption);
   $('#product_img_back').attr('href', lightbox_img_back).attr('data-lightbox', img+color).attr('title', caption+' (Back)');
 }
-
-
-
-
 
 //TOGGLE ANIMATED CALCULATION GRAPHIC
 function calculating() {
@@ -442,7 +445,7 @@ function buildRows(qty) {
   else {
     var jersey_row = "<tr>"+row_number+product_size+product_qty+qty_btns+"</tr>";
   };
-  //builds rows X quty input
+  //builds rows X qty input
   for (var i = 1; i <= qty; i++) {
     $('#sub_selections table').append(jersey_row);
   };
@@ -523,7 +526,6 @@ function buildRows(qty) {
 };
 
 //DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
-
 function addNumbers() {
   var numbers_one_side = 2;  //add $2
   var numbers_both_sides = 4; //add $4
@@ -561,6 +563,11 @@ $('#print_numbers_select').on('change', function() {
   };
   re_calculate();
 });
+
+if($('#print_numbers_select').val() == "yes") {
+  $('#print_numbers_yes').show();
+  $('#numbers_front_back_cost').show();
+};
 
 //WANT TO PRINT NUMBERS ON FRONT AND BACK?
 $('#numbers_front_back').on('change', function() {
@@ -624,7 +631,6 @@ $('#reversible_only').on('change', function() {
   re_calculate();
 });
 
-
 //WHAT DO YOU WANT FOR YOUR TEAM NAME DESIGN?
 function teamNameDesign() {
   var team_name_design = 4;  //add $4
@@ -642,8 +648,20 @@ function teamNameDesign() {
 $('#team_name_design').on('change', function() {
   var designOption = $(this).val();
   $('#step_1_team_name').val(designOption);
+  if(designOption != "none" ) {
+    $('#custom_logo').val('no');
+    $('#step_1_logo').val('no');
+    $('#custom_logo_line').hide();
+  }
+  else {
+    $('#custom_logo_line').show();
+  }
   re_calculate();
 });
+
+if($('#team_name_design').val() != "none") {
+  $('#custom_logo_line').hide();
+};
 
 //DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
 function customLogo() {
@@ -654,6 +672,7 @@ function customLogo() {
     $('#custom_logo_cost').show();
     if(qty <= 24) {
       custom_logo = 35;
+      $('#custom_logo_cost_waived').hide();
     };
     return custom_logo;
   }
@@ -669,8 +688,10 @@ $('#custom_logo').on('change', function() {
   var qty = Number($('#order_qty').val());
   if($(this).val() == "yes"){
     $('#step_1_logo').val('yes');
+    $('#name_design').hide();
   }
   else {
+    $('#name_design').show();
     $('#step_1_logo').val('no');
     $('#step_1_print_names').val('no');
   };
@@ -682,6 +703,10 @@ $('#custom_logo').on('change', function() {
     re_calculate();
   };
 });
+
+if($('#custom_logo').val() == "yes") {
+  $('#name_design').hide();
+};
 
 //NEXT STEP
 function nextStep() {
@@ -713,6 +738,8 @@ $('.reset_btn').on('click', function(e) {
   nextStep();
   re_calculate();
   $('#print_numbers_select').change();
+  $('#name_design').show();
+  $('#custom_logo_line').show();
   $('#sub_selections table tr').remove();
   $('input[type=radio]').prop('checked', false).filter(":visible").first().prop('checked', true);
   imageDisplay();

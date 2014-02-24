@@ -25,6 +25,7 @@ var img = urlParams["img"];
 var price = urlParams["price"];
 var color = urlParams["color"];
 var qty = urlParams["qty"];
+var rev_prod = urlParams["rev_product"];
 var rev = urlParams["rev"];
 var print_numbers = urlParams["print_numbers"];
 var number_placement = urlParams["number_placement"];
@@ -109,6 +110,16 @@ $('.sport_box_mobile').hide();
 $("#"+sport+"_box").show();
 $("#"+sport+"_box_mobile").show();
 
+//LIGHTBOX IMAGES BASED ON SPORT
+$("."+sport+"_stock").attr('data-lightbox', 'graphics');
+var graphicCount = $("[data-lightbox='graphics']").length - 1;
+var upperCaseSport = sport;
+    upperCaseSport = sport.replace(/_/g, " ").replace('solid', '');
+    upperCaseSport = upperCaseSport.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+        return letter.toUpperCase();
+    });
+$("#stock_graphics").attr('href', "images/info/"+sport+".png").attr('title', graphicCount+" Stock "+upperCaseSport+" Graphics");
+
 //STEP ONE RESULTS DISPLAY ROWS
 //color row
 if((print_names == 'no') && (print_numbers == 'no') && (team_name == 'none') && (logo == 'no')) {
@@ -119,26 +130,53 @@ if((print_names == 'no') && (print_numbers == 'no') && (team_name == 'none') && 
   $('.non_logo_span').hide();
 };
 //rev row
-if(rev == 'no') {
+if(rev_prod == 'no'){
+  $('#rev_prod_side_row').hide()
   $('#rev_row').hide();
 }
 else {
-  if(color != "navy_gold") {
-    var upperCaseFirstColor = color;
-        upperCaseFirstColor = color.replace(/_/g, " ").replace('solid', '');
-        upperCaseFirstColor = upperCaseFirstColor.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-            return letter.toUpperCase();
-        });
-    var colorOne = "<option value='default' selected=''>"+upperCaseFirstColor+" Side</option>";
-    $('#color_1_select').find(':first-child').remove()
-    $('#color_1_select').prepend(colorOne);
+  if(rev == 'no') {
+    $('#rev_row').hide();
+    $('#rev_prod_side_row').show();
+    if(color != "navy_gold") {
+      var upperCaseFirstSideColor = color;
+          upperCaseFirstSideColor = color.replace(/_/g, " ").replace('solid', '');
+          upperCaseFirstSideColor = upperCaseFirstSideColor.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+              return letter.toUpperCase();
+          });
+      var colorSideOne = "<option value="+upperCaseFirstSideColor.toLowerCase()+">"+upperCaseFirstSideColor+" Side</option>";
+      var colorSideWhite = "<option value='white'>White Side</option>";
+      $('#side_select').append(colorSideOne);
+      $('#side_select').append(colorSideWhite);
+    }
+    else{
+      var colorSideOne = "<option value='navy'>Navy Side</option>";
+      var colorSideTwo = "<option value='gold'>Gold Side</option>";
+      $('#side_select').append(colorSideOne);
+      $('#side_select').append(colorSideTwo);
+    };
   }
-  else{
-    var colorOne = "<option value='colorOne' selected=''>Navy Side</option>";
-    $('#color_1_select').prepend(colorOne);
-    var colorTwo = "<option value='colorOne' selected=''>Gold Side</option>";
-    $('#color_2_select').find(':first-child').remove()
-    $('#color_2_select').prepend(colorTwo);
+  else {
+    $('#rev_prod_side_row').hide();
+    $('#rev_row').show();
+    if(color != "navy_gold") {
+      var upperCaseFirstColor = color;
+          upperCaseFirstColor = color.replace(/_/g, " ").replace('solid', '');
+          upperCaseFirstColor = upperCaseFirstColor.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+              return letter.toUpperCase();
+          });
+      var colorOne = "<option value='default' selected>"+upperCaseFirstColor+" Side</option>";
+      $('#color_1_select').prepend(colorOne);
+      $('#color_1_select option:eq(1)').remove();
+    }
+    else{
+      var colorOne = "<option value='default' selected>Navy Side</option>";
+      $('#color_1_select').prepend(colorOne);
+      $('#color_1_select option:eq(1)').remove();
+      var colorTwo = "<option value='default' selected>Gold Side</option>";
+      $('#color_2_select').find(':first-child').remove()
+      $('#color_2_select').prepend(colorTwo);
+    };
   };
 };
 //font row
@@ -163,6 +201,18 @@ if(team_name == 'none') {
 //graphic row
 if(team_name != 'letters_graphic') {
   $('#graphic_row').hide();
+}
+else {
+  $("."+sport+"_stock").each(function(){
+    var graphicId = $(this).attr('id');
+    var graphicValue  = graphicId;
+        graphicValue = graphicValue.replace(/_/g, " ");
+        graphicValue = graphicValue.replace(/(^|\s)\S/g, function(match) {
+      return match.toUpperCase();
+      });
+    var graphicOption = "<option value="+graphicId+">"+graphicValue+"</option>"
+    $('#graphic_select').append(graphicOption)
+  });
 };
 if(logo == 'yes') {
   $('#placement_row').show();

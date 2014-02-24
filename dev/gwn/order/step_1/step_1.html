@@ -694,21 +694,25 @@
                 <option value="yes">Yes</option>
               </select><br>
             </span>
-            WHAT DO YOU WANT FOR YOUR TEAM NAME DESIGN?
-            <span class="add_on  reversable" id="team_name_design_cost">[ Additional: $<span></span>.00 ]</span>
-            <select style="float:right;" id="team_name_design">
-              <option value="none" selected>None</option>
-              <option value="letters">Letters Only</option>
-              <option value="letters_graphic">Letters & Graphic</option>
-            </select><br>
-            DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
-            <span class="remove_span" id="custom_logo_note">( One time $35 fee )</span>
-            <span class="add_on" id="custom_logo_cost">[ $35 fee/<font></font> jerseys  =  $<span></span>/per jersey ]</span>
-            <span class="add_on" id="custom_logo_cost_waived">[ $35 fee is waived for >24 jerseys ]</span>
-            <select style="float:right;" id="custom_logo">
-              <option value="no" selected>No</option>
-              <option value="yes">Yes</option>
-            </select><br>
+            <span id="name_design">
+              WHAT DO YOU WANT FOR YOUR TEAM NAME DESIGN?
+              <span class="add_on  reversable" id="team_name_design_cost">[ Additional: $<span></span>.00 ]</span>
+              <select style="float:right;" id="team_name_design">
+                <option value="none" selected>None</option>
+                <option value="letters">Letters Only</option>
+                <option value="letters_graphic">Letters & Graphic</option>
+              </select><br>
+            </span>
+            <span id="custom_logo_line">
+              DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
+              <span class="remove_span" id="custom_logo_note">( One time $35 fee )</span>
+              <span class="add_on" id="custom_logo_cost">[ $35 fee/<font></font> jerseys  =  $<span></span>/per jersey ]</span>
+              <span class="add_on" id="custom_logo_cost_waived">[ $35 fee is waived for >24 jerseys ]</span>
+              <select style="float:right;" id="custom_logo">
+                <option value="no" selected>No</option>
+                <option value="yes">Yes</option>
+              </select><br>
+            </span>
           </div>
             <div style="float: right;">
               <a href="#" class="reset_btn">RESET</a>
@@ -748,6 +752,7 @@
               <input type="hidden" name="price" id="step_1_price" value="">
               <input type="hidden" name="color" id="step_1_color" value="">
               <input type="hidden" name="qty" id="step_1_print_qty" value="">
+              <input type="hidden" name="rev_product" id="step_1_rev_product" value=""><!--value is set in step_1.js based on rev_row display-->
               <input type="hidden" name="rev" id="step_1_rev" value="no"><!--"NO" is the init value and toggles on #reversible_only change-->
               <input type="hidden" name="print_numbers" id="step_1_print_numbers" value="no"><!--"NO" is the init value and toggles on #print_numbers_select change-->
               <input type="hidden" name="number_placement" id="step_1_number_placement" value="na"><!--value dictated by #numbers_front_back select-->
