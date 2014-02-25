@@ -4,7 +4,7 @@ if(window.innerWidth <= 800 && window.innerHeight <= 600) {
 };
 
 $(document).ready(function(){
-console.log('v2');
+console.log('v3');
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
