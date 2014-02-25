@@ -24,7 +24,7 @@ var img = urlParams["img"];
 var price = urlParams["price"];
 
 $(document).ready(function(){
-console.log(v1);
+console.log('v1');
 $('#wrapper').show();
 
 //NAME
