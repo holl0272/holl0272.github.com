@@ -15,7 +15,7 @@ var os;
 if(navigator.appVersion.indexOf("Win") != -1) os = "Windows";
 if(navigator.appVersion.indexOf("Mac") != -1) os = "Mac";
 
-console.log('v2.0');
+console.log('v3.0');
 alert(os);
 
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;  // Opera 8.0+
@@ -37,6 +37,13 @@ if(isChrome) {
 };
 if(isIE) {
   $("#browser-stylesheet").attr("href", "css/ie.css");
+};
+
+if((os == "Windows") && (isChrome)) {
+  alert('got it')
+}
+else{
+  alert('nope')
 };
 
    $('#wrapper').show();
