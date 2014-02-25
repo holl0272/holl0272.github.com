@@ -11,6 +11,13 @@ if(isAndroid) {
   $("#device-stylesheet").attr("href", "css/android.css");
 };
 
+var os = navigator.appVersion.toLowerCase();
+var isWindows = os.indexOf("win")!=-1;
+var isMac = os.indexOf("mac")!=-1;
+
+console.log('v1.0');
+alert(os);
+
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;  // Opera 8.0+
 var isFirefox = typeof InstallTrigger !== 'undefined';  // Firefox 1.0+
 var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;   // At least Safari 3+
