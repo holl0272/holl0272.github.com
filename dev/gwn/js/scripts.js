@@ -15,9 +15,6 @@ var os;
 if(navigator.appVersion.indexOf("Win") != -1) os = "Windows";
 if(navigator.appVersion.indexOf("Mac") != -1) os = "Mac";
 
-console.log('v3.0');
-alert(os);
-
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;  // Opera 8.0+
 var isFirefox = typeof InstallTrigger !== 'undefined';  // Firefox 1.0+
 var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;   // At least Safari 3+
