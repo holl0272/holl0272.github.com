@@ -40,10 +40,7 @@ if(isIE) {
 };
 
 if((os == "Windows") && (isChrome)) {
-  alert('got it')
-}
-else{
-  alert('nope')
+  $("#os-stylesheet").attr("href", "css/windows.css");
 };
 
    $('#wrapper').show();
