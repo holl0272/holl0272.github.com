@@ -4,12 +4,16 @@ if(window.innerWidth <= 800 && window.innerHeight <= 600) {
  };
 
 $(document).ready(function(){
-
+console.log('v7');
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
   $("#device-stylesheet").attr("href", "../../css/android.css");
 };
+
+var os;
+if(navigator.appVersion.indexOf("Win") != -1) os = "Windows";
+if(navigator.appVersion.indexOf("Mac") != -1) os = "Mac";
 
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;  // Opera 8.0+
 var isFirefox = typeof InstallTrigger !== 'undefined';  // Firefox 1.0+
@@ -30,6 +34,10 @@ if(isChrome) {
 };
 if(isIE) {
   $("#browser-stylesheet").attr("href", "../../css/ie.css");
+};
+
+if((os == "Windows") && (isChrome)) {
+  $("#os-stylesheet").attr("href", "../../css/windows.css");
 };
 
    $('#wrapper').show();
