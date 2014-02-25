@@ -4,7 +4,7 @@ if(window.innerWidth <= 800 && window.innerHeight <= 600) {
  };
 
 $(document).ready(function(){
-console.log('v7');
+
 var device = navigator.userAgent.toLowerCase();
 var isAndroid = device.indexOf("android") > -1;
 if(isAndroid) {
@@ -37,7 +37,6 @@ if(isIE) {
 };
 
 if((os == "Windows") && (isChrome)) {
-  alert('yes');
   $("#os-stylesheet").attr("href", "../../css/windows.css");
 };
 
