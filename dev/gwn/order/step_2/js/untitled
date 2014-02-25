@@ -1,0 +1,58 @@
+              <table style="text-align: left;">
+                <tr>
+                  <td>URL:</td>
+                  <td><input type="text" name="url" id="step_2_url" value=""></td>
+                </tr>
+                <tr>
+                  <td>SPORT:</td>
+                  <td><input type="text" name="sport" id="step_2_sport" value=""></td>
+                </tr>
+                <tr>
+                  <td>PRODUCT:</td>
+                  <td><input type="text" name="name" id="step_2_name" value=""></td>
+                </tr>
+                <tr>
+                  <td>QUANTITY:</td>
+                  <td><input type="text" name="qty" id="step_2_print_qty" value=""></td>
+                </tr>
+                <tr>
+                  <td>UNIT PRICE:</td>
+                  <td><input type="text" name="price" id="step_2_price" value=""></td>
+                </tr>
+                <tr>
+                  <td>PRODUCT SUB-TOTAL:</td>
+                  <td><input type="text" name="product_sub_total" id="step_2_product_sub_total" value=""></td>
+                </tr>
+                <tr>
+                  <td>COLOR:</td>
+                  <td><input type="text" name="color" id="step_2_color" value=""></td>
+                </tr>
+                <tr>
+                  <td>REVERSIBLE:</td>
+                  <td><input type="text" name="rev_product" id="step_2_rev_product" value=""></td>
+                </tr>
+                <tr>
+                  <td>REVERSIBLE SIDE:</td>
+                  <td><input type="text" name="rev" id="step_2_rev" value=""></td>
+                </tr>
+                <tr>
+                  <td>PRINT NUMBERS:</td>
+                  <td><input type="text" name="print_numbers" id="step_2_print_numbers" value=""></td>
+                </tr>
+                <tr>
+                  <td>NUMBER PLACEMENT:</td>
+                  <td><input type="text" name="number_placement" id="step_2_number_placement" value=""></td>
+                </tr>
+                <tr>
+                  <td>PRINT NAMES:</td>
+                   <td><input type="text" name="print_names" id="step_2_print_names" value=""></td>
+                </tr>
+                <tr>
+                  <td>TEAM NAME/DESIGN:</td>
+                  <td><input type="text" name="team_name" id="step_2_team_name" value=""></td>
+                </tr>
+                <tr>
+                  <td>CUSTOM LOGO:</td>
+                  <td><input type="text" name="logo" id="step_2_logo" value=""></td>
+                </tr>
+            </table>

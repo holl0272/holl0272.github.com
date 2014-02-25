@@ -25,14 +25,17 @@
   <link rel="stylesheet" id="device-stylesheet">
   <link rel="stylesheet" id="browser-stylesheet">
 
+  <style>
+  #form_results td {
+    padding-right: 5px;
+  }
+  #form_results input {
+    width: 150px;
+  }
+  </style>
+
 </head>
 <body>
-
-<!-- <br><span class="results">[reversible: <b><font class="form_rev"></font></b>]</span>
-<br><span class="results">[numbers: <b><font class="form_print_numbers"></font></b>]</span>
-<br><span class="results">[print player name: <b><font class="form_print_names"></font></b>]</span>
-<br><span class="results">[print team name: <b><font class="form_team_name"></font></b>]</span>
-<br><span class="results">[custom logo: <b><font class="form_logo"></font></b>]</span> -->
 
 <div id="wrapper">
 
@@ -188,6 +191,18 @@
                   <div class="clear"></div>
                 </div><br>
               </div>
+              <div id="print_names_row">
+                PLAYER NAME LETTERING STYLE
+                <div class="dropdown">
+                  <a href="images/info/player_lettering.png" data-lightbox="player_lettering" title="2 Lettering Styles"><img src="images/info.png" class="info_btn"></a>
+                  <select style="float:right;" id="player_name_style_select">
+                    <option value="default" selected>&#60; Style &#62;</option>
+                    <option value="straigh">STRAIGHT</option>
+                    <option value="vert_arch">VERT ARCH</option>
+                  </select>
+                  <div class="clear"></div>
+                </div><br>
+              </div>
               <div id="team_name_row">
                 ENTER YOUR TEAM NAME
                 <input type="text" style=" width: 125px; float:right; margin: 7px 25px 0 0;" id="team_name_input" placeholder="EAGLES"><br>
@@ -228,18 +243,6 @@
                     <option value="vert_arch">VERT ARCH</option>
                     <option value="straight_top">STRAIGHT TOP</option>
                     <option value="bowtie">BOWTIE</option>
-                  </select>
-                  <div class="clear"></div>
-                </div><br>
-              </div>
-              <div id="print_names_row">
-                PLAYER NAME LETTERING STYLE
-                <div class="dropdown">
-                  <a href="images/info/player_lettering.png" data-lightbox="player_lettering" title="2 Lettering Styles"><img src="images/info.png" class="info_btn"></a>
-                  <select style="float:right;" id="player_name_style_select">
-                    <option value="default" selected>&#60; Style &#62;</option>
-                    <option value="straigh">STRAIGHT</option>
-                    <option value="vert_arch">VERT ARCH</option>
                   </select>
                   <div class="clear"></div>
                 </div><br>
@@ -865,7 +868,105 @@
           </div>
 -->
           <div id="finalize_order">
-            <a href="#" class="finalize_btn">FINALIZE ORDER</a>
+            <form action="../step_2/step_2.html" method="get" id="step_2_form">
+              <a href="#" class="finalize_btn" onclick="captureValues()">FINALIZE ORDER</a>
+            </form>
+              <br>
+              <table id="form_results" style="text-align: left; display: none;">
+<!--             <tr>
+                  <td>URL:</td>
+                  <td><input type="text" name="url" id="step_2_url" value=""></td>
+                </tr>
+-->             <tr>
+                  <td>SPORT:</td>
+                  <td><input type="text" name="sport" id="step_2_sport" value=""></td>
+                </tr>
+                <tr>
+                  <td>PRODUCT:</td>
+                  <td><input type="text" name="name" id="step_2_name" value=""></td>
+                </tr>
+                <tr>
+                  <td>QUANTITY:</td>
+                  <td><input type="text" name="qty" id="step_2_qty" value=""></td>
+                </tr>
+                <tr>
+                  <td>UNIT PRICE:</td>
+                  <td><input type="text" name="price" id="step_2_price" value=""></td>
+                </tr>
+                <tr>
+                  <td>PRODUCT SUB-TOTAL:</td>
+                  <td><input type="text" name="product_sub_total" id="step_2_product_sub_total" value=""></td>
+                </tr>
+                <tr>
+                  <td>PRODUCT COLOR:</td>
+                  <td><input type="text" name="color" id="step_2_color" value=""></td>
+                </tr>
+                <tr>
+                  <td>REVERSIBLE PRODUCT:</td>
+                  <td><input type="text" name="rev_product" id="step_2_rev_product" value=""></td>
+                </tr>
+                <tr>
+                  <td>REVERSIBLE PRINT SIDE:</td>
+                  <td><input type="text" name="rev" id="step_2_rev_side" value=""></td>
+                </tr>
+                <tr>
+                  <td>PRINT COLOR:</td>
+                  <td><input type="text" name="print_color" id="step_2_print_color" value=""></td>
+                </tr>
+                <tr>
+                  <td>SIDE ONE/COLOR:</td>
+                  <td><input type="text" name="side_color_one" id="step_2_side_color_one" value=""></td>
+                </tr>
+                <tr>
+                  <td>SIDE TWO/COLOR:</td>
+                  <td><input type="text" name="side_color_two" id="step_2_side_color_two" value=""></td>
+                </tr>
+                <tr>
+                <tr>
+                  <td>PRINT NUMBERS:</td>
+                  <td><input type="text" name="print_numbers" id="step_2_print_numbers" value=""></td>
+                </tr>
+                <tr>
+                  <td>NUMBER PLACEMENT:</td>
+                  <td><input type="text" name="number_placement" id="step_2_number_placement" value=""></td>
+                </tr>
+                <tr>
+                  <td>PRINT NAMES:</td>
+                   <td><input type="text" name="print_names" id="step_2_print_names" value=""></td>
+                </tr>
+                <tr>
+                  <td>PLAYER NAME FONT:</td>
+                   <td><input type="text" name="player_name_font" id="step_2_player_name_font" value=""></td>
+                </tr>
+                <tr>
+                  <td>PLAYER NAME STYLE:</td>
+                   <td><input type="text" name="player_name_style" id="step_2_player_name_style" value=""></td>
+                </tr>
+                <tr>
+                  <td>TEAM NAME:</td>
+                  <td><input type="text" name="team_name" id="step_2_team_name" value="" placeholder="EAGLES"></td>
+                </tr>
+                <tr>
+                  <td>TEAM NAME/DESIGN:</td>
+                  <td><input type="text" name="team_name_design" id="step_2_team_name_design" value=""></td>
+                </tr>
+                <tr>
+                  <td>NAME/DESIGN OPTION:</td>
+                  <td><input type="text" name="name_design_option" id="step_2_name_design_option" value=""></td>
+                </tr>
+                <tr>
+                  <td>NAME LETTERING STYLE:</td>
+                  <td><input type="text" name="name_lettering_style" id="step_2_name_lettering_style" value=""></td>
+                </tr>
+                <tr>
+                  <td>NAME/DESIGN PLACEMENT:</td>
+                  <td><input type="text" name="name_design_placement" id="step_2_name_design_placement" value=""></td>
+                </tr>
+                <tr>
+                  <td>CUSTOM LOGO:</td>
+                  <td><input type="text" name="logo" id="step_2_logo" value=""></td>
+                </tr>
+            </table>
           </div>
         </td>
       </tr>

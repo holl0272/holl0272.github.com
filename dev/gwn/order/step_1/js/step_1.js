@@ -717,7 +717,7 @@ $('#step_1_url').val(window.location.href)
 $('#step_1_sport').val(sport);
 $('#step_1_name').val(name);
 $('#step_1_img').val(img);
-$('#step_1_price').val(price);
+$('#step_1_price').val($('#price_per_jersey').text());
 //SELECTION VALUES
   //quantity populates on doneTyping()
   //rev init no regardless of product but toggles on #reversible_only change
