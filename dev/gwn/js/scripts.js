@@ -11,9 +11,9 @@ if(isAndroid) {
   $("#device-stylesheet").attr("href", "css/android.css");
 };
 
-var os = navigator.appVersion.toLowerCase();
-var isWindows = os.indexOf("win")!=-1;
-var isMac = os.indexOf("mac")!=-1;
+var os;
+if(navigator.appVersion.indexOf("Win") != -1) os = "Windows";
+if(navigator.appVersion.indexOf("Mac") != -1) os = "Mac";
 
 console.log('v1.0');
 alert(os);
