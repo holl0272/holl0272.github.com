@@ -498,9 +498,20 @@ $('#print_numbers_select').on('change', function() {
   if($(this).val() == "yes"){
     $('.numbers_input').show();
     $('#print_numbers_yes').show();
+    $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+    $('#custom_logo option').prop('disabled', true);
     //populates print_number input and init number_placement in the submit form
     $('#step_1_print_numbers').val('yes');
     $('#step_1_number_placement').val('front');
+    if($("#team_name_design :selected").val() == "letters_graphic") {
+      $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+      $("#team_name_design option[value='letters']").prop("selected",true);
+      $('#step_1_team_name').val('letters');
+    };
+    if($("#custom_logo :selected").val() == "yes") {
+      $("#custom_logo option[value='no']").prop("selected",true);
+      $('#step_1_logo').val('no');
+    };
   }
   else {
     $('.numbers_input').hide();
@@ -521,15 +532,42 @@ if($('#print_numbers_select').val() == "yes") {
 $('#numbers_front_back').on('change', function() {
   if($(this).val() == "front"){
     $('#step_1_number_placement').val('front');
+    $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+    $('#custom_logo option').prop('disabled', true);
+    if($("#team_name_design :selected").val() == "letters_graphic") {
+      $("#team_name_design option[value='letters']").prop("selected",true);
+      $('#step_1_team_name').val('letters');
+    };
+    if($("#custom_logo :selected").val() == "yes") {
+      $("#custom_logo option[value='no']").prop("selected",true);
+      $('#step_1_logo').val('no');
+    };
   }
   else if($(this).val() == "back"){
     $('#step_1_number_placement').val('back');
+    $("#team_name_design option[value='letters_graphic']").prop("disabled",false);
+    $('#custom_logo option').prop('disabled', false);
   }
   else if($(this).val() == "front_back"){
     $('#step_1_number_placement').val('front_back');
+    $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+    $('#custom_logo option').prop('disabled', true);
+    if($("#team_name_design :selected").val() == "letters_graphic") {
+      $("#team_name_design option[value='letters']").prop("selected",true);
+      $('#step_1_team_name').val('letters');
+    };
+    if($("#custom_logo :selected").val() == "yes") {
+      $("#custom_logo option[value='no']").prop("selected",true);
+      $('#step_1_logo').val('no');
+    };
   };
   re_calculate();
 });
+//disable select option on GO-BACK
+if(($('#numbers_front_back').val() == "front") || ($('#numbers_front_back').val() == "front_back")) {
+  $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+  $('#custom_logo option').prop('disabled', true);
+};
 
 //DO YOU WANT TO PRINT NAMES ON THE BACK OF JERSEYS?
 function addNameOnBack() {

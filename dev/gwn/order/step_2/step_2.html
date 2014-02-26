@@ -257,72 +257,14 @@
               <br>
               RETURN <a href="javascript:window.history.back(-1)" style="color: #e8d606;"><b>&nbsp;BACK TO YOUR ORDER OPTIONS&nbsp;</b></a> TO MAKE ADDITIONAL SELECTIONS
             </div>
-<!--
-            HOW MANY <span class="shorts_show">SHORTS</span><span class="shorts_hide">JERSEYS</span> DO YOU WANT TO ORDER?
-            <input type="text" class="input_num" style="float:right;" id="order_qty" placeholder="0"><br>
-            <div class="shorts_hide">
-            DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
-            <select style="float:right;" id="print_numbers_select">
-              <option value="no" selected>No</option>
-              <option value="yes">Yes</option>
-            </select><br>
-            <span id="print_numbers_yes">
-              WANT TO PRINT NUMBERS ON FRONT AND BACK?
-              <span class="add_on  reversable" id="numbers_front_back_cost">[ Additional: $<span></span>.00 ]</span>
-              <select style="float:right;" id="numbers_front_back">
-                <option value="front" selected>Front Only</option>
-                <option value="back">Back Only</option>
-                <option value="front_back">Front & Back</option>
-              </select><br>
-            </span>
-            DO YOU WANT TO PRINT NAMES ON THE BACK OF JERSEYS?
-            <span class="add_on  reversable" id="print_name_on_back_cost">[ Additional: $<span></span>.00 ]</span>
-            <select style="float:right;" id="print_name_on_back">
-              <option value="no" selected>No</option>
-              <option value="yes">Yes</option>
-            </select><br>
-            <span id="reversible">
-              PRINT ON BOTH SIDES OF THE JERSEY?
-              <span class="remove_span" id="reversible_only_note">( Reversible jerseys only )</span>
-              <span class="add_on" id="reversible_only_cost">[ 2X Additional Fees ]</span>
-              <select style="float:right;" id="reversible_only">
-                <option value="no" selected>No</option>
-                <option value="yes">Yes</option>
-              </select><br>
-            </span>
-            WHAT DO YOU WANT FOR YOUR TEAM NAME DESIGN?
-            <span class="add_on  reversable" id="team_name_design_cost">[ Additional: $<span></span>.00 ]</span>
-            <select style="float:right;" id="team_name_design">
-              <option value="none" selected>None</option>
-              <option value="letters">Letters Only</option>
-              <option value="letters_graphic">Letters & Graphic</option>
-            </select><br>
-            DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
-            <span class="remove_span" id="custom_logo_note">( One time $35 fee )</span>
-            <span class="add_on" id="custom_logo_cost">[ $35 fee/<font></font> jerseys  =  $<span></span>/per jersey ]</span>
-            <select style="float:right;" id="custom_logo">
-              <option value="no" selected>No</option>
-              <option value="yes">Yes</option>
-            </select><br>
--->
-
             <div class="clear"></div>
           </div>
           <div id="price_calc">
             <table>
               <tr>
                 <td>
-                <!--Your cost per jersey based on your above choices:-->
                 Your jersey preview will change based on your above choices.
                 </td>
-<!--
-                <td id="calculated">
-                <b>$<span id="price_per_jersey"></span></b>
-                </td>
-                <td id="calculating">
-                  <image src="images/loader.gif" alt="Loader">
-                </td>
--->
               </tr>
             </table>
           </div>
@@ -346,527 +288,28 @@
           </div>
           <div style="background-color: white; width:100%; display:inline-block;  margin: 10px 0 10px 0;">
             <div id="image_container" stye="float:none;"> <!--dev style-->
-              <a href="" data-lightbox="product_img_front" title="">
-                <image src="" alt="Product Image Front" id="product_img_front" class="product_img">
-                <image style="display:none;" src="" id="product_img_front_large" class="lightbox_img">
-              </a><!--urlParams["img"]-->
-              <a href="" data-lightbox="product_img_back" title="">
-                <image src="" alt="Product Image Back" id="product_img_back" style="float: right; margin-right: 30px;" class="product_img">
-                <image style="display:none;" src="" id="product_img_back_large" class="lightbox_img">
-              </a>
+              <div style="position: relative; left:0; top:0; float: left;">
+                <a href="" data-lightbox="product_img_front" title="">
+                  <image src="" alt="Product Image Front" id="product_img_front" class="product_img" style="position: relative; top: 0; left: 0;">
+                    <div id="front_elements"></div>
+                  <image style="display:none;" src="" id="product_img_front_large" class="lightbox_img">
+                </a><!--urlParams["img"]-->
+              </div>
+              <div style="position: relative; left:0; top:0; float: right; margin-right: 30px;">
+                <a href="" data-lightbox="product_img_back" title="">
+                  <image src="" alt="Product Image Back" id="product_img_back" class="product_img">
+                    <div id="back_elements"></div>
+                  <image style="display:none;" src="" id="product_img_back_large" class="lightbox_img">
+                </a>
+              </div>
             </div>
-<!--
 
-
-            <div id="description_container">
-              <div id="classicJersey" class="description">
-                100% heavyweight cotton<br>
-                Double ply shoulder yoke<br>
-                Underar gussets<br>
-                Coverstitched<br>
-                Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
-              </div>
-              <div id="dazzleMicro" class="description">
-                100% polyester trico mini-mesh outside<br>
-                100% polyester dazzle cloth inside<br>
-                Double thickness body<br>
-                Mitered rib v-neck<br>
-                Oversized "pro-cut" with wide shoulder design<br>
-                Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
-              </div>
-              <div id="fullButton" class="description">
-                100% heavyweight nylon polyester mesh<br>
-                Full-button front<br>
-                Set-in hemmed sleeves<br>
-                Extended, rounded hemmed tail<br>
-                Full athletic cut<br>
-                Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
-              </div>
-              <div id="gameDazzle" class="description">
-                100% polyester dazzle cloth inside and outside<br>
-                Piping detail<br>
-                Double thickness body<br>
-                Mitered rib v-neck<br>
-                Oversized "pro-cut" with wide shoulder design<br>
-                Sizes:M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
-              </div>
-              <div id="meshJersey" class="description">
-                Heavyweight nylon porthole mesh<br>
-                Heavyweight polyester single yoke<br>
-                Heavyweight nylon porthole mesh 6" sleeves<br>
-                Modified v-neck<br>
-                Cut to fit over shoulder pads<br>
-                Sizes: M, XL and XXXL<br>
-                Add $3 for XXXL<br>
-              </div>
-              <div id="reversibleJersey" class="description" >
-                100% nylon trico mesh (colors)<br>
-                100% polyester tricot mesh (white)<br>
-                Double thickness body<br>
-                V-neck design<br>
-                Youth Sizes: M - L<br>
-                Adult Sizes: S - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
-              </div>
-              <div id="twoButton" class="description" >
-                Heavyweight 50/50 Cotton/Polyester<br>
-                Set-in sleeves<br>
-                Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
-              </div>
-              <div id="tShirt" class="description" >
-                Heavyweight 50/50 Cotton/Polyester<br>
-                Set-in sleeves<br>
-                Youth Sizes: M - L<br>
-                Adult Sizes: S - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
-              </div>
-              <div id="meshShorts" class="description" >
-                100% nylong mini-mesh<br>
-                9" inseam<br>
-                Double thickness<br>
-                Sizes: M - XXL<br>
-                Add $2 for XXL<br>
-              </div>
-            </div>
--->
-            <div class="clear"></div>
-            <div id="color_container" style="display:none;">
-              <div id="color_select">
-                <div class="color_option" id="birch_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="birch_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/birch_solid_square.gif" alt="Birch" id="birch_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Birch
-                  </div>
-                </div>
-                <div class="color_option" id="black_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="black">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/black_square.gif" alt="Black" id="black" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Black
-                  </div>
-                </div>
-                <div class="color_option" id="black_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="black_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/black_solid_square.gif" alt="Black Solid" id="black_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Black
-                  </div>
-                </div>
-                <div class="color_option" id="cardinal_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="cardinal_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/cardinal_solid_square.gif" alt="Cardnial" id="cardinal_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Cardinal
-                  </div>
-                </div>
-                <div class="color_option" id="charcoal_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="charcoal_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/charcoal_solid_square.gif" alt="Charcoal" id="charcoal_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Charcoal
-                  </div>
-                </div>
-                <div class="color_option" id="columbia_blue_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="columbia_blue">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/columbia_blue_square.gif" alt="Columbia Blue" id="columbia_blue" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Columbia Blue
-                  </div>
-                </div>
-                <div class="color_option" id="columbia_blue_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="columbia_blue_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/columbia_blue_solid_square.gif" alt="Columbia Blue" id="columbia_blue_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Columbia Blue
-                  </div>
-                </div>
-                <div class="color_option" id="dark_green_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="dark_green_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/dark_green_solid_square.gif" alt="Dark Green" id="dark_green_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Dark Green
-                  </div>
-                </div>
-                <div class="color_option" id="gold_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="gold_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/gold_solid_square.gif" alt="Gold" id="gold_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Gold
-                  </div>
-                </div>
-                <div class="color_option" id="gold_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="gold">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/gold_square.gif" alt="Gold" id="gold" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Gold
-                  </div>
-                </div>
-                <div class="color_option" id="kelly_green_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="kelly_green">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/kelly_green_square.gif" alt="Kelly Green" id="kelly_green" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Kelly Green
-                  </div>
-                </div>
-                <div class="color_option" id="kelly_green_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="kelly_green_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/kelly_green_solid_square.gif" alt="Kelly Green" id="kelly_green_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Kelly Green
-                  </div>
-                </div>
-                <div class="color_option" id="light_grey_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="light_grey_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/light_grey_solid_square.gif" alt="Light Grey" id="light_grey_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Light Grey
-                  </div>
-                </div>
-                <div class="color_option" id="maroon_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="maroon">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/maroon_square.gif" alt="Maroon" id="maroon" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Maroon
-                  </div>
-                </div>
-                <div class="color_option" id="maroon_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="maroon_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/maroon_solid_square.gif" alt="Maroon" id="maroon_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Maroon
-                  </div>
-                </div>
-                <div class="color_option" id="navy_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="navy">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/navy_square.gif" alt="Navy" id="navy" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Navy
-                  </div>
-                </div>
-                <div class="color_option" id="navy_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="navy_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/navy_solid_square.gif" alt="Navy" id="navy_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Navy
-                  </div>
-                </div>
-                <div class="color_option" id="navy_gold_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="navy_gold">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/navy_gold_square.gif" alt="Navy" id="navy_gold" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Navy/Gold
-                  </div>
-                </div>
-                <div class="color_option" id="optic_yellow_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="optic_yellow_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/optic_yellow_solid_square.gif" alt="Optic Yellow" id="optic_yellow_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Optic Yellow
-                  </div>
-                </div>
-                <div class="color_option" id="orange_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="orange_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/orange_solid_square.gif" alt="Purple" id="orange_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Orange
-                  </div>
-                </div>
-                <div class="color_option" id="oxford_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="oxford_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/oxford_solid_square.gif" alt="Oxford" id="oxford_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Oxford
-                  </div>
-                </div>
-                <div class="color_option" id="purple_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="purple">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/purple_square.gif" alt="Purple" id="purple" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Purple
-                  </div>
-                </div>
-                <div class="color_option" id="purple_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="purple_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/purple_solid_square.gif" alt="Purple" id="purple_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Purple
-                  </div>
-                </div>
-                <div class="color_option" id="royal_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="royal_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/royal_solid_square.gif" alt="Royal" id="royal_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Royal
-                  </div>
-                </div>
-                <div class="color_option" id="scarlet_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="scarlet">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/scarlet_square.gif" alt="Scarlet" id="scarlet" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Scarlet
-                  </div>
-                </div>
-                <div class="color_option" id="scarlet_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="scarlet_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/scarlet_solid_square.gif" alt="Scarlet" id="scarlet_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    Scarlet
-                  </div>
-                </div>
-                <div class="color_option" id="white_solid_option">
-                  <div class="color_selectors">
-                    <div class="color_radio">
-                      <input type="radio" value="white_solid">
-                    </div>
-                    <div class="color_img">
-                      <image src="images/color_squares/white_solid_square.gif" alt="White" id="white_solid" class="color_square">
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="color">
-                    White
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="clear"></div>
           <div id="disclaimer">
             <span>Your tean name will not appear in this preview</span>
           </div>
           </div>
-<!--
-          <div id="order_prices">
-            <span>$<font id="urlParams_price_1"></font> each</span>
-            <span class="spacer">Order 6 for $<font id="urlParams_price_6"></font> each</span>
-            <span class="spacer">Order 12 for $<font id="urlParams_price_12"></font> each</span>
-            <span class="spacer">Order 36 or more for $<font id="urlParams_price_36"></font></span>
-          </div>
-          <div id="sub_selections">
-            <table style="width:100%;">
-            </table>
-          </div>
--->
+
           <div id="finalize_order">
             <form action="../step_2/step_2.html" method="get" id="step_2_form">
               <a href="#" class="finalize_btn" onclick="captureValues()">FINALIZE ORDER</a>
@@ -972,6 +415,38 @@
       </tr>
     </table>
   </div>
+
+<!--COLOR SELECTIONS-->
+<div id="color_container" style="display:none;">
+  <div id="color_select">
+    <input type="radio" value="birch_solid">
+    <input type="radio" value="black">
+    <input type="radio" value="black_solid">
+    <input type="radio" value="cardinal_solid">
+    <input type="radio" value="charcoal_solid">
+    <input type="radio" value="columbia_blue">
+    <input type="radio" value="columbia_blue_solid">
+    <input type="radio" value="dark_green_solid">
+    <input type="radio" value="gold_solid">
+    <input type="radio" value="kelly_green">
+    <input type="radio" value="kelly_green_solid">
+    <input type="radio" value="light_grey_solid">
+    <input type="radio" value="maroon">
+    <input type="radio" value="maroon_solid">
+    <input type="radio" value="navy">
+    <input type="radio" value="navy_solid">
+    <input type="radio" value="navy_gold">
+    <input type="radio" value="optic_yellow_solid">
+    <input type="radio" value="orange_solid">
+    <input type="radio" value="oxford_solid">
+    <input type="radio" value="purple">
+    <input type="radio" value="purple_solid">
+    <input type="radio" value="royal_solid">
+    <input type="radio" value="scarlet">
+    <input type="radio" value="scarlet_solid">
+    <input type="radio" value="white_solid">
+  </div>
+</div>
 
 <!--LIGHT BOX GALERY IMAGES -->
   <a href="images/info/pro_narrow.gif" data-lightbox="fonts" title="Font Option:  PRO IMPACT"></a>
