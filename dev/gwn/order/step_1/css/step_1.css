@@ -42,7 +42,7 @@
   height: 240px;
 }
 #image_container a {
-    cursor:url(../images/zoom.cur.png), -moz-zoom-in;
+  cursor:url(../images/zoom.cur.png), -moz-zoom-in;
 }
 #color_container {
   text-align: center;
@@ -103,7 +103,7 @@
   background-color: #e8d606;
   padding: 10px;
   font-size: 1.3rem;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
 }
 #price_calc table {
   margin: auto;
@@ -160,4 +160,15 @@
 }
 .input_num {
   width: 85px;
+}
+.set_size {
+  cursor: context-menu;
+  color: #cccdce;
+}
+.hide {
+  display: none;
+}
+.transparent {
+  color: transparent;
+  opacity: 0;
 }

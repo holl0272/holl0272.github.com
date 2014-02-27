@@ -32,6 +32,7 @@ var number_placement = urlParams["number_placement"];
 var print_names = urlParams["print_names"];
 var team_name_design = urlParams["team_name"];
 var logo = urlParams["logo"];
+var json_source = urlParams["json"];
 
 $(document).ready(function(){
 
@@ -454,6 +455,22 @@ function captureValues() {
   $('#step_2_name_design_option').val($("#graphic_select option:selected").text());
   $('#step_2_name_lettering_style').val($("#team_name_style_select option:selected").text());
   $('#step_2_name_design_placement').val($("#placement_select option:selected").text());
+
+         var data = JSON.parse(json_source);
+         var options = {
+                source: data,
+            };
+
+          var detailsTable = $("<br><table></table>");
+
+          detailsTable.jsonTable({
+              head : ['Jersey', 'Size', 'Number', 'Name', 'Qty'],
+              json : ['Jersey', 'Size', 'Number', 'Name', 'Qty'] // The '*' identity will be incremented at each line
+          });
+
+          detailsTable.jsonTableUpdate(options);
+
+          $("#json_table").append(detailsTable);
 
   $('#step_2_form').submit(function(){
     return false;

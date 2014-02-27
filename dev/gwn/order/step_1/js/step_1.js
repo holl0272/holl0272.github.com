@@ -35,7 +35,6 @@ $('.sport_box_mobile').hide();
 $("#"+sport+"_box").show();
 $("#"+sport+"_box_mobile").show();
 
-
 //DESCRIPTIONS
 var classicJersey = "Classic Jersey";
 var dazzleMicro = "Dazzle-Micro Mesh Jersey";
@@ -380,15 +379,24 @@ function calculateCost(qty) {
 };
 
 function buildRows(qty) {
+  var header = "<tr class='transparent'><td>Jersey</td><td></td><td>Size</td><td class='numbers_input'></td><td class='numbers_input'>Number</td><td></td><td>Name</td><td></td><td></td><td class='hide'>Qty</td></tr>"
   var row_number = "<td class='row_number'><font></font></td>";
-  var product_size = "<td>Size<select style='margin-left: 10px;' class='size_select'><option value='m' selected>M</option><option value='l'>L</option><option value='xl'>XL</option><option value='xxl'>XXL</option><option value='xxXl'>XXXL</option></select></td>";
-  var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input'><input type='text' class='number_input' style='width: 25px;'></td>";
-  var name_on_jersey = "<td>Name On Jersey</td><td><input type='text' class='name_input' style='width: 150px;'></td>";
+    var sizeSelect = "<select style='margin-left: 10px;' class='size_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
+    var resizeSelect = "<select style='margin-left: 10px;' class='resize_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
+  var product_size = "<td>Size</td><td>"+sizeSelect+"</td>";
+    var numberInput = "<input type='text' class='number_input' style='width: 25px;'>";
+    var newnumberInput = "<input type='text' class='newnumber_input' style='width: 25px;'>";
+  var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input'>"+numberInput+"</td>";
+    var nameInput = "<input type='text' class='name_input' style='width: 150px;'>";
+    var newnameInput = "<input type='text' class='newname_input' style='width: 150px;'>";
+  var name_on_jersey = "<td>Name On Jersey</td><td>"+nameInput+"</td>";
   var product_qty = "<td>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
   var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; float:right; padding-left:5px; cursor: pointer;'> - </span></td><span>";
+  var raw_qty = "<td class='hide'></td>";
+  $('#sub_selections table').append(header);
 
   if(name != meshShorts) {
-    var jersey_row = "<tr>"+row_number+product_size+product_number+name_on_jersey+product_qty+qty_btns+"</tr>";
+    var jersey_row = "<tr>"+row_number+product_size+product_number+name_on_jersey+product_qty+qty_btns+raw_qty+"</tr>";
   }
   else {
     var jersey_row = "<tr>"+row_number+product_size+product_qty+qty_btns+"</tr>";
@@ -420,7 +428,7 @@ function buildRows(qty) {
 
   $(".row_qty").each(function() {
     var qty_txt = $(this).val();
-    $(this).next("font").text(qty_txt);
+    $(this).next("font").text(qty_txt).closest('td').next('td').html(qty_txt);
   });
 
   function togglePlusLess() {
@@ -450,7 +458,7 @@ function buildRows(qty) {
 
     if(increase <= qty){
       $(this).parent().prev().text(increase);
-      $(this).parent().prev().prev().val(increase);
+      $(this).parent().prev().prev().val(increase).closest('td').next('td').html(increase);
       if(($('#sub_selections table tr').filter(":visible").length == 2) && (rowTwoQty > 1)) {
         $('#sub_selections table tr').filter(":visible").last().find('.row_qty').val(decreaseRowTwoQty).next().text(decreaseRowTwoQty);
       }
@@ -466,11 +474,104 @@ function buildRows(qty) {
     var decrease = qty_less - 1;
     if(decrease > 0){
       $(this).parent().prev().text(decrease);
-      $(this).parent().prev().prev().val(decrease);
+      $(this).parent().prev().prev().val(decrease).closest('td').next('td').html(decrease);
       $('#sub_selections table tr').filter(":hidden").first().show();
       togglePlusLess();
     };
   });
+
+  $('.size_select').change(function() {
+    var size = $(this).val();
+    $(this).closest('td').html("<font class='set_size'>"+size+"</font>").on('click', function() {
+      $(this).html(resizeSelect);
+      $('.resize_select').change(function() {
+        var resize = $(this).val();
+        $(this).closest('td').html("<font class='set_size'>"+resize+"</font>");
+      });
+    });
+  });
+
+  // $('.number_input').on('blur', function() {
+  //   var number = $(this).val();
+  //   $(this).closest('td').html("<font class='set_size'>"+number+"</font>").on('click', function() {
+  //     $(this).html(newnumberInput);
+  //     $('.newnumber_input').on('blur', function() {
+  //       var newnumber = $(this).val();
+  //       $(this).closest('td').html("<font class='set_size'>"+newnumber+"</font>");
+  //     });
+  //   });
+  // });
+
+var numberTimer;
+var doneTypingNumber = 500;
+//on keyup, start the countdown
+$('.number_input').keyup(function(){
+  $(this).attr('id', 'temp');
+  numberTimer = setTimeout(doneTyping, doneTypingNumber);
+});
+//on keydown, clear the countdown
+$('.number_input').keydown(function(){
+  clearTimeout(numberTimer);
+});
+//user is "finished typing"
+function doneTyping() {
+  var number = $('#temp').val();
+  $('#temp').closest('td').html("<font class='set_number'>"+number+"</font>").on('click', function() {
+    $(this).html(newnumberInput).find('input').focus();
+    var numberTimer;
+    var doneTypingNumber = 500;
+    //on keyup, start the countdown
+    $('.newnumber_input').keyup(function(){
+      $(this).attr('id', 'temp');
+      numberTimer = setTimeout(doneTypingNum, doneTypingNumber);
+    });
+    //on keydown, clear the countdown
+    $('.newnumber_input').keydown(function(){
+      clearTimeout(numberTimer);
+    });
+    //user is "finished typing"
+    function doneTypingNum() {
+      var newnumber = $('#temp').val();
+      $('#temp').closest('td').html("<font class='set_number'>"+newnumber+"</font>");
+    };
+  });
+};
+
+var nameTimer;
+var doneTypingName = 1000;
+//on keyup, start the countdown
+$('.name_input').keyup(function(){
+  $(this).attr('id', 'temp_name');
+  nameTimer = setTimeout(doneTypingNam, doneTypingName);
+});
+//on keydown, clear the countdown
+$('.name_input').keydown(function(){
+  clearTimeout(nameTimer);
+});
+//user is "finished typing"
+function doneTypingNam() {
+  var name = $('#temp_name').val();
+  $('#temp_name').closest('td').html("<font class='set_name'>"+name+"</font>").on('click', function() {
+    $(this).html(newnameInput).find('input').focus();
+    var nameTimer;
+    var doneTypingName = 1000;
+    //on keyup, start the countdown
+    $('.newname_input').keyup(function(){
+      $(this).attr('id', 'temp_name');
+      nameTimer = setTimeout(doneReTypingName, doneTypingName);
+    });
+    //on keydown, clear the countdown
+    $('.newname_input').keydown(function(){
+      clearTimeout(nameTimer);
+    });
+    //user is "finished typing"
+    function doneReTypingName() {
+      var newname = $('#temp_name').val();
+      $('#temp_name').closest('td').html("<font class='set_number'>"+newname+"</font>");
+    };
+  });
+};
+
 };
 
 //DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
@@ -748,22 +849,29 @@ $('.clear_btn').on('click', function(e) {
 
 });
 
+
+
 //CAPTURE VALUES AND SUBMIT FORM TO STEP 2
 function captureValues() {
-//url vars
-$('#step_1_url').val(window.location.href)
-$('#step_1_sport').val(sport);
-$('#step_1_name').val(name);
-$('#step_1_img').val(img);
-$('#step_1_price').val($('#price_per_jersey').text());
-//SELECTION VALUES
-  //quantity populates on doneTyping()
-  //rev init no regardless of product but toggles on #reversible_only change
-  //color checked populates on radio change
-  //print_numbers YES/NO toggles on #print_numbers_select change
-  //number_placement dictated by #numbers_front_back select
-  //print_names YES/NO toggles on #print_name_on_back change
-  //team_name options toggle on #team_name_design change#
-  //logo option toggles on #custom_logo change
-$('#step_1_form').submit();
+  var detailsToJSON = $('#jersey_details').tableToJSON();
+  var data = JSON.stringify(detailsToJSON);
+  $('<input type="hidden" name="json"/>').val(data).appendTo('#step_1_form');
+
+  //url vars
+  $('#step_1_url').val(window.location.href)
+  $('#step_1_sport').val(sport);
+  $('#step_1_name').val(name);
+  $('#step_1_img').val(img);
+  $('#step_1_price').val($('#price_per_jersey').text());
+  //SELECTION VALUES
+    //quantity populates on doneTyping()
+    //rev init no regardless of product but toggles on #reversible_only change
+    //color checked populates on radio change
+    //print_numbers YES/NO toggles on #print_numbers_select change
+    //number_placement dictated by #numbers_front_back select
+    //print_names YES/NO toggles on #print_name_on_back change
+    //team_name options toggle on #team_name_design change#
+    //logo option toggles on #custom_logo change
+
+  $('#step_1_form').submit();
 };
