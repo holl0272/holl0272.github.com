@@ -181,6 +181,35 @@ $(document).ready(function(){
   if((team_name_design == 'none') || (team_name_design == 'letters_graphic')) {
     $('#team_name_span').hide();
   };
+  function disableLetterStyles() {
+    $("#player_name_style_select [value='default']").prop('selected', true);
+    $('#player_name_style_select option').prop('disabled', true);
+    $('#player_name_style_select option:selected').prop('disabled', false);
+    $("#player_name_style_select").change();
+    $("#team_name_style_select [value='default']").prop('selected', true);
+    $('#team_name_style_select option').prop('disabled', true);
+    $('#team_name_style_select option:selected').prop('disabled', false);
+    $("#team_name_style_select").change();
+  };
+  function enableLetterStyle() {
+    $('#player_name_style_select option').prop('disabled', false);
+    $('#team_name_style_select option').prop('disabled', false);
+  };
+
+  if($('#font_select').val() == 'default'){
+    disableLetterStyles();
+  }
+  else {
+    enableLetterStyle();
+  };
+  $('#font_select').on('change', function(){
+    if($('#font_select').val() == 'default'){
+      disableLetterStyles();
+    }
+    else {
+      enableLetterStyle();
+    };
+  })
   //team name and placement rows
   if(team_name_design == 'none') {
     $('#team_name_row').hide();
@@ -269,10 +298,11 @@ $(document).ready(function(){
 
   //ELEMENT OVERLAYS
   //color row
-  $('#color_1_select').on('change', function() {
-    var color = $(this).val();
+  function printColor(color) {
+    var numbersColor;
+    $('.number_element').remove();
     if(color != "default") {
-      var numbersColor = "<image src='images/elements/numbers/"+color+".png' class='product_img_element'>";
+      numbersColor = "<image src='images/elements/numbers/"+color+".png' class='product_img_element number_element'>";
       if(number_placement == 'front'){
         $('#front_elements').append(numbersColor);
       }
@@ -284,24 +314,73 @@ $(document).ready(function(){
         $('#back_elements').append(numbersColor);
       };
       graphicColor(color);
+      playerLetteringColor(color);
+      teamLetteringColor(color);
+    }
+    else {
+      numbersColor = "<image src='images/elements/default.png' class='product_img_element number_element'>";
+      $('#front_elements').append(numbersColor);
+      $('#back_elements').append(numbersColor);
     };
+  };
+  $('#color_1_select').on('change', function() {
+    var color = $('#color_1_select').val();
+    printColor(color);
+  });
+
+  //player lettering style row
+  function playerLetteringColor(color) {
+    var playerLetteringColor;
+    var font = $('#font_select').val();
+    var letteringStyle = $('#player_name_style_select').val();
+    $('#player_name_element').remove();
+    if(letteringStyle != "default") {
+      playerLetteringColor = "<image src='images/elements/player_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='player_name_element' class='product_img_element'>";
+    }
+    else {
+      playerLetteringColor = "<image src='images/elements/default.png' id='player_name_element' class='product_img_element'>";
+    };
+    $('#back_elements').append(playerLetteringColor);
+  };
+  $('#player_name_style_select').on('change', function() {
+    var color = $('#color_1_select').val();
+    playerLetteringColor(color);
+  });
+
+  //team lettering style row
+  function teamLetteringColor(color) {
+    var teamLetteringColor;
+    var font = $('#font_select').val();
+    var letteringStyle = $('#team_name_style_select').val();
+    $('#team_name_element').remove();
+    if(letteringStyle != "default") {
+      teamLetteringColor = "<image src='images/elements/team_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='team_name_element' class='product_img_element'>";
+    }
+    else {
+      teamLetteringColor = "<image src='images/elements/default.png' id='team_name_element' class='product_img_element'>";
+    };
+    $('#front_elements').append(teamLetteringColor);
+  };
+  $('#team_name_style_select').on('change', function() {
+    var color = $('#color_1_select').val();
+    teamLetteringColor(color);
   });
   //graphic row
-
   function graphicColor(color) {
+    var graphicColor;
     var graphic = $('#graphic_select').val();
     $('#front_graphic_element').remove();
     if(graphic != "default") {
-      var graphicColor = "<image src='images/elements/graphics/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
-      $('#front_elements').append(graphicColor);
-    };
+      graphicColor = "<image src='images/elements/graphics/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
+    }
+    else {
+      graphicColor = "<image src='images/elements/default.png' id='front_graphic_element' class='product_img_element'>";
+    }
+    $('#front_elements').append(graphicColor);
   };
-
   $('#graphic_select').on('change', function() {
     var color = $('#color_1_select').val();
-    var graphic = $(this).val();
-    var graphicColor = "<image src='images/elements/graphics/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
-    $('#front_elements').append(graphicColor);
+    graphicColor(color);
   });
 
   //TOGGLE INFO AND CHECKMARK ICON
@@ -327,6 +406,7 @@ $(document).ready(function(){
       $("#"+selectID+" option[value="+firstOption+"]").attr('selected', 'selected');
     });
     $('#team_name_input').val('').attr('placeholder','EAGLES');
+    $('select').change();
     e.preventDefault();
   });
 
