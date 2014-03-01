@@ -375,15 +375,27 @@ function calculateCost(qty) {
       };
     };
 
+    var xxl_size_mult = +($(".xxl_price").filter(":visible").text());
+    var xxxl_size_mult = +($(".xxxl_price").filter(":visible").text());
+    var xxl_jersey_price = (price_per + xxl_size_mult).toFixed(2);
+    var xxxl_jersey_price = (price_per + xxxl_size_mult).toFixed(2);
+
   $('#price_per_jersey').html((price_per).toFixed(2));
+  $('#jersey_price').val((price_per).toFixed(2));
+  $('#xxl_jersey').val(xxl_jersey_price);
+  $('#xxxl_jersey').val(xxxl_jersey_price);
+
+  priceEachJersey();
 };
 
+
 function buildRows(qty) {
-  var header = "<tr class='transparent'><td>Jersey</td><td></td><td>Size</td><td class='numbers_input'></td><td class='numbers_input'>Number</td><td></td><td>Name</td><td></td><td></td><td class='hide'>Qty</td></tr>"
+  var header = "<tr class='transparent'><td>Jersey</td><td></td><td>Size</td><td>Price</td><td class='numbers_input'></td><td class='numbers_input'>Number</td><td></td><td>Name</td><td></td><td></td><td class='hide'>Qty</td></tr>"
   var row_number = "<td class='row_number'><font></font></td>";
     var sizeSelect = "<select style='margin-left: 10px;' class='size_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
     var resizeSelect = "<select style='margin-left: 10px;' class='resize_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
-  var product_size = "<td>Size</td><td>"+sizeSelect+"</td>";
+  var product_size = "<td>Size</td><td class='jersey_size'>"+sizeSelect+"</td>";
+  var jersey_price = "<td class='jersey_price' style='padding-right: 10px;'></td>";
     var numberInput = "<input type='text' class='number_input' style='width: 25px;'>";
     var newnumberInput = "<input type='text' class='newnumber_input' style='width: 25px;'>";
   var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input'>"+numberInput+"</td>";
@@ -396,10 +408,10 @@ function buildRows(qty) {
   $('#sub_selections table').append(header);
 
   if(name != meshShorts) {
-    var jersey_row = "<tr>"+row_number+product_size+product_number+name_on_jersey+product_qty+qty_btns+raw_qty+"</tr>";
+    var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+qty_btns+raw_qty+"</tr>";
   }
   else {
-    var jersey_row = "<tr>"+row_number+product_size+product_qty+qty_btns+"</tr>";
+    var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_qty+qty_btns+"</tr>";
   };
   //builds rows X qty input
   for (var i = 1; i <= qty; i++) {
@@ -482,10 +494,29 @@ function buildRows(qty) {
 
   $('.size_select').change(function() {
     var size = $(this).val();
+    if(size == "XXL"){
+      $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
+    }
+    else if(size == "XXXL"){
+      $(this).closest('td').next('td').html('$'+$('#xxxl_jersey').val());
+    }
+    else {
+      $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
+    };
     $(this).closest('td').html("<font class='set_size'>"+size+"</font>").on('click', function() {
       $(this).html(resizeSelect);
+      $(this).closest('td').next('td').empty();
       $('.resize_select').change(function() {
         var resize = $(this).val();
+        if(resize == "XXL"){
+          $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
+        }
+        else if(resize == "XXXL"){
+          $(this).closest('td').next('td').html('$'+$('#xxxl_jersey').val());
+        }
+        else {
+          $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
+        };
         $(this).closest('td').html("<font class='set_size'>"+resize+"</font>");
       });
     });
@@ -572,6 +603,20 @@ function doneTypingNam() {
   });
 };
 
+};
+
+function priceEachJersey(){
+  $('#jersey_details tr .set_size').each(function(){
+    if($(this).text() == "XXL"){
+      $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
+    }
+    else if($(this).text() == "XXXL"){
+      $(this).closest('td').next('td').html('$'+$('#xxxl_jersey').val());
+    }
+    else {
+      $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
+    };
+  });
 };
 
 //DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
@@ -664,11 +709,12 @@ $('#numbers_front_back').on('change', function() {
   };
   re_calculate();
 });
-//disable select option on GO-BACK
-if(($('#numbers_front_back').val() == "front") || ($('#numbers_front_back').val() == "front_back")) {
-  $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
-  $('#custom_logo option').prop('disabled', true);
-};
+
+// //disable select option on GO-BACK
+// if(($('#numbers_front_back').val() == "front") || ($('#numbers_front_back').val() == "front_back")) {
+//   $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+//   $('#custom_logo option').prop('disabled', true);
+// };
 
 //DO YOU WANT TO PRINT NAMES ON THE BACK OF JERSEYS?
 function addNameOnBack() {
@@ -847,9 +893,33 @@ $('.clear_btn').on('click', function(e) {
   e.preventDefault();
 });
 
+//NEXT STEP BUTTON
+$('.next_btn').on('click', function(e) {
+  var msg;
+  var verify = "Please verify the jersey details you have entered are acurate - click Next Step to continue"
+  var missing = "The jersey details are incomplete - please review the section above for missing information"
+  var emptyInputs = $('#jersey_details').find('input[type=text]:empty').filter(":visible").length;
+  var emptySelects = $('#jersey_details').find('select').length;
+  if((emptyInputs > 0) || (emptySelects > 0)) {
+    msg = missing;
+  }
+  else{
+    msg = verify;
+  };
+  if($(this).attr('id') != 'continue') {
+    $('#next_step_msg').html(msg);
+    $('.inner').slideToggle().delay(5000).slideToggle();
+    if(msg == verify) {
+      $(this).attr('id','continue');
+    };
+    e.preventDefault();
+  }
+  else{
+    captureValues();
+  };
 });
 
-
+});
 
 //CAPTURE VALUES AND SUBMIT FORM TO STEP 2
 function captureValues() {

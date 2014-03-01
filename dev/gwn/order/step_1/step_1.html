@@ -24,8 +24,9 @@
    * @module tabletojson
    * @version 0.6.0
    */
-  (function(e){e.fn.tableToJSON=function(t){var n={ignoreColumns:[1,3,5,7,8],onlyColumns:null,ignoreHiddenRows:!0,headings:null};t=e.extend(n,t);var r=function(e){return e!==undefined&&e!==null?!0:!1},i=function(n){return r(t.onlyColumns)?e.inArray(n,t.onlyColumns)===-1:e.inArray(n,t.ignoreColumns)!==-1},s=function(t,n){var r={};return e.each(n,function(e,n){e<t.length&&(r[t[e]]=n)}),r},o=function(t){var n=[];return e(t).children("td,th").each(function(t,s){if(!i(t)){var o=e(s).data("override"),u=e.trim(e(s).text());n[n.length]=r(o)?o:u}}),n},u=function(e){var n=e.find("tr:first").first();return r(t.headings)?t.headings:o(n)},a=function(n,i){var u=[];return n.children("tbody,*").children("tr").each(function(n,a){if(n!==0||r(t.headings))if(e(a).is(":visible")||!t.ignoreHiddenRows)u[u.length]=s(i,o(a))}),u},f=u(this);return a(this,f)}})(jQuery);
+  (function(e){e.fn.tableToJSON=function(t){var n={ignoreColumns:[1,4,6,8,9],onlyColumns:null,ignoreHiddenRows:!0,headings:null};t=e.extend(n,t);var r=function(e){return e!==undefined&&e!==null?!0:!1},i=function(n){return r(t.onlyColumns)?e.inArray(n,t.onlyColumns)===-1:e.inArray(n,t.ignoreColumns)!==-1},s=function(t,n){var r={};return e.each(n,function(e,n){e<t.length&&(r[t[e]]=n)}),r},o=function(t){var n=[];return e(t).children("td,th").each(function(t,s){if(!i(t)){var o=e(s).data("override"),u=e.trim(e(s).text());n[n.length]=r(o)?o:u}}),n},u=function(e){var n=e.find("tr:first").first();return r(t.headings)?t.headings:o(n)},a=function(n,i){var u=[];return n.children("tbody,*").children("tr").each(function(n,a){if(n!==0||r(t.headings))if(e(a).is(":visible")||!t.ignoreHiddenRows)u[u.length]=s(i,o(a))}),u},f=u(this);return a(this,f)}})(jQuery);
   </script>
+
 
   <link rel="shortcut icon" type="image/png" href="../../images/favicon.gif">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
@@ -151,8 +152,8 @@
                 Underar gussets<br>
                 Coverstitched<br>
                 Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="dazzleMicro" class="description">
                 100% polyester trico mini-mesh outside<br>
@@ -161,8 +162,8 @@
                 Mitered rib v-neck<br>
                 Oversized "pro-cut" with wide shoulder design<br>
                 Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="fullButton" class="description">
                 100% heavyweight nylon polyester mesh<br>
@@ -171,8 +172,8 @@
                 Extended, rounded hemmed tail<br>
                 Full athletic cut<br>
                 Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="gameDay" class="description">
                 Dazzle polyester double ply cowl<br>
@@ -181,8 +182,8 @@
                 Polyester tricot mesh body<br>
                 Full length sizing<br>
                 Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="gameDazzle" class="description">
                 100% polyester dazzle cloth inside and outside<br>
@@ -191,8 +192,8 @@
                 Mitered rib v-neck<br>
                 Oversized "pro-cut" with wide shoulder design<br>
                 Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="meshJersey" class="description">
                 Heavyweight nylon porthole mesh<br>
@@ -201,22 +202,22 @@
                 Modified v-neck<br>
                 Cut to fit over shoulder pads<br>
                 Sizes: M, XL and XXXL<br>
-                Add $3 for XXXL<br>
+                Add $<span class="xxxl_price">3</span> for XXXL<br>
               </div>
               <div id="mwReversible" class="description" >
                 2-Ply DRI-GEAR® polyester fabric<br>
                 Wicks moisture away from the body<br>
                 Reversible jerseys are perfect for practices or games<br>
                 Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="mwtShirt" class="description" >
                 DRI-GEAR® mid-weight polyester fabric<br>
                 Ideal for screen printing<br>
                 Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="reversibleJersey" class="description" >
                 100% nylon trico mesh (colors)<br>
@@ -225,37 +226,37 @@
                 V-neck design<br>
                 Youth Sizes: M - L<br>
                 Adult Sizes: S - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="three_quarter_sleeve" class="description" >
                 5.5 oz. 100% pre-shrunk cotton<br>
                 Rib knit crew nack<br>
                 Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="twoButton" class="description" >
                 Heavyweight 50/50 Cotton/Polyester<br>
                 Set-in sleeves<br>
                 Sizes: M - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="tShirt" class="description" >
                 Heavyweight 50/50 Cotton/Polyester<br>
                 Set-in sleeves<br>
                 Youth Sizes: M - L<br>
                 Adult Sizes: S - XXXL<br>
-                Add $2 for XXL<br>
-                Add $4 for XXXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
+                Add $<span class="xxxl_price">4</span> for XXXL<br>
               </div>
               <div id="meshShorts" class="description" >
                 100% nylong mini-mesh<br>
                 9" inseam<br>
                 Double thickness<br>
                 Sizes: M - XXL<br>
-                Add $2 for XXL<br>
+                Add $<span class="xxl_price">2</span> for XXL<br>
               </div>
             </div>
             <div class="clear"></div>
@@ -751,10 +752,12 @@
             </table>
           </div>
           <div id="sub_selections">
+            <input type="hidden" id="jersey_price" value="">
+            <input type="hidden" id="xxl_jersey" value="">
+            <input type="hidden" id="xxxl_jersey" value="">
             <table id="jersey_details" style="width:100%;">
               <!--js buildRows(qty)-->
             </table>
-
             <div style="width:100%;" id="save_clear_btns">
               <!--<a href='#' class='save_btn' style="float:left;">SAVE</a>-->
               <a href='#' class='clear_btn' style="float:right;">CLEAR&nbsp;&nbsp;ALL</a>
@@ -776,15 +779,19 @@
               <input type="hidden" name="print_names" id="step_1_print_names" value="no"><!--"NO" is the init value and toggles on #print_name_on_back change-->
               <input type="hidden" name="team_name" id="step_1_team_name" value="none"><!--"NONE" is the init value and toggles on #team_name_design change-->
               <input type="hidden" name="logo" id="step_1_logo" value="no"><!--"NO" is the init value and toggles on #custom_logo change-->
-              <a href="#" class="next_btn" onclick="captureValues()">NEXT&nbsp;&nbsp;STEP</a>
+              <a href="#" id="" class="next_btn">NEXT&nbsp;&nbsp;STEP</a>
             </form>
           </div>
         </td>
       </tr>
     </table>
   </div>
-
   <div id="footer">
+    <div id="slidebottom" class="slide">
+      <div class="inner" style="display:none;">
+        <span id="next_step_msg"><!--js next step var msg--></span>
+      </div>
+    </div>
     <ul id="horizontal-nav">
       <li><a href="#" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
       <li class="pipe">|</li>
@@ -797,9 +804,7 @@
       <li><a href="../../footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
     </ul>
   </div>
-
 </div>
   <script src="js/step_1.js"></script>
-
 </body>
 </html>

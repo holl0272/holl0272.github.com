@@ -428,12 +428,32 @@ $(document).ready(function(){
 
   //FINALIZE BUTTON
   $('.finalize_btn').on('click', function(e) {
-    e.preventDefault();
+    var msg;
+    var verify = "Please verify the jersey details you have entered are acurate - click Finalize Order to continue"
+    var missing = "Not all design options have been selected - please review the section above for missing information"
+    var infoIcon = $(".info_btn[src*='info']").filter(":visible").length;
+    if(infoIcon > 0) {
+      msg = missing;
+    }
+    else{
+      msg = verify;
+    };
+    if($(this).attr('id') != 'continue') {
+      $('#next_step_msg').html(msg);
+      $('.inner').slideToggle().delay(5000).slideToggle();
+      if(msg == verify) {
+        $(this).attr('id','continue');
+      };
+      e.preventDefault();
+    }
+    else{
+      captureValues();
+    };
   });
 
 });
 
-//CAPTURE VALUES AND SUBMIT FORM TO STEP 2
+//CAPTURE VALUES AND SUBMIT FORM TO STEP 3
 function captureValues() {
 //url vars
   //$('#step_2_url').val(url);
@@ -544,8 +564,8 @@ function captureValues() {
           var detailsTable = $("<br><table></table>");
 
           detailsTable.jsonTable({
-              head : ['Jersey', 'Size', 'Number', 'Name', 'Qty'],
-              json : ['Jersey', 'Size', 'Number', 'Name', 'Qty'] // The '*' identity will be incremented at each line
+              head : ['Jersey', 'Size', 'Price', 'Number', 'Name', 'Qty'],
+              json : ['Jersey', 'Size', 'Price', 'Number', 'Name', 'Qty']
           });
 
           detailsTable.jsonTableUpdate(options);
