@@ -147,7 +147,7 @@
               <div id="rev_prod_side_row">
                 CHOOSE THE SIDE OF THE JERSEY YOU WANT TO APPLY PRINTING
                 <div class="dropdown">
-                  <a href="images/info/colors.png" data-lightbox="colors" title="14 Color Options"><img src="images/info.png" class="info_btn"></a>
+                  <a href="" data-lightbox="product_image_lightbox" title="Choose the color of the side you want to apply printing." id="jersey_side_lightbox"><img src="images/info.png" class="info_btn"></a>
                   <select style="float:left;" id="side_select">
                     <option value="default" selected>&#60; Jersey Side &#62;</option>
                   </select>
@@ -207,7 +207,11 @@
               </div>
               <div id="team_name_row">
                 ENTER YOUR TEAM NAME
-                <input type="text" style=" width: 125px; float:right; margin: 7px 25px 0 0;" id="team_name_input" placeholder="EAGLES"><br>
+                <div class="dropdown">
+                  <img src="images/info.png" class="info_btn" id="team_name_info_icon"></a>
+                  <input type="text" style=" width: 125px; float:right;" id="team_name_input" placeholder="EAGLES">
+                  <div class="clear"></div>
+                </div><br>
               </div>
               <div id="graphic_row">
                 TEAM NAME & GRAPHIC OPTIONS
@@ -290,14 +294,14 @@
           </div>
           <div style="background-color: white; width:100%; display:inline-block;  margin: 10px 0 10px 0;">
             <div id="image_container" stye="float:none;"> <!--dev style-->
-              <div style="position: relative; left:0; top:0; float: left;">
+              <div style="position: relative; left:0; top:0; float: left;" id="front">
                 <a href="" data-lightbox="product_img_front" title="">
                   <image src="" alt="Product Image Front" id="product_img_front" class="product_img" style="position: relative; top: 0; left: 0;">
                     <div id="front_elements"></div>
                   <image style="display:none;" src="" id="product_img_front_large" class="lightbox_img">
                 </a><!--urlParams["img"]-->
               </div>
-              <div style="position: relative; left:0; top:0; float: right; margin-right: 30px;">
+              <div style="position: relative; left:0; top:0; float: right; margin-right: 30px;" id="back">
                 <a href="" data-lightbox="product_img_back" title="">
                   <image src="" alt="Product Image Back" id="product_img_back" class="product_img">
                     <div id="back_elements"></div>

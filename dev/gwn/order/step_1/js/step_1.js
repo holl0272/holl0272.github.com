@@ -394,7 +394,7 @@ function buildRows(qty) {
   var row_number = "<td class='row_number'><font></font></td>";
     var sizeSelect = "<select style='margin-left: 10px;' class='size_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
     var resizeSelect = "<select style='margin-left: 10px;' class='resize_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
-  var product_size = "<td>Size</td><td class='jersey_size'>"+sizeSelect+"</td>";
+  var product_size = "<td>Size</td><td class='jersey_size' style='min-width: 70px'>"+sizeSelect+"</td>";
   var jersey_price = "<td class='jersey_price' style='padding-right: 10px;'></td>";
     var numberInput = "<input type='text' class='number_input' style='width: 25px;'>";
     var newnumberInput = "<input type='text' class='newnumber_input' style='width: 25px;'>";
@@ -896,7 +896,7 @@ $('.clear_btn').on('click', function(e) {
 //NEXT STEP BUTTON
 $('.next_btn').on('click', function(e) {
   var msg;
-  var verify = "Please verify the jersey details you have entered are acurate - click Next Step to continue"
+  var verify = "Please verify the jersey details you have entered are acurate - click <font color='#11013b'>NEXT STEP</font> to continue"
   var missing = "The jersey details are incomplete - please review the section above for missing information"
   var emptyInputs = $('#jersey_details').find('input[type=text]:empty').filter(":visible").length;
   var emptySelects = $('#jersey_details').find('select').length;

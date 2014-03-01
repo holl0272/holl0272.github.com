@@ -158,6 +158,10 @@
   margin: -1px;
   border: 1px solid yellow;
 }
+.mock_btn {
+  color: #11013b;
+  font-weight: 700;
+}
 .input_num {
   width: 85px;
 }
