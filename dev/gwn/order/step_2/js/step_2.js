@@ -310,16 +310,16 @@ $(document).ready(function(){
       numbersColor = "<image src='images/elements/numbers/"+color+".png' class='product_img_element number_element'>";
       if(number_placement == 'front'){
         $('#front_elements').append(numbersColor);
-        numbersColorOverlay = "<image src='images/elements/numbers/"+color+".png' id='numbersColorOverlay' class='front_element'>";
+        numbersColorOverlay = "<image src='images/elements/numbers/large/"+color+".png' id='numbersColorOverlay' class='front_element'>";
       }
       else if(number_placement == 'back'){
         $('#back_elements').append(numbersColor);
-        numbersColorOverlay = "<image src='images/elements/numbers/"+color+".png' id='numbersColorOverlay' class='back_element'>";
+        numbersColorOverlay = "<image src='images/elements/numbers/large/"+color+".png' id='numbersColorOverlay' class='back_element'>";
       }
       else if(number_placement == 'front_back'){
         $('#front_elements').append(numbersColor);
         $('#back_elements').append(numbersColor);
-        numbersColorOverlay = "<image src='images/elements/numbers/"+color+".png' id='numbersColorOverlay' class='front_back_element'>";
+        numbersColorOverlay = "<image src='images/elements/numbers/large/"+color+".png' id='numbersColorOverlay' class='front_back_element'>";
       };
       graphicColor(color);
       playerLetteringColor(color);
@@ -392,7 +392,7 @@ $(document).ready(function(){
     $('#graphicColorOverlay').remove();
     if(graphic != "default") {
       graphicColor = "<image src='images/elements/graphics/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
-      graphicColorOverlay = "<image src='images/elements/graphics/"+graphic+"_"+color+".png' id='graphicColorOverlay' class='front_element'>";
+      graphicColorOverlay = "<image src='images/elements/graphics/large/"+graphic+"_"+color+".png' id='graphicColorOverlay' class='front_element'>";
     }
     else {
       graphicColor = "<image src='images/elements/default.png' id='front_graphic_element' class='product_img_element'>";
