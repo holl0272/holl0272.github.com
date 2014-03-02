@@ -333,7 +333,11 @@ function doneTyping() {
 //re-run row build if returning from order_step_2
 if($('#order_qty').val() != ""){
   doneTyping();
-};
+}
+else {
+  $.removeCookie('returnJSON', { path: '/' });
+  $('#cookieTbl').remove();
+}
 
 function calculateCost(qty) {
   var price_per;
@@ -837,7 +841,7 @@ if($('#custom_logo').val() == "yes") {
 
 //POPULATE TABLE WITH RETURN JSON DATA FROM STEP 2
 if($.cookie('returnJSON')){
-  $('#jersey_details').hide();
+  //$('#jersey_details').hide();
   $('.next_btn').attr('id','continue');
 //disable select option on GO-BACK
 if(($('#numbers_front_back').val() == "front") || ($('#numbers_front_back').val() == "front_back")) {
@@ -845,21 +849,98 @@ if(($('#numbers_front_back').val() == "front") || ($('#numbers_front_back').val(
   $('#custom_logo option').prop('disabled', true);
 };
 
+$('#jersey_details').empty();
+
   var data = JSON.parse($.cookie('returnJSON'));
   var options = {
     source: data,
   };
 
-  var detailsTable = $("<br><table></table>");
+  var detailsTable = $("<table id='cookieTbl'></table>");
 
   detailsTable.jsonTable({
-    head : ['Jersey', 'Size', 'Price', 'Number', 'Name', 'Qty'],
     json : ['Jersey', 'Size', 'Price', 'Number', 'Name', 'Qty']
   });
 
   detailsTable.jsonTableUpdate(options);
+  $("#json_data").append(detailsTable);
 
-  $("#json_table").append(detailsTable);
+function handle(table){
+  var header = "<tr class='transparent' id='json_header'><td>Jersey</td><td></td><td>Size</td><td>Price</td><td class='numbers_input'></td><td class='numbers_input'>Number</td><td></td><td>Name</td><td></td><td></td><td class='hide'>Qty</td></tr>"
+  $('#jersey_details').append(header);
+
+  table.find('tr').each(function(){
+    var jersey = $(this).find('td:eq(0)').text();
+    var size = $(this).find('td:eq(1)').text();
+    var price = $(this).find('td:eq(2)').text();
+    var number = $(this).find('td:eq(3)').text();
+    var numberInput = "<input type='text' class='number_input' style='width: 25px;'>";
+    var name = $(this).find('td:eq(4)').text();
+    var qty = $(this).find('td:eq(5)').text();
+
+    var row_number = "<td class='row_number'><font>"+jersey+"</font></td>";
+    //var sizeSelect = "<select style='margin-left: 10px;' class='size_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
+    //var resizeSelect = "<select style='margin-left: 10px;' class='resize_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
+    var product_size = "<td>Size</td><td class='jersey_size' style='min-width: 70px'><font>"+size+"</font></td>";
+    var jersey_price = "<td class='jersey_price' style='padding-right: 10px;'>"+price+"</td>";
+    //var numberInput = "<input type='text' class='number_input' style='width: 25px;'>";
+    //var newnumberInput = "<input type='text' class='newnumber_input' style='width: 25px;'>";
+    if(number != "") {
+      var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input'><font>"+number+"</font></td>";
+    }
+    else {
+      var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input' id='return_number_input'>"+numberInput+"</td>";
+    };
+    //var nameInput = "<input type='text' class='name_input' style='width: 150px;'>";
+    //var newnameInput = "<input type='text' class='newname_input' style='width: 150px;'>";
+    var name_on_jersey = "<td>Name On Jersey</td><td><font>"+name+"<font></td>";
+    var product_qty = "<td>Quantity</td><td><font style='padding-right: 10px;'>"+qty+"</font></td>";
+    //var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; float:right; padding-left:5px; cursor: pointer;'> - </span></td><span>";
+    //var raw_qty = "<td class='hide'></td>";
+    var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+"</tr>";
+
+    $('#jersey_details').append(jersey_row);
+  });
+  $('#print_numbers_select').change();
+  $('#json_header').next('tr').remove();
+  //$('#json_data').remove();
+  }
+  handle(detailsTable)
+
+var numberReturnTimer;
+var doneTypingReturnNumber = 500;
+//on keyup, start the countdown
+$('#return_number_input input').keyup(function(){
+  $(this).attr('id', 'temp');
+  numberReturnTimer = setTimeout(doneTypingReturn, doneTypingReturnNumber);
+});
+//on keydown, clear the countdown
+$('#return_number_input input').next().keydown(function(){
+  clearTimeout(numberReturnTimer);
+});
+//user is "finished typing"
+function doneTypingReturn() {
+  var number = $('#temp').val();
+  $('#temp').closest('td').html("<font class='set_number'>"+number+"</font>").on('click', function() {
+    $(this).html(newnumberInput).find('input').focus();
+    var numberTimer;
+    var doneTypingNumber = 500;
+    //on keyup, start the countdown
+    $('.newnumber_input').keyup(function(){
+      $(this).attr('id', 'temp');
+      numberTimer = setTimeout(doneTypingNum, doneTypingNumber);
+    });
+    //on keydown, clear the countdown
+    $('.newnumber_input').keydown(function(){
+      clearTimeout(numberTimer);
+    });
+    //user is "finished typing"
+    function doneTypingNum() {
+      var newnumber = $('#temp').val();
+      $('#temp').closest('td').html("<font class='set_number'>"+newnumber+"</font>");
+    };
+  });
+};
 };
 
 //NEXT STEP
@@ -944,7 +1025,7 @@ $('.next_btn').on('click', function(e) {
 
 //CAPTURE VALUES AND SUBMIT FORM TO STEP 2
 function captureValues() {
-  $.removeCookie('jsonData', { path: '/' });
+  $.removeCookie('returnJSON', { path: '/' });
   var detailsToJSON = $('#jersey_details').tableToJSON();
   var data = JSON.stringify(detailsToJSON);
   $('<input type="hidden" name="json"/>').val(data).appendTo('#step_1_form');
