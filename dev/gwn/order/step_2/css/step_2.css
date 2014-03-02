@@ -209,6 +209,7 @@ input {
 }
 .front_element, .back_element, .front_back_element {
   position: absolute;
+  opacity: 0;
   top: 0;
   left: 0;
 }

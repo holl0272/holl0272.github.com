@@ -10,9 +10,7 @@
 
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="../../js/scripts.js"></script>
-  <script src="js/jquery-1.10.2.min.js"></script>
-
-  <script src="js/lightbox-2.6.min.js"></script>
+  <script src="../../js/lightbox-2.6.min.js"></script>
 
 
   <link rel="shortcut icon" type="image/png" href="../../images/favicon.gif">
@@ -114,7 +112,7 @@
                 <image src="../../images/volleyball.jpg" alt="Volleyball Jerseys" id="soccer_box"><span><font>VOLLEYBALL</font><br>JERSEYS</span>
               </div>
             <div class="box_btn">
-              <a href="javascript:window.history.back(-1)" title="Home" id="return_to_step_1"><image src="../../sports/images/plain_grey_box.jpg" alt="Home" id="home_box"><span>BACK TO<br>YOUR ORDER<br>OPTIONS</span></a>
+              <a href="#" title="Home" class="return_to_step_1"><image src="../../sports/images/plain_grey_box.jpg" alt="Home" id="home_box"><span>BACK TO<br>YOUR ORDER<br>OPTIONS</span></a>
             </div>
           </div>
         </td>
@@ -223,18 +221,6 @@
                   <div class="clear"></div>
                 </div><br>
               </div>
-              <div id="placement_row">
-                DESIGN PLACEMENT
-                <div class="dropdown">
-                  <a><img src="images/info.png" class="info_btn"></a>
-                  <select style="float:right;" id="placement_select">
-                    <option value="default" selected>&#60; Placement &#62;</option>
-                    <option value="front">Across Front</option>
-                    <option value="chest">Left Chest</option>
-                  </select>
-                  <div class="clear"></div>
-                </div><br>
-              </div>
               <div class="logo_row">
                 UPLOAD YOUR LOGO
                 <input type="text" style=" width: 125px; float:right; margin: 7px 25px 0 0;" id="team_name_input" placeholder="UPLOAD SCRIPT HERE"><br>
@@ -253,6 +239,18 @@
                   <div class="clear"></div>
                 </div><br>
               </div>
+              <div id="placement_row">
+                DESIGN PLACEMENT
+                <div class="dropdown">
+                  <a><img src="images/info.png" class="info_btn"></a>
+                  <select style="float:right;" id="placement_select">
+                    <option value="default" selected>&#60; Placement &#62;</option>
+                    <option value="front">Across Front</option>
+                    <option value="chest">Left Chest</option>
+                  </select>
+                  <div class="clear"></div>
+                </div><br>
+              </div>
               <div style="float: right; margin: 5px 25px 0 0;">
                 <a href="#" class="reset_btn">RESET</a>
               </div>
@@ -261,7 +259,7 @@
             <div id="no_results" style="display:none;">
               YOUR CURRENT ORDER DOES NOT REQUIRE ANY DESIGN OPTIONS
               <br>
-              RETURN <a href="javascript:window.history.back(-1)" style="color: #e8d606;"><b>&nbsp;BACK TO YOUR ORDER OPTIONS&nbsp;</b></a> TO MAKE ADDITIONAL SELECTIONS
+              RETURN <a href="javascript:window.history.back(-1)" class="return_to_step_1" style="color: #e8d606;"><b>&nbsp;BACK TO YOUR ORDER OPTIONS&nbsp;</b></a> TO MAKE ADDITIONAL SELECTIONS
             </div>
             <div class="clear"></div>
           </div>
@@ -312,7 +310,7 @@
 
           <div class="clear"></div>
           <div id="disclaimer">
-            <span>Your tean name will not appear in this preview</span>
+            <span>Your team name and font selection will not appear in this preview.</span>
           </div>
           </div>
 
@@ -417,8 +415,7 @@
                 </tr>
             </table>
           <br>
-          <div id="json_table">
-          </div>
+          <div id="json_table"></div>
         </td>
       </tr>
     </table>
@@ -462,25 +459,25 @@
   <a href="images/info/varsity.gif" data-lightbox="fonts" title="Font Option:  VARSITY"></a>
   <a href="images/info/brush.gif" data-lightbox="fonts" title="Font Option:  BRUSH SCRIPT"></a>
   <a href="images/info/greek.gif" data-lightbox="fonts" title="Font Option:  GREEK"></a>
-  <a href="images/info/baseball_graphic.gif" data-lightbox="" class="baseball_stock" id="baseball_graphic" title="Stock Image:  BASEBALL GRAPHIC"></a>
-  <a href="images/info/baseball_script.gif" data-lightbox="" class="baseball_stock" id="baseball_script_graphic" title="Stock Image:  BASEBALL SCRIPT GRAPHIC"></a>
+  <a href="images/elements/graphics/large/baseball_graphic_black.png" data-lightbox="" class="baseball_stock" id="baseball_graphic" title="Stock Image:  BASEBALL GRAPHIC"></a>
+  <a href="images/elements/graphics/large/baseball_script_graphic_black.png" data-lightbox="" class="baseball_stock" id="baseball_script_graphic" title="Stock Image:  BASEBALL SCRIPT GRAPHIC"></a>
   <a href="images/info/basketball_graphic.gif" data-lightbox="" class="basketball_stock" id="basketball_graphic" title="Stock Image:  BASKETBALL GRAPHIC"></a>
   <a href="images/info/basketball_script.gif" data-lightbox="" class="basketball_stock" id="basketball_script_graphic" title="Stock Image:  BASKETBALL SCRIPT GRAPHIC"></a>
-  <a href="images/info/football_graphic.gif" data-lightbox="" class="football_stock" id="football_graphic" title="Stock Image:  FOOTBALL GRAPHIC"></a>
-  <a href="images/info/football_helmet_graphic.gif" data-lightbox="" class="football_stock" id="football_helmet_graphic" title="Stock Image:  FOOTBALL HELMET GRAPHIC"></a>
-  <a href="images/info/football_script.gif" data-lightbox="" class="football_stock" id="football_script_graphic" title="Stock Image:  FOOTBALL SCRIPT GRAPHIC"></a>
-  <a href="images/info/lacrosse_graphic.gif" data-lightbox="" class="lacrosse_stock" id="lacrosse_graphic" title="Stock Image:  LACROSSE GRAPHIC"></a>
-  <a href="images/info/lacrosse_script.gif" data-lightbox="" class="lacrosse_stock" id="lacrosse_script_graphic" title="Stock Image:  LACROSSE SCRIPT GRAPHIC"></a>
+  <a href="images/elements/graphics/large/football_graphic_black.png" data-lightbox="" class="football_stock" id="football_graphic" title="Stock Image:  FOOTBALL GRAPHIC"></a>
+  <a href="images/elements/graphics/large/football_helmet_graphic_black.png" data-lightbox="" class="football_stock" id="football_helmet_graphic" title="Stock Image:  FOOTBALL HELMET GRAPHIC"></a>
+  <a href="images/elements/graphics/large/football_script_graphic_black.png" data-lightbox="" class="football_stock" id="football_script_graphic" title="Stock Image:  FOOTBALL SCRIPT GRAPHIC"></a>
+  <a href="images/elements/graphics/large/lacrosse_graphic_black.png" data-lightbox="" class="lacrosse_stock" id="lacrosse_graphic" title="Stock Image:  LACROSSE GRAPHIC"></a>
+  <a href="images/elements/graphics/large/lacrosse_script_graphic_black.png" data-lightbox="" class="lacrosse_stock" id="lacrosse_script_graphic" title="Stock Image:  LACROSSE SCRIPT GRAPHIC"></a>
   <a href="images/info/soccer_graphic.gif" data-lightbox="" class="soccer_stock" id="soccer_graphic" title="Stock Image:  SOCCER GRAPHIC"></a>
   <a href="images/info/softball_graphic.gif" data-lightbox="" class="softball_stock" id="softball_graphic" title="Stock Image:  SOFTBALL GRAPHIC"></a>
   <a href="images/info/softball_script.gif" data-lightbox="" class="softball_stock" id="softball_script_graphic" title="Stock Image:  SOFTBALL SCRIPT GRAPHIC"></a>
   <a href="images/info/volleyball_graphic.gif" data-lightbox="" class="volleyball_stock" id="volleyball_graphic" title="Stock Image:  VOLLEYBALL GRAPHIC"></a>
   <a href="images/info/volleyball_script.gif" data-lightbox="" class="volleyball_stock" id="volleyball_script_graphic" title="Stock Image:  VOLLEYBALL SCRIPT GRAPHIC"></a>
-  <a href="images/info/straight.gif" data-lightbox="team_lettering" title="Lettering Style:  STRAIGHT"></a>
-  <a href="images/info/vert_arch.gif" data-lightbox="team_lettering" title="Lettering Style:  VERTICAL ARCH"></a>
+  <a href="images/elements/team_lettering/large/pro_narrow_straight_black.png" data-lightbox="team_lettering" title="Lettering Style:  STRAIGHT"></a>
+  <a href="images/elements/team_lettering/large/pro_narrow_vert_arch_black.png" data-lightbox="team_lettering" title="Lettering Style:  VERTICAL ARCH"></a>
   <a href="images/info/straight_top.gif" data-lightbox="team_lettering" title="Lettering Style:  STRAIGHT TOP"></a>
   <a href="images/info/bowtie.gif" data-lightbox="team_lettering" title="Lettering Style:  BOWTIE"></a>
-  <a href="images/info/straight.gif" data-lightbox="player_lettering" title="Lettering Style:  STRAIGHT"></a>
+  <a href="images/elements/player_lettering/large/pro_narrow_straight_black.png" data-lightbox="player_lettering" title="Lettering Style:  STRAIGHT"></a>
   <a href="images/info/vert_arch.gif" data-lightbox="player_lettering" title="Lettering Style:  VERTICAL ARCH"></a>
 
   <div id="footer">
@@ -504,6 +501,7 @@
 
 </div>
 </body>
-    <script src="js/jsonTable.js"></script>
+  <script src="../../js/jsonTable.js"></script>
+  <script src="../../js/jquery.cookie.js"></script>
   <script src="js/step_2.js"></script>
 </html>

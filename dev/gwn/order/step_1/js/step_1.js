@@ -710,12 +710,6 @@ $('#numbers_front_back').on('change', function() {
   re_calculate();
 });
 
-// //disable select option on GO-BACK
-// if(($('#numbers_front_back').val() == "front") || ($('#numbers_front_back').val() == "front_back")) {
-//   $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
-//   $('#custom_logo option').prop('disabled', true);
-// };
-
 //DO YOU WANT TO PRINT NAMES ON THE BACK OF JERSEYS?
 function addNameOnBack() {
   var name_on_back = 4;  //add $4
@@ -841,6 +835,33 @@ if($('#custom_logo').val() == "yes") {
   $('#name_design').hide();
 };
 
+//POPULATE TABLE WITH RETURN JSON DATA FROM STEP 2
+if($.cookie('returnJSON')){
+  $('#jersey_details').hide();
+  $('.next_btn').attr('id','continue');
+//disable select option on GO-BACK
+if(($('#numbers_front_back').val() == "front") || ($('#numbers_front_back').val() == "front_back")) {
+  $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+  $('#custom_logo option').prop('disabled', true);
+};
+
+  var data = JSON.parse($.cookie('returnJSON'));
+  var options = {
+    source: data,
+  };
+
+  var detailsTable = $("<br><table></table>");
+
+  detailsTable.jsonTable({
+    head : ['Jersey', 'Size', 'Price', 'Number', 'Name', 'Qty'],
+    json : ['Jersey', 'Size', 'Price', 'Number', 'Name', 'Qty']
+  });
+
+  detailsTable.jsonTableUpdate(options);
+
+  $("#json_table").append(detailsTable);
+};
+
 //NEXT STEP
 function nextStep() {
   var qty = Number($('#order_qty').val());
@@ -896,7 +917,7 @@ $('.clear_btn').on('click', function(e) {
 //NEXT STEP BUTTON
 $('.next_btn').on('click', function(e) {
   var msg;
-  var verify = "Please verify the jersey details you have entered are acurate - click <font color='#11013b'>NEXT STEP</font> to continue"
+  var verify = "Please verify the jersey details you have entered are acurate - click <span class='mock_btn'>NEXT STEP</span> to continue"
   var missing = "The jersey details are incomplete - please review the section above for missing information"
   var emptyInputs = $('#jersey_details').find('input[type=text]:empty').filter(":visible").length;
   var emptySelects = $('#jersey_details').find('select').length;
@@ -923,6 +944,7 @@ $('.next_btn').on('click', function(e) {
 
 //CAPTURE VALUES AND SUBMIT FORM TO STEP 2
 function captureValues() {
+  $.removeCookie('jsonData', { path: '/' });
   var detailsToJSON = $('#jersey_details').tableToJSON();
   var data = JSON.stringify(detailsToJSON);
   $('<input type="hidden" name="json"/>').val(data).appendTo('#step_1_form');

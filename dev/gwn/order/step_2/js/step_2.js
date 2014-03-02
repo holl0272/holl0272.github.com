@@ -89,6 +89,10 @@ $(document).ready(function(){
       });
   });
   */
+
+
+
+
   //NAME
   $('#urlParams_name').html(name);
 
@@ -330,7 +334,7 @@ $(document).ready(function(){
       $('#front_elements').append(numbersColor);
       $('#back_elements').append(numbersColor);
     };
-    $(numbersColorOverlay).insertAfter(".lb-container");
+    $(numbersColorOverlay).insertAfter(".lb-image");
   };
   $('#color_1_select').on('change', function() {
     var color = $('#color_1_select').val();
@@ -431,6 +435,13 @@ $(document).ready(function(){
     $(this).next().attr('placeholder', 'Up to X Characters');
   });
 
+  //GO BACK
+  $('.return_to_step_1').click(function(){
+    $.cookie('returnJSON', json_source, { path: '/' });
+    window.history.back(-1);
+    return false;
+  });
+
   //SAVE BUTTON
   $('.save_btn').on('click', function(e) {
     e.preventDefault();
@@ -458,11 +469,16 @@ $(document).ready(function(){
   //FINALIZE BUTTON
   $('.finalize_btn').on('click', function(e) {
     var msg;
+    var blank = "There are no design options avalible for this order - please click <span class='mock_btn'>BACK TO YOUR ORDER OPTIONS</span> to continue"
     var verify = "Please verify the jersey details you have entered are acurate - click <span class='mock_btn'>FINALIZE ORDER</span> to continue"
     var missing = "Not all design options have been selected - please review the section above for missing information"
     var infoIcon = $(".info_btn[src*='info']").filter(":visible").length;
+    var blankIcon = $(".info_btn").filter(":visible").length
     if(infoIcon > 0) {
       msg = missing;
+    }
+    else if(blankIcon == 0) {
+      msg = blank;
     }
     else{
       msg = verify;
@@ -480,16 +496,35 @@ $(document).ready(function(){
     };
   });
 
-//TOGGLES THE LIGHTBOX OVERLAY IMAGES
+//TOGGLES THE LIGHTBOX OVERLAY ELEMENTS
 $('#front').on('click', function() {
-    $('.front_element').show();
-    $('.back_element').hide();
+  $('.back_element').hide();
+  $('.front_element').show();
+  setTimeout(function(){
+    $('.front_element').css('opacity', 1);
+    $('.front_back_element').css('opacity', 1);
+  },1000);
 });
 $('#back').on('click', function() {
-    $('.front_element').hide();
-    $('.back_element').show();
+  $('.front_element').hide();
+  $('.back_element').show();
+  setTimeout(function(){
+    $('.back_element').css('opacity', 1);
+    $('.front_back_element').css('opacity', 1);
+  },1000);
 });
-
+//close outside the lb
+$('#lightbox').on('click', function() {
+    $('.front_element').css('opacity', 0);
+    $('.back_element').css('opacity', 0);
+    $('.front_back_element').css('opacity', 0);
+});
+//close on lb X
+$('a.lb-close').on('click', function() {
+    $('.front_element').css('opacity', 0);
+    $('.back_element').css('opacity', 0);
+    $('.front_back_element').css('opacity', 0);
+});
 
 });
 
