@@ -347,7 +347,7 @@ $(document).ready(function(){
     $('#playerLetteringColorOverlay').remove();
     if(letteringStyle != "default") {
       playerLetteringColor = "<image src='images/elements/player_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='player_name_element' class='product_img_element'>";
-      playerLetteringColorOverlay = "<image src='images/elements/player_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='playerLetteringColorOverlay' class='back_element'>";
+      playerLetteringColorOverlay = "<image src='images/elements/player_lettering/large/"+font+"_"+letteringStyle+"_"+color+".png' id='playerLetteringColorOverlay' class='back_element'>";
     }
     else {
       playerLetteringColor = "<image src='images/elements/default.png' id='player_name_element' class='product_img_element'>";
@@ -370,7 +370,7 @@ $(document).ready(function(){
     $('#teamLetteringColorOverlay').remove();
     if(letteringStyle != "default") {
       teamLetteringColor = "<image src='images/elements/team_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='team_name_element' class='product_img_element'>";
-      teamLetteringColorOverlay = "<image src='images/elements/team_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='teamLetteringColorOverlay' class='front_element'>";
+      teamLetteringColorOverlay = "<image src='images/elements/team_lettering/large/"+font+"_"+letteringStyle+"_"+color+".png' id='teamLetteringColorOverlay' class='front_element'>";
     }
     else {
       teamLetteringColor = "<image src='images/elements/default.png' id='team_name_element' class='product_img_element'>";
