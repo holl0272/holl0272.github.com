@@ -325,7 +325,12 @@ $(document).ready(function(){
         $('#back_elements').append(numbersColor);
         numbersColorOverlay = "<image src='images/elements/numbers/large/"+color+".png' id='numbersColorOverlay' class='front_back_element'>";
       };
-      graphicColor(color);
+      if($('#placement_select').val() != "chest") {
+        graphicColor(color);
+      }
+      else {
+        placementColor(color);
+      };
       playerLetteringColor(color);
       teamLetteringColor(color);
     }
@@ -406,7 +411,36 @@ $(document).ready(function(){
   };
   $('#graphic_select').on('change', function() {
     var color = $('#color_1_select').val();
+    $("#placement_select [value='front']").prop('selected', true);
     graphicColor(color);
+  });
+
+  //position row
+  function placementColor(color) {
+    var graphicColor;
+    var graphicColorOverlay;
+    var graphic = $('#graphic_select').val();
+    $('#front_graphic_element').remove();
+    $('#graphicColorOverlay').remove();
+    if(graphic != "default") {
+      graphicColor = "<image src='images/elements/placement/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
+      graphicColorOverlay = "<image src='images/elements/placement/large/"+graphic+"_"+color+".png' id='graphicColorOverlay' class='front_element'>";
+    }
+    else {
+      graphicColor = "<image src='images/elements/default.png' id='front_graphic_element' class='product_img_element'>";
+    }
+    $('#front_elements').append(graphicColor);
+    $(graphicColorOverlay).insertAfter(".lb-container");
+  };
+  $('#placement_select').on('change', function() {
+    if($(this).val() != "chest"){
+      var color = $('#color_1_select').val();
+      graphicColor(color);
+    }
+    else {
+      var color = $('#color_1_select').val();
+      placementColor(color);
+    };
   });
 
   //TOGGLE INFO AND CHECKMARK ICON

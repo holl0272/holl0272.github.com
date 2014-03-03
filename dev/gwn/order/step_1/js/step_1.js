@@ -863,7 +863,7 @@ $('#jersey_details').empty();
   });
 
   detailsTable.jsonTableUpdate(options);
-  $("#json_data").append(detailsTable);
+  // $("#json_data").append(detailsTable);
 
 function handle(table){
   var header = "<tr class='transparent' id='json_header'><td>Jersey</td><td></td><td>Size</td><td>Price</td><td class='numbers_input'></td><td class='numbers_input'>Number</td><td></td><td>Name</td><td></td><td></td><td class='hide'>Qty</td></tr>"
