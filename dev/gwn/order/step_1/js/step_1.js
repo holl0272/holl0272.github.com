@@ -669,6 +669,7 @@ $('#print_numbers_select').on('change', function() {
     $("#numbers_front_back option:eq(0)").prop('selected', true);
     $('#step_1_print_numbers').val('no');
     $('#step_1_number_placement').val('');
+    $("#team_name_design option[value='letters_graphic']").prop("disabled",false);
   };
   re_calculate();
 });
@@ -844,9 +845,14 @@ if($.cookie('returnJSON')){
   //$('#jersey_details').hide();
   $('.next_btn').attr('id','continue');
   //disable select option on GO-BACK
-  if($('#numbers_front_back').val() != "back") {
-    $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
-    $('#custom_logo option').prop('disabled', true);
+  if($('#print_numbers_select').val() != "no") {
+    if($('#numbers_front_back').val() != "back") {
+      $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+      $('#custom_logo option').prop('disabled', true);
+    };
+  }
+  else {
+    $("#team_name_design option[value='letters_graphic']").prop("disabled",false);
   };
 
 $('#jersey_details').empty();
