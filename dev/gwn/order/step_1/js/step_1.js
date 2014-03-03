@@ -843,11 +843,11 @@ if($('#custom_logo').val() == "yes") {
 if($.cookie('returnJSON')){
   //$('#jersey_details').hide();
   $('.next_btn').attr('id','continue');
-//disable select option on GO-BACK
-if(($('#numbers_front_back').val() == "front") || ($('#numbers_front_back').val() == "front_back")) {
-  $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
-  $('#custom_logo option').prop('disabled', true);
-};
+  //disable select option on GO-BACK
+  if($('#numbers_front_back').val() != "back") {
+    $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+    $('#custom_logo option').prop('disabled', true);
+  };
 
 $('#jersey_details').empty();
 
