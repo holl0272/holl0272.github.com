@@ -400,8 +400,8 @@ function buildRows(qty) {
     var resizeSelect = "<select style='margin-left: 10px;' class='resize_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
   var product_size = "<td>Size</td><td class='jersey_size' style='min-width: 70px'>"+sizeSelect+"</td>";
   var jersey_price = "<td class='jersey_price' style='padding-right: 10px;'></td>";
-    var numberInput = "<input type='text' class='number_input' style='width: 25px;'>";
-    var newnumberInput = "<input type='text' class='newnumber_input' style='width: 25px;'>";
+    var numberInput = "<input type='text' class='number_input' style='width: 25px;' maxlength='2'>";
+    var newnumberInput = "<input type='text' class='newnumber_input' style='width: 25px;' maxlength='2'>";
   var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input'>"+numberInput+"</td>";
     var nameInput = "<input type='text' class='name_input' style='width: 150px;'>";
     var newnameInput = "<input type='text' class='newname_input' style='width: 150px;'>";
@@ -463,7 +463,6 @@ function buildRows(qty) {
       $('#sub_selections table tr td').filter(":visible").find('.row_qty').val(qty).next().text(qty);
     };
   };
-
   togglePlusLess();
 
   $('.plus_one').on('click', function() {
@@ -602,7 +601,7 @@ function doneTypingNam() {
     //user is "finished typing"
     function doneReTypingName() {
       var newname = $('#temp_name').val();
-      $('#temp_name').closest('td').html("<font class='set_number'>"+newname+"</font>");
+      $('#temp_name').closest('td').html("<font class='set_name'>"+newname+"</font>");
     };
   });
 };

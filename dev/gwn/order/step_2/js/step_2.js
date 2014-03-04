@@ -343,8 +343,129 @@ $(document).ready(function(){
   };
   $('#color_1_select').on('change', function() {
     var color = $('#color_1_select').val();
-    printColor(color);
+    if(rev_prod == 'no'){
+      printColor(color);
+    }
+    else {
+      $('#side_select').change();
+    };
   });
+
+  //reversable product printing on one side
+  function otherSide(side) {
+    var otherside = "right"
+    if(side == "right") {
+      otherside = "left"
+    }
+    return otherside;
+  };
+
+  function printOneRevColor(color, side) {
+    var numbersColor;
+    var numbersColorOverlay;
+    var numbersColorOtherOverlay;
+    $('.number_element').remove();
+    $('#numbersColorOverlay').remove();
+    if(color != "default") {
+      numbersColor = "<image src='images/elements/reversable/numbers/"+side+"/"+color+".png' class='product_img_element number_element'>";
+      if(number_placement == 'front'){
+        $('#front_elements').append(numbersColor);
+        numbersColorOverlay = "<image src='images/elements/reversable/numbers/"+side+"/large/"+color+".png' id='numbersColorOverlay' class='front_element'>";
+      }
+      else if(number_placement == 'back'){
+        $('#back_elements').append(numbersColor);
+        numbersColorOverlay = "<image src='images/elements/reversable/numbers/"+side+"/large/"+color+".png' id='numbersColorOverlay' class='back_element'>";
+      }
+      else if(number_placement == 'front_back'){
+        $('#front_elements').append(numbersColor);
+        $('#back_elements').append(numbersColor);
+        numbersColorOverlay = "<image src='images/elements/reversable/numbers/"+side+"/large/"+color+".png' id='numbersColorOverlay' class='front_back_element'>";
+      };
+      if($('#placement_select').val() != "chest") {
+        graphicColor(color);
+      }
+      else {
+        placementColor(color);
+      };
+      playerLetteringColor(color);
+      teamLetteringColor(color);
+    }
+    else {
+      numbersColor = "<image src='images/elements/default.png' class='product_img_element number_element'>";
+      $('#front_elements').append(numbersColor);
+      $('#back_elements').append(numbersColor);
+    };
+    $(numbersColorOverlay).insertAfter(".lb-image");
+  };
+  $('#side_select').on('change', function() {
+    var color = $('#color_1_select').val();
+    if($('#side_select').val() != "default"){
+      if($('#side_select option:eq(2)').prop('selected') == true) {
+        var side = "right";
+      }
+      else {
+        var side = "left";
+      };
+      printOneRevColor(color, side);
+    };
+  });
+
+    // numbersColorOne = "<image src='images/elements/reversable/numbers/left/"+colorOne+".png' class='product_img_element number_element'>";
+    // numbersColorTwo = "<image src='images/elements/reversable/numbers/right/"+colorTwo+".png' class='product_img_element number_element'>";
+    // $('#front_elements').append(numbersColorOne);
+    // $('#front_elements').append(numbersColorTwo);
+    // numbersColorOneOverlay = "<image src='images/elements/reversable/numbers/left/large/"+colorOne+".png' id='numbersColorOneOverlay' class='front_element'>";
+    // numbersColorTwoOverlay = "<image src='images/elements/reversable/numbers/right/large/"+colorTwo+".png' id='numbersColorTwoOverlay' class='front_element'>";
+
+
+  function printRevColor(colorOne, colorTwo) {
+    var numbersColorOne;
+    var numbersColorTwo;
+    var numbersColorOneOverlay;
+    var numbersColorTwoOverlay;
+    $('.number_element').remove();
+    $('#numbersColorOneOverlay').remove();
+    $('#numbersColorTwoOverlay').remove();
+// if(number_placement == 'back'){
+//         $('#back_elements').append(numbersColor);
+//         numbersColorOverlay = "<image src='images/elements/reversable/numbers/"+side+"/large/"+color+".png' id='numbersColorOverlay' class='back_element'>";
+//       }
+//       else if(number_placement == 'front_back'){
+//         $('#front_elements').append(numbersColor);
+//         $('#back_elements').append(numbersColor);
+//         numbersColorOverlay = "<image src='images/elements/reversable/numbers/"+side+"/large/"+color+".png' id='numbersColorOverlay' class='front_back_element'>";
+//         numbersColorOtherOverlay = "<image src='images/elements/reversable/numbers/"+otherSide(side)+"/large/"+color+".png' id='numbersColorOtherOverlay' class='front_back_element'>";
+//       };
+//       if($('#placement_select').val() != "chest") {
+//         graphicColor(color);
+//       }
+//       else {
+//         placementColor(color);
+//       };
+//       playerLetteringColor(color);
+//       teamLetteringColor(color);
+
+//     else {
+//       numbersColor = "<image src='images/elements/default.png' class='product_img_element number_element'>";
+//       $('#front_elements').append(numbersColor);
+//       $('#back_elements').append(numbersColor);
+//     };
+//     $(numbersColorOverlay).insertAfter(".lb-image");
+//     if(number_placement == 'front_back') {
+//       $(numbersColorOtherOverlay).insertAfter(".lb-image");
+//     };
+  };
+  $('#color_2_select').on('change', function() {
+    var colorOne = $('#color_1_select').val();
+    var colorTwo = $(this).val();
+    printOneRevColor(colorOne, colorTwo);
+  });
+
+
+
+
+
+
 
   //player lettering style row
   function playerLetteringColor(color) {
@@ -441,8 +562,8 @@ $(document).ready(function(){
       $('#front_graphic_element').remove();
       $('#graphicColorOverlay').remove();
       if(graphic != "default") {
-        graphicColor = "<image src='images/elements/placement/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
-        graphicColorOverlay = "<image src='images/elements/placement/large/"+graphic+"_"+color+".png' id='graphicColorOverlay' class='front_element'>";
+        graphicColor = "<image src='images/elements/placement/graphics/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
+        graphicColorOverlay = "<image src='images/elements/placement/graphics/large/"+graphic+"_"+color+".png' id='graphicColorOverlay' class='front_element'>";
       }
       else {
         graphicColor = "<image src='images/elements/default.png' id='front_graphic_element' class='product_img_element'>";
@@ -466,6 +587,13 @@ $(document).ready(function(){
       var color = $('#color_1_select').val();
       placementColor(color);
     };
+  });
+
+  //element error handeling
+  $('select').change(function() {
+    $('.product_img_element').error(function(){
+      $(this).attr('src', 'images/elements/default.png');
+    });
   });
 
   //TOGGLE INFO AND CHECKMARK ICON
