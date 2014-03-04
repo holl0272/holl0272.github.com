@@ -417,25 +417,50 @@ $(document).ready(function(){
 
   //position row
   function placementColor(color) {
-    var graphicColor;
-    var graphicColorOverlay;
-    var graphic = $('#graphic_select').val();
-    $('#front_graphic_element').remove();
-    $('#graphicColorOverlay').remove();
-    if(graphic != "default") {
-      graphicColor = "<image src='images/elements/placement/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
-      graphicColorOverlay = "<image src='images/elements/placement/large/"+graphic+"_"+color+".png' id='graphicColorOverlay' class='front_element'>";
+    if(team_name_design == 'letters') {
+      var teamLetteringColor;
+      var teamLetteringColorOverlay;
+      var font = $('#font_select').val();
+      var letteringStyle = $('#team_name_style_select').val();
+      $('#team_name_element').remove();
+      $('#teamLetteringColorOverlay').remove();
+      if(letteringStyle != "default") {
+        teamLetteringColor = "<image src='images/elements/placement/team_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='team_name_element' class='product_img_element'>";
+        teamLetteringColorOverlay = "<image src='images/elements/placement/team_lettering/large/"+font+"_"+letteringStyle+"_"+color+".png' id='teamLetteringColorOverlay' class='front_element'>";
+      }
+      else {
+        teamLetteringColor = "<image src='images/elements/default.png' id='team_name_element' class='product_img_element'>";
+      }
+      $('#front_elements').append(teamLetteringColor);
+      $(teamLetteringColorOverlay).insertAfter(".lb-container");
     }
     else {
-      graphicColor = "<image src='images/elements/default.png' id='front_graphic_element' class='product_img_element'>";
-    }
-    $('#front_elements').append(graphicColor);
-    $(graphicColorOverlay).insertAfter(".lb-container");
+      var graphicColor;
+      var graphicColorOverlay;
+      var graphic = $('#graphic_select').val();
+      $('#front_graphic_element').remove();
+      $('#graphicColorOverlay').remove();
+      if(graphic != "default") {
+        graphicColor = "<image src='images/elements/placement/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
+        graphicColorOverlay = "<image src='images/elements/placement/large/"+graphic+"_"+color+".png' id='graphicColorOverlay' class='front_element'>";
+      }
+      else {
+        graphicColor = "<image src='images/elements/default.png' id='front_graphic_element' class='product_img_element'>";
+      }
+      $('#front_elements').append(graphicColor);
+      $(graphicColorOverlay).insertAfter(".lb-container");
+    };
   };
+
   $('#placement_select').on('change', function() {
     if($(this).val() != "chest"){
       var color = $('#color_1_select').val();
-      graphicColor(color);
+      if(team_name_design == 'letters') {
+        teamLetteringColor(color)
+      }
+      else {
+        graphicColor(color);
+      };
     }
     else {
       var color = $('#color_1_select').val();
