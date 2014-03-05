@@ -384,7 +384,7 @@ $(document).ready(function(){
         numbersColorOverlay = "<image src='images/elements/reversable/numbers/"+side+"/large/"+color+".png' id='numbersColorOverlay' class='front_back_element'>";
       };
       if($('#placement_select').val() != "chest") {
-        graphicColor(color);
+        graphicRevOneColor(color, side)
       }
       else {
         placementColor(color);
@@ -439,7 +439,7 @@ $(document).ready(function(){
         numbersRevColorOverlay = "<image src='images/elements/reversable/numbers/"+side+"/large/"+color+".png' id='numbersRevColorOverlay' class='front_back_element'>";
       };
       if($('#placement_select').val() != "chest") {
-        graphicColor(color);
+        graphicRevOneColor(color, side)
       }
       else {
         placementColor(color);
@@ -666,10 +666,80 @@ $(document).ready(function(){
     $(graphicColorOverlay).insertAfter(".lb-container");
   };
   $('#graphic_select').on('change', function() {
-    var color = $('#color_1_select').val();
     $("#placement_select [value='front']").prop('selected', true);
-    graphicColor(color);
+    if(rev_prod == "no") {
+      var color = $('#color_1_select').val();
+      graphicColor(color);
+    }
+    else {
+      if(rev == "yes") {
+        var color1 = $('#color_1_select').val();
+        var color2 = $('#color_2_select').val();
+        graphicRevTwoColor(color1, color2);
+      }
+      else {
+        var color = $('#color_1_select').val();
+        if($(this).val() != "default") {
+          if($('#side_select option:eq(1)').prop('selected') == true) {
+            var side = "left";
+          }
+          else if($('#side_select option:eq(2)').prop('selected') == true){
+            var side = "right"
+          }
+          graphicRevOneColor(color, side)
+        };
+      };
+    };
   });
+
+  //reversable product team lettering on one side
+  function graphicRevOneColor(color, side) {
+    var oposite = otherSide(side);
+    var graphicColor;
+    var graphicColorOverlay;
+    var graphic = $('#graphic_select').val();
+    $("#graphic_"+side+"_element").remove();
+    $("#graphic"+side+"ColorOverlay").remove();
+    if(rev != "yes") {
+      $("#graphic"+oposite+"ColorOverlay").remove();
+    }
+    if(graphic != "default") {
+      graphicColor = "<image src='images/elements/reversable/graphics/"+side+"/"+graphic+"_"+color+".png' id='graphic_"+side+"_element' class='product_img_element'>";
+      graphicColorOverlay = "<image src='images/elements/reversable/graphics/"+side+"/large/"+graphic+"_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element'>";
+    }
+    else {
+      graphicColor = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
+    };
+    $('#front_elements').append(graphicColor);
+    $(graphicColorOverlay).insertAfter(".lb-container");
+  };
+
+  //reversable product team lettering on both side
+  function graphicRevTwoColor(color1, color2) {
+    var graphicColorOne;
+    var graphicColorTwo;
+    var graphicColorOneOverlay;
+    var graphicColorTwoOverlay;
+    var graphic = $('#graphic_select').val();
+    $('#graphic_left_element').remove();
+    $('#graphic_right_element').remove();
+    $('#graphicleftColorOverlay').remove();
+    $('#graphicrightColorOverlay').remove();
+    if(graphic != "default") {
+      graphicColorOne = "<image src='images/elements/reversable/graphics/left/"+graphic+"_"+color1+".png' id='graphic_left_element' class='product_img_element'>";
+      graphicColorTwo = "<image src='images/elements/reversable/graphics/right/"+graphic+"_"+color2+".png' id='graphic_right_element' class='product_img_element'>";
+      graphicColorOneOverlay = "<image src='images/elements/reversable/graphics/left/large/"+graphic+"_"+color1+".png' id='graphicleftColorOverlay' class='front_element'>";
+      graphicColorTwoOverlay = "<image src='images/elements/reversable/graphics/right/large/"+graphic+"_"+color2+".png' id='graphicrightColorOverlay' class='front_element'>";
+    }
+    else {
+      graphicColorOne = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
+      graphicColorTwo = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
+    };
+    $('#front_elements').append(graphicColorOne);
+    $('#front_elements').append(graphicColorTwo);
+    $(graphicColorOneOverlay).insertAfter(".lb-container");
+    $(graphicColorTwoOverlay).insertAfter(".lb-container");
+  };
 
   //position row
   function placementColor(color) {
@@ -677,7 +747,7 @@ $(document).ready(function(){
       var teamLetteringColor;
       var teamLetteringColorOverlay;
       var font = $('#font_select').val();
-      var letteringStyle = $('#team_name_style_select').val();
+      var team_name_design = $('#team_name_style_select').val();
       $('#team_name_element').remove();
       $('#teamLetteringColorOverlay').remove();
       if(letteringStyle != "default") {
