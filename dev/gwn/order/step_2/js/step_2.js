@@ -385,20 +385,28 @@ $(document).ready(function(){
       teamLetteringColor(color);
     }
     else {
+      numbersColor = "<image src='images/elements/default.png' class='product_img_element number_element'>";
       $('.number_element').remove();
     };
     $(numbersColorOverlay).insertAfter(".lb-image");
   };
   $('#side_select').on('change', function() {
     var color = $('#color_1_select').val();
-    if($('#side_select').val() != "default") {
-      $('#side_select option:eq(2)').prop('selected', true);
-      var side = "right";
+    if(rev == 'yes') {
+      var side = "left";
+      printOneRevColor(color, side);
     }
     else {
-      var side = "left";
+      if($(this).val() != "default") {
+        if($('#side_select option:eq(1)').prop('selected') == true) {
+          var side = "left";
+        }
+        else if($('#side_select option:eq(2)').prop('selected') == true){
+          var side = "right"
+        }
+        printOneRevColor(color, side);
+      };
     };
-      printOneRevColor(color, side);
   });
 
   //reversable product printing on both side
