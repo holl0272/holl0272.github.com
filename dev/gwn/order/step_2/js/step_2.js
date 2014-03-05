@@ -341,6 +341,7 @@ $(document).ready(function(){
       };
       playerLetteringColor(color);
       teamLetteringColor(color);
+      $('#placement_select').val('front');
     }
     else {
       numbersColor = "<image src='images/elements/default.png' class='product_img_element number_element'>";
@@ -405,6 +406,7 @@ $(document).ready(function(){
       $('.number_element').remove();
     };
     $(numbersColorOverlay).insertAfter(".lb-image");
+    $('#placement_select option:eq(1)').prop('selected', true);
   };
   $('#side_select').on('change', function() {
     var color = $('#color_1_select').val();
@@ -459,6 +461,7 @@ $(document).ready(function(){
       $('.rev_number_element').remove();
     };
     $(numbersRevColorOverlay).insertAfter(".lb-image");
+    $('#placement_select option:eq(1)').prop('selected', true);
   };
   $('#color_2_select').on('change', function() {
     var color = $('#color_2_select').val();
@@ -674,7 +677,6 @@ $(document).ready(function(){
     $(graphicColorOverlay).insertAfter(".lb-container");
   };
   $('#graphic_select').on('change', function() {
-
     if($(this).val() == "default") {
       $('#placement_select option:first').prop('selected', true);
       $('#placement_select').change()
@@ -856,23 +858,45 @@ $(document).ready(function(){
   //chect position for reversable product team lettering on one side
   function placementRevOneColor(color, side) {
     var oposite = otherSide(side);
-    var graphicColor;
-    var graphicColorOverlay;
-    var graphic = $('#graphic_select').val();
-    $("#graphic_"+side+"_element").remove();
-    $("#graphic"+side+"ColorOverlay").remove();
-    if(rev != "yes") {
-      $("#graphic"+oposite+"ColorOverlay").remove();
-    }
-    if(graphic != "default") {
-      graphicColor = "<image src='images/elements/reversable/placement/"+side+"/graphics/"+graphic+"_"+color+".png' id='graphic_"+side+"_element' class='product_img_element'>";
-      graphicColorOverlay = "<image src='images/elements/reversable/placement/"+side+"/graphics/large/"+graphic+"_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element'>";
+    if(team_name_design == 'letters') {
+      var teamLetteringColor;
+      var teamLetteringColorOverlay;
+      var font = $('#font_select').val();
+      var letteringStyle = $('#team_name_style_select').val();
+      $("#team_name_"+side+"_element").remove();
+      $("#teamLettering"+side+"ColorOverlay").remove();
+      if(rev != "yes") {
+        $("#teamLettering"+oposite+"ColorOverlay").remove();
+      }
+      if(letteringStyle != "default") {
+        teamLetteringColor = "<image src='images/elements/reversable/placement/"+side+"/team_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='team_name_"+side+"_element' class='product_img_element'>";
+        teamLetteringColorOverlay = "<image src='images/elements/reversable/placement/"+side+"/team_lettering/large/"+font+"_"+letteringStyle+"_"+color+".png' id='teamLettering"+side+"ColorOverlay' class='front_element'>";
+      }
+      else {
+        teamLetteringColor = "<image src='images/elements/default.png' id='team_name_element' class='product_img_element'>";
+      };
+      $('#front_elements').append(teamLetteringColor);
+      $(teamLetteringColorOverlay).insertAfter(".lb-container");
     }
     else {
-      graphicColor = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
+      var graphicColor;
+      var graphicColorOverlay;
+      var graphic = $('#graphic_select').val();
+      $("#graphic_"+side+"_element").remove();
+      $("#graphic"+side+"ColorOverlay").remove();
+      if(rev != "yes") {
+        $("#graphic"+oposite+"ColorOverlay").remove();
+      }
+      if(graphic != "default") {
+        graphicColor = "<image src='images/elements/reversable/placement/"+side+"/graphics/"+graphic+"_"+color+".png' id='graphic_"+side+"_element' class='product_img_element'>";
+        graphicColorOverlay = "<image src='images/elements/reversable/placement/"+side+"/graphics/large/"+graphic+"_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element'>";
+      }
+      else {
+        graphicColor = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
+      };
+      $('#front_elements').append(graphicColor);
+      $(graphicColorOverlay).insertAfter(".lb-container");
     };
-    $('#front_elements').append(graphicColor);
-    $(graphicColorOverlay).insertAfter(".lb-container");
   };
 
   //chest postion for reversable product team lettering on both side
