@@ -269,6 +269,15 @@ $(document).ready(function(){
   $('.lightbox_img').error(function() {
     $(this).parent().attr('href','../../images/products/large/no_preview.gif');
   });
+  $('.front_element').error(function(){
+    $(this).attr('src', 'images/elements/graphics/large/default.png');
+  });
+  $('.back_element').error(function(){
+    $(this).attr('src', 'images/elements/graphics/large/default.png');
+  });
+  $('.front_back_element').error(function(){
+    $(this).attr('src', 'images/elements/graphics/large/default.png');
+  });
   //captures the image color based on the radio selection
   function imageColor() {
     var selectedColor = "";
@@ -665,7 +674,16 @@ $(document).ready(function(){
     $(graphicColorOverlay).insertAfter(".lb-container");
   };
   $('#graphic_select').on('change', function() {
-    $("#placement_select [value='front']").prop('selected', true);
+
+    if($(this).val() == "default") {
+      $('#placement_select option:first').prop('selected', true);
+      $('#placement_select').change()
+    }
+    else {
+      $('#placement_select option:eq(1)').prop('selected', true);
+      $('#placement_select').change();
+    };
+
     if(rev_prod == "no") {
       var color = $('#color_1_select').val();
       graphicColor(color);
@@ -685,7 +703,7 @@ $(document).ready(function(){
           else if($('#side_select option:eq(2)').prop('selected') == true){
             var side = "right"
           }
-          graphicRevOneColor(color, side)
+          graphicRevOneColor(color, side);
         };
       };
     };
@@ -777,6 +795,9 @@ $(document).ready(function(){
     };
   };
   $('#placement_select').on('change', function() {
+    if($(this).val() == "default"){
+      $(this).prev().find('img').attr('src', 'images/check.png');
+    };
     if(rev_prod == "no") {
       if($(this).val() != "chest"){
         var color = $('#color_1_select').val();
@@ -820,8 +841,13 @@ $(document).ready(function(){
           }
           else if($('#side_select option:eq(2)').prop('selected') == true){
             var side = "right"
+          };
+          if($(this).val() != "chest"){
+            graphicRevOneColor(color, side);
           }
-          graphicRevOneColor(color, side)
+          else {
+            placementRevOneColor(color, side);
+          };
         };
       };
     };
@@ -903,10 +929,6 @@ $(document).ready(function(){
       $(graphicColorTwoOverlay).insertAfter(".lb-container");
     };
   };
-
-
-
-
 
   //element error handeling
   $('select').change(function() {

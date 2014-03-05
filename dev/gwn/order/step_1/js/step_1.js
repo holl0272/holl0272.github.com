@@ -651,7 +651,7 @@ $('#print_numbers_select').on('change', function() {
     $('#custom_logo option').prop('disabled', true);
     //populates print_number input and init number_placement in the submit form
     $('#step_1_print_numbers').val('yes');
-    $('#step_1_number_placement').val($('#numbers_front_back').val());
+    $('#step_1_number_placement').val('front');
     if($("#team_name_design :selected").val() == "letters_graphic") {
       $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
       $("#team_name_design option[value='letters']").prop("selected",true);
@@ -668,7 +668,7 @@ $('#print_numbers_select').on('change', function() {
     $("#numbers_front_back option:eq(0)").prop('selected', true);
     $('#step_1_print_numbers').val('no');
     $('#step_1_number_placement').val('');
-    $("#team_name_design option[value='letters_graphic']").removeAttr("disabled");
+    $("#team_name_design option[value='letters_graphic']").prop("disabled",false);
   };
   re_calculate();
 });
@@ -695,7 +695,7 @@ $('#numbers_front_back').on('change', function() {
   }
   else if($(this).val() == "back"){
     $('#step_1_number_placement').val('back');
-    $("#team_name_design option[value='letters_graphic']").removeAttr("disabled");
+    $("#team_name_design option[value='letters_graphic']").prop("disabled",false);
     $('#custom_logo option').prop('disabled', false);
   }
   else if($(this).val() == "front_back"){
@@ -844,19 +844,7 @@ if($.cookie('returnJSON')){
   //$('#jersey_details').hide();
   $('.next_btn').attr('id','continue');
   //disable select option on GO-BACK
-  if($('#print_numbers_select').val() == "yes") {
-    if($('#numbers_front_back').val() != "back") {
-      $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
-      $('#custom_logo option').prop('disabled', true);
-    }
-    else {
-      $('#numbers_front_back').change();
-      $("#team_name_design option[value='letters_graphic']").removeAttr("disabled");
-    };
-  }
-  else {
-    $("#team_name_design option[value='letters_graphic']").removeAttr("disabled");
-  };
+  ////
 
 $('#jersey_details').empty();
 
@@ -910,7 +898,7 @@ function handle(table){
 
     $('#jersey_details').append(jersey_row);
   });
-  $('#print_numbers_select').change();
+  //$('#print_numbers_select').change(); <--this screws with the team name input on goback
   $('#json_header').next('tr').remove();
   //$('#json_data').remove();
   }
@@ -950,9 +938,6 @@ function doneTypingReturn() {
     };
   });
 };
-    if($('#numbers_front_back').val() == "back") {
-      $("#team_name_design option[value='letters_graphic']").removeAttr("disabled");
-    };
 };
 
 //NEXT STEP
