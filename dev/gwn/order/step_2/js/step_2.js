@@ -35,7 +35,6 @@ var logo = urlParams["logo"];
 var json_source = urlParams["json"];
 
 $(document).ready(function(){
-
   var device = navigator.userAgent.toLowerCase();
   var isAndroid = device.indexOf("android") > -1;
   if(isAndroid) {
@@ -405,6 +404,7 @@ $(document).ready(function(){
           var side = "right"
         }
         printOneRevColor(color, side);
+        playerLetteringRevOneColor(color, side)
       };
     };
   });
@@ -450,12 +450,6 @@ $(document).ready(function(){
       printTwoRevColor(color, side);
   });
 
-
-
-
-
-
-
   //player lettering style row
   function playerLetteringColor(color) {
     var playerLetteringColor;
@@ -475,9 +469,99 @@ $(document).ready(function(){
     $(playerLetteringColorOverlay).insertAfter(".lb-container");
   };
   $('#player_name_style_select').on('change', function() {
-    var color = $('#color_1_select').val();
-    playerLetteringColor(color);
+    if(rev_prod == "no") {
+      var color = $('#color_1_select').val();
+      playerLetteringColor(color);
+    }
+    else {
+      if(rev == "yes") {
+        var color1 = $('#color_1_select').val();
+        var color2 = $('#color_2_select').val();
+        playerLetteringRevTwoColor(color1, color2);
+      }
+      else {
+        var color = $('#color_1_select').val();
+        if($(this).val() != "default") {
+          if($('#side_select option:eq(1)').prop('selected') == true) {
+            var side = "left";
+          }
+          else if($('#side_select option:eq(2)').prop('selected') == true){
+            var side = "right"
+          }
+          playerLetteringRevOneColor(color, side)
+        };
+      };
+    };
   });
+
+  //reversable product player lettering on one side
+  function playerLetteringRevOneColor(color, side) {
+    var playerLetteringColor;
+    var playerLetteringColorOverlay;
+    var font = $('#font_select').val();
+    var letteringStyle = $('#player_name_style_select').val();
+    $('#player_name_element').remove();
+    $('#playerLetteringColorOverlay').remove();
+    if(letteringStyle != "default") {
+      playerLetteringColor = "<image src='images/elements/reversable/player_lettering/"+side+"/"+font+"_"+letteringStyle+"_"+color+".png' id='player_name_element' class='product_img_element'>";
+      playerLetteringColorOverlay = "<image src='images/elements/reversable/player_lettering/"+side+"/large/"+font+"_"+letteringStyle+"_"+color+".png' id='playerLetteringColorOverlay' class='back_element'>";
+    }
+    else {
+      playerLetteringColor = "<image src='images/elements/default.png' id='player_name_element' class='product_img_element'>";
+    };
+    $('#back_elements').append(playerLetteringColor);
+    $(playerLetteringColorOverlay).insertAfter(".lb-container");
+  };
+
+  //reversable product player lettering on both side
+  // function playerLetteringRevTwoColor(color1, color2) {
+  //   var playerLetteringColorOne;
+  //   var playerLetteringColorTwo;
+  //   var playerLetteringColorOneOverlay;
+  //   var playerLetteringColorTwoOverlay;
+  //   var font = $('#font_select').val();
+  //   var letteringStyle = $('#player_name_style_select').val();
+  //   $('#player_name_left_element').remove();
+  //   $('#player_name_right_element').remove();
+  //   $('#playerLetteringLeftColorOverlay').remove();
+  //   $('#playerLetteringRightColorOverlay').remove();
+  //   if(letteringStyle != "default") {
+  //     if(rev == 'yes') {
+  //       playerLetteringColorOne = "<image src='images/elements/reversable/player_lettering/left/"+font+"_"+letteringStyle+"_"+color1+".png' id='player_name_left_element' class='product_img_element'>";
+  //       playerLetteringColorTwo = "<image src='images/elements/reversable/player_lettering/right/"+font+"_"+letteringStyle+"_"+color2+".png' id='player_name_right_element' class='product_img_element'>";
+  //       playerLetteringColorOneOverlay = "<image src='images/elements/reversable/player_lettering/left/large/"+font+"_"+letteringStyle+"_"+color1+".png' id='playerLetteringLeftColorOverlay' class='back_element'>";
+  //       playerLetteringColorTwoOverlay = "<image src='images/elements/reversable/player_lettering/right/large/"+font+"_"+letteringStyle+"_"+color2+".png' id='playerLetteringRightColorOverlay' class='back_element'>";
+  //     }
+  //     playerLetteringColorOne = "<image src='images/elements/reversable/player_lettering/left/"+font+"_"+letteringStyle+"_"+color1+".png' id='player_name_left_element' class='product_img_element'>";
+  //     playerLetteringColorTwo = "<image src='images/elements/reversable/player_lettering/right/"+font+"_"+letteringStyle+"_"+color2+".png' id='player_name_right_element' class='product_img_element'>";
+  //     playerLetteringColorOneOverlay = "<image src='images/elements/reversable/player_lettering/left/large/"+font+"_"+letteringStyle+"_"+color1+".png' id='playerLetteringLeftColorOverlay' class='back_element'>";
+  //     playerLetteringColorTwoOverlay = "<image src='images/elements/reversable/player_lettering/right/large/"+font+"_"+letteringStyle+"_"+color2+".png' id='playerLetteringRightColorOverlay' class='back_element'>";
+  //   }
+  //   else {
+  //     playerLetteringColor = "<image src='images/elements/default.png' id='player_name_element' class='product_img_element'>";
+  //   };
+  //   $('#back_elements').append(playerLetteringColor);
+  //   $(playerLetteringColorOverlay).insertAfter(".lb-container");
+  // };
+  // $('#player_name_style_select').on('change', function() {
+  //   if(rev == "yes") {
+  //     var color1 = $('#color_1_select').val();
+  //     var color2 = $('#color_2_select').val();
+  //     playerLetteringRevTwoColor(color1, color2);
+  //   }
+  //   else {
+  //     var color = $('#color_1_select').val();
+  //     if($(this).val() != "default") {
+  //       if($('#side_select option:eq(1)').prop('selected') == true) {
+  //         var side = "left";
+  //       }
+  //       else if($('#side_select option:eq(2)').prop('selected') == true){
+  //         var side = "right"
+  //       }
+  //       playerLetteringRevOneColor(color, side)
+  //     };
+  //   }
+  // });
 
   //team lettering style row
   function teamLetteringColor(color) {
