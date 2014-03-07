@@ -473,7 +473,8 @@ $(document).ready(function(){
   function playerLetteringColor(color) {
     var playerLetteringColor;
     var playerLetteringColorOverlay;
-    var font = $('#font_select').val();
+    //var font = $('#font_select').val();
+    var font = "pro_narrow"
     var letteringStyle = $('#player_name_style_select').val();
     $('#player_name_element').remove();
     $('#playerLetteringColorOverlay').remove();
@@ -518,7 +519,8 @@ $(document).ready(function(){
     var oposite = otherSide(side);
     var playerLetteringColor;
     var playerLetteringColorOverlay;
-    var font = $('#font_select').val();
+    //var font = $('#font_select').val();
+    var font = "pro_narrow"
     var letteringStyle = $('#player_name_style_select').val();
     $("#player_name_"+side+"_element").remove();
     $("#playerLettering"+side+"ColorOverlay").remove();
@@ -542,7 +544,8 @@ $(document).ready(function(){
     var playerLetteringColorTwo;
     var playerLetteringColorOneOverlay;
     var playerLetteringColorTwoOverlay;
-    var font = $('#font_select').val();
+    //var font = $('#font_select').val();
+    var font = "pro_narrow"
     var letteringStyle = $('#player_name_style_select').val();
     $('#player_name_left_element').remove();
     $('#player_name_right_element').remove();
@@ -568,7 +571,8 @@ $(document).ready(function(){
   function teamLetteringColor(color) {
     var teamLetteringColor;
     var teamLetteringColorOverlay;
-    var font = $('#font_select').val();
+    //var font = $('#font_select').val();
+    var font = "pro_narrow"
     var letteringStyle = $('#team_name_style_select').val();
     $('#team_name_element').remove();
     $('#teamLetteringColorOverlay').remove();
@@ -613,7 +617,8 @@ $(document).ready(function(){
     var oposite = otherSide(side);
     var teamLetteringColor;
     var teamLetteringColorOverlay;
-    var font = $('#font_select').val();
+    //var font = $('#font_select').val();
+    var font = "pro_narrow"
     var letteringStyle = $('#team_name_style_select').val();
     $("#team_name_"+side+"_element").remove();
     $("#teamLettering"+side+"ColorOverlay").remove();
@@ -637,7 +642,8 @@ $(document).ready(function(){
     var teamLetteringColorTwo;
     var teamLetteringColorOneOverlay;
     var teamLetteringColorTwoOverlay;
-    var font = $('#font_select').val();
+    //var font = $('#font_select').val();
+    var font = "pro_narrow"
     var letteringStyle = $('#team_name_style_select').val();
     $('#team_name_left_element').remove();
     $('#team_name_right_element').remove();
@@ -765,7 +771,8 @@ $(document).ready(function(){
     if(team_name_design == 'letters') {
       var teamLetteringColor;
       var teamLetteringColorOverlay;
-      var font = $('#font_select').val();
+      //var font = $('#font_select').val();
+      var font = "pro_narrow"
       var letteringStyle = $('#team_name_style_select').val();
       $('#team_name_element').remove();
       $('#teamLetteringColorOverlay').remove();
@@ -861,7 +868,8 @@ $(document).ready(function(){
     if(team_name_design == 'letters') {
       var teamLetteringColor;
       var teamLetteringColorOverlay;
-      var font = $('#font_select').val();
+      //var font = $('#font_select').val();
+      var font = "pro_narrow"
       var letteringStyle = $('#team_name_style_select').val();
       $("#team_name_"+side+"_element").remove();
       $("#teamLettering"+side+"ColorOverlay").remove();
@@ -906,7 +914,8 @@ $(document).ready(function(){
       var teamLetteringColorTwo;
       var teamLetteringColorOneOverlay;
       var teamLetteringColorTwoOverlay;
-      var font = $('#font_select').val();
+      //var font = $('#font_select').val();
+      var font = "pro_narrow"
       var letteringStyle = $('#team_name_style_select').val();
       $('#team_name_left_element').remove();
       $('#team_name_right_element').remove();

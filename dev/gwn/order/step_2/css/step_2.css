@@ -96,9 +96,8 @@
 #disclaimer {
   width:100%;
   text-align: center;
-  /*margin-top: -5px;*/
-  margin-bottom: 10px;
-  color: #cccdce;
+  padding-top: 10px;
+  color: #666666;
 }
 .spacer {
   padding-left: 25px;
