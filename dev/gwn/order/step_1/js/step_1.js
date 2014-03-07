@@ -396,8 +396,8 @@ function calculateCost(qty) {
 function buildRows(qty) {
   var header = "<tr class='transparent'><td>Jersey</td><td></td><td>Size</td><td>Price</td><td class='numbers_input'></td><td class='numbers_input'>Number</td><td class='names_input'></td><td class='names_input'>Name</td><td></td><td></td><td class='hide'>Qty</td></tr>"
   var row_number = "<td class='row_number'><font></font></td>";
-    var sizeSelect = "<select style='margin-left: 10px;' class='size_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
-    var resizeSelect = "<select style='margin-left: 10px;' class='resize_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
+    var sizeSelect = $('.description').filter(":visible").find('.size_select').parent().html();
+    var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_select').addClass('resize_select').parent().html();
   var product_size = "<td>Size</td><td class='jersey_size' style='min-width: 70px'>"+sizeSelect+"</td>";
   var jersey_price = "<td class='jersey_price' style='padding-right: 10px;'></td>";
     var numberInput = "<input type='text' class='number_input' style='width: 25px;' maxlength='2'>";
@@ -926,8 +926,38 @@ function handle(table){
 
   //edit size on return from step_2
   $('.return_size').on('click', function() {
-    var sizeSelect = "<select style='margin-left: 10px;' class='size_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
-    var resizeSelect = "<select style='margin-left: 10px;' class='resize_select'><option value='-' selected>-</option><option value='M'>M</option><option value='L'>L</option><option value='XL'>XL</option><option value='XXL'>XXL</option><option value='XXXL'>XXXL</option></select>";
+    var sizeSelect = $('.description').filter(":visible").find('.resize_select').removeClass('resize_select').addClass('size_select').parent().html();
+    var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_select').addClass('resize_select').parent().html();
+    $(this).closest('td').html(sizeSelect);
+    $('.size_select').change(function() {
+      var returnSize = $(this).val();
+      if(returnSize == "XXL"){
+        $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
+      }
+      else if(returnSize == "XXXL"){
+        $(this).closest('td').next('td').html('$'+$('#xxxl_jersey').val());
+      }
+      else {
+        $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
+      };
+      $(this).closest('td').html("<font class='return_set_size'>"+returnSize+"</font>").on('click', function() {
+        $(this).html(resizeSelect);
+        $(this).closest('td').next('td').empty();
+        $('.resize_select').change(function() {
+          var resize = $(this).val();
+          if(resize == "XXL"){
+            $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
+          }
+          else if(resize == "XXXL"){
+            $(this).closest('td').next('td').html('$'+$('#xxxl_jersey').val());
+          }
+          else {
+            $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
+          };
+          $(this).closest('td').html("<font class='return_set_size'>"+resize+"</font>");
+        });
+      });
+    });
   });
 
   //edit number on return from step_2
