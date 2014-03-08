@@ -633,6 +633,20 @@ function priceEachJersey(){
   });
 };
 
+function returnPriceEachJersey(){
+  $('.jersey_size font').each(function(){
+   if($(this).text() == "XXL"){
+      $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
+    }
+    else if($(this).text() == "XXXL"){
+      $(this).closest('td').next('td').html('$'+$('#xxxl_jersey').val());
+    }
+    else {
+      $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
+    };
+  });
+};
+
 //DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
 function addNumbers() {
   var numbers_one_side = 2;  //add $2
@@ -1048,6 +1062,9 @@ function handle(table){
 
   }
   handle(detailsTable)
+  $('select').change(function(){
+    returnPriceEachJersey();
+  });
 };
 
 
