@@ -25,6 +25,9 @@
 .sport_box {
   margin: 0 15px 10px 0
 }
+.btn a{
+  color: red;
+}
 .btn_spacer {
   float: right;
   margin-right: 10px;
@@ -91,10 +94,10 @@
   padding: 10px;
   line-height: 2;
 }
-#selections font,
+/*#selections font,
 #sub_selections table font {
   color: #cccdce;
-}
+}*/
 .shorts_show {
   display: none;
 }
@@ -166,10 +169,10 @@
   width: 85px;
 }
 .set_size {
-  cursor: context-menu;
-  color: #cccdce;
+  cursor: pointer;
 }
 .set_name {
+  cursor: pointer;
   text-transform: uppercase;
 }
 .hide {
