@@ -223,7 +223,15 @@
               </div>
               <div class="logo_row">
                 UPLOAD YOUR LOGO
-                <input type="text" style=" width: 125px; float:right; margin: 7px 25px 0 0;" id="team_name_input" placeholder="UPLOAD SCRIPT HERE"><br>
+                <div class="dropdown">
+                  <a href="" data-lightbox="custom_logo" title="Your Custom Logo" id="js-preview"><img src="images/info.png" class="info_btn" id="upload_info_icon"></a>
+                  <div id="logo_upload" style="float: right;">
+                    <div class="custom-file-upload" >
+                        <input type="file" id="file" name="myfiles[]" multiple />
+                    </div>
+                  </div>
+                  <div class="clear"></div>
+                </div><br>
               </div>
               <div id="team_lettering_row">
                 TEAM NAME LETTERING STYLE

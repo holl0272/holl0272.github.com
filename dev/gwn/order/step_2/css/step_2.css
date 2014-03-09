@@ -212,3 +212,62 @@ input {
   top: 0;
   left: 0;
 }
+.custom-file-upload-hidden {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  left: -9999px;
+}
+
+.custom-file-upload {
+  display: block;
+  width: auto;
+  font-size: 16px;
+}
+.custom-file-upload label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.file-upload-wrapper {
+  position: relative;
+  margin-top: -8px;
+  float: right;
+}
+
+.file-upload-input {
+  width: 300px;
+  color: #cccdce;
+  font-size: 12px;
+  padding: 8px 10px;
+  border: none;
+  background-color: transparent;
+  float: left;
+  text-align: right;
+  /* IE 9 Fix */
+}
+
+.file-upload-button {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  float: left;
+  /* IE 9 Fix */
+}
+.file-upload-button:hover {
+  background-color: #6d2018;
+}
+.upload_btn {
+  padding: 1px 10px 3px;
+  color: #11013b;
+  background-color: #e8d606;
+  font-family: 'Lato', sans-serif;
+}
+.upload_btn:hover{
+  color: #e8d606;
+  background-color: #11013b;
+  margin: -1px;
+  border: 1px solid yellow;
+}
