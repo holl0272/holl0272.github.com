@@ -225,11 +225,13 @@
                 UPLOAD YOUR LOGO
                 <div class="dropdown">
                   <a href="" data-lightbox="custom_logo" title="Your Custom Logo" id="js-preview"><img src="images/info.png" class="info_btn" id="upload_info_icon"></a>
-                  <div id="logo_upload" style="float: right;">
-                    <div class="custom-file-upload" >
-                        <input type="file" id="file" name="myfiles[]" multiple />
+                    <div id="logo_upload" style="float: right;">
+                      <div class="custom-file-upload" >
+                        <form method="post" name="myemailform" enctype="multipart/form-data" action="form-to-email.php">
+                          <input type="file" id="file" name="myfiles[]" multiple />
+                        </form>
+                      </div>
                     </div>
-                  </div>
                   <div class="clear"></div>
                 </div><br>
               </div>
