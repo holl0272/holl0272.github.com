@@ -805,7 +805,7 @@ $('input[type=file]').customFile();
   };
   $('#placement_select').on('change', function() {
     if($(this).val() == "default"){
-      $(this).prev().find('img').attr('src', 'images/check.png');
+      $(this).prev().find('img').attr('src', 'images/info/check.png');
     };
     if(rev_prod == "no") {
       if($(this).val() != "chest"){
@@ -973,10 +973,10 @@ $('input[type=file]').customFile();
   //TOGGLE INFO AND CHECKMARK ICON
   $('select').change(function() {
     if($(this).val() != "default") {
-      $(this).prev().find('img').attr('src', 'images/check.png');
+      $(this).prev().find('img').attr('src', 'images/info/check.png');
     }
     else {
-      $(this).prev().find('img').attr('src', 'images/info.png');
+      $(this).prev().find('img').attr('src', 'images/info/info.png');
     }
   });
   //team name input
@@ -985,16 +985,25 @@ $('input[type=file]').customFile();
   });
   $('#team_name_input').on('blur', function() {
     if($(this).val() != ""){
-      $('#team_name_info_icon').attr('src', 'images/check.png');
+      $('#team_name_info_icon').attr('src', 'images/info/check.png');
     }
     else {
       $(this).attr('placeholder','EAGLES');
-      $('#team_name_info_icon').attr('src', 'images/info.png');
+      $('#team_name_info_icon').attr('src', 'images/info/info.png');
     };
   });
   $('#team_name_info_icon').on('click', function(){
     $(this).next().attr('placeholder', 'Up to X Characters');
   });
+  //custom logo
+  if($('.file-upload-input').val() != "") {
+    $('#upload_info_icon').attr('src', 'images/info/check.png');
+    $('#upload_info_icon').parent().attr('title', 'Your Custom Logo Has Been Uploaded');
+  }
+  else {
+    $('#upload_info_icon').attr('src', 'images/info/info.png');
+    $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
+  };
 
   //GO BACK
   $('.return_to_step_1').click(function(){
@@ -1020,9 +1029,10 @@ $('input[type=file]').customFile();
       $("#"+selectID+" option[value="+firstOption+"]").attr('selected', 'selected');
     });
     $('#team_name_input').val('').attr('placeholder','EAGLES');
-    $('#team_name_info_icon').attr('src', 'images/info.png');
+    $('#team_name_info_icon').attr('src', 'images/info/info.png');
     $('#js-preview').attr('href', '').attr('title', '');
-    $('#upload_info_icon').attr('src', 'images/info.png');
+    $('#upload_info_icon').attr('src', 'images/info/info.png');
+    $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
     $('.custom-file-upload').remove();
     $('#logo_upload').html("<div class='custom-file-upload'><input type='file' id='file' name='myfiles[]' multiple /></div>")
     $('input[type=file]').customFile();
@@ -1067,7 +1077,6 @@ $('input[type=file]').customFile();
   });
 
 // TOGGLES THE LIGHTBOX OVERLAY ELEMENTS
-
 $('#front').on('click', function() {
   $('.back_element').hide();
   $('.front_element').show();
@@ -1368,11 +1377,12 @@ function captureValues() {
 
   //custom logo info toggle
   function uploadInfo() {
-      // logoLightBox();
     if($('.file-upload-input').val() != "") {
-      $('#upload_info_icon').attr('src', 'images/check.png');
+      $('#upload_info_icon').attr('src', 'images/info/check.png');
+      $('#upload_info_icon').parent().attr('title', 'Your Custom Logo Has Been Uploaded');
     }
     else {
-      $('#upload_info_icon').attr('src', 'images/info.png');
+      $('#upload_info_icon').attr('src', 'images/info/info.png');
+      $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
     };
   };

@@ -25,9 +25,6 @@
 .sport_box {
   margin: 0 15px 10px 0
 }
-.btn a{
-  color: red;
-}
 .btn_spacer {
   float: right;
   margin-right: 10px;
@@ -199,6 +196,44 @@ color: #666666;
 font-size: 1.3rem;
 background: #e8d606;
 }
+table#jersey_details {
+  margin: 0 auto;
+}
 #jersey_details tr {
-  height:25px;
+  height: 25px;
+}
+.row_number font {
+  padding-right: 10px;
+  text-align: right;
+}
+.size_label {
+  padding-right: 10px;
+}
+.jersey_size {
+  text-align: left;
+  min-width: 75px;
+}
+.jersey_price {
+  padding: 0 20px 0 10px;
+}
+.number_label{
+  padding-right: 10px;
+}
+.number_reset{
+  text-align: left;
+}
+.name_label {
+  padding-right: 10px;
+  text-align: left;
+  min-width: 115px
+}
+.name_input, .newname_input {
+  width: 115px;
+}
+.qty_label {
+  padding: 0 10px;
+}
+.btns {
+  display: inline-block;
+  color: #cccdce;
 }

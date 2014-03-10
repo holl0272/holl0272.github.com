@@ -401,16 +401,16 @@ function buildRows(qty) {
   var row_number = "<td class='row_number'><font></font></td>";
     var sizeSelect = $('.description').filter(":visible").find('.size_select').parent().html();
     var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_options').addClass('resize_select').parent().html();
-  var product_size = "<td>Size</td><td class='jersey_size' style='min-width: 70px'>"+sizeSelect+"</td>";
-  var jersey_price = "<td class='jersey_price' style='padding-right: 10px;'></td>";
+  var product_size = "<td class='size_label'>Size</td><td class='jersey_size'>"+sizeSelect+"</td>";
+  var jersey_price = "<td class='jersey_price'></td>";
     var numberInput = "<input type='text' class='number_input' style='width: 25px;' maxlength='2'>";
     var newnumberInput = "<input type='text' class='newnumber_input' style='width: 25px;' maxlength='2'>";
-  var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input number_reset'>"+numberInput+"</td>";
-    var nameInput = "<input type='text' class='name_input' style='width: 150px;'>";
-    var newnameInput = "<input type='text' class='newname_input' style='width: 150px;'>";
-  var name_on_jersey = "<td class='names_input'>Name On Jersey</td><td class='names_input name_reset'>"+nameInput+"</td>";
-  var product_qty = "<td>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
-  var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; float:right; padding-left:5px; cursor: pointer;'> - </span></td><span>";
+  var product_number = "<td class='numbers_input number_label'>Number</td><td class='numbers_input number_reset'>"+numberInput+"</td>";
+    var nameInput = "<input type='text' class='name_input'>";
+    var newnameInput = "<input type='text' class='newname_input'>";
+  var name_on_jersey = "<td class='names_input name_label'>Name On Jersey</td><td class='names_input name_reset'>"+nameInput+"</td>";
+  var product_qty = "<td class='qty_label'>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
+  var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; padding-left:5px; cursor: pointer;'> - </span></td><span>";
   var raw_qty = "<td class='hide'></td>";
   $('#sub_selections table').append(header);
 
@@ -903,21 +903,26 @@ function handle(table){
     var size = $(this).find('td:eq(1)').text();
     var price = $(this).find('td:eq(2)').text();
     var number = $(this).find('td:eq(3)').text();
-    var numberInput = "<input type='text' class='number_input' style='width: 25px;'>";
+    var numberInput = "<input type='text' class='number_input return_number' style='width: 25px;' maxlength='2'>";
+    var nameInput = "<input type='text' class='name_input return_name' style='width: 150px;'>";
     var name = $(this).find('td:eq(4)').text();
     var qty = $(this).find('td:eq(5)').text();
 
     var row_number = "<td class='row_number'><font>"+jersey+"</font></td>";
     var product_size = "<td>Size</td><td class='jersey_size' style='min-width: 70px'><a class='float'><font class='return_size'>"+size+"</font></a></td>";
     var jersey_price = "<td class='jersey_price' style='padding-right: 10px;'>"+price+"</td>";
-    var numberInput = "<input type='text' class='number_input return_number' style='width: 25px;' maxlength='2'>";
     if(number != "") {
       var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input number_reset'><a class='float'><font class='return_number'>"+number+"</font></a></td>";
     }
     else {
       var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input number_reset'>"+numberInput+"</td>";
     };
-    var name_on_jersey = "<td class='names_input'>Name On Jersey</td><td class='names_input name_reset'><a class='float'><font style='text-transform: uppercase;' class='return_name'>"+name+"<font></a></td><td></td>";
+    if(name != "") {
+     var name_on_jersey = "<td class='names_input'>Name On Jersey</td><td class='names_input name_reset'><a class='float'><font style='text-transform: uppercase;' class='return_name'>"+name+"<font></a></td><td></td>";
+    }
+    else {
+     var name_on_jersey = "<td class='names_input'>Name On Jersey</td><td class='names_input name_reset'>"+nameInput+"</td>";
+    };
     var product_qty = "<td>Quantity</td><td><font style='padding-right: 10px;'>"+qty+"</font></td>";
     //var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; float:right; padding-left:5px; cursor: pointer;'> - </span></td><span>";
     //var raw_qty = "<td class='hide'></td>";
