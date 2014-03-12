@@ -225,13 +225,9 @@
                 UPLOAD YOUR LOGO
                 <div class="dropdown">
                   <a href="" data-lightbox="custom_logo" title="" id="js-preview"><img src="images/info/info.png" class="info_btn" id="upload_info_icon"></a>
-                    <div id="logo_upload">
-                      <div class="custom-file-upload" >
-                        <form method="post" name="myemailform" enctype="multipart/form-data" action="form-to-email.php">
-                          <input type="file" id="file" name="myfiles[]" multiple />
-                        </form>
-                      </div>
-                    </div>
+                  <div id="logo_upload">
+                    <a href="#" type="button" id="select_a_file_btn" class="upload_btn">UPLOAD</a>
+                  </div>
                   <div class="clear"></div>
                 </div><br>
               </div>
@@ -261,7 +257,7 @@
                   <div class="clear"></div>
                 </div><br>
               </div>
-              <div style="float: right; margin: 5px 25px 0 0;">
+              <div style="float: right; margin: 10px 27px 0 0;">
                 <a href="#" class="reset_btn">RESET</a>
               </div>
               <div class="clear"></div>
@@ -272,6 +268,41 @@
               RETURN <a href="javascript:window.history.back(-1)" class="return_to_step_1" style="color: #e8d606;"><b>&nbsp;BACK TO YOUR ORDER OPTIONS&nbsp;</b></a> TO MAKE ADDITIONAL SELECTIONS
             </div>
             <div class="clear"></div>
+          </div>
+          <div id="slide_form" class="slide">
+            <div class="upload_inner" style="display:none;">
+              <div id="upload_form">
+                <span class="disclaimer">
+                  <b>Upload Your Custom Logo</b>
+                </span>
+                  <br><br>
+                <form id="myForm" action="upload.php" method="post" enctype="multipart/form-data">
+                  <span>
+                    Please provide your e-mail address should we need to contact you regarding your logo.
+                  </span>
+                    <br>
+
+                    <label name="reply_email">E-mail:</label><input type="text" name="reply_email" id="reply_email">
+                    <div class="customfile-container">
+                      <input type="file" id="file" size="60" name="myfile" accept="image/*" style="float:right;">
+                    </div>
+                  </div>
+                </form>
+                <div id="upload_contols">
+                  <div id="upload_btns">
+                    <a type="button" class="upload_btn" style="float:left; padding: 5px;" onclick="$('#myForm').submit();">UPLOAD</a>
+                    <a type="button" class="cancel_btn" style="float:right; margin-top:0px">CANCEL</a>
+                  </div>
+                  <div class="clear"></div>
+                  <div id="progress">
+                    <div id="bar"></div>
+                    <div id="percent">0%</div >
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <div id="message"></div>
+              </div>
+            </div>
           </div>
           <div id="price_calc">
             <table>
@@ -301,7 +332,7 @@
             <div class="clear"></div>
           </div>
           <div style="background-color: white; width:100%; display:inline-block;  margin:10px 0 10px 0; padding-bottom:20px">
-            <div id="disclaimer">
+            <div class="disclaimer">
               <span>Your team name and font selection will not appear in this preview.</span>
             </div>
             <div id="image_container" stye="float:none;"> <!--dev style-->

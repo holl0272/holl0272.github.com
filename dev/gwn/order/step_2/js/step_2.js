@@ -89,9 +89,6 @@ $(document).ready(function(){
   });
   */
 
-$('input[type=file]').customFile();
-
-
   //NAME
   $('#urlParams_name').html(name);
 
@@ -238,7 +235,7 @@ $('input[type=file]').customFile();
     });
   };
   if(logo == 'yes') {
-    $('#placement_row').show();
+    $('#placement_row').hide();
     $('#graphic_row').hide();
     $('#team_lettering_row').hide();
   }
@@ -672,15 +669,23 @@ $('input[type=file]').customFile();
     var graphic = $('#graphic_select').val();
     $('#front_graphic_element').remove();
     $('#graphicColorOverlay').remove();
-    if(graphic != "default") {
-      graphicColor = "<image src='images/elements/graphics/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
-      graphicColorOverlay = "<image src='images/elements/graphics/large/"+graphic+"_"+color+".png' id='graphicColorOverlay' class='front_element'>";
+    if(logo != "yes") {
+      if(graphic != "default") {
+        graphicColor = "<image src='images/elements/graphics/"+graphic+"_"+color+".png' id='front_graphic_element' class='product_img_element'>";
+        graphicColorOverlay = "<image src='images/elements/graphics/large/"+graphic+"_"+color+".png' id='graphicColorOverlay' class='front_element'>";
+      }
+      else {
+        graphicColor = "<image src='images/elements/default.png' id='front_graphic_element' class='product_img_element'>";
+      }
+      $('#front_elements').append(graphicColor);
+      $(graphicColorOverlay).insertAfter(".lb-container");
     }
     else {
-      graphicColor = "<image src='images/elements/default.png' id='front_graphic_element' class='product_img_element'>";
-    }
+    graphicColor = "<image src='images/elements/graphics/custom_logo_"+color+".png' id='front_graphic_element' class='product_img_element custom_logo_image'>";
+    graphicColorOverlay = "<image src='images/elements/graphics/large/custom_logo_"+color+".png' id='graphicColorOverlay' class='front_element custom_logo_image'>";
     $('#front_elements').append(graphicColor);
     $(graphicColorOverlay).insertAfter(".lb-container");
+    }
   };
   $('#graphic_select').on('change', function() {
     if($(this).val() == "default") {
@@ -996,6 +1001,12 @@ $('input[type=file]').customFile();
     $(this).next().attr('placeholder', 'Up to X Characters');
   });
   //custom logo
+  $('input[type=file]').customFile();
+
+  $('#select_a_file_btn').on('click', function(e){
+      $('.upload_inner').slideToggle();
+      e.preventDefault();
+  });
   if($('.file-upload-input').val() != "") {
     $('#upload_info_icon').attr('src', 'images/info/check.png');
     $('#upload_info_icon').parent().attr('title', 'Your Custom Logo Has Been Uploaded');
@@ -1004,6 +1015,15 @@ $('input[type=file]').customFile();
     $('#upload_info_icon').attr('src', 'images/info/info.png');
     $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
   };
+  $('#upload_info_icon').load(function(e){
+    var color = "black";
+    if($(this).attr('src') =='images/info/info.png') {
+      $('.custom_logo_image').remove();
+    }
+    else {
+      graphicColor(color);
+    };
+  });
 
   //GO BACK
   $('.return_to_step_1').click(function(){
@@ -1234,6 +1254,7 @@ function captureValues() {
   $("#form_results").show();
 };
 
+
 //Reference:
 //http://www.onextrapixel.com/2012/12/10/how-to-create-a-custom-file-input-with-jquery-css3-and-php/
 (function($) {
@@ -1266,15 +1287,15 @@ function captureValues() {
           });
 
           $file.change(function(){
-                    var reader = new FileReader();
-        reader.onload = function (e) {
-          $('#js-preview').attr('href', e.target.result);
-        }
-        reader.readAsDataURL(this.files[0]);
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $('#js-preview').attr('href', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
           });
 
           $wrap.insertAfter( $file )
-            .append( $file, $input, ( isIE ? $label : $button ) );
+            .append( $file, ( isIE ? $label : $button ), $input);
 
           // Prevent focus
           $file.attr('tabIndex', -1);
@@ -1308,6 +1329,7 @@ function captureValues() {
               .attr('title', filename) // Show filename in title tootlip
               .blur();
             $button.blur();
+            uploadControls();
             uploadInfo();
           });
 
@@ -1370,19 +1392,30 @@ function captureValues() {
               $wrap.find('input').focus();
             }
           }, 1);
+          uploadControls();
           uploadInfo();
         });
       }
 }(jQuery));
 
+  //custom logo upload contorls
+  function uploadControls() {
+    if($('.file-upload-input').val() != "") {
+      $('#upload_contols').show();
+    }
+    else {
+      $('#upload_contols').hide();
+    };
+  };
+
   //custom logo info toggle
   function uploadInfo() {
     if($('.file-upload-input').val() != "") {
-      $('#upload_info_icon').attr('src', 'images/info/check.png');
+      // $('#upload_info_icon').attr('src', 'images/info/check.png');
       $('#upload_info_icon').parent().attr('title', 'Your Custom Logo Has Been Uploaded');
     }
     else {
-      $('#upload_info_icon').attr('src', 'images/info/info.png');
+      // $('#upload_info_icon').attr('src', 'images/info/info.png');
       $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
     };
   };
