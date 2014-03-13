@@ -1037,6 +1037,7 @@ $(document).ready(function(){
   $('#upload_step_two_next').on('click', function() {
     $('#upload_step_two').hide();
     $('#upload_step_three').show();
+    $('#myForm').submit();
   });
   function titleWatch() {
     var fileTitle = null;
