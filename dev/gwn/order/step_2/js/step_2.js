@@ -1,4 +1,4 @@
-if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+if((window.innerWidth <= 800) && (window.innerHeight <= 600)) {
    $("#init-stylesheet").attr("href", "../../css/narrow.css");
    $('#wrapper').hide();
  };
@@ -681,10 +681,13 @@ $(document).ready(function(){
       $(graphicColorOverlay).insertAfter(".lb-container");
     }
     else {
-    graphicColor = "<image src='images/elements/graphics/custom_logo_"+color+".png' id='front_graphic_element' class='product_img_element custom_logo_image'>";
-    graphicColorOverlay = "<image src='images/elements/graphics/large/custom_logo_"+color+".png' id='graphicColorOverlay' class='front_element custom_logo_image'>";
-    $('#front_elements').append(graphicColor);
-    $(graphicColorOverlay).insertAfter(".lb-container");
+      if(color == 'default'){
+        color = 'black';
+      };
+      graphicColor = "<image src='images/elements/graphics/custom_logo_"+color+".png' id='front_graphic_element' class='product_img_element custom_logo_image'>";
+      graphicColorOverlay = "<image src='images/elements/graphics/large/custom_logo_"+color+".png' id='graphicColorOverlay' class='front_element custom_logo_image'>";
+      $('#front_elements').append(graphicColor);
+      $(graphicColorOverlay).insertAfter(".lb-container");
     }
   };
   $('#graphic_select').on('change', function() {
@@ -976,6 +979,7 @@ $(document).ready(function(){
   });
 
   //TOGGLE INFO AND CHECKMARK ICON
+  //all but custom logo and team name
   $('select').change(function() {
     if($(this).val() != "default") {
       $(this).prev().find('img').attr('src', 'images/info/check.png');
@@ -1000,29 +1004,69 @@ $(document).ready(function(){
   $('#team_name_info_icon').on('click', function(){
     $(this).next().attr('placeholder', 'Up to X Characters');
   });
-  //custom logo
-  $('input[type=file]').customFile();
-
-  $('#select_a_file_btn').on('click', function(e){
-      $('.upload_inner').slideToggle();
-      e.preventDefault();
-  });
-  if($('.file-upload-input').val() != "") {
-    $('#upload_info_icon').attr('src', 'images/info/check.png');
-    $('#upload_info_icon').parent().attr('title', 'Your Custom Logo Has Been Uploaded');
-  }
-  else {
-    $('#upload_info_icon').attr('src', 'images/info/info.png');
-    $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
-  };
+  //custom logo input
   $('#upload_info_icon').load(function(e){
     var color = "black";
     if($(this).attr('src') =='images/info/info.png') {
       $('.custom_logo_image').remove();
+      $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
     }
     else {
       graphicColor(color);
     };
+  });
+
+  //CUSTOM LOGO UPLOAD FORM
+  $('input[type=file]').customFile();
+  $('#select_a_file_btn').on('click', function(e){
+      $('#upload_step_one').show();
+      $('.upload_inner').slideToggle();
+      e.preventDefault();
+  });
+  $('#upload_step_one_next').on('click', function() {
+    if (($("#reply_email").val().indexOf("@") != -1) && ($("#reply_email").val().indexOf(".") != -1)) {
+      $('#upload_step_one').hide();
+      $('#upload_step_two').show();
+    }
+    else {
+      $("input[name='reply_email']").val('').focus();
+      $("label[name='reply_email']").css('color', 'red');
+      $("input[name='reply_email']").attr('placeholder','Please Provide a Valid Email');
+    };
+  });
+  $('#upload_step_two_next').on('click', function() {
+    $('#upload_step_two').hide();
+    $('#upload_step_three').show();
+  });
+  function titleWatch() {
+    var fileTitle = null;
+    setInterval(function () {
+      var newfileTitle = $('.file-upload-input').prop('title');
+      if (newfileTitle !== fileTitle) {
+        fileTitle = newfileTitle;
+        $('.file-upload-input').trigger("titleChange");
+      }
+    }, 50);
+    $('.file-upload-input').bind("titleChange", function() {
+      if($('.file-upload-input').prop('title') != "") {
+        $('#cancel_form_btn_half_step').hide();
+        $('#upload_btns_half_step').show();
+        $('#upload_info_icon').parent().attr('title', 'Your Custom Logo');
+      }
+      else {
+        $('#cancel_form_btn_half_step').show();
+        $('#upload_btns_half_step').hide();
+      };
+    });
+  };
+  titleWatch();
+  $('#upload_step_two_view').on('click', function(){
+    $('#upload_info_icon').click();
+  });
+  $('#upload_step_two_again').on('click', function(){
+    $('#upload_btns_half_step').hide();
+    $('#cancel_form_btn_half_step').show();
+    resetUpload();
   });
 
   //GO BACK
@@ -1054,13 +1098,23 @@ $(document).ready(function(){
     $('#upload_info_icon').attr('src', 'images/info/info.png');
     $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
     $('.custom-file-upload').remove();
-    $('#logo_upload').html("<div class='custom-file-upload'><input type='file' id='file' name='myfiles[]' multiple /></div>")
+    $('#file_input_container').html("<input type='file' id='file' size='60' name='myfile' accept='image/*' style='float:right; padding: 5px;'>")
     $('input[type=file]').customFile();
     $('select').change();
     e.preventDefault();
   });
 
   //CANCEL BUTTON
+  //upload form
+  function resetUpload() {
+    $('#js-preview').attr('href', '').attr('title', '');
+    $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
+    $('.custom-file-upload').remove();
+    $('#file_input_container').html("<input type='file' id='file' size='60' name='myfile' accept='image/*' style='float:right; padding: 5px;'>")
+    $('input[type=file]').customFile();
+    titleWatch();
+  };
+  //all others
   $('.cancel_btn').on('click', function() {
     var href = "../../sports/"+sport+"/jerseys/"+sport+"_jerseys.html";
     window.location = href;
@@ -1096,35 +1150,35 @@ $(document).ready(function(){
     };
   });
 
-// TOGGLES THE LIGHTBOX OVERLAY ELEMENTS
-$('#front').on('click', function() {
-  $('.back_element').hide();
-  $('.front_element').show();
-  setTimeout(function(){
-    $('.front_element').css('opacity', 1);
-    $('.front_back_element').css('opacity', 1);
-  },1000);
-});
-$('#back').on('click', function() {
-  $('.front_element').hide();
-  $('.back_element').show();
-  setTimeout(function(){
-    $('.back_element').css('opacity', 1);
-    $('.front_back_element').css('opacity', 1);
-  },1000);
-});
-//close outside the lb
-$('#lightbox').on('click', function() {
-    $('.front_element').css('opacity', 0);
-    $('.back_element').css('opacity', 0);
-    $('.front_back_element').css('opacity', 0);
-});
-//close on lb X
-$('a.lb-close').on('click', function() {
-    $('.front_element').css('opacity', 0);
-    $('.back_element').css('opacity', 0);
-    $('.front_back_element').css('opacity', 0);
-});
+  // TOGGLES THE LIGHTBOX OVERLAY ELEMENTS
+  $('#front').on('click', function() {
+    $('.back_element').hide();
+    $('.front_element').show();
+    setTimeout(function(){
+      $('.front_element').css('opacity', 1);
+      $('.front_back_element').css('opacity', 1);
+    },1000);
+  });
+  $('#back').on('click', function() {
+    $('.front_element').hide();
+    $('.back_element').show();
+    setTimeout(function(){
+      $('.back_element').css('opacity', 1);
+      $('.front_back_element').css('opacity', 1);
+    },1000);
+  });
+  //close outside the lb
+  $('#lightbox').on('click', function() {
+      $('.front_element').css('opacity', 0);
+      $('.back_element').css('opacity', 0);
+      $('.front_back_element').css('opacity', 0);
+  });
+  //close on lb X
+  $('a.lb-close').on('click', function() {
+      $('.front_element').css('opacity', 0);
+      $('.back_element').css('opacity', 0);
+      $('.front_back_element').css('opacity', 0);
+  });
 
 });
 
@@ -1271,7 +1325,7 @@ function captureValues() {
               $wrap = $('<div class="file-upload-wrapper">'),
               $input = $('<input type="text" class="file-upload-input" />'),
               // Button that will be used in non-IE browsers
-              $button = $('<a type="button" class="upload_btn">Select a File</a>'),
+              $button = $('<a type="button" class="upload_btn" style="float:left; padding: 5px;">SELECT A FILE</a>'),
               // Hack for IE
               $label = $('<label class="file-upload-button" for="'+ $file[0].id +'">Select a File</label>');
 
@@ -1402,9 +1456,6 @@ function captureValues() {
   function uploadControls() {
     if($('.file-upload-input').val() != "") {
       $('#upload_contols').show();
-    }
-    else {
-      $('#upload_contols').hide();
     };
   };
 
@@ -1412,7 +1463,7 @@ function captureValues() {
   function uploadInfo() {
     if($('.file-upload-input').val() != "") {
       // $('#upload_info_icon').attr('src', 'images/info/check.png');
-      $('#upload_info_icon').parent().attr('title', 'Your Custom Logo Has Been Uploaded');
+      $('#upload_info_icon').parent().attr('title', 'Your Custom Logo');
     }
     else {
       // $('#upload_info_icon').attr('src', 'images/info/info.png');

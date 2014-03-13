@@ -275,32 +275,51 @@
                 <span class="disclaimer">
                   <b>Upload Your Custom Logo</b>
                 </span>
-                  <br><br>
+                <br><br>
                 <form id="myForm" action="upload.php" method="post" enctype="multipart/form-data">
-                  <span>
-                    Please provide your e-mail address should we need to contact you regarding your logo.
-                  </span>
+                  <div id="upload_step_one" class="upload_form_section">
+                    <span>
+                      Please provide your e-mail address should we need to contact you regarding your logo.
+                    </span>
                     <br>
-
                     <label name="reply_email">E-mail:</label><input type="text" name="reply_email" id="reply_email">
-                    <div class="customfile-container">
-                      <input type="file" id="file" size="60" name="myfile" accept="image/*" style="float:right;">
+                    <br>
+                    <div id="upload_btns">
+                      <a id="upload_step_one_next" type="button" class="upload_btn" style="float:left; padding: 5px;" onclick="">CONTINUE</a>
+                      <a type="button" class="cancel_form_btn" style="float:right; margin-top:0px">CANCEL</a>
                     </div>
                   </div>
+                  <div id="upload_step_two" class="upload_form_section">
+                    <span>
+                      Please select a file from your system by clicking the button below.
+                    </span>
+                    <br><br>
+                    <div id="upload_btns">
+                      <div id="file_input_container" style="float: left;"><input type="file" id="file" size="60" name="myfile" accept="image/*" style="float:right; padding: 5px;"></div>
+                      <a type="button" class="cancel_form_btn" id="cancel_form_btn_half_step" style="float:right; margin-top:0px">CANCEL</a>
+                      <div class="clear"></div>
+                      <br>
+                      <div id="upload_btns_half_step">
+                        <a id="upload_step_two_next" type="button" class="upload_btn btn_spacer" style="float:left; padding: 5px;">CONTINUE</a>
+                        <a id="upload_step_two_view" type="button" class="upload_btn btn_spacer" style="float:left; padding: 5px;">VIEW FILE</a>
+                        <a id="upload_step_two_again" type="button" class="upload_btn" style="float:left; padding: 5px;">CHOSE ANOTHER FILE</a>
+                        <a type="button" class="cancel_form_btn" style="float:right; margin-top:0px">CANCEL</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="upload_step_three" class="upload_form_section">
+                    <span>
+                      Your file is being uploaded.
+                    </span>
+                    <br><br>
+                    <div id="progress">
+                      <div id="bar"></div>
+                      <div id="percent">0%</div >
+                    </div>
+                    <br>
+                    <div id="message"></div>
+                  </div>
                 </form>
-                <div id="upload_contols">
-                  <div id="upload_btns">
-                    <a type="button" class="upload_btn" style="float:left; padding: 5px;" onclick="$('#myForm').submit();">UPLOAD</a>
-                    <a type="button" class="cancel_btn" style="float:right; margin-top:0px">CANCEL</a>
-                  </div>
-                  <div class="clear"></div>
-                  <div id="progress">
-                    <div id="bar"></div>
-                    <div id="percent">0%</div >
-                  </div>
-                </div>
-                <div class="clear"></div>
-                <div id="message"></div>
               </div>
             </div>
           </div>

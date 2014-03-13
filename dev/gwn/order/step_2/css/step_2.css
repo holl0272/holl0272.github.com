@@ -1,13 +1,22 @@
 .jersey_name {
   color: #e8d606;
 }
-.cancel_btn, .reset_btn, .save_btn, .clear_btn {
+.cancel_btn, .reset_btn, .save_btn, .clear_btn, .cancel_form_btn {
   float: right;
   padding: 5px;
   color: #e8d606;
   margin-top: 10px;
   background-color: #11013b;
   font-family: 'Lato', sans-serif;
+}
+.cancel_btn:hover, .reset_btn:hover, .save_btn:hover, .clear_btn:hover {
+  margin: -1px;
+  border: 1px solid yellow;
+  margin-top: 9px;
+}
+.cancel_form_btn:hover {
+  color: #11013b;
+  background-color: #e8d606;
 }
 .mock_btn {
   color: #11013b;
@@ -16,11 +25,6 @@
 .reset_btn {
   margin-top: 0;
   line-height: 1;
-}
-.cancel_btn:hover, .reset_btn:hover, .save_btn:hover, .clear_btn:hover {
-  margin: -1px;
-  border: 1px solid yellow;
-  margin-top: 9px;
 }
 .reset_btn:hover {
   margin-top: 0;
@@ -37,7 +41,6 @@
   margin: -1px 0 0 5px;
 }
 .btn_spacer {
-  float: right;
   margin-right: 10px;
 }
 .sport_box {
@@ -223,13 +226,17 @@ input {
   top: 0;
   left: 0;
 }
+.upload_form_section {
+  display: none;
+  overflow: auto;
+}
 #logo_upload {
   float: right;
   padding-right: 2px;
   margin-top: -7px;
 }
 #reply_email{
-  margin: 10px 10px 20px;
+  margin: 20px 10px;
   width: 150px;
   text-align: left;
 }
@@ -250,10 +257,23 @@ input {
   margin: 0 auto;
   display: none;
 }
-#bar { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
-#percent { position:absolute; display:inline-block; top:3px; left:48%; }
-
-
+#bar {
+  background-color: #32cd32;
+  width:0%;
+  height:25px;
+  border-radius: 3px;
+}
+#percent {
+  position:absolute;
+  display:inline-block;
+  top:3px;
+  left:48%;
+}
+#message {
+  width: auto;
+  text-align: center;
+  font-weight: bold;
+}
 .custom-file-upload-hidden {
   display: none;
   visibility: hidden;
@@ -281,11 +301,10 @@ input {
   border: none;
   background-color: transparent;
   text-align: left;
-  padding-left: 10px;
+  padding: 7px 0 0 10px;
   /* IE 9 Fix */
 }
 .file-upload-input:hover, .file-upload-input:focus {
   background-color: transparent;
   outline: none;
 }
-
