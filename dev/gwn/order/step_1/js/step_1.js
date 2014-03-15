@@ -858,7 +858,7 @@ $('#custom_logo').on('change', function() {
   else {
     $('#name_design').show();
     $('#step_1_logo').val('no');
-    $('#step_1_print_names').val('no');
+   // $('#step_1_print_names').val('no');
   };
   if($('#order_qty').val() == ""){
     $('#order_qty').val(1);
@@ -1187,5 +1187,11 @@ function captureValues() {
     //print_names YES/NO toggles on #print_name_on_back change
     //team_name options toggle on #team_name_design change#
     //logo option toggles on #custom_logo change
+    if($('#step_1_logo').val() == "no") {
+      $.removeCookie('reply', { path: '/' });
+      $.removeCookie('logoName', { path: '/' });
+      $.removeCookie('logoPath', { path: '/' });
+    };
+
   $('#step_1_form').submit();
 };

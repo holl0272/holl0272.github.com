@@ -260,24 +260,35 @@ $(document).ready(function(){
   //init image selection
   imageDisplay();
   //error handeling
-  $('.product_img').error(function(){
-    $(this).attr('src', '../../images/products/no_preview.gif').parent().css('cursor', 'default');
-    $(this).next().remove();
-    var thisImg = $(this).attr('id');
-    $("#image_container > a #"+thisImg).unwrap();
-  });
-  $('.lightbox_img').error(function() {
-    $(this).parent().attr('href','../../images/products/large/no_preview.gif');
-  });
-  $('.front_element').error(function(){
-    $(this).attr('src', 'images/elements/graphics/large/default.png');
-  });
-  $('.back_element').error(function(){
-    $(this).attr('src', 'images/elements/graphics/large/default.png');
-  });
-  $('.front_back_element').error(function(){
-    $(this).attr('src', 'images/elements/graphics/large/default.png');
-  });
+  $('img[src*="undefined"]').remove();
+
+  function imageError() {
+    $('.product_img').error(function(){
+      $(this).attr('src', '../../images/products/no_preview.gif').parent().css('cursor', 'default');
+      $(this).next().remove();
+      var thisImg = $(this).attr('id');
+      $("#image_container > a #"+thisImg).unwrap();
+    });
+    $('.product_img_element').error(function() {
+      $(this).attr('src', 'images/elements/graphics/default.png');
+    });
+    $('.custom_logo_image').error(function() {
+      $(this).attr('src', 'images/elements/graphics/default.png');
+    });
+    $('.lightbox_img').error(function() {
+      $(this).parent().attr('href','../../images/products/large/no_preview.gif');
+    });
+    $('.front_element').error(function(){
+      $(this).attr('src', 'images/elements/graphics/large/default.png');
+    });
+    $('.back_element').error(function(){
+      $(this).attr('src', 'images/elements/graphics/large/default.png');
+    });
+    $('.front_back_element').error(function(){
+      $(this).attr('src', 'images/elements/graphics/large/default.png');
+    });
+  };
+  imageError();
   //captures the image color based on the radio selection
   function imageColor() {
     var selectedColor = "";
@@ -334,14 +345,15 @@ $(document).ready(function(){
         numbersColorOverlay = "<image src='images/elements/numbers/large/"+color+".png' id='numbersColorOverlay' class='front_back_element'>";
       };
       if($('#placement_select').val() != "chest") {
-        graphicColor(color);
+        // graphicColor(color);
+        teamLetteringColor(color)
       }
       else {
         placementColor(color);
       };
       playerLetteringColor(color);
       teamLetteringColor(color);
-      $('#placement_select').val('front');
+      // $('#placement_select').val('front');
     }
     else {
       numbersColor = "<image src='images/elements/default.png' class='product_img_element number_element'>";
@@ -406,7 +418,7 @@ $(document).ready(function(){
       $('.number_element').remove();
     };
     $(numbersColorOverlay).insertAfter(".lb-image");
-    $('#placement_select option:eq(1)').prop('selected', true);
+    // $('#placement_select option:eq(1)').prop('selected', true);
   };
   $('#side_select').on('change', function() {
     var color = $('#color_1_select').val();
@@ -461,7 +473,7 @@ $(document).ready(function(){
       $('.rev_number_element').remove();
     };
     $(numbersRevColorOverlay).insertAfter(".lb-image");
-    $('#placement_select option:eq(1)').prop('selected', true);
+    // $('#placement_select option:eq(1)').prop('selected', true);
   };
   $('#color_2_select').on('change', function() {
     var color = $('#color_2_select').val();
@@ -577,8 +589,14 @@ $(document).ready(function(){
     $('#team_name_element').remove();
     $('#teamLetteringColorOverlay').remove();
     if(letteringStyle != "default") {
-      teamLetteringColor = "<image src='images/elements/team_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='team_name_element' class='product_img_element'>";
-      teamLetteringColorOverlay = "<image src='images/elements/team_lettering/large/"+font+"_"+letteringStyle+"_"+color+".png' id='teamLetteringColorOverlay' class='front_element'>";
+      if($('#placement_select').val() != "chest") {
+        teamLetteringColor = "<image src='images/elements/team_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='team_name_element' class='product_img_element'>";
+        teamLetteringColorOverlay = "<image src='images/elements/team_lettering/large/"+font+"_"+letteringStyle+"_"+color+".png' id='teamLetteringColorOverlay' class='front_element'>";
+      }
+      else {
+        teamLetteringColor = "<image src='images/elements/placement/team_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='team_name_element' class='product_img_element'>";
+        teamLetteringColorOverlay = "<image src='images/elements/placement/team_lettering/large/"+font+"_"+letteringStyle+"_"+color+".png' id='teamLetteringColorOverlay' class='front_element'>";
+      };
     }
     else {
       teamLetteringColor = "<image src='images/elements/default.png' id='team_name_element' class='product_img_element'>";
@@ -626,8 +644,14 @@ $(document).ready(function(){
       $("#teamLettering"+oposite+"ColorOverlay").remove();
     }
     if(letteringStyle != "default") {
-      teamLetteringColor = "<image src='images/elements/reversable/team_lettering/"+side+"/"+font+"_"+letteringStyle+"_"+color+".png' id='team_name_"+side+"_element' class='product_img_element'>";
-      teamLetteringColorOverlay = "<image src='images/elements/reversable/team_lettering/"+side+"/large/"+font+"_"+letteringStyle+"_"+color+".png' id='teamLettering"+side+"ColorOverlay' class='front_element'>";
+      if($('#placement_select').val() != "chest") {
+        teamLetteringColor = "<image src='images/elements/reversable/team_lettering/"+side+"/"+font+"_"+letteringStyle+"_"+color+".png' id='team_name_"+side+"_element' class='product_img_element'>";
+        teamLetteringColorOverlay = "<image src='images/elements/reversable/team_lettering/"+side+"/large/"+font+"_"+letteringStyle+"_"+color+".png' id='teamLettering"+side+"ColorOverlay' class='front_element'>";
+      }
+      else {
+        teamLetteringColor = "<image src='images/elements/reversable/placement/"+side+"/team_lettering/"+font+"_"+letteringStyle+"_"+color+".png' id='team_name_"+side+"_element' class='product_img_element'>";
+        teamLetteringColorOverlay = "<image src='images/elements/reversable/placement/"+side+"/team_lettering/large/"+font+"_"+letteringStyle+"_"+color+".png' id='teamLettering"+side+"ColorOverlay' class='front_element'>";
+      }
     }
     else {
       teamLetteringColor = "<image src='images/elements/default.png' id='team_name_element' class='product_img_element'>";
@@ -650,10 +674,18 @@ $(document).ready(function(){
     $('#teamLetteringleftColorOverlay').remove();
     $('#teamLetteringrightColorOverlay').remove();
     if(letteringStyle != "default") {
-      teamLetteringColorOne = "<image src='images/elements/reversable/team_lettering/left/"+font+"_"+letteringStyle+"_"+color1+".png' id='team_name_left_element' class='product_img_element'>";
-      teamLetteringColorTwo = "<image src='images/elements/reversable/team_lettering/right/"+font+"_"+letteringStyle+"_"+color2+".png' id='team_name_right_element' class='product_img_element'>";
-      teamLetteringColorOneOverlay = "<image src='images/elements/reversable/team_lettering/left/large/"+font+"_"+letteringStyle+"_"+color1+".png' id='teamLetteringleftColorOverlay' class='front_element'>";
-      teamLetteringColorTwoOverlay = "<image src='images/elements/reversable/team_lettering/right/large/"+font+"_"+letteringStyle+"_"+color2+".png' id='teamLetteringrightColorOverlay' class='front_element'>";
+      if($('#placement_select').val() != "chest") {
+        teamLetteringColorOne = "<image src='images/elements/reversable/team_lettering/left/"+font+"_"+letteringStyle+"_"+color1+".png' id='team_name_left_element' class='product_img_element'>";
+        teamLetteringColorTwo = "<image src='images/elements/reversable/team_lettering/right/"+font+"_"+letteringStyle+"_"+color2+".png' id='team_name_right_element' class='product_img_element'>";
+        teamLetteringColorOneOverlay = "<image src='images/elements/reversable/team_lettering/left/large/"+font+"_"+letteringStyle+"_"+color1+".png' id='teamLetteringleftColorOverlay' class='front_element'>";
+        teamLetteringColorTwoOverlay = "<image src='images/elements/reversable/team_lettering/right/large/"+font+"_"+letteringStyle+"_"+color2+".png' id='teamLetteringrightColorOverlay' class='front_element'>";
+      }
+      else {
+        teamLetteringColorOne = "<image src='images/elements/reversable/placement/left/team_lettering/"+font+"_"+letteringStyle+"_"+color1+".png' id='team_name_left_element' class='product_img_element'>";
+        teamLetteringColorTwo = "<image src='images/elements/reversable/placement/right/team_lettering/"+font+"_"+letteringStyle+"_"+color2+".png' id='team_name_right_element' class='product_img_element'>";
+        teamLetteringColorOneOverlay = "<image src='images/elements/reversable/placement/left/team_lettering/large/"+font+"_"+letteringStyle+"_"+color1+".png' id='teamLetteringleftColorOverlay' class='front_element'>";
+        teamLetteringColorTwoOverlay = "<image src='images/elements/reversable/placement/right/team_lettering/large/"+font+"_"+letteringStyle+"_"+color2+".png' id='teamLetteringrightColorOverlay' class='front_element'>";
+      };
     }
     else {
       teamLetteringColorOne = "<image src='images/elements/default.png' id='team_name_element' class='product_img_element'>";
@@ -685,7 +717,7 @@ $(document).ready(function(){
     }
     else {
       if($('#upload_info_icon').attr('src') != 'images/info/info.png') {
-        if(color == 'default'){
+        if((color == 'default') || (color != 'default')){
           color = 'black';
         };
         graphicColor = "<image src='images/elements/graphics/custom_logo_"+color+".png' id='front_graphic_element' class='product_img_element custom_logo_image'>";
@@ -696,14 +728,14 @@ $(document).ready(function(){
     };
   };
   $('#graphic_select').on('change', function() {
-    if($(this).val() == "default") {
-      $('#placement_select option:first').prop('selected', true);
-      $('#placement_select').change()
-    }
-    else {
-      $('#placement_select option:eq(1)').prop('selected', true);
-      $('#placement_select').change();
-    };
+    // if($(this).val() == "default") {
+    //   $('#placement_select option:first').prop('selected', true);
+    //   $('#placement_select').change()
+    // }
+    // else {
+    //   $('#placement_select option:eq(1)').prop('selected', true);
+    //   $('#placement_select').change();
+    // };
     if(rev_prod == "no") {
       var color = $('#color_1_select').val();
       graphicColor(color);
@@ -741,9 +773,19 @@ $(document).ready(function(){
       $("#graphic"+oposite+"ColorOverlay").remove();
     }
     if(logo != "yes") {
+      alert('5');
       if(graphic != "default") {
-        graphicColor = "<image src='images/elements/reversable/graphics/"+side+"/"+graphic+"_"+color+".png' id='graphic_"+side+"_element' class='product_img_element'>";
-        graphicColorOverlay = "<image src='images/elements/reversable/graphics/"+side+"/large/"+graphic+"_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element'>";
+        alert('6');
+        if($('#placement_select').val() != "chest") {
+          alert('7');
+          graphicColor = "<image src='images/elements/reversable/graphics/"+side+"/"+graphic+"_"+color+".png' id='graphic_"+side+"_element' class='product_img_element'>";
+          graphicColorOverlay = "<image src='images/elements/reversable/graphics/"+side+"/large/"+graphic+"_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element'>";
+        }
+        else {
+          alert('8');
+          graphicColor = "<image src='images/elements/reversable/placement/"+side+"/graphics/"+graphic+"_"+color+".png' id='graphic_"+side+"_element' class='product_img_element'>";
+          graphicColorOverlay = "<image src='images/elements/reversable/placement/"+side+"/graphics/large/"+graphic+"_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element'>";
+        };
       }
       else {
         graphicColor = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
@@ -775,15 +817,23 @@ $(document).ready(function(){
     $('#graphic_right_element').remove();
     $('#graphicleftColorOverlay').remove();
     $('#graphicrightColorOverlay').remove();
-    if(graphic != "default") {
-      graphicColorOne = "<image src='images/elements/reversable/graphics/left/"+graphic+"_"+color1+".png' id='graphic_left_element' class='product_img_element'>";
-      graphicColorTwo = "<image src='images/elements/reversable/graphics/right/"+graphic+"_"+color2+".png' id='graphic_right_element' class='product_img_element'>";
-      graphicColorOneOverlay = "<image src='images/elements/reversable/graphics/left/large/"+graphic+"_"+color1+".png' id='graphicleftColorOverlay' class='front_element'>";
-      graphicColorTwoOverlay = "<image src='images/elements/reversable/graphics/right/large/"+graphic+"_"+color2+".png' id='graphicrightColorOverlay' class='front_element'>";
+    if(logo == "no") {
+      if(graphic != "default") {
+        graphicColorOne = "<image src='images/elements/reversable/graphics/left/"+graphic+"_"+color1+".png' id='graphic_left_element' class='product_img_element'>";
+        graphicColorTwo = "<image src='images/elements/reversable/graphics/right/"+graphic+"_"+color2+".png' id='graphic_right_element' class='product_img_element'>";
+        graphicColorOneOverlay = "<image src='images/elements/reversable/graphics/left/large/"+graphic+"_"+color1+".png' id='graphicleftColorOverlay' class='front_element'>";
+        graphicColorTwoOverlay = "<image src='images/elements/reversable/graphics/right/large/"+graphic+"_"+color2+".png' id='graphicrightColorOverlay' class='front_element'>";
+      }
+      else {
+        graphicColorOne = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
+        graphicColorTwo = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
+      };
     }
     else {
-      graphicColorOne = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
-      graphicColorTwo = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
+      graphicColorOne = "<image src='images/elements/reversable/graphics/left/custom_logo_"+color1+".png' id='graphic_left_element' class='product_img_element'>";
+      graphicColorTwo = "<image src='images/elements/reversable/graphics/right/custom_logo_"+color2+".png' id='graphic_right_element' class='product_img_element'>";
+      graphicColorOneOverlay = "<image src='images/elements/reversable/graphics/left/large/custom_logo_"+color1+".png' id='graphicleftColorOverlay' class='front_element'>";
+      graphicColorTwoOverlay = "<image src='images/elements/reversable/graphics/right/large/custom_logo_"+color2+".png' id='graphicrightColorOverlay' class='front_element'>";
     };
     $('#front_elements').append(graphicColorOne);
     $('#front_elements').append(graphicColorTwo);
@@ -833,7 +883,7 @@ $(document).ready(function(){
       $(this).prev().find('img').attr('src', 'images/info/check.png');
     };
     if(rev_prod == "no") {
-      if($(this).val() != "chest"){
+      if($('#placement_select').val() != "chest"){
         var color = $('#color_1_select').val();
         if(team_name_design == 'letters') {
           teamLetteringColor(color)
@@ -849,7 +899,7 @@ $(document).ready(function(){
     }
     else {
       if(rev == "yes") {
-        if($(this).val() != "chest"){
+        if($('#placement_select').val() != "chest"){
           if(team_name_design == 'letters') {
             var color1 = $('#color_1_select').val();
             var color2 = $('#color_2_select').val();
@@ -868,16 +918,21 @@ $(document).ready(function(){
         };
       }
       else {
+        alert('1');
         var color = $('#color_1_select').val();
-        if($(this).val() != "default") {
+        if($('#placement_select').val() != "default") {
+          alert('2');
           if($('#side_select option:eq(1)').prop('selected') == true) {
+            alert('3');
             var side = "left";
           }
           else if($('#side_select option:eq(2)').prop('selected') == true){
             var side = "right"
           };
-          if($(this).val() != "chest"){
-            graphicRevOneColor(color, side);
+          if($('#placement_select').val() != "chest"){
+            alert('4')
+            // graphicRevOneColor(color, side);
+            teamLetteringRevOneColor(color, side);
           }
           else {
             placementRevOneColor(color, side);
@@ -993,6 +1048,7 @@ $(document).ready(function(){
     $('.product_img_element').error(function(){
       $(this).attr('src', 'images/elements/default.png');
     });
+    imageError();
   });
 
   //TOGGLE INFO AND CHECKMARK ICON
@@ -1034,18 +1090,25 @@ $(document).ready(function(){
       $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
     }
     else {
-      if(rev_prod != 'yes') {
+      if(rev_prod == 'no') {
         graphicColor(color);
       }
       else {
-        alert('hit');
-        if($('#side_select option:eq(1)').prop('selected') == true) {
-          var side = "left";
+        if(rev == 'no') {
+          if($('#side_select option:eq(1)').prop('selected') == true) {
+            var side = "left";
+            graphicRevOneColor(color, side);
+          }
+          else if($('#side_select option:eq(2)').prop('selected') == true){
+            var side = "right";
+            graphicRevOneColor(color, side);
+          };
         }
-        else if($('#side_select option:eq(2)').prop('selected') == true){
-          var side = "right"
+        else {
+          color1 = color;
+          color2 = color;
+          graphicRevTwoColor(color1, color2);
         };
-        graphicRevOneColor(color, side);
       };
     };
   });
@@ -1135,7 +1198,6 @@ $(document).ready(function(){
 
   //RETURN
   if(($.cookie('reply')) && ($.cookie('logoPath')) && ($.cookie('logoName'))){
-    // $("input[name='reply_email']").val($.cookie('reply'));
     custEmail = $.cookie('reply');
     $.removeCookie('reply', { path: '/' });
     $(".file-upload-input").val($.cookie('logoName'));
