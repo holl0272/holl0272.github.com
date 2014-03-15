@@ -10,7 +10,7 @@
   font-family: 'Lato', sans-serif;
 }
 .reset_btn {
-  margin-top: 5px;
+  margin-top: 0;
   line-height: 1;
 }
 .cancel_btn:hover, .reset_btn:hover, .save_btn:hover, .clear_btn:hover {

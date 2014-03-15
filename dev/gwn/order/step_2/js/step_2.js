@@ -740,15 +740,28 @@ $(document).ready(function(){
     if(rev != "yes") {
       $("#graphic"+oposite+"ColorOverlay").remove();
     }
-    if(graphic != "default") {
-      graphicColor = "<image src='images/elements/reversable/graphics/"+side+"/"+graphic+"_"+color+".png' id='graphic_"+side+"_element' class='product_img_element'>";
-      graphicColorOverlay = "<image src='images/elements/reversable/graphics/"+side+"/large/"+graphic+"_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element'>";
+    if(logo != "yes") {
+      if(graphic != "default") {
+        graphicColor = "<image src='images/elements/reversable/graphics/"+side+"/"+graphic+"_"+color+".png' id='graphic_"+side+"_element' class='product_img_element'>";
+        graphicColorOverlay = "<image src='images/elements/reversable/graphics/"+side+"/large/"+graphic+"_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element'>";
+      }
+      else {
+        graphicColor = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
+      };
+      $('#front_elements').append(graphicColor);
+      $(graphicColorOverlay).insertAfter(".lb-container");
     }
     else {
-      graphicColor = "<image src='images/elements/default.png' id='graphic_element' class='product_img_element'>";
+      if($('#upload_info_icon').attr('src') != 'images/info/info.png') {
+        if((color == 'default') || (color != 'default')){
+          color = 'black';
+        };
+        graphicColor = "<image src='images/elements/reversable/graphics/"+side+"/custom_logo_"+color+".png' id='graphic_"+side+"_element' class='product_img_element custom_logo_image'>";
+        graphicColorOverlay = "<image src='images/elements/reversable/graphics/"+side+"/large/custom_logo_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element custom_logo_image'>";
+        $('#front_elements').append(graphicColor);
+        $(graphicColorOverlay).insertAfter(".lb-container");
+      };
     };
-    $('#front_elements').append(graphicColor);
-    $(graphicColorOverlay).insertAfter(".lb-container");
   };
 
   //reversable product team lettering on both side
@@ -1006,7 +1019,7 @@ $(document).ready(function(){
     };
   });
   $('#team_name_info_icon').on('click', function(){
-    $(this).next().attr('placeholder', 'Up to X Characters');
+    $(this).next().attr('placeholder', 'Type Your Team Name');
   });
   //custom logo input
   $('#upload_info_icon').on('click', function() {
@@ -1021,7 +1034,19 @@ $(document).ready(function(){
       $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
     }
     else {
-      graphicColor(color);
+      if(rev_prod != 'yes') {
+        graphicColor(color);
+      }
+      else {
+        alert('hit');
+        if($('#side_select option:eq(1)').prop('selected') == true) {
+          var side = "left";
+        }
+        else if($('#side_select option:eq(2)').prop('selected') == true){
+          var side = "right"
+        };
+        graphicRevOneColor(color, side);
+      };
     };
   });
 
@@ -1039,6 +1064,9 @@ $(document).ready(function(){
     else {
       $('#upload_step_one').hide();
       $('#upload_step_three').hide();
+      if($('.file-upload-input').val().length > 0) {
+        $('#cancel_form_btn_half_step').hide();
+      };
       $('#upload_btns_half_step').show();
       $('#upload_step_two').show();
       $('.upload_inner').slideToggle();
@@ -1046,7 +1074,7 @@ $(document).ready(function(){
     }
   });
   $('#upload_step_one_next').on('click', function() {
-    if (($("#reply_email").val().indexOf("@") != -1) && ($("#reply_email").val().indexOf(".") != -1) && ($("#reply_email").val().length > 7)) {
+    if (($("#reply_email").val().indexOf("@") != -1) && ($("#reply_email").val().indexOf(".") != -1) && ($("#reply_email").val().length >= 7)) {
       $('#upload_step_one').hide();
       $('#upload_step_two').show();
       custEmail = $("input[name='reply_email']").val();
@@ -1095,10 +1123,28 @@ $(document).ready(function(){
 
   //GO BACK
   $('.return_to_step_1').click(function(){
+    var logoName = $('.file-upload-input').val();
+    var logoPath = "custom_logos/"+logoName;
+    $.cookie('logoName', logoName, { path: '/' });
+    $.cookie('logoPath', logoPath, { path: '/' });
+    $.cookie('reply', custEmail, { path: '/' });
     $.cookie('returnJSON', json_source, { path: '/' });
     window.history.back(-1);
     return false;
   });
+
+  //RETURN
+  if(($.cookie('reply')) && ($.cookie('logoPath')) && ($.cookie('logoName'))){
+    // $("input[name='reply_email']").val($.cookie('reply'));
+    custEmail = $.cookie('reply');
+    $.removeCookie('reply', { path: '/' });
+    $(".file-upload-input").val($.cookie('logoName'));
+    $.removeCookie('logoName', { path: '/' });
+    $("#js-preview").attr('href', $.cookie('logoPath'));
+    $.removeCookie('logoPath', { path: '/' });
+    $("#js-preview").attr('title', 'Your Custom Logo');
+    $('#upload_info_icon').attr('src', 'images/info/check.png');;
+  }
 
   //SAVE BUTTON
   $('.save_btn').on('click', function(e) {
@@ -1164,7 +1210,7 @@ $(document).ready(function(){
     var blank = "There are no design options avalible for this order - please click <span class='mock_btn'>BACK TO YOUR ORDER OPTIONS</span> to continue"
     var verify = "Please verify the jersey details you have entered are acurate - click <span class='mock_btn'>FINALIZE ORDER</span> to continue"
     var missing = "Not all design options have been selected - please review the section above for missing information"
-    var infoIcon = $(".info_btn[src*='info']").filter(":visible").length;
+    var infoIcon = $(".info_btn[src*='info/info.png']").filter(":visible").length;
     var blankIcon = $(".info_btn").filter(":visible").length
     if(infoIcon > 0) {
       msg = missing;

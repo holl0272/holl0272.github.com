@@ -675,7 +675,7 @@ $('#print_numbers_select').on('change', function() {
     $('.numbers_input').show();
     $('#print_numbers_yes').show();
     // $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
-    $('#custom_logo option').prop('disabled', true);
+    //$('#custom_logo option').prop('disabled', true);
     // populates print_number input and init number_placement in the submit form
     $('#step_1_print_numbers').val('yes');
     $('#step_1_number_placement').val('back');
