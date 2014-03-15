@@ -198,10 +198,10 @@
     <table id="myTable" class="tablesorter">
       <thead>
         <tr>
-          <th style="padding-left: 28px;" class="sorter-false">VIEW</th>
-          <th style="padding-left: 10px;"class="sorter-false">DOWLOAD</th>
+          <th class="sorter-false"></th>
+          <th class="sorter-false"></th>
           <th style="padding-left: 25px;">FILE NAME</th>
-          <th style="padding-left: 16px;"class="sorter-false">DELETE</th>
+          <th class="sorter-false"></th>
         </tr>
       </thead>
       <tbody>

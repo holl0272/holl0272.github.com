@@ -312,7 +312,6 @@ $('#order_qty').keyup(function(){
 });
 //on keydown, clear the countdown
 $('#order_qty').keydown(function(){
-
   clearTimeout(typingTimer);
 });
 

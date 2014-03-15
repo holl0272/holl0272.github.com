@@ -681,14 +681,16 @@ $(document).ready(function(){
       $(graphicColorOverlay).insertAfter(".lb-container");
     }
     else {
-      if(color == 'default'){
-        color = 'black';
+      if($('#upload_info_icon').attr('src') != 'images/info/info.png') {
+        if(color == 'default'){
+          color = 'black';
+        };
+        graphicColor = "<image src='images/elements/graphics/custom_logo_"+color+".png' id='front_graphic_element' class='product_img_element custom_logo_image'>";
+        graphicColorOverlay = "<image src='images/elements/graphics/large/custom_logo_"+color+".png' id='graphicColorOverlay' class='front_element custom_logo_image'>";
+        $('#front_elements').append(graphicColor);
+        $(graphicColorOverlay).insertAfter(".lb-container");
       };
-      graphicColor = "<image src='images/elements/graphics/custom_logo_"+color+".png' id='front_graphic_element' class='product_img_element custom_logo_image'>";
-      graphicColorOverlay = "<image src='images/elements/graphics/large/custom_logo_"+color+".png' id='graphicColorOverlay' class='front_element custom_logo_image'>";
-      $('#front_elements').append(graphicColor);
-      $(graphicColorOverlay).insertAfter(".lb-container");
-    }
+    };
   };
   $('#graphic_select').on('change', function() {
     if($(this).val() == "default") {
@@ -699,7 +701,6 @@ $(document).ready(function(){
       $('#placement_select option:eq(1)').prop('selected', true);
       $('#placement_select').change();
     };
-
     if(rev_prod == "no") {
       var color = $('#color_1_select').val();
       graphicColor(color);
@@ -1005,6 +1006,11 @@ $(document).ready(function(){
     $(this).next().attr('placeholder', 'Up to X Characters');
   });
   //custom logo input
+  $('#upload_info_icon').on('click', function() {
+    if(($(this).attr('src') =='images/info/info.png') && ($('.upload_inner').css('display') == 'none')) {
+      $(this).parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
+    };
+  });
   $('#upload_info_icon').load(function(e){
     var color = "black";
     if($(this).attr('src') =='images/info/info.png') {
@@ -1017,16 +1023,28 @@ $(document).ready(function(){
   });
 
   //CUSTOM LOGO UPLOAD FORM
+  var custEmail
   $('input[type=file]').customFile();
   $('#select_a_file_btn').on('click', function(e){
+    if(!custEmail) {
       $('#upload_step_one').show();
       $('.upload_inner').slideToggle();
       e.preventDefault();
+    }
+    else {
+      $('#upload_step_one').hide();
+      $('#upload_step_three').hide();
+      $('#upload_btns_half_step').show();
+      $('#upload_step_two').show();
+      $('.upload_inner').slideToggle();
+      e.preventDefault();
+    }
   });
   $('#upload_step_one_next').on('click', function() {
     if (($("#reply_email").val().indexOf("@") != -1) && ($("#reply_email").val().indexOf(".") != -1)) {
       $('#upload_step_one').hide();
       $('#upload_step_two').show();
+      custEmail = $("input[name='reply_email']").val();
     }
     else {
       $("input[name='reply_email']").val('').focus();
@@ -1109,6 +1127,7 @@ $(document).ready(function(){
   //upload form
   function resetUpload() {
     $('#js-preview').attr('href', '').attr('title', '');
+    $('#upload_info_icon').attr('src', 'images/info/info.png');
     $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
     $('.custom-file-upload').remove();
     $('#file_input_container').html("<input type='file' id='file' size='60' name='myfile' accept='image/*' style='float:right; padding: 5px;'>")
@@ -1385,7 +1404,7 @@ function captureValues() {
               .blur();
             $button.blur();
             uploadControls();
-            uploadInfo();
+            // uploadInfo();
           });
 
           $input.on({
@@ -1448,7 +1467,7 @@ function captureValues() {
             }
           }, 1);
           uploadControls();
-          uploadInfo();
+          // uploadInfo();
         });
       }
 }(jQuery));
@@ -1460,14 +1479,12 @@ function captureValues() {
     };
   };
 
-  //custom logo info toggle
-  function uploadInfo() {
-    if($('.file-upload-input').val() != "") {
-      // $('#upload_info_icon').attr('src', 'images/info/check.png');
-      $('#upload_info_icon').parent().attr('title', 'Your Custom Logo');
-    }
-    else {
-      // $('#upload_info_icon').attr('src', 'images/info/info.png');
-      $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
-    };
-  };
+  // //custom logo info toggle
+  // function uploadInfo() {
+  //   if($('.file-upload-input').val() != "") {
+  //     $('#upload_info_icon').parent().attr('title', 'Your Custom Logo');
+  //   }
+  //   else {
+  //     $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
+  //   };
+  // };

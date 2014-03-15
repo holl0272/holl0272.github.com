@@ -573,7 +573,7 @@
           $("#progress").show();
           //clear everything
           $("#bar").width('0%');
-          $("#message").html("");
+          $("#message").html("<image src='images/loader.gif' alt='Loader'>");
           $("#percent").html("0%");
       },
       uploadProgress: function(event, position, total, percentComplete)
@@ -591,11 +591,13 @@
       complete: function(response)
       {
           $("#message").html("<font color='#32cd32'>"+response.responseText+"</font>");
+          $('#upload_info_icon').attr('src', 'images/info/check.png');
+          $('.upload_inner').delay(3000).slideToggle();
       },
       error: function()
       {
-          $("#message").html("<font color='red'> ERROR: unable to upload files</font>");
-
+          $("#message").html("<font color='red'> ERROR: unable to upload your custom logo</font>");
+          $('#upload_info_icon').attr('src', 'images/info/info.png')
       }
 
   };
