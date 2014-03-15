@@ -674,15 +674,18 @@ $('#print_numbers_select').on('change', function() {
   if($(this).val() == "yes"){
     $('.numbers_input').show();
     $('#print_numbers_yes').show();
-    $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+    // $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
     $('#custom_logo option').prop('disabled', true);
-    //populates print_number input and init number_placement in the submit form
+    // populates print_number input and init number_placement in the submit form
     $('#step_1_print_numbers').val('yes');
-    $('#step_1_number_placement').val('front');
+    $('#step_1_number_placement').val('back');
     if($("#team_name_design :selected").val() == "letters_graphic") {
       $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
       $("#team_name_design option[value='letters']").prop("selected",true);
       $('#step_1_team_name').val('letters');
+    }
+    else {
+      $("#team_name_design option[value='letters_graphic']").prop("disabled",false);
     };
     if($("#custom_logo :selected").val() == "yes") {
       $("#custom_logo option[value='no']").prop("selected",true);
@@ -1075,7 +1078,6 @@ function handle(table){
   });
 };
 
-
 //NEXT STEP
 function nextStep() {
   var qty = Number($('#order_qty').val());
@@ -1153,6 +1155,13 @@ $('.next_btn').on('click', function(e) {
     captureValues();
   };
 });
+
+if($('#numbers_front_back').val() == "back") {
+  $("#team_name_design option[value='letters_graphic']").prop("disabled",false);
+}
+else {
+  $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
+};
 
 });
 
