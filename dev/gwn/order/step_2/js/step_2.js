@@ -218,6 +218,9 @@ $(document).ready(function(){
   if((number_placement == "front") || (number_placement == "front_back")) {
     $('#placement_row').hide();
   };
+  if((team_name_design == 'letters_graphic') || (logo == 'yes')) {
+    $('#placement_row').hide();
+  };
   //graphic row
   if(team_name_design != 'letters_graphic') {
     $('#graphic_row').hide();
@@ -230,7 +233,7 @@ $(document).ready(function(){
           graphicValue = graphicValue.replace(/(^|\s)\S/g, function(match) {
         return match.toUpperCase();
         });
-      var graphicOption = "<option value="+graphicId+">"+graphicValue+"</option>"
+      var graphicOption = "<option value="+graphicId+">"+graphicValue+"</option>";
       $('#graphic_select').append(graphicOption)
     });
   };
@@ -1028,6 +1031,8 @@ $(document).ready(function(){
   $('#select_a_file_btn').on('click', function(e){
     if(!custEmail) {
       $('#upload_step_one').show();
+      $('#upload_step_two').hide();
+      $('#upload_step_three').hide();
       $('.upload_inner').slideToggle();
       e.preventDefault();
     }
@@ -1041,7 +1046,7 @@ $(document).ready(function(){
     }
   });
   $('#upload_step_one_next').on('click', function() {
-    if (($("#reply_email").val().indexOf("@") != -1) && ($("#reply_email").val().indexOf(".") != -1)) {
+    if (($("#reply_email").val().indexOf("@") != -1) && ($("#reply_email").val().indexOf(".") != -1) && ($("#reply_email").val().length > 7)) {
       $('#upload_step_one').hide();
       $('#upload_step_two').show();
       custEmail = $("input[name='reply_email']").val();
@@ -1113,18 +1118,19 @@ $(document).ready(function(){
     });
     $('#team_name_input').val('').attr('placeholder','EAGLES');
     $('#team_name_info_icon').attr('src', 'images/info/info.png');
-    $('#js-preview').attr('href', '').attr('title', '');
-    $('#upload_info_icon').attr('src', 'images/info/info.png');
-    $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
-    $('.custom-file-upload').remove();
-    $('#file_input_container').html("<input type='file' id='file' size='60' name='myfile' accept='image/*' style='float:right; padding: 5px;'>")
-    $('input[type=file]').customFile();
     $('select').change();
+    resetValidation();
+    resetUploadForm();
     e.preventDefault();
   });
 
   //CANCEL BUTTON
   //upload form
+  function resetValidation() {
+    $("input[name='reply_email']").val('').focus();
+    $("label[name='reply_email']").css('color', '#666666');
+    $("input[name='reply_email']").attr('placeholder','');
+  };
   function resetUpload() {
     $('#js-preview').attr('href', '').attr('title', '');
     $('#upload_info_icon').attr('src', 'images/info/info.png');
@@ -1134,6 +1140,18 @@ $(document).ready(function(){
     $('input[type=file]').customFile();
     titleWatch();
   };
+  function resetUploadForm() {
+    custEmail = "";
+    if($('.upload_inner').css('display') != 'none') {
+      $('.upload_inner').slideToggle();
+    }
+    $("input[name='reply_email']").val('');
+    resetUpload();
+  }
+  $('.cancel_form_btn').on('click', function() {
+    resetValidation();
+    resetUploadForm();
+  });
   //all others
   $('.cancel_btn').on('click', function() {
     var href = "../../sports/"+sport+"/jerseys/"+sport+"_jerseys.html";

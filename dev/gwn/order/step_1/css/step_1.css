@@ -10,7 +10,7 @@
   font-family: 'Lato', sans-serif;
 }
 .reset_btn {
-  margin-top: 0;
+  margin-top: 5px;
   line-height: 1;
 }
 .cancel_btn:hover, .reset_btn:hover, .save_btn:hover, .clear_btn:hover {
@@ -91,10 +91,9 @@
   padding: 10px;
   line-height: 2;
 }
-/*#selections font,
-#sub_selections table font {
-  color: #cccdce;
-}*/
+#selections select, input {
+  margin-top: 5px;
+}
 .shorts_show {
   display: none;
 }
