@@ -1,0 +1,93 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Installation</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Border" content="none">
+</head>
+
+<body>
+<H2> Product Manager User's Guide for StoreFront 5.0</H2>
+
+This page allows you to add/edit/delete your inventory. 
+It has the added feature of allowing you to create new products including the 
+attribute at one time along with editing the same. You can also duplicate an 
+entire product including its attributes with the push of one button or just 
+duplicate an attribute category within the product. This page also contains 
+advanced search capabilities to narrow down your product list.
+<P><STRONG><EM>Filter Section</EM></STRONG></P>
+<P>This section allows you to filter the product summary section by Product ID, 
+short description, long description, and the Product name. You may choose not to 
+filter on these items by selecting do not include.</P>
+<P>You may also filter by product prices. By filling in the top input only, you 
+may filter out products priced less than the entered amount. By filling in the 
+bottom input only, you will filter out all prices greater than the entered 
+amount. Entering values for both will produce products priced between the two 
+values.</P>
+<P>You may also filter on category, manufacturer, vendor, and by if the product 
+is active, inactive, or both.</P>
+<P><STRONG><EM>Summary Section</EM></STRONG></P>
+<P>This section contains the product list as produced by the filter. You may 
+view the product detail by selecting the desired product from this section. You 
+filter settings and page settings will be maintained as long as you do not 
+select a hyperlink. At the bottom of the summary section is the paging area. You 
+may set the number of products per page that is displayed. If you enter 0, all 
+records will be displayed.</P>
+<P>You may hide and show either the filter or summary section by clicking the 
+appropriate link.</P>
+<P><STRONG><EM>Functions:</EM></STRONG></P>
+<P>New Product - Select this to create a new product. All fields will have a 
+default value entered except for Product ID and the Product Name. These two 
+fields are required to save the product.</P>
+<P>Duplicate Product - Select this to create a duplicate product that includes 
+all of this products attributes. A box will appear asking for the new product 
+ID. The new product will be available for editing immediately afterwards.</P>
+<P>Copy Product Attributes - Select this to copy the current product's 
+attributes to an existing product.</P>
+<P>Delete Product - Select this to delete the current product. You will be asked 
+to confirm the deletion.</P>
+<P>Add Product/Save Changes - Select this to save your changes</P>
+<P>In the Attributes tab</P>
+<P>Delete Category - Select this to delete the highlighted attribute category 
+and its associated attribute details. You will be asked to confirm the 
+deletion.</P>
+<P>Duplicate Category - Select this to create a new attribute category and its 
+associated attribute details based on the highlighted category to the current 
+product</P>
+<P>Copy Category - Select this to copy the highlighted attribute category and 
+its associated attribute details&nbsp;to an&nbsp;product</P>
+<P>Delete Attribute - Select&nbsp; this to delete the highlighted attribute 
+detail. You will be asked to confirm the deletion.</P>
+<P><STRONG><EM>Multi-Tier Pricing (StoreFront 5.0 AE only)</EM></STRONG></P>
+<P>You may add or delete as many levels of pricing as you wish before you save 
+your changes.</P></EM></STRONG>
+<P><STRONG><EM>Category (StoreFront 5.0 AE only)</EM></STRONG></P>
+<P>You select the categories you wish the product to appear in. You may 
+select/deselect multiple categories at one time.</P>
+<P><STRONG><EM>Inventory Levels (StoreFront 5.0 AE 
+only)</EM></STRONG></EM></STRONG></P>
+<P>A product inventory level is created for each 
+combination of attributes. When you add or delete attributes, the inventory will 
+be automatically created after you save your changes.</P>
+
+<H3>Advanced Configuration</H3>
+<P>The top of productadmin.asp contains a user parameters 
+section. This section contains parameters which can optimize your data access 
+time and is especially important for large databases containing many 
+attributes.</P>
+<UL>
+<li>Const mblnShowTabs - by default this is true. Set to 
+  false to disable tabbing functionality and display all product entry sections 
+  at one time
+  <LI>Const mblnIsSQL - by default this is set to false for an Access database - set to true for SQL Server
+<li>Const mblnShowAttributes -	by default this is set to true to show attributes in summary table. Set this to false for faster page loading. Large databases with a lot of attributes should set this value to false.
+<li>Const mblnAutoShowTable - by default this is set to true to automatically display the product summary on the intial page loading
+<li>Server.ScriptTimeout - by default this is set to 90	seconds. Larger databases may need to up this value is the page times out frequently
+<li>mlngMaxRecords - by default this is set to 25. This 
+  is the default Maximum Records to show in summary table on the intial page 
+  loading </li></UL>
+</body>
+
+</html>

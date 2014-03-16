@@ -1,0 +1,99 @@
+<comcheck>
+	<com>
+		<Description>AuthorizeNet</Description>
+		<CreateUsing>AuthNetSSLConnect.SSLPost</CreateUsing>
+		<Version></Version>
+		<URL>http://www.authorizenet.com</URL>
+	</com>	
+	<com>
+		<Description>Barclays/CyberCash Message Block</Description>
+		<CreateUsing>CyberCashMCK.MessageBlock</CreateUsing>
+		<Version></Version>
+		<URL>http://www.epdq.co.uk/index.htm</URL>
+	</com>
+	<com>
+		<Description>Barclays/CyberCash Socket</Description>
+		<CreateUsing>CyberCashMCK.socket.1</CreateUsing>
+		<Version></Version>
+		<URL>http://www.epdq.co.uk/index.htm</URL>
+	</com>	
+	<com>
+		<Description>CyberCash Message Block</Description>
+		<CreateUsing>CyberCashMCK.MessageBlock</CreateUsing>
+		<Version></Version>
+		<URL>http://www.cybercash.com/</URL>
+	</com>
+	<com>
+		<Description>CyberCash Socket</Description>
+		<CreateUsing>CyberCashMCK.socket.1</CreateUsing>
+		<Version></Version>
+		<URL>http://www.cybercash.com/</URL>
+	</com>	
+	<com>
+		<Description>LinkPoint</Description>
+		<CreateUsing>ComApi_3_8.ComApi</CreateUsing>
+		<Version></Version>
+		<URL>http://www.linkpointgateway.com</URL>
+	</com>
+	<com>
+		<Description>Planet Payment</Description>
+		<CreateUsing>AuthNetSSLConnect.SSLPost</CreateUsing>
+		<Version></Version>
+		<URL>http://www.planetpayment.com/</URL>
+	</com>	
+	<com>
+		<Description>PSI Gate</Description>
+		<CreateUsing>MyServer.PsiGate</CreateUsing>
+		<Version></Version>
+		<URL>http://www.psigate.com/</URL>
+	</com>
+	<com>
+		<Description>QuickCommerce</Description>
+		<CreateUsing>AuthNetSSLConnect.SSLPost</CreateUsing>
+		<Version></Version>
+		<URL>http://www.ecx.com/</URL>
+	</com>
+	<com>
+		<Description>SecurePay</Description>
+		<CreateUsing>SPCOM.clsSecureSend</CreateUsing>
+		<Version></Version>
+		<URL>http://www.securepay.com</URL>
+	</com>					
+	<com>
+		<Description>SecureSource</Description>
+		<CreateUsing>AuthNetSSLConnect.SSLPost</CreateUsing>
+		<Version></Version>
+		<URL>http://www.wfsecuresource.com/</URL>
+	</com>			
+	<com>
+		<Description>SurePay</Description>
+		<CreateUsing>MSXML.DOMDocument</CreateUsing>
+		<Version></Version>
+		<URL>http://www.surepay.com/</URL>
+	</com>
+	<com>
+		<Description>Verisign Payflow 2</Description>
+		<CreateUsing>PFProSSControl.PFProSSControl.1</CreateUsing>
+		<Version></Version>
+		<URL>http://www.verisign.com/products/payflow/pro/index.html</URL>
+	</com>
+	<com>
+		<Description>Verisign Payflow 3</Description>
+		<CreateUsing>PFProSSControl.PFProSSControl2.1</CreateUsing>
+		<Version></Version>
+		<URL>http://www.verisign.com/products/payflow/pro/index.html</URL>
+	</com>
+	
+	<com>
+		<Description>WorldPay</Description>
+		<CreateUsing>WorldPay.COMpurchase</CreateUsing>
+		<Version></Version>
+		<URL></URL>
+	</com>
+	<com>
+		<Description>WorldPay CallBack</Description>
+		<CreateUsing>WorldPay.COMcallback</CreateUsing>
+		<Version></Version>
+		<URL></URL>
+	</com>
+</comcheck>									

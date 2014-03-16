@@ -1,0 +1,308 @@
+<html><head>
+<title>Installation</title>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta content="Microsoft FrontPage 5.0" name=GENERATOR>
+<script language=javascript>
+
+function pasteToClipboard(theField)
+{
+	theField.select();
+    document.execCommand("Copy")
+}
+</script>
+</HEAD>
+<body><FONT size=2>
+<H2>Postage Rate Component Installation Guide for StoreFront 5.0</H2>
+<P>The Postage Rate Component consists of the following files:</P>
+<ul>
+  <li style="LIST-STYLE-TYPE: none">Readme_PostageRate.htm 
+  <li style="LIST-STYLE-TYPE: none">ssmodShipping.asp 
+  <li style="LIST-STYLE-TYPE: none">ssShippingEstimator.asp 
+
+  <li style="LIST-STYLE-TYPE: none">ssShippingRates.asp 
+  <li style="LIST-STYLE-TYPE: none">ssShippingRates.js 
+  <li style="LIST-STYLE-TYPE: disc">ssAdmin 
+  <ul>
+    <li style="LIST-STYLE-TYPE: disc">images 
+    <ul>
+      <li style="LIST-STYLE-TYPE: none">sslogo.jpg </LI></UL>
+    <li style="LIST-STYLE-TYPE: disc">ssHelpFiles 
+    <ul>
+      <li style="LIST-STYLE-TYPE: none" 
+      >help_PostageRate.htm </LI></UL>
+    <li style="LIST-STYLE-TYPE: disc" 
+    >ssInstallationPrograms 
+    <ul>
+      <li style="LIST-STYLE-TYPE: none" 
+      >ssPostageRate2_addon_DBUpgradeTool.asp 
+      <li style="LIST-STYLE-TYPE: none" 
+      >ssPostageRate2_addon_FedEx_Registration.asp </LI></UL>
+    <li style="LIST-STYLE-TYPE: disc">ssLibrary 
+    <ul>
+      <li style="LIST-STYLE-TYPE: none">modDatabase.asp 
+      <li style="LIST-STYLE-TYPE: none">modLogin.asp 
+      <li style="LIST-STYLE-TYPE: none">ssFormValidation.js 
+
+      <li style="LIST-STYLE-TYPE: none">ssStyleSheet.css 
+      </LI></UL>
+    <li style="LIST-STYLE-TYPE: disc">ssReadMeFiles 
+    <ul>
+      <li style="LIST-STYLE-TYPE: none" 
+      >ReadMe_PostageRate.htm </LI></UL>
+    <li style="LIST-STYLE-TYPE: none">adminHeader.asp 
+    <li style="LIST-STYLE-TYPE: none">admin.asp 
+    <li style="LIST-STYLE-TYPE: none" 
+    >ssShippingCarriersAdmin.asp 
+    <li style="LIST-STYLE-TYPE: none" 
+    >ssshippingMethodsAdmin.asp </LI></UL></LI></UL>
+
+<H3><A name=Installation>Installation:</A></H3>
+<p>Notes: To assist with the installation, the grey 
+textareas below can be automatically copied to the clipboard by clicking 
+them.</P>
+<h4>Step 0: Your web should be fully functional prior to 
+installing this add-on including using carrier based rates.</H4>
+<h4>Step 1: Modify ssmodShipping.asp (only applies to 
+versions prior to 50.3)</H4>
+<p>StoreFront altered their shipping routines starting with 
+versions 50.3 and greater. You can identify which version you have by viewing 
+incVerify.asp by looking at the @APPVERSION: line. This add-on is preset for 
+these versions. If you are using a version prior to 50.3 you must make the 
+following change in the ssmodShipping.asp file</P>
+<p>At the bottom of the file find</P><textarea id=Textarea1 title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick=pasteToClipboard(this); name=ta1 rows=5 cols=110>	'use the following line for versions PRIOR to v50.03
+	'If sShipping = "FAIL" Then sShipping = getShipping(iTotalPur, iPremiumShipping, "FAIL" &amp; "|" &amp; sShipping, dZip, dCountry, sTotalPrice)
+
+	'use the following line for versions v50.03 and later
+	If sShipping = "FAIL" Then sShipping = getShipping(iTotalPur, iPremiumShipping, "FAIL" &amp; "|" &amp; sShipping, "", "", dZip, dCountry, sTotalPrice,"")
+</TEXTAREA> 
+<p>And change it to read</P><textarea id=Textarea2 title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick=pasteToClipboard(this); name=ta1 rows=5 cols=110>	'use the following line for versions PRIOR to v50.03
+	If sShipping = "FAIL" Then sShipping = getShipping(iTotalPur, iPremiumShipping, "FAIL" &amp; "|" &amp; sShipping, dZip, dCountry, sTotalPrice)
+
+	'use the following line for versions v50.03 and later
+	'If sShipping = "FAIL" Then sShipping = getShipping(iTotalPur, iPremiumShipping, "FAIL" &amp; "|" &amp; sShipping, "", "", dZip, dCountry, sTotalPrice,"")
+</TEXTAREA> 
+<p>(all that is different is moving the apostrophe)</P>
+<H4>Step 2: Copy the files.</H4>
+<ol>
+  <li>Copy the directory ssAdmin and its files to your 
+  password protected admin directory (usually ssl/admin.) Note: If you purchased 
+  another Sandshot Software add-on prior to September 15th, 2002 which contains 
+  the ssAdmin directory, you will need to contact support for updated files as 
+  the common header file has substantially changed. 
+  <li>Copy the file ssmodShipping.asp to your sfLib and 
+  ssl/sfLib folders 
+  <li>Copy the file ssShippingEstimator.asp to your root 
+  web 
+  <li>Copy the files ssShippingRates.asp and 
+  ssShippingRates.js to your ssl directory </LI></OL>
+<H4>Step 3: Upgrade the Storefront Database.</H4>
+<P>As always, it is recommended you make a backup of you 
+database before running the file.</P>
+<p>Run the file in your browser: Click <a href="../ssInstallationPrograms/ssPostageRate2_addon_DBUpgradeTool.asp">here</a>.</P>
+<ul>
+  <li>Table sfOrders is altered to increase field sizes for 
+  orderShipMethod to 65 characters 
+  <LI>New tables ssShippingCarriers and ssShippingMethods 
+  are added </LI></UL>
+<H4>Step 4: Modify the file ssl/SFLib/incverify.asp</H4>
+<P>Place the following line of code at the top of 
+incVerify.asp</P>
+<textarea id=Textarea1 title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick=pasteToClipboard(this); name=ta1 rows=1 cols=110>
+<!--#include File = "ssmodShipping.asp"-->
+</TEXTAREA> 
+<P>Find the following section of code</P><textarea id=Textarea2 title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick=pasteToClipboard(this); name=ta1 rows=1 cols=110>
+		Case 2
+</TEXTAREA> 
+<p>And replace it with this:</P>
+<textarea id=Textarea3 title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick=pasteToClipboard(this); name=ta1 rows=4 cols=110>
+		Case 2
+    'begin addition for Sandshot Software Postage Rate Component
+    If cblnssUsePostageRate Then
+        Call ssPostageRate_SF5(sShipping,sShipCode,oZip,oCountry,dZip,dCountry,iTotalPur,iPremiumShipping,sTotalPrice)
+    Else
+    'end addition for Sandshot Software Postage Rate Component
+</TEXTAREA> 
+<p>Find the following section of code</P>
+<textarea id=Textarea4 title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick=pasteToClipboard(this); name=ta1 rows=1 cols=110>
+			Set upsObj = nothing
+</TEXTAREA> 
+<p>And replace it with this:</P>
+<textarea id=Textarea5 title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick=pasteToClipboard(this); name=ta1 rows=4 cols=110>
+			Set upsObj = nothing				
+
+    End If 'added for Sandshot Software Postage Rate Component 
+</TEXTAREA>
+
+<h4>Step 5: Modify the file process_order.asp</H4>
+<p>Place the following line of code at the top of process_order.asp</p>
+<textarea title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" rows="1" cols="110" name="ta1" onclick="pasteToClipboard(this);" ID="Textarea6">
+<!--#include File = "SFLib/ssmodShipping.asp"-->
+</textarea>
+
+<p>Find the following section of code</p>
+<textarea id="Textarea7" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+If NOT rsMyOrders.EOF = True AND NOT rsMyOrders.EOF = true Then
+</textarea>
+
+<p><And replace it with this:</p>
+<textarea id="Textarea8" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="2" cols="110">
+Session("sTotalPrice") = sTotalPrice 'added for Sandshot Software Postage Rate Component
+If NOT rsMyOrders.EOF = True AND NOT rsMyOrders.EOF = true Then
+</textarea>
+
+<h4>Step 6: Modify the file orderform.asp</h4>
+<p>Find the following section of code</p>
+<textarea id="Textarea12" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+sShipMethods = getShippingList(blnFree)
+</textarea>
+
+<p><And replace it with this:</p>
+<textarea id="Textarea13" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="2" cols="110">
+	'this line disabled to use Sandshot Software Postage Rate add-on
+   	'sShipMethods = getShippingList(blnFree)
+</textarea>
+
+<p>Find the following section of code</p>
+<textarea id="Textarea14" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+ if iShip <> 0 Then
+</textarea>
+
+<p><And replace it with this:</p>
+<textarea id="Textarea15" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="7" cols="110">
+ if iShip <> 0 Then 
+'modified to use Sandshot Software Postage Rate add-on
+If cblnssUsePostageRate Then
+	sShipMethods = getssShippingList
+Else
+	sShipMethods = getShippingList(blnFree)
+End If
+</textarea>
+
+<h4>Step 7: Modify the file verify.asp</h4>
+<p>Find the following section of code</p>
+<textarea id="Textarea17" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+			sShipMethodName = getNameWithID("sfShipping",iShipMethod,"shipID","shipMethod",0)				
+</textarea>
+
+<p><And replace it with this:</p>
+<textarea id="Textarea18" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="6" cols="110">
+			'modified for use of Sandshot Software's Postage Rate add-on
+			If cblnssUsePostageRate Then
+				sShipMethodName = getNameWithID("ssShippingMethods",iShipMethod,"ssShippingMethodCode","ssShippingMethodName",1)
+			Else
+				sShipMethodName = getNameWithID("sfShipping",iShipMethod,"shipID","shipMethod",0)
+			End If
+</textarea>
+
+<p>Find the following section of code</p>
+<textarea id="Textarea19" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+		If sShipping <> 0 OR iShipMethod = 19 or sFreeShip =True Then 
+</textarea>
+
+<p><And replace it with this:</p>
+<textarea id="Textarea20" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="9" cols="110">
+		'modified for use of Sandshot Software's Postage Rate add-on
+		'If sShipping <> 0 OR iShipMethod = 19 or sFreeShip =True Then 
+		Dim pblnShowFreeShip
+		If cblnssUsePostageRate Then
+			pblnShowFreeShip = True
+		Else
+			pblnShowFreeShip = ((sShipping <> 0) OR (iShipMethod = 19) or (sFreeShip = True))
+		End If
+		If pblnShowFreeShip Then 
+</textarea>
+
+<p>Find the following section of code</p>
+<textarea id="Textarea19" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+		<%If sShipping <> 0 OR iShipMethod = 19 or sFreeShip =True Then %>
+</textarea>
+
+<p><And replace it with this:</p>
+<textarea id="Textarea20" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="5" cols="110">
+		<%
+		'modified for use of Sandshot Software's Postage Rate add-on
+		'If sShipping <> 0 OR iShipMethod = 19 or sFreeShip =True Then
+		If pblnShowFreeShip Then
+		%>
+</textarea>
+
+<h4>Step 8: Modify the file verify.asp</h4>
+<p>Find the following section of code</p>
+
+<h4>Step 9: Set-up your real-time account access with the carriers you wish to use</h4>
+<p>Each of the carriers below require you to register with them prior to using their servers to obtain real-time rates. The links will take you to their
+registration forms. After registering with each carrier you will be sent a username and password which you should enter in <a href="../ssShippingCarriersAdmin.asp">here</a>.</p>
+<ul>
+<li><a href="https://www.fedex.com/globaldeveloper/shipapi/register.html?link=2" target="_blank">FedEx</a>. Once you receive your username and password you need to run this <a href="../ssInstallationPrograms/ssPostageRate2_addon_FedEx_Registration.asp">script</a></li>
+<li><a href="https://www.ups.com/servlet/registration?loc=en_US_EC&returnto=http://www.ec.ups.com/ecommerce/techdocs/online_tools.html" target="_blank">UPS</a></li>
+<li><a href="http://www.uspsprioritymail.com/et_regcert.html" target="_blank">U.S.P.S.</a></li>
+<li><a href="http://www.freightquote.com/tour/TourEnroll.asp" target="_blank">Freight Quote</a><sup>1</sup></li>
+</ul>
+<sup>1</sup>To use Freight Quote you must have their custom API installed. If you are hosted with a certified StoreFront host this should be installed by default
+
+<h4>Step 10: Configure your shipping methods <a href="../ssShippingMethodsAdmin.asp"">here</a>. You may read full details about the configuring the various shipping methods by pressing the ? on the page.</h4>
+
+<H4>Congratulations! You are done with the Postage Rate installation.</H4>
+
+<hr>
+
+<h3>Optional Features</h3>
+
+<h3>Rate Preview Installation on process_order.asp</h3>
+
+<h4>Step 1: Modify the file orderform.asp</h4>
+<p>Place the following code</p>
+<textarea id="Textarea9" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+	<script language="javascript" src="ShippingRates.js"></script>
+</textarea>
+
+<p>Immediately before</p>
+<textarea id="Textarea10" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+	<script language="javascript">
+</textarea>
+
+<p>Note: Starting with version 50.4 the above line can be found in process_order.asp</p>
+
+<p>Insert the following code somewhere within the form. Next to &lt;select name="Shipping" ...&gt; is a good idea.
+
+<p>You have a couple of options</p>
+
+<p>1. A grey submit button</p>
+<textarea id="Textarea11" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+	<input type=button name=btnGetShipping value='View Rates' onclick='GetRates(0);'>
+</textarea>
+
+<p>2. A text hyperlink</p>
+<textarea id="Textarea16" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+	<a href="" onclick='GetRates(0); return false;'>View Rates</a>
+</textarea>
+
+<p>3. An image hyperlink (a sample image is provided which should be moved to the ssl/images/buttons directory)</p>
+<textarea id="Textarea21" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="1" cols="110">
+	<a href="" onclick='GetRates(0); return false;'><img src='images/buttons/getrates.gif' border=0></a>
+</textarea>
+
+<p>You may further refine how the View Rates page is displayed by changing the value of GetRates</p>
+
+<p>GetRates(0) - displays the list of shipping methods as a series of hyperlinks</p>
+
+<p>GetRates(1) - displays the list as a series of radio buttons</p>
+<hr>
+
+<h3>Shipping Cost Estimator Installation</h3>
+
+<p>The shipping cost estimator is essentially a stripped down version of the rate preview screen
+with the addition of a data collection feature for the mailing postal code and country. This
+information is saved to session variables so the customer only has to enter it once. They are
+always given the option to change it. All features of the postage rate add-on are supported 
+except for the free shipping over a specified order amount. This is because the order subtotal
+is not available to the shipping add-on by default. You can enable this functionality by setting
+the session variable Session("sTotalPrice") equal to the order subtotal whenever an item is 
+added to the shopping cart. The instructions for doing so are beyond the scope of this add-on.
+However, if you use a cart sub-total script you can set this variable there.</p>
+
+<p>To add a link to any page opening the shipping cost estimator</p>
+<textarea id="Textarea24" title="Click to set this text to the clipboard" style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc; type: text" onclick="pasteToClipboard(this);" name="ta1" rows="6" cols="110">
+	<a href="Shipping Calculator" onclick="var mScreenHeight = window.screen.availHeight; var mScreenWidth = window.screen.availWidth; window.open('ShippingCalculator.asp','SearchResults','toolbar=0,location=0,directories=0,status=1,menubar=No,copyhistory=0,scrollbars=1,height=' + mScreenHeight/1.5 + ',width=' + mScreenWidth/2 + ',screenY=' + mScreenHeight/1.5 + ',screenX=' + mScreenWidth/2 + ',top=0,left=' + mScreenWidth/2.05 + ',resizable'); return false;">Estimate Shipping</a>
+</textarea>
+</body></HTML>

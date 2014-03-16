@@ -1,0 +1,10 @@
+<SCRIPT Language=VBSCRIPT RUNAT=Server>
+
+
+Sub Session_OnStart
+DSN_Name = Request("gamewearnow")
+Order_ID = Request("Order_ID")
+Session("gamewearnow") = DSN_Name
+Session("Order_ID") = Order_ID
+End Sub
+</SCRIPT>

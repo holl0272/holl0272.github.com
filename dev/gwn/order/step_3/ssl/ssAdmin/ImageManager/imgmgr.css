@@ -1,0 +1,35 @@
+.border {
+	background-color: #333366;
+}
+th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFCC;
+	background-color: #666699;
+}
+body, table, td, p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+th a:link, th a:visited, th a:hover, th a:active {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFCC;
+	background-color: #666699;
+}
+a:hover {
+	text-decoration: none;
+}
+.matte {
+	background-color: #FFFFFF;
+}
+input.go{
+	border : 1px #333366 outset;
+	color : #FFFFFF;
+	background : #666699;
+	font : bold 11px Verdana,Arial,Helvetica,sans-serif;
+}

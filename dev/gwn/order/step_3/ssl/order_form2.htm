@@ -1,0 +1,2935 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>StoreFront E-Commerce for Microsoft FrontPage</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body style="font-family: Arial; font-size: 12 pt">
+
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript" Type="text/javascript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.PAYMENT_METHOD.selectedIndex < 0)
+  {
+    alert("Please select one of the \"Credit Card Type\" options.");
+    theForm.PAYMENT_METHOD.focus();
+    return (false);
+  }
+
+  if (theForm.PAYMENT_METHOD.selectedIndex == 0)
+  {
+    alert("The first \"Credit Card Type\" option is not a valid selection.  Please choose one of the other options.");
+    theForm.PAYMENT_METHOD.focus();
+    return (false);
+  }
+
+  if (theForm.CARD_NAME.value == "")
+  {
+    alert("Please enter a value for the \"Card Holder Name\" field.");
+    theForm.CARD_NAME.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-- \t\r\n\f";
+  var checkStr = theForm.CARD_NO.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit, whitespace and \"-\" characters in the \"Credit Card Account Number\" field.");
+    theForm.CARD_NO.focus();
+    return (false);
+  }
+
+  if (theForm.ADDRESS_2.value == "")
+  {
+    alert("Please enter a value for the \"Address\" field.");
+    theForm.ADDRESS_2.focus();
+    return (false);
+  }
+
+  if (theForm.CITY.value == "")
+  {
+    alert("Please enter a value for the \"City\" field.");
+    theForm.CITY.focus();
+    return (false);
+  }
+
+  if (theForm.CITY.value.length < 2)
+  {
+    alert("Please enter at least 2 characters in the \"City\" field.");
+    theForm.CITY.focus();
+    return (false);
+  }
+
+  if (theForm.State.selectedIndex < 0)
+  {
+    alert("Please select one of the \"State\" options.");
+    theForm.State.focus();
+    return (false);
+  }
+
+  if (theForm.COUNTRY.selectedIndex < 0)
+  {
+    alert("Please select one of the \"Country\" options.");
+    theForm.COUNTRY.focus();
+    return (false);
+  }
+
+  if (theForm.ZIP.value == "")
+  {
+    alert("Please enter a value for the \"Zip Code\" field.");
+    theForm.ZIP.focus();
+    return (false);
+  }
+
+  if (theForm.E_MAIL.value == "")
+  {
+    alert("Please enter a value for the \"E-Mail Address\" field.");
+    theForm.E_MAIL.focus();
+    return (false);
+  }
+
+  if (theForm.E_MAIL.value.length < 5)
+  {
+    alert("Please enter at least 5 characters in the \"E-Mail Address\" field.");
+    theForm.E_MAIL.focus();
+    return (false);
+  }
+
+  var checkOK = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzƒŠŒŽšœžŸÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ0123456789-@.-";
+  var checkStr = theForm.E_MAIL.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only letter, digit and \"@.-\" characters in the \"E-Mail Address\" field.");
+    theForm.E_MAIL.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="<%= Payment %>?ORDER_ID=<%= Request.QueryString("Order_ID") %>&amp;DSN_Name=<%= DSN_Name %>" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1" language="JavaScript">
+  <table border="0" cellpadding="0" cellspacing="0" width="780" height="1274">
+    <tr>
+      <td width="314" colspan="8" height="34"><small><strong><font face="Arial"><div align="center"></div></font></strong></small></td>
+    </tr>
+    <tr>
+      <td width="314" colspan="8" height="18"><small><strong><font face="Arial">1.&nbsp; Fill
+      out lettering information</font></strong></small></td>
+    </tr>
+    <tr>
+      <td width="314" colspan="8" height="18"><small><strong><font face="Arial">2.&nbsp; Fill
+      out payment information</font></strong></small></td>
+    </tr>
+    <tr>
+      <td width="314" colspan="8" height="18"><small><strong><font face="Arial">3.&nbsp; Print
+      this form for your records</font></strong></small></td>
+    </tr>
+    <tr>
+      <td width="314" colspan="8" height="18"></td>
+    </tr>
+    <tr align="center">
+      <td width="750" colspan="8" height="18" bgcolor="#A09A8B"><strong><small><font face="Arial"><div align="center"><center><p></font><font color="#FFCD41" face="Arial"><span style="background-color: rgb(0,51,102)">&nbsp;&nbsp;&nbsp;&nbsp; COLOR OF
+      LETTERING&nbsp;&nbsp;&nbsp;&nbsp; </span></font></small></strong></td>
+    </tr>
+    <tr align="center">
+      <td width="217" colspan="3" height="18"><font face="Arial" color="#000000"><strong><small>For
+      T-Shirts/Football Jerseys</small></strong></font></td>
+      <td width="300" colspan="5" height="18"><font face="Arial" color="#000000"><strong><small>For
+      REVERSIBLE JERSEYS ONLY:</small></strong></font></td>
+    </tr>
+    <tr align="center">
+      <td width="400" colspan="3" height="26"><strong><font face="Arial"><select name="LET_COLOR" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="Black">Black</option>
+        <option value="White">White</option>
+        <option value="Gold">Gold</option>
+        <option value="Navy">Navy</option>
+        <option selected value="Color">Color</option>
+      </select><small> <small>letters/numbers </small></small></font></strong></td>
+      <td width="172" colspan="5" height="26"><small><strong><font face="Arial">1st Color: </font></strong></small></td>
+    </tr>
+    <tr align="center">
+      <td width="400" colspan="3" height="26"></td>
+      <td width="400" colspan="5" height="26"><strong><font face="Arial"><select name="REV_LET_COL1" size="1" style="font-family: Arial Rounded MT Bold">
+        <option selected value="Black">Black</option>
+        <option value="White">White</option>
+        <option value="Gold">Gold</option>
+        <option value="Navy">Navy</option>
+        <option selected value="Color">Color</option>
+      </select><small> <small>letters/numbers on</small></small> <select name="REV_COL1" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="White">White</option>
+        <option value="Black">Black</option>
+        <option value="Navy">Navy</option>
+        <option value="Gold">Gold</option>
+        <option value="Scarlet">Scarlet</option>
+        <option value="Purple">Purple</option>
+        <option value="Cardinal">Cardinal</option>
+        <option selected value="First Color">First Color</option>
+      </select><small><small> side of jersey</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td width="217" colspan="3" height="20"></td>
+      <td width="172" colspan="5" height="20"><strong><font face="Arial"><small>2nd Color (if
+      applicable<font color="#000000">)</font></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td width="400" colspan="3" height="26"></td>
+      <td width="400" colspan="5" height="26"><strong><font face="Arial"><select name="REV_LET_COL2" size="1" style="font-family: Arial Rounded MT Bold">
+        <option selected value="Black">Black</option>
+        <option value="White">White</option>
+        <option value="Gold">Gold</option>
+        <option value="Navy">Navy</option>
+        <option selected value="Color">Color</option>
+      </select><small><font color="#FF0000"> </font><small>letters/numbers on</small></small> <select name="REV_COL2" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="White">White</option>
+        <option value="Black">Black</option>
+        <option value="Navy">Navy</option>
+        <option value="Gold">Gold</option>
+        <option value="Scarlet">Scarlet</option>
+        <option value="Purple">Purple</option>
+        <option value="Cardinal">Cardinal</option>
+        <option selected value="If Applicable">If Applicable</option>
+      </select> <small><small>side of jersey</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" colspan="8" width="750" height="18" bgcolor="#A09A8B"><small><strong><font face="Arial" color="#CC0033"><div align="center"><center><p></font><font face="Arial" color="#FFCD41"><span style="background-color: rgb(0,51,102)">&nbsp;&nbsp;&nbsp; STYLE OF
+      LETTERING (IF APPLICABLE)&nbsp;&nbsp;&nbsp; </span></font></strong></small></td>
+    </tr>
+    <tr align="center">
+      <td width="750" height="26"><small><strong><font face="Arial">Team Name:</font></strong></small></td>
+      <td width="119" height="26" colspan="2"><small><strong><font face="Arial"><select name="STYLE_TEAM_NAME" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="If Applicable">If Applicable</option>
+        <option value="Straight">Straight</option>
+        <option value="Arched">Arched</option>
+      </select></font></strong></small></td>
+      <td width="240" colspan="3" height="26"><div align="center"><center><p><small><strong><font face="Arial">Choices:</font></strong></small></td>
+      <td width="1" colspan="2" height="26" align="center"></td>
+    </tr>
+    <tr align="center">
+      <td width="98" height="44"><div align="left"><p><small><strong><font face="Arial">Individual
+      Names:</font></strong></small></td>
+      <td width="119" height="44" colspan="2"><strong><font face="Arial"><select name="STYLE_INDV_NAME" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="If Applicable">If Applicable</option>
+        <option value="Straight">Straight</option>
+        <option value="Arched">Arched</option>
+      </select></font></strong></td>
+      <td width="97" height="44"><div align="center"></div></td>
+      <td width="33" height="44" align="center"><img src="../images/letter1.jpg" alt="wpe12.jpg (1771 bytes)" WIDTH="94" HEIGHT="19"></td>
+      <td width="262" align="center" height="44" colspan="2"><div align="center"><center><p><img src="../images/letter2.jpg" alt="wpe13.jpg (2079 bytes)" WIDTH="97" HEIGHT="32"></td>
+      <td width="172" align="center" height="44"></td>
+    </tr>
+    <tr align="center">
+      <td align="left" colspan="8" width="750" height="16" bgcolor="#A09A8B"><small><strong><font face="Arial" color="#CC0033"><div align="center"><center><p></font><font face="Arial" color="#FFCD41"><span style="background-color: rgb(0,51,102)">&nbsp;&nbsp;&nbsp; TEAM NAME
+      ON FRONT&nbsp;&nbsp;&nbsp; </span></font></strong></small></td>
+    </tr>
+    <tr align="center">
+      <td align="left" colspan="8" width="314" height="16"><strong><font face="Arial"><small>Team
+      Name: </small><font face="Arial Rounded MT Bold"><input type="text" name="TEAM_NAME" size="20"></font></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="left" colspan="8" width="750" height="16" bgcolor="#A09A8B"><small><strong><font face="Arial"><small><div align="center"><center><p></small><font color="#FFCD41"><span style="background-color: rgb(0,51,102)">&nbsp;&nbsp;&nbsp; NUMBERS AND NAMES
+      &nbsp;&nbsp;&nbsp; </span></font></font></strong></small></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="50" height="16"></td>
+      <td align="left" width="50" height="16"><strong><font face="Arial"><small><small>Size</small></small></font></strong></td>
+      <td align="left" width="58" height="16"><small><small><strong><font face="Arial">Number </font></strong></small></small></td>
+      <td align="left" width="186" height="16" colspan="2"><strong><font face="Arial"><small><small>Name
+      (if applicable)</small></small></font></strong></td>
+      <td align="left" width="50" height="16"><strong><font face="Arial"><small><small>Size</small></small></font></strong></td>
+      <td align="left" width="58" height="16"><strong><font face="Arial"><small><small>Number</small></small></font></strong></td>
+      <td align="left" width="186" height="16"><strong><font face="Arial"><small><small>Name (if
+      applicable)</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="50" height="16"><div align="center"><center><p><small><small><strong><font face="Arial">PLEASE</font></strong></small></small></td>
+      <td align="center" width="58" height="16"><strong><font face="Arial"><select name="SIZE1" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="58" height="16"><strong><font face="Arial"><select name="NUMBER1" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="center" width="186" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME1" size="15"></font></strong></td>
+      <td align="center" width="50" height="16"><strong><font face="Arial"><select name="SIZE9" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="58" height="16"><strong><font face="Arial"><select name="NUMBER9" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="center" width="186" height="16"><strong><font face="Arial"><input type="text" name="NAME9" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"><div align="center"><center><p><small><small><strong><font face="Arial">FILL IN&nbsp; </font></strong></small></small></td>
+      <td align="center" width="50" height="16"><strong><font face="Arial"><select name="SIZE2" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="50" height="16"><strong><font face="Arial"><select name="NUMBER2" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="center" width="186" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME2" size="15"></font></strong></td>
+      <td align="center" width="50" height="16"><strong><font face="Arial"><select name="SIZE10" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="58" height="16"><strong><font face="Arial"><select name="NUMBER10" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="center" width="186" height="16"><strong><font face="Arial"><input type="text" name="NAME10" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"><div align="center"><center><p><small><small><font face="Arial"><strong>ONLY THE</strong> </font></small></small></td>
+      <td align="center" width="50" height="16"><strong><font face="Arial"><select name="SIZE3" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="58" height="16"><strong><font face="Arial"><select name="NUMBER3" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="center" width="186" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME3" size="15"></font></strong></td>
+      <td align="center" width="50" height="16"><strong><font face="Arial"><select name="SIZE11" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="58" height="16"><strong><font face="Arial"><select name="NUMBER11" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="center" width="186" height="16"><strong><font face="Arial"><input type="text" name="NAME11" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"><small><strong><font face="Arial"><small>FIELDS</small></font></strong></small></td>
+      <td align="left" width="50" height="16"><strong><font face="Arial"><select name="SIZE4" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="left" width="58" height="16"><strong><font face="Arial"><select name="NUMBER4" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="left" width="186" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME4" size="15"></font></strong></td>
+      <td align="left" width="50" height="16"><strong><font face="Arial"><select name="SIZE12" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="left" width="58" height="16"><strong><font face="Arial"><select name="NUMBER12" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="left" width="186" height="16"><strong><font face="Arial"><input type="text" name="NAME12" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="50" height="16"><div align="center"><center><p><small><small><strong><font face="Arial">THAT ARE</font></strong></small></small></td>
+      <td align="center" width="50" height="16"><strong><font face="Arial"><select name="SIZE5" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="58" height="16"><strong><font face="Arial"><select name="NUMBER5" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="center" width="186" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME5" size="15"></font></strong></td>
+      <td align="center" width="50" height="16"><strong><font face="Arial"><select name="SIZE13" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="58" height="16"><strong><font face="Arial"><select name="NUMBER13" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="center" width="186" height="16"><strong><font face="Arial"><input type="text" name="NAME13" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="50" height="16"><div align="center"><center><p><small><strong><small><font face="Arial">APPLICABLE</font></small></strong></small></td>
+      <td align="center" width="50" height="16"><strong><font face="Arial"><select name="SIZE6" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="58" height="16"><strong><font face="Arial"><select name="NUMBER6" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="center" width="186" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME6" size="15"></font></strong></td>
+      <td align="center" width="50" height="16"><strong><font face="Arial"><select name="SIZE14" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="58" height="16"><strong><font face="Arial"><select name="NUMBER14" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="center" width="186" height="16"><strong><font face="Arial"><input type="text" name="NAME14" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="50" height="16"></td>
+      <td align="left" width="50" height="16"><strong><font face="Arial"><select name="SIZE7" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="left" width="58" height="16"><strong><font face="Arial"><select name="NUMBER7" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="left" width="186" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME7" size="15"></font></strong></td>
+      <td align="left" width="50" height="16"><strong><font face="Arial"><select name="SIZE15" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="left" width="58" height="16"><strong><font face="Arial"><select name="NUMBER15" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="left" width="186" height="16"><strong><font face="Arial"><input type="text" name="NAME15" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="50" height="16"></td>
+      <td align="left" width="50" height="16"><strong><font face="Arial"><select name="SIZE8" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="left" width="58" height="16"><strong><font face="Arial"><select name="NUMBER8" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="left" width="186" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME8" size="15"></font></strong></td>
+      <td align="left" width="50" height="16"><strong><font face="Arial"><select name="SIZE16" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="left" width="58" height="16"><strong><font face="Arial"><select name="NUMBER16" size="1" style="font-family: Arial Rounded MT Bold; text-indent: 0px; text-align: center; margin-left: auto; padding-left: 0px">
+        <option selected value="Numbers">Number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        <option value="60">60</option>
+        <option value="61">61</option>
+        <option value="62">62</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67">67</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70</option>
+        <option value="71">71</option>
+        <option value="72">72</option>
+        <option value="73">73</option>
+        <option value="74">74</option>
+        <option value="75">75</option>
+        <option value="76">76</option>
+        <option value="77">77</option>
+        <option value="78">78</option>
+        <option value="79">79</option>
+        <option value="80">80</option>
+        <option value="81">81</option>
+        <option value="82">82</option>
+        <option value="83">83</option>
+        <option value="84">84</option>
+        <option value="85">85</option>
+        <option value="86">86</option>
+        <option value="87">87</option>
+        <option value="88">88</option>
+        <option value="89">89</option>
+        <option value="90">90</option>
+        <option value="91">91</option>
+        <option value="92">92</option>
+        <option value="93">93</option>
+        <option value="94">94</option>
+        <option value="95">95</option>
+        <option value="96">96</option>
+        <option value="97">97</option>
+        <option value="98">98</option>
+        <option value="99">99</option>
+      </select></font></strong></td>
+      <td align="left" width="186" height="16"><strong><font face="Arial"><input type="text" name="NAME16" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" colspan="8" width="750" height="16">&nbsp;<p><small><small><strong><font face="Arial">SORRY, WE ARE UNABLE TO EXCHANGE OR GIVE REFUNDS FOR ITEMS THAT HAVE BEEN
+      CUSTOM LETTERED TO YOUR SPECIFICATIONS</font></strong></small></small></p>
+      <p>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td align="left" colspan="8" width="750" height="18" bgcolor="#A09A8B"><div align="center"><center><p><font face="Arial" color="#FFCD41"><span style="background-color: rgb(0,51,102)"><small><strong>&nbsp;&nbsp;&nbsp;
+      PAYMENT INFORMATION&nbsp;&nbsp;&nbsp; </strong></small></span></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="26"><div align="right"><p><font size="2" face="Arial"><strong>Payment Method:</strong></font></td>
+      <td align="left" width="172" colspan="5" height="26"><font face="Arial"><strong><!--webbot bot="Validation" S-Display-Name="Credit Card Type" B-Value-Required="TRUE" B-Disallow-First-Item="TRUE" --><select name="PAYMENT_METHOD" size="1">
+        <option selected>Please Choose a Payment Method</option>
+        <option value="credit_card">Credit Card</option>
+        <option value="purch_order">Purchase Order</option>
+        <option value="phone_fax">Phone or Fax</option>
+      </select> <font size="1">( Required )</font></strong></font></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="750" colspan="8" height="26"><div align="center"><center><p><font face="Arial" size="1"><strong>if you choose to pay by phone/fax, print this form for
+      reference.&nbsp;&nbsp; phone/fax orders will be shipped upon receipt of check or money
+      order</strong></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><div align="right"><p><font size="2" face="Arial"><strong>Purchaser Name:</strong></font></td>
+      <td align="left" width="172" colspan="5" height="25"><strong><font face="Arial"><!--webbot bot="Validation" S-Display-Name="Card Holder Name" B-Value-Required="TRUE" --><input type="text" name="CARD_NAME" size="28"><font size="1">
+      &nbsp; ( Required )</font></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td colspan="8" align="center" width="750" height="18" bgcolor="#A09A8B"><font face="Arial" color="#FFCD41"><span style="background-color: rgb(0,51,102)"><strong><small>&nbsp;&nbsp;&nbsp;
+      COMPLETE THIS SECTION FOR CREDIT CARD PURCHASES&nbsp;&nbsp;&nbsp; </small></strong></span></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="45"><font size="2" face="Arial"><strong>Credit
+      Card: </strong></font></td>
+      <td align="left" width="172" colspan="5" height="45"><strong><font face="Arial"><select name="CARD_TYPE" size="1">
+        <option selected>Please Choose a Credit Card Type</option>
+        <option>MasterCard </option>
+        <option>Visa </option>
+      </select><font size="2"> </font><font size="1">( Required For Credit Card Purchase )</font>
+      </font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="39"><strong><font face="Arial"><font size="2">Credit Card #</font>: </font></strong></td>
+      <td align="left" width="172" colspan="5" height="39"><font face="Arial"><strong><!--webbot bot="Validation" s-display-name="Credit Card Account Number" s-data-type="String" b-allow-digits="TRUE" b-allow-whitespace="TRUE" s-allow-other-chars="-" --><input type="text" size="28" name="CARD_NO"><font size="1"> ( Required For Credit Card Purchase )</font></strong></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><font size="2" face="Arial"><strong>Exp.Date:
+      </strong></font></td>
+      <td height="25" align="left" width="172" colspan="5"><font face="Arial"><strong><input type="text" size="10" name="CARD_EXP"> <font size="1">( Required for Credit Card Purchase
+      )</font> </strong></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" colspan="8" width="750" height="18" bgcolor="#A09A8B"><div align="center"><center><p><font face="Arial" color="#FFCD41"><span style="background-color: rgb(0,51,102)"><strong><small>&nbsp;&nbsp;&nbsp; PURCHASER
+      INFORMATION&nbsp;&nbsp;&nbsp; </small></strong></span></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><font size="2" face="Arial"><strong>Company:</strong></font></td>
+      <td align="left" height="25" width="172" colspan="5"><strong><font face="Arial"><input type="text" size="30" name="COMPANY"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><strong><font size="2" face="Arial">Purchase
+      Order # (if applicable):</font></strong></td>
+      <td align="left" height="25" width="172" colspan="5"><strong><font face="Arial"><input type="text" name="PURCH_ORDER_NO" size="20"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><font size="2" face="Arial"><strong>Street
+      Address:</strong></font></td>
+      <td align="left" height="25" width="172" colspan="5"><strong><font face="Arial"><!--webbot bot="Validation" s-display-name="Address" b-value-required="TRUE" --><input type="text" size="30" name="ADDRESS_2"> <small><small>(
+      Required )</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><font size="2" face="Arial"><strong>Apt.
+      or Suite:</strong></font></td>
+      <td align="left" height="25" width="172" colspan="5"><strong><font face="Arial"><input type="text" size="20" name="ADDRESS_1"> </font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><strong><font size="2" face="Arial">City:</font></strong></td>
+      <td align="left" width="172" colspan="5" height="25"><strong><font face="Arial"><!--webbot bot="Validation" s-display-name="City" b-value-required="TRUE" i-minimum-length="2" --><input type="text" size="20" name="CITY"> <small><small>( Required )</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="26"><font size="2"><b>State:</b></font></td>
+      <td align="left" width="172" colspan="5" height="26"><!--webbot bot="Validation" s-display-name="State" b-value-required="TRUE" --><select name="State" size="1">
+        <option selected><%= Request.Form("State") %></option>
+        <option> Alabama </option>
+        <option> Alaska </option>
+        <option> Arizona </option>
+        <option> Arkansas </option>
+        <option> California </option>
+        <option> Colorado </option>
+        <option> Connecticut </option>
+        <option> Delaware </option>
+        <option> Florida </option>
+        <option> Georgia </option>
+        <option> Hawaii </option>
+        <option> Idaho </option>
+        <option> Illinois </option>
+        <option> Indiana </option>
+        <option> Iowa </option>
+        <option> Kansas </option>
+        <option> Kentucky </option>
+        <option> Louisiana </option>
+        <option> Maine </option>
+        <option> Maryland </option>
+        <option> Massachusetts </option>
+        <option> Michigan </option>
+        <option> Minnesota </option>
+        <option> Mississippi </option>
+        <option> Missouri </option>
+        <option> Montana </option>
+        <option> Nebraska </option>
+        <option> Nevada </option>
+        <option> New Hampshire </option>
+        <option> New Jersey </option>
+        <option> New Mexico </option>
+        <option> New York </option>
+        <option> North Carolina </option>
+        <option> North Dakota </option>
+        <option> Ohio </option>
+        <option> Oklahoma </option>
+        <option> Oregon </option>
+        <option> Pennsylvania </option>
+        <option> Rhode Island </option>
+        <option> South Carolina </option>
+        <option> South Dakota </option>
+        <option> Tennessee </option>
+        <option> Texas </option>
+        <option> Utah </option>
+        <option> Vermont </option>
+        <option> Virginia </option>
+        <option> Washington </option>
+        <option> Washington D.C. </option>
+        <option> West Virginia </option>
+        <option> Wisconsin </option>
+        <option> Wyoming </option>
+        <option> Alaska</option>
+        <option> Hawaii </option>
+        <option> Puerto Rico </option>
+        <option> Alberta </option>
+        <option> British Columbia </option>
+        <option> Manitoba </option>
+        <option> New Brunswick </option>
+        <option> New Foundland </option>
+        <option> Northwest Territories </option>
+        <option> Nova Scotia </option>
+        <option> Ontario </option>
+        <option> Prince Edward Island </option>
+        <option> Quebec </option>
+        <option> Saskatchewan </option>
+        <option> Yukon Territory </option>
+        <option>All Others </option>
+      </select> <strong><font face="Arial"><small><small>( Required )</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="26"><font size="2"><b>Country</b></font></td>
+      <td align="left" width="172" colspan="5" height="26"><!--webbot bot="Validation" s-display-name="Country" b-value-required="TRUE" --><select name="COUNTRY" size="1">
+        <option selected><%= Request.Form("Country") %></option>
+        <option> United States </option>
+        <option> Afghanistan </option>
+        <option> Albania </option>
+        <option> Algeria </option>
+        <option> American Samoa </option>
+        <option> Andorra </option>
+        <option> Angola </option>
+        <option> Antarctica </option>
+        <option> Antigua &amp; Barbuda </option>
+        <option> Argentina </option>
+        <option> Armenia </option>
+        <option> Aruba </option>
+        <option> Australia </option>
+        <option> Austria </option>
+        <option> Azerbaijan </option>
+        <option> Bahamas </option>
+        <option> Bahrain </option>
+        <option> Bangladesh </option>
+        <option> Barbados </option>
+        <option value="Republic of Belarus"> Belarus </option>
+        <option> Belgium </option>
+        <option> Belize </option>
+        <option> Benin </option>
+        <option> Bermuda </option>
+        <option> Bhutan </option>
+        <option> Bolivia </option>
+        <option> Bosnia &amp; Herzegovina </option>
+        <option> Botswana </option>
+        <option> Bouvet Island </option>
+        <option> Brazil </option>
+        <option> British Antarctica Territory </option>
+        <option> British Indian Ocean Territory </option>
+        <option> British West Indies </option>
+        <option> Brunei </option>
+        <option> Bulgaria </option>
+        <option> Burundi </option>
+        <option> Caledonia </option>
+        <option> Cambodia </option>
+        <option> Cameroon </option>
+        <option> Canada </option>
+        <option> Canary Islands </option>
+        <option> Canton And Enderbury Islands </option>
+        <option> Cape Verdi Islands </option>
+        <option> Cayman Islands </option>
+        <option> Central African Republic </option>
+        <option> Chad </option>
+        <option value="Chan. Island UK"> Channel Islands UK </option>
+        <option> Chile </option>
+        <option> China </option>
+        <option> Christmas Island </option>
+        <option> Cocos (Keeling) Islands </option>
+        <option value="Columbia"> Colombia </option>
+        <option value="Comoro Islands"> Comoros </option>
+        <option value="Congo"> Congo, Republic of </option>
+        <option> Congo, Democratic Republic of </option>
+        <option> Cook Islands </option>
+        <option> Costa Rica </option>
+        <option> Croatia </option>
+        <option> Cuba </option>
+        <option> Curacao </option>
+        <option> Cyprus </option>
+        <option> Czech Republic </option>
+        <option> Dahomey </option>
+        <option> Dem. People's Republic of Korea </option>
+        <option> Dem. Republic of Vietnam </option>
+        <option> Denmark </option>
+        <option> Djibouti </option>
+        <option> Dominica </option>
+        <option> Dominican Republic </option>
+        <option> Dronning Muad Land - Antarctica </option>
+        <option> Ecuador </option>
+        <option> Egypt </option>
+        <option> El Salvador </option>
+        <option> England, UK </option>
+        <option> Equatorial Guinea </option>
+        <option> Estonia </option>
+        <option> Ethiopia </option>
+        <option> Faeroe Islands </option>
+        <option> Falkland Islands </option>
+        <option> Fiji </option>
+        <option> Finland </option>
+        <option> France </option>
+        <option> French Guiana </option>
+        <option> French Polynesia </option>
+        <option> French Southern &amp; Antarctica </option>
+        <option> French Territory of Afars &amp; Issas </option>
+        <option> French West Indies </option>
+        <option> Gabon </option>
+        <option> Gambia </option>
+        <option> Gaza </option>
+        <option> Germany </option>
+        <option> Ghana </option>
+        <option> Gibraltar </option>
+        <option> Georgia </option>
+        <option> Greece </option>
+        <option> Greenland </option>
+        <option> Guadeloupe </option>
+        <option> Guam </option>
+        <option> Guatemala </option>
+        <option> Guinea </option>
+        <option> Guinea Bissau </option>
+        <option> Guyana </option>
+        <option> Haiti </option>
+        <option> Heard &amp; McDonald Islands </option>
+        <option> Holland </option>
+        <option> Honduras </option>
+        <option> Hong Kong </option>
+        <option> Hungary </option>
+        <option> Iceland </option>
+        <option> Ifni </option>
+        <option> India </option>
+        <option> Indonesia </option>
+        <option> Iran </option>
+        <option> Iraq </option>
+        <option value="Iraq-Saudi Arania Neutral Zone"> Iraq-Saudi Arabia Neutral Zone </option>
+        <option> Ireland </option>
+        <option> Israel </option>
+        <option> Italy </option>
+        <option> Ivory Coast </option>
+        <option> Jamaica </option>
+        <option> Japan </option>
+        <option> Johnston Atoll </option>
+        <option> Jordan </option>
+        <option> Kazakhstan </option>
+        <option> Kenya </option>
+        <option> Kuwait </option>
+        <option> Kyrgyzstan </option>
+        <option> Laos </option>
+        <option> Latvia </option>
+        <option> Lebanon </option>
+        <option> Leeward Islands </option>
+        <option> Lesotho </option>
+        <option> Liberia </option>
+        <option> Libya </option>
+        <option> Liechtenstein </option>
+        <option> Lithuania </option>
+        <option> Luxembourg </option>
+        <option> Macau </option>
+        <option> Madagascar </option>
+        <option> Malawi </option>
+        <option> Malaysia </option>
+        <option> Maldives </option>
+        <option> Mali </option>
+        <option> Malta </option>
+        <option> Mariana Islands </option>
+        <option> Martinique </option>
+        <option> Mauritania </option>
+        <option> Mauritius </option>
+        <option> Melanesia </option>
+        <option> Mexico </option>
+        <option> Micronesia </option>
+        <option> Midway Islands </option>
+        <option> Moldova </option>
+        <option> Monaco </option>
+        <option> Mongolia </option>
+        <option> Montserrat </option>
+        <option> Montenegro </option>
+        <option> Morocco </option>
+        <option> Mozambique </option>
+        <option> Myanmar </option>
+        <option> Namibia </option>
+        <option> Nauru </option>
+        <option> Navassa Island </option>
+        <option> Nepal </option>
+        <option> Netherlands </option>
+        <option> Netherlands Antilles </option>
+        <option> Neutral Zone </option>
+        <option> New Hebrides </option>
+        <option> New Zealand </option>
+        <option> Nicaragua </option>
+        <option> Niger </option>
+        <option> Nigeria </option>
+        <option> Niue </option>
+        <option> Norfolk Island </option>
+        <option value="North Ireland, UK"> Northern Ireland, UK </option>
+        <option> North Korea </option>
+        <option> Norway </option>
+        <option> Oman </option>
+        <option> Pacific Island </option>
+        <option> Pakistan </option>
+        <option> Panama </option>
+        <option> Papua New Guinea </option>
+        <option> Paracel Islands </option>
+        <option> Paraguay </option>
+        <option> Peru </option>
+        <option> Philippines </option>
+        <option> Pitcairn </option>
+        <option> Poland </option>
+        <option> Polynesia </option>
+        <option> Portugal </option>
+        <option> Portuguese Guinea </option>
+        <option> Portuguese Timor </option>
+        <option> Principe &amp; Sao Tome </option>
+        <option> Puerto Rico </option>
+        <option> Qatar </option>
+        <option value="Congo, Republic of"> Republic of Congo </option>
+        <option value="South Korea"> Republic of Korea </option>
+        <option> Reunion </option>
+        <option> Romania </option>
+        <option> Russia </option>
+        <option> Rwanda </option>
+        <option> Ryukyu Islands </option>
+        <option> Sabah </option>
+        <option> San Marino </option>
+        <option value="Sao Tome"> Sao Tome &amp; Principe </option>
+        <option> Saudi Arabia </option>
+        <option> Scotland, UK </option>
+        <option> Senegal </option>
+        <option> Serbia </option>
+        <option> Seychelles </option>
+        <option> Sierra Leone </option>
+        <option> Sikkim </option>
+        <option> Singapore </option>
+        <option> Slovakia </option>
+        <option> Slovenia </option>
+        <option> Solomon Islands </option>
+        <option> Somalia </option>
+        <option> Somaliliand </option>
+        <option> South Africa </option>
+        <option> South Korea </option>
+        <option> Spain </option>
+        <option> Spanish Sahara </option>
+        <option> Spartly Islands </option>
+        <option> Sri Lanka </option>
+        <option> St. Christopher-Nevis-Anguilla </option>
+        <option> St. Helena </option>
+        <option> St. Kitts </option>
+        <option> St. Lucia </option>
+        <option> St. Pierre &amp; Miquelon </option>
+        <option> St. Vincent </option>
+        <option> Sudan </option>
+        <option> Surinam </option>
+        <option> Svalbard &amp; Jan Mayen Islands </option>
+        <option> Swaziland </option>
+        <option> Sweden </option>
+        <option> Switzerland </option>
+        <option> Syrian Arab Republic </option>
+        <option> Taiwan </option>
+        <option> Tanzania </option>
+        <option> Thailand </option>
+        <option> Togo </option>
+        <option> Tonga </option>
+        <option> Transkei </option>
+        <option> Trinidad/Tobago </option>
+        <option> Tunisia </option>
+        <option> Turkey </option>
+        <option> Turkmenistan </option>
+        <option> Turks &amp; Caicos Islands </option>
+        <option> Uganda </option>
+        <option> Ukraine </option>
+        <option> United Arab Emirates </option>
+        <option> United Kingdom </option>
+        <option> United States </option>
+        <option> Uruguay </option>
+        <option> US Pacific Island </option>
+        <option> US Virgin Islands </option>
+        <option> Uzbekistan </option>
+        <option> Vanuatu </option>
+        <option> Vatican City </option>
+        <option> Venezuela </option>
+        <option> Vietnam </option>
+        <option> Virgin Islands (British) </option>
+        <option value="US Virgin Islands"> Virgin Islands (US) </option>
+        <option> Wake Island </option>
+        <option> Wales, UK </option>
+        <option> West Indies </option>
+        <option> Western Samoa </option>
+        <option> Windward Islands </option>
+        <option value="Dem. People's Republic of Yemen"> Yemen </option>
+        <option> Zambia </option>
+        <option> Zimbabwe </option>
+      </select><strong><small><small> <font face="Arial">( Required )</font></small></small></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><font size="2"><b>Zip:</b></font></td>
+      <td align="left" width="172" colspan="5" height="25"><!--webbot bot="Validation" S-Display-Name="Zip Code" B-Value-Required="TRUE" --><input type="text" size="10" name="ZIP"> <strong><font face="Arial"><small><small>&nbsp; ( Required )</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><font size="2"><b>Telephone: </b></font></td>
+      <td align="left" width="172" colspan="5" height="25"><input type="text" size="20" name="PHONE"> </td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><font size="2"><b>Fax: </b></font></td>
+      <td align="left" width="172" colspan="5" height="25"><input type="text" size="20" name="FAX"> </td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><font size="2"><b>E-Mail: </b></font></td>
+      <td align="left" width="172" colspan="5" height="25"><!--webbot bot="Validation" s-display-name="E-Mail Address" s-data-type="String" b-allow-letters="TRUE" b-allow-digits="TRUE" s-allow-other-chars="@.-" b-value-required="TRUE" i-minimum-length="5" --><input type="text" size="20" name="E_MAIL"><strong><font face="Arial"> <small><small>( Required )</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" colspan="8" width="750" height="18" bgcolor="#A09A8B"><font color="#FFCD41"><span style="background-color: rgb(0,51,102)"><small><b>&nbsp;&nbsp;&nbsp;
+      SHIPPING INFORMATION&nbsp;&nbsp; (IF DIFFERENT FROM PAYMENT INFORMATION)&nbsp;&nbsp; </b></small></span></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Name:</strong></font></td>
+      <td align="left" width="172" colspan="5" height="25"><input type="text" size="30" name="SHIP_NAME"></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Company:</strong></font></td>
+      <td align="left" width="172" colspan="5" height="25"><input type="text" size="30" name="SHIP_COMPANY"></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Address:</strong></font></td>
+      <td align="left" width="172" colspan="5" height="25"><input type="text" size="30" name="SHIP_ADDRESS_2"></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Apt.
+      or Suite:</strong></font></td>
+      <td align="left" width="172" colspan="5" height="25"><input type="text" size="30" name="SHIP_ADDRESS_1"></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="25"><div align="right"><p><font size="2"><strong>City:</strong></font></td>
+      <td align="left" width="172" colspan="5" height="25"><input type="text" size="20" name="SHIP_CITY"></td>
+    </tr>
+    <tr align="center">
+      <td align="right" valign="top" width="217" colspan="3" height="26"><font size="2"><strong>State:</strong></font></td>
+      <td align="left" valign="top" width="172" colspan="5" height="26"><div align="left"><p><font size="2"><select name="SHIP_STATE" size="1">
+        <option selected><%= Request.Form("State") %></option>
+        <option> Alabama </option>
+        <option> Alaska </option>
+        <option> Arizona </option>
+        <option> Arkansas </option>
+        <option> California </option>
+        <option> Colorado </option>
+        <option> Connecticut </option>
+        <option> Delaware </option>
+        <option> Florida </option>
+        <option> Georgia </option>
+        <option> Hawaii </option>
+        <option> Idaho </option>
+        <option> Illinois </option>
+        <option> Indiana </option>
+        <option> Iowa </option>
+        <option> Kansas </option>
+        <option> Kentucky </option>
+        <option> Louisiana </option>
+        <option> Maine </option>
+        <option> Maryland </option>
+        <option> Massachusetts </option>
+        <option> Michigan </option>
+        <option> Minnesota </option>
+        <option> Mississippi </option>
+        <option> Missouri </option>
+        <option> Montana </option>
+        <option> Nebraska </option>
+        <option> Nevada </option>
+        <option> New Hampshire </option>
+        <option> New Jersey </option>
+        <option> New Mexico </option>
+        <option> New York </option>
+        <option> North Carolina </option>
+        <option> North Dakota </option>
+        <option> Ohio </option>
+        <option> Oklahoma </option>
+        <option> Oregon </option>
+        <option> Pennsylvania </option>
+        <option> Rhode Island </option>
+        <option> South Carolina </option>
+        <option> South Dakota </option>
+        <option> Tennessee </option>
+        <option> Texas </option>
+        <option> Utah </option>
+        <option> Vermont </option>
+        <option> Virginia </option>
+        <option> Washington </option>
+        <option> Washington D.C. </option>
+        <option> West Virginia </option>
+        <option> Wisconsin </option>
+        <option> Wyoming </option>
+        <option> Alaska</option>
+        <option> Hawaii </option>
+        <option> Puerto Rico </option>
+        <option> Alberta </option>
+        <option> British Columbia </option>
+        <option> Manitoba </option>
+        <option> New Brunswick </option>
+        <option> New Foundland </option>
+        <option> Northwest Territories </option>
+        <option> Nova Scotia </option>
+        <option> Ontario </option>
+        <option> Prince Edward Island </option>
+        <option> Quebec </option>
+        <option> Saskatchewan </option>
+        <option> Yukon Territory </option>
+        <option>All Others </option>
+      </select></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="217" colspan="3" height="26"><font size="2"><b>Country</b></font></td>
+      <td width="172" colspan="5" height="26"><select name="SHIP_COUNTRY" size="1">
+        <option selected><%= Request.Form("Country") %></option>
+        <option> United States </option>
+        <option> Afghanistan </option>
+        <option> Albania </option>
+        <option> Algeria </option>
+        <option> American Samoa </option>
+        <option> Andorra </option>
+        <option> Angola </option>
+        <option> Antarctica </option>
+        <option> Antigua &amp; Barbuda </option>
+        <option> Argentina </option>
+        <option> Armenia </option>
+        <option> Aruba </option>
+        <option> Australia </option>
+        <option> Austria </option>
+        <option> Azerbaijan </option>
+        <option> Bahamas </option>
+        <option> Bahrain </option>
+        <option> Bangladesh </option>
+        <option> Barbados </option>
+        <option value="Republic of Belarus"> Belarus </option>
+        <option> Belgium </option>
+        <option> Belize </option>
+        <option> Benin </option>
+        <option> Bermuda </option>
+        <option> Bhutan </option>
+        <option> Bolivia </option>
+        <option> Bosnia &amp; Herzegovina </option>
+        <option> Botswana </option>
+        <option> Bouvet Island </option>
+        <option> Brazil </option>
+        <option> British Antarctica Territory </option>
+        <option> British Indian Ocean Territory </option>
+        <option> British West Indies </option>
+        <option> Brunei </option>
+        <option> Bulgaria </option>
+        <option> Burundi </option>
+        <option> Caledonia </option>
+        <option> Cambodia </option>
+        <option> Cameroon </option>
+        <option> Canada </option>
+        <option> Canary Islands </option>
+        <option> Canton And Enderbury Islands </option>
+        <option> Cape Verdi Islands </option>
+        <option> Cayman Islands </option>
+        <option> Central African Republic </option>
+        <option> Chad </option>
+        <option value="Chan. Island UK"> Channel Islands UK </option>
+        <option> Chile </option>
+        <option> China </option>
+        <option> Christmas Island </option>
+        <option> Cocos (Keeling) Islands </option>
+        <option value="Columbia"> Colombia </option>
+        <option value="Comoro Islands"> Comoros </option>
+        <option value="Congo"> Congo, Republic of </option>
+        <option> Congo, Democratic Republic of </option>
+        <option> Cook Islands </option>
+        <option> Costa Rica </option>
+        <option> Croatia </option>
+        <option> Cuba </option>
+        <option> Curacao </option>
+        <option> Cyprus </option>
+        <option> Czech Republic </option>
+        <option> Dahomey </option>
+        <option> Dem. People's Republic of Korea </option>
+        <option> Dem. Republic of Vietnam </option>
+        <option> Denmark </option>
+        <option> Djibouti </option>
+        <option> Dominica </option>
+        <option> Dominican Republic </option>
+        <option> Dronning Muad Land - Antarctica </option>
+        <option> Ecuador </option>
+        <option> Egypt </option>
+        <option> El Salvador </option>
+        <option> England, UK </option>
+        <option> Equatorial Guinea </option>
+        <option> Estonia </option>
+        <option> Ethiopia </option>
+        <option> Faeroe Islands </option>
+        <option> Falkland Islands </option>
+        <option> Fiji </option>
+        <option> Finland </option>
+        <option> France </option>
+        <option> French Guiana </option>
+        <option> French Polynesia </option>
+        <option> French Southern &amp; Antarctica </option>
+        <option> French Territory of Afars &amp; Issas </option>
+        <option> French West Indies </option>
+        <option> Gabon </option>
+        <option> Gambia </option>
+        <option> Gaza </option>
+        <option> Germany </option>
+        <option> Ghana </option>
+        <option> Gibraltar </option>
+        <option> Georgia </option>
+        <option> Greece </option>
+        <option> Greenland </option>
+        <option> Guadeloupe </option>
+        <option> Guam </option>
+        <option> Guatemala </option>
+        <option> Guinea </option>
+        <option> Guinea Bissau </option>
+        <option> Guyana </option>
+        <option> Haiti </option>
+        <option> Heard &amp; McDonald Islands </option>
+        <option> Holland </option>
+        <option> Honduras </option>
+        <option> Hong Kong </option>
+        <option> Hungary </option>
+        <option> Iceland </option>
+        <option> Ifni </option>
+        <option> India </option>
+        <option> Indonesia </option>
+        <option> Iran </option>
+        <option> Iraq </option>
+        <option value="Iraq-Saudi Arania Neutral Zone"> Iraq-Saudi Arabia Neutral Zone </option>
+        <option> Ireland </option>
+        <option> Israel </option>
+        <option> Italy </option>
+        <option> Ivory Coast </option>
+        <option> Jamaica </option>
+        <option> Japan </option>
+        <option> Johnston Atoll </option>
+        <option> Jordan </option>
+        <option> Kazakhstan </option>
+        <option> Kenya </option>
+        <option> Kuwait </option>
+        <option> Kyrgyzstan </option>
+        <option> Laos </option>
+        <option> Latvia </option>
+        <option> Lebanon </option>
+        <option> Leeward Islands </option>
+        <option> Lesotho </option>
+        <option> Liberia </option>
+        <option> Libya </option>
+        <option> Liechtenstein </option>
+        <option> Lithuania </option>
+        <option> Luxembourg </option>
+        <option> Macau </option>
+        <option> Madagascar </option>
+        <option> Malawi </option>
+        <option> Malaysia </option>
+        <option> Maldives </option>
+        <option> Mali </option>
+        <option> Malta </option>
+        <option> Mariana Islands </option>
+        <option> Martinique </option>
+        <option> Mauritania </option>
+        <option> Mauritius </option>
+        <option> Melanesia </option>
+        <option> Mexico </option>
+        <option> Micronesia </option>
+        <option> Midway Islands </option>
+        <option> Moldova </option>
+        <option> Monaco </option>
+        <option> Mongolia </option>
+        <option> Montserrat </option>
+        <option> Montenegro </option>
+        <option> Morocco </option>
+        <option> Mozambique </option>
+        <option> Myanmar </option>
+        <option> Namibia </option>
+        <option> Nauru </option>
+        <option> Navassa Island </option>
+        <option> Nepal </option>
+        <option> Netherlands </option>
+        <option> Netherlands Antilles </option>
+        <option> Neutral Zone </option>
+        <option> New Hebrides </option>
+        <option> New Zealand </option>
+        <option> Nicaragua </option>
+        <option> Niger </option>
+        <option> Nigeria </option>
+        <option> Niue </option>
+        <option> Norfolk Island </option>
+        <option value="North Ireland, UK"> Northern Ireland, UK </option>
+        <option> North Korea </option>
+        <option> Norway </option>
+        <option> Oman </option>
+        <option> Pacific Island </option>
+        <option> Pakistan </option>
+        <option> Panama </option>
+        <option> Papua New Guinea </option>
+        <option> Paracel Islands </option>
+        <option> Paraguay </option>
+        <option> Peru </option>
+        <option> Philippines </option>
+        <option> Pitcairn </option>
+        <option> Poland </option>
+        <option> Polynesia </option>
+        <option> Portugal </option>
+        <option> Portuguese Guinea </option>
+        <option> Portuguese Timor </option>
+        <option> Principe &amp; Sao Tome </option>
+        <option> Puerto Rico </option>
+        <option> Qatar </option>
+        <option value="Congo, Republic of"> Republic of Congo </option>
+        <option value="South Korea"> Republic of Korea </option>
+        <option> Reunion </option>
+        <option> Romania </option>
+        <option> Russia </option>
+        <option> Rwanda </option>
+        <option> Ryukyu Islands </option>
+        <option> Sabah </option>
+        <option> San Marino </option>
+        <option value="Sao Tome"> Sao Tome &amp; Principe </option>
+        <option> Saudi Arabia </option>
+        <option> Scotland, UK </option>
+        <option> Senegal </option>
+        <option> Serbia </option>
+        <option> Seychelles </option>
+        <option> Sierra Leone </option>
+        <option> Sikkim </option>
+        <option> Singapore </option>
+        <option> Slovakia </option>
+        <option> Slovenia </option>
+        <option> Solomon Islands </option>
+        <option> Somalia </option>
+        <option> Somaliliand </option>
+        <option> South Africa </option>
+        <option> South Korea </option>
+        <option> Spain </option>
+        <option> Spanish Sahara </option>
+        <option> Spartly Islands </option>
+        <option> Sri Lanka </option>
+        <option> St. Christopher-Nevis-Anguilla </option>
+        <option> St. Helena </option>
+        <option> St. Kitts </option>
+        <option> St. Lucia </option>
+        <option> St. Pierre &amp; Miquelon </option>
+        <option> St. Vincent </option>
+        <option> Sudan </option>
+        <option> Surinam </option>
+        <option> Svalbard &amp; Jan Mayen Islands </option>
+        <option> Swaziland </option>
+        <option> Sweden </option>
+        <option> Switzerland </option>
+        <option> Syrian Arab Republic </option>
+        <option> Taiwan </option>
+        <option> Tanzania </option>
+        <option> Thailand </option>
+        <option> Togo </option>
+        <option> Tonga </option>
+        <option> Transkei </option>
+        <option> Trinidad/Tobago </option>
+        <option> Tunisia </option>
+        <option> Turkey </option>
+        <option> Turkmenistan </option>
+        <option> Turks &amp; Caicos Islands </option>
+        <option> Uganda </option>
+        <option> Ukraine </option>
+        <option> United Arab Emirates </option>
+        <option> United Kingdom </option>
+        <option> United States </option>
+        <option> Uruguay </option>
+        <option> US Pacific Island </option>
+        <option> US Virgin Islands </option>
+        <option> Uzbekistan </option>
+        <option> Vanuatu </option>
+        <option> Vatican City </option>
+        <option> Venezuela </option>
+        <option> Vietnam </option>
+        <option> Virgin Islands (British) </option>
+        <option value="US Virgin Islands"> Virgin Islands (US) </option>
+        <option> Wake Island </option>
+        <option> Wales, UK </option>
+        <option> West Indies </option>
+        <option> Western Samoa </option>
+        <option> Windward Islands </option>
+        <option value="Dem. People's Republic of Yemen"> Yemen </option>
+        <option> Zambia </option>
+        <option> Zimbabwe </option>
+      </select></td>
+    </tr>
+    <tr align="center">
+      <td valign="top" width="217" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Zip</strong></font></td>
+      <td valign="top" width="172" colspan="5" height="25"><input type="text" size="10" name="SHIP_ZIP"> </td>
+    </tr>
+    <tr align="center">
+      <td valign="top" width="217" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Telephone</strong>:</font></td>
+      <td valign="top" width="172" colspan="5" height="25"><input type="text" size="20" name="SHIP_TELEPHONE"></td>
+    </tr>
+    <tr align="center">
+      <td colspan="8" width="750" height="18" bgcolor="#A09A8B"><font size="2"><div align="center"><center><p></font><font color="#FFCD41"><span style="background-color: rgb(0,51,102)"><small><b>&nbsp;&nbsp;&nbsp; SPECIAL INSTRUCTIONS
+      &nbsp;&nbsp;</b></small></span></font></td>
+    </tr>
+    <tr align="center">
+      <td valign"top" width="217" colspan="3" height="62"></td>
+      <td valign="top" width="172" colspan="5" height="62"><textarea name="SHIP_MESSAGE" rows="2" cols="47"></textarea></td>
+    </tr>
+    <tr align="center">
+      <td width="217" colspan="3" height="27"></td>
+      <td width="172" colspan="5" height="27"><input type="submit" value="Complete Order" name="Submit"></td>
+    </tr>
+  </table>
+</form>
+
+<p align="center">&nbsp; </p>
+</body>
+</html>

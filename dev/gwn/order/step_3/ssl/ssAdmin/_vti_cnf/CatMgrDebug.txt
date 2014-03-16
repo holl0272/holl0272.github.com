@@ -1,0 +1,16 @@
+vti_encoding:SR|utf8-nl
+vti_timelastmodified:TW|10 Dec 2006 05:08:45 -0000
+vti_extenderversion:SR|5.0.2.4330
+vti_lineageid:SR|{547D23E0-44C7-441B-B480-C598D07CBB81}
+vti_backlinkinfo:VX|
+vti_author:SR|AI1022\\gamewear
+vti_modifiedby:SR|WEB17\\gamewearnow.com_fp
+vti_nexttolasttimemodified:TW|10 Dec 2006 05:08:45 -0000
+vti_timecreated:TR|12 Dec 2006 06:04:10 -0000
+vti_cacheddtm:TX|12 Dec 2006 06:04:10 -0000
+vti_filesize:IR|20
+vti_syncwith_gamewear.sandshot.net\:80:TW|10 Dec 2006 05:08:45 -0000
+vti_cachedparsepending:BX|true
+vti_recalcupdatedate:TW|06 May 2010 15:24:51 -0000
+vti_recalcupdateevntkey:SR|2010050615245100010040643006
+vti_syncwith_www.gamewearnow.com\:80:TW|10 Dec 2006 05:08:45 -0000

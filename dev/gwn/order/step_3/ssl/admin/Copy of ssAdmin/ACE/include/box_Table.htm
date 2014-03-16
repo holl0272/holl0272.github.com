@@ -1,0 +1,881 @@
+<style>
+	select{height: 22px; top:2;	font:8pt verdana,arial,sans-serif}	
+	body {border:lightgrey 0px solid;background: #ece9d8;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=white, endColorstr=#e3e3e3);}
+	.bar{padding-left: 5px;border-top: #99ccff 1px solid; background: #004684;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#004684, endColorstr=#7189b7); WIDTH: 100%; border-bottom: #004684 1px solid;height: 20px}
+	.bar2{border-top: #99ccff 1px solid; background: #004684;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#004684, endColorstr=#7189b7); WIDTH: 100%; border-bottom: #004684 1px solid;height: 20px}
+	td {	font:8pt verdana,arial,sans-serif}
+	div	{	"font:10pt" tahoma,arial,sans-serif}
+</style>
+<script>
+function IsPosInt(sInput)
+	{
+	if(sInput=="") return true;//must be empty or number greater than or equal 0
+	var sTmp = sInput.toString();
+	for(var i=0;i<sTmp.length;i++)
+		{
+		var sChar = sTmp.charAt(i);
+		if(sChar<"0"||sChar>"9") return false;
+		}
+	return true;
+	}
+function IsPosIntNotZero(sInput)//must be empty or number greater than or equal 1
+	{
+	if(sInput=="") return true;
+	var sTmp = sInput.toString();
+	for(var i=0;i<sTmp.length;i++)
+		{
+		var sChar = sTmp.charAt(i);
+		if(sChar<"0"||sChar>"9") return false;
+		}
+	if(sInput*1==0) {return false}
+	else {return true};
+	}
+function setInpValue(name,value)
+	{
+	eval(name).innerText=value
+	}
+function GetElement(oElement,sMatchTag) 
+	{
+	while (oElement!=null && oElement.tagName!=sMatchTag) 
+		{
+		if(oElement.id=="idContent"+inpActiveEditor.value) return null;
+		oElement = oElement.parentElement
+		}
+	return oElement
+	}
+function Close()
+	{
+	eval("parent."+inpActiveEditor.value).boxHide()
+	}
+function Resize(boxName)
+	{
+	eval('parent.'+inpActiveEditor.value).boxDimension(boxName)
+	}
+/*******************************************
+	TABLE TABS
+*******************************************/
+function TabInsertTable()
+	{
+	idInsertTable.style.display="block";
+	idEditTable.style.display="none";
+	idEditCell.style.display="none";		
+		
+	tab1.style.cursor = "";
+	tab1.style.background = "#fefefb";
+	tab1.style.color = "darkslateblue";
+	tab1.style.borderBottom = "";
+	tab1a.style.display = "block";
+	tab1b.style.display = "none";	
+
+	tab2.style.cursor = "";
+	tab2.style.background = "#ece9d8";
+	tab2.style.color = "darkgray";
+	tab2.style.borderBottom = "darkgray 1px solid";
+	tab2a.style.display = "block";
+	tab2b.style.display = "none";	
+
+	tab3.style.cursor = "";
+	tab3.style.background = "#ece9d8";
+	tab3.style.color = "darkgray";
+	tab3.style.borderBottom = "darkgray 1px solid";
+	tab3a.style.display = "block";
+	tab3b.style.display = "none";	
+
+	Resize("boxTable2")
+	}
+function TabEditTable()
+	{
+	idInsertTable.style.display="none";
+	idEditTable.style.display="block";
+	idEditCell.style.display="none";		
+
+	tab1.style.cursor = "";
+	tab1.style.background = "#ece9d8";
+	tab1.style.color = "darkgray";
+	tab1.style.borderBottom = "darkgray 1px solid";
+	tab1a.style.display = "block";
+	tab1b.style.display = "none";	
+			
+	tab2.style.cursor = "";
+	tab2.style.background = "#fefefb";
+	tab2.style.color = "darkslateblue";
+	tab2.style.borderBottom = "";
+	tab2a.style.display = "block";
+	tab2b.style.display = "none";
+			
+	tab3.style.cursor = "";
+	tab3.style.background = "#ece9d8";
+	tab3.style.color = "darkgray";
+	tab3.style.borderBottom = "darkgray 1px solid";
+	tab3a.style.display = "block";
+	tab3b.style.display = "none";
+	
+	Resize("boxTable2")
+	}
+function TabEditCell()
+	{
+	idInsertTable.style.display="none";
+	idEditTable.style.display="none";
+	idEditCell.style.display="block";		
+	
+	tab1.style.cursor = "hand";
+	tab1.style.background = "#ece9d8";
+	tab1.style.color = "darkslateblue";
+	tab1.style.borderBottom = "darkgray 1px solid";
+	tab1a.style.display = "none";
+	tab1b.style.display = "block";
+
+	tab2.style.cursor = "hand";
+	tab2.style.background = "#ece9d8";
+	tab2.style.color = "darkslateblue";
+	tab2.style.borderBottom = "darkgray 1px solid";
+	tab2a.style.display = "none";
+	tab2b.style.display = "block";			
+			
+	tab3.style.cursor = "";
+	tab3.style.background = "#fefefb";
+	tab3.style.color = "darkslateblue";
+	tab3.style.borderBottom = "";
+	tab3a.style.display = "block";
+	tab3b.style.display = "none";
+	
+	Resize("boxTable2")
+	}
+
+//Clicked
+function TabEditCell_EditTable()
+	{
+	idInsertTable.style.display="none";
+	idEditTable.style.display="block";
+	idEditCell.style.display="none";		
+	
+	tab1.style.cursor = "hand";
+	tab1.style.background = "#ece9d8";
+	tab1.style.color = "darkslateblue";
+	tab1.style.borderBottom = "darkgray 1px solid";
+	tab1a.style.display = "none";
+	tab1b.style.display = "block";
+
+	tab2.style.cursor = "";
+	tab2.style.background = "#fefefb";
+	tab2.style.color = "darkslateblue";
+	tab2.style.borderBottom = "";
+	tab2a.style.display = "block";
+	tab2b.style.display = "none";		
+			
+	tab3.style.cursor = "hand";
+	tab3.style.background = "#ece9d8";
+	tab3.style.color = "darkslateblue";
+	tab3.style.borderBottom = "darkgray 1px solid";
+	tab3a.style.display = "none";
+	tab3b.style.display = "block";
+	
+	Resize("boxTable2")
+	}
+function TabEditCell_InsertTable()
+	{
+	idInsertTable.style.display="block";
+	idEditTable.style.display="none";
+	idEditCell.style.display="none";		
+	
+	tab1.style.cursor = "";
+	tab1.style.background = "#fefefb";
+	tab1.style.color = "darkslateblue";
+	tab1.style.borderBottom = "";
+	tab1a.style.display = "block";
+	tab1b.style.display = "none";	
+
+	tab2.style.cursor = "hand";
+	tab2.style.background = "#ece9d8";
+	tab2.style.color = "darkslateblue";
+	tab2.style.borderBottom = "darkgray 1px solid";
+	tab2a.style.display = "none";
+	tab2b.style.display = "block";
+			
+	tab3.style.cursor = "hand";
+	tab3.style.background = "#ece9d8";
+	tab3.style.color = "darkslateblue";
+	tab3.style.borderBottom = "darkgray 1px solid";
+	tab3a.style.display = "none";
+	tab3b.style.display = "block";
+	
+	Resize("boxTable2")
+	}
+
+/*******************************************
+	TABLE INSERT/UPDATE, CELL UPDATE
+*******************************************/
+function TableInsert()
+	{
+	if(!(IsPosIntNotZero(inpRows.value) &&
+		IsPosIntNotZero(inpCols.value) &&
+		IsPosIntNotZero(inpWidth.value) &&
+		IsPosIntNotZero(inpHeight.value) &&
+		IsPosInt(inpBorder.value) &&
+		IsPosInt(inpPadding.value) &&
+		IsPosInt(inpSpacing.value))) 
+		{
+		alert("Invalid input.");
+		return false;
+		}
+
+	var sHTML = ""
+		+ "<TABLE "
+		+	(inpTblAlign.value != "" ? "align=\"" + inpTblAlign.value + "\" " : "")		
+		+	(inpWidth.value != "" ? "width=\"" + inpWidth.value + inpWidthMe.value + "\" " : "")
+		+	(inpHeight.value != "" ? "height=\"" + inpHeight.value + inpHeightMe.value + "\" " : "")		
+		+	(inpPadding.value != "" ? "cellPadding=\"" + inpPadding.value + "\" " : "")
+		+	(inpSpacing.value != "" ? "cellSpacing=\"" + inpSpacing.value + "\" " : "")
+		+	(inpBorder.value != "" ? "border=\"" + inpBorder.value + "\" " : "")
+		+	(objColor2.getColor() != "" ? "bordercolor=\"" + objColor2.getColor() + "\" " : "")
+		+	(inpBgImage.value != "" ? "background=\"" + inpBgImage.value + "\" " : "")
+		+	(objColor1.getColor() != "" ? "bgColor=\"" + objColor1.getColor() + "\" " : "")
+		+ ">"
+	for (var i=0; i < inpRows.value; i++) 
+		{
+		sHTML += "<TR>"
+		for (var j=0; j < inpCols.value; j++)
+		sHTML += "<TD>&nbsp;</TD>"
+		sHTML += "</TR>"
+		}
+	sHTML += "</TABLE>"
+
+	var oSel	= eval("parent."+inpActiveEditor.value).Sel;
+	oSel = parent.fixSel(inpActiveEditor.value,oSel)//a must
+	
+	if(oSel.parentElement)
+		oSel.pasteHTML(sHTML)
+	else
+		oSel.item(0).outerHTML = sHTML
+
+	//Show Border Stuff
+	var oEditor = eval("parent.idContent"+inpActiveEditor.value);
+	var oTables = oEditor.document.getElementsByTagName("TABLE");
+	if(eval("parent."+inpActiveEditor.value).IsBorderShow)
+		{
+		for (i=0;i<oTables.length;i++)
+			{
+			if(oTables[i].border == 0)
+				{
+				oTables[i].runtimeStyle.borderWidth = 1;
+				oTables[i].runtimeStyle.borderColor = "#BCBCBC";
+				oTables[i].runtimeStyle.borderStyle = "dotted";
+				oTables[i].runtimeStyle.borderCollapse = "separate";
+				for(j=0;j<oTables[i].getElementsByTagName("TD").length;j++)
+					oTables[i].getElementsByTagName("TD")[j].runtimeStyle.border = "#BCBCBC 1 dotted";
+				}
+			}
+		}
+	//~~~~~~~~~~~~~~~~~~~~
+
+	return true;
+	}
+	
+function TableUpdate()
+	{
+	if(!(IsPosIntNotZero(inpWidth2.value) &&
+		IsPosIntNotZero(inpHeight2.value) &&
+		IsPosInt(inpPadding2.value) &&
+		IsPosInt(inpSpacing2.value) &&
+		IsPosInt(inpBorder2.value))) 
+		{
+		alert("Invalid input.");
+		return false;
+		}
+		
+	var oSel	= eval("parent."+inpActiveEditor.value).Sel;
+	var sType = eval("parent."+inpActiveEditor.value).SelType;		
+			
+	var oBlock = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TABLE") : GetElement(oSel.item(0),"TABLE"))
+	if (oBlock!=null) 
+		{
+		oBlock.align = inpTblAlign2.value
+		if(inpWidth2.value!="")
+			{
+			oBlock.style.width=""; //remove style width
+			oBlock.width = inpWidth2.value + inpWidth2Me.value;
+			}
+		else
+			{
+			oBlock.width = ""
+			}
+		if(inpHeight2.value!="")
+			{
+			oBlock.style.height=""; //remove style height
+			oBlock.height = inpHeight2.value + inpHeight2Me.value;
+			}
+		else
+			{
+			oBlock.height = ""
+			}		
+		oBlock.cellPadding = inpPadding2.value
+		oBlock.cellSpacing = inpSpacing2.value
+		if(inpBorder2.value=="" || inpBorder2.value=="0")
+			oBlock.border = 0
+		else
+			oBlock.border = inpBorder2.value
+		
+		oBlock.borderColor = objColor4.getColor()
+		oBlock.background = inpBgImage2.value
+		oBlock.bgColor = objColor3.getColor()
+		}
+	oSel.select()
+
+	//Show Border Stuff
+	var oEditor = eval("parent.idContent"+inpActiveEditor.value);
+	var oTables = oEditor.document.getElementsByTagName("TABLE");
+	if(eval("parent."+inpActiveEditor.value).IsBorderShow)
+		{
+		for (i=0;i<oTables.length;i++)
+			{
+			if(oTables[i].border == 0)
+				{
+				oTables[i].runtimeStyle.borderWidth = 1;
+				oTables[i].runtimeStyle.borderColor = "#BCBCBC";
+				oTables[i].runtimeStyle.borderStyle = "dotted";
+				oTables[i].runtimeStyle.borderCollapse = "separate";
+				for(j=0;j<oTables[i].getElementsByTagName("TD").length;j++)
+					oTables[i].getElementsByTagName("TD")[j].runtimeStyle.border = "#BCBCBC 1 dotted";
+				}
+			else
+				{
+				oTables[i].runtimeStyle.borderWidth = "";
+				oTables[i].runtimeStyle.borderColor = "";
+				oTables[i].runtimeStyle.borderStyle = "";
+				oTables[i].runtimeStyle.borderCollapse = "";
+				for(j=0;j<oTables[i].getElementsByTagName("TD").length;j++)
+					{
+					oTables[i].getElementsByTagName("TD")[j].runtimeStyle.borderWidth = "";
+					oTables[i].getElementsByTagName("TD")[j].runtimeStyle.borderColor = "";
+					oTables[i].getElementsByTagName("TD")[j].runtimeStyle.borderStyle = "";					
+					}			
+				}
+			}
+		}
+	else
+		{
+		for (i=0;i<oTables.length;i++)
+			{
+			if(oTables[i].border != 0)
+				{
+				oTables[i].runtimeStyle.borderWidth = "";
+				oTables[i].runtimeStyle.borderColor = "";
+				oTables[i].runtimeStyle.borderStyle = "";
+				oTables[i].runtimeStyle.borderCollapse = "";
+				for(j=0;j<oTables[i].getElementsByTagName("TD").length;j++)
+					{
+					oTables[i].getElementsByTagName("TD")[j].runtimeStyle.borderWidth = "";
+					oTables[i].getElementsByTagName("TD")[j].runtimeStyle.borderColor = "";
+					oTables[i].getElementsByTagName("TD")[j].runtimeStyle.borderStyle = "";					
+					}
+				}
+			}
+		}
+	//~~~~~~~~~~~~~~~~~~~~
+	
+	return true;
+	}
+	
+function CellUpdate()
+	{
+	if(!(IsPosIntNotZero(inpCellWidth.value) &&
+		IsPosIntNotZero(inpCellHeight.value))) 
+		{
+		alert("Invalid input.");
+		return false;
+		}
+
+	var oSel	= eval("parent."+inpActiveEditor.value).Sel;
+	var sType = eval("parent."+inpActiveEditor.value).SelType;	
+				
+	var oTD = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TD") : GetElement(oSel.item(0),"TD"))
+	if (oTD!=null)
+		{
+		if(inpCellWidth.value!="")
+			{
+			//oTD.style.width=""; //remove style width => tdk perlu
+			oTD.width = inpCellWidth.value + inpCellWidthMe.value;
+			}
+		else
+			{
+			oTD.width = ""
+			}
+		if(inpCellHeight.value!="")
+			{
+			//oTD.style.height=""; //remove style height => tdk perlu
+			oTD.height = inpCellHeight.value + inpCellHeightMe.value;
+			}
+		else
+			{
+			oTD.height = ""
+			}		
+		
+		oTD.align = inpCellAlign.value ;
+		oTD.vAlign = inpCellVAlign.value;
+		oTD.background = inpCellBgImage.value;
+		oTD.bgColor = objColor5.getColor();
+		oTD.noWrap = !inpCellWrap.checked;
+		}
+	oSel.select()
+	
+	return true;
+	}
+	
+/*******************************************
+	CELL OPERATIONS
+*******************************************/
+function TableInsertRow(type)
+	{
+	var oSel	= eval("parent."+inpActiveEditor.value).Sel;
+		
+	var oBlock = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TABLE") : GetElement(oSel.item(0),"TABLE"))
+	
+	var numofrows = oBlock.rows.length; //num of rows
+	
+	//Dia ada di row mana ?
+	var i,iRow;
+	var oTR = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TR") : GetElement(oSel.item(0),"TR"))	
+	for (i=0;i<numofrows;i++)
+		{
+		if(oTR==oBlock.rows[i]) iRow=i;
+		}	
+	
+	var numofcols = oBlock.rows[0].cells.length //num of cols
+	
+	var elRow;
+	if(type=="above") elRow = oBlock.insertRow(iRow); //insert above
+	if(type=="below") elRow = oBlock.insertRow(iRow+1); //insert below
+	
+	for (i=0;i<numofcols;i++)
+		{
+		try
+			{
+			var elCell = elRow.insertCell()
+			elCell.innerHTML = "&nbsp;"
+			}
+		catch(e)
+			{}
+		}	
+	}
+function TableDeleteRow()
+	{
+	var oSel	= eval("parent."+inpActiveEditor.value).Sel;
+	
+	var oBlock = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TABLE") : GetElement(oSel.item(0),"TABLE"))
+	var oTR = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TR") : GetElement(oSel.item(0),"TR"))	
+
+	try
+		{
+		var iRow;
+		for (var i=0;i<oBlock.rows.length;i++) //num of rows
+			{
+			if(oTR==oBlock.rows[i])oBlock.deleteRow(i);
+			}
+		}
+	catch(e)
+		{
+		return;
+		}
+	}
+function TableInsertCol(type)
+	{
+	var oSel	= eval("parent."+inpActiveEditor.value).Sel;
+	
+	var oBlock = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TABLE") : GetElement(oSel.item(0),"TABLE"))
+
+	//Di row yg aktif, dia ada di col mana ?
+	var oTD = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TD") : GetElement(oSel.item(0),"TD"))	
+	var iCol;
+	iCol = oTD.cellIndex; //insert left
+	if(type=="right") iCol=iCol+1; //insert right
+		
+		
+	var numofrows = oBlock.rows.length; //num of rows
+	for (var i=0;i<numofrows;i++) //num of rows
+		{
+		try
+			{
+			var elCell = oBlock.rows[i].insertCell(iCol) 
+			elCell.innerHTML = "&nbsp;"
+			}
+		catch(e)
+			{}		
+		}	
+	}
+function TableDeleteCol()
+	{
+	var oSel	= eval("parent."+inpActiveEditor.value).Sel;
+	
+	var oBlock = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TABLE") : GetElement(oSel.item(0),"TABLE"))
+	var oTD = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TD") : GetElement(oSel.item(0),"TD"))	
+	try
+		{
+		//Dia ada di row mana ?
+		var iRow;
+		var oTR = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TR") : GetElement(oSel.item(0),"TR"))	
+		for (var i=0;i<oBlock.rows.length;i++) //num of rows
+			{
+			if(oTR==oBlock.rows[i]) iRow=i;
+			}	
+		//Di row yg aktif, dia ada di col mana ?
+		var iCol = oTD.cellIndex;
+		for (var i=0;i<oBlock.rows.length;i++) //num of rows
+			{
+			oBlock.rows[i].deleteCell(iCol);
+			}
+		}
+	catch(e)
+		{
+		return;
+		}					
+	}
+function TableDeleteCell()
+	{
+	var oSel	= eval("parent."+inpActiveEditor.value).Sel;
+	
+	var oBlock = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TABLE") : GetElement(oSel.item(0),"TABLE"))
+	var oTD = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TD") : GetElement(oSel.item(0),"TD"))	
+	try
+		{
+		//Dia ada di row mana ?
+		var iRow;
+		var oTR = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TR") : GetElement(oSel.item(0),"TR"))	
+		for (var i=0;i<oBlock.rows.length;i++) //num of rows
+			{
+			if(oTR==oBlock.rows[i]) iRow=i;
+			}	
+		//Di row yg aktif, dia ada di col mana ?
+		var iCol = oTD.cellIndex;
+		oBlock.rows[iRow].deleteCell(iCol);
+		}
+	catch(e)
+		{
+		return;
+		}
+	}
+function TableColSpan()
+	{
+	var oSel	= eval("parent."+inpActiveEditor.value).Sel;
+	
+	var oTD = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TD") : GetElement(oSel.item(0),"TD"))	
+	oTD.colSpan = inpNumOfSpan.value;
+	}
+function TableRowSpan()
+	{
+	var oSel	= eval("parent."+inpActiveEditor.value).Sel;
+	
+	var oTD = (oSel.parentElement != null ? GetElement(oSel.parentElement(),"TD") : GetElement(oSel.item(0),"TD"))	
+	oTD.rowSpan = inpNumOfSpan.value;
+	}
+</script>
+
+<body topmargin=0 leftmargin=0 rightmargin=0 bottommargin=0 onselectstart="return event.srcElement.tagName=='INPUT'" oncontextmenu="return false">
+<table border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed" ID="tblPopup">
+<col width=438><col width=13>
+<tr>
+<td>
+	<!-- popup_BarArea -->
+	<div id="popup_BarArea" class="bar">
+	<font size=2 face=tahoma color=white><b>Create/Edit Table</b></font>
+	</div>
+</td>
+<td style="cursor:hand" onclick="Close()">
+	<div id="popup_BarArea_close" class="bar2">
+	<font size=2 face=tahoma color=white><b>X</b></font>
+	</div>
+</td>
+</tr>
+
+
+<tr>
+<!-- popup_ContentBorder -->
+<td id="popup_ContentBorder" colspan=2 style="border-left: #336699 1px solid;border-right: #336699 1px solid;border-bottom: #336699 1px solid;" valign=top>
+	<br>
+	<div id="divPopup" align=center>
+
+
+	<table border=0 cellpadding=4 cellspacing=2 style='table-layout:fixed' align=center ID="Table1">
+	<col width=438>
+	<tr>
+	<td align=center valign=top>
+	
+		<table border=0 style='table-layout:fixed' width=402 height=20 cellpadding=0 cellspacing=0 ID="Table2">
+		<col width=130><col width=130><col width=130><col width=42>
+		<tr>
+		<td align=center id='tab1' bgcolor=#f7f9fd style='border-top: darkgray 1px solid; border-left: darkgray 1px solid;color:darkslateblue;'>
+			<span id=tab1a><b>Create Table</b></span>
+			<span id=tab1b style='width=100%;' onclick='TabEditCell_InsertTable()'><b><u>Create Table</u></b></span>
+		</td>
+		<td align=center id='tab2' bgcolor=#f7f9fd style='border-top: darkgray 1px solid; border-left: darkgray 1px solid;color:darkslateblue;'>
+			<span id=tab2a><b>Edit Table</b></span>
+			<span id=tab2b style='width=100%;' onclick='TabEditCell_EditTable()'><b><u>Edit Table</u></b></span>
+		</td>
+		<td align=center id='tab3' bgcolor=#f7f9fd style='border-top: darkgray 1px solid; border-left: darkgray 1px solid; border-right: darkgray 1px solid;color:darkslateblue;'>
+			<span id=tab3a><b>Edit Cell</b></span>
+			<span id=tab3b style='width=100%;' onclick='TabEditCell()'><b><u>Edit Cell</u></b></span>
+		</td>
+		<td style='border-bottom: darkgray 1px solid;'>&nbsp;</td>
+		</tr>
+		</table>
+
+		<!-- INSERT Tab -->
+		<div id=idInsertTable>
+		<table border=0 style='table-layout:fixed' width=420 cellpadding=2 cellspacing=2 bgcolor='#fefefb' style='border-left: darkgray 1px solid; border-bottom: darkgray 1px solid; border-right: darkgray 1px solid;' ID="Table3">
+		<col width=80><col width=130><col width=80><col width=130>
+
+		<tr><td>Rows:</td>
+			<td><INPUT type=text id=inpRows name=inpRows size=2 contentEditable=true></td>
+			<td>Columns:</td>
+			<td><INPUT type=text id=inpCols name=inpCols size=2 contentEditable=true></td></tr>
+
+		<tr><td>Width:</td>
+			<td><INPUT type=text id=inpWidth name=inpWidth size=2 contentEditable=true>
+			<SELECT ID=inpWidthMe NAME=inpWidthMe>
+				<OPTION value=''>pixels</OPTION>
+				<OPTION value='%' selected>percent</OPTION>
+			</SELECT>
+			</td>
+			<td>Height:</td>
+			<td><INPUT type=text id=inpHeight name=inpHeight size=2 contentEditable=true>
+			<SELECT ID=inpHeightMe NAME=inpHeightMe>
+				<OPTION value=''>pixels</OPTION>
+				<OPTION value='%'>percent</OPTION>
+			</SELECT>
+			</td></tr>
+	
+		<tr><td colspan=4>Background Color:
+			<INPUT type=button  onclick="if(divBgColorPick.style.display=='block'){divBgColorPick.style.display='none'}else{divBgColorPick.style.display='block'};Resize('boxTable2')" value='Colors..' ID="Button1" NAME="Button1">
+			</td></tr>
+		<tr><td colspan=4 align=center>
+			<div id=divBgColorPick style='display:none'>
+			<script>
+			var objColor1 = new parent.YusASPColor("objColor1");
+			objColor1.frameName = "boxTable2";
+			document.write(objColor1.drawColor);
+			</script>
+			</div>
+			</td></tr>
+			
+		<tr><td colspan=4>Background Image URL:
+			<INPUT type=text id=inpBgImage name=inpBgImage size=30 contentEditable=true></td></tr>
+				
+		<tr><td>Border Size:</td>
+			<td><INPUT type=text id=inpBorder name=inpBorder size=2 value=1 contentEditable=true></td>			
+			<td>Alignment:</td>
+			<td>
+			<SELECT ID=inpTblAlign NAME=inpTblAlign>
+				<OPTION value=''></OPTION>
+				<OPTION value='left'>Left</OPTION>
+				<OPTION value='center'>Center</OPTION>
+				<OPTION value='right'>Right</OPTION>
+			</SELECT>
+			</td></tr>
+			
+		<tr><td colspan=4>Border Color:
+			<INPUT type=button  onclick="if(divBorderColorPick.style.display=='block'){divBorderColorPick.style.display='none'}else{divBorderColorPick.style.display='block'};Resize('boxTable2')" value='Colors..' ID="Button8" NAME="Button1">
+			</td></tr>			
+		<tr><td colspan=4 align=center>
+			<div id=divBorderColorPick style='display:none'>
+			<script>
+			var objColor2 = new parent.YusASPColor("objColor2")
+			objColor2.frameName = "boxTable2";
+			document.write(objColor2.drawColor)
+			</script>
+			</div>		
+			</td></tr>
+													
+		<tr><td>Cell Padding:</td>
+			<td><INPUT type=text id=inpPadding name=inpPadding size=2 value=0 contentEditable=true></td>
+			<td>Cell Spacing:</td>
+			<td><INPUT type=text id=inpSpacing name=inpSpacing size=2 value=0 contentEditable=true></td></tr>
+		
+		<tr><td colspan=4><hr></td></tr>
+
+		<tr><td>&nbsp;</td>
+			<td align=right><INPUT type=button value='Cancel' onclick='Close()'></td>
+			<td><INPUT type=button value='&nbsp;&nbsp;OK&nbsp;&nbsp;' onclick='if(TableInsert())Close()' ID="Button4" NAME="Button4"></td>
+			<td>&nbsp;</td></tr>
+		</table>
+		</div>
+		<!-- /INSERT Tab -->
+
+		
+		<!-- EDIT Tab -->
+		<div id=idEditTable align=left style="display:none">
+		<table border=0 style="table-layout:fixed" width=420 cellpadding=2 cellspacing=2 bgcolor="#fefefb" style="border-left: darkgray 1px solid; border-bottom: darkgray 1px solid; border-right: darkgray 1px solid;" ID="Table2">
+		<col width=80><col width=130><col width=80><col width=130>
+		
+		<tr><td colspan=4>Background Color:
+			<INPUT type="button" onclick="if(divBgColor2Pick.style.display=='block'){divBgColor2Pick.style.display='none'}else{divBgColor2Pick.style.display='block'};Resize('boxTable2')" value="Colors.." ID="Button1" NAME="Button1">
+			</td></tr>
+		<tr><td colspan=4 align=center>
+			<div id="divBgColor2Pick" style="display:none">
+			<script>
+			var objColor3 = new parent.YusASPColor("objColor3")
+			objColor3.frameName = "boxTable2";
+			document.write(objColor3.drawColor)
+			</script>
+			</div>		
+			</td></tr>
+			
+		<tr><td colspan=4>Background Image URL:
+			<INPUT type="text" id=inpBgImage2 name=inpBgImage2 size=30 contentEditable=true></td></tr>
+
+		<tr><td>Width:</td>
+			<td><INPUT type="text" id="inpWidth2" name=inpWidth2 size=2 contentEditable=true>
+			<SELECT ID="inpWidth2Me" NAME="inpWidth2Me">
+				<OPTION value="">pixels</OPTION>
+				<OPTION value="%">percent</OPTION>
+			</SELECT>
+			</td>
+			<td>Height:</td>
+			<td><INPUT type="text" id="inpHeight2" name=inpHeight2 size=2 contentEditable=true>
+			<SELECT ID="Select1" NAME="inpHeight2Me">
+				<OPTION value="">pixels</OPTION>
+				<OPTION value="%">percent</OPTION>
+			</SELECT>
+			</td></tr>
+			
+		<tr><td>Cell Padding:</td>
+			<td><INPUT type="text" id=inpPadding2 name=inpPadding2 size=2 value=0 contentEditable=true></td>
+			<td>Cell Spacing:</td>
+			<td><INPUT type="text" id=inpSpacing2 name=inpSpacing2 size=2 value=0 contentEditable=true></td></tr>
+			
+		<tr><td>Border Size:</td>
+			<td><INPUT type="text" id=inpBorder2 name=inpBorder2 size=2 value=1 contentEditable=true></td>
+			<td>Alignment :</td>
+			<td>
+			<SELECT ID="inpTblAlign2" NAME="inpTblAlign2">
+				<OPTION value="left">Left</OPTION>
+				<OPTION value="center">Center</OPTION>
+				<OPTION value="right">Right</OPTION>
+			</SELECT>
+			</td></tr>
+			
+		<tr><td colspan=4>Border Color:
+			<INPUT type="button" onclick="if(divBorderColor2Pick.style.display=='block'){divBorderColor2Pick.style.display='none'}else{divBorderColor2Pick.style.display='block'};Resize('boxTable2')" value="Colors.." ID="Button7" NAME="Button7">
+			</td></tr>
+		<tr><td colspan=4 align=center>
+			<div id="divBorderColor2Pick" style="display:none">
+			<script>
+			var objColor4 = new parent.YusASPColor("objColor4")
+			objColor4.frameName = "boxTable2";
+			document.write(objColor4.drawColor)
+			</script>
+			</div>
+			</td></tr>
+
+		<tr><td colspan=4><hr></td></tr>
+		
+		<tr><td>&nbsp;</td>
+			<td align=right><INPUT type="button" value="Cancel" onclick="Close()" id="Button5" name=button1></td>
+			<td><INPUT type="button" value="&nbsp;&nbsp;OK&nbsp;&nbsp;" onclick='if(TableUpdate())Close()' id="Button6" name=button1></td>
+			<td>&nbsp;</td></tr>
+		</table>
+		</div>
+		<!-- /EDIT Tab -->
+
+
+		<!-- CELL Tab -->
+		<div id=idEditCell align=left style="display:none">
+		<table border=0 style="table-layout:fixed" width=420 cellpadding=2 cellspacing=2 bgcolor="#fefefb" style="border-left: darkgray 1px solid; border-bottom: darkgray 1px solid; border-right: darkgray 1px solid;" ID="Table3">
+		<col width=80><col width=130><col width=80><col width=130>
+
+		<tr><td colspan=4>Cell Background Color :
+			<INPUT type="button" onclick="if(divCellBgColorPick.style.display=='block'){divCellBgColorPick.style.display='none'}else{divCellBgColorPick.style.display='block'};Resize('boxTable2')" value="Colors.." ID="Button2" NAME="Button1">
+			</td></tr>
+		<tr><td colspan=4 align=center>
+			<div id="divCellBgColorPick" style="display:none">
+			<script>
+			var objColor5 = new parent.YusASPColor("objColor5")
+			objColor5.frameName = "boxTable2";
+			document.write(objColor5.drawColor)
+			</script>
+			</div>
+			</td></tr>
+
+		<tr><td colspan=4>Cell Background Image URL :
+			<INPUT type="text" id="inpCellBgImage" name=inpCellBgImage size=30 contentEditable=true></td></tr>
+			
+		<tr><td>Cell Width :</td>
+			<td><INPUT type="text" id="inpCellWidth" name=inpCellWidth size=2 contentEditable=true>
+			<SELECT ID="inpCellWidthMe" NAME="inpCellWidthMe">
+				<OPTION value="">pixels</OPTION>
+				<OPTION value="%">percent</OPTION>
+			</SELECT>	
+			</td>
+			<td>Cell Height :</td>
+			<td><INPUT type="text" id="inpCellHeight" name=inpCellHeight size=2 contentEditable=true>
+			<SELECT ID="inpCellHeightMe" NAME="inpCellHeightMe">
+				<OPTION value="">pixels</OPTION>
+				<OPTION value="%">percent</OPTION>
+			</SELECT>
+			</td></tr>
+						
+		<tr><td>Alignment :</td>
+			<td>
+			<SELECT ID="inpCellAlign" NAME="inpCellAlign">
+				<OPTION value="left">Left</OPTION>
+				<OPTION value="center">Center</OPTION>
+				<OPTION value="right">Right</OPTION>
+			</SELECT>
+			</td>
+			<td colspan=2>Vertical Alignment :
+			<SELECT ID="inpCellVAlign" NAME="inpCellVAlign">
+				<OPTION value="top">Top</OPTION>
+				<OPTION value="middle">Middle</OPTION>
+				<OPTION value="bottom">Bottom</OPTION>
+			</SELECT>
+			</td></tr>
+		
+		<tr><td>Wrap Text :</td>
+			<td><INPUT type="checkbox" ID="inpCellWrap" NAME="inpCellWrap"></td>
+			<td colspan=2></td></tr>
+
+		<tr><td>Insert Row:</td>
+			<td colspan=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<INPUT style="width=95" type="button" onclick="TableInsertRow('above');Close()" value="Above" id="btnInsertRow" NAME="btnInsertRow">
+			<INPUT style="width=95" type="button" onclick="TableInsertRow('below');Close()" value="Below" id="button"1 NAME="btnInsertRow">
+			</td></tr>
+		<tr><td>Insert Col:</td>
+			<td colspan=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<INPUT style="width=95" type="button" onclick="TableInsertCol('left');Close()" value="to the Left" id="btnInsertColumn" NAME="btnInsertColumn">
+			<INPUT style="width=95" type="button" onclick="TableInsertCol('right');Close()" value="to the Right" id="btnInsertColumn" NAME="btnInsertColumn">
+			</td></tr>
+		
+		<tr><td>Delete:</td>
+			<td colspan=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<INPUT style="width=95" type="button" onclick="TableDeleteRow();Close();" value="Delete Row" id="btnDeleteRow" NAME="btnDeleteRow">
+			<INPUT style="width=95" type="button" onclick="TableDeleteCol();Close();" value="Delete Column" id="btnDeleteColumn" NAME="btnDeleteColumn">
+			<INPUT style="width=95" type="button" onclick="TableDeleteCell();Close();" value="Delete Cell" id="btnDeleteCell" NAME="btnDeleteCell">
+			</td></tr>
+
+		<tr><td>Span:</td>
+			<td colspan=3>
+			<INPUT type="text" id="inpNumOfSpan" name=inpNumOfSpan size=2 contentEditable=true value=2>
+			<INPUT style="width=95" type="button" onclick="TableColSpan();Close();" value="Col Span" id="btnColumnsSpan" NAME="btnColumnsSpan">
+			<INPUT style="width=95" type="button" onclick="TableRowSpan();Close();" value="Row Span" id="btnRowsSpan" NAME="btnRowsSpan">
+			</td></tr>
+		
+		<tr><td colspan=4><hr></td></tr>
+			
+		<tr><td>&nbsp;</td>
+			<td align=right><INPUT type="button" value="Cancel" onclick="Close()"></td>
+			<td><INPUT type="button" value="&nbsp;&nbsp;OK&nbsp;&nbsp;" onclick="if(CellUpdate())Close()"></td>
+			<td>&nbsp;</td></tr>
+			
+		</table>
+		</div>
+		<!-- /CELL Tab -->
+
+	</td>
+	</tr>
+	</table>
+
+	</div>
+	<br>
+</td>
+</tr>
+</table>
+<input type=text style="display:none;" id="inpActiveEditor" name="inpActiveEditor" contentEditable=true>
+</body>

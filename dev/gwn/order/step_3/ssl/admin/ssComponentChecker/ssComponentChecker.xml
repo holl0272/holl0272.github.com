@@ -1,0 +1,29 @@
+<comcheck>
+	<Titles>Component Checker</Titles>
+	<Version>1.0</Version>
+	<list>
+		<titles>StoreFront System Components</titles>
+		<location>ssComponentChecker/sf_sys.xml</location>
+	</list>
+	<list>
+		<titles>StoreFront Email Components</titles>
+		<location>ssComponentChecker/sf_email.xml</location>
+	</list>
+	<list>
+		<titles>StoreFront Payment Processors</titles>
+		<location>ssComponentChecker/sf_pp.xml</location>
+	</list>
+	<list>
+		<titles>StoreFront Shipping Components</titles>
+		<location>ssComponentChecker/sf_shipping.xml</location>
+	</list>
+	<list>
+		<titles><![CDATA[
+		<a HREF="http://www.sandshot.net">Updated by Sandshot Software</a><br />
+		Originally created by www.suite500.net<br />
+<b>Disclaimer:</b>
+Although the COM object(s) listed above are installed, it doesn't mean that they are configured properly on the server.
+<br />As an example, VeriSign's PayFlow 3.0 requires additional server configuration.]]></titles>
+		<location>ssComponentChecker/sponsor.xml</location>
+	</list>
+</comcheck>

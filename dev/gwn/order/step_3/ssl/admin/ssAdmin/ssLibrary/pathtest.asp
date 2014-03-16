@@ -1,0 +1,6 @@
+<%
+
+response.write(server.mappath("../"))
+
+	
+%>

@@ -1,0 +1,92 @@
+BODY
+{
+    BACKGROUND-ATTACHMENT: fixed;
+    BACKGROUND-COLOR: white;
+    COLOR: black;
+    FONT-FAMILY: Arial, 'Century Gothic'
+}
+
+.PageTitle
+{
+	font-size: 200%;
+	font-weight: normal;
+	color: black;
+}
+
+.OrderMisc
+{
+	font-size: 100%;
+	font-weight: bold;
+	color: black;
+}
+
+.TodaysDate
+{
+	font-size: 100%;
+	font-weight: bold;
+	color: black;
+}
+
+.MerchantName
+{
+	font-size: 200%;
+	font-style: italic;
+	color: black;
+}
+
+.MerchantAddress
+{
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-style: italic;
+	color: black;
+}
+
+.AddressTable
+{
+border:3px solid #000000; padding:0; 
+}
+
+.AddressHeader
+{
+	background-color:steelblue;
+    color: white;
+}
+
+.AddressName
+{
+	font-weight:bold;
+}
+
+.AddressBody
+{
+}
+
+.AddressSpecialInstruction
+{
+    background-color: #FFFF00;
+}
+
+.ProductHeader
+{
+	background-color:steelblue;
+	font-weight: bold;
+	color: white;
+}
+
+.ProductEvenRows
+{
+    background-color: white;
+}
+
+.ProductOddRows
+{
+    background-color: grey;
+}
+
+.Footer
+{
+	font-size: 200%;
+	font-weight: normal;
+	color: black;
+}

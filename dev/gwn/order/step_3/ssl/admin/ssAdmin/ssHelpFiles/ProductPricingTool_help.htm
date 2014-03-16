@@ -1,0 +1,73 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Product Pricing Tool</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Border" content="none">
+</head>
+
+<body>
+<H2> Product Pricing Tool User's Guide for StoreFront 5.0</H2>
+
+This page allows you to add/edit/delete your inventory. 
+It has the added feature of allowing you to create new products including the 
+attribute at one time along with editing the same. You can also duplicate an 
+entire product including its attributes with the push of one button or just 
+duplicate an attribute category within the product. This page also contains 
+advanced search capabilities to narrow down your product list.
+<h4>Step 1.&nbsp; Narrow your product listing with the filter</h4>
+<P>This section allows you to filter the product summary section by Product ID, 
+short description, long description, and the Product name. You may choose not to 
+filter on these items by selecting do not include.</P>
+<P>You may also filter by product prices. By filling in the top input only, you 
+may filter out products priced less than the entered amount. By filling in the 
+bottom input only, you will filter out all prices greater than the entered 
+amount. Entering values for both will produce products priced between the two 
+values.</P>
+<P>You may also filter on category, manufacturer, vendor, and by if the product 
+is active, inactive, or both. If you are using the Advanced Edition of 
+StoreFront, multiple categories can be selected at one time for the filter. 
+Below the selection are &quot;<i>And</i>&quot; an &quot;<i>Or</i>&quot; radio buttons. Since the 
+Advanced Edition supports assigning products to multiple categories you can 
+select products which are in any of the categories selected by using the &quot;<i>Or</i>&quot; 
+option or products which are in all the categories selected by using the &quot;<i>And</i>&quot; 
+option.</P>
+<h4>Step 2.&nbsp; Make your pricing changes</h4>
+<P>You can either manually set the prices by entering them directly in the 
+fields or by using the automated scripts described below.</P>
+<P><i>Adjust Regular Prices</i></P>
+<P>You can increase or prices by a set amount or percentage based on the 
+existing price in the regular price field. The increase can be either a fixed 
+amount or a percentage increase. You may optionally force the price to end in a 
+fixed amount, for example, .99.</P>
+<P><i>Adjust Sale Prices</i></P>
+<P>You can increase or prices by a set amount or percentage based on the 
+existing price in either the regular price field or in the existing sale price 
+field. The increase can be either a fixed amount or a percentage increase. You 
+may optionally force the price to end in a fixed amount, for example, .99.</P>
+<P><i>Adjust Attribute Pricing</i></P>
+<P>You can increase or prices by a set amount or percentage based on the 
+existing price in either the regular price field or in the existing attribute 
+price field. The increase can be either a fixed amount or a percentage increase. 
+You may optionally force the price to end in a fixed amount, for example, .99.</P>
+<h4>Step 3. Save your pricing changes</h4>
+<p>Next to each field is a checkbox. Only those rows with the checkbox checked 
+will have the information updated in the database. For your convenience, <i>
+Check All</i> and <i>Uncheck All</i> buttons have been provided. When you are 
+satisfied with your changes, simply press the <i>Save Changes</i> button.</p>
+
+
+<H3>Advanced Configuration</H3>
+<P>The top of ssProductPricingTool.asp contains a user parameters section. This 
+section contains parameters which can optimize your data access time and is 
+especially important for large databases. If you find the page times out 
+regularly you can increase the time allotted for loading the page by changing 
+the following parameter.</P>
+<UL>
+<li>Server.ScriptTimeout - by default this is set to 90	seconds. Larger databases may need to up this value is the page times out frequently
+</UL>
+</body>
+
+</html>

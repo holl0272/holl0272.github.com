@@ -1,0 +1,22 @@
+{productName} has arrive at Sandshot Software
+// Subject/Body Separator - DO NOT REMOVE THIS LINE //
+{productName} has arrived at sandshot Software. You may order this product from
+
+{productLink}
+
+You are receiving this email because you requested to be notified when the product
+{productName} arrived. If you have any questions feel free to contact us at sandshot@sandshot.net
+
+Thank you,
+
+Sandshot Software
+http://www.sandshot.net
+
+// DO NOT REMOVE THIS LINE //
+
+Everything below is for notes.
+
+List of Constants
+
+{productName}
+{productLink}

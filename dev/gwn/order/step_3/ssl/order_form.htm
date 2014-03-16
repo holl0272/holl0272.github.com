@@ -1,0 +1,1885 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>StoreFront E-Commerce for Microsoft FrontPage</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body style="font-family: Arial; font-size: 12 pt">
+
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript" Type="text/javascript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER1.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER1\" field.");
+    theForm.NUMBER1.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER1\" field.");
+    theForm.NUMBER1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER13.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER13\" field.");
+    theForm.NUMBER13.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER13\" field.");
+    theForm.NUMBER13.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER2.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER2\" field.");
+    theForm.NUMBER2.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER2\" field.");
+    theForm.NUMBER2.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER14.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER14\" field.");
+    theForm.NUMBER14.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER14\" field.");
+    theForm.NUMBER14.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER3.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER3\" field.");
+    theForm.NUMBER3.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER3\" field.");
+    theForm.NUMBER3.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER15.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER15\" field.");
+    theForm.NUMBER15.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER15\" field.");
+    theForm.NUMBER15.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER4.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER4\" field.");
+    theForm.NUMBER4.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER4\" field.");
+    theForm.NUMBER4.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER16.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER16\" field.");
+    theForm.NUMBER16.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER16\" field.");
+    theForm.NUMBER16.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER5.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER5\" field.");
+    theForm.NUMBER5.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER5\" field.");
+    theForm.NUMBER5.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER17.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER17\" field.");
+    theForm.NUMBER17.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER17\" field.");
+    theForm.NUMBER17.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER6.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER6\" field.");
+    theForm.NUMBER6.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER6\" field.");
+    theForm.NUMBER6.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER18.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER18\" field.");
+    theForm.NUMBER18.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER18\" field.");
+    theForm.NUMBER18.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER7.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER7\" field.");
+    theForm.NUMBER7.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER7\" field.");
+    theForm.NUMBER7.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER19.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER19\" field.");
+    theForm.NUMBER19.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER19\" field.");
+    theForm.NUMBER19.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER8.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER8\" field.");
+    theForm.NUMBER8.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER8\" field.");
+    theForm.NUMBER8.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER20.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER20\" field.");
+    theForm.NUMBER20.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER20\" field.");
+    theForm.NUMBER20.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER9.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER9\" field.");
+    theForm.NUMBER9.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER9\" field.");
+    theForm.NUMBER9.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER21.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER21\" field.");
+    theForm.NUMBER21.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER21\" field.");
+    theForm.NUMBER21.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER10.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER10\" field.");
+    theForm.NUMBER10.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER10\" field.");
+    theForm.NUMBER10.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER22.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER22\" field.");
+    theForm.NUMBER22.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER22\" field.");
+    theForm.NUMBER22.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER11.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER11\" field.");
+    theForm.NUMBER11.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER11\" field.");
+    theForm.NUMBER11.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER23.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER23\" field.");
+    theForm.NUMBER23.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER23\" field.");
+    theForm.NUMBER23.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER12.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER12\" field.");
+    theForm.NUMBER12.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER12\" field.");
+    theForm.NUMBER12.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.NUMBER24.value;
+  var allValid = true;
+  var validGroups = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NUMBER24\" field.");
+    theForm.NUMBER24.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "00"))
+  {
+    alert("Please enter a value greater than or equal to \"00\" in the \"NUMBER24\" field.");
+    theForm.NUMBER24.focus();
+    return (false);
+  }
+
+  if (theForm.PAYMENT_METHOD.selectedIndex < 0)
+  {
+    alert("Please select one of the \"Credit Card Type\" options.");
+    theForm.PAYMENT_METHOD.focus();
+    return (false);
+  }
+
+  if (theForm.PAYMENT_METHOD.selectedIndex == 0)
+  {
+    alert("The first \"Credit Card Type\" option is not a valid selection.  Please choose one of the other options.");
+    theForm.PAYMENT_METHOD.focus();
+    return (false);
+  }
+
+  if (theForm.CARD_NAME.value == "")
+  {
+    alert("Please enter a value for the \"Card Holder Name\" field.");
+    theForm.CARD_NAME.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-- \t\r\n\f";
+  var checkStr = theForm.CARD_NO.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit, whitespace and \"-\" characters in the \"Credit Card Account Number\" field.");
+    theForm.CARD_NO.focus();
+    return (false);
+  }
+
+  if (theForm.ADDRESS_2.value == "")
+  {
+    alert("Please enter a value for the \"Address\" field.");
+    theForm.ADDRESS_2.focus();
+    return (false);
+  }
+
+  if (theForm.CITY.value == "")
+  {
+    alert("Please enter a value for the \"City\" field.");
+    theForm.CITY.focus();
+    return (false);
+  }
+
+  if (theForm.CITY.value.length < 2)
+  {
+    alert("Please enter at least 2 characters in the \"City\" field.");
+    theForm.CITY.focus();
+    return (false);
+  }
+
+  if (theForm.State.selectedIndex < 0)
+  {
+    alert("Please select one of the \"State\" options.");
+    theForm.State.focus();
+    return (false);
+  }
+
+  if (theForm.COUNTRY.selectedIndex < 0)
+  {
+    alert("Please select one of the \"Country\" options.");
+    theForm.COUNTRY.focus();
+    return (false);
+  }
+
+  if (theForm.ZIP.value == "")
+  {
+    alert("Please enter a value for the \"Zip Code\" field.");
+    theForm.ZIP.focus();
+    return (false);
+  }
+
+  if (theForm.E_MAIL.value == "")
+  {
+    alert("Please enter a value for the \"E-Mail Address\" field.");
+    theForm.E_MAIL.focus();
+    return (false);
+  }
+
+  if (theForm.E_MAIL.value.length < 5)
+  {
+    alert("Please enter at least 5 characters in the \"E-Mail Address\" field.");
+    theForm.E_MAIL.focus();
+    return (false);
+  }
+
+  var checkOK = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzƒŠŒŽšœžŸÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ0123456789-@.-";
+  var checkStr = theForm.E_MAIL.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only letter, digit and \"@.-\" characters in the \"E-Mail Address\" field.");
+    theForm.E_MAIL.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="<%= Payment %>?ORDER_ID=<%= Request.QueryString("Order_ID") %>&amp;DSN_Name=<%= DSN_Name %>" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1" language="JavaScript">
+  <table border="0" cellpadding="0" cellspacing="0" width="650" height="1274">
+    <tr>
+      <td width="136" colspan="8" height="34"><small><strong><font face="Arial"><div align="center"></div></font></strong></small></td>
+    </tr>
+    <tr>
+      <td width="136" colspan="8" height="18"><small><strong><font face="Arial">1.&nbsp; Fill
+      out lettering information</font></strong></small></td>
+    </tr>
+    <tr>
+      <td width="136" colspan="8" height="18"><small><strong><font face="Arial">2.&nbsp; Fill
+      out payment information</font></strong></small></td>
+    </tr>
+    <tr>
+      <td width="136" colspan="8" height="18"><small><strong><font face="Arial">3.&nbsp; Print
+      this form for your records</font></strong></small></td>
+    </tr>
+    <tr>
+      <td width="136" colspan="8" height="18"></td>
+    </tr>
+    <tr align="center">
+      <td width="650" colspan="8" height="18" bgcolor="#A09A8B"><strong><small><font face="Arial"><div align="center"><center><p></font><font color="#FFCD41" face="Arial"><span style="background-color: rgb(0,51,102)">&nbsp;&nbsp;&nbsp;&nbsp; COLOR OF
+      LETTERING&nbsp;&nbsp;&nbsp;&nbsp; </span></font></small></strong></td>
+    </tr>
+    <tr align="center">
+      <td width="200" colspan="3" height="18"><font face="Arial" color="#000000"><strong><small>For
+      T-Shirts/Football Jerseys</small></strong></font></td>
+      <td width="450" colspan="5" height="18"><font face="Arial" color="#000000"><strong><small>For
+      REVERSIBLE JERSEYS ONLY:</small></strong></font></td>
+    </tr>
+    <tr align="center">
+      <td width="200" colspan="3" height="26"><strong><font face="Arial"><select name="LET_COLOR" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="Black">Black</option>
+        <option value="White">White</option>
+        <option value="Gold">Gold</option>
+        <option value="Navy">Navy</option>
+        <option selected value="Color">Color</option>
+      </select><small> <small>letters/numbers </small></small></font></strong></td>
+      <td width="450" colspan="5" height="26"><small><strong><font face="Arial">1st Color: </font></strong></small></td>
+    </tr>
+    <tr align="center">
+      <td width="200" colspan="3" height="26"></td>
+      <td width="450" colspan="5" height="26"><strong><font face="Arial"><select name="REV_LET_COL1" size="1" style="font-family: Arial Rounded MT Bold">
+        <option selected value="Black">Black</option>
+        <option value="White">White</option>
+        <option value="Gold">Gold</option>
+        <option value="Navy">Navy</option>
+        <option selected value="Color">Color</option>
+      </select><small> <small>letters/numbers on</small></small> <select name="REV_COL1" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="White">White</option>
+        <option value="Black">Black</option>
+        <option value="Navy">Navy</option>
+        <option value="Gold">Gold</option>
+        <option value="Scarlet">Scarlet</option>
+        <option value="Purple">Purple</option>
+        <option value="Cardinal">Cardinal</option>
+        <option selected value="First Color">First Color</option>
+      </select><small><small> side of jersey</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td width="200" colspan="3" height="20"></td>
+      <td width="450" colspan="5" height="20"><strong><font face="Arial"><small>2nd Color (if
+      applicable<font color="#000000">)</font></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td width="200" colspan="3" height="26"></td>
+      <td width="450" colspan="5" height="26"><strong><font face="Arial"><select name="REV_LET_COL2" size="1" style="font-family: Arial Rounded MT Bold">
+        <option selected value="Black">Black</option>
+        <option value="White">White</option>
+        <option value="Gold">Gold</option>
+        <option value="Navy">Navy</option>
+        <option selected value="Color">Color</option>
+      </select><small><font color="#FF0000"> </font><small>letters/numbers on</small></small> <select name="REV_COL2" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="White">White</option>
+        <option value="Black">Black</option>
+        <option value="Navy">Navy</option>
+        <option value="Gold">Gold</option>
+        <option value="Scarlet">Scarlet</option>
+        <option value="Purple">Purple</option>
+        <option value="Cardinal">Cardinal</option>
+        <option selected value="If Applicable">If Applicable</option>
+      </select> <small><small>side of jersey</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" colspan="8" width="572" height="18" bgcolor="#A09A8B"><small><strong><font face="Arial" color="#CC0033"><div align="center"><center><p></font><font face="Arial" color="#FFCD41"><span style="background-color: rgb(0,51,102)">&nbsp;&nbsp;&nbsp; STYLE OF
+      LETTERING (IF APPLICABLE)&nbsp;&nbsp;&nbsp; </span></font></strong></small></td>
+    </tr>
+    <tr align="center">
+      <td width="50" height="26"><div align="left"><p><small><strong><font face="Arial">Team
+      Name:</font></strong></small></td>
+      <td width="150" height="26" colspan="2"><small><strong><font face="Arial"><select name="STYLE_TEAM_NAME" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="If Applicable">If Applicable</option>
+        <option value="Straight">Straight</option>
+        <option value="Arched">Arched</option>
+      </select></font></strong></small></td>
+      <td colspan="3" height="26" width="225"><div align="center"><center><p><small><strong><font face="Arial">Choices:</font></strong></small></td>
+      <td colspan="2" height="26" align="center" width="225"></td>
+    </tr>
+    <tr align="center">
+      <td width="50" height="44"><div align="left"><p><small><strong><font face="Arial">Individual
+      Names:</font></strong></small></td>
+      <td width="150" height="44" colspan="2"><strong><font face="Arial"><select name="STYLE_INDV_NAME" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="If Applicable">If Applicable</option>
+        <option value="Straight">Straight</option>
+        <option value="Arched">Arched</option>
+      </select></font></strong></td>
+      <td width="219" height="44"><div align="center"></div></td>
+      <td width="130" height="44" align="center"><div align="center"><center><p><img src="../images/letter1.jpg" alt="wpe12.jpg (1771 bytes)" WIDTH="94" HEIGHT="19"></td>
+      <td width="150" align="center" height="44" colspan="2"><div align="center"><center><p><img src="../images/letter2.jpg" alt="wpe13.jpg (2079 bytes)" WIDTH="97" HEIGHT="32"></td>
+      <td width="150" align="center" height="44"></td>
+    </tr>
+    <tr align="center">
+      <td align="left" colspan="8" width="650" height="16" bgcolor="#A09A8B"><small><strong><font face="Arial" color="#CC0033"><div align="center"><center><p></font><font face="Arial" color="#FFCD41"><span style="background-color: rgb(0,51,102)">&nbsp;&nbsp;&nbsp; TEAM NAME
+      ON FRONT&nbsp;&nbsp;&nbsp; </span></font></strong></small></td>
+    </tr>
+    <tr align="center">
+      <td align="left" colspan="8" width="650" height="16"><strong><font face="Arial"><small>Team
+      Name: </small><input type="text" name="TEAM_NAME" size="20"></font><font face="Arial Rounded MT Bold"> (no more than 15 characters, please)</font></strong></td>
+    </tr>
+    <tr>
+      <td align="left" colspan="8" width="650" height="16"><small><strong><span style="background-color: rgb(0,51,102)"><font color="#FFCD41" face="Arial"></font></span><font face="Arial">Location: <select name="LOCATION_TEAM_NAME" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="If Applicable">If Applicable</option>
+        <option value="Across Front">Across Front</option>
+        <option value="Left Chest">Left Chest</option>
+      </select></font><span style="background-color: rgb(0,51,102)"><font color="#FFCD41" face="Arial"></font></span></strong></small></td>
+    </tr>
+    <tr align="center">
+      <td align="left" colspan="8" width="650" height="16" bgcolor="#A09A8B"><small><strong><font face="Arial"><small><div align="center"><center><p></small><font color="#FFCD41"><span style="background-color: rgb(0,51,102)">&nbsp;&nbsp;&nbsp; NUMBERS AND NAMES
+      &nbsp;&nbsp;&nbsp; </span></font></font></strong></small></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="1" height="16"><div align="center"></div></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><small><small>Size</small></small></font></strong></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><small><small><strong><font face="Arial">Number </font></strong></small></small></td>
+      <td align="center" width="150" height="16" colspan="2"><strong><font face="Arial"><small><small>Name
+      (if applicable)</small></small></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><small><small>Size</small></small></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><small><small>Number</small></small></font></strong></td>
+      <td align="center" width="150" height="16"><strong><font face="Arial"><small><small>Name
+      (if applicable)</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="1" height="16"><div align="center"></div></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><select name="SIZE1" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER1" size="3" style="text-align: center; font-family: Arial"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME1" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE13" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER13" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME13" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE2" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER2" size="3" style="text-align: center; font-family: Arial"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME2" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE14" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER14" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME14" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="50" height="16"><div align="center"><center><p><small><small><small><strong><font face="Arial">PLEASE</font></strong></small></small></small></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE3" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER3" size="3" style="text-align: center; font-family: Arial"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME3" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE15" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER15" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME15" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"><div align="center"><center><p><small><small><small><strong><font face="Arial">FILL IN&nbsp; </font></strong></small></small></small></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><select name="SIZE4" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER4" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME4" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE16" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER16" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME16" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"><div align="center"><center><p><small><small><small><font face="Arial"><strong>ONLY THE</strong> </font></small></small></small></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE5" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER5" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME5" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE17" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER17" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME17" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"><div align="center"><center><p><small><small><strong><font face="Arial"><small>FIELDS</small></font></strong></small></small></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE6" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER6" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><strong><font face="Arial"><input type="text" name="NAME6" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE18" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER18" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME18" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="50" height="16"><div align="center"><center><p><small><small><small><strong><font face="Arial">THAT ARE</font></strong></small></small></small></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><select name="SIZE7" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER7" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME7" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE19" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER19" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME19" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="left" width="50" height="16"><div align="center"><center><p><small><small><strong><small><font face="Arial">APPLICABLE</font></small></strong></small></small></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><select name="SIZE8" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER8" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME8" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE20" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER20" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME20" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"></td>
+      <td align="left" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><select name="SIZE9" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER9" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME9" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE21" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER21" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME21" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"></td>
+      <td align="left" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><select name="SIZE10" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER10" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME10" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE22" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER22" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME22" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"></td>
+      <td align="left" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><select name="SIZE11" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER11" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME11" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE23" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER23" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME23" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="50" height="16"></td>
+      <td align="left" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><select name="SIZE12" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><div align="center"><center><p><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER12" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16" colspan="2"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME12" size="15"></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><select name="SIZE24" size="1" style="font-family: Arial Rounded MT Bold">
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+        <option value="XXXXL">XXXXL</option>
+        <option selected value="Size">Size</option>
+      </select></font></strong></td>
+      <td align="center" width="75" height="16"><strong><font face="Arial"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="," S-Validation-Constraint="Greater than or equal to" S-Validation-Value="00" --><input type="text" name="NUMBER24" size="3" style="font-family: Arial; text-align: center"></font></strong></td>
+      <td align="center" width="150" height="16"><div align="center"><center><p><strong><font face="Arial"><input type="text" name="NAME24" size="15"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" colspan="8" width="500" height="16">&nbsp;<p><small><small><strong><font face="Arial">SORRY, WE ARE UNABLE TO EXCHANGE OR GIVE REFUNDS FOR ITEMS THAT HAVE BEEN
+      CUSTOM LETTERED TO YOUR SPECIFICATIONS</font></strong></small></small></p>
+      <p>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td align="left" colspan="8" width="650" height="18" bgcolor="#A09A8B"><div align="center"><center><p><font face="Arial" color="#FFCD41"><span style="background-color: rgb(0,51,102)"><small><strong>&nbsp;&nbsp;&nbsp;
+      PAYMENT INFORMATION&nbsp;&nbsp;&nbsp; </strong></small></span></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="200" colspan="3" height="26"><div align="right"><p><font size="2" face="Arial"><strong>Payment Method:</strong></font></td>
+      <td align="left" width="139" colspan="5" height="26"><font face="Arial"><strong><!--webbot bot="Validation" S-Display-Name="Credit Card Type" B-Value-Required="TRUE" B-Disallow-First-Item="TRUE" --><select name="PAYMENT_METHOD" size="1">
+        <option selected>Please Choose a Payment Method</option>
+        <option value="credit_card">Credit Card</option>
+        <option value="purch_order">Purchase Order</option>
+        <option value="phone_fax">Phone or Fax</option>
+      </select> <font size="1">( Required )</font></strong></font></td>
+    </tr>
+    <tr align="center">
+      <td align="center" width="572" colspan="8" height="26"><div align="center"><center><p><font face="Arial" size="1"><strong>if you choose to pay by phone/fax, print this form for
+      reference.&nbsp;&nbsp; phone/fax orders will be shipped upon receipt of check or money
+      order</strong></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><div align="right"><p><font size="2" face="Arial"><strong>Purchaser Name:</strong></font></td>
+      <td align="left" width="139" colspan="5" height="25"><strong><font face="Arial"><!--webbot bot="Validation" S-Display-Name="Card Holder Name" B-Value-Required="TRUE" --><input type="text" name="CARD_NAME" size="28"><font size="1">
+      &nbsp; ( Required )</font></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td colspan="8" align="center" width="650" height="18" bgcolor="#A09A8B"><font face="Arial" color="#FFCD41"><span style="background-color: rgb(0,51,102)"><strong><small>&nbsp;&nbsp;&nbsp;
+      COMPLETE THIS SECTION FOR CREDIT CARD PURCHASES&nbsp;&nbsp;&nbsp; </small></strong></span></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="45"><font size="2" face="Arial"><strong>Credit
+      Card: </strong></font></td>
+      <td align="left" width="139" colspan="5" height="45"><strong><font face="Arial"><select name="CARD_TYPE" size="1">
+        <option selected>Please Choose a Credit Card Type</option>
+        <option>MasterCard </option>
+        <option>Visa </option>
+      </select><font size="2"> </font><font size="1">( Required For Credit Card Purchase )</font>
+      </font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="39"><strong><font face="Arial"><font size="2">Credit Card #</font>: </font></strong></td>
+      <td align="left" width="139" colspan="5" height="39"><font face="Arial"><strong><!--webbot bot="Validation" s-display-name="Credit Card Account Number" s-data-type="String" b-allow-digits="TRUE" b-allow-whitespace="TRUE" s-allow-other-chars="-" --><input type="text" size="28" name="CARD_NO"><font size="1"> ( Required For Credit Card Purchase )</font></strong></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><font size="2" face="Arial"><strong>Exp.Date:
+      </strong></font></td>
+      <td height="25" align="left" width="139" colspan="5"><font face="Arial"><strong><input type="text" size="10" name="CARD_EXP"> <font size="1">( Required for Credit Card Purchase
+      )</font> </strong></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" colspan="8" width="650" height="18" bgcolor="#A09A8B"><div align="center"><center><p><font face="Arial" color="#FFCD41"><span style="background-color: rgb(0,51,102)"><strong><small>&nbsp;&nbsp;&nbsp; PURCHASER
+      INFORMATION &nbsp;&nbsp; </small></strong></span></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><font size="2" face="Arial"><strong>Company:</strong></font></td>
+      <td align="left" height="25" width="139" colspan="5"><strong><font face="Arial"><input type="text" size="30" name="COMPANY"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><strong><font size="2" face="Arial">Purchase
+      Order # (if applicable):</font></strong></td>
+      <td align="left" height="25" width="139" colspan="5"><strong><font face="Arial"><input type="text" name="PURCH_ORDER_NO" size="20"></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><font size="2" face="Arial"><strong>Street
+      Address:</strong></font></td>
+      <td align="left" height="25" width="139" colspan="5"><strong><font face="Arial"><!--webbot bot="Validation" s-display-name="Address" b-value-required="TRUE" --><input type="text" size="30" name="ADDRESS_2"> <small><small>(
+      Required )</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><font size="2" face="Arial"><strong>Apt.
+      or Suite:</strong></font></td>
+      <td align="left" height="25" width="139" colspan="5"><strong><font face="Arial"><input type="text" size="20" name="ADDRESS_1"> <small><small>(sorry, we cannot ship to P.O.
+      Boxes)</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><strong><font size="2" face="Arial">City:</font></strong></td>
+      <td align="left" width="139" colspan="5" height="25"><strong><font face="Arial"><!--webbot bot="Validation" s-display-name="City" b-value-required="TRUE" i-minimum-length="2" --><input type="text" size="20" name="CITY"> <small><small>( Required )</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="26"><font size="2"><b>State:</b></font></td>
+      <td align="left" width="139" colspan="5" height="26"><!--webbot bot="Validation" s-display-name="State" b-value-required="TRUE" --><select name="State" size="1">
+        <option selected><%= Request.Form("State") %></option>
+        <option> Alabama </option>
+        <option> Alaska </option>
+        <option> Arizona </option>
+        <option> Arkansas </option>
+        <option> California </option>
+        <option> Colorado </option>
+        <option> Connecticut </option>
+        <option> Delaware </option>
+        <option> Florida </option>
+        <option> Georgia </option>
+        <option> Hawaii </option>
+        <option> Idaho </option>
+        <option> Illinois </option>
+        <option> Indiana </option>
+        <option> Iowa </option>
+        <option> Kansas </option>
+        <option> Kentucky </option>
+        <option> Louisiana </option>
+        <option> Maine </option>
+        <option> Maryland </option>
+        <option> Massachusetts </option>
+        <option> Michigan </option>
+        <option> Minnesota </option>
+        <option> Mississippi </option>
+        <option> Missouri </option>
+        <option> Montana </option>
+        <option> Nebraska </option>
+        <option> Nevada </option>
+        <option> New Hampshire </option>
+        <option> New Jersey </option>
+        <option> New Mexico </option>
+        <option> New York </option>
+        <option> North Carolina </option>
+        <option> North Dakota </option>
+        <option> Ohio </option>
+        <option> Oklahoma </option>
+        <option> Oregon </option>
+        <option> Pennsylvania </option>
+        <option> Rhode Island </option>
+        <option> South Carolina </option>
+        <option> South Dakota </option>
+        <option> Tennessee </option>
+        <option> Texas </option>
+        <option> Utah </option>
+        <option> Vermont </option>
+        <option> Virginia </option>
+        <option> Washington </option>
+        <option> Washington D.C. </option>
+        <option> West Virginia </option>
+        <option> Wisconsin </option>
+        <option> Wyoming </option>
+        <option> Alaska</option>
+        <option> Hawaii </option>
+        <option> Puerto Rico </option>
+        <option> Alberta </option>
+        <option> British Columbia </option>
+        <option> Manitoba </option>
+        <option> New Brunswick </option>
+        <option> New Foundland </option>
+        <option> Northwest Territories </option>
+        <option> Nova Scotia </option>
+        <option> Ontario </option>
+        <option> Prince Edward Island </option>
+        <option> Quebec </option>
+        <option> Saskatchewan </option>
+        <option> Yukon Territory </option>
+        <option>All Others </option>
+      </select> <strong><font face="Arial"><small><small>( Required )</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="26"><font size="2"><b>Country</b></font></td>
+      <td align="left" width="139" colspan="5" height="26"><!--webbot bot="Validation" s-display-name="Country" b-value-required="TRUE" --><select name="COUNTRY" size="1">
+        <option selected><%= Request.Form("Country") %></option>
+        <option> United States </option>
+        <option> Australia </option>
+        <option> Austria </option>
+        <option> Bahamas </option>
+        <option> Belgium </option>
+        <option> Belize </option>
+        <option> Brazil </option>
+        <option> Canada </option>
+        <option> Chad </option>
+        <option> Chile </option>
+        <option> China </option>
+        <option> Costa Rica </option>
+        <option> Cyprus </option>
+        <option> Czech Republic </option>
+        <option> Denmark </option>
+        <option> Dominican Republic </option>
+        <option> El Salvador </option>
+        <option> England, UK </option>
+        <option> Estonia </option>
+        <option> Finland </option>
+        <option> France </option>
+        <option> Germany </option>
+        <option> Greece </option>
+        <option> Guatemala </option>
+        <option> Holland </option>
+        <option> Honduras </option>
+        <option> Hong Kong </option>
+        <option> Hungary </option>
+        <option> Iceland </option>
+        <option> India </option>
+        <option> Indonesia </option>
+        <option> Ireland </option>
+        <option> Israel </option>
+        <option> Italy </option>
+        <option> Jamaica </option>
+        <option> Japan </option>
+        <option> Lithuania </option>
+        <option> Luxembourg </option>
+        <option> Mexico </option>
+        <option> Monaco </option>
+        <option> Mongolia </option>
+        <option> Morocco </option>
+        <option> Netherlands </option>
+        <option> Netherlands Antilles </option>
+        <option> New Zealand </option>
+        <option> Nicaragua </option>
+        <option> Norway </option>
+        <option> Paraguay </option>
+        <option> Peru </option>
+        <option> Philippines </option>
+        <option> Poland </option>
+        <option> Portugal </option>
+        <option> Puerto Rico </option>
+        <option> Romania </option>
+        <option> Russia </option>
+        <option> Scotland, UK </option>
+        <option> Serbia </option>
+        <option> Spain </option>
+        <option> Sweden </option>
+        <option> Switzerland </option>
+        <option> Taiwan </option>
+        <option> Turkey </option>
+        <option> Ukraine </option>
+        <option> United Kingdom </option>
+        <option> United States </option>
+        <option> Uruguay </option>
+        <option> Vatican City </option>
+        <option> Venezuela </option>
+      </select><strong><small><small> <font face="Arial">( Required )</font></small></small></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><font size="2"><b>Zip:</b></font></td>
+      <td align="left" width="139" colspan="5" height="25"><!--webbot bot="Validation" S-Display-Name="Zip Code" B-Value-Required="TRUE" --><input type="text" size="10" name="ZIP"> <strong><font face="Arial"><small><small>&nbsp; ( Required )</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><font size="2"><b>Telephone: </b></font></td>
+      <td align="left" width="139" colspan="5" height="25"><input type="text" size="20" name="PHONE"> </td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><font size="2"><b>Fax: </b></font></td>
+      <td align="left" width="139" colspan="5" height="25"><input type="text" size="20" name="FAX"> </td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><font size="2"><b>E-Mail: </b></font></td>
+      <td align="left" width="139" colspan="5" height="25"><!--webbot bot="Validation" s-display-name="E-Mail Address" s-data-type="String" b-allow-letters="TRUE" b-allow-digits="TRUE" s-allow-other-chars="@.-" b-value-required="TRUE" i-minimum-length="5" --><input type="text" size="20" name="E_MAIL"><strong><font face="Arial"> <small><small>( Required )</small></small></font></strong></td>
+    </tr>
+    <tr align="center">
+      <td align="center" colspan="8" width="650" height="18" bgcolor="#A09A8B"><font color="#FFCD41"><span style="background-color: rgb(0,51,102)"><small><b>&nbsp;&nbsp;&nbsp;
+      SHIPPING INFORMATION&nbsp;&nbsp; (IF DIFFERENT FROM PAYMENT INFORMATION)&nbsp;&nbsp; </b></small></span></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Name:</strong></font></td>
+      <td align="left" width="139" colspan="5" height="25"><input type="text" size="30" name="SHIP_NAME"></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Company:</strong></font></td>
+      <td align="left" width="139" colspan="5" height="25"><input type="text" size="30" name="SHIP_COMPANY"></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Address:</strong></font></td>
+      <td align="left" width="139" colspan="5" height="25"><input type="text" size="30" name="SHIP_ADDRESS_2"></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Apt.
+      or Suite:</strong></font></td>
+      <td align="left" width="139" colspan="5" height="25"><input type="text" size="30" name="SHIP_ADDRESS_1"><small><small><strong><font face="Arial">(no P.O. Boxes, please)</font></strong></small></small></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="25"><div align="right"><p><font size="2"><strong>City:</strong></font></td>
+      <td align="left" width="139" colspan="5" height="25"><input type="text" size="20" name="SHIP_CITY"></td>
+    </tr>
+    <tr align="center">
+      <td align="right" valign="top" width="86" colspan="3" height="26"><font size="2"><strong>State:</strong></font></td>
+      <td align="left" valign="top" width="139" colspan="5" height="26"><div align="left"><p><font size="2"><select name="SHIP_STATE" size="1">
+        <option selected><%= Request.Form("State") %></option>
+        <option> Alabama </option>
+        <option> Alaska </option>
+        <option> Arizona </option>
+        <option> Arkansas </option>
+        <option> California </option>
+        <option> Colorado </option>
+        <option> Connecticut </option>
+        <option> Delaware </option>
+        <option> Florida </option>
+        <option> Georgia </option>
+        <option> Hawaii </option>
+        <option> Idaho </option>
+        <option> Illinois </option>
+        <option> Indiana </option>
+        <option> Iowa </option>
+        <option> Kansas </option>
+        <option> Kentucky </option>
+        <option> Louisiana </option>
+        <option> Maine </option>
+        <option> Maryland </option>
+        <option> Massachusetts </option>
+        <option> Michigan </option>
+        <option> Minnesota </option>
+        <option> Mississippi </option>
+        <option> Missouri </option>
+        <option> Montana </option>
+        <option> Nebraska </option>
+        <option> Nevada </option>
+        <option> New Hampshire </option>
+        <option> New Jersey </option>
+        <option> New Mexico </option>
+        <option> New York </option>
+        <option> North Carolina </option>
+        <option> North Dakota </option>
+        <option> Ohio </option>
+        <option> Oklahoma </option>
+        <option> Oregon </option>
+        <option> Pennsylvania </option>
+        <option> Rhode Island </option>
+        <option> South Carolina </option>
+        <option> South Dakota </option>
+        <option> Tennessee </option>
+        <option> Texas </option>
+        <option> Utah </option>
+        <option> Vermont </option>
+        <option> Virginia </option>
+        <option> Washington </option>
+        <option> Washington D.C. </option>
+        <option> West Virginia </option>
+        <option> Wisconsin </option>
+        <option> Wyoming </option>
+        <option> Alaska</option>
+        <option> Hawaii </option>
+        <option> Puerto Rico </option>
+        <option> Alberta </option>
+        <option> British Columbia </option>
+        <option> Manitoba </option>
+        <option> New Brunswick </option>
+        <option> New Foundland </option>
+        <option> Northwest Territories </option>
+        <option> Nova Scotia </option>
+        <option> Ontario </option>
+        <option> Prince Edward Island </option>
+        <option> Quebec </option>
+        <option> Saskatchewan </option>
+        <option> Yukon Territory </option>
+        <option>All Others </option>
+      </select></font></td>
+    </tr>
+    <tr align="center">
+      <td align="right" width="86" colspan="3" height="26"><font size="2"><b>Country</b></font></td>
+      <td width="139" colspan="5" height="26"><select name="SHIP_COUNTRY" size="1">
+        <option selected><%= Request.Form("Country") %></option>
+        <option> United States </option>
+        <option> Australia </option>
+        <option> Austria </option>
+        <option> Bahamas </option>
+        <option> Belgium </option>
+        <option> Belize </option>
+        <option> Brazil </option>
+        <option> Canada </option>
+        <option> Chad </option>
+        <option> Chile </option>
+        <option> China </option>
+        <option> Costa Rica </option>
+        <option> Cyprus </option>
+        <option> Czech Republic </option>
+        <option> Denmark </option>
+        <option> Dominican Republic </option>
+        <option> El Salvador </option>
+        <option> England, UK </option>
+        <option> Estonia </option>
+        <option> Finland </option>
+        <option> France </option>
+        <option> Germany </option>
+        <option> Greece </option>
+        <option> Guatemala </option>
+        <option> Holland </option>
+        <option> Honduras </option>
+        <option> Hong Kong </option>
+        <option> Hungary </option>
+        <option> Iceland </option>
+        <option> India </option>
+        <option> Indonesia </option>
+        <option> Ireland </option>
+        <option> Israel </option>
+        <option> Italy </option>
+        <option> Jamaica </option>
+        <option> Japan </option>
+        <option> Lithuania </option>
+        <option> Luxembourg </option>
+        <option> Mexico </option>
+        <option> Monaco </option>
+        <option> Mongolia </option>
+        <option> Morocco </option>
+        <option> Netherlands </option>
+        <option> Netherlands Antilles </option>
+        <option> New Zealand </option>
+        <option> Nicaragua </option>
+        <option> Norway </option>
+        <option> Paraguay </option>
+        <option> Peru </option>
+        <option> Philippines </option>
+        <option> Poland </option>
+        <option> Portugal </option>
+        <option> Puerto Rico </option>
+        <option> Romania </option>
+        <option> Russia </option>
+        <option> Scotland, UK </option>
+        <option> Serbia </option>
+        <option> Spain </option>
+        <option> Sweden </option>
+        <option> Switzerland </option>
+        <option> Taiwan </option>
+        <option> Turkey </option>
+        <option> Ukraine </option>
+        <option> United Kingdom </option>
+        <option> United States </option>
+        <option> Uruguay </option>
+        <option> Vatican City </option>
+        <option> Venezuela </option>
+      </select></td>
+    </tr>
+    <tr align="center">
+      <td valign="top" width="86" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Zip</strong></font></td>
+      <td valign="top" width="139" colspan="5" height="25"><input type="text" size="10" name="SHIP_ZIP"> </td>
+    </tr>
+    <tr align="center">
+      <td valign="top" width="86" colspan="3" height="25"><div align="right"><p><font size="2"><strong>Telephone</strong>:</font></td>
+      <td valign="top" width="139" colspan="5" height="25"><input type="text" size="20" name="SHIP_TELEPHONE"></td>
+    </tr>
+    <tr align="center">
+      <td colspan="8" width="650" height="18" bgcolor="#A09A8B"><font size="2"><div align="center"><center><p></font><small><font color="#FFCD41"><span style="background-color: rgb(0,51,102)"><b>&nbsp;&nbsp;&nbsp; SPECIAL INSTRUCTIONS &nbsp;</b></span></font></small></td>
+    </tr>
+    <tr align="center">
+      <td valign"top" width="86" colspan="3" height="62"></td>
+      <td valign="top" width="139" colspan="5" height="62"><textarea name="SHIP_MESSAGE" rows="2" cols="47"></textarea></td>
+    </tr>
+    <tr align="center">
+      <td width="86" colspan="3" height="27"></td>
+      <td width="139" colspan="5" height="27"><input type="submit" value="Complete Order" name="Submit"></td>
+    </tr>
+  </table>
+</form>
+
+<p align="center">&nbsp; </p>
+</body>
+</html>

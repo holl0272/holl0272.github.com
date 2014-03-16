@@ -1,0 +1,2024 @@
+<?xml version="1.0" encoding="utf-8"?>
+<profiles>
+	<defaultProfileToUse>Ecom</defaultProfileToUse>
+	<profile profileID="Standard" name="Standard">
+		<SourceDSN>[webroot]\ssl\admin\ssAdmin\ssSamples\ssProductImportSample.xls</SourceDSN>
+		<SourceTable>Products</SourceTable>
+		<TargetDSN></TargetDSN>
+		<ImportOptions>
+			<DefaultImportType>0</DefaultImportType><!-- enImportAll, enImportNewOnly, enImportInvPriceOnly, enImportInformationOnly -->
+			<CreateCat>1</CreateCat><!-- cenCreateCat_Default, cenCreateCat_Create, cenCreateCat_CreateAndDelete -->
+			<CreateMfg>1</CreateMfg><!-- cenCreateMfg_Default, cenCreateMfg_Create, cenCreateMfg_CreateAndDelete -->
+			<CreateVend>1</CreateVend><!-- cenCreateVend_Default, cenCreateVend_Create, cenCreateVend_CreateAndDelete -->
+			<DefaultCategoryID>1</DefaultCategoryID>
+			<DefaultManufacturerID>1</DefaultManufacturerID>
+			<DefaultVendorID>1</DefaultVendorID>
+		</ImportOptions>
+		<ProductFields>
+			<field id="prodID">
+				<columnName>Product Code</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Product Code</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodManufacturerId">
+				<columnName>Manufacturer</columnName>
+				<default>1</default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Manufacturer</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodVendorId">
+				<columnName>Vendor</columnName>
+				<default>1</default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Vendor</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodEnabledIsActive">
+				<columnName>Activate Product</columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Activate Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodName">
+				<columnName>Product Name</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Product Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodNamePlural">
+				<columnName>Plural Name</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Plural Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShortDescription">
+				<columnName>Short Description</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Short Description</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDescription">
+				<columnName>Long Description</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Long Description</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodMessage">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Confirmation Message</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodImageSmallPath">
+				<columnName>Small Image</columnName>
+				<default>images/&lt;prodID&gt;_small.jpg</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Small Image</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodImageLargePath">
+				<columnName>Large Image</columnName>
+				<default>images/&lt;prodID&gt;_large.jpg</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Large Image</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodFileName">
+				<columnName>Download File Name</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Download File Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodPrice">
+				<columnName>Price</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodSaleIsActive">
+				<columnName>Activate Sale</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Activate Sale</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodSalePrice">
+				<columnName>Sale Price</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Sale Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShipIsActive">
+				<columnName>Ship This Product</columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Ship This Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShip">
+				<columnName>Ship Price</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Ship Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodWeight">
+				<columnName>Weight</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Weight</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodLength">
+				<columnName>Length</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Length</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodWidth">
+				<columnName>Width</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Width</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodHeight">
+				<columnName>Height</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Height</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodCountryTaxIsActive">
+				<columnName>Apply Country Tax</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Apply Country Tax</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodStateTaxIsActive">
+				<columnName>Apply State Tax</columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Apply State Tax</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDateAdded">
+				<columnName></columnName>
+				<default>&lt;Date()&gt;</default>
+				<dataType>enDatatype_date</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>DateAdded</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDateModified">
+				<columnName></columnName>
+				<default>&lt;Date()&gt;</default>
+				<dataType>enDatatype_date</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>DateModified</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodLink">
+				<columnName>Detail Link</columnName>
+				<default>detail.asp?product_id=&lt;prodID&gt;</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Detail Link</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</ProductFields>
+		<AttributeColumn>
+			<columnName>Attributes</columnName>
+			<default>3</default>
+			<displayName>Attribute Style</displayName>
+		</AttributeColumn>
+		<CategoryColumn>
+			<columnName>Categories</columnName>
+			<MultipleCategoryDelimiter>|</MultipleCategoryDelimiter>
+			<SubcategoryDelimiter>~</SubcategoryDelimiter>
+			<default>1</default>
+		</CategoryColumn>
+		<RelatedProductColumn>
+			<columnName>RelatedProducts</columnName>
+			<delimiter>,</delimiter>
+			<default></default>
+		</RelatedProductColumn>
+		<InventoryFields>
+			<field id="Tracked">
+				<columnName>Track Inventory</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Track Inventory</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="Status">
+				<columnName>Show Status</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Show Status</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="Notify">
+				<columnName>Send Low Stock Notice</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Send Low Stock Notice</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="LowFlag">
+				<columnName>Qty to send Low Stock Notice at</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty to send Low Stock Notice at</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="CanBackOrder">
+				<columnName>Allow Backorder</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Allow Backorder</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="DefaultQTY">
+				<columnName>Set default Qty In Stock At</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Set default Qty In Stock At</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="QtyInStock">
+				<columnName>Qty In Stock</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty In Stock</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="QtyLowFlag">
+				<columnName>Qty to send Low Stock Notice at</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty to send Low Stock Notice at</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</InventoryFields>
+		<GiftWrapFields>
+			<field id="prodEnabledIsActive">
+				<columnName>Gift Wrap This Product</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Gift Wrap This Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodPrice">
+				<columnName>Gift Wrap Price</columnName>
+				<default>0</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Gift Wrap Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</GiftWrapFields>
+		<MTPColumn>
+			<MTPImportPrefix>MTP-</MTPImportPrefix>
+			<MTPImportSeparator>-</MTPImportSeparator>
+			<DeleteExistingMTPs>-1</DeleteExistingMTPs>
+		</MTPColumn>
+		<ImportTypeColumn>
+			<columnName></columnName>
+		</ImportTypeColumn>
+	</profile>
+	<profile profileID="Custom" name="Custom">
+		<SourceDSN>[webroot]\ssl\admin\ssAdmin\ssSamples\ssProductImportSample.xls</SourceDSN>
+		<SourceTable>Products</SourceTable>
+		<TargetDSN></TargetDSN>
+		<ImportOptions>
+			<DefaultImportType>0</DefaultImportType><!-- enImportAll, enImportNewOnly, enImportInvPriceOnly, enImportInformationOnly -->
+			<CreateCat>1</CreateCat><!-- cenCreateCat_Default, cenCreateCat_Create, cenCreateCat_CreateAndDelete -->
+			<CreateMfg>1</CreateMfg><!-- cenCreateMfg_Default, cenCreateMfg_Create, cenCreateMfg_CreateAndDelete -->
+			<CreateVend>1</CreateVend><!-- cenCreateVend_Default, cenCreateVend_Create, cenCreateVend_CreateAndDelete -->
+			<DefaultCategoryID>1</DefaultCategoryID>
+			<DefaultManufacturerID>1</DefaultManufacturerID>
+			<DefaultVendorID>1</DefaultVendorID>
+		</ImportOptions>
+		<ProductFields>
+			<field id="prodID">
+				<columnName>Product Code</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Product Code</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodManufacturerId">
+				<columnName>Manufacturer</columnName>
+				<default>1</default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Manufacturer</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodVendorId">
+				<columnName>Vendor</columnName>
+				<default>1</default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Vendor</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodEnabledIsActive">
+				<columnName>Activate Product</columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Activate Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodName">
+				<columnName>Plural Name</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Product Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodNamePlural">
+				<columnName>Plural Name</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Plural Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShortDescription">
+				<columnName>Short Description</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Short Description</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDescription">
+				<columnName>Long Description</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Long Description</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodMessage">
+				<columnName>UpSellMessage</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Confirmation Message</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodImageSmallPath">
+				<columnName>Small Image</columnName>
+				<default>images/&lt;prodID&gt;_small.jpg</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Small Image</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodImageLargePath">
+				<columnName>Large Image</columnName>
+				<default>images/&lt;prodID&gt;_large.jpg</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Large Image</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodFileName">
+				<columnName>Download File Name</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Download File Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodPrice">
+				<columnName>Price</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodSaleIsActive">
+				<columnName>Activate Sale</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Activate Sale</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodSalePrice">
+				<columnName>Sale Price</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Sale Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShipIsActive">
+				<columnName>Ship This Product</columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Ship This Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShip">
+				<columnName>Ship Price</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Ship Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodWeight">
+				<columnName>Weight</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Weight</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodLength">
+				<columnName>Length</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Length</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodWidth">
+				<columnName>Width</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Width</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodHeight">
+				<columnName>Height</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Height</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodCountryTaxIsActive">
+				<columnName>Apply Country Tax</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Apply Country Tax</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodStateTaxIsActive">
+				<columnName>Apply State Tax</columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Apply State Tax</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDateAdded">
+				<columnName>DateAdded</columnName>
+				<default>Date()</default>
+				<dataType>enDatatype_date</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>DateAdded</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDateModified">
+				<columnName>DateModified</columnName>
+				<default>Date()</default>
+				<dataType>enDatatype_date</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>DateModified</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodLink">
+				<columnName>Detail Link</columnName>
+				<default>../detail.aspx?ID=&lt;uid&gt;</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Detail Link</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</ProductFields>
+		<AttributeColumn>
+			<columnName>Attributes</columnName>
+			<default>3</default>
+			<displayName>Attribute Style</displayName>
+		</AttributeColumn>
+		<CategoryColumn>
+			<columnName>Categories</columnName>
+			<MultipleCategoryDelimiter>|</MultipleCategoryDelimiter>
+			<SubcategoryDelimiter>~</SubcategoryDelimiter>
+			<default>1</default>
+		</CategoryColumn>
+		<RelatedProductColumn>
+			<columnName>RelatedProducts</columnName>
+			<delimiter>|</delimiter>
+			<default></default>
+		</RelatedProductColumn>
+		<InventoryFields>
+			<field id="Tracked">
+				<columnName>Track Inventory</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Track Inventory</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="Status">
+				<columnName>Show Status</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Show Status</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="Notify">
+				<columnName>Send Low Stock Notice</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Send Low Stock Notice</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="LowFlag">
+				<columnName>Qty to send Low Stock Notice at</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty to send Low Stock Notice at</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="CanBackOrder">
+				<columnName>Allow Backorder</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Allow Backorder</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="DefaultQTY">
+				<columnName>Set default Qty In Stock At</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Set default Qty In Stock At</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="QtyInStock">
+				<columnName>Qty In Stock</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty In Stock</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="QtyLowFlag">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty to send Low Stock Notice at</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</InventoryFields>
+		<GiftWrapFields>
+			<field id="prodEnabledIsActive">
+				<columnName>Gift Wrap This Product</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Gift Wrap This Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodPrice">
+				<columnName>Gift Wrap Price</columnName>
+				<default>0</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Gift Wrap Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</GiftWrapFields>
+		<MTPColumn>
+			<MTPImportPrefix>MTP-</MTPImportPrefix>
+			<MTPImportSeparator>-</MTPImportSeparator>
+			<DeleteExistingMTPs>-1</DeleteExistingMTPs>
+		</MTPColumn>
+		<ImportTypeColumn>
+			<columnName></columnName>
+		</ImportTypeColumn>
+	</profile>
+	<profile profileID="CostInventoryUpdate" name="CostInventoryUpdate">
+		<SourceDSN>[webroot]\ssl\admin\ssAdmin\ssSamples\ssProductImportSample.xls</SourceDSN>
+		<SourceTable>Products</SourceTable>
+		<TargetDSN></TargetDSN>
+		<ImportOptions>
+			<DefaultImportType>0</DefaultImportType><!-- enImportAll, enImportNewOnly, enImportInvPriceOnly, enImportInformationOnly -->
+			<CreateCat>0</CreateCat><!-- cenCreateCat_Default, cenCreateCat_Create, cenCreateCat_CreateAndDelete -->
+			<CreateMfg>0</CreateMfg><!-- cenCreateMfg_Default, cenCreateMfg_Create, cenCreateMfg_CreateAndDelete -->
+			<CreateVend>0</CreateVend><!-- cenCreateVend_Default, cenCreateVend_Create, cenCreateVend_CreateAndDelete -->
+			<DefaultCategoryID></DefaultCategoryID>
+			<DefaultManufacturerID>1</DefaultManufacturerID>
+			<DefaultVendorID>1</DefaultVendorID>
+		</ImportOptions>
+		<ProductFields>
+			<field id="prodID">
+				<columnName>Product Code</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Product Code</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodManufacturerId">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Manufacturer</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodVendorId">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Vendor</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodEnabledIsActive">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Activate Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodName">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Product Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodNamePlural">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Plural Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShortDescription">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Short Description</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDescription">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Long Description</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodMessage">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Confirmation Message</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodImageSmallPath">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Small Image</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodImageLargePath">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Large Image</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodFileName">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Download File Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodPrice">
+				<columnName>Price</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodSaleIsActive">
+				<columnName>Activate Sale</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Activate Sale</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodSalePrice">
+				<columnName>Sale Price</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Sale Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShipIsActive">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Ship This Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShip">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Ship Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodWeight">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Weight</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodLength">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Length</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodWidth">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Width</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodHeight">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Height</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodCountryTaxIsActive">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Apply Country Tax</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodStateTaxIsActive">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Apply State Tax</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDateAdded">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_date</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>DateAdded</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDateModified">
+				<columnName></columnName>
+				<default>&lt;Date()&gt;</default>
+				<dataType>enDatatype_date</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>DateModified</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodLink">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Detail Link</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</ProductFields>
+		<AttributeColumn>
+			<columnName></columnName>
+			<default>0</default>
+			<displayName>Attribute Style</displayName>
+		</AttributeColumn>
+		<CategoryColumn>
+			<columnName></columnName>
+			<MultipleCategoryDelimiter>|</MultipleCategoryDelimiter>
+			<SubcategoryDelimiter>~</SubcategoryDelimiter>
+			<default>1</default>
+		</CategoryColumn>
+		<RelatedProductColumn>
+			<columnName>RelatedProducts</columnName>
+			<delimiter>,</delimiter>
+			<default></default>
+		</RelatedProductColumn>
+		<InventoryFields>
+			<field id="Tracked">
+				<columnName>Track Inventory</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Track Inventory</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="Status">
+				<columnName>Show Status</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Show Status</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="Notify">
+				<columnName>Send Low Stock Notice</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Send Low Stock Notice</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="LowFlag">
+				<columnName>Qty to send Low Stock Notice at</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty to send Low Stock Notice at</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="CanBackOrder">
+				<columnName>Allow Backorder</columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Allow Backorder</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="DefaultQTY">
+				<columnName>Set default Qty In Stock At</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Set default Qty In Stock At</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="QtyInStock">
+				<columnName>Qty In Stock</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty In Stock</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="QtyLowFlag">
+				<columnName>Qty to send Low Stock Notice at</columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty to send Low Stock Notice at</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</InventoryFields>
+		<GiftWrapFields>
+			<field id="prodEnabledIsActive">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Gift Wrap This Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodPrice">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Gift Wrap Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</GiftWrapFields>
+		<MTPColumn>
+			<MTPImportPrefix>MTP-</MTPImportPrefix>
+			<MTPImportSeparator>-</MTPImportSeparator>
+			<DeleteExistingMTPs>-1</DeleteExistingMTPs>
+		</MTPColumn>
+		<ImportTypeColumn>
+			<columnName></columnName>
+		</ImportTypeColumn>
+	</profile>
+	<profile profileID="Pricing" name="Pricing">
+		<SourceDSN>[webroot]\ssl\admin\ssAdmin\ssSamples\customerPricing.mdb</SourceDSN>
+		<SourceTable>SamplePricing</SourceTable>
+		<TargetDSN></TargetDSN>
+		<ImportOptions>
+			<DefaultImportType>0</DefaultImportType><!-- enImportAll, enImportNewOnly, enImportInvPriceOnly, enImportInformationOnly -->
+			<CreateCat>0</CreateCat><!-- cenCreateCat_Default, cenCreateCat_Create, cenCreateCat_CreateAndDelete -->
+			<CreateMfg>0</CreateMfg><!-- cenCreateMfg_Default, cenCreateMfg_Create, cenCreateMfg_CreateAndDelete -->
+			<CreateVend>0</CreateVend><!-- cenCreateVend_Default, cenCreateVend_Create, cenCreateVend_CreateAndDelete -->
+			<DefaultCategoryID>1</DefaultCategoryID>
+			<DefaultManufacturerID>1</DefaultManufacturerID>
+			<DefaultVendorID>1</DefaultVendorID>
+		</ImportOptions>
+		<ProductFields>
+			<field id="prodID">
+				<columnName>ItemNumber</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Product Code</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodManufacturerId">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Manufacturer</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodVendorId">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Vendor</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodEnabledIsActive">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Activate Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodName">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Product Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodNamePlural">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Plural Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShortDescription">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Short Description</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDescription">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Long Description</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodMessage">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Confirmation Message</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodImageSmallPath">
+				<columnName></columnName>
+				<default>images/&lt;prodID&gt;_small.jpg</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Small Image</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodImageLargePath">
+				<columnName></columnName>
+				<default>images/&lt;prodID&gt;_large.jpg</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Large Image</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodFileName">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Download File Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodPrice">
+				<columnName>Price1</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodSaleIsActive">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Activate Sale</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodSalePrice">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Sale Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShipIsActive">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Ship This Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShip">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Ship Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodWeight">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Weight</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodLength">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Length</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodWidth">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Width</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodHeight">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Height</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodCountryTaxIsActive">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Apply Country Tax</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodStateTaxIsActive">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Apply State Tax</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDateAdded">
+				<columnName></columnName>
+				<default>&lt;Date()&gt;</default>
+				<dataType>enDatatype_date</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>DateAdded</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDateModified">
+				<columnName></columnName>
+				<default>&lt;Date()&gt;</default>
+				<dataType>enDatatype_date</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>DateModified</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodLink">
+				<columnName></columnName>
+				<default>detail.asp?product_id=&lt;prodID&gt;</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Detail Link</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</ProductFields>
+		<AttributeColumn>
+			<columnName></columnName>
+			<default>3</default>
+			<displayName>Attribute Style</displayName>
+		</AttributeColumn>
+		<CategoryColumn>
+			<columnName></columnName>
+			<MultipleCategoryDelimiter>|</MultipleCategoryDelimiter>
+			<SubcategoryDelimiter>~</SubcategoryDelimiter>
+			<default>1</default>
+		</CategoryColumn>
+		<RelatedProductColumn>
+			<columnName>RelatedProducts</columnName>
+			<delimiter>|</delimiter>
+			<default></default>
+		</RelatedProductColumn>
+		<InventoryFields>
+			<field id="Tracked">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Track Inventory</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="Status">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Show Status</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="Notify">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Send Low Stock Notice</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="LowFlag">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty to send Low Stock Notice at</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="CanBackOrder">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Allow Backorder</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="DefaultQTY">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Set default Qty In Stock At</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="QtyInStock">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty In Stock</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="QtyLowFlag">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty to send Low Stock Notice at</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</InventoryFields>
+		<GiftWrapFields>
+			<field id="prodEnabledIsActive">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Gift Wrap This Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodPrice">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Gift Wrap Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</GiftWrapFields>
+		<MTPColumn>
+			<MTPImportPrefix>MTP-</MTPImportPrefix>
+			<MTPImportSeparator>-</MTPImportSeparator>
+			<DeleteExistingMTPs>0</DeleteExistingMTPs>
+		</MTPColumn>
+		<ImportTypeColumn>
+			<columnName></columnName>
+		</ImportTypeColumn>
+	</profile>
+	<profile profileID="Ecom" name="Ecom">
+		<SourceDSN>D:\Sandshot\SF5\Addons\ProductImport\ssl\admin\ssAdmin\ssSamples_Test\Ecom_New.mdb</SourceDSN>
+		<SourceTable>qryImport</SourceTable>
+		<TargetDSN></TargetDSN>
+		<ImportOptions>
+			<DefaultImportType>0</DefaultImportType><!-- enImportAll, enImportNewOnly, enImportInvPriceOnly, enImportInformationOnly -->
+			<CreateCat>1</CreateCat><!-- cenCreateCat_Default, cenCreateCat_Create, cenCreateCat_CreateAndDelete -->
+			<CreateMfg>1</CreateMfg><!-- cenCreateMfg_Default, cenCreateMfg_Create, cenCreateMfg_CreateAndDelete -->
+			<CreateVend>0</CreateVend><!-- cenCreateVend_Default, cenCreateVend_Create, cenCreateVend_CreateAndDelete -->
+			<DefaultCategoryID>1</DefaultCategoryID>
+			<DefaultManufacturerID>1</DefaultManufacturerID>
+			<DefaultVendorID>1</DefaultVendorID>
+		</ImportOptions>
+		<ProductFields>
+			<field id="prodID">
+				<columnName>prodCode</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Product Code</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodManufacturerId">
+				<columnName>Manufacturer</columnName>
+				<default>1</default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Manufacturer</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodVendorId">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Vendor</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodEnabledIsActive">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Activate Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodName">
+				<columnName>prodName</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Product Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodNamePlural">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Plural Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShortDescription">
+				<columnName>SKU_GP_DSC</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Short Description</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDescription">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Long Description</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodMessage">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Confirmation Message</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodImageSmallPath">
+				<columnName>smallImage</columnName>
+				<default>images/&lt;prodID&gt;_small.jpg</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Small Image</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodImageLargePath">
+				<columnName>largeImage</columnName>
+				<default>images/&lt;prodID&gt;_large.jpg</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Large Image</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodFileName">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Download File Name</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodPrice">
+				<columnName>MSRP</columnName>
+				<default></default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodSaleIsActive">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Activate Sale</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodSalePrice">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Sale Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShipIsActive">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Ship This Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodShip">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Ship Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodWeight">
+				<columnName>RTL_WGT_QTY</columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Weight</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodLength">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Length</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodWidth">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Width</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodHeight">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Height</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodCountryTaxIsActive">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Apply Country Tax</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodStateTaxIsActive">
+				<columnName></columnName>
+				<default>1</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Apply State Tax</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDateAdded">
+				<columnName></columnName>
+				<default>&lt;Date()&gt;</default>
+				<dataType>enDatatype_date</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>DateAdded</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodDateModified">
+				<columnName></columnName>
+				<default>&lt;Date()&gt;</default>
+				<dataType>enDatatype_date</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>DateModified</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodLink">
+				<columnName></columnName>
+				<default>detail.asp?product_id=&lt;prodID&gt;</default>
+				<dataType>enDatatype_string</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Detail Link</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</ProductFields>
+		<AttributeColumn>
+			<columnName></columnName>
+			<default>3</default>
+			<displayName>Attribute Style</displayName>
+		</AttributeColumn>
+		<CategoryColumn>
+			<columnName>Categories</columnName>
+			<MultipleCategoryDelimiter>|</MultipleCategoryDelimiter>
+			<SubcategoryDelimiter>~</SubcategoryDelimiter>
+			<default>1</default>
+		</CategoryColumn>
+		<RelatedProductColumn>
+			<columnName>RelatedProducts</columnName>
+			<delimiter>,</delimiter>
+			<default></default>
+		</RelatedProductColumn>
+		<InventoryFields>
+			<field id="Tracked">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Track Inventory</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="Status">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Show Status</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="Notify">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Send Low Stock Notice</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="LowFlag">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty to send Low Stock Notice at</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="CanBackOrder">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Allow Backorder</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="DefaultQTY">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Set default Qty In Stock At</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="QtyInStock">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty In Stock</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="QtyLowFlag">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_number</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Qty to send Low Stock Notice at</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</InventoryFields>
+		<GiftWrapFields>
+			<field id="prodEnabledIsActive">
+				<columnName></columnName>
+				<default></default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_checkbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Gift Wrap This Product</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+			<field id="prodPrice">
+				<columnName></columnName>
+				<default>0</default>
+				<dataType>enDatatype_boolean</dataType><!-- enDatatype_string, enDatatype_number, enDatatype_date, enDatatype_boolean -->
+				<displayType>enDisplayType_textbox</displayType><!-- enDisplayType_textbox, enDisplayType_checkbox -->
+				<displayName>Gift Wrap Price</displayName>
+				<maxLength></maxLength><!-- for future use -->
+				<emptyOK></emptyOK><!-- for future use -->
+				<useIfAllElseFails></useIfAllElseFails><!-- for future use -->
+			</field>
+		</GiftWrapFields>
+		<MTPColumn>
+			<MTPImportPrefix>MTP-</MTPImportPrefix>
+			<MTPImportSeparator>-</MTPImportSeparator>
+			<DeleteExistingMTPs>-1</DeleteExistingMTPs>
+		</MTPColumn>
+		<ImportTypeColumn>
+			<columnName></columnName>
+		</ImportTypeColumn>
+	</profile>
+</profiles>

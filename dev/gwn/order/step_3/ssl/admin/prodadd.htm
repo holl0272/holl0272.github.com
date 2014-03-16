@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>Add New Products</title>
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body style="font-family: Verdana">
+<div align="center"><center>
+
+  <table border="0" cellpadding="2" width="95%">
+    <tr>
+      <td width="100%"><p align="center"><big><strong>Products Database Management</strong></big></p>
+        <div align="center"><center><table border="0" cellpadding="3" cellspacing="0" width="95%" bordercolor="#A09A8B" bordercolorlight="#A09A8B" bordercolordark="#A09A8B">
+            <tr>
+              <td width="100%"><small><strong>The Product ID must be unique for each item.&nbsp; The
+        description entered into the description field will be output as the confirmation when
+        this item is ordered.&nbsp; We recommend that the description be short, that it be plural
+        and that it clearly refer to the item to which the product ID is assigned on your catalog
+        page. &nbsp; The message field is designed primarily for suggestive selling.&nbsp; You may
+        want to use the message box to &quot;suggest&quot; a complimentary item.&nbsp; You can
+        enter html code, including links and bookmark links so that the customer can follow your
+        suggestion directly to the recommended item.&nbsp; </strong></small></td>
+            </tr>
+          </table>
+          </center></div><!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript" Type="text/javascript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.Product_ID.value == "")
+  {
+    alert("Please enter a value for the \"Product ID\" field.");
+    theForm.Product_ID.focus();
+    return (false);
+  }
+
+  if (theForm.Product_ID.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"Product ID\" field.");
+    theForm.Product_ID.focus();
+    return (false);
+  }
+
+  var checkOK = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzƒŠŒŽšœžŸÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ0123456789-_.*#- \t\r\n\f";
+  var checkStr = theForm.Product_ID.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only letter, digit, whitespace and \"_.*#-\" characters in the \"Product ID\" field.");
+    theForm.Product_ID.focus();
+    return (false);
+  }
+
+  if (theForm.Price.value == "")
+  {
+    alert("Please enter a value for the \"Price\" field.");
+    theForm.Price.focus();
+    return (false);
+  }
+
+  if (theForm.Price.value.length < 4)
+  {
+    alert("Please enter at least 4 characters in the \"Price\" field.");
+    theForm.Price.focus();
+    return (false);
+  }
+
+  var checkOK = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzƒŠŒŽšœžŸÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ0123456789-.$, \t\r\n\f";
+  var checkStr = theForm.Price.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only letter, digit, whitespace and \".$,\" characters in the \"Price\" field.");
+    theForm.Price.focus();
+    return (false);
+  }
+
+  if (theForm.Description.value.length > 255)
+  {
+    alert("Please enter at most 255 characters in the \"Description\" field.");
+    theForm.Description.focus();
+    return (false);
+  }
+
+  if (theForm.Message.value.length > 255)
+  {
+    alert("Please enter at most 255 characters in the \"Message\" field.");
+    theForm.Message.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form action="product.asp?Function=2" method="Post" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1" language="JavaScript">
+          <div align="center"><center><table cellpadding="2" width="95%">
+              <tr>
+                <td height="34" colspan="4" bgcolor="#A09A8B"><strong><small><font face="Verdana">Product
+          ID and price are required for each product offered for purchase.</font></small></strong></td>
+              </tr>
+              <tr>
+                <td height="34"><strong>Product ID:</strong></td>
+                <td height="34"><strong><!--webbot bot="Validation" s-display-name="Product ID" s-data-type="String" b-allow-letters="TRUE" b-allow-digits="TRUE" b-allow-whitespace="TRUE" s-allow-other-chars="_.*#-" b-value-required="TRUE" i-minimum-length="1" --><input type="text" size="20" name="Product_ID"></strong></td>
+                <td height="34"><strong>Price:</strong></td>
+                <td height="34"><strong><!--webbot bot="Validation" S-Display-Name="Price" S-Data-Type="String" B-Allow-WhiteSpace="TRUE" B-Allow-Letters="TRUE" B-Allow-Digits="TRUE" S-Allow-Other-Chars=".$," B-Value-Required="TRUE" I-Minimum-Length="4" --><input type="text" size="10" name="Price"></strong></td>
+              </tr>
+              <tr>
+                <td height="34" colspan="4" bgcolor="#A09A8B"><strong><small><font face="Verdana">The
+          description and message fields are used in the StoreFront confirmation bot that appears
+          when this item is added to the customer order.&nbsp; Note:&nbsp; the description field is
+          also a search field in the StoreFront search utility.</font></small></strong></td>
+              </tr>
+              <tr>
+                <td height="34"><strong>Description:</strong></td>
+                <td height="34" colspan="3"><strong><!--webbot bot="Validation" s-display-name="Description" s-data-type="String" i-maximum-length="255" --><textarea name="Description" rows="2" cols="50"></textarea></strong></td>
+              </tr>
+              <tr>
+                <td height="34"><strong>Message:</strong></td>
+                <td height="34" colspan="3"><strong><!--webbot bot="Validation" i-maximum-length="255" --><textarea name="Message" rows="2" cols="50"></textarea></strong></td>
+              </tr>
+              <tr>
+                <td height="34" colspan="4" bgcolor="#A09A8B"><strong><small><font face="Verdana">The link
+          and image path fields are used for the search output page.&nbsp; The image path may be
+          used for displaying a thumbnail image if desired.&nbsp; If no image path is specified then
+          the Product ID will be displayed.&nbsp; If you wish to link an image or Product ID to a
+          product page then the link field is used to create a path to the desired page.&nbsp; </font></small></strong></td>
+              </tr>
+              <tr>
+                <td height="34"><strong>Image Path</strong></td>
+                <td height="34" colspan="3"><strong><input type="text" size="50" name="IMAGE_PATH" maxlength="125"></strong></td>
+              </tr>
+              <tr>
+                <td height="34"><strong>Link</strong></td>
+                <td height="34" colspan="3"><strong><input type="text" size="50" name="LINK" maxlength="125"></strong></td>
+              </tr>
+              <tr>
+                <td height="34" colspan="4" bgcolor="#A09A8B"><strong><small><font face="Verdana">The
+          category and manufacturer fields are used by the StoreFront search engine.&nbsp; The
+          weight field is unsupported at this time but will be used for future weight and zone based
+          shipping cost routines.</font></small></strong></td>
+              </tr>
+              <tr>
+                <td height="34"><strong>Category:</strong></td>
+                <td height="34"><strong><input type="text" size="30" name="CATEGORY" maxlength="30"></strong></td>
+                <td height="34"><div align="left"><p><strong>Weight: </strong></td>
+                    <td height="34"><div align="left"><p><strong>&nbsp; <input type="text" size="5" name="WEIGHT" maxlength="10"></strong></td>
+                      </tr>
+                      <tr>
+                        <td valign="top" height="34"><strong>Manufacturer</strong></td>
+                        <td height="34"><strong><input type="text" size="30" name="MANUFACTURER" maxlength="30"></strong></td>
+                        <td align="right" height="35" colspan="2"><input type="submit" name="Submit" value="Submit"><input type="reset" name="Reset" value="Reset"></td>
+                      </tr>
+                    </table>
+                  </center></div>
+              </form>
+            </td>
+            </tr>
+          </table>
+        </center></div>
+
+      <p align="center"><small><small><a href="prodadd.htm">Add Product</a> | <a href="proddelete.htm">Delete Product</a> | <a href="prodlist.asp">List Products</a> | <a href="prodedit.htm">Edit Product</a><br>
+      <a href="reports.htm">Sales Reporting</a> | <a href="set_up.asp?Update=0">Store Set-Up</a></small></small></p>
+
+      <p>&nbsp; </p>
+    </body>
+  </html>

@@ -1,0 +1,1247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	*******************************************************************************
+	Paymentech Auth/Capture, Void, Refund, Batch, Profile Request DTD, and FlexCache
+	Version 25.0  Date: 03/31/2004   
+	*******************************************************************************
+-->
+<!--
+	Request consists of Batch, Refund, Void, Authorisation/Capture, Unmark, and Profile Request.
+-->
+<!ELEMENT Request (Batch | Refund | Void | Unmark | AC | Profile | FlexCacheRequest | FlexCacheBatchRequest)>
+<!ELEMENT Batch (MerchantID, TerminalID, BIN, SettleRejectHoldingBin?)>
+<!-- 
+	Message Type: Indicates what sort of action is being requested:
+		B = batch/end-of-day
+-->
+<!ATTLIST Batch
+	MessageType (B) "B"
+	Version CDATA #REQUIRED
+>
+<!-- The presence of this element indicates that the merchant wishes to settle those transactions in the reject holding bin.
+	The absence of this element indicates that the merchant wishes to settle those transactions in the open batch.
+-->
+<!ELEMENT SettleRejectHoldingBin EMPTY>
+<!-- 
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Refund
+
+-->
+<!ELEMENT Refund (TxRefNum?, TxRefIdx?, Comments?, CallCtrClientID?, AccountNum, MerchantID, TerminalID, BIN, OrderID, (Amount | AmountDetails), Currency, TxDateTime, CardType?, CardPresence, POScardID, EntryDataSrc, (DebitCard | (BankCheck, AVSextended?))?, ECommerceData?, LodgeRentDataL3FolioNum?, CustomerProfileOrder?, FlexCache?, PCCore?, AMEXdata?, RecurringInd?, SoftDescriptor?)>
+<!-- 		
+	Message Type:
+		FR = Full Refund
+		PR = Partail Refund
+		
+	Language Identifier:
+		00 = English
+		01 = Spanish
+		02 = Portuguese
+		03 = Irish
+		04 = French
+		05 = German
+		06 = Italian
+		07 =Dutch
+		
+	Version: 2
+	
+	AccountTypeInd: Indicator of valid account types:
+		91 = credit card
+		92 = debit card
+		93 = EBT card
+		94 = check auth
+		95 = stored value card	
+
+	CardHolderAttendanceInd: Indicator of cardholder presence:
+		00 = present
+		01 = not present (MO/TO)
+		02 = not present (recurring payment)
+		03 = not present (VRU)
+		04 = not present (lodgings/auto rental)
+		
+	POSEntryMode: Code to describe card entry mode.
+		Digits 1-2:
+			01-Manual,
+			02-Magnetic Stripe read but full unaltered content not provided,
+			04-OCR/MICR coding read,
+			81-MC manually entered PAN on EC transaction,
+			90-Mag. stripe read full unaltered
+		Digit 3:
+			0 -Unknown
+			1-Terminal can accept PINs
+			2-Terminal cannot accept PINS
+			8-PINpad is down
+
+	Transaction Category:
+		R = retail
+		1 = single transaction mail order
+		2 = recurring transaction
+		3 = installment payment
+		5 = secure ecommerce transaction
+		6 = non authenticated SET transaction
+		7 = non SET channel encrypted
+		8 = non secure ecommerce transaction
+
+	AttendedTermDataIndicator: Indicates whether the card accepter was at the point of sale.
+		00 = attended
+		01 = unattended
+		02 = no terminal used
+
+	TerminalLocaterIndicator: Indicates whre terminal was
+		00 = on premises of card accepter
+		01 = on premises of cardholder
+		02 = no terminal used
+				
+	CATInfoIndicator: Indicates what type of CAT, if any, this transaction was run on.
+		00 = not a CAT device
+		01 = CAT level 1 (automated dispensing machine with PIN)
+		02 = CAT level 2 (self service terminal used for automated fuel)
+		03 = CAT level 3 (limited amount terminal)
+		06 = CAT level 6 (ECommerce transaction)
+		
+	TerminalEntryCapabilityIndicator: Indicates the primary method used to acquire cardholder information.
+		00-Mag Stripe and key entry,
+		01-Mag Stripe, key entry,Chip reader, 
+		02-Mag stripe only,
+		03-Mag Stripe and Chip reader,
+		04-Opt character recogination,
+		05-key entry only (Ecomm),
+		09-keyed entry only  
+		
+	POSConditionCode: Code that describes the basic POS environment.
+		00 = normal presenter
+		01 = customer not present
+		02 = unattended terminal (mag stripe data required)
+		08 = mail order manual entry
+		51 = customer not present (hotel no show)
+		52 = recurring payment manually entered
+		59 = ECommerce
+-->
+<!ATTLIST Refund
+	HcsTcsInd (T | H) #REQUIRED
+	MessageType (FR | PR) #REQUIRED
+	LangInd (00 | 01 | 02 | 03 | 04 | 05 | 06 | 07) "00"
+	TzCode CDATA #REQUIRED
+	Version CDATA #REQUIRED
+	AccountTypeInd (91 | 92 | 93 | 94 | 95) #REQUIRED
+	CardHolderAttendanceInd (00 | 01 | 02 | 03 | 04) #REQUIRED
+	CardPresentInd (Y | N) #REQUIRED
+	POSEntryMode CDATA #REQUIRED
+	TxCatg (R | 1 | 2 | 3 | 5 | 6 | 7 | 8) #REQUIRED
+	AttendedTermDataInd (00 | 01 | 02) #REQUIRED
+	TermLocInd (00 | 01 | 02) #REQUIRED
+	CATInfoInd (00 | 01 | 02 | 03 | 06) #REQUIRED
+	TermEntCapInd (00 | 01 | 02 | 03 | 04 | 05 | 09) #REQUIRED
+	POSConditionCode (00 | 01 | 02 | 08 | 51 | 52 | 59) #REQUIRED
+	FormatInd (H | W | R | K | S | N) #REQUIRED
+>
+<!-- 
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Void
+
+-->
+<!ELEMENT Void (MerchantID, TerminalID, BIN, TxRefNum, TxRefIdx?, PriorAuthID?, AdjustedAmt?)>
+<!-- 		
+	Message Type:
+		V = Void
+		
+	Language Identifier:
+		00 = English
+		01 = Spanish
+		02 = Portuguese
+		03 = Irish
+		04 = French
+		05 = German
+		06 = Italian
+		07 =Dutch
+		
+	Version: 2
+-->
+<!ATTLIST Void
+	HcsTcsInd (T | H) "T"
+	MessageType (V) "V"
+	LangInd (00 | 01 | 02 | 03 | 04 | 05 | 06 | 07) "00"
+	TzCode CDATA ""
+	Version CDATA ""
+>
+<!-- 
+	Use if partial void required
+-->
+<!ELEMENT AdjustedAmt (#PCDATA)>
+<!-- 
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Unmark
+
+-->
+<!ELEMENT Unmark (MerchantID, TerminalID, BIN, TxRefNum, TxRefIdx, OrderID?)>
+<!-- 		
+	Message Type:
+		UC= Unmark for Capture only
+		
+	Language Identifier:
+		00 = English
+		01 = Spanish
+		02 = Portuguese
+		03 = Irish
+		04 = French
+		05 = German
+		06 = Italian
+		07 =Dutch
+-->
+<!ATTLIST Unmark
+	HcsTcsInd (T | H) #REQUIRED
+	MessageType (UC) #REQUIRED
+	LangInd (00 | 01 | 02 | 03 | 04 | 05 | 06 | 07) "00"
+	TzCode CDATA #REQUIRED
+	Version CDATA #REQUIRED
+>
+<!-- 
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - AC
+
+-->
+<!--
+	Authorisation/Capture Request:#
+			Comprised of CommonData element followed by
+			either an Auth element or a Capture element or both.
+-->
+<!ELEMENT AC (CommonData, (Auth | Cap | FlexCache | (Auth, Cap) | (FlexCache, Cap) | (Auth, FlexCache, Cap))?)>
+<!ELEMENT CommonData (CommonMandatory, CommonOptional?)>
+<!ELEMENT Auth (AuthMandatory, AuthOptional?)>
+<!ELEMENT Cap (CapMandatory?, CapOptional?)>
+<!-- 
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - CommonMandatory
+
+-->
+<!-- Profile Management - Made AccountNum Optional For Mark For Capture -->
+<!ELEMENT CommonMandatory (AccountNum?, POSDetails?, MerchantID, TerminalID, BIN, OrderID, AmountDetails, TxTypeCommon?, Currency?, CardPresence?, TxDateTime?)>
+<!-- 		
+	Message Type:
+		A = Auth only
+		C= Capture only
+		AC = Auth and Capture
+		
+	Language Identifier:
+		00 = English
+		01 = Spanish
+		02 = Portuguese
+		03 = Irish
+		04 = French
+		05 = German
+		06 = Italian
+		07 =Dutch
+		
+	Auth Override Indicator:
+		Y = this auth data should override that auth data previously sent to which the capture data relates
+		N = standard auth/capture model
+		
+	Transaction Category:
+		R = retail
+		1 = single transaction mail order
+		2 = recurring transaction
+		3 = installment payment
+		5 = secure ecommerce transaction
+		6 = non authenticated SET transaction
+		7 = non SET channel encrypted
+		8 = non secure ecommerce transaction
+	
+	CardHolderAttendanceInd: Indicator of cardholder presence:
+		00 = present
+		01 = not present (MO/TO)
+		02 = not present (recurring payment)
+		03 = not present (VRU)
+		04 = not present (lodgings/auto rental)
+
+-->
+<!ATTLIST CommonMandatory
+	HcsTcsInd (T | H) "T"
+	MessageType (A | C | AC) #REQUIRED
+	LangInd (00 | 01 | 02 | 03 | 04 | 05 | 06 | 07) "00"
+	TzCode CDATA ""
+	AuthOverrideInd (Y | N) "N"
+	Version CDATA ""
+	TxCatg (R | 1 | 2 | 3 | 5 | 6 | 7 | 8) "R"
+	CardHolderAttendanceInd (00 | 01 | 02 | 03 | 04) "01"
+>
+<!ELEMENT AccountNum (#PCDATA)>
+<!-- 
+	AccountTypeInd: Indicator of valid account types:
+		91 = credit card
+		92 = debit card
+		93 = EBT card
+		94 = check auth
+		95 = stored value card
+-->
+<!ATTLIST AccountNum
+	AccountTypeInd (91 | 92 | 93 | 94 | 95) "91"
+>
+<!ELEMENT POSDetails EMPTY>
+<!--
+	POSEntryMode: Code to describe card entry mode.
+		Digits 1-2:
+			01-Manual,
+			02-Magnetic Stripe read but full unaltered content not provided,
+			04-OCR/MICR coding read,
+			81-MC manually entered PAN on EC transaction,
+			90-Mag. stripe read full unaltered
+		Digit 3:
+			0 -Unknown
+			1-Terminal can accept PINs
+			2-Terminal cannot accept PINS
+			8-PINpad is down
+-->
+<!ATTLIST POSDetails
+	POSEntryMode CDATA #REQUIRED
+>
+<!--
+	Merchant ID - up to 15 digits
+-->
+<!ELEMENT MerchantID (#PCDATA)>
+<!--
+	Terminal ID - up to 4 digits
+-->
+<!ELEMENT TerminalID (#PCDATA)>
+<!-- 
+	POSConditionCode: Code that describes the basic POS environment.
+		00 = normal presenter
+		01 = customer not present
+		02 = unattended terminal (mag stripe data required)
+		08 = mail order manual entry
+		51 = customer not present (hotel no show)
+		52 = recurring payment manually entered
+		59 = ECommerce
+		
+	AttendedTermDataIndicator: Indicates whether the card accepter was at the point of sale.
+		00 = attended
+		01 = unattended
+		02 = no terminal used
+
+	TerminalLocaterIndicator: Indicates whre terminal was
+		00 = on premises of card accepter
+		01 = on premises of cardholder
+		02 = no terminal used
+				
+	CATInfoIndicator: Indicates what type of CAT, if any, this transaction was run on.
+		00 = not a CAT device
+		01 = CAT level 1 (automated dispensing machine with PIN)
+		02 = CAT level 2 (self service terminal used for automated fuel)
+		03 = CAT level 3 (limited amount terminal)
+		06 = CAT level 6 (ECommerce transaction)
+		
+	TerminalEntryCapabilityIndicator: Indicates the primary method used to acquire cardholder information.
+		00-Mag Stripe and key entry,
+		01-Mag Stripe, key entry,Chip reader, 
+		02-Mag stripe only,
+		03-Mag Stripe and Chip reader,
+		04-Opt character recogination,
+		05-key entry only (Ecomm),
+		09-keyed entry only 
+-->
+<!ATTLIST TerminalID
+	POSConditionCode (00 | 01 | 02 | 08 | 51 | 52 | 59) "00"
+	CardPresentInd (Y | N) "N"
+	AttendedTermDataInd (00 | 01 | 02) "00"
+	TermLocInd (00 | 01 | 02) "00"
+	CATInfoInd (00 | 01 | 02 | 03 | 06) "00"
+	TermEntCapInd (00 | 01 | 02 | 03 | 04 | 05 | 09) "00"
+>
+<!--
+	 Bank ID - up to 6 digits
+-->
+<!ELEMENT BIN (#PCDATA)>
+<!ELEMENT OrderID (#PCDATA)>
+<!--
+	AmountDetails: Comprised of Amount (of transaction), Tax (optional), Cacheback (optional) and Tip (optional) 
+	Amount: Transaction Amount including minor units (Max 9999999 representing 99,999.99)
+	TaxIndicator:	0-Tax not provided, 
+					1-Tax included,
+					2-Non-taxable transaction
+	Taxt: Tax amount for purchase
+	Tip: Tip amount for purchase
+-->
+<!ELEMENT AmountDetails (Amount, Tax?, CacheBack?, Tip?)>
+<!ELEMENT Amount (#PCDATA)>
+<!ELEMENT Tax (#PCDATA)>
+<!ATTLIST Tax
+	TaxInd (0 | 1 | 2) #REQUIRED
+>
+<!ELEMENT CacheBack (#PCDATA)>
+<!ELEMENT Tip (#PCDATA)>
+<!ELEMENT TxTypeCommon (PriorAuthID?, DeferTx?)>
+<!-- 
+	TransactionType Indicator:
+		G - Goods/Services
+		A - Cash Advance, 
+-->
+<!ATTLIST TxTypeCommon
+	TxTypeID (G | A) "G"
+>
+<!ELEMENT PriorAuthID (#PCDATA)>
+<!ELEMENT DeferTx EMPTY>
+<!ATTLIST DeferTx
+	EffectiveDate CDATA #REQUIRED
+>
+<!--		
+	Currency: Comprised of CurrencyCode and CurrencyExponent
+	CurrencyCode:
+		124-Canadian Dollars,
+		250-French Francs,
+		280-German Marks,
+		372-Irish Punts,
+		392-Yen,
+		528-Dutch Guilders,
+		826-Pounds Sterling, 
+		840-US Dollars, 
+		978-Euro
+	CurrencyExponent: Currency exponent indicating number of minor units
+-->
+<!ELEMENT Currency EMPTY>
+<!ATTLIST Currency
+	CurrencyCode NMTOKEN "840"
+	CurrencyExponent NMTOKEN "2"
+>
+<!--
+	CardPresent or CardNotPresent
+	ExpiryDate: Card expiry date
+	TrackIndicator: Track read from card - 1 or 2
+	SwipeData: Information encoded on the track of the magnetic stripe
+-->
+<!ELEMENT CardPresence (CardP | CardNP)>
+<!ELEMENT CardNP (Exp)>
+<!ELEMENT Exp (#PCDATA)>
+<!ELEMENT CardP (MagSt | Exp)>
+<!ELEMENT MagSt (Swipe)>
+<!ATTLIST MagSt
+	TrackInd (1 | 2) #REQUIRED
+>
+<!ELEMENT Swipe (#PCDATA)>
+<!ELEMENT TxDateTime (#PCDATA)>
+<!-- 
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - CommonOptional
+
+-->
+<!ELEMENT CommonOptional (Comments?, CallCtrClientID?, ShippingRef?, EquifaxDetails?, PCCore?, AMEXdata?, TxRefNum?, TxRefIdx?, CardType?, CardSecVal?, MerchantSIC?, (ECommerceData | MailOrderData | RestData | RetailData)?, POScardID?, CustomerProfileOrder?, RecurringInd?, SoftDescriptor?)>
+<!ATTLIST CommonOptional
+	FraudInd (Y | N) #IMPLIED
+>
+<!-- 
+	Freeform comments that may accompany this auth/cap request
+-->
+<!ELEMENT Comments (#PCDATA)>
+<!-- 
+	Call Center Client ID
+-->
+<!ELEMENT CallCtrClientID (#PCDATA)>
+<!-- 
+	Shipping Tracking Reference Number
+-->
+<!ELEMENT ShippingRef (#PCDATA)>
+<!ELEMENT EquifaxDetails (EquifaxTxNum?, EquifaxRespCd?)>
+<!-- 
+	Equifax Transaction Number
+-->
+<!ELEMENT EquifaxTxNum (#PCDATA)>
+<!-- 
+	Equifax Response Code
+-->
+<!ELEMENT EquifaxRespCd (#PCDATA)>
+<!ELEMENT PCCore (PCOrderNum, PCDestZip, PCDestName?, PCDestAddress1?, PCDestAddress2?, PCDestCity?, PCDestState?)>
+<!ELEMENT PCOrderNum (#PCDATA)>
+<!ELEMENT PCDestZip (#PCDATA)>
+<!-- Added for Amex PCard Support -->
+<!ELEMENT PCDestName (#PCDATA)>
+<!ELEMENT PCDestAddress1 (#PCDATA)>
+<!ELEMENT PCDestAddress2 (#PCDATA)>
+<!ELEMENT PCDestCity (#PCDATA)>
+<!ELEMENT PCDestState (#PCDATA)>
+<!-- End of Amex PCard Additions -->
+<!-- 
+	Transaction reference returned in a response to a previous auth/cap request
+-->
+<!ELEMENT TxRefNum (#PCDATA)>
+<!-- 
+	Transaction reference index returned in a response to a previous auth/cap request - provides as index to a previous auth/capt to which this one is related in the form of an update
+-->
+<!ELEMENT TxRefIdx (#PCDATA)>
+<!ELEMENT CardType EMPTY>
+<!-- 
+	Card brand mnemonics:
+		AE/AX-American Express,
+		BE(Tampa)-Best Petroleum,
+		BN-(Salem"BE")-Beneficial,
+		CB-Carte Blanche,
+		CC-Club Card,
+		CF-Citifinancial,
+		DB-Debit,
+		DC-Diner's Club,
+		DS/DI-Discover,
+		EB-EBT,
+		EC(Tampa)-Ecard,
+		EN-Enmark,
+		GC-GasCard,
+		GE-GECC,
+		GP-Gate Petrolium,
+		IA-International Automated,
+		IG-In good taste,
+		JC-JCB,
+		MC-MasterCard,
+		PH-PH&H,
+		ST-Site oil,
+		SV-Stored value,
+		SW-Switch/Solo,
+		TI-Tinadre,
+		VI-Visa,
+		VY-Voyager,
+		WX-Wright Express
+-->
+<!ATTLIST CardType
+	CardBrand CDATA #REQUIRED
+>
+<!ELEMENT CardSecVal (#PCDATA)>
+<!-- 
+	VISA CVV2 or AmEx CID indicator for the reason that the data is unavailable
+-->
+<!ATTLIST CardSecVal
+	CardSecInd CDATA #IMPLIED
+>
+<!ELEMENT MerchantSIC (#PCDATA)>
+<!ELEMENT ECommerceData (ECOrderNum)>
+<!--
+	ECommerce Security Indicator:
+		07 = non-authenticated security transaction without SET certification
+		08 = non-secured transaction
+		05 = Verified by Visa - Authenticated Transaction
+		06 = Verified by Visa - Attempted Authentication		
+-->
+<!ATTLIST ECommerceData
+	ECSecurityInd CDATA #REQUIRED
+>
+<!--
+	E-Commerce Order Number-->
+<!ELEMENT ECOrderNum (#PCDATA)>
+<!--	Mail Order Data	-->
+<!-- 	Amed PCard - Replaced AVSBase with AVSextended -->
+<!ELEMENT MailOrderData (MailOrderNum, (AVSextended | AVSbase))>
+<!ELEMENT MailOrderNum (#PCDATA)>
+<!--
+	Mail Order Type Indicator:
+		1 = single purchased transaction
+		2 = recurring billing 
+-->
+<!ATTLIST MailOrderNum
+	MailOrderTypeInd (1 | 2) #IMPLIED
+>
+<!ELEMENT AVSbase (AVSaddress1?,  AVSzip, AVSCountryCode?)>
+<!ELEMENT AVSaddress1 (#PCDATA)>
+<!ELEMENT AVSzip (#PCDATA)>
+<!--	
+	Restaurant data		
+-->
+<!ELEMENT RestData (RestRefCode, RestServerNum)>
+<!-- 
+	Restaurant reference code
+-->
+<!ELEMENT RestRefCode (#PCDATA)>
+<!-- 
+	Restaurant staff number/identifier
+-->
+<!ELEMENT RestServerNum (#PCDATA)>
+<!-- 
+	Retail data
+-->
+<!ELEMENT RetailData (RetailInvoiceNum, RetailTranInfo)>
+<!-- 
+	Retail invoice number
+-->
+<!ELEMENT RetailInvoiceNum (#PCDATA)>
+<!-- 
+	Retail transaction information
+-->
+<!ELEMENT RetailTranInfo (#PCDATA)>
+<!ELEMENT POScardID (#PCDATA)>
+<!-- 
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - AuthMandatory
+
+-->
+<!ELEMENT AuthMandatory EMPTY>
+<!--			
+	EncryptFlag: 
+		F-FUSA program, 
+		C-Citibank program
+		
+	FormatInd:
+		Determines additional information format
+		H = home (AVS with telephone format)
+		W = work (AVS with telephone format)
+		R = retail (Retail swipe format)
+		K = ECP (Electronic check format)
+		S = Switch (Switch card format)
+-->
+<!ATTLIST AuthMandatory
+	EncryptFlag (F | C) #IMPLIED
+	FormatInd (H | W | R | K | S | N) #REQUIRED
+>
+<!-- 
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - AuthOptional
+
+-->
+<!ELEMENT AuthOptional (AuthCd?, (AVSextended | DebitCard | (BankCheck, AVSextended?))?, (EBT | PetrolData | StoredValue)?, FleetCardData?, (LodgeRentData | AutoRentData)?, PIN?, PINSecurityCntl?, FraudCardVal?, VerifiedByVisa?, MCSecureCode?)>
+<!ELEMENT AuthCd (#PCDATA)>
+<!ATTLIST AuthCd
+	AuthSrc CDATA #IMPLIED
+>
+<!ELEMENT AVSextended (AVSphoneNum?, AVSphoneType?, AVSname?, AVSaddress1?, AVSaddress2?, AVScity?, AVSstate?, AVSzip?, AVScountryCode?)>
+<!--
+	AVSphoneNum: Format AAAEEENNNNXXXX, where
+		AAA=Area code,
+		EEE=Exchange,
+		NNNN=Number,
+		XXXX=Extension
+	If sending Zip +4, please seperate the 4-digit suffix with a hyphen(-).
+-->
+<!ELEMENT AVSphoneNum (#PCDATA)>
+<!ELEMENT AVSphoneType (#PCDATA)>
+<!ELEMENT AVSname (#PCDATA)>
+<!ELEMENT AVSaddress2 (#PCDATA)>
+<!ELEMENT AVScity (#PCDATA)>
+<!ELEMENT AVSstate (#PCDATA)>
+<!ELEMENT AVScountryCode (#PCDATA)>
+<!-- 
+	DebitCardStartDate: Format MMYY
+-->
+<!ELEMENT DebitCard (DebitCardStartDate, DebitCardIssueNum, CardType)>
+<!ELEMENT DebitCardStartDate (#PCDATA)>
+<!ELEMENT DebitCardIssueNum (#PCDATA)>
+<!--
+	BankCheck RtNumber: Must contain 8 or 9 digits, left justified
+-->
+<!ELEMENT BankCheck (CheckDDA, BCRtNum, BCEmpID?)>
+<!--
+	Type of bank check:
+		0 = personal
+		1 = payroll
+		2 = government
+		9 = undetermined 
+		
+	Bank payment delivery method, ACH/Best possible method/Fax
+		0 = undetermined
+		A = ACH
+		B = Best possible method
+		F = Fax
+		
+	Bank Account Type:
+		C = Consumer Checking (US & Canada) (default)
+		S = Consumer Savings (US only)
+		X = Commercial Checking (US only)
+		O = Other
+-->
+<!ATTLIST BankCheck
+	BankCheckType (0 | 1 | 2 | 9) "9"
+	BankPmtDelv CDATA "B"
+	BankAccountType (C | S | X | O) "C"
+>
+<!ELEMENT CheckDDA (#PCDATA)>
+<!ELEMENT BCRtNum (#PCDATA)>
+<!--
+	BankCheck employee identifier
+-->
+<!ELEMENT BCEmpID (#PCDATA)>
+<!-- 
+	Only need to use EBT if an EBT card was used. Similarly for FleetCard.
+-->
+<!--
+	EBT (Card) which comprises of EBTVoucherNum
+-->
+<!ELEMENT EBT (EBTVoucherNum?, CardType)>
+<!--
+	EBTTypeCode:
+		C = cash benefits
+		F = food stamp
+-->
+<!ATTLIST EBT
+	EBTTypeCode (C | F) #REQUIRED
+>
+<!--
+	EBT Card Voucher Number
+-->
+<!ELEMENT EBTVoucherNum (#PCDATA)>
+<!ELEMENT PetrolData (PETCodeData, PETFuelUnitPrice, PETFuelUnitNum)>
+<!-- 
+	Self Service Indicator:
+		Y = Yes, self service by customer
+		N = No, service performed by staff
+-->
+<!ATTLIST PetrolData
+	PETFuelSelfServiceInd (Y | N) "N"
+>
+<!-- 
+	Petrol Code Data
+-->
+<!ELEMENT PETCodeData (PETCode1, PETCode2?, PETCode3?)>
+<!ELEMENT PETCode1 (PETCodeNum, PETCodeAmt)>
+<!ELEMENT PETCode2 (PETCodeNum, PETCodeAmt)>
+<!ELEMENT PETCode3 (PETCodeNum, PETCodeAmt)>
+<!-- 
+	Petrol Code Number
+-->
+<!ELEMENT PETCodeNum (#PCDATA)>
+<!-- 
+	Petrol Code Amount
+-->
+<!ELEMENT PETCodeAmt (#PCDATA)>
+<!-- 
+	Petrol unit price
+-->
+<!ELEMENT PETFuelUnitPrice (#PCDATA)>
+<!-- 
+	Number of petrol units
+-->
+<!ELEMENT PETFuelUnitNum (#PCDATA)>
+<!--
+	Indicator as to the unit representation:
+		1 = gallons
+		2 = liters
+		3 = pounds
+		4 = kilos
+		5 = imperial kilos
+		' ' = not applicable 
+-->
+<!ATTLIST PETFuelUnitNum
+	PETFuelUnitInd CDATA "1"
+>
+<!-- 
+	Stored value card details
+-->
+<!ELEMENT StoredValue (SVExtTranID, SVEmpNum, SVSeqNum, SVTotalNum, CardType)>
+<!-- 
+	Cash Out Indicator:
+		Y = Yes,
+		N = No
+-->
+<!ATTLIST StoredValue
+	SVCashOutInd (Y | N) "N"
+>
+<!-- 
+	External transaction ID - cash register ID
+-->
+<!ELEMENT SVExtTranID (#PCDATA)>
+<!-- 
+	Employee number
+-->
+<!ELEMENT SVEmpNum (#PCDATA)>
+<!-- 
+	Sequence number
+-->
+<!ELEMENT SVSeqNum (#PCDATA)>
+<!-- 
+	Total number
+-->
+<!ELEMENT SVTotalNum (#PCDATA)>
+<!--	
+	Fleet card data
+-->
+<!ELEMENT FleetCardData (FleetVehicleData, FleetDriverData, FleetRefNum?)>
+<!-- 
+	Fleet data indicator:
+		F = generic fleet data used for private label, petrolium credit cards
+		M = MasterCard fleet data
+-->
+<!ATTLIST FleetCardData
+	FleetDataInd (F | M) "F"
+>
+<!-- 
+	Fleet vehicle data
+-->
+<!ELEMENT FleetVehicleData (FleetVehicleNum, FleetVehicleOdometer)>
+<!-- 
+	Fleet vehicle number
+-->
+<!ELEMENT FleetVehicleNum (#PCDATA)>
+<!-- 
+	Fleet vehicle odometer
+-->
+<!ELEMENT FleetVehicleOdometer (#PCDATA)>
+<!-- 
+	Fleet vehicle driver data
+-->
+<!ELEMENT FleetDriverData (FleetDriverNum, FleetPINBlock)>
+<!-- 
+	Fleet vehicle driver number
+-->
+<!ELEMENT FleetDriverNum (#PCDATA)>
+<!-- 
+	Fleet vehicle driver PIN block
+-->
+<!ELEMENT FleetPINBlock (#PCDATA)>
+<!-- 
+	Fleet reference number
+-->
+<!ELEMENT FleetRefNum (#PCDATA)>
+<!ELEMENT LodgeRentData (RentalDetails)>
+<!--	
+	 Car rental details
+-->
+<!ELEMENT AutoRentData (RentalDetails)>
+<!-- 
+	General rental details, i.e. for both lodgings and car
+-->
+<!ELEMENT RentalDetails (RentalDuration)>
+<!-- 
+	Rental authorization type:
+		I = VISA incremental auth
+		P = VISA preferred auth
+		R = VISA partial reversal
+-->
+<!ATTLIST RentalDetails
+	RentalAuthType (I | P | R) #IMPLIED
+>
+<!-- 
+	Rental duration (in days)
+-->
+<!ELEMENT RentalDuration (#PCDATA)>
+<!--			
+	EncryptData
+-->
+<!ELEMENT PIN (#PCDATA)>
+<!ELEMENT PINSecurityCntl (#PCDATA)>
+<!ELEMENT FraudCardVal (#PCDATA)>
+<!ATTLIST FraudCardVal
+	FraudCardInd CDATA #REQUIRED
+>
+<!-- 
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -CapMandatory
+
+-->
+<!ELEMENT CapMandatory (AuthCode?, EntryDataSrc?)>
+<!ELEMENT AuthCode (#PCDATA)>
+<!-- 
+	Entry data source - indicates how primary account number was originally entered
+-->
+<!ELEMENT EntryDataSrc (#PCDATA)>
+<!-- 
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -CapOptional
+
+-->
+<!ELEMENT CapOptional ((AVSphone | DebitCard | (BankCheck, AVSextended?) | AMEXdata | GECCDetails | PC3Details | BENEDetails)?, MerchantDetails?, AltAuthSrc?, ActualReasonCode?, AuthNetwkID?, (LodgeRentDataL3 | AutoRentDataL3)?)>
+<!-- 
+	The DebitCard data is only optional if this message is an auth and capture and the DebitCard data is provided in the auth part of the message. The same for BankCheck data.
+-->
+<!ELEMENT AVSphone (AVSphoneNum, AVSaddress1)>
+<!--
+	AMEX data 
+-->
+<!ELEMENT AMEXdata (AMEXTranAdvAddn1, AMEXTranAdvAddn2, AMEXTranAdvAddn3, AMEXTranAdvAddn4)>
+<!-- 
+	AMEX transaction advice addendum 1
+-->
+<!ELEMENT AMEXTranAdvAddn1 (#PCDATA)>
+<!-- 
+	AMEX transaction advice addendum 2
+-->
+<!ELEMENT AMEXTranAdvAddn2 (#PCDATA)>
+<!-- 
+	AMEX transaction advice addendum 3
+-->
+<!ELEMENT AMEXTranAdvAddn3 (#PCDATA)>
+<!-- 
+	AMEX transaction advice addendum 4
+-->
+<!ELEMENT AMEXTranAdvAddn4 (#PCDATA)>
+<!-- 
+	General Electric data
+-->
+<!ELEMENT GECCDetails (GECCPromoPlan, GECCPromoEndDate, GECCSaleType, GECCLineItem1, GECCLineItem2, GECCLineItem3, GECCLineItem4, GECCLineItem5, GECCLineItem6, GECCLineItem7, GECCFicheSeq, GECCPlanNum)>
+<!-- 
+	GECC Promotion Plan
+-->
+<!ELEMENT GECCPromoPlan (#PCDATA)>
+<!-- 
+	GECC date
+-->
+<!ELEMENT GECCPromoEndDate (#PCDATA)>
+<!-- 
+	GECC sale type
+-->
+<!ELEMENT GECCSaleType (#PCDATA)>
+<!-- 
+	GECC line item
+-->
+<!ELEMENT GECCLineItem1 (#PCDATA)>
+<!-- 
+	GECC line item
+-->
+<!ELEMENT GECCLineItem2 (#PCDATA)>
+<!-- 
+	GECC line item
+-->
+<!ELEMENT GECCLineItem3 (#PCDATA)>
+<!-- 
+	GECC line item
+-->
+<!ELEMENT GECCLineItem4 (#PCDATA)>
+<!-- 
+	GECC line item
+-->
+<!ELEMENT GECCLineItem5 (#PCDATA)>
+<!-- 
+	GECC line item
+-->
+<!ELEMENT GECCLineItem6 (#PCDATA)>
+<!-- 
+	GECC
+-->
+<!ELEMENT GECCLineItem7 (#PCDATA)>
+<!-- 
+	GECC microfiche sequence number
+-->
+<!ELEMENT GECCFicheSeq (#PCDATA)>
+<!-- 
+	GECC plan number
+-->
+<!ELEMENT GECCPlanNum (#PCDATA)>
+<!-- 
+	Purchase Card level 3 details
+-->
+<!ELEMENT PC3Details (PC3FreightAmt?, PC3DutyAmt?, PC3DestCountryCd?, PC3ShipFromZip?, PC3DiscAmt?, PC3VATtax?, PC3AltTax?, PC3DetailHeader?)>
+<!-- 
+	Purchase Card level 3 freight amount for shipment
+-->
+<!ELEMENT PC3FreightAmt (#PCDATA)>
+<!-- 
+	Purchase Card level 3 duty amount for shipment
+-->
+<!ELEMENT PC3DutyAmt (#PCDATA)>
+<!-- 
+	Purchase Card level 3 destination country code
+-->
+<!ELEMENT PC3DestCountryCd (#PCDATA)>
+<!-- 
+	Purchase Card level 3 ship from zip
+-->
+<!ELEMENT PC3ShipFromZip (#PCDATA)>
+<!-- 
+	Purchase Card level 3 discount amount from order
+-->
+<!ELEMENT PC3DiscAmt (#PCDATA)>
+<!-- 
+	Purchase Card level 3 total amount of VAT or other tax
+-->
+<!ELEMENT PC3VATtax (PC3VATtaxAmt, PC3VATtaxRate)>
+<!ELEMENT PC3VATtaxAmt (#PCDATA)>
+<!-- 
+	Purchase Card level 3 rate of VAT or other tax
+-->
+<!ELEMENT PC3VATtaxRate (#PCDATA)>
+<!-- 
+	Purchase Card level 3 total amount of alternate tax
+-->
+<!ELEMENT PC3AltTax (PC3AltTaxID, PC3AltTaxAmt)>
+<!-- 
+	Purchase Card level 3 Alternate Tax ID
+-->
+<!ELEMENT PC3AltTaxID (#PCDATA)>
+<!-- 
+	Purchase Card level 3 Alternate Tax Amount
+-->
+<!ELEMENT PC3AltTaxAmt (#PCDATA)>
+<!-- 
+	Purchase Card level 3 Detail Header
+-->
+<!ELEMENT PC3DetailHeader (PC3Detail+)>
+<!-- 
+	PC3DetailRecNum confirms the number of PC3Detail elements that are
+	children - only first 98 treated as valid
+-->
+<!ATTLIST PC3DetailHeader
+	PC3DetailRecNum CDATA #REQUIRED
+>
+<!-- 
+	Purchase Card level 3 detail element
+-->
+<!ELEMENT PC3Detail (PC3DtlDesc, PC3DtlProdCd, PC3DtlQty, PC3DtlUOM, PC3DtlTaxAmt, PC3DtlTaxRate, PC3Dtllinetot, PC3DtlDisc, PC3DtlCommCd, PC3DtlUnitCost, PC3DtlGrossNet, PC3DtlTaxType, PC3DtlDiscInd)>
+<!-- 
+	Purchase Card level 3 detail element  - description
+-->
+<!ELEMENT PC3DtlDesc (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element  - product code
+-->
+<!ELEMENT PC3DtlProdCd (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element - number of units
+-->
+<!ELEMENT PC3DtlQty (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element - unit of measurement
+-->
+<!ELEMENT PC3DtlUOM (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element - tax amount
+-->
+<!ELEMENT PC3DtlTaxAmt (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element - tax rate
+-->
+<!ELEMENT PC3DtlTaxRate (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element - line item total
+-->
+<!ELEMENT PC3Dtllinetot (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element - discount amount for line item
+-->
+<!ELEMENT PC3DtlDisc (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element - commodity code for line item
+-->
+<!ELEMENT PC3DtlCommCd (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element - unit cost of item purchased
+-->
+<!ELEMENT PC3DtlUnitCost (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element -gross/net indicator
+-->
+<!ELEMENT PC3DtlGrossNet (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element - type of tax being applied
+-->
+<!ELEMENT PC3DtlTaxType (#PCDATA)>
+<!-- 
+	Purchase Card level 3 detail element - discount indicator
+-->
+<!ELEMENT PC3DtlDiscInd (#PCDATA)>
+<!-- 
+	Beneficial details
+-->
+<!ELEMENT BENEDetails (BENECreditPlan, BENESKUNum, BENEItemDesc, BENEStoreNum, BENEDeptCd)>
+<!-- 
+	Beneficial details - credit plan - defined by beneficial
+-->
+<!ELEMENT BENECreditPlan (#PCDATA)>
+<!-- 
+	Beneficial details - SKU number - defined by merchant
+-->
+<!ELEMENT BENESKUNum (#PCDATA)>
+<!-- 
+	Beneficial details - item description - defined by merchant
+-->
+<!ELEMENT BENEItemDesc (#PCDATA)>
+<!-- 
+	Beneficial details - store number - defined by merchant
+-->
+<!ELEMENT BENEStoreNum (#PCDATA)>
+<!-- 
+	Beneficial details - Department Code- defined by merchant
+-->
+<!ELEMENT BENEDeptCd (#PCDATA)>
+<!ELEMENT MerchantDetails (MerchantSIC, MerchantOptData)>
+<!-- 
+	Reserved for merchant use
+-->
+<!ELEMENT MerchantOptData (#PCDATA)>
+<!-- 
+	For those merchants who authorized thru another source
+-->
+<!ELEMENT AltAuthSrc (VIdata | MCdata)>
+<!-- 
+	VISA-related data - for those merchants who authorized transactions thru another source
+-->
+<!ELEMENT VIdata (AuthCharInd, TxID, OrigAuthAmt, ValidCd, TotalAuthAmt)>
+<!-- 
+	Authorization characteristics indicator - for those merchants who authorized transactions thru another source
+-->
+<!ELEMENT AuthCharInd (#PCDATA)>
+<!-- 
+	Transaction ID- for those merchants who authorized transactions thru another source
+-->
+<!ELEMENT TxID (#PCDATA)>
+<!-- 
+	Original Auth Amount- for those merchants who authorized transactions thru another source
+-->
+<!ELEMENT OrigAuthAmt (#PCDATA)>
+<!-- 
+	Validation Code- for those merchants who authorized transactions thru another source
+-->
+<!ELEMENT ValidCd (#PCDATA)>
+<!-- 
+	Total Authorized Amount- for those merchants who authorized transactions thru another source
+-->
+<!ELEMENT TotalAuthAmt (#PCDATA)>
+<!-- 
+	MasterCard-related data - for those merchants who authorized transactions thru another source
+-->
+<!ELEMENT MCdata (BankNetRefNum, BankNetDate)>
+<!-- 
+	BankNet Reference Number- for those merchants who authorized transactions thru another source
+-->
+<!ELEMENT BankNetRefNum (#PCDATA)>
+<!-- 
+	BankNet Date- for those merchants who authorized transactions thru another source
+-->
+<!ELEMENT BankNetDate (#PCDATA)>
+<!ELEMENT ActualReasonCode (#PCDATA)>
+<!-- 
+	Authorizing nework ID
+-->
+<!ELEMENT AuthNetwkID (#PCDATA)>
+<!--	Lodgings rental data level 3 details
+-->
+<!ELEMENT LodgeRentDataL3 (LodgeRentDataL3FolioNum, LodgeRentDataL3ChrgDesc, LodgeRentDataL3ArrDate, LodgeRentDataL3DepartDate, LodgeRentDataL3SaleCd, LodgeRentDataL3ExtraChrg, LodgeRentDataL3ExtraChrgCd)>
+<!ELEMENT LodgeRentDataL3FolioNum (#PCDATA)>
+<!ELEMENT LodgeRentDataL3ChrgDesc (#PCDATA)>
+<!ELEMENT LodgeRentDataL3ArrDate (#PCDATA)>
+<!ELEMENT LodgeRentDataL3DepartDate (#PCDATA)>
+<!ELEMENT LodgeRentDataL3SaleCd (#PCDATA)>
+<!ELEMENT LodgeRentDataL3ExtraChrg (#PCDATA)>
+<!ELEMENT LodgeRentDataL3ExtraChrgCd (#PCDATA)>
+<!--	Auto  rental data level 3 details
+-->
+<!ELEMENT AutoRentDataL3 (AutoRentDataL3ExtraChrg, AutoRentDataL3ExtraChrgCd, AutoRentDataL3Agreement, AutoRentDataL3OrigCity, AutoRentDataL3OrigState, AutoRentDataL3OrigDate, AutoRentDataL3OrigTime, AutoRentDataL3RtnCity, AutoRentDataL3RtnState, AutoRentDataL3RtnDate, AutoRentDataL3RtnTime, AutoRentDataL3CustName)>
+<!ELEMENT AutoRentDataL3ExtraChrg (#PCDATA)>
+<!ELEMENT AutoRentDataL3ExtraChrgCd (#PCDATA)>
+<!ELEMENT AutoRentDataL3Agreement (#PCDATA)>
+<!ELEMENT AutoRentDataL3OrigCity (#PCDATA)>
+<!ELEMENT AutoRentDataL3OrigState (#PCDATA)>
+<!ELEMENT AutoRentDataL3OrigDate (#PCDATA)>
+<!ELEMENT AutoRentDataL3OrigTime (#PCDATA)>
+<!ELEMENT AutoRentDataL3RtnCity (#PCDATA)>
+<!ELEMENT AutoRentDataL3RtnState (#PCDATA)>
+<!ELEMENT AutoRentDataL3RtnDate (#PCDATA)>
+<!ELEMENT AutoRentDataL3RtnTime (#PCDATA)>
+<!ELEMENT AutoRentDataL3CustName (#PCDATA)>
+<!-- 
+	Verified By Visa 
+-->
+<!ELEMENT VerifiedByVisa (XID, CAVV)>
+<!ELEMENT XID (#PCDATA)>
+<!ELEMENT CAVV (#PCDATA)>
+<!--
+	MasterCard Secure Code
+-->
+<!ELEMENT MCSecureCode (AAV)>
+<!ELEMENT AAV (#PCDATA)>
+<!-- 
+	Profile - 	For Managing Profile Information within a Transaction.  
+				Authorizations and Refunds - Customer Profile Information will be
+				Added ONlY (if not found and never updated).
+
+				AuthCaptures -	Customer Profile Information that is being passed in
+								will be substituted or overide Customer Profile information
+								that is stored server side.
+
+				CustomerProfileFromOrderInd: Used when Adding a Profile
+
+				A = Auto Generate the CustomerRefNum
+				O = Use OrderID as the CustomerRefNum  
+				S = Use CustomerRefNum Element
+				D = Use the description as the CustomerRefNum
+				I = Ignore.  We will Ignore this entry if it's passed in the XML
+
+				CustomerProfileOrderOverrideInd: Stored Value Used When Processing 
+											    Profile Transactions.
+
+				Possible Values:
+
+				NO - No mapping to order data
+				OI - Use customer reference for OrderID
+				OD - Use customer reference for Order Description
+				OA - Use customer reference for both Order Id and Order Description
+				
+-->
+<!ELEMENT CustomerProfileOrder (CustomerRefNum?, CustomerProfileOrderOverrideInd?)>
+<!ATTLIST CustomerProfileOrder
+	CustomerProfileFromOrderInd (O | A | S | D | I | EMPTY) #IMPLIED
+>
+<!-- 
+	Profile -	For Managing Customer Profiles outside a transaciton.  This 
+				interface allows merchant the ability to Create, Read, Update,
+				or delete a customer profile. 
+
+				CustomerProfileAction:
+
+				C = Create a Customer Profile
+				R =	Read (query) a Customer Profile  
+				U =	Update a Customer Profile 
+				D = Delete a Customer Profile
+-->
+<!ELEMENT Profile (CustomerProfile)>
+<!ELEMENT CustomerProfile (CustomerProfileOrder, CustomerBin, CustomerMerchantID, CustomerName?, CustomerAddress1?, CustomerAddress2?, CustomerCity?, CustomerState?, CustomerZIP?, CustomerEmail?, CustomerPhone?, CustomerAccountType?, OrderDefaultDescription?, OrderDefaultAmount?, CCAccountNum?, CCExpireDate?, ECPAccountDDA?, ECPAccountType?, ECPAccountRT?, ECPBankPmtDlv?, SwitchSoloStartDate?, SwitchSoloIssueNum?)>
+<!ATTLIST CustomerProfile
+	CustomerProfileAction (C | R | U | D) "C"
+>
+<!-- Profile Data Elements -->
+<!ELEMENT CustomerRefNum (#PCDATA)>
+<!ELEMENT CustomerProfileOrderOverrideInd (#PCDATA)>
+<!ELEMENT CustomerBin (#PCDATA)>
+<!ELEMENT CustomerMerchantID (#PCDATA)>
+<!ELEMENT CustomerName (#PCDATA)>
+<!ELEMENT CustomerAddress1 (#PCDATA)>
+<!ELEMENT CustomerAddress2 (#PCDATA)>
+<!ELEMENT CustomerCity (#PCDATA)>
+<!ELEMENT CustomerState (#PCDATA)>
+<!ELEMENT CustomerZIP (#PCDATA)>
+<!ELEMENT CustomerEmail (#PCDATA)>
+<!ELEMENT CustomerPhone (#PCDATA)>
+<!ELEMENT CustomerAccountType (#PCDATA)>
+<!ELEMENT OrderDefaultDescription (#PCDATA)>
+<!ELEMENT OrderDefaultAmount (#PCDATA)>
+<!ELEMENT CCAccountNum (#PCDATA)>
+<!ELEMENT CCExpireDate (#PCDATA)>
+<!ELEMENT ECPAccountDDA (#PCDATA)>
+<!ELEMENT ECPAccountType (#PCDATA)>
+<!ELEMENT ECPAccountRT (#PCDATA)>
+<!ELEMENT ECPBankPmtDlv (#PCDATA)>
+<!ELEMENT SwitchSoloStartDate (#PCDATA)>
+<!ELEMENT SwitchSoloIssueNum (#PCDATA)>
+<!-- FlexCacheRequest & FlexCacheBatchRequest - 	For Sending FlexCache based transactions
+
+	 FlexCache Specific Elements: 
+	 
+	 IndustryType (possible values): MT, RC, EC
+	 
+	 FlexAutoAuthInd (optional): Y indicates to create a new auth for remaining balance of a partial MFC
+	 
+	 FlexPartialRedemptionInd (optional): Y indicates to allow partial redemptions
+	 
+	 FlexAction (Required for standalone FlexCache request):
+	 	Possible Values:
+	 		BalanceInquiry
+	 		AddValue
+	 		Redemption
+			Refund
+	 		Auth
+	 		Activate
+	 		DeActivate
+	 		ReActivate
+	 		
+	 Usage: The FlexCache element can be used standalone or as part of a AC request. When using the standalone request,
+	 the FlexCache template will force the use of defined optional elements.
+-->
+<!ELEMENT FlexCacheRequest (FlexCache)>
+<!ELEMENT FlexCacheBatchRequest (FlexCache)>
+<!ELEMENT FlexCache (MerchantID?, BIN?, TerminalID?, AccountNum?, OrderID?, AmountDetails?, CardSecVal?, Comments?, ShippingRef?, IndustryType?, FlexAutoAuthInd?, FlexPartialRedemptionInd?, FlexAction?, StartAccountNum?, ActivationCount?, SequenceNumber?)>
+<!ELEMENT IndustryType (#PCDATA)>
+<!ELEMENT FlexAutoAuthInd (#PCDATA)>
+<!ELEMENT FlexPartialRedemptionInd (#PCDATA)>
+<!ELEMENT FlexAction (#PCDATA)>
+<!ELEMENT StartAccountNum (#PCDATA)>
+<!ELEMENT ActivationCount (#PCDATA)>
+<!ELEMENT SequenceNumber (#PCDATA)>
+<!-- PNS VbV/MC Secure Code/Recurring Indicator Changes -->
+<!ELEMENT RecurringInd (#PCDATA)>
+<!ELEMENT SoftDescriptor (SDMerchantName?, SDMerchantCity?, SDMerchantPhone?, SDMerchantURL?, SDMerchantEmail?, SDProductDescription?)>
+<!ELEMENT SDMerchantName (#PCDATA)>
+<!ELEMENT SDMerchantCity (#PCDATA)>
+<!ELEMENT SDMerchantPhone (#PCDATA)>
+<!ELEMENT SDMerchantURL (#PCDATA)>
+<!ELEMENT SDMerchantEmail (#PCDATA)>
+<!ELEMENT SDProductDescription (#PCDATA)>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -END OF FILE -->
+<!-- -->

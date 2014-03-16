@@ -1,0 +1,112 @@
+BODY
+{
+    BACKGROUND-ATTACHMENT: fixed;
+    BACKGROUND-COLOR: white;
+    COLOR: black;
+    FONT-FAMILY: Arial, 'Century Gothic'
+}
+HR
+{
+    BORDER-BOTTOM: 90ex;
+    BORDER-LEFT: 90ex;
+    BORDER-RIGHT: 90ex;
+    BORDER-TOP: 90ex;
+    COLOR: AE7EFE
+}
+.Selected
+{
+    background-color: #FFFF00;
+}
+.Active
+{
+    background-color: #66CCFF;
+}
+.Inactive
+{
+    background-color: #CCCCCC;
+}
+TD
+{
+}
+TD.label
+{
+  text-align: right;
+}
+TD.SectionHeading
+{
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+}
+.tdHighlight
+{
+    background-color: lightsteelblue;
+}
+.tdNormal
+{
+    background-color: whitesmoke;
+}
+	.selector 	{font-family: webdings; padding: 0pt; width: 1em; text-align: center; cursor: default; color:whitesmoke;}
+	.pagetitle 	{font-family:Tahoma; font-size :20px; font-weight :bold; color :steelblue; width:500;
+	 filter:Shadow(color='lightsteelblue', Direction='135');}
+	.tblhdr 	{font-family:Tahoma; font-size :12px; font-weight :normal; color :azure;  background-color:steelblue;}
+	.tbl 	{font-family:Tahoma; font-size :11px; font-weight :normal; color :black; border-color:steelblue;}
+	.butn 	{font-family:Tahoma; font-size :11px; font-weight :bold; background:steelblue; color :azure; cursor:hand;}
+	.editfld 	{font-family:Tahoma; font-size :11px; font-weight :normal; background:whitesmoke; color :black;}
+	.errline 	{font-family:Tahoma; font-size :11px; font-weight :bold; color :red;}
+	.keyfld {font-family:webdings; font-size :16px; font-weight :normal; color :red;}
+	.mandtory {font-family:wingdings; font-size :16px; font-weight :normal; color :red;}
+.hdrNonSelected
+{
+	cursor:hand;
+	color:white;
+	font-family:Tahoma;
+	font-size :12px;
+	font-weight :bold;
+	background-color:steelblue;
+}
+.hdrSelected
+{
+	cursor:hand;
+	color:yellow;
+	font-family:Tahoma;
+	font-size :12px;
+	font-weight :bold;
+	background-color:steelblue;
+}
+	.FatalError {font-family:Tahoma; font-size :26px; font-weight :bold; color :red;}
+img.Selector
+{
+	cursor: hand;
+	width: 100%;
+	height: 100%;
+}
+.MenuItem
+{
+    BACKGROUND-COLOR: steelblue;
+    COLOR: white;
+    FLOAT: left;
+    FONT-FAMILY: Arial;
+    FONT-SIZE: xx-small;
+    FONT-WEIGHT: lighter;
+    LEFT: 0pt;
+    POSITION: relative;
+    TOP: 0pt
+}
+.ToolBar
+{
+    FLOAT: left;
+    MARGIN: 0px;
+    PADDING-BOTTOM: 0px;
+    PADDING-LEFT: 0px;
+    PADDING-RIGHT: 0px;
+    PADDING-TOP: 0px;
+    TEXT-ALIGN: right
+}
+.MenuHeader
+{
+    BACKGROUND-COLOR: steelblue;
+    COLOR: white;
+    FONT-FAMILY: Arial;
+    FONT-SIZE: xx-small
+}

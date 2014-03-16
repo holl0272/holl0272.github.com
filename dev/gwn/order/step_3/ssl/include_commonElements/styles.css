@@ -1,0 +1,1392 @@
+﻿#body
+{
+	background-repeat: repeat;
+	background-attachment: fixed;
+	font: medium Verdana;
+	text-align: left;
+	width: 98%;
+	font-variant: small-caps;
+	font-style: normal;
+	color: #000000;
+}
+#tdTopNav
+{
+	font-family: Verdana;
+	font-size: small;
+	font-weight: bold;
+}
+#tdLeftNav
+{
+	background: #DEDEDE;
+	font-family: Verdana;
+	font-size: small;
+	font-weight: bold;
+}
+
+.tdLeftNav
+{
+	border-color: #00314a;
+	background: #DEDEDE;
+	font-family: Verdana;
+	font-size: small;
+	font-weight: bold;
+}
+
+#tdRightNav
+{
+	background:#DEDEDE;
+	text-align:right;
+}
+
+#tdBottomNav
+{
+	background: #DEDEDE;
+}
+#tdContent
+{
+	background-image: none;
+	background-color: #DEDEDE;
+	font-family: verdana;
+	font-variant: small-caps;
+}
+#tblMainContent
+{
+	background-image: inherit;
+	width: 951px;
+	font-family: verdana;
+	font-variant: small-caps;
+}
+
+#divShippingHandlingCalculatorWrapper
+{
+	border-right: black 1pt solid;
+	border-top: black 1pt solid;
+	border-left: black 1pt solid;
+	border-bottom: black 1pt solid;
+}
+
+#divOrderSummaryWrapper
+{
+	border-right: black 1pt solid;
+	border-top: black 1pt solid;
+	border-left: black 1pt solid;
+	border-bottom: black 1pt solid;
+	width: 100%;
+}
+
+#divCheckoutWrapper
+{
+	border-right: black 1pt solid;
+	border-top: black 0pt solid;
+	border-left: black 1pt solid;
+	border-bottom: black 1pt solid;
+	text-align: center;
+	width: 100%;
+}
+
+#divMainCheckout
+{
+	width: 280px;
+	text-align: center;
+}
+
+table.subnav
+{
+	border-color:white;
+	border-width:6px;
+	border-style:solid;
+	background-image: url(TEXTURE5.jpg);
+}
+
+td.subnav
+{
+	border-color:white;
+	border-width:1px;
+	border-style:solid;
+	text-align:center;
+	background-image: url(TEXTURE5.jpg);
+}
+
+a
+{
+	color: blue;
+}
+a:visited
+{
+	color: blue;
+}
+a:hover
+{
+	color: black;
+}
+
+p {
+	color: #000000;
+}
+
+td {
+	color: #000000;
+}
+
+table {
+	color: #000000;
+}
+
+h1 {
+  font: 13.5pt;
+  color: #000000;
+  font-weight: bold;
+}
+
+.AltFont1 {
+  color: #000000;
+}
+
+.AltFont2 {
+	color: #00314a;
+}
+
+.ContentBar_Small {
+  font: 7.5pt;
+  color: #FFFFFF;
+}
+
+.Content_Small {
+	font: 7.5pt;
+	color: #00314a;
+}
+
+.Content_Large {
+	font: 13.5pt;
+	color: #00314A;
+}
+
+.ECheck {
+	color: #00314A;
+}
+
+.ECheck2 {
+	font: 7.5pt;
+	color: #00314A;
+}
+
+.Error {
+  font: 12pt;
+  color: #FF0000;
+}
+
+.Footer {
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.Middle_Top_Banner_Small {
+	color: #F7CE42;
+	font-family: Verdana;
+	font-variant: small-caps;
+}
+.TopBanner_Large {
+	font: 12pt;
+	color: #666666;
+	font-family: verdana;
+	font-variant: small-caps;
+}
+table.Section
+{
+	border-collapse: collapse;
+	border-color: Black;
+	font-family: verdana;
+	font-variant: small-caps;
+}
+
+th.MTP 
+{
+	border-collapse:collapse;
+	border-bottom: solid 1pt black;
+	font-size:12pt;
+	border-color:black
+}
+
+td.MTP 
+{
+	border-collapse:collapse;
+	padding: 2pt 4pt 2pt 4pt;
+	border-color:black;
+	font-size: 10pt;
+}
+
+table.MTP 
+{
+	border-collapse:collapse;
+	border-color:black;
+}
+
+.tdAltFont1 {
+	color: #00314A;
+	background-color: #DEDEDE;
+}
+
+.tdAltFont2 {
+	color: #00314A;
+}
+
+.tdAltBG1 {
+	background-color: #DEDEDE;
+}
+
+.tdAltBG2 {
+  background-color: #DEDEDE;
+}
+
+.tdbackgrnd {
+	background-image: url('../images/background%202.JPG');
+	background-repeat: repeat-y;
+	width: 801px;
+}
+
+.tdBottomTopBanner {
+	color: #00314A;
+	background-color: #DEDEDE;
+}
+
+.tdBottomTopBanner2 {
+  color: #00314A;
+  background-color: #DEDEDE;
+}
+
+.tdContent {
+	background-image: url('../images/background%202.JPG');
+	background-repeat: repeat-y;
+}
+.tdContent2 {
+	background-color: #FFFFFF;
+}
+.tdContent3 {
+	background-image: url('../images/background 2.JPG');
+	background-repeat: repeat-y;
+}
+
+.tdContentBar {
+	color: #FFFFFF;
+	background-color: #F7CE42;
+	font-weight: bold;
+}
+
+.tdFooter {
+	color: #FFFFFF;
+	background-color: #F7CE42;
+	font-weight: bold;
+}
+
+.tdMiddleTopBanner {
+	font: 13.5pt;
+	color: #F7ce42;
+	background-color: #00314A;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+.tdTopBanner
+{
+	font-weight: bold;
+	color: #00314a;
+	background-color: #DEDEDE;
+	background-repeat: no-repeat;
+	font-size: x-small;
+}
+
+.tdTopBanner2 {
+  background-color: #f7ce42;
+}
+
+a:link.NoLine
+{
+	COLOR: #00314A;
+	TEXT-DECORATION: none;
+}
+a:visited.NoLine
+{
+    COLOR: 00314A;
+    TEXT-DECORATION: none
+}
+a:hover.NoLine
+{
+    COLOR: navy;
+    TEXT-DECORATION: underline
+}
+a:active.NoLine
+{
+    COLOR: red;
+    TEXT-DECORATION: none
+}
+
+.clsCurrentLocation
+{
+	font-size: 200%;
+	font-family: verdana;
+	font-style: italic;
+	color: black;
+}
+
+a.clsCurrentLocation
+{
+    text-decoration: none;
+}
+a:visited.clsCurrentLocation
+{
+   color: #6699CC;
+}
+a:hover.clsCurrentLocation
+{
+	color: black;
+    text-decoration: underline
+}
+
+a.footer
+{
+	font-size: 100%;
+	font-family: verdana;
+	font-weight: bold;
+	color: black;
+    text-decoration: none
+}
+
+a:hover.footer
+{
+    text-decoration: underline
+}
+
+.clsMenuNavigation
+{
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: black;
+}
+
+a.clsMenuNavigation
+{
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+}
+a:visited.clsMenuNavigation
+{
+	color: #00314a;
+}
+a:hover.clsMenuNavigation
+{
+	color: #6699cc;
+    text-decoration: underline
+}
+
+.clsMenuNavigationCurrent
+{
+	background-color: #dedede;
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: black;
+}
+
+.clsMenuHeader
+{
+	background-color: #6699CC;
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: white;
+}
+
+.clsMenuBody
+{
+	background-color: #dedede;
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color:black;
+	text-align: left;
+}
+
+.clsCategoryTrail
+{
+	text-align: left;
+}
+
+.categoryTrailCurrentCategoryName
+{
+	text-align: left;
+}
+
+.clsMenuBodyLeft
+{
+	border-left:1px solid #6699CC;
+	background-color: #dedede;
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color:#ffffff;
+	
+}
+
+.clsMenuBodyRight
+{
+	border-right:3px solid #6699CC;
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color:#000000;
+	
+}
+
+.clsMenuContent
+{
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: #000000;
+}
+
+.divPublisherMenu
+{
+	text-align:center;
+	width:200px;
+}
+
+.divPublisherHeading
+{
+	text-align:center;
+	margin-top: 10px;
+	margin-bottom: 12px;
+	color:gray;
+	font-size:18pt;
+    text-decoration: underline
+}
+
+h1.mfgName
+{
+	font-size: 16pt;
+	display:inline;
+	color:black
+}
+
+a.clsPublisherList
+{
+    text-decoration: none
+}
+
+ul.clsPublisherList
+{
+	text-align: left;
+	list-style-type:disc
+}
+
+a.clsMenuNavigationMfg
+{
+	color:#f7ce42;
+	display:block;
+}
+
+TD.clsMenuNavigationCat
+{
+	text-align: left;
+}
+
+TD.contentCenter
+{
+	text-align: center;
+}
+
+A.clsMenuNavigationCat
+{
+	font-size: 75%;
+	font-family: Verdana;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+}
+a:visited.clsMenuNavigationCat
+{
+	color: #00314a;
+}
+a:hover.clsMenuNavigationCat
+{
+	color: #6699CC;
+    text-decoration: underline
+}
+
+A.clsMenuNavigationCat_Selected
+{
+	font-size: 75%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: #000000;
+    text-decoration: none
+}
+a:visited.clsMenuNavigationCat_Selected
+{
+	color: #00314a;
+}
+a:hover.clsMenuNavigationCat_Selected
+{
+	color: #6699CC;
+    text-decoration: underline
+}
+
+A.clsMenuNavigationSubCat
+{
+	font-size: 75%;
+	font-family: verdana, arial, helvetica;
+	font-weight: normal;
+	font-style:italic;
+	color:black;
+    text-decoration: none
+}
+a:visited.clsMenuNavigationSubCat
+{
+	color:black;
+}
+a:hover.clsMenuNavigationSubCat
+{
+	color: #6699CC;
+    text-decoration: underline
+}
+A.clsMenuNavigationSubCat_Selected
+{
+	font-size: 75%;
+	font-family: verdana, arial, helvetica;
+	font-weight: normal;
+	font-style:italic;
+	color: #6699CC;
+    text-decoration: none
+}
+a:visited.clsMenuNavigationSubCat_Selected
+{
+	color: #6699CC;
+}
+a:hover.clsMenuNavigationSubCat_Selected
+{
+	color: #6699CC;
+    text-decoration: underline
+}
+
+A.clsMenuNavigationProduct
+{
+	font-size: 75%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	font-style: italic;
+	color: #6699CC;
+    text-decoration: none
+}
+a:visited.clsMenuNavigationProduct
+{
+	color: #6699CC;
+}
+a:hover.clsMenuNavigationProduct
+{
+	color: black;
+    text-decoration: underline
+}
+
+
+a:link.clsBottomMenuNavigation
+{
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: black;
+    text-decoration: none
+}
+
+a:visited.clsBottomMenuNavigation
+{
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: black;
+    text-decoration: none
+}
+
+a:hover.clsBottomMenuNavigation
+{
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: black;
+    text-decoration: underline
+}
+
+a:active.clsBottomMenuNavigation
+{
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: black;
+    text-decoration: none
+}
+
+A.copyright
+{
+    FONT-SIZE: 10pt;
+    COLOR: gray;
+    FONT-FAMILY: Arial, Arial, Helvetica;
+    text-decoration: none
+}
+a:visited.copyright
+{
+   COLOR: gray;
+}
+a:hover.copyright
+{
+	color: #6699CC;
+    text-decoration: underline
+}
+
+.inputImage
+{
+	border-width: 0;
+}
+
+.clsSearchBar
+{
+	background-repeat: repeat-y;
+	background-color: gray;
+}
+
+.clsSearchBarPagingText
+{
+	color: #f7ce42;
+	font-weight: bold;
+}
+
+.formDesign
+{
+	font-size: 12px;
+}
+
+h1.productName
+{
+  font: 14pt;
+  font-weight:bold;
+  margin-bottom: 6px;
+}
+
+h1.pageTitle
+{
+  font: 14pt;
+  font-weight:bold;
+  margin-bottom: 6px;
+}
+
+h2.productName
+{
+  font: 14pt;
+  font-weight:bold;
+  margin-bottom: 6px;
+}
+
+SELECT
+{
+	font-size: 12px;
+}
+
+.copyright
+{
+    FONT-SIZE: 10pt;
+    COLOR: gray;
+    FONT-FAMILY: Arial, Arial, Helvetica
+}
+
+.highlightSearch
+{
+	background-color: #f7ce42;
+	font-weight: bold;
+}
+
+.NOINDENT
+{
+    MARGIN-LEFT: 5pt;
+    MARGIN-RIGHT: 5pt
+}
+
+LI.BestSellerListItem
+{
+	list-style-image: url('../images/arrow_left.gif');
+}
+
+UL.clsMenu
+{
+	font-size: 12pt;
+	font-family: verdana, arial, helvetica;
+	font-weight: normal;
+    text-decoration: none;
+    PADDING-RIGHT: 0pt;
+    MARGIN-LEFT: 5pt;
+    MARGIN-RIGHT: 5pt;
+    MARGIN-BOTTOM: 0;
+    LIST-STYLE-TYPE: none
+}
+
+LI.clsMenu
+{
+	font-size: 12pt;
+	font-weight: normal;
+	list-style-image: url('../images/bullet.gif');
+	background-position: left;
+}
+
+UL UL.clsMenu
+{
+    PADDING-RIGHT: 0pt;
+    MARGIN-LEFT: 12pt;
+    MARGIN-RIGHT: 5pt;
+    LIST-STYLE-TYPE: disc
+}
+UL UL UL.clsMenu
+{
+    PADDING-RIGHT: 0pt;
+    MARGIN-LEFT: 12pt;
+    MARGIN-RIGHT: 5pt;
+    LIST-STYLE-TYPE: square
+}
+UL UL UL UL.clsMenu
+{
+    PADDING-RIGHT: 0pt;
+    MARGIN-LEFT: 12pt;
+    MARGIN-RIGHT: 5pt;
+    LIST-STYLE-TYPE: circle
+}
+
+UL.MainBody
+{
+	font-size: 12pt;
+	font-family: verdana, arial, helvetica;
+	font-weight: normal;
+    text-decoration: none;
+    PADDING-RIGHT: 0pt;
+    MARGIN-LEFT: 5pt;
+    MARGIN-RIGHT: 5pt;
+    LIST-STYLE-TYPE: disc
+}
+
+.attExtDiv
+{
+	background-color:white;
+	border-left-width:1px;
+	border-right-width:1px;
+	border-top-style:dotted;
+	border-top-width:1px;
+	border-left-style:none;
+	border-right-style:none;
+	border-top-style:none;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+}
+
+.attributeCategoryName
+{
+
+}
+
+.attExtDivDefault
+{
+	background-color:gray;
+	border-left-width:1px;
+	border-right-width:1px;
+	border-top-style:dotted;
+	border-top-width:1px;
+	border-left-style:none;
+	border-right-style:none;
+	border-top-style:none;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+}
+
+a:link.attExtAttributeAnchor
+{
+}
+a:visited.attExtAttributeAnchor
+{
+}
+a:hover.attExtAttributeAnchor
+{
+	COLOR: red;
+}
+a:active.attExtAttributeAnchor
+{
+}
+
+a:link.attExtAttributeDetailAnchor
+{
+}
+a:visited.attExtAttributeDetailAnchor
+{
+}
+a:hover.attExtAttributeDetailAnchor
+{
+    COLOR: red;
+}
+a:active.attExtAttributeDetailAnchor
+{
+}
+
+.productID
+{
+	font-size: small;
+}
+
+.productName
+{
+	font-weight: bold;
+}
+
+.sellPrice
+{
+	font-size: small;
+	font-weight: bold;
+}
+
+table.attributeDisplay
+{
+	border-collapse:collapse;
+	border-style: dashed;
+	border-color: Gray;
+	border-width: 1px;
+	margin-top: 12px;
+	width: 200px;
+}
+
+table.quantityDisplay
+{
+	border-collapse: collapse;
+	border-style: solid;
+	border-color: #00314a;
+	border-width: 1px;
+	margin-top: 12px;
+	width: 200px;
+}
+
+th.quantityDisplay
+{
+	text-align: center;
+	color: White;
+	background-color: #00314a;
+}
+
+td.quantityDisplay
+{
+	text-align: center;
+	color: White;
+	background-color: #00314a;
+}
+
+.attributeDisplay
+{
+}
+
+.attributeDisplaySelected
+{
+	background-color: #f7ce42;
+}
+
+img.DetailImage
+{
+	background: url(../images/NoImage.gif) no-repeat;
+}
+
+/**************************************************************************************************/
+/* Price styles */
+/**************************************************************************************************/
+	
+.itemOnSalePrice
+{
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	text-decoration: line-through;
+	font-style: italic;
+}
+
+.SalesPrice
+{
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: #FF0000;
+}
+
+.YouSave
+{
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-style: italic;
+	color: #FF0000;
+}
+
+/**************************************************************************************************/
+/*  End Price styles */
+/**************************************************************************************************/
+
+/**************************************************************************************************/
+/* Right Navigation Styles                                                                        */
+/**************************************************************************************************/
+
+.rtdContent {
+	background-color: #DEDEDE;
+}
+
+.rtdTopBanner {
+	color: #F7CE42;
+	background-color: #00314A;
+	font-weight: bold;
+	font-family: Verdana;
+}
+
+.rclsMenuBody
+{
+	background-color: #DEDEDE;
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: #000000;
+	text-align: left;
+}
+
+.rclsRecentlyViewedMenuBody
+{
+	background-color: #DEDEDE;
+	font-size: 100%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: #00314a;
+	text-align: left;
+}
+
+TD.rclsMenuNavigationCat
+{
+	text-align: left;
+}
+
+A.rclsMenuNavigationCat
+{
+	font-size: 75%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color:black;
+    text-decoration: none
+}
+a:visited.rclsMenuNavigationCat
+{
+	color:black;
+}
+a:hover.rclsMenuNavigationCat
+{
+	color: #6699CC;
+    text-decoration: underline
+}
+
+/********************************************/
+/* Hyperlinks for right nav - Recently viewed items */
+TD.rRecentlyViewedItems
+{
+	text-align: left;
+}
+
+A.rRecentlyViewedItems
+{
+	font-size: 75%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color:black;
+    text-decoration: none
+}
+a:visited.rRecentlyViewedItems
+{
+	color:black;
+}
+a:hover.rRecentlyViewedItems
+{
+	color: #6699CC;
+    text-decoration: underline
+}
+
+/**************************************************************************************************/
+/* End Right Navigation Styles                                                                    */
+/**************************************************************************************************/
+
+/**************************************************************************************************/
+/* Left Navigation Styles                                                                         */
+/**************************************************************************************************/
+
+.ltdbackgrnd {
+	background-color: #00314A; /* #f7ce42 */
+}
+
+/* used for the backgroung in td for the left navigation*/
+.ltdContent {
+	background-color: #DEDEDE;
+}  
+
+/* left heading style */  
+.ltdTopBanner {
+	color: #F7CE42;
+	background-color: #00314A;
+	font-weight: bold;
+}
+
+/*****************************************************************/
+/* left menu body styles (categories, links)*/
+.lclsMenuBody
+{
+	font-size: small;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	text-align: left;
+	font-variant: small-caps;
+}
+
+TD.lclsMenuNavigationCat
+{
+	text-align: left;
+	vertical-align: middle;
+	font-variant: small-caps;
+	font-size: x-small;
+}
+
+A.lclsMenuNavigationCat
+{
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	color: black;
+	font-variant: small-caps;
+	font-size:x-small;
+}
+a:visited.lrclsMenuNavigationCat
+{
+	color:gray;
+}
+a:hover.lclsMenuNavigationCat
+{
+	color: #6699CC;
+    text-decoration: underline
+}
+
+/*****************************************************************/
+
+/*****************************************************************/
+/* left menu subcategory styles*/
+
+A.lclsMenuNavigationSubCat
+{
+	font-size: 75%;
+	font-family: verdana, arial, helvetica;
+	font-weight: normal;
+	font-style:italic;
+	color:black;
+    text-decoration: none;
+}
+a:visited.lclsMenuNavigationSubCat
+{
+	color:black;
+}
+a:hover.lclsMenuNavigationSubCat
+{
+	color: #6699CC;
+    text-decoration: underline
+}
+/*****************************************************************/
+
+/*****************************************************************/
+/* left menu subcategory styles*/
+A.lclsMenuNavigationSubSubCat
+{
+	font-size: 70%;
+	font-family: verdana;
+	font-weight: normal;
+	font-style: italic;
+	color: black;
+	text-decoration: none;
+}
+a:visited.lclsMenuNavigationSubSubCat
+{
+	color:black;
+}
+a:hover.lclsMenuNavigationSubSubCat
+{
+	color: #6699cc;
+    text-decoration: underline
+}
+/*****************************************************************/
+
+/**************************************************************************************************/
+/* End Left Navigation Styles                                                                     */
+/**************************************************************************************************/
+
+/**************************************************************************************************/
+/* Begin Cart Summary Section	                                                                  */
+/**************************************************************************************************/
+#miniCartOrderSummary
+{
+	border-collapse: collapse;
+	border-color: #00314A;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.cartSummaryBanner {
+	color: #F7ce42;
+	background-color: #00314a;
+	font-weight: bold;
+}
+
+.cartSummaryLabel {
+	background-color: #dedede;
+	font-size: 85%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	text-align: left;
+}
+
+.cartSummaryContent {
+	background-color: white;
+	font-size: 85%;
+	font-family: verdana, arial, helvetica;
+	font-weight: bold;
+	text-align: right;
+}
+
+/**************************************************************************************************/
+/* End Cart Summary Section                                                                     */
+/**************************************************************************************************/
+
+/**************************************************************************************************/
+/* Search Grid Styles                                                                        */
+/**************************************************************************************************/
+
+.searchGridTable {
+	border-collapse:collapse;
+	padding:8px;
+	width: 98%;
+	border: 3px solid black;
+}
+
+.searchGridHeader
+{
+	background-color:#dedede;
+
+}
+
+.searchGridCell {
+	text-align:center;
+	vertical-align:top;
+}
+
+.searchGridProductID {
+
+}
+
+.searchGridProductDescription {
+	text-align: left;
+}
+
+.searchGridMoreDetails {
+	font-weight: bold;
+}
+
+/**************************************************************************************************/
+/*  End Search Grid styles */
+/**************************************************************************************************/
+
+/*Style Applied to the navagation Sidebar  */
+
+#navButts {
+	color : #00314a;
+	font-size:70%;
+	width:150px;
+	margin-left:12px;
+	margin-right:6px;
+}
+
+#navButts a:visited {
+	background-color : #00314a;
+	border : 1px solid #999999;
+	color : #dedede;
+	display : block;
+	line-height:120%;
+	padding-bottom : 2px;
+	padding-left : 12px;
+	padding-top : 2px;
+	text-decoration : none;
+	margin-bottom:4px;
+	font-weight:bold;
+}
+
+#navButts a:link {
+	background-color : #00314a;
+	border : 1px solid #999999;
+	color : #dedede;
+	display : block;
+	line-height:120%;
+	padding-bottom : 2px;
+	padding-left : 12px;
+	padding-top : 2px;
+	text-decoration : none;
+	margin-bottom:4px;
+	font-weight:bold;
+}
+
+#navButts a:active {
+	background-color : #dedede;
+	border : 1px solid #C0C0C0;
+	color : black;
+	text-decoration : none
+}
+
+#navButts a:hover {
+	background-color : #dedede;
+	border : 1px solid #C0C0C0;
+	color : black;
+	text-decoration : none
+}
+
+a:visited.aNavButtsIndent1 {
+	background-color : #f7ce42;
+	border : 1px solid #999999;
+	color : gray;
+	display : inline;
+	line-height:120%;
+	padding-bottom : 2px;
+	padding-left : 12px;
+	padding-top : 2px;
+	text-decoration : none;
+	margin-bottom:4px;
+	font-weight:bold;
+}
+
+a:link.aNavButtsIndent1 {
+	background-color : #f7ce42;
+	border : 1px solid #999999;
+	color : gray;
+	display : inline;
+	line-height:120%;
+	padding-bottom : 2px;
+	padding-left : 12px;
+	padding-top : 2px;
+	text-decoration : none;
+	margin-bottom:4px;
+	font-weight:bold;
+}
+
+a:active.aNavButtsIndent1 {
+	background-color : #f7ce42;
+	border : 1px solid #C0C0C0;
+	color : #f7ce42;
+	display : inline;
+	text-decoration : none
+}
+
+a:hover.aNavButtsIndent1 {
+	background-color : #f7ce42;
+	border : 1px solid #C0C0C0;
+	color : #f7ce42;
+	display : inline;
+	text-decoration : none
+}
+
+#adminMenu
+{
+	border: solid 1pt black;
+	padding: 5pt 5pt 5pt 5pt;
+}
+
+div.adminCMS
+{
+	border: dashed 1pt black;
+	padding: 1pt 1pt 1pt 1pt;
+}
+
+a.adminCMS
+{
+	display : block;
+	background-color : #f7ce42;
+	font-size:small;
+	background-image: url(../ssl/ssAdmin/images/PENCIL01.ICO);
+	background-position: left;
+	background-repeat: no-repeat
+}
+
+img.adminEdit
+{
+	width: 32px;
+	height: 32px;
+	border: solid 0pt black;
+	background-image: url(../ssl/ssAdmin/images/PENCIL01.ICO);
+}
+
+table.myAccount
+{
+	width: 95%;
+	border-collapse:collapse;
+	border-color:Black;
+	margin-top: 12pt;
+}
+
+tr.myAccount
+{
+	background-color : #C0C0C0;
+}
+
+.style1 {
+	text-align: center;
+	vertical-align: middle;
+	color: #000000;
+	text-transform: none;
+	font-variant: small-caps;
+	font-size: x-small;
+}
+.style2 {
+	text-align: left;
+	font-family: "AvantGarde Bk BT";
+	vertical-align: middle;
+	font-weight: normal;
+	color: #00314A;
+	font-size: large;
+}
+
+td.jerseyDisplay 
+{
+	font-size:10pt;
+	border-bottom: dotted 1pt black;
+}
+
+td.jerseyDisplay2
+{
+	font-size:10pt;
+}
+
+div.jerseyDisplay
+{
+	border: solid 1pt black;
+	width:600px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+table.jerseyDisplay
+{
+	border-collapse:collapse;
+	border: solid 1pt black;
+	width:600px;
+}
+
+div.jerseyOptions
+{
+	text-align:center;
+}
+
+ul.MainDescription
+{	
+    PADDING-RIGHT: 0pt;
+    MARGIN-LEFT: 12pt;
+}

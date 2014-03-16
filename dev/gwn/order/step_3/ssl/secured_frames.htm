@@ -1,0 +1,20 @@
+<html>
+
+<head>
+<title>Secured Frames</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<frameset framespacing="0" border="false" frameborder="0" rows="182,*">
+  <frame name="banner" scrolling="no" noresize target="contents"
+  src="https://www.gamewearnow.com/ssl/banner.htm" marginwidth="0" marginheight="0">
+  <frame name="main" scrolling="auto" marginwidth="0" marginheight="0" noresize
+  src="https://www.gamewearnow.com/ssl/process_order.asp?ORDER_ID=<% =Server.URLEncode(Request("ORDER_ID")) %>&amp;DSN_NAME=<% =Server.URLencode(Request("DSN_NAME")) %>&amp;URL_PATH=<% =Server.URLencode(Request("URL_PATH")) %>&amp;Shipping_PRM=<% =Server.URLencode(Request("Shipping_PRM")) %>&amp;Shipping_STD=<% =Server.URLencode(Request("Shipping_STD")) %>&amp;Country=<% =Server.URLencode(Request("Country")) %>&amp;State=<% =Server.URLencode(Request("State")) %>">
+  <noframes>
+  <body>
+  <p>This page uses frames, but your browser doesn't support them.</p>
+  </body>
+  </noframes>
+</frameset>
+</html>

@@ -23,6 +23,7 @@ var name = urlParams["name"];
 var sport = urlParams["sport"];
 var img = urlParams["img"];
 var price = urlParams["price"];
+var product_id = urlParams["id"];
 var color = urlParams["color"];
 var qty = urlParams["qty"];
 var rev_prod = urlParams["rev_product"];
@@ -91,6 +92,9 @@ $(document).ready(function(){
 
   //NAME
   $('#urlParams_name').html(name);
+
+  //PRODUCT ID
+  $('#product_id').val(product_id);
 
   //SPORT BOX
   $('.sport_box').hide();
@@ -1340,6 +1344,7 @@ function captureValues() {
   $('#step_2_name').val(name);
   $('#step_2_qty').val(qty);
   $('#step_2_price').val('$'+price);
+  $('#step_2_product_id').val(product_id);
   $('#step_2_product_sub_total').val('$'+(price*qty).toFixed(2));
     var upperCaseColor = color;
       upperCaseColor = upperCaseColor.replace(/_/g, " ").replace('solid', '');
@@ -1447,11 +1452,8 @@ function captureValues() {
 
           $("#json_table").append(detailsTable);
 
-  $('#step_2_form').submit(function(){
-    return false;
-  });
-
   $("#form_results").show();
+  $('#step_2_form').submit();
 };
 
 

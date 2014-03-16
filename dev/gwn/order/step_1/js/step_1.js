@@ -22,6 +22,7 @@ var name = urlParams["name"];
 var sport = urlParams["sport"];
 var img = urlParams["img"];
 var price = urlParams["price"];
+var product_id = urlParams["id"];
 
 $(document).ready(function(){
 $('#wrapper').show();
@@ -1241,6 +1242,7 @@ function captureValues() {
   $('#step_1_name').val(name);
   $('#step_1_img').val(img);
   $('#step_1_price').val($('#price_per_jersey').text());
+  $('#step_1_product_id').val(product_id);
   //SELECTION VALUES
     //quantity populates on doneTyping()
     //rev init no regardless of product but toggles on #reversible_only change

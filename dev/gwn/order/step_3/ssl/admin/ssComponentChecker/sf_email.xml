@@ -1,0 +1,64 @@
+<comcheck>
+	<com>
+		<Description>Simple Mail</Description>
+		<CreateUsing>SimpleMail.smtp.1</CreateUsing>
+		<Version></Version>
+		<URL>http://www.storefront.net</URL>
+	</com>
+	<com>
+		<Description>Simple Mail 2.0</Description>
+		<CreateUsing>SimpleMail.smtp</CreateUsing>
+		<Version></Version>
+		<URL>http://www.storefront.net/detail.asp?product_ID=13630</URL>
+	</com>				
+	<com>
+		<Description>ASP Mail</Description>
+		<CreateUsing>SMTPsvg.Mailer</CreateUsing>
+		<Version></Version>
+		<URL>http://www.serverobjects.com</URL>
+	</com>				
+	<com>
+		<Description>CDONTS</Description>
+		<CreateUsing>CDONTS.NewMail</CreateUsing>
+		<Version>yes</Version>
+		<URL></URL>
+	</com>
+	<com>
+		<Description>CDOSYS Message</Description>
+		<CreateUsing>CDO.Message</CreateUsing>
+		<Version></Version>
+		<URL></URL>
+	</com>
+	<com>
+		<Description>CDOSYS Configuration</Description>
+		<CreateUsing>CDO.Configuration</CreateUsing>
+		<Version></Version>
+		<URL></URL>
+	</com>
+		<com>
+		<Description>AB Mail</Description>
+		<CreateUsing>ABMailer.Mailman</CreateUsing>
+		<Version></Version>
+		<URL>http://www.absoftwarex.com/abmailer</URL>
+	</com>
+	<com>
+		<Description>Bamboo Mail</Description>
+		<CreateUsing>Bamboo.SMTP</CreateUsing>
+		<Version></Version>
+		<URL></URL>
+	</com>			
+	<com>
+		<Description>J Mail</Description>
+		<CreateUsing>JMail.SMTPMail</CreateUsing>
+		<Version></Version>
+		<URL>http://www.dimac.net</URL>
+	</com>			
+	<com>
+		<Description>OCX Mail</Description>
+		<CreateUsing>ASPMail.ASPMailCtrl.1</CreateUsing>
+		<Version></Version>
+		<URL>http://www.flicks.com</URL>
+	</com>
+
+</comcheck>
+													

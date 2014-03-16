@@ -1,0 +1,189 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<META NAME="GENERATOR" Content="Microsoft FrontPage 5.0">
+</HEAD>
+<BODY>
+
+<H3>User's Guide for <A 
+href="http://www.sandshot.net/">Sandshot Software's</A> Postage Rate Component</H3>
+<P><a href="#Usage">Configuration</a><BR><A href="#Custom">Customization</A></P>
+<P>  The Postage Rate Component  obtains real time rate information 
+from FedEx, Freight Quote, United Parcel Service, and the United States Postal Service. 
+It is highly configurable to estimate your customers' order shipping costs. Each 
+individual shipping method can be configured to adjust the returned rate based 
+on a variety of features.</P>
+<P>  &nbsp;As 
+an additional feature, insurance rates can be obtained based upon the declared 
+value. However, the insurance rates from UPS and U.S.P.S. themselves are NOT real 
+time. The insurance rates presented are based upon Domestic Insurance rates in 
+effect as of January 28, 2001. The insurance rate from FedEx is calculated 
+real time. </P>
+<P>The file CarrierAdmin.asp allows you to edit your shipping methods. Please 
+note that for the real-time rates to work, the shipCode field must NOT be 
+altered. You may change the name however.</P>
+<H3><a name="Usage">Configuration</a></H3>
+<p>Each shipping method must be identified to a carrier. Each shipping method 
+contains a variety of features which permit you to customize each method to meet 
+your needs.</p>
+<h4>Shipping Methods</h4>
+<ul>
+  <li>checkbox - this identifies which methods are to be 
+  updated or deleted 
+  <li><b>Shipping Methods</b>
+  <ul>
+  <li><i>Name</i> - this is the name 
+    that appears in your site 
+ 
+  <li><i>Code</i> - this is a unique 
+    code as required by the carrier 
+ 
+  <li><i>Carrier</i> - the carrier this method is unique to. You can administer 
+  your carrier list via <a href="../ssshippingMethodsAdmin.asp">
+  ssshippingMethodsAdmin.asp</a>
+  <li><i>Enabled</i> - check if you want it to be available for your customers</li>
+  </ul>
+  <li><b>Shipping Charges</b>
+  <ul>
+  <li><i>Min</i> - this sets the 
+    minimum charge for the methods' rate and is used if the carrier returns a 
+    rate less than this amount 
+ 
+  <li><i>Mult</i>. - this is used to 
+    multiply the rate returned by the carrier. It will also apply to the minimum 
+    charge if used 
+ 
+  <li><i>Pkg Fee</i> - this is a per 
+    package fee assessed on each box being shipped. You may have more than one 
+    box if the "super package" exceeds identified limits 
+ 
+  <li><i>Ship Fee</i> - this is a per shipment fee and is only applied once, no 
+  matter how many boxes are created</li>
+  </ul>
+  <li><b>Free Shipping</b>
+  <ul>
+  <li><i>Amount</i> - this identifies 
+    the order amount which qualifies for this method to have free shipping. 
+ 
+  <li><i>Max Wt </i>- if the order weight exceeds this amount, free shipping 
+  will not be applied</li>
+  </ul>
+  <li><b>Order Restrictions</b>
+  <ul>
+  <li><i>Min Wt</i> - the minimum 
+    order weight before this shipping method appears as a choice. It is 
+    primarily used for freight 
+ 
+  <li><i>Max Wt</i> - the maximum an order can weigh and still show this 
+  shipping method as a choice. It is also used to break down a "super package"</li>
+  </ul>
+  <li><b>Package Restrictions</b>
+  <ul>
+  <li><i>Pref Wt</i> - the weight you 
+    prefer to have the "super package" broken down by. This value is useful 
+    because some carriers start charging excessively for heavier packages. 
+    Example. If an order weighs 70 lbs, it may be cheaper to send it as two 35 
+    lb packages than one 70 lb package. If you set the preferred weight to 35 
+    lbs and the max weight to 70 lbs, as long as no individual item weighs more 
+    than 35 lbs the calculator will estimate the order based on two 35 lb 
+    packages. 
+ 
+  <li><i>Max Girth</i> - if you have larger, light items it is possible to 
+  exceed the carriers' max package dimensions while still meeting their absolute 
+  weight limit. This value permits you to handle this situation.</li>
+</ul>
+  <li><b>Default</b> - select the shipping method you wish to be selected in the 
+  dropdown</li></ul>
+<p>You can manually arrange the display order of the shipping methods by 
+selecting the desired shipping method and moving it up or down the list with the 
+<input style="font-family:Tahoma; font-size :11px; font-weight :bold; background:steelblue; color :azure; cursor:hand;" id="btnMoveUp" name="btnMoveUp" type="button" value="Move Up"> and <input style="font-family:Tahoma; font-size :11px; font-weight :bold; background:steelblue; color :azure; cursor:hand;" id="Button1" name="btnMoveDown" type="button" value="Move Down"> buttons.</p>
+<p>You can delete a shipping method by checking the shipping methods you no 
+longer wish and pressing the <input style="font-family:Tahoma; font-size :11px; font-weight :bold; background:steelblue; color :azure; cursor:hand;" id="btnDelete" name="btnDelete" type="button" value="Delete"> button.</p>
+<p>You can add a shipping method by pressing the <input style="font-family:Tahoma; font-size :11px; font-weight :bold; background:steelblue; color :azure; cursor:hand;" id="btnAdd" name="btnAdd" type="button" value="Add"> button</p>
+<p>You can save your changes by pressing the <input style="font-family:Tahoma; font-size :11px; font-weight :bold; background:steelblue; color :azure; cursor:hand;" id="btnUpdate" name="btnUpdate" type="button" value="Update"> button. Only those methods 
+checked will be updated. This does not apply to the default and method ordering 
+which are update regardless of which boxes are checked.</p>
+<h4>Carriers</h4>
+<ul>
+  <li><i>Carrier Name</i> - self 
+  explanatory 
+  <li><i>Username</i> - some carriers 
+  require a username to access their site 
+  <li><i>Password</i> - some carriers require a password to access their site</li>
+</ul>
+<p>Rate calculation. The order item are automatically loaded to identify the 
+individual items in the order and their respective sizes. If there are multiple 
+items in the order they are combined into a "super package" which simply creates 
+a package by summing the package heights and using the maximum length and width. 
+The weights are themselves summed. The "super package" is then compared against 
+the maximum weight and maximum dimensions permitted for the shipping method. If 
+these maximums are exceeded, the "super package" is divided into smaller 
+packages. This division will be based upon the maximum item weight and the 
+preferred weight. If no individual item weighs more than the preferred weight, 
+the package will be divided by the preferred weight. A package cannot be created 
+which is smaller than the maximum item weight nor the largest individual 
+dimension. The rate is then determined by submitting the resulting package to 
+the carrier for rating. The carrier will return a rate which is the basis for 
+the shipping method calculation as follows:</p>
+<p>Shipping Charge = Number of Packages x ((Multiple x Rate) + per Package Fee) 
++ Shipment Fee<br>
+where the rate is returned is the rate returned by the carrier or the minimum 
+charge for that shipping method, whichever is greater.</p>
+<H3><A name=Custom><STRONG>Possible Customizations</STRONG></A></H3>
+<P>The Postage Rate component is set with certain default which can be adjusted 
+based upon your particular situation. All user customizations are defined by 
+</P>
+<P>'////////////////////////////////////////////////////////////////// <BR>'<BR> 
+'<BR> '////////////////////////////////////////////////////////////////// </P>
+<P>Only the variables in this area should be altered and only with values 
+identified below. </P>
+<P><A href="http://www.FedEx.com/">FedEx </A></P>
+<p>There are no user configurable elements.</p>
+<P><A href="http://www.ups.com">United Parcel Service</A></P>
+<P>UPS has a number of&nbsp; potential customizations.</P>
+<P>COD: set pblnCODInd = True if package is to be sent COD</P>
+<P>Hazardous Material: set pblnHazMat = True if the package contains hazardous 
+material</P>
+<P>Additional Handling Charge: set pblnAdditionalHandlingInd = True if the 
+package requires additional handling</P>
+<P>Call Tag Service: set pbytCallTagARSInd = one of the following</P>
+<BLOCKQUOTE style="MARGIN-RIGHT: 0px">
+  <P>0&nbsp; if No Call Tag (default)<BR>1&nbsp; if using Basic Call Tag service 
+  <BR>2&nbsp; if using Electronic Call Tag service <BR></P></BLOCKQUOTE>
+<P>Saturday Delivery: set pblnSatDeliveryInd = true if using Saturday 
+delivery</P>
+<P>Saturday Pickup: set pblnSatPickupInd = true if using Saturday pickup</P>
+<P>Print Return Label: set pblnReturnLabelInd = True if using this feature</P>
+<P>Residential or Commercial address: </P>
+<BLOCKQUOTE style="MARGIN-RIGHT: 0px">
+  <P>Set pblnResidentialInd = False if shipping to a commercial address<BR>Set 
+  pblnResidentialInd = True if shipping to a residential address 
+(default)</P></BLOCKQUOTE>
+<P>Delivery Confirmation Service: set pbytDCISInd = one of the following</P>
+<BLOCKQUOTE style="MARGIN-RIGHT: 0px">
+  <P>0 for None (default)<BR>1 for Basic&nbsp;<BR>2 for Signature Required<BR>3 
+  for Alternate Return Address&nbsp;<BR>4 for All Available Information 
+</P></BLOCKQUOTE>
+<P>Verbal Confirmation of Delivery: set pblnVerbalConfirmationInd = True if you 
+wish Verbal Confirmation of Delivery.</P>
+<P>First Ship Notification: set pbytSNDestinationInd1 = one of the following</P>
+<BLOCKQUOTE style="MARGIN-RIGHT: 0px">
+  <P>0 for None&nbsp; (default)<BR>1 for Domestic&nbsp;<BR>2 for International 
+  </P></BLOCKQUOTE>
+<P>Second Ship Notification: set pbytSNDestinationInd2 =                one of the 
+following</P>
+<BLOCKQUOTE style="MARGIN-RIGHT: 0px">
+  <P>0 for None&nbsp; (default)<BR>1 for Domestic&nbsp;<BR>2 for International 
+  </P></BLOCKQUOTE>
+<P>PackagingType: set pstrstrPackagingType = one of the following</P>
+<BLOCKQUOTE style="MARGIN-RIGHT: 0px">
+  <P>00 for Shipper Supplied Packaging&nbsp;(default)<BR>01 for UPS Letter 
+  Envelope&nbsp;<BR> 03 for UPS Tube&nbsp;<BR> 21 for UPS Express Box<BR>24 for 
+  International UPS 25KG Box&nbsp;<BR> 25 for International UPS 10KG 
+Box</P></BLOCKQUOTE>
+<P><A href="http://www.usps.gov">United States Postal Service</A></P>
+<P>There are no user configurable elements.</P>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

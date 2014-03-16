@@ -1,0 +1,13 @@
+body, td {
+  font-size: 9pt;
+  font-family: arial, helvetica;
+}
+.table-1 {
+  width: 100%;
+  background-color: #e5ecf9;
+  border-top:solid 1px #3366cc;
+}
+.table-2 {
+  width: 100%;
+  background-color: #3366cc;
+}

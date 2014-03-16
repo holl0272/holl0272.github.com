@@ -1,0 +1,152 @@
+.Footer {
+  font: 10pt Arial;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.AltFont1 {
+  font: 7.5pt Arial;
+  color: black;
+}
+
+.AltFont2 {
+  font: 7.5pt Arial;
+  color: black;
+}
+
+.Content_Small {
+  font: 7.5pt Arial;
+  color: black;
+}
+
+.Content_Large {
+  font: 13.5pt Arial;
+  color: black;
+}
+
+.ECheck {
+  font: 7.5pt Arial;
+  color: black;
+}
+
+.ECheck2 {
+  font: 7.5pt Arial;
+  color: black;
+}
+
+.Error {
+  font: 10pt Arial;
+  color: #FF0000;
+}
+
+.Middle_Top_Banner_Small {
+  font: 10pt Arial;
+  color: #FFFFFF;
+}
+
+.ContentBar_Small {
+  font: 7.5pt Arial;
+  color: #400040;
+}
+
+.TopBanner_Large {
+  font: 10pt Arial;
+  color: black;
+}
+
+body {
+  background-color: #FFFFFF;
+}
+
+body, table, td, p {
+  font: 10pt Arial;
+  color: black;
+}
+
+h1 {
+  font: 13.5pt Arial;
+  color: black;
+  font-weight: bold;
+}
+
+.tdbackgrnd {
+  background-color: #A8A396;
+}
+
+.tdTopBanner {
+  font: 10pt Arial;
+  color: black;
+  background-color: #A9A496;
+  font-weight: bold;
+}
+
+.tdTopBanner2 {
+  background-color: #A8A396;
+}
+
+.tdMiddleTopBanner {
+  font: 13.5pt Arial;
+  color: #FFFFFF;
+  background-color: #000000;
+  font-weight: bold;
+}
+
+.tdBottomTopBanner {
+  font: 10pt Arial;
+  color: #FFFFFF;
+  background-color: #003366;
+}
+
+.tdBottomTopBanner2 {
+  font: 10pt Arial;
+  color: #FFFFFF;
+  background-color: #003366;
+}
+
+.tdContent {
+  background-color: white;
+}
+
+.tdContent2 {
+  background-color: white;
+}
+
+.tdContent3 {
+  background-color: white;
+}
+
+.tdContentBar {
+  font: 7.5pt Arial;
+  color: #400040;
+  background-color: #FFCC00;
+  font-weight: bold;
+}
+
+.tdFooter {
+  font: 10pt Arial;
+  color: #FFFFFF;
+  background-color: #A8A396;
+  font-weight: bold;
+}
+
+.tdAltFont1 {
+  font: 7.5pt Arial;
+  color: black;
+  background-color: #CCCCCC;
+}
+
+.tdAltFont2 {
+  font: 7.5pt Arial;
+  color: black;
+  background-color: #EAEAEA;
+}
+
+.tdAltBG1 {
+  background-color: #CCCCCC;
+}
+
+.tdAltBG2 {
+  background-color: #EAEAEA;
+}
+
+

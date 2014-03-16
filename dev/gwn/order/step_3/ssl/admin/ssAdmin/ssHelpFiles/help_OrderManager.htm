@@ -1,0 +1,117 @@
+<html>
+
+<head>
+<title>Order Manager for StoreFront 5</title>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body>
+
+<h2>Order Manager for StoreFront 5.0</h2>
+<P>Release Version 1.4<BR>Release Date June 27, 2002</P>
+<p>Order Manager permits you to keep track of payments and shipments for your
+website through your Microsoft Internet Explorer browser. This is accomplished
+by calling the file ssOrderAdmin.asp from you browser.</p>
+<H4>General Operation</H4>
+<OL>
+  <LI>Once a customer places an order there are two steps 
+  that must be performed, collecting payment and filling their order. Order 
+  Manager helps you keep track of&nbsp; both these steps. As soon as an order is 
+  placed an entry will appear in the order status summary. You can narrow down 
+  the results through the use of the filter. 
+  <LI>When you receive payments you can either record the 
+  payments indivually through the order detail section or en masse using the 
+  quick payment screen. 
+  <LI>When you ship the orders you can either record the 
+  orders individually through the order detail section or en masse using the 
+  quick shipment screen. In conjunction with recording an order as shipped you 
+  can optionally send a fulfillment email to your customer. 
+  <LI>If you use an external shipping program you can import the shipping 
+  information via use of the Shipping Import Screen.</LI></OL>
+<H4>Views</H4>
+<p>There are three primary views on this page. These are selected by the radio
+buttons at the top of the filter section.</p>
+<blockquote>
+  <p>1. <i>Detail</i> - this view pulls up the detailed order status. You can
+  edit payments and orders in this view. This is the only view you can
+  individually edit the shipment email.</p>
+  <p>2. <i>Quick Payment</i> - a list of all orders without payments will appear
+  by default. You can enter the payment date and method of payment for all
+  orders at one time. Double clicking the payment date box will automatically
+  fill in today's date.</p>
+  <p>3. <i>Quick Shipment</i> - a list of all orders that haven't been shipped
+  appear by default. Orders without payments will have a "-" for the
+  payment date. You may double click the shipment date box and today's date will
+  be filled in. You may also fill in the order tracking number if desired in
+  this view. An email will be generated for those orders that are checked.</p>
+</blockquote>
+<h4>Filtering</h4>
+<p>You can narrow down your order summary by entering an order id or customer
+name. You can select "Do Not Include" to ignore entries in this text
+box.</p>
+<p>Start Date: Only orders placed on or after the value entered in this box will
+be displayed. If you leave it blank this is ignored.</p>
+<p>End Date: Only orders placed on or before the value entered in this box will
+be displayed. If you leave it blank this is ignored.</p>
+<p>You may also filter out orders that have been paid for (or not), orders that have been flagged (or not) and orders
+that have been shipped (or not.)</p>
+<h4>Additional Features:</h4>
+<p>In the detail view are two notes boxes, internal and external. The internal
+notes can only be viewed on this page. The external notes will appear on the
+customer order history page and can be used to communicate with the customer.</p>
+
+<P>In the flag this order section there are two back 
+order message boxes, internal and external. The internal message can only be viewed on this 
+page. The back order message will appear on the customer order history 
+page.</P>
+<P>The Show Order Summaries button will open up a new window with just the order 
+summaries matching the filter selection.</P>
+<P><IMG height=12 alt="" src="Images\NOTE12.ICO" width=10 >&nbsp;- 
+This will open up a new window with just the order detail</P>
+
+<h4>Email Notification:</h4>
+<p>The file ssOrderAdminEmail.txt contains the email template. Within this
+template are fields marked with &lt;&gt; that are used to fill in the actual
+values from the database such as customer name, order number, shipment date,
+etc. It is important that you do not remove the lines that say "DO NOT
+REMOVE THIS LINE" At the bottom of this file is a list of constants that
+are available to use to customize your template.</p>
+<h4>Order Status</h4>
+<p>Both the date payment received and date order shipped 
+fields can be automatically populated with the current date by double clicking the field name. Alternatively, you can click the calendar icon to
+open a calendar window to select the date. Finally, you can
+just type in the date. You can set the payment type to the
+payment method the customer selected by double clicking the field name.</p>
+<p>You can edit the text of the optional email message by clicking the
+"Edit Email Text" button. It will be populated with the actual email
+message based upon the order tracking number and shipping method selected. The
+email message will only be sent if you select the "Send Email"
+checkbox.</p>
+
+<h4>Changing Shipping Information</h4>
+<p>To change the shipping method name or shipping charge, simply double click 
+the shipping method name. Placing a cursor over the name will change it to a 
+hand. You can then enter the new information in the boxes provided. You must hit 
+the update button to save the changes.</p>
+<H4>Importing External Shipping Information</H4>
+<OL>
+  <LI>To import shipping information following the link from the Order 
+  Administration page to the Import Shipping Information Page.</LI>
+  <LI>Browse for the shipping data file to import</LI>
+  <LI>You can optionally deselect emails you do not wish to send</LI>
+  <LI>You may select <EM>Automatically update unrecorded payments</EM>&nbsp;to 
+  automatically mark orders which are being shipped but not previous marked as 
+  paid using today's date.</LI>
+  <LI>Press Import</LI></OL>
+<P>The data file must be in the following format:</P>
+<P>OrderID,&nbsp; Shipping Method, Tracking Number,&nbsp; Shipping Date</P>
+<P>The fields may be either separated by commas or tab with each entry being 
+separated by a carriage return. Shipping Date is optional; if it is left out it 
+will be assumed to be today's date. </P>
+
+</body>
+
+</html>

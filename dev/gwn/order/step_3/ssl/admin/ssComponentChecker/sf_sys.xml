@@ -1,0 +1,33 @@
+<comcheck>
+	<com>
+		<Description>ADO</Description>
+		<CreateUsing>ADODB.Connection</CreateUsing>
+		<Version>yes</Version>
+		<URL>http://www.microsoft.com/data/download.htm</URL>
+	</com>
+	<com>
+		<Description>File System Object</Description>
+		<CreateUsing>Scripting.FileSystemObject</CreateUsing>
+		<Version></Version>
+		<URL></URL>
+	</com>
+	<com>
+		<Description>Scripting Dictionary</Description>
+		<CreateUsing>Scripting.Dictionary</CreateUsing>
+		<Version></Version>
+		<URL></URL>
+	</com>
+	<com>
+		<Description>Credit Card Encryption - pre 50.5 Release</Description>
+		<CreateUsing>SFServer.CCEncrypt</CreateUsing>
+		<Version></Version>
+		<URL>http://www.storefront.net</URL>
+	</com>
+	<com>
+		<Description>Credit Card Encryption - 50.5 Release</Description>
+		<CreateUsing>SFServer505.CCEncrypt</CreateUsing>
+		<Version></Version>
+		<URL>http://www.storefront.net</URL>
+	</com>
+</comcheck>
+													

@@ -1,0 +1,45 @@
+<comcheck>
+	<com>
+		<Description>FedEx</Description>
+		<CreateUsing>SFServer.FedEx</CreateUsing>
+		<Version></Version>
+		<URL>http://www.storefront.net</URL>
+	</com>
+	<com>
+		<Description>DHL</Description>
+		<CreateUsing>SFServer.DHL</CreateUsing>
+		<Version></Version>
+		<URL>http://www.storefront.net</URL>
+	</com>
+	<com>
+		<Description>UPS</Description>
+		<CreateUsing>SFServer.UPS</CreateUsing>
+		<Version></Version>
+		<URL>http://www.storefront.net</URL>
+	</com>
+	<com>
+		<Description>USPS</Description>
+		<CreateUsing>httpcom.chttpcom</CreateUsing>
+		<Version></Version>
+		<URL>http://www.usps.com</URL>
+	</com>
+	<com>
+		<Description>Canadian Post (XML DomDocument version 3 or above)</Description>
+		<CreateUsing>MSXML2.DomDocument</CreateUsing>
+		<Version></Version>
+		<URL></URL>
+	</com>
+               <com>
+		<Description>FreightQuote/LTL Shipping</Description>
+		<CreateUsing>FQRating.cFQRating</CreateUsing>
+		<Version></Version>
+		<URL>http://www.freightquote.com</URL>
+	</com>
+	<com>
+		<Description>Canadian Post (XML ServerXMLHTTP version 3 or above)</Description>
+		<CreateUsing>MSXML2.ServerXMLHTTP</CreateUsing>
+		<Version></Version>
+		<URL></URL>
+	</com>
+</comcheck>
+													

@@ -1,0 +1,460 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN"><html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>StoreFront Web Store Reports</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="none">
+</head>
+
+<body>
+
+<p align="center"><big><big><strong>StoreFront Sales Reports</strong></big></big></p>
+
+
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript" Type="text/javascript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.StartDate.value == "")
+  {
+    alert("Please enter a value for the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.StartDate.value.length < 6)
+  {
+    alert("Please enter at least 6 characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.StartDate.value.length > 8)
+  {
+    alert("Please enter at most 8 characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-/";
+  var checkStr = theForm.StartDate.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit and \"/\" characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value == "")
+  {
+    alert("Please enter a value for the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value.length < 6)
+  {
+    alert("Please enter at least 6 characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value.length > 8)
+  {
+    alert("Please enter at most 8 characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-/";
+  var checkStr = theForm.EndDate.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit and \"/\" characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="salesreports.asp?Report=1" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1" language="JavaScript">
+  <div align="center"><center><p>&nbsp;</p>
+    </center></div><div align="center"><center><table border="0" cellpadding="3" cellspacing="0" width="90%" height="59">
+      <tr>
+        <td width="90%" colspan="3" bgcolor="#A09A8B" height="20"><small><font face="Verdana"><a name="Detail"></a><strong>All Orders by Date</strong></font></small></td>
+      </tr>
+      <tr>
+        <td width="30%" height="27">Beginning Date:&nbsp; <!--webbot bot="Validation" s-display-name="Beginning Date" s-data-type="String" b-allow-digits="TRUE" s-allow-other-chars="/" b-value-required="TRUE" i-minimum-length="6" i-maximum-length="8" --><input type="text" name="StartDate" size="10" maxlength="8"></td>
+        <td width="30%" height="27">Ending Date:&nbsp; <!--webbot bot="Validation" s-display-name="Ending Date" s-data-type="String" b-allow-digits="TRUE" s-allow-other-chars="/" b-value-required="TRUE" i-minimum-length="6" i-maximum-length="8" --><input type="text" name="EndDate" size="10" maxlength="8"></td>
+        <td width="30%" valign="bottom" height="27"><input type="submit" value="Create Report" name="Create Report"></td>
+      </tr>
+    </table>
+    </center></div>
+</form>
+
+
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript" Type="text/javascript"><!--
+function FrontPage_Form2_Validator(theForm)
+{
+
+  if (theForm.StartDate.value == "")
+  {
+    alert("Please enter a value for the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.StartDate.value.length < 6)
+  {
+    alert("Please enter at least 6 characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.StartDate.value.length > 8)
+  {
+    alert("Please enter at most 8 characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-/";
+  var checkStr = theForm.StartDate.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit and \"/\" characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value == "")
+  {
+    alert("Please enter a value for the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value.length < 6)
+  {
+    alert("Please enter at least 6 characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value.length > 8)
+  {
+    alert("Please enter at most 8 characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-/";
+  var checkStr = theForm.EndDate.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit and \"/\" characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="salesreports.asp?Report=4" onsubmit="return FrontPage_Form2_Validator(this)" name="FrontPage_Form2" language="JavaScript">
+  <div align="center"><center><p>&nbsp;</p>
+    </center></div><div align="center"><center><table border="0" cellpadding="3" cellspacing="0" width="90%" height="58">
+      <tr>
+        <td width="90%" colspan="3" bgcolor="#A09A8B" height="19"><small><font face="Verdana"><a name="Summary"></a><strong>Sales Summary by Date</strong></font></small></td>
+      </tr>
+      <tr>
+        <td width="30%" height="27">Beginning Date:&nbsp; <!--webbot bot="Validation" s-display-name="Beginning Date" s-data-type="String" b-allow-digits="TRUE" s-allow-other-chars="/" b-value-required="TRUE" i-minimum-length="6" i-maximum-length="8" --><input type="text" name="StartDate" size="10" maxlength="8"></td>
+        <td width="30%" height="27">Ending Date:&nbsp; <!--webbot bot="Validation" s-display-name="Ending Date" s-data-type="String" b-allow-digits="TRUE" s-allow-other-chars="/" b-value-required="TRUE" i-minimum-length="6" i-maximum-length="8" --><input type="text" name="EndDate" size="10" maxlength="8"></td>
+        <td width="30%" valign="bottom" height="27"><input type="submit" value="Create Report" name="Create Report"></td>
+      </tr>
+    </table>
+    </center></div>
+</form>
+
+
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript" Type="text/javascript"><!--
+function FrontPage_Form3_Validator(theForm)
+{
+
+  if (theForm.StartDate.value == "")
+  {
+    alert("Please enter a value for the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.StartDate.value.length < 6)
+  {
+    alert("Please enter at least 6 characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.StartDate.value.length > 8)
+  {
+    alert("Please enter at most 8 characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-/";
+  var checkStr = theForm.StartDate.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit and \"/\" characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value == "")
+  {
+    alert("Please enter a value for the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value.length < 6)
+  {
+    alert("Please enter at least 6 characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value.length > 8)
+  {
+    alert("Please enter at most 8 characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-/";
+  var checkStr = theForm.EndDate.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit and \"/\" characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="ccreports.asp?Report=1" onsubmit="return FrontPage_Form3_Validator(this)" name="FrontPage_Form3" language="JavaScript">
+  <div align="center"><center><p>&nbsp;</p>
+    </center></div><div align="center"><center><table border="0" cellpadding="3" cellspacing="0" width="90%">
+      <tr>
+        <td width="90%" colspan="3" bgcolor="#A09A8B"><small><font face="Verdana"><a name="CyberCash"></a><strong>Transaction Service Reports</strong></font></small></td>
+      </tr>
+      <tr>
+        <td width="30%">Beginning Date:&nbsp; <!--webbot bot="Validation" s-display-name="Beginning Date" s-data-type="String" b-allow-digits="TRUE" s-allow-other-chars="/" b-value-required="TRUE" i-minimum-length="6" i-maximum-length="8" --><input type="text" name="StartDate" size="10" maxlength="8"></td>
+        <td width="30%">Ending Date:&nbsp; <!--webbot bot="Validation" s-display-name="Ending Date" s-data-type="String" b-allow-digits="TRUE" s-allow-other-chars="/" b-value-required="TRUE" i-minimum-length="6" i-maximum-length="8" --><input type="text" name="EndDate" size="10" maxlength="8"></td>
+        <td width="30%" valign="bottom"><input type="submit" value="Create Report" name="Create Report"></td>
+      </tr>
+    </table>
+    </center></div>
+</form>
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript" Type="text/javascript"><!--
+function FrontPage_Form4_Validator(theForm)
+{
+
+  if (theForm.StartDate.value == "")
+  {
+    alert("Please enter a value for the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.StartDate.value.length < 6)
+  {
+    alert("Please enter at least 6 characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.StartDate.value.length > 8)
+  {
+    alert("Please enter at most 8 characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-/";
+  var checkStr = theForm.StartDate.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit and \"/\" characters in the \"Beginning Date\" field.");
+    theForm.StartDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value == "")
+  {
+    alert("Please enter a value for the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value.length < 6)
+  {
+    alert("Please enter at least 6 characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  if (theForm.EndDate.value.length > 8)
+  {
+    alert("Please enter at most 8 characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-/";
+  var checkStr = theForm.EndDate.value;
+  var allValid = true;
+  var validGroups = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit and \"/\" characters in the \"Ending Date\" field.");
+    theForm.EndDate.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="salesreports.asp?Report=7" onsubmit="return FrontPage_Form4_Validator(this)" name="FrontPage_Form4" language="JavaScript">
+  <div align="center"><center><p>&nbsp;</p>
+    </center></div><div align="center"><center><table border="0" cellpadding="3" cellspacing="0" width="90%">
+      <tr>
+        <td width="90%" colspan="3" bgcolor="#A09A8B"><font face="Verdana"><small><a name="CyberCash"></a></small><strong><small>Referring
+          Trading Partner Reports</small></strong></font></td>
+      </tr>
+      <tr>
+        <td width="30%">Beginning Date:&nbsp; <!--webbot bot="Validation" s-display-name="Beginning Date" s-data-type="String" b-allow-digits="TRUE" s-allow-other-chars="/" b-value-required="TRUE" i-minimum-length="6" i-maximum-length="8" --><input type="text" name="StartDate" size="10" maxlength="8"></td>
+        <td width="30%">Ending Date:&nbsp; <!--webbot bot="Validation" s-display-name="Ending Date" s-data-type="String" b-allow-digits="TRUE" s-allow-other-chars="/" b-value-required="TRUE" i-minimum-length="6" i-maximum-length="8" --><input type="text" name="EndDate" size="10" maxlength="8"></td>
+        <td width="30%" valign="bottom"><input type="submit" value="Create Report" name="Create Report"></td>
+      </tr>
+    </table>
+    </center></div>
+</form>
+
+
+<p align="center"><small><small><a href="prodadd.htm">Add Product</a> | <a href="proddelete.htm">Delete Product</a> | <a href="prodlist.asp">List Products</a> | <a href="prodedit.htm">Edit Product</a><br>
+<a href="reports.htm">Sales Reporting</a> | <a href="set_up.asp?Update=0">Store Set-Up</a></small></small></p>
+
+<p>&nbsp;</p>
+</body>
+</html>
+

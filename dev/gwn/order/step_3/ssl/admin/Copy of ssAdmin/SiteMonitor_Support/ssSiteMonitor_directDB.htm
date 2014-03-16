@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Sandshot Software Site Checking Page - Direct Database Connection</title>
+<script language="vbscript">
+
+Const cstrConnection = "You should manually save the database connection in the file SiteMonitor_Support/ssSiteMonitor_directDB.htm so you don't need to type it in each time"
+Dim mblnDefaultConnectionSet
+
+mblnDefaultConnectionSet = False
+
+Sub TestConnection
+
+Dim pobjCnn
+Dim pblnSuccess
+Dim pstrConnection
+
+	Set pobjCnn = CreateObject("ADODB.CONNECTION")
+	
+	If Not mblnDefaultConnectionSet Then
+		document.all("connectionString").value = cstrConnection
+		mblnDefaultConnectionSet = True
+		Exit Sub
+	End If
+	
+	pstrConnection = document.all("connectionString").value
+	
+	On Error Resume Next
+	pobjCnn.Open pstrConnection
+	
+	If Err.number = 0 Then
+		pblnSuccess = pobjCnn.State
+		pobjCnn.Close
+		Set pbojCnn = Nothing
+		
+		If pblnSuccess Then
+			msgbox "Database connection successfully established"
+		Else
+			msgbox "Database connection unsuccessful"
+		End If	
+	Else
+		Select Case err.number
+			Case 3716: 
+				msgbox "Error " & err.number & ": " & err.Description & vbcrlf & vbcrlf & "You must select OK to test the database"
+			Case Else
+				msgbox "Error " & err.number & ": " & err.Description & vbcrlf & "Connection: " & pstrConnection
+		End Select
+	End If	
+
+End Sub
+
+</script>
+<link rel="stylesheet" href="../ssLibrary/ssStyleSheet.css" type="text/css">
+
+</head>
+<body onload="TestConnection">
+
+<table border="1" width="100%" cellspacing="0" cellpadding="0" ID="Table1">
+  <tr>
+    <td><A HREF="http://www.sandshot.net/"><IMG alt="Sandshot Sofware" border=0 src="../Images/logo_blue.gif" width="303" height="88" ></A></td>
+  </tr>
+</table>
+<div align=right class='pagetitle2'>Sandshot Software Direct Database connection test</div>
+
+<p>This page will allow you to directly test your database. It will only work for databases you can connect to directly via the internet such as SQL Server and mySQL.</p>
+
+<p>Usage: You will be prompted by Internet Explorer due to the security issues involved in connecting to a remote database. You must accept them to continue.</p>
+<p>You will need to edit the code on this</p>
+<textarea name="connectionString" id="connectionString" rows="5" cols="80"></textarea><br>
+<input class="butn" type="button" name="btn1" id="btn1" onclick="TestConnection" value="Test Database">
+
+</body>
+</html>

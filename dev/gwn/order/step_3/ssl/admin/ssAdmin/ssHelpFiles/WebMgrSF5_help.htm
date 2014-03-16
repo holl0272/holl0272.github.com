@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>WebStore Manager Gold Component for StoreFront 2000 User's Guide</title>
+</head>
+
+<body><FONT SIZE="2">
+<H2>WebStore Manager Component for StoreFront 5 User's 
+Guide</H2>
+<ul>
+  <li><A href="SandshotLicense.htm">License</A>
+  <li><A href="ReadME_WebMgrSF5.htm">Installation</A> </LI></UL>
+<h4>Usage</H4>
+<P>The WebStore Manager Gold component for StoreFront 5 
+permits you to manage your StoreFront 5 website through the Microsoft Internet 
+Explorer Browser (some functions will work with a Netscape browser but it is not 
+pretty.)&nbsp; The starting point to administer&nbsp;your Web Store is admin.asp. This page links to all aspects of your website administration, be it 
+store appearance, support settings, product administration, or sales 
+administration. Most pages are self-explanatory but the following pages have 
+features that you should understand.</P>
+<h4>Overall Apperance</H4>
+<P>The overall appearance of the WebStore Manager is 
+controlled in the AdminHeader.asp file. The color schemes can be altered in the 
+CSS section. You can also change the navigational structure and gasp!, remove 
+the Sandshot Software image if you so desire. If you edit this file, do not edit 
+it in design mode of your favorite editor. It will likely add additional HTML 
+markup.</P>
+<P>On some pages user selected&nbsp; images act as buttons 
+and reflect the actual image size. While for larger images it "dirties up" the 
+clean layout, it was decided it was better to allow you to see the actual image 
+size. If the "No Image Selected" image appears, it simply means that no image is 
+associated with that design attribute. If a broken image appears it means the 
+image in the database is not in the web and should be corrected. To change the 
+image simply click on the image. The relative URL will be automatically 
+generated.</P>
+<P>Several pages allow you to sort by column headers. These 
+are readily&nbsp; identifiable by 1) an arrow showing the sort column/direction 
+and 2) the cursor changes to a hand when passed over the column header.</P>
+<H4>                
+        Design Administration:</H4>
+<P>This page allows to configure and maintain multiple 
+design styles for your web store. The designs shown in this table are simply 
+store designs and are not the designs the site uses. This means you may adjust 
+the settings of any saved design without immediately affecting the actual web 
+appearance as long as the design you are working on is not marked active. Once 
+you a design that is checked active your design configuration will be written to 
+the configuration file.&nbsp; The various design sections can be viewed by 
+selecting the corresponding areas on the design table.&nbsp; Tip: You can play 
+with the active design and save the changes without affecting the deployed 
+design by deselecting the active box before you save the changes. The downside 
+to this is the summary table will not show any active designs until you choose 
+to commit the changes.</P>
+<h4>Product Administration</H4>
+<P>This page allows you to add/edit/delete your inventory. 
+It has the added feature of allowing you to create new products including the 
+attribute at one time along with editing the same. You can also duplicate an 
+entire product including its attributes with the push of one button or just 
+duplicate an attribute category within the product. This page also contains 
+advanced search capabilities to narrow down your product list.</P>
+<i>Advanced Configuration</I>
+<P>The top of productadmin.asp contains a user parameters 
+section. This section contains parameters which can optimize your data access 
+time and is especially important for large databases containing many 
+attributes.</P>
+<ul>
+<li>mblnIsSQL - by default this is set to false for an Access database - set to true for SQL Server
+<li>Const mblnShowAttributes -	by default this is set to true to show attributes in summary table. Set this to false for faster page loading. Large databases with a lot of attributes should set this value to false.
+<li>Const mblnAutoShowTable - by default this is set to true to automatically display the product summary on the 
+initial page loading
+<li>Server.ScriptTimeout - by default this is set to 90	seconds. Larger databases may need to up this value is the page times out frequently
+<li>mlngMaxRecords - by default this is set to 25. This is 
+  the default Maximum Records to show in summary table on the initial page 
+  loading </LI></UL>
+<h4>Category Maintenance</h4>
+<p>This page allows you to add/edit/delete your categories. Note it contains 
+more information than the standard StoreFront installation supports. The extra 
+fields are not required, however, with some minor modification (and some major) 
+you can customize your web to utilize these fields.</p>
+<p>Option 1: Hide inactive categories from displaying in category list</p>
+<ol>
+  <li>Activating/Deactivating categories: open incSearchResult.asp</li>
+  <li>Find: &quot;SELECT DISTINCT catID, catName FROM sfCategories Order By CatName&quot;</li>
+  <li>Change to &quot;SELECT DISTINCT catID, catName FROM sfCategories Where 
+  catIsActive=1 Order By CatName&quot;</li>
+</ol>
+<h4>Database Maintenance</H4>
+<P>The default StoreFront global.asa contains code to 
+"clean-up" the database every time somebody enters your web site. The problem is 
+this is done every time somebody enters you web site when in reality this 
+housekeeping activity needs only be run occasionally (how often depends on your 
+web site's traffic.) The option to "Clean Up Database" has been provided to 
+perform the housekeeping when you want and to the level of detail you 
+desire.</P>
+<P>You may also optionally compact and repair your Access 
+database. If you do this, you may create a back-up copy of the database which 
+will automatically be named the same as your current database with the date 
+appended to the end. Note: If you create more than one back-up in the same day, 
+the prior back-up(s) for that day will be overwritten.</P></FONT></body>
+
+</html>

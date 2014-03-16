@@ -1,0 +1,116 @@
+<style>
+	select{height: 22px; top:2;	font:8pt verdana,arial,sans-serif}	
+	body {border:lightgrey 0px solid;background: #ece9d8;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=white, endColorstr=#e3e3e3);}
+	.bar{padding-left: 5px;border-top: #99ccff 1px solid; background: #004684;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#004684, endColorstr=#7189b7); WIDTH: 100%; border-bottom: #004684 1px solid;height: 20px}
+	.bar2{border-top: #99ccff 1px solid; background: #004684;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#004684, endColorstr=#7189b7); WIDTH: 100%; border-bottom: #004684 1px solid;height: 20px}
+	td {	font:8pt verdana,arial,sans-serif}
+	div	{	"font:10pt" tahoma,arial,sans-serif}
+</style>
+<script>
+function setPageProperties(style,value)
+	{
+	eval("parent.idContent"+inpActiveEditor.value+".document.body.style."+style+" = '"+value+"'")
+	}
+function Format()
+	{
+	setPageProperties("marginLeft",inpPageLeft.value)
+	setPageProperties("marginRight",inpPageRight.value)
+	setPageProperties("marginTop",inpPageTop.value)
+	setPageProperties("marginBottom",inpPageBottom.value)
+	setPageProperties("backgroundColor",objColor1.getColor())
+	setPageProperties("backgroundImage","url("+inpPageBgImg.value+")")
+	setPageProperties("fontFamily",inpPageFont.value)
+	setPageProperties("fontSize",inpPageSize.value)
+	setPageProperties("color",objColor2.getColor())
+	
+	eval("parent."+inpActiveEditor.value).setTitle(inpTitle.value)
+	
+	eval("parent."+inpActiveEditor.value).boxHide()
+	}
+function Resize(boxName)
+	{
+	eval('parent.'+inpActiveEditor.value).boxDimension(boxName)
+	}
+</script>
+
+<body topmargin=0 leftmargin=0 rightmargin=0 bottommargin=0 onselectstart="return event.srcElement.tagName=='INPUT'" oncontextmenu="return false">
+<table border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed" ID="tblPopup">
+<col width=400><col width=13>
+<tr>
+<td>
+	<!-- popup_BarArea -->
+	<div id="popup_BarArea" class="bar">
+	<font size=2 face=tahoma color=white><b>Page Properties</b></font>
+	</div>
+</td>
+<td style="cursor:hand" onclick="eval('parent.'+inpActiveEditor.value).boxHide()">
+	<div id="popup_BarArea_close" class="bar2">
+	<font size=2 face=tahoma color=white><b>X</b></font>
+	</div>
+</td>
+</tr>
+<tr>
+<!-- popup_ContentBorder -->
+<td id="popup_ContentBorder" colspan=2 style="border-left: #336699 1px solid;border-right: #336699 1px solid;border-bottom: #336699 1px solid;" valign=top>
+	<br>
+	<div id="divPopup" align=center>
+	
+	<table cellpadding=0 cellspacing=0 >
+	<tr><td>
+		<table style="table-layout: fixed" width=380 border=0>
+		<col width=130><col width=110><col width=140>
+
+		<tr><td>Title:</td><td colspan=2><INPUT type=text ID="inpTitle" NAME=inpTitle contentEditable=true size=20></td></tr>
+
+		<tr><td>Left Margin :</td><td><INPUT type=text ID=inpPageLeft NAME=inpPageLeft contentEditable=true size=2 value=3></td>
+		<td rowspan=4>
+		<IMG SRC="yusasp_paper.gif" width="83" height="105">
+		</td>
+		</tr>
+		<tr><td>Right Margin :</td><td><INPUT type=text ID=inpPageRight NAME=inpPageRight contentEditable=true size=2 value=3></td></tr>
+		<tr><td>Top Margin :</td><td><INPUT type=text ID=inpPageTop NAME=inpPageTop contentEditable=true size=2 value=3></td></tr>
+		<tr><td>Bottom Margin :</td><td><INPUT type=text ID=inpPageBottom NAME=inpPageBottom contentEditable=true size=2 value=3></td></tr>
+		<tr><td>Background Color :</td><td colspan=2>
+			<INPUT type="button" onclick="if(divPageBgColorPick.style.display=='block'){divPageBgColorPick.style.display='none'}else{divPageBgColorPick.style.display='block'};Resize('boxPage')" value="Colors..">
+			</td></tr>
+		<tr><td colspan=3 align=center>
+			<div id="divPageBgColorPick" style="display:none">
+			<script>
+			var objColor1 = new parent.YusASPColor("objColor1")
+			objColor1.frameName = "boxPage"
+			document.write(objColor1.drawColor)
+			</script>
+			</div>
+			</td></tr>		
+		<tr><td>Background Image :</td><td colspan=2><INPUT type=text ID=inpPageBgImg size=20 NAME=inpPageBgImg contentEditable=true></td></tr>
+		<tr><td>Default Font Name:</td><td colspan=2><INPUT type=text ID=inpPageFont NAME=inpPageFont contentEditable=true size=20></td></tr>
+		<tr><td>Default Font Size :</td><td colspan=2><INPUT type=text ID=inpPageSize NAME=inpPageSize contentEditable=true size=2></td></tr>
+		<tr><td>Default Font Color :</td><td colspan=2>
+			<INPUT type="button" onclick="if(divFontColorPick.style.display=='block'){divFontColorPick.style.display='none'}else{divFontColorPick.style.display='block'};Resize('boxPage')" value="Colors.." ID="Button3" NAME="Button3">
+			</td></tr>
+		<tr><td colspan=3 align=center>
+			<div id="divFontColorPick" style="display:none">
+			<script>
+			var objColor2 = new parent.YusASPColor("objColor2")
+			objColor2.frameName = "boxPage"
+			document.write(objColor2.drawColor)
+			</script>
+			</div>
+			</td></tr>			
+		</table>
+	</td></tr>
+	</table>
+	<br>
+	<table border=0 width=300 align=center cellpadding=0 cellspacing=0>
+	<tr>
+	<td align=right width=50%><INPUT type='button' onclick="eval('parent.'+inpActiveEditor.value).boxHide()"  value='Cancel' ID="Button1" NAME="Button1"></td>
+	<td width=50%><INPUT type='button' onclick="Format()" value='&nbsp;&nbsp;OK&nbsp;&nbsp;' ID="Button2" NAME="Button2"></td>
+	</tr>	</table>
+		
+	</div>
+	<br>
+</td>
+</tr>
+</table>
+<input type=text style="display:none;" id="inpActiveEditor" name="inpActiveEditor" contentEditable=true>
+</body>

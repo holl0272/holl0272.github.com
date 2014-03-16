@@ -1,0 +1,49 @@
+body
+{
+    BACKGROUND-ATTACHMENT: fixed;
+    BACKGROUND-COLOR: white;
+    COLOR: black;
+    FONT-FAMILY: Arial, 'Century Gothic'
+}
+
+.billingLabel
+{
+	position: absolute;
+	left: 0.0in;
+	top: 0.0in;
+	width: 3.5in;
+}
+
+.messageLabel
+{
+	position: absolute;
+	left: 0.0in;
+	top: 0.75in
+	width: 3.5in;
+	height: 2in;
+}
+
+.orderItemsLabel
+{
+	position: absolute;
+	left: 0.0in;
+	top: 4.0in;
+	width: 7.5in;
+}
+
+.shippingLabel
+{
+	position: absolute;
+	left: 4.5in;
+	top: 0.0in;
+	width: 3.5in;
+	height: 2in;
+}
+
+.shippingMethodLabel
+{
+	position: absolute;
+	left: 0.0in;
+	top: 3.0in;
+	width: 3.5in;
+}
