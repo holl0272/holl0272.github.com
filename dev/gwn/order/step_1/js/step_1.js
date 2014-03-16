@@ -407,7 +407,7 @@ function buildRows(qty) {
   var product_number = "<td class='numbers_input number_label'>Number</td><td class='numbers_input number_reset'>"+numberInput+"</td>";
     var nameInput = "<input type='text' class='name_input'>";
     var newnameInput = "<input type='text' class='newname_input'>";
-  var name_on_jersey = "<td class='names_input name_label'>Name On Jersey</td><td class='names_input name_reset'>"+nameInput+"</td>";
+  var name_on_jersey = "<td class='names_input name_label'>Name on Jersey</td><td class='names_input name_reset'>"+nameInput+"</td>";
   var product_qty = "<td class='qty_label'>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
   var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; padding-left:5px; cursor: pointer;'> - </span></td><span>";
   var raw_qty = "<td class='hide'></td>";
@@ -519,7 +519,8 @@ function buildRows(qty) {
     else {
       $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
     };
-    $(this).closest('td').html("<a class='float'><font class='set_size'>"+size+"</font></a>").on('click', function() {
+    $(this).closest('td').html("<a style='color:#cccdce;'><font class='set_size'>"+size+"</font></a>");
+    $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
       $(this).html(resizeSelect);
       $(this).closest('td').next('td').empty();
       $('.resize_select').change(function() {
@@ -533,7 +534,8 @@ function buildRows(qty) {
         else {
           $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
         };
-        $(this).closest('td').html("<a class='float'><font class='set_size'>"+resize+"</font></a>");
+        $(this).closest('td').html("<a style='color:#cccdce;'><font class='set_size'>"+resize+"</font></a>");
+        $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')});
       });
     });
   });
@@ -563,7 +565,8 @@ $('.number_input').keydown(function(){
 //user is "finished typing"
 function doneTyping() {
   var number = $('#temp').val();
-  $('#temp').closest('td').html("<a class='float'><font class='set_number'>"+number+"</font></a>").on('click', function() {
+  $('#temp').closest('td').html("<a style='color:#cccdce;'><font class='set_number'>"+number+"</font></a>");
+    $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
     $(this).html(newnumberInput).find('input').focus();
     var numberTimer;
     var doneTypingNumber = 500;
@@ -579,7 +582,8 @@ function doneTyping() {
     //user is "finished typing"
     function doneTypingNum() {
       var newnumber = $('#temp').val();
-      $('#temp').closest('td').html("<a class='float'><font class='set_number'>"+newnumber+"</font></a>");
+      $('#temp').closest('td').html("<a style='color:#cccdce;'><font class='set_number'>"+newnumber+"</font></a>");
+      $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')})
     };
   });
 };
@@ -598,7 +602,8 @@ $('.name_input').keydown(function(){
 //user is "finished typing"
 function doneTypingNam() {
   var name = $('#temp_name').val();
-  $('#temp_name').closest('td').html("<a class='float'><font class='set_name'>"+name+"</font></a>").on('click', function() {
+  $('#temp_name').closest('td').html("<a style='color:#cccdce;'><font class='set_name'>"+name+"</font></a>");
+    $('.set_name').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
     $(this).html(newnameInput).find('input').focus();
     var nameTimer;
     var doneTypingName = 1000;
@@ -614,7 +619,8 @@ function doneTypingNam() {
     //user is "finished typing"
     function doneReTypingName() {
       var newname = $('#temp_name').val();
-      $('#temp_name').closest('td').html("<a class='float'><font class='set_name'>"+newname+"</font></a>");
+      $('#temp_name').closest('td').html("<a style='color:#cccdce;'><font class='set_name'>"+newname+"</font></a>");
+      $('.set_name').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td')
     };
   });
 };
@@ -964,7 +970,8 @@ function handle(table){
       else {
         $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
       };
-      $(this).closest('td').html("<a class='float'><font class='return_set_size'>"+returnSize+"</font></a>").on('click', function() {
+      $(this).closest('td').html("<a style='color:#cccdce;'><font class='return_set_size'>"+returnSize+"</font></a>");
+      $('.return_set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
         $(this).html(resizeSelect);
         $(this).closest('td').next('td').empty();
         $('.resize_select').change(function() {
@@ -978,7 +985,8 @@ function handle(table){
           else {
             $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
           };
-          $(this).closest('td').html("<a class='float'><font class='return_set_size'>"+resize+"</font></a>");
+          $(this).closest('td').html("<a style='color:#cccdce;'><font class='return_set_size'>"+resize+"</font></a>");
+          $('.return_set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')})
         });
       });
     });
@@ -1004,7 +1012,8 @@ function handle(table){
       //user is "finished typing"
       function doneTyping() {
         var number = $('#temp').val();
-        $('#temp').closest('td').html("<a class='float'><font class='set_number'>"+number+"</font></a>").on('click', function() {
+        $('#temp').closest('td').html("<a style='color:#cccdce;'><font class='set_number'>"+number+"</font></a>");
+        $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
           $(this).html(newnumberInput).find('input').focus();
           var numberTimer;
           var doneTypingNumber = 500;
@@ -1020,7 +1029,8 @@ function handle(table){
           //user is "finished typing"
           function doneTypingNum() {
             var newnumber = $('#temp').val();
-            $('#temp').closest('td').html("<a class='float'><font class='set_number'>"+newnumber+"</font></a>");
+            $('#temp').closest('td').html("<a style='color:#cccdce;'><font class='set_number'>"+newnumber+"</font></a>");
+            $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')})
           };
         });
       };
@@ -1047,7 +1057,8 @@ function handle(table){
       //user is "finished typing"
       function doneTypingNam() {
         var name = $('#temp_name').val();
-        $('#temp_name').closest('td').html("<a class='float'><font class='set_name'>"+name+"</font></a>").on('click', function() {
+        $('#temp_name').closest('td').html("<a style='color:#cccdce;'><font class='set_name'>"+name+"</font></a>");
+        $('.set_name').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).on('click', function() {
           $(this).html(newnameInput).find('input').focus();
           var nameTimer;
           var doneTypingName = 1000;
@@ -1063,7 +1074,8 @@ function handle(table){
           //user is "finished typing"
           function doneReTypingName() {
             var newname = $('#temp_name').val();
-            $('#temp_name').closest('td').html("<a class='float'><font class='set_name'>"+newname+"</font></a>");
+            $('#temp_name').closest('td').html("<a style='color:#cccdce;'><font class='set_name'>"+newname+"</font></a>");
+            $('.set_name').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')})
           };
         });
       };
@@ -1090,7 +1102,6 @@ function handle(table){
   togglePlusLess();
 
   $('.plus_one').on('click', function() {
-    alert('p');
     var qty = Number($('#order_qty').val());
     var qty_plus = Number($(this).parent().prev().prev().val());
     var increase = qty_plus + 1;
@@ -1111,7 +1122,6 @@ function handle(table){
   });
 
   $('.less_one').on('click', function() {
-    alert('m');
     var qty_less = Number($(this).parent().prev().prev().val());
     var decrease = qty_less - 1;
     if(decrease > 0){
