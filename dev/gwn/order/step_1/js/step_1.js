@@ -208,9 +208,11 @@ $('#price_per_jersey').html((cost).toFixed(2));
 if($(':radio').filter(':checked').length == 0) {
 var firstRadioSelect = $('input[type=radio]').filter(":visible").first();
 var firstColorSwatch = firstRadioSelect.val();
+var enAttrPos_JerseyColor = firstRadioSelect.data('color');
     firstRadioSelect.prop('checked', true);
     //populates this first color input in the submit form
     $('#step_1_color').val(firstColorSwatch);
+    $('#step_1_enAttrPos_JerseyColor').val(enAttrPos_JerseyColor);
 };
 
 //remove margin on first child
@@ -222,7 +224,9 @@ $('input[type=radio]').change(function() {
   }
   //populates the color input in the submit form
   var checkedColor = $('input[type=radio]').filter(":checked").val();
+  var checkedColor_enAttrPos_JerseyColor = $('input[type=radio]').filter(":checked").data('color');
   $('#step_1_color').val(checkedColor);
+  $('#step_1_enAttrPos_JerseyColor').val(checkedColor_enAttrPos_JerseyColor);
   imageDisplay();
 });
 
@@ -230,6 +234,8 @@ $('.color_square').on('click', function() {
   var square_id = $(this).prop('id');
   $('#step_1_color').val(square_id);
   $("input[value="+square_id+"]").prop('checked', true);
+  var square_id_enAttrPos_JerseyColor = $("input[value="+square_id+"]").data('color');
+  $('#step_1_enAttrPos_JerseyColor').val(square_id_enAttrPos_JerseyColor);
   $('#color_select').find('input[type=radio]').not("input[value="+square_id+"]").prop('checked', false);
   imageDisplay();
 });

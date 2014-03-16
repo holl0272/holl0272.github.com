@@ -25,6 +25,7 @@ var img = urlParams["img"];
 var price = urlParams["price"];
 var product_id = urlParams["id"];
 var color = urlParams["color"];
+var enAttrPos_JerseyColor = urlParams["enAttrPos_JerseyColor"];
 var qty = urlParams["qty"];
 var rev_prod = urlParams["rev_product"];
 var rev = urlParams["rev"];
@@ -94,7 +95,10 @@ $(document).ready(function(){
   $('#urlParams_name').html(name);
 
   //PRODUCT ID
-  $('#product_id').val(product_id);
+  $('#step_2_form').attr('action', '../../../detail_reversible.asp?product_id='+product_id);
+
+  //JERSEY COLOR
+  $('#enAttrPos_JerseyColor').val(enAttrPos_JerseyColor);
 
   //SPORT BOX
   $('.sport_box').hide();
