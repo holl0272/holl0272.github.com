@@ -216,6 +216,24 @@ table#jersey_details {
   transform: translateY(-5px);
 }
 
+/* Grow */
+.grow {
+  display: inline-block;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.grow:hover {
+  -webkit-transform: scale(1.4);
+  -ms-transform: scale(1.4);
+  transform: scale(1.4);
+}
+
 /* Details Table */
 #sub_selections table  {
   width: auto;

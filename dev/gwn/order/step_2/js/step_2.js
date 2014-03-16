@@ -1052,6 +1052,15 @@ $(document).ready(function(){
   });
 
   //TOGGLE INFO AND CHECKMARK ICON
+  $('.info_btn').load(function(e) {
+    if($(this).attr('src') != 'images/info/info.png') {
+      $(this).removeClass('info-glow').addClass('check-glow');
+    }
+    else {
+      $(this).removeClass('check-glow').addClass('info-glow');
+    };
+  });
+  ($(this).attr('src') == 'images/info/info.png')
   //all but custom logo and team name
   $('select').change(function() {
     if($(this).val() != "default") {
