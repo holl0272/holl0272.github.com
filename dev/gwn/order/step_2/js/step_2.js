@@ -1439,8 +1439,8 @@ function captureValues() {
           var detailsTable = $("<br><table></table>");
 
           detailsTable.jsonTable({
-              head : ['Jersey', 'Size', 'Price', 'Number', 'Name', 'Qty'],
-              json : ['Jersey', 'Size', 'Price', 'Number', 'Name', 'Qty']
+              head : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty'],
+              json : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty']
           });
 
           detailsTable.jsonTableUpdate(options);

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>GWN: TEST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GameWearNow - TEST">
+  <meta name="author" content="f-robots.com">
+  <meta charset="utf-8">
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+</head>
+<body>
+
+<form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+<input type="hidden" name="m" value="<?php echo "Attached File: ".$_FILES['logo']['name'] ?>"></input>
+<input type="file" name="logo"/><br>
+<input type="submit">
+</form>
+
+</body>
+</html>

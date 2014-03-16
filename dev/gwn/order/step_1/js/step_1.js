@@ -396,7 +396,7 @@ function calculateCost(qty) {
 
 
 function buildRows(qty) {
-  var header = "<tr class='transparent'><td>Jersey</td><td></td><td>Size</td><td>Price</td><td class='numbers_input'></td><td class='numbers_input'>Number</td><td class='names_input'></td><td class='names_input'>Name</td><td></td><td></td><td class='hide'>Qty</td></tr>"
+  var header = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td class='numbers_input'></td><td class='numbers_input'>Num</td><td class='names_input' style='min-width:115px'></td><td class='names_input' style='min-width:140px'>Name</td><td></td><td style='min-width:55px'></td><td class='hide'>Qty</td></tr>"
   var row_number = "<td class='row_number'><font></font></td>";
     var sizeSelect = $('.description').filter(":visible").find('.size_select').parent().html();
     var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_options').addClass('resize_select').parent().html();
@@ -687,10 +687,10 @@ $('#print_numbers_select').on('change', function() {
     else {
       $("#team_name_design option[value='letters_graphic']").prop("disabled",false);
     };
-    if($("#custom_logo :selected").val() == "yes") {
-      $("#custom_logo option[value='no']").prop("selected",true);
-      $('#step_1_logo').val('no');
-    };
+    // if($("#custom_logo :selected").val() == "yes") {
+    //   $("#custom_logo option[value='no']").prop("selected",true);
+    //   $('#step_1_logo').val('no');
+    // };
   }
   else {
     $('.numbers_input').hide();
@@ -890,14 +890,14 @@ if($.cookie('returnJSON')){
   var detailsTable = $("<table id='cookieTbl'></table>");
 
   detailsTable.jsonTable({
-    json : ['Jersey', 'Size', 'Price', 'Number', 'Name', 'Qty']
+    json : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty']
   });
 
   detailsTable.jsonTableUpdate(options);
   // $("#json_data").append(detailsTable);
 
 function handle(table){
-  var header = "<tr class='transparent' id='json_header'><td>Jersey</td><td></td><td>Size</td><td>Price</td><td class='numbers_input'></td><td class='numbers_input'>Number</td><td class='names_input'></td><td class='names_input'>Name</td><td></td><td></td><td>Qty</td><td class='hide'>Qty</td></tr>"
+  var header = "<tr class='transparent' id='json_header'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td class='numbers_input'></td><td class='numbers_input'>Num</td><td class='names_input' style='min-width:115px'></td><td class='names_input' style='max-width:140px'>Name</td><td></td><td></td><td style='min-width:55px'>Qty</td><td class='hide'>Qty</td></tr>"
   $('#jersey_details').append(header);
 
   table.find('tr').each(function(){
@@ -911,8 +911,8 @@ function handle(table){
     var qty = $(this).find('td:eq(5)').text();
 
     var row_number = "<td class='row_number'><font>"+jersey+"</font></td>";
-    var product_size = "<td>Size</td><td class='jersey_size' style='min-width: 70px'><a class='float'><font class='return_size'>"+size+"</font></a></td>";
-    var jersey_price = "<td class='jersey_price' style='padding-right: 10px;'>"+price+"</td>";
+    var product_size = "<td>Size</td><td class='jersey_size'><a class='float'><font class='return_size'>"+size+"</font></a></td>";
+    var jersey_price = "<td class='jersey_price'>"+price+"</td>";
     if(number != "") {
       var product_number = "<td class='numbers_input'>Number</td><td class='numbers_input number_reset'><a class='float'><font class='return_number'>"+number+"</font></a></td>";
     }
@@ -925,10 +925,9 @@ function handle(table){
     else {
      var name_on_jersey = "<td class='names_input'>Name On Jersey</td><td class='names_input name_reset'>"+nameInput+"</td>";
     };
-    var product_qty = "<td>Quantity</td><td><font style='padding-right: 10px;'>"+qty+"</font></td>";
-    //var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; float:right; padding-left:5px; cursor: pointer;'> - </span></td><span>";
-    //var raw_qty = "<td class='hide'></td>";
-    var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+"</tr>";
+    var product_qty = "<td>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'>"+qty+"</font>";
+    var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; padding-left:5px; cursor: pointer;'> - </span></td><span>";
+    var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+qty_btns+"</tr>";
 
     $('#jersey_details').append(jersey_row);
   });
@@ -1030,8 +1029,8 @@ function handle(table){
 
   //edit name on return from step_2
   $('.return_name').on('click', function() {
-    var nameInput = "<input type='text' class='name_input' style='width: 150px;'>";
-    var newnameInput = "<input type='text' class='newname_input' style='width: 150px;'>";
+    var nameInput = "<input type='text' class='name_input'>";
+    var newnameInput = "<input type='text' class='newname_input'>";
     $(this).closest('td').html(nameInput).on('click', function() {
       $(this).find('input').focus();
       var nameTimer;
@@ -1071,7 +1070,60 @@ function handle(table){
     });
   });
 
+    function togglePlusLess() {
+    var qty = Number($('#order_qty').val());
+    $('#sub_selections table tr td .btns').show();
+    if($('#sub_selections table tr').filter(":visible").length > 1) {
+      $('#sub_selections table tr').filter(":visible").find('.row_qty').next().addClass('count');
+      $('#sub_selections table tr').filter(":visible").last().find('.row_qty').next().removeClass('count');
+      var sum = 0;
+        $('.count').each(function() {
+          sum += Number($(this).text());
+        });
+      var lastRowQty = qty - sum;
+      $('#sub_selections table tr td').filter(":visible").last().find('.row_qty').val(lastRowQty).next().text(lastRowQty);
+    }
+    else if($('#sub_selections table tr').filter(":visible").length == 1) {
+      $('#sub_selections table tr td').filter(":visible").find('.row_qty').val(qty).next().text(qty);
+    };
+  };
+  togglePlusLess();
+
+  $('.plus_one').on('click', function() {
+    alert('p');
+    var qty = Number($('#order_qty').val());
+    var qty_plus = Number($(this).parent().prev().prev().val());
+    var increase = qty_plus + 1;
+    var rowTwoQty = Number($('#sub_selections table tr').filter(":visible").last().find('.row_qty').val());
+    var decreaseRowTwoQty = rowTwoQty - 1;
+
+    if(increase <= qty){
+      $(this).parent().prev().text(increase);
+      $(this).parent().prev().prev().val(increase).closest('td').next('td').html(increase);
+      if(($('#sub_selections table tr').filter(":visible").length == 2) && (rowTwoQty > 1)) {
+        $('#sub_selections table tr').filter(":visible").last().find('.row_qty').val(decreaseRowTwoQty).next().text(decreaseRowTwoQty);
+      }
+      else {
+        $('#sub_selections table tr').filter(":visible").last().hide();
+      };
+      togglePlusLess();
+    };
+  });
+
+  $('.less_one').on('click', function() {
+    alert('m');
+    var qty_less = Number($(this).parent().prev().prev().val());
+    var decrease = qty_less - 1;
+    if(decrease > 0){
+      $(this).parent().prev().text(decrease);
+      $(this).parent().prev().prev().val(decrease).closest('td').next('td').html(decrease);
+      $('#sub_selections table tr').filter(":hidden").first().show();
+      togglePlusLess();
+    };
+  });
+
   }
+
   handle(detailsTable)
   $('select').change(function(){
     returnPriceEachJersey();
@@ -1167,6 +1219,7 @@ else {
 
 //CAPTURE VALUES AND SUBMIT FORM TO STEP 2
 function captureValues() {
+  $('.btns').remove();
   $.removeCookie('returnJSON', { path: '/' });
   var detailsToJSON = $('#jersey_details').tableToJSON();
   var data = JSON.stringify(detailsToJSON);
