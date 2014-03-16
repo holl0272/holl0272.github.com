@@ -773,16 +773,12 @@ $(document).ready(function(){
       $("#graphic"+oposite+"ColorOverlay").remove();
     }
     if(logo != "yes") {
-      alert('5');
       if(graphic != "default") {
-        alert('6');
         if($('#placement_select').val() != "chest") {
-          alert('7');
           graphicColor = "<image src='images/elements/reversable/graphics/"+side+"/"+graphic+"_"+color+".png' id='graphic_"+side+"_element' class='product_img_element'>";
           graphicColorOverlay = "<image src='images/elements/reversable/graphics/"+side+"/large/"+graphic+"_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element'>";
         }
         else {
-          alert('8');
           graphicColor = "<image src='images/elements/reversable/placement/"+side+"/graphics/"+graphic+"_"+color+".png' id='graphic_"+side+"_element' class='product_img_element'>";
           graphicColorOverlay = "<image src='images/elements/reversable/placement/"+side+"/graphics/large/"+graphic+"_"+color+".png' id='graphic"+side+"ColorOverlay' class='front_element'>";
         };
@@ -918,19 +914,15 @@ $(document).ready(function(){
         };
       }
       else {
-        alert('1');
         var color = $('#color_1_select').val();
         if($('#placement_select').val() != "default") {
-          alert('2');
           if($('#side_select option:eq(1)').prop('selected') == true) {
-            alert('3');
             var side = "left";
           }
           else if($('#side_select option:eq(2)').prop('selected') == true){
             var side = "right"
           };
           if($('#placement_select').val() != "chest"){
-            alert('4')
             // graphicRevOneColor(color, side);
             teamLetteringRevOneColor(color, side);
           }
@@ -1060,7 +1052,6 @@ $(document).ready(function(){
       $(this).removeClass('check-glow').addClass('info-glow');
     };
   });
-  ($(this).attr('src') == 'images/info/info.png')
   //all but custom logo and team name
   $('select').change(function() {
     if($(this).val() != "default") {
