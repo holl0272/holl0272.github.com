@@ -736,13 +736,20 @@ $('#numbers_front_back').on('change', function() {
       $("#custom_logo option[value='no']").prop("selected",true);
       $('#step_1_logo').val('no');
     };
+    $("#print_name_on_back option").prop('disabled',false);
   }
   else if($(this).val() == "back"){
     $('#step_1_number_placement').val('back');
     $("#team_name_design option[value='letters_graphic']").prop("disabled",false);
     $('#custom_logo option').prop('disabled', false);
+    $("#print_name_on_back option").prop('disabled',false);
+    $('#custom_logo option').prop('disabled', false);
   }
   else if($(this).val() == "front_back"){
+    $("#print_name_on_back option[value='no']").prop("selected",true);
+    $('#step_1_print_names').val('no');
+    $('#print_name_on_back option').prop('disabled',true);
+    $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
     $('#step_1_number_placement').val('front_back');
     $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
     $('#custom_logo option').prop('disabled', true);

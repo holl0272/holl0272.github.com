@@ -269,7 +269,10 @@ function validateForm(theForm)
 		<!--webbot bot="PurpleText" PREVIEW="Begin Optional Confirmation Message Display" -->
 		<% Call WriteThankYouMessage %>
 		<!--webbot bot="PurpleText" PREVIEW="End Optional Confirmation Message Display" -->
-		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);">
+
+		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="http://dev.gamewearnow.com/addproduct.asp" onSubmit="return validateForm(this);">
+
+		<!-- <form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);"> -->
 		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">
 		<table border="0" width="100%" class="tdContent2" cellpadding="2" cellspacing="0">
 		  <tr>
@@ -498,9 +501,20 @@ function validateForm(theForm)
 
 <script>
 $(document).ready(function() {
-var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
-
-$("td.jerseyDisplay:contains('"+enAttrPos_JerseyColor+"')").next().find('input').prop("checked", true).click();
+	// SET THE PRODUCT COLOR
+	var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
+	$("td.jerseyDisplay:contains('"+enAttrPos_JerseyColor+"')").next().find('input').prop("checked", true).click();
+	// SHOW AVLIBLE LETTING OPTIONS BASED ON REVERSE PRINTING
+	var optionXa = '<%=response.write(request.form("optionXa"))%>';
+	if(optionXa == "yes") {
+		$(".jerseyDisplay2:contains('a:')").parent().prev().find('input').hide();
+	}
+	else {
+		$(".jerseyDisplay2:contains('a:')").next().find('input').hide();
+	};
+	// SELECT THE LETTERING OPTION
+	var letteringOption = '<%=response.write(request.form("letteringOption"))%>';
+	$(".jerseyDisplay2 [type='radio']").filter(':visible').eq(letteringOption).prop("checked", true).click();
 });
 </script>
 

@@ -100,6 +100,11 @@ $(document).ready(function(){
   //JERSEY COLOR
   $('#enAttrPos_JerseyColor').val(enAttrPos_JerseyColor);
 
+  //REV PRINTING
+  if(rev == "yes") {
+    $('#optionXa').val('yes')
+  };
+
   //SPORT BOX
   $('.sport_box').hide();
   $('.sport_box_mobile').hide();
@@ -429,6 +434,8 @@ $(document).ready(function(){
     // $('#placement_select option:eq(1)').prop('selected', true);
   };
   $('#side_select').on('change', function() {
+    var print_side = $("#side_select option:selected").text();
+    $('#step_2_rev_side').val(print_side);
     var color = $('#color_1_select').val();
     if(rev == 'yes') {
       var side = "left";
@@ -1052,6 +1059,9 @@ $(document).ready(function(){
   });
 
   //TOGGLE INFO AND CHECKMARK ICON
+  //init set glow class
+  $('.info_btn').addClass('info-glow');
+  //toggle class on icon load
   $('.info_btn').load(function(e) {
     if($(this).attr('src') != 'images/info/info.png') {
       $(this).removeClass('info-glow').addClass('check-glow');
@@ -1075,6 +1085,9 @@ $(document).ready(function(){
   });
   $('#team_name_input').on('blur', function() {
     if($(this).val() != ""){
+      $(this).val(function() {
+        return this.value.toUpperCase();
+      });
       $('#team_name_info_icon').attr('src', 'images/info/check.png');
     }
     else {
@@ -1456,8 +1469,41 @@ function captureValues() {
 
           $("#json_table").append(detailsTable);
 
+  // LETTERING OPTIONS
+  var option;
+  var one = 1;
+  var two = 2;
+  var three= 3;
+  var four = 4;
+  var five = 5;
+  var six = 6;
+
+  if((number_placement == "front") || (number_placement == "back")) {
+    option = one;
+  }
+  if(number_placement == "front_back") {
+    option = two;
+  }
+  if(((number_placement == "front") || (number_placement == "back")) && (print_names == "yes")) {
+    option = three;
+  }
+  if((number_placement == "back") && ((team_name_design == "letters") || (team_name_design == "letters_graphic"))) {
+    option = four;
+  }
+  if((number_placement == "back") && (print_names == "yes") && ((team_name_design == "letters") || (team_name_design == "letters_graphic"))) {
+    option = five;
+  }
+  if((number_placement == "front_back") && (print_names == "yes") && (team_name_design == "letters")) {
+    option = six;
+  }
+  $('#letteringOption').val(option);
+
   $("#form_results").show();
   $('#step_2_form').submit();
+
+  console.log(number_placement);
+    console.log(print_names);
+      console.log(team_name_design);
 };
 
 
