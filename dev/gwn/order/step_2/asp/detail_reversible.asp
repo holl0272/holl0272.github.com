@@ -501,10 +501,10 @@ function validateForm(theForm)
 
 <script>
 $(document).ready(function() {
-	// SET THE PRODUCT COLOR
+	//SET THE PRODUCT COLOR
 	var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
 	$("td.jerseyDisplay:contains('"+enAttrPos_JerseyColor+"')").next().find('input').prop("checked", true).click();
-	// SHOW AVLIBLE LETTING OPTIONS BASED ON REVERSE PRINTING
+	//SHOW AVLIBLE LETTING OPTIONS BASED ON REVERSE PRINTING
 	var optionXa = '<%=response.write(request.form("optionXa"))%>';
 	if(optionXa == "yes") {
 		$(".jerseyDisplay2:contains('a:')").parent().prev().find('input').hide();
@@ -512,15 +512,15 @@ $(document).ready(function() {
 	else {
 		$(".jerseyDisplay2:contains('a:')").next().find('input').hide();
 	};
-	// SELECT THE LETTERING OPTION
+	//SELECT THE LETTERING OPTION
 	var letteringOption = '<%=response.write(request.form("letteringOption"))%>';
 	$(".jerseyDisplay2 [type='radio']").filter(':visible').eq(letteringOption).prop("checked", true).click();
-	// SIDE COLORS
+	//SIDE COLORS
 	var colorOne = '<%=response.write(request.form("colorOne"))%>';
 	var colorTwo = '<%=response.write(request.form("colorTwo"))%>';
 	var sideOneColor = '<%=response.write(request.form("sideOneColor"))%>';
 	var sideTwoColor = '<%=response.write(request.form("sideTwoColor"))%>';
-	// one side
+	//one side
 	if(colorTwo == ""){
 		var colorColumn = $("#jerseyLetteringColor table tr td span:contains('"+colorOne+"')").attr('id');
 		if(colorColumn == "spSide1Color") {
@@ -540,7 +540,7 @@ $(document).ready(function() {
 			});
 		};
 	}
-	// two sides
+	//two sides
 	else {
 		var sideOneIndex = $("#spSide1Color:contains('"+colorOne+"')").closest('td').index();
 		$("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideOneIndex)+")").each(function(){
@@ -555,17 +555,17 @@ $(document).ready(function() {
 			}
 		});
 	};
-	// FONT
+	//FONT
 	var font = '<%=response.write(request.form("font"))%>';
 	$('#jerseyLetteringFont table').find("tr td:nth-child(1)").each(function() {
 		if($(this).text() == font){
 			$(this).next().find('input').prop("checked", true).click();
 		}
 	});
-	// TEAM NAME
+	//TEAM NAME
 	var teamName = '<%=response.write(request.form("teamName"))%>';
 	$(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName);
-	// PLACEMENT
+	//PLACEMENT
 	var placement = '<%=response.write(request.form("placement"))%>';
 	if(placement != "") {
 		$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('"+placement+"')").attr('selected', true)
@@ -582,13 +582,33 @@ $(document).ready(function() {
 	});
 	//TEAM NAME DESIGN
 	var nameDesign = '<%=response.write(request.form("nameDesign"))%>';
-	var nameDesignStyle = '<%=response.write(request.form("nameDesignStyle"))%>';
-	$("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr:gt(0):lt(4) td:nth-child(1)").each(function() {
-		if($(this).text() == nameDesignStyle){
-			$(this).next().find('input').prop("checked", true).click();
-		}
-	});
-
+	var nameStyle = '<%=response.write(request.form("nameDesignStyle"))%>';
+	var graphic = '<%=response.write(request.form("graphic"))%>';
+	var logo = '<%=response.write(request.form("logo"))%>';
+	//team name style
+	if(nameStyle != "") {
+		$("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr:gt(0):lt(4) td:nth-child(1)").each(function() {
+			if($(this).text() == nameStyle){
+				$(this).next().find('input').prop("checked", true).click();
+			}
+		});
+	};
+	//graphic
+	if(graphic != "") {
+		$("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr:gt(5) td:nth-child(1)").each(function() {
+			if($(this).text() == graphic){
+				$(this).next().find('input').prop("checked", true).click();
+			}
+		});
+	};
+	//custom logo
+	if(logo != "") {
+		$("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr td:nth-child(1)").each(function() {
+			if($(this).text().indexOf(logo) != -1){
+				$(this).next().find('input').prop("checked", true).click();
+			}
+		});
+	};
 
 
 });

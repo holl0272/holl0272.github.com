@@ -239,6 +239,7 @@ $(document).ready(function(){
     $('#graphic_row').hide();
   }
   else {
+    $('#team_name_row').hide();
     $("."+sport+"_stock").each(function(){
       var graphicId = $(this).attr('id');
       var graphicValue  = graphicId;
@@ -1480,10 +1481,10 @@ function captureValues() {
   if(((number_placement == "front") || (number_placement == "back")) && (print_names == "yes")) {
     option = 3;
   }
-  if((number_placement == "back") && ((team_name_design == "letters") || (team_name_design == "letters_graphic"))) {
+  if((number_placement == "back") && ((team_name_design == "letters") || (team_name_design == "letters_graphic") || (logo == "yes"))) {
     option = 4;
   }
-  if((number_placement == "back") && (print_names == "yes") && ((team_name_design == "letters") || (team_name_design == "letters_graphic"))) {
+  if((number_placement == "back") && (print_names == "yes") && ((team_name_design == "letters") || (team_name_design == "letters_graphic") || (logo == "yes"))) {
     option = 5;
   }
   if((number_placement == "front_back") && (print_names == "yes") && (team_name_design == "letters")) {
@@ -1530,7 +1531,7 @@ function captureValues() {
   $('#teamName').val(teamName);
 
   //TEAM NAME DESIGN
-  if(team_name_design == "none") {
+  if(team_name_design != "none") {
     var nameDesign;
     if(team_name_design == "letters") {
       nameDesign = "Letters Only"
@@ -1539,6 +1540,11 @@ function captureValues() {
       nameDesign = "Letters with Graphics"
     }
     $('#nameDesign').val(nameDesign)
+  }
+  else {
+    if(logo == "yes") {
+    $('#nameDesign').val("Letters with Graphics")
+    }
   }
   if($('#team_name_style_select').val() != "default") {
     var nameDesignStyle = $('#team_name_style_select option:selected').text();
@@ -1549,6 +1555,17 @@ function captureValues() {
   if($('#placement_select option:selected').val() != "default") {
     var placement = $('#placement_select option:selected').text();
     $('#placement').val(placement);
+  };
+
+  //GRAPHIC
+  if($('#graphic_select').val() != "default") {
+    var graphic = $('#graphic_select option:selected').text();
+    $('#graphic').val(graphic);
+  };
+
+  //LOGO
+  if(logo == "yes") {
+    $('#logo').val('Custom Logo');
   };
 
   $("#form_results").show();
