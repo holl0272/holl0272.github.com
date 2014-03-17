@@ -1515,6 +1515,16 @@ function captureValues() {
     $('#sideOneColor').val(sideOnePrintColor);
   };
 
+  //TEAM NAME
+  var teamName = $('#team_name_input').val()
+  $('#teamName').val(teamName);
+
+  //PLACEMENT
+  if($('#placement_select option:selected').val() != "default"){
+    var placement = $('#placement_select option:selected').text();
+    $('#placement').val(placement);
+  };
+
   $("#form_results").show();
   $('#step_2_form').submit();
 

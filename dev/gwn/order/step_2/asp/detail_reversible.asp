@@ -520,7 +520,7 @@ $(document).ready(function() {
 	var colorTwo = '<%=response.write(request.form("colorTwo"))%>';
 	var sideOneColor = '<%=response.write(request.form("sideOneColor"))%>';
 	var sideTwoColor = '<%=response.write(request.form("sideTwoColor"))%>';
-	//one side
+	// one side
 	if(colorTwo == ""){
 		var colorColumn = $("#jerseyLetteringColor table tr td span:contains('"+colorOne+"')").attr('id');
 		if(colorColumn == "spSide1Color") {
@@ -540,6 +540,7 @@ $(document).ready(function() {
 			});
 		};
 	}
+	// two sides
 	else {
 		var sideOneIndex = $("#spSide1Color:contains('"+colorOne+"')").closest('td').index();
 		$("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideOneIndex)+")").each(function(){
@@ -554,6 +555,14 @@ $(document).ready(function() {
 			}
 		});
 	};
+	// TEAM NAME
+	var teamName = '<%=response.write(request.form("teamName"))%>';
+	$(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName);
+	// PLACEMENT
+	var placement = '<%=response.write(request.form("placement"))%>';
+	$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('"+placement+"')").attr('selected', true)
+
+
 
 });
 </script>
