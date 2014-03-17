@@ -515,6 +515,46 @@ $(document).ready(function() {
 	// SELECT THE LETTERING OPTION
 	var letteringOption = '<%=response.write(request.form("letteringOption"))%>';
 	$(".jerseyDisplay2 [type='radio']").filter(':visible').eq(letteringOption).prop("checked", true).click();
+	// SIDE COLORS
+	var colorOne = '<%=response.write(request.form("colorOne"))%>';
+	var colorTwo = '<%=response.write(request.form("colorTwo"))%>';
+	var sideOneColor = '<%=response.write(request.form("sideOneColor"))%>';
+	var sideTwoColor = '<%=response.write(request.form("sideTwoColor"))%>';
+	//one side
+	if(colorTwo == ""){
+		var colorColumn = $("#jerseyLetteringColor table tr td span:contains('"+colorOne+"')").attr('id');
+		if(colorColumn == "spSide1Color") {
+			var sideOneIndex = $("#spSide1Color:contains('"+colorOne+"')").closest('td').index();
+			$("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideOneIndex)+")").each(function(){
+				if($(this).text() == sideOneColor){
+					$(this).next().find('input').prop("checked", true).click();
+				}
+			});
+		}
+		else {
+			var sideTwoIndex = $("#spSide2Color:contains('"+colorOne+"')").closest('td').index();
+			$("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideTwoIndex-2)+")").each(function(){
+				if($(this).text() == sideOneColor){
+					$(this).next().next().next().find('input').prop("checked", true).click();
+				}
+			});
+		};
+	}
+	else {
+		var sideOneIndex = $("#spSide1Color:contains('"+colorOne+"')").closest('td').index();
+		$("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideOneIndex)+")").each(function(){
+			if($(this).text() == sideOneColor){
+				$(this).next().find('input').prop("checked", true).click();
+			}
+		});
+		var sideTwoIndex = $("#spSide2Color:contains('"+colorTwo+"')").closest('td').index();
+		$("span:contains('"+colorTwo+"')").closest('td').closest("table").find("tr td:nth-child("+(sideTwoIndex-2)+")").each(function(){
+			if($(this).text() == sideTwoColor){
+				$(this).next().next().next().find('input').prop("checked", true).click();
+			}
+		});
+	};
+
 });
 </script>
 

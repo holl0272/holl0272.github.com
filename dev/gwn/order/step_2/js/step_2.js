@@ -1471,39 +1471,53 @@ function captureValues() {
 
   // LETTERING OPTIONS
   var option;
-  var one = 1;
-  var two = 2;
-  var three= 3;
-  var four = 4;
-  var five = 5;
-  var six = 6;
-
   if((number_placement == "front") || (number_placement == "back")) {
-    option = one;
+    option = 1;
   }
   if(number_placement == "front_back") {
-    option = two;
+    option = 2;
   }
   if(((number_placement == "front") || (number_placement == "back")) && (print_names == "yes")) {
-    option = three;
+    option = 3;
   }
   if((number_placement == "back") && ((team_name_design == "letters") || (team_name_design == "letters_graphic"))) {
-    option = four;
+    option = 4;
   }
   if((number_placement == "back") && (print_names == "yes") && ((team_name_design == "letters") || (team_name_design == "letters_graphic"))) {
-    option = five;
+    option = 5;
   }
   if((number_placement == "front_back") && (print_names == "yes") && (team_name_design == "letters")) {
-    option = six;
+    option = 6;
   }
   $('#letteringOption').val(option);
+
+  // COLOR SIDE
+  if(rev == "yes") {
+    var sideOne = $("#color_1_select [value='default']").text();
+    var sideTwo = $("#color_2_select [value='default']").text();
+    var sideOnePrintColor = $("#color_1_select option:selected").text();
+    var sideTwoPrintColor = $("#color_2_select option:selected").text();
+    var colorOneSplit = sideOne.split(" Side");
+    var colorOne = colorOneSplit[0];
+    $('#colorOne').val(colorOne);
+    $('#sideOneColor').val(sideOnePrintColor);
+    var colorTwoSplit = sideTwo.split(" Side");
+    var colorTwo = colorTwoSplit[0];
+    $('#colorTwo').val(colorTwo);
+    $('#sideTwoColor').val(sideTwoPrintColor);
+  }
+  else {
+    var sideOnePrintColor = $("#color_1_select option:selected").text();
+    var onlySide = $("#side_select option:selected").text();
+    var onlySideSplit = onlySide.split(" Side");
+    var colorOne = onlySideSplit[0];
+    $('#colorOne').val(colorOne);
+    $('#sideOneColor').val(sideOnePrintColor);
+  };
 
   $("#form_results").show();
   $('#step_2_form').submit();
 
-  console.log(number_placement);
-    console.log(print_names);
-      console.log(team_name_design);
 };
 
 
