@@ -555,12 +555,25 @@ $(document).ready(function() {
 			}
 		});
 	};
+	// FONT
+	var font = '<%=response.write(request.form("font"))%>';
+	$('#jerseyLetteringFont table').find("tr td:nth-child(1)").each(function() {
+		if($(this).text() == font){
+			$(this).next().find('input').prop("checked", true).click();
+		}
+	});
 	// TEAM NAME
 	var teamName = '<%=response.write(request.form("teamName"))%>';
 	$(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName);
 	// PLACEMENT
 	var placement = '<%=response.write(request.form("placement"))%>';
-	$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('"+placement+"')").attr('selected', true)
+	if(placement != "") {
+		$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('"+placement+"')").attr('selected', true)
+	}
+	else {
+		$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('Not Applicable')").attr('selected', true)
+	};
+
 
 
 

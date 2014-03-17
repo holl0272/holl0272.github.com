@@ -1514,13 +1514,18 @@ function captureValues() {
     $('#colorOne').val(colorOne);
     $('#sideOneColor').val(sideOnePrintColor);
   };
+  //FONT
+  if($('#font_select option:selected').val() != "default") {
+    var font = $('#font_select option:selected').text();
+    $('#font').val(font);
+  };
 
   //TEAM NAME
   var teamName = $('#team_name_input').val()
   $('#teamName').val(teamName);
 
   //PLACEMENT
-  if($('#placement_select option:selected').val() != "default"){
+  if($('#placement_select option:selected').val() != "default") {
     var placement = $('#placement_select option:selected').text();
     $('#placement').val(placement);
   };
