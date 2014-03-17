@@ -1568,6 +1568,12 @@ function captureValues() {
     $('#logo').val('Custom Logo');
   };
 
+  //JERSEY DETAIL ROW COUNT
+  var jerseyRows = $('#json_table tr').length/2-1
+  $('#jerseyRows').val(jerseyRows);
+  //jersey details
+  $('#json_source').val(json_source);
+
   $("#form_results").show();
   $('#step_2_form').submit();
 

@@ -203,6 +203,85 @@ function validateForm(theForm)
 
 <% If getProductInfo(txtProdId, enProduct_Exists) Then Response.Write "prodBasePrice =" & getProductInfo(txtProdId, enProduct_SellPrice) & ";" & vbcrlf %>
 
+(function ( $ ) {
+
+    $.fn.jsonTable = function( options ) {
+        var settings = $.extend({
+            head: [],
+            json:[]
+        }, options, { table: this } );
+
+        table = this;
+
+        table.data("settings",settings);
+
+        if (table.find("thead").length == 0) {
+            table.append($("<thead></thead>").append("<tr></tr>"));
+        }
+
+        if (table.find("thead").find("tr").length == 0) {
+            table.find("thead").append("<tr></tr>");
+        }
+
+        if (table.find("tbody").length == 0) {
+            table.append($("<tbody></tbody>"));
+        }
+
+        $.each(settings.head, function(i, header) {
+            table.find("thead").find("tr").append("<th>"+header+"</th>");
+        });
+
+        return table;
+    };
+
+    $.fn.jsonTableUpdate = function( options ){
+        var opt = $.extend({
+            source: undefined,
+            rowClass: undefined,
+            callback: undefined
+        }, options );
+        var settings = this.data("settings");
+
+        if(typeof opt.source == "string")
+        {
+            $.get(opt.source, function(data) {
+                $.fn.updateFromObj(data,settings,opt.rowClass, opt.callback);
+            });
+        }
+        else if(typeof opt.source == "object")
+        {
+            $.fn.updateFromObj(opt.source,settings, opt.rowClass, opt.callback);
+        }
+    }
+
+    $.fn.updateFromObj = function(obj,settings,rowClass, callback){
+        settings.table.find("tbody").empty();
+        $.each(obj, function(i,line) {
+            var tableRow = $("<tr></tr>").addClass(rowClass);
+
+            $.each(settings.json, function(j, identity) {
+                if(identity == '*') {
+                    tableRow.append($("<td>"+(i+1)+"</td>"));
+                }
+                else {
+                    tableRow.append($("<td>" + line[this] + "</td>"));
+                }
+            });
+            settings.table.append(tableRow);
+        });
+
+
+        if (typeof callback === "function") {
+            callback();
+        }
+
+        $(window).trigger('resize');
+    }
+
+}( jQuery ));
+
+
+
 </script>
 <% writeCurrencyConverterOpeningScript %>
 
@@ -422,6 +501,9 @@ function validateForm(theForm)
 	</tr>
 
 </table>
+
+<div id="json_table"></div>
+
 </div><input type="hidden" name="QUANTITY.<%= cstrCustomLogo_ProductID %>" id="customLogo" value="" />
 </form>
 </div>
@@ -564,14 +646,14 @@ $(document).ready(function() {
 	});
 	//TEAM NAME
 	var teamName = '<%=response.write(request.form("teamName"))%>';
-	$(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName);
+	$(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName).change();
 	//PLACEMENT
 	var placement = '<%=response.write(request.form("placement"))%>';
 	if(placement != "") {
-		$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('"+placement+"')").attr('selected', true)
+		$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('"+placement+"')").attr('selected', true).change();
 	}
 	else {
-		$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('Not Applicable')").attr('selected', true)
+		$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('Not Applicable')").attr('selected', true).change();
 	};
 	//PLAYER NAME LETTERING STYLE
 	var playerLetteringStyle = '<%=response.write(request.form("playerLetteringStyle"))%>';
@@ -609,7 +691,38 @@ $(document).ready(function() {
 			}
 		});
 	};
+	//JERSEY DETAILS
+	var rows = '<%=response.write(request.form("jerseyRows"))%>';
+	var json_source = '<%=response.write(request.form("json_source"))%>';
+	var data = JSON.parse(json_source);
+	var options = { source: data, };
+	var detailsTable = $("<br><table id='row_details'></table>");
+		detailsTable.jsonTable({
+			head : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty'],
+			json : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty']
+		});
+	detailsTable.jsonTableUpdate(options);
 
+	$("#json_table").append(detailsTable);
+	$('#row_details tr:eq(0)').remove(); //removes table header
+
+  //run through each row
+  function populateRow(counter, j_size, j_number, j_name, j_qty) {
+  	$("#jerseyOrder tr:eq("+counter+")").find("select option").filter(function () { return $(this).html() == j_size; }).prop('selected', true)
+		$("#jerseyOrder tr:eq("+counter+")").find('input[title*="Player Number"]').val(j_number)
+		$("#jerseyOrder tr:eq("+counter+")").find('input[title*="Player Name"]').val(j_name);
+		$("#jerseyOrder tr:eq("+counter+")").find('input[title*="Quantity"]').val(j_qty);
+  };
+
+	var counter = 2 //starts the row count after the table headers
+  $('#row_details').find('tr').each(function() {
+    var j_size = $(this).find('td:eq(1)').text();
+    var j_number = $(this).find('td:eq(3)').text();
+    var j_name = $(this).find('td:eq(4)').text();
+    var j_qty = $(this).find('td:eq(5)').text();
+    populateRow(counter, j_size, j_number, j_name, j_qty);
+    counter ++
+  });
 
 });
 </script>
