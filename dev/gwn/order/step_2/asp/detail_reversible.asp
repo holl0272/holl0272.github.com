@@ -573,7 +573,21 @@ $(document).ready(function() {
 	else {
 		$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('Not Applicable')").attr('selected', true)
 	};
-
+	//PLAYER NAME LETTERING STYLE
+	var playerLetteringStyle = '<%=response.write(request.form("playerLetteringStyle"))%>';
+	$('#jerseyPlayerOptions table').find("tr td:nth-child(1)").each(function() {
+		if($(this).text() == playerLetteringStyle){
+			$(this).next().find('input').prop("checked", true).click();
+		}
+	});
+	//TEAM NAME DESIGN
+	var nameDesign = '<%=response.write(request.form("nameDesign"))%>';
+	var nameDesignStyle = '<%=response.write(request.form("nameDesignStyle"))%>';
+	$("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr:gt(0):lt(4) td:nth-child(1)").each(function() {
+		if($(this).text() == nameDesignStyle){
+			$(this).next().find('input').prop("checked", true).click();
+		}
+	});
 
 
 

@@ -1520,9 +1520,30 @@ function captureValues() {
     $('#font').val(font);
   };
 
+  //PLAYER LETTERING STYLE
+  if($('#player_name_style_select').val() != "default") {
+    var playerLetteringStyle = $('#player_name_style_select option:selected').text();
+    $('#playerLetteringStyle').val(playerLetteringStyle);
+  };
   //TEAM NAME
   var teamName = $('#team_name_input').val()
   $('#teamName').val(teamName);
+
+  //TEAM NAME DESIGN
+  if(team_name_design == "none") {
+    var nameDesign;
+    if(team_name_design == "letters") {
+      nameDesign = "Letters Only"
+    }
+    else {
+      nameDesign = "Letters with Graphics"
+    }
+    $('#nameDesign').val(nameDesign)
+  }
+  if($('#team_name_style_select').val() != "default") {
+    var nameDesignStyle = $('#team_name_style_select option:selected').text();
+    $('#nameDesignStyle').val(nameDesignStyle);
+  };
 
   //PLACEMENT
   if($('#placement_select option:selected').val() != "default") {
