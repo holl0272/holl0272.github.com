@@ -49,7 +49,7 @@ Dim enAttrPos_LocationTeam
 Dim enAttrPos_TeamName
 Dim enAttrPos_LetteringColor_Side2
 
-	numEntries = 20
+	numEntries = request.form("jerseyRows")
 	txtProdId = Request.QueryString("product_id")
 	If getProductInfo(txtProdId, enProduct_Exists) Then
 		Call setRecentlyViewedProducts(txtProdId, Request.ServerVariables("SCRIPT_NAME") & "?" & Request.QueryString)
@@ -81,7 +81,7 @@ Dim paryAttributeDetails
 			enAttrPos_NameOnJersey = i:  i = i + 1
 			enAttrPos_Number = i:  i = i + 1
 			enAttrPos_LetteringStyleName = i:  i = i + 1
-			numEntries = 20
+			numEntries = request.form("jerseyRows")
 
 			ReDim maryJerseyAttributes(i-1)
 			'Attribute Name, Position, Default Value
@@ -125,7 +125,7 @@ Dim paryAttributeDetails
 			enAttrPos_NameOnJersey = 8
 			enAttrPos_Number = 9
 			enAttrPos_LetteringStyleName = 10
-			numEntries = 20
+			numEntries = request.form("jerseyRows")
 
 		Case Else
 	End Select
