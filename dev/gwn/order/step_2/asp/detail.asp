@@ -67,6 +67,7 @@ Dim mstrProductDescription
 <script language="javascript" src="SFLib/sfCheckErrors.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfEmailFriend.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/ssAttributeExtender.js" type="text/javascript"></script>
+<script language="javascript" src="SFLib/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
 function validateForm(theForm)
 {
@@ -77,6 +78,86 @@ function validateForm(theForm)
 }
 
 <% If getProductInfo(txtProdId, enProduct_Exists) Then Response.Write "prodBasePrice =" & getProductInfo(txtProdId, enProduct_SellPrice) & ";" & vbcrlf %>
+
+(function ( $ ) {
+
+    $.fn.jsonTable = function( options ) {
+        var settings = $.extend({
+            head: [],
+            json:[]
+        }, options, { table: this } );
+
+        table = this;
+
+        table.data("settings",settings);
+
+        if (table.find("thead").length == 0) {
+            table.append($("<thead></thead>").append("<tr></tr>"));
+        }
+
+        if (table.find("thead").find("tr").length == 0) {
+            table.find("thead").append("<tr></tr>");
+        }
+
+        if (table.find("tbody").length == 0) {
+            table.append($("<tbody></tbody>"));
+        }
+
+        $.each(settings.head, function(i, header) {
+            table.find("thead").find("tr").append("<th>"+header+"</th>");
+        });
+
+        return table;
+    };
+
+    $.fn.jsonTableUpdate = function( options ){
+        var opt = $.extend({
+            source: undefined,
+            rowClass: undefined,
+            callback: undefined
+        }, options );
+        var settings = this.data("settings");
+
+        if(typeof opt.source == "string")
+        {
+            $.get(opt.source, function(data) {
+                $.fn.updateFromObj(data,settings,opt.rowClass, opt.callback);
+            });
+        }
+        else if(typeof opt.source == "object")
+        {
+            $.fn.updateFromObj(opt.source,settings, opt.rowClass, opt.callback);
+        }
+    }
+
+    $.fn.updateFromObj = function(obj,settings,rowClass, callback){
+        settings.table.find("tbody").empty();
+        $.each(obj, function(i,line) {
+            var tableRow = $("<tr></tr>").addClass(rowClass);
+
+            $.each(settings.json, function(j, identity) {
+                if(identity == '*') {
+                    tableRow.append($("<td>"+(i+1)+"</td>"));
+                }
+                else {
+                    tableRow.append($("<td>" + line[this] + "</td>"));
+                }
+            });
+            settings.table.append(tableRow);
+        });
+
+
+        if (typeof callback === "function") {
+            callback();
+        }
+
+        $(window).trigger('resize');
+    }
+
+}( jQuery ));
+
+
+
 </script>
 <% writeCurrencyConverterOpeningScript %>
 </head>
@@ -100,7 +181,8 @@ function validateForm(theForm)
 		<!--webbot bot="PurpleText" PREVIEW="Begin Optional Confirmation Message Display" -->
 		<% Call WriteThankYouMessage %>
 		<!--webbot bot="PurpleText" PREVIEW="End Optional Confirmation Message Display" -->
-		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);">
+				<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="http://dev.gamewearnow.com/addproduct.asp" onSubmit="return validateForm(this);">
+		<!-- <form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);"> -->
 		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">
 		<table border="0" width="100%" class="tdContent2" cellpadding="2" cellspacing="0">
 		  <tr>
@@ -217,7 +299,7 @@ function validateForm(theForm)
 		  </table>
 		</form>
 		<%= WriteJavaScript(mstrssAttributeExtenderjsOut) %>
-
+<div id="json_table"></div>
 <!--webbot bot="PurpleText" PREVIEW="Start Dynamic Product - People Who Bought This Also Bought" -->
 <%
 	Call DebugRecordTime("Load also bought")
@@ -329,6 +411,49 @@ function validateForm(theForm)
 </table>
 <!--webbot bot="PurpleText" preview="End Content Section" -->
 <!--#include file="templateBottom.asp"-->
+
+<script>
+$(document).ready(function() {
+	//SET THE PRODUCT COLOR
+	var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
+	$("select[name='attr1'] option").filter(function () { return $(this).html() == enAttrPos_JerseyColor; }).prop('selected', true).change();
+
+	//SHORTS DETAILS
+	var rows = '<%=response.write(request.form("jerseyRows"))%>';
+	var json_source = '<%=response.write(request.form("json_source"))%>';
+	var data = JSON.parse(json_source);
+	var options = { source: data, };
+	var detailsTable = $("<br><table id='row_details'></table>");
+		detailsTable.jsonTable({
+			head : ['Size', 'Qty'],
+			json : ['Size', 'Qty']
+		});
+	detailsTable.jsonTableUpdate(options);
+
+	$("#json_table").append(detailsTable);
+	$('#row_details tr:eq(0)').remove(); //removes table header
+
+ //  //run through each row
+ //  function populateRow(counter, j_size, j_number, j_name, j_qty) {
+ //  	$("#jerseyOrder tr:eq("+counter+")").find("select option").filter(function () { return $(this).html() == j_size; }).prop('selected', true)
+	// 	$("#jerseyOrder tr:eq("+counter+")").find('input[title*="Player Number"]').val(j_number)
+	// 	$("#jerseyOrder tr:eq("+counter+")").find('input[title*="Player Name"]').val(j_name);
+	// 	$("#jerseyOrder tr:eq("+counter+")").find('input[title*="Quantity"]').val(j_qty);
+ //  };
+
+	// var counter = 2 //starts the row count after the table headers
+ //  $('#row_details').find('tr').each(function() {
+ //    var j_size = $(this).find('td:eq(1)').text();
+ //    var j_number = $(this).find('td:eq(3)').text();
+ //    var j_name = $(this).find('td:eq(4)').text();
+ //    var j_qty = $(this).find('td:eq(5)').text();
+ //    populateRow(counter, j_size, j_number, j_name, j_qty);
+ //    counter ++
+ //  });
+
+});
+</script>
+
 </body>
 </html>
 <%

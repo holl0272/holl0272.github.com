@@ -182,6 +182,9 @@ if($('#reversible').css('display') == "none") {
 }
 else{
   $('#step_1_rev_product').val('yes')
+  if(name == meshShorts) {
+    $('#step_1_rev_product').val('no');
+  };
 };
 
 //COST
@@ -404,7 +407,7 @@ function calculateCost(qty) {
 
 function buildRows(qty) {
   var header = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td class='numbers_input'></td><td class='numbers_input'>Num</td><td class='names_input' style='min-width:115px'></td><td class='names_input' style='min-width:140px'>Name</td><td></td><td style='min-width:55px'></td><td class='hide'>Qty</td></tr>"
-    var shortsheader = "<tr class=''><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td></td><td style='min-width:55px'>Qty</td></tr>"
+  var shortsheader = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td></td><td style='min-width:55px'>Qty</td></tr>"
 
   var row_number = "<td class='row_number'><font></font></td>";
     var sizeSelect = $('.description').filter(":visible").find('.size_select').parent().html();

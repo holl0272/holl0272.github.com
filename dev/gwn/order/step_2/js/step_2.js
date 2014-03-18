@@ -94,8 +94,16 @@ $(document).ready(function(){
   //NAME
   $('#urlParams_name').html(name);
 
-  //PRODUCT ID
-  $('#step_2_form').attr('action', '../../../detail_reversible.asp?product_id='+product_id);
+  //PRODUCT ID and FORM ACTION
+  if(name == "Mesh Shorts") {
+    $('#step_2_form').attr('action', '../../../detail.asp?product_id='+product_id);
+  }
+  else if(rev_prod == "yes") {
+    $('#step_2_form').attr('action', '../../../detail_reversible.asp?product_id='+product_id);
+  }
+  else {
+    $('#step_2_form').attr('action', '../../../detail_football.asp?product_id='+product_id);
+  }
 
   //JERSEY COLOR
   $('#enAttrPos_JerseyColor').val(enAttrPos_JerseyColor);
@@ -249,7 +257,6 @@ $(document).ready(function(){
     $('#graphic_row').hide();
   }
   else {
-    $('#team_name_row').hide();
     $("."+sport+"_stock").each(function(){
       var graphicId = $(this).attr('id');
       var graphicValue  = graphicId;
@@ -1492,102 +1499,106 @@ function captureValues() {
 
           $("#json_table").append(detailsTable);
 
-  // LETTERING OPTIONS
-  var option;
-  if((number_placement == "front") || (number_placement == "back")) {
-    option = 1;
-  }
-  if(number_placement == "front_back") {
-    option = 2;
-  }
-  if(((number_placement == "front") || (number_placement == "back")) && (print_names == "yes")) {
-    option = 3;
-  }
-  if((number_placement == "back") && ((team_name_design == "letters") || (team_name_design == "letters_graphic") || (logo == "yes"))) {
-    option = 4;
-  }
-  if((number_placement == "back") && (print_names == "yes") && ((team_name_design == "letters") || (team_name_design == "letters_graphic") || (logo == "yes"))) {
-    option = 5;
-  }
-  if((number_placement == "front_back") && (print_names == "yes") && (team_name_design == "letters")) {
-    option = 6;
-  }
-  $('#letteringOption').val(option);
+  if(name != "Mesh Shorts") {
+    // LETTERING OPTIONS
+    var option;
+    if((number_placement == "front") || (number_placement == "back")) {
+      option = 1;
+    }
+    if(number_placement == "front_back") {
+      option = 2;
+    }
+    if(((number_placement == "front") || (number_placement == "back")) && (print_names == "yes")) {
+      option = 3;
+    }
+    if((number_placement == "back") && ((team_name_design == "letters") || (team_name_design == "letters_graphic") || (logo == "yes"))) {
+      option = 4;
+    }
+    if((number_placement == "back") && (print_names == "yes") && ((team_name_design == "letters") || (team_name_design == "letters_graphic") || (logo == "yes"))) {
+      option = 5;
+    }
+    if((number_placement == "front_back") && (print_names == "yes") && (team_name_design == "letters")) {
+      option = 6;
+    }
+    $('#letteringOption').val(option);
 
-  // COLOR SIDE
-  if(rev == "yes") {
-    var sideOne = $("#color_1_select [value='default']").text();
-    var sideTwo = $("#color_2_select [value='default']").text();
-    var sideOnePrintColor = $("#color_1_select option:selected").text();
-    var sideTwoPrintColor = $("#color_2_select option:selected").text();
-    var colorOneSplit = sideOne.split(" Side");
-    var colorOne = colorOneSplit[0];
-    $('#colorOne').val(colorOne);
-    $('#sideOneColor').val(sideOnePrintColor);
-    var colorTwoSplit = sideTwo.split(" Side");
-    var colorTwo = colorTwoSplit[0];
-    $('#colorTwo').val(colorTwo);
-    $('#sideTwoColor').val(sideTwoPrintColor);
-  }
-  else {
-    var sideOnePrintColor = $("#color_1_select option:selected").text();
-    var onlySide = $("#side_select option:selected").text();
-    var onlySideSplit = onlySide.split(" Side");
-    var colorOne = onlySideSplit[0];
-    $('#colorOne').val(colorOne);
-    $('#sideOneColor').val(sideOnePrintColor);
-  };
-  //FONT
-  if($('#font_select option:selected').val() != "default") {
-    var font = $('#font_select option:selected').text();
-    $('#font').val(font);
-  };
-
-  //PLAYER LETTERING STYLE
-  if($('#player_name_style_select').val() != "default") {
-    var playerLetteringStyle = $('#player_name_style_select option:selected').text();
-    $('#playerLetteringStyle').val(playerLetteringStyle);
-  };
-  //TEAM NAME
-  var teamName = $('#team_name_input').val()
-  $('#teamName').val(teamName);
-
-  //TEAM NAME DESIGN
-  if(team_name_design != "none") {
-    var nameDesign;
-    if(team_name_design == "letters") {
-      nameDesign = "Letters Only"
+    // COLOR SIDE
+    if(rev == "yes") {
+      var sideOne = $("#color_1_select [value='default']").text();
+      var sideTwo = $("#color_2_select [value='default']").text();
+      var sideOnePrintColor = $("#color_1_select option:selected").text();
+      var sideTwoPrintColor = $("#color_2_select option:selected").text();
+      var colorOneSplit = sideOne.split(" Side");
+      var colorOne = colorOneSplit[0];
+      $('#colorOne').val(colorOne);
+      $('#sideOneColor').val(sideOnePrintColor);
+      var colorTwoSplit = sideTwo.split(" Side");
+      var colorTwo = colorTwoSplit[0];
+      $('#colorTwo').val(colorTwo);
+      $('#sideTwoColor').val(sideTwoPrintColor);
     }
     else {
-      nameDesign = "Letters with Graphics"
+      var sideOnePrintColor = $("#color_1_select option:selected").text();
+      var onlySide = $("#side_select option:selected").text();
+      var onlySideSplit = onlySide.split(" Side");
+      var colorOne = onlySideSplit[0];
+      $('#colorOne').val(colorOne);
+      $('#sideOneColor').val(sideOnePrintColor);
+    };
+
+    //FONT
+    if($('#font_select option:selected').val() != "default") {
+      var font = $('#font_select option:selected').text();
+      $('#font').val(font);
+    };
+
+    //PLAYER LETTERING STYLE
+    if($('#player_name_style_select').val() != "default") {
+      var playerLetteringStyle = $('#player_name_style_select option:selected').text();
+      $('#playerLetteringStyle').val(playerLetteringStyle);
+    };
+
+    //TEAM NAME
+    var teamName = $('#team_name_input').val()
+    $('#teamName').val(teamName);
+
+    //TEAM NAME DESIGN
+    if(team_name_design != "none") {
+      var nameDesign;
+      if(team_name_design == "letters") {
+        nameDesign = "Letters Only"
+      }
+      else {
+        nameDesign = "Letters with Graphics"
+      }
+      $('#nameDesign').val(nameDesign)
     }
-    $('#nameDesign').val(nameDesign)
-  }
-  else {
+    else {
+      if(logo == "yes") {
+      $('#nameDesign').val("Letters with Graphics")
+      }
+    }
+    if($('#team_name_style_select').val() != "default") {
+      var nameDesignStyle = $('#team_name_style_select option:selected').text();
+      $('#nameDesignStyle').val(nameDesignStyle);
+    };
+
+    //PLACEMENT
+    if($('#placement_select option:selected').val() != "default") {
+      var placement = $('#placement_select option:selected').text();
+      $('#placement').val(placement);
+    };
+
+    //GRAPHIC
+    if($('#graphic_select').val() != "default") {
+      var graphic = $('#graphic_select option:selected').text();
+      $('#graphic').val(graphic);
+    };
+
+    //LOGO
     if(logo == "yes") {
-    $('#nameDesign').val("Letters with Graphics")
-    }
-  }
-  if($('#team_name_style_select').val() != "default") {
-    var nameDesignStyle = $('#team_name_style_select option:selected').text();
-    $('#nameDesignStyle').val(nameDesignStyle);
-  };
-
-  //PLACEMENT
-  if($('#placement_select option:selected').val() != "default") {
-    var placement = $('#placement_select option:selected').text();
-    $('#placement').val(placement);
-  };
-
-  //GRAPHIC
-  if($('#graphic_select').val() != "default") {
-    var graphic = $('#graphic_select option:selected').text();
-    $('#graphic').val(graphic);
-  };
-
-  //LOGO
-  if(logo == "yes") {
-    $('#logo').val('Custom Logo');
+      $('#logo').val('Custom Logo');
+    };
   };
 
   //JERSEY DETAIL ROW COUNT
@@ -1597,7 +1608,8 @@ function captureValues() {
   $('#json_source').val(json_source);
 
   $("#form_results").show();
-  $('#step_2_form').submit();
+  // $('#step_2_form').submit();
+
 
 };
 
