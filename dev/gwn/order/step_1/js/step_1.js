@@ -404,6 +404,8 @@ function calculateCost(qty) {
 
 function buildRows(qty) {
   var header = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td class='numbers_input'></td><td class='numbers_input'>Num</td><td class='names_input' style='min-width:115px'></td><td class='names_input' style='min-width:140px'>Name</td><td></td><td style='min-width:55px'></td><td class='hide'>Qty</td></tr>"
+    var shortsheader = "<tr class=''><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td></td><td style='min-width:55px'>Qty</td></tr>"
+
   var row_number = "<td class='row_number'><font></font></td>";
     var sizeSelect = $('.description').filter(":visible").find('.size_select').parent().html();
     var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_options').addClass('resize_select').parent().html();
@@ -418,12 +420,13 @@ function buildRows(qty) {
   var product_qty = "<td class='qty_label'>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
   var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; padding-left:5px; cursor: pointer;'> - </span></td><span>";
   var raw_qty = "<td class='hide'></td>";
-  $('#sub_selections table').append(header);
 
   if(name != meshShorts) {
+    $('#sub_selections table').append(header);
     var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+qty_btns+raw_qty+"</tr>";
   }
   else {
+    $('#sub_selections table').append(shortsheader);
     var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_qty+qty_btns+"</tr>";
   };
   //builds rows X qty input
@@ -1243,7 +1246,7 @@ else {
 
 //CAPTURE VALUES AND SUBMIT FORM TO STEP 2
 function captureValues() {
-  $('.btns').remove();
+  $('.btns').closest('td').find('span').remove();
   $.removeCookie('returnJSON', { path: '/' });
   var detailsToJSON = $('#jersey_details').tableToJSON();
   var data = JSON.stringify(detailsToJSON);

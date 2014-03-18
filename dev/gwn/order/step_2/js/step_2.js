@@ -105,6 +105,16 @@ $(document).ready(function(){
     $('#optionXa').val('yes')
   };
 
+  //SHORTS EXCEPTIONS
+  if(name != "Mesh Shorts") {
+    $('.not_shorts').show();
+    $('.shorts').hide();
+  }
+  else {
+    $('.not_shorts').hide();
+    $('.shorts').show();
+  }
+
   //SPORT BOX
   $('.sport_box').hide();
   $('.sport_box_mobile').hide();
@@ -1296,24 +1306,29 @@ $(document).ready(function(){
     var missing = "Not all design options have been selected - please review the section above for missing information"
     var infoIcon = $(".info_btn[src*='info/info.png']").filter(":visible").length;
     var blankIcon = $(".info_btn").filter(":visible").length
-    if(infoIcon > 0) {
-      msg = missing;
-    }
-    else if(blankIcon == 0) {
-      msg = blank;
-    }
-    else{
-      msg = verify;
-    };
-    if($(this).attr('id') != 'continue') {
-      $('#next_step_msg').html(msg);
-      $('.inner').slideToggle().delay(5000).slideToggle();
-      if(msg == verify) {
-        $(this).attr('id','continue');
+    if(name != "Mesh Shorts") {
+      if(infoIcon > 0) {
+        msg = missing;
+      }
+      else if(blankIcon == 0) {
+        msg = blank;
+      }
+      else{
+        msg = verify;
       };
-      e.preventDefault();
+      if($(this).attr('id') != 'continue') {
+        $('#next_step_msg').html(msg);
+        $('.inner').slideToggle().delay(5000).slideToggle();
+        if(msg == verify) {
+          $(this).attr('id','continue');
+        };
+        e.preventDefault();
+      }
+      else{
+        captureValues();
+      };
     }
-    else{
+    else {
       captureValues();
     };
   });
@@ -1460,11 +1475,18 @@ function captureValues() {
             };
 
           var detailsTable = $("<br><table></table>");
-
-          detailsTable.jsonTable({
-              head : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty'],
-              json : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty']
-          });
+          if(name != "Mesh Shorts") {
+            detailsTable.jsonTable({
+                head : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty'],
+                json : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty']
+            });
+          }
+          else {
+            detailsTable.jsonTable({
+              head : ['#', 'Size', 'Price', 'Qty'],
+              json : ['#', 'Size', 'Price', 'Qty']
+            });
+          }
 
           detailsTable.jsonTableUpdate(options);
 
