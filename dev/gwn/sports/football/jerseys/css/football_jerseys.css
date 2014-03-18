@@ -1,0 +1,64 @@
+table {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #666666;
+}
+table td{
+  padding: 0;
+  vertical-align: top;
+}
+#jerseys {
+  clear:both;
+}
+.jersey {
+  float:left;
+  margin: 0 20px 25px 0;
+}
+.jersey_name {
+  line-height: 1;
+  margin: 10px 0;
+  color: #cccdce;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+}
+.price {
+  float: left;
+  height: 25px;
+  color: #cccdce;
+  margin-top: 5px;
+  font-size: .75rem;
+}
+.select_btn {
+  float: right;
+  padding: 5px;
+  color: #e8d606;
+  background-color: #11013b;
+  font-family: 'Lato', sans-serif;
+}
+.select_btn:hover{
+  margin: -1px;
+  border: 1px solid yellow;
+}
+.price_select {
+  padding-top: 5px;
+}
+#container {
+  width: 75%;
+  margin: 3% auto 0;
+}
+#left_content {
+  width: 10%;
+}
+#box_btns {
+  float: left;
+}
+.box_btn {
+  display: block;
+  margin: 0 15px 10px 0;
+}
+#right_content {
+  text-align: left;
+}
+.clear {
+  clear:both;
+}

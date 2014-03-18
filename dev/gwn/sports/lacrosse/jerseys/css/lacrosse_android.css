@@ -1,0 +1,8 @@
+.mobile_box_btn span {
+  font-size: 1.3em;
+  margin: 2px 0 0 0;
+}
+.mobile_box_btn span#home_mobile_btn {
+  font-size: 1.1em;
+  margin: 4px 0 0 0;
+}

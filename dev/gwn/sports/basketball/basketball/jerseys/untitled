@@ -1,0 +1,86 @@
+            <div class="jersey">
+              <table padding="0">
+                <tr>
+                  <td class="jersey_name">
+                    Reversible Jersey
+                      <br>
+                    &nbsp;
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+                  </td>
+                </tr>
+                <tr>
+                  <table>
+                    <tr>
+                      <td class="price">
+                        $13.00 each
+                      </td>
+                      <td class="select_btn">
+                        SELECT
+                      </td>
+                    </tr>
+                  </table>
+                </tr>
+              </table>
+            </div>
+
+            <div class="jersey">
+              <table padding="0">
+                <tr>
+                  <td class="jersey_name">
+                    T-Shirt
+                      <br>
+                    &nbsp;
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+                  </td>
+                </tr>
+                <tr>
+                  <table>
+                    <tr>
+                      <td class="price">
+                        $6.50 each
+                      </td>
+                      <td class="select_btn">
+                        SELECT
+                      </td>
+                    </tr>
+                  </table>
+                </tr>
+              </table>
+            </div>
+
+            <div class="jersey">
+              <table padding="0">
+                <tr>
+                  <td class="jersey_name">
+                    Mesh Shorts
+                      <br>
+                    &nbsp;
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+                  </td>
+                </tr>
+                <tr>
+                  <table>
+                    <tr>
+                      <td class="price">
+                        $14.00 each
+                      </td>
+                      <td class="select_btn">
+                        SELECT
+                      </td>
+                    </tr>
+                  </table>
+                </tr>
+              </table>
+            </div>

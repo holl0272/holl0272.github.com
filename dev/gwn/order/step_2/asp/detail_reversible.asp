@@ -650,10 +650,10 @@ $(document).ready(function() {
 	//PLACEMENT
 	var placement = '<%=response.write(request.form("placement"))%>';
 	if(placement != "") {
-		$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('"+placement+"')").attr('selected', true).change();
+		$(".jerseyDisplay:contains('Location')").find('select').find("option:contains('"+placement+"')").attr('selected', true).change();
 	}
 	else {
-		$(".jerseyDisplay:contains('Location of Team Name: ')").find('select').find("option:contains('Not Applicable')").attr('selected', true).change();
+		$(".jerseyDisplay:contains('Location')").find('select').find("option:contains('Not Applicable')").attr('selected', true).change();
 	};
 	//PLAYER NAME LETTERING STYLE
 	var playerLetteringStyle = '<%=response.write(request.form("playerLetteringStyle"))%>';
