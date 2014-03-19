@@ -8,16 +8,18 @@
   <meta name="author" content="f-robots.com">
   <meta charset="utf-8">
 
-  <link rel="shortcut icon" type="image/png" href="../../images/favicon.gif">
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="../../js/jerseys.js"></script>
+
+  <link rel="shortcut icon" type="image/png" href="../../../images/favicon.gif">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
-  <link rel="stylesheet" href="../../css/main.css">
-  <link rel="stylesheet" href="css/basketball_jerseys.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../css/jerseys.css">
+  <link rel="stylesheet" id="init-stylesheet">
+  <link rel="stylesheet" id="os-stylesheet">
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
   <link rel="stylesheet" id="browser-stylesheet">
-
-  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="js/basketball_jerseys.js"></script>
 
 </head>
 <body>
@@ -26,7 +28,7 @@
 
   <div id="header">
     <div id="gwn_logo">
-      <a href="../../index.html" title="Home"><image src="../../images/gwn_logo.png" alt="GameWearNow Logo"></a>
+      <a href="../../../index.html" title="Home"><image src="../../../images/gwn_logo.png" alt="GameWearNow Logo"></a>
     </div>
     <div id="heading">
       <span class="title_txt" id="title">CUSTOM JERSEYS FOR<br>YOUR SPORTS TEAM</span>
@@ -41,10 +43,10 @@
         <td colspan="2">
           <div id="mobile_btns">
             <div class="mobile_box_btn">
-              <image src="images/basketball_mobile.jpg" alt="Basketball Jerseys" id="basketball_mobile_btn"><span>BASKETBALL JERSEYS</span>
+              <image src="../../../images/basketball_mobile.jpg" alt="Basketball Jerseys" id="basketball_mobile_btn"><span>BASKETBALL JERSEYS</span>
             </div>
             <div class="mobile_box_btn">
-              <a href="../../index.html" title="Choose A Different Sport"><image src="images/plain_grey_box_mobile.jpg" alt="Choose A Different Sport" id="home_mobile_box"><span id="home_mobile_btn">CHOOSE A DIFFERENT SPORT</span></a>
+              <a href="../../../index.html" title="Choose A Different Sport"><image src="../../images/plain_grey_box_mobile.jpg" alt="Choose A Different Sport" id="home_mobile_box"><span id="home_mobile_btn">CHOOSE A DIFFERENT SPORT</span></a>
             </div>
           </div>
         </td>
@@ -53,57 +55,124 @@
         <td id="left_content">
           <div id="box_btns">
             <div class="box_btn">
-              <image src="images/basketball.jpg" alt="Basketball Jerseys" id="basketball_box"><span>BASKETBALL<br>JERSEYS</span>
+              <image src="../../../images/basketball.jpg" alt="Basketball Jerseys" id="basketball_box"><span>BASKETBALL<br>JERSEYS</span>
             </div>
             <div class="box_btn">
-              <a href="../../index.html" title="Home"><image src="images/plain_grey_box.jpg" alt="Home" id="home_box"><span>CHOOSE A<br>DIFFERENT<br>SPORT</span></a>
+              <a href="../../../index.html" title="Home"><image src="../../images/plain_grey_box.jpg" alt="Home" id="home_box"><span>CHOOSE A<br>DIFFERENT<br>SPORT</span></a>
             </div>
           </div>
         </td>
         <td id="right_content">
           <div id="jerseys" height="auto">
             <div class="jersey">
-              <div class="jersey_name">Game Dazzle<br>Reversible Jersey</div>
-              <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+              <div class="jersey_name">Dazzle-Micro Mesh Jersey<br>&nbsp;</div>
+              <image src="" alt="Dazzle Jersey" class="product_shot" id="dazzle_image">
               <div class="price_select">
-                <span class="price">$24.00 each</span>
-                <a href="#" class="select_btn">SELECT</a>
+                <span class="price">$19.00 each</span>
+                <form action="../../../order/step_1/step_1.html" method="get" id="dazzle-micro-mesh-jersey">
+                  <input type="hidden" name="sport" value="basketball">
+                  <input type="hidden" name="name" value="Dazzle-Micro Mesh Jersey">
+                  <input type="hidden" name="img" value="dazzle_">
+                  <input type="hidden" name="price" value="1900">
+                  <input type="hidden" name="id" value="11800">
+                  <a href="#" class="select_btn" onclick="document.getElementById('dazzle-micro-mesh-jersey').submit();">SELECT</a>
+                </form>
               </div>
               <div class="clear"></div>
             </div>
             <div class="jersey">
-              <div class="jersey_name">Dazzle-Micro<br>Mesh Jersey</div>
-              <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+              <div class="jersey_name">Game Dazzle Reversible Jersey<br>&nbsp;</div>
+              <image src="" alt="Game Dazzle Jersey" class="product_shot" id="game_dazzle_image">
               <div class="price_select">
-                <span class="price">$19.00 each</span>
-                <a href="#" class="select_btn">SELECT</a>
+                <span class="price">$24.00 each</span>
+                <form action="../../../order/step_1/step_1.html" method="get" id="game-dazzle-reversible-jersey">
+                  <input type="hidden" name="sport" value="basketball">
+                  <input type="hidden" name="name" value="Game Dazzle Reversible Jersey">
+                  <input type="hidden" name="img" value="gamedazzle_">
+                  <input type="hidden" name="price" value="2400">
+                  <input type="hidden" name="id" value="11500">
+                  <a href="#" class="select_btn" onclick="document.getElementById('game-dazzle-reversible-jersey').submit();">SELECT</a>
+                </form>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="jersey">
+              <div class="jersey_name">Moisture Wicking Reversible Jersey<br>&nbsp;</div>
+              <image src="" alt="Moisture Wicking Reversible Jersey" class="product_shot" id="mw_rev_image">
+              <div class="price_select">
+                <span class="price">$22.00 each</span>
+                <form action="../../../order/step_1/step_1.html" method="get" id="moisture-wicking-reversible-jersey">
+                  <input type="hidden" name="sport" value="basketball">
+                  <input type="hidden" name="name" value="Moisture Wicking Reversible Jersey">
+                  <input type="hidden" name="img" value="mw_rev_">
+                  <input type="hidden" name="price" value="2200">
+                  <input type="hidden" name="id" value="">
+                  <a href="#" class="select_btn" onclick="document.getElementById('moisture-wicking-reversible-jersey').submit();">SELECT</a>
+                </form>
               </div>
               <div class="clear"></div>
             </div>
             <div class="jersey">
               <div class="jersey_name">Reversible Jersey<br>&nbsp;</div>
-              <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+              <image src="" alt="Reversible Jersey" class="product_shot" id="rev_image">
               <div class="price_select">
                 <span class="price">$13.00 each</span>
-                <a href="#" class="select_btn">SELECT</a>
+                <form action="../../../order/step_1/step_1.html" method="get" id="reversible-jersey">
+                  <input type="hidden" name="sport" value="basketball">
+                  <input type="hidden" name="name" value="Reversible Jersey">
+                  <input type="hidden" name="img" value="rev_">
+                  <input type="hidden" name="price" value="1300">
+                  <input type="hidden" name="id" value="11900">
+                  <a href="#" class="select_btn" onclick="document.getElementById('reversible-jersey').submit();">SELECT</a>
+                </form>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="jersey">
+              <div class="jersey_name">Moisture Wicking T-Shirt<br>&nbsp;</div>
+              <image src="" alt="Moisture Wicking T-Shirt" class="product_shot" id="mwt_image">
+              <div class="price_select">
+                <span class="price">$9.00 each</span>
+                <form action="../../../order/step_1/step_1.html" method="get" id="moisture-wicking-t-shirt">
+                  <input type="hidden" name="sport" value="basketball">
+                  <input type="hidden" name="name" value="Moisture Wicking T-Shirt">
+                  <input type="hidden" name="img" value="mwt_">
+                  <input type="hidden" name="price" value="900">
+                  <input type="hidden" name="id" value="">
+                  <a href="#" class="select_btn" onclick="document.getElementById('moisture-wicking-t-shirt').submit();">SELECT</a>
+                </form>
               </div>
               <div class="clear"></div>
             </div>
             <div class="jersey">
               <div class="jersey_name">T-Shirt<br>&nbsp;</div>
-              <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+              <image src="" alt="T-Shirt" class="product_shot" id="tshirt_image">
               <div class="price_select">
                 <span class="price">$6.50 each</span>
-                <a href="#" class="select_btn">SELECT</a>
+                <form action="../../../order/step_1/step_1.html" method="get" id="t-shirt">
+                  <input type="hidden" name="sport" value="basketball">
+                  <input type="hidden" name="name" value="T-Shirt">
+                  <input type="hidden" name="img" value="tshirt_">
+                  <input type="hidden" name="price" value="650">
+                  <input type="hidden" name="id" value="10300">
+                  <a href="#" class="select_btn" onclick="document.getElementById('t-shirt').submit();">SELECT</a>
+                </form>
               </div>
               <div class="clear"></div>
             </div>
             <div class="jersey">
               <div class="jersey_name">Mesh Shorts<br>&nbsp;</div>
-              <image src="images/product_shot.jpg" alt="Product Shot" class="product_shot">
+              <image src="" alt="Shorts" class="product_shot" id="shorts_image">
               <div class="price_select">
                 <span class="price">$14.00 each</span>
-                <a href="#" class="select_btn">SELECT</a>
+                <form action="../../../order/step_1/step_1.html" method="get" id="mesh-shorts">
+                  <input type="hidden" name="sport" value="basketball">
+                  <input type="hidden" name="name" value="Mesh Shorts">
+                  <input type="hidden" name="img" value="shorts_">
+                  <input type="hidden" name="price" value="1400">
+                  <input type="hidden" name="id" value="10200">
+                  <a href="#" class="select_btn" onclick="document.getElementById('mesh-shorts').submit();">SELECT</a>
+                </form>
               </div>
               <div class="clear"></div>
             </div>
@@ -113,17 +182,17 @@
     </table>
   </div>
 
-  <div id="footer" style="display:none;">
+  <div id="footer">
     <ul id="horizontal-nav">
-      <li><a href="#" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
+      <li><a href="#" title="Shopping Cart"><span><image src="../../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
       <li class="pipe">|</li>
       <li><a href="#" title="My Account">MY ACCOUNT</a></li>
       <li class="pipe">|</li>
-      <li><a href="../../faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
+      <li><a href="../../../footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
       <li class="pipe">|</li>
-      <li><a href="../../privacy_policy/privacy_policy.html" title="Contact Us">PRIVACY POLICY</a></li>
+      <li><a href="../../../footer/privacy_policy/privacy_policy.html" title="Contact Us">PRIVACY POLICY</a></li>
       <li class="pipe">|</li>
-      <li><a href="../../contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
+      <li><a href="../../../footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
     </ul>
   </div>
 

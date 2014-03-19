@@ -47,7 +47,7 @@ Dim enAttrPos_LetteringStyleName
 Dim enAttrPos_LocationTeam
 Dim enAttrPos_TeamName
 
-	numEntries = 20
+	numEntries = request.form("jerseyRows")
 	txtProdId = Request.QueryString("product_id")
 	If getProductInfo(txtProdId, enProduct_Exists) Then
 		Call setRecentlyViewedProducts(txtProdId, Request.ServerVariables("SCRIPT_NAME") & "?" & Request.QueryString)
@@ -92,7 +92,7 @@ Dim paryAttributeDetails
 			enAttrPos_NameOnJersey = 8
 			enAttrPos_Number = 9
 			enAttrPos_LetteringStyleName = 10
-			numEntries = 20
+			numEntries = request.form("jerseyRows")
 
 		Case Else
 	End Select
@@ -157,6 +157,7 @@ End Sub	'LoadJerseyAttributes
 <script language="javascript" src="SFLib/sfCheckErrors.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfEmailFriend.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/ssAttributeExtender.js" type="text/javascript"></script>
+<script language="javascript" src="SFLib/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
 
 function validateForm(theForm)
@@ -168,6 +169,83 @@ function validateForm(theForm)
 }
 
 <% If getProductInfo(txtProdId, enProduct_Exists) Then Response.Write "prodBasePrice =" & getProductInfo(txtProdId, enProduct_SellPrice) & ";" & vbcrlf %>
+
+(function ( $ ) {
+
+    $.fn.jsonTable = function( options ) {
+        var settings = $.extend({
+            head: [],
+            json:[]
+        }, options, { table: this } );
+
+        table = this;
+
+        table.data("settings",settings);
+
+        if (table.find("thead").length == 0) {
+            table.append($("<thead></thead>").append("<tr></tr>"));
+        }
+
+        if (table.find("thead").find("tr").length == 0) {
+            table.find("thead").append("<tr></tr>");
+        }
+
+        if (table.find("tbody").length == 0) {
+            table.append($("<tbody></tbody>"));
+        }
+
+        $.each(settings.head, function(i, header) {
+            table.find("thead").find("tr").append("<th>"+header+"</th>");
+        });
+
+        return table;
+    };
+
+    $.fn.jsonTableUpdate = function( options ){
+        var opt = $.extend({
+            source: undefined,
+            rowClass: undefined,
+            callback: undefined
+        }, options );
+        var settings = this.data("settings");
+
+        if(typeof opt.source == "string")
+        {
+            $.get(opt.source, function(data) {
+                $.fn.updateFromObj(data,settings,opt.rowClass, opt.callback);
+            });
+        }
+        else if(typeof opt.source == "object")
+        {
+            $.fn.updateFromObj(opt.source,settings, opt.rowClass, opt.callback);
+        }
+    }
+
+    $.fn.updateFromObj = function(obj,settings,rowClass, callback){
+        settings.table.find("tbody").empty();
+        $.each(obj, function(i,line) {
+            var tableRow = $("<tr></tr>").addClass(rowClass);
+
+            $.each(settings.json, function(j, identity) {
+                if(identity == '*') {
+                    tableRow.append($("<td>"+(i+1)+"</td>"));
+                }
+                else {
+                    tableRow.append($("<td>" + line[this] + "</td>"));
+                }
+            });
+            settings.table.append(tableRow);
+        });
+
+
+        if (typeof callback === "function") {
+            callback();
+        }
+
+        $(window).trigger('resize');
+    }
+
+}( jQuery ));
 
 </script>
 <% writeCurrencyConverterOpeningScript %>
@@ -235,7 +313,10 @@ function validateForm(theForm)
 		<!--webbot bot="PurpleText" PREVIEW="Begin Optional Confirmation Message Display" -->
 		<% Call WriteThankYouMessage %>
 		<!--webbot bot="PurpleText" PREVIEW="End Optional Confirmation Message Display" -->
-		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);">
+
+		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="http://dev.gamewearnow.com/addproduct.asp" onSubmit="return validateForm(this);">
+
+		<!-- <form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);"> -->
 		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">
 		<table border="0" width="100%" class="tdContent2" cellpadding="2" cellspacing="0">
 		  <tr>
@@ -459,8 +540,175 @@ function validateForm(theForm)
 </td>
 </tr>
 </table>
+
+<div id="variables" style="text-align: left;"></div>
 <!--webbot bot="PurpleText" preview="End Content Section" -->
 <!--#include file="templateBottom.asp"-->
+
+<script>
+$(document).ready(function() {
+	//SET THE PRODUCT COLOR
+	var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
+		$("#variables").append("Jersey Color: "+enAttrPos_JerseyColor+"<br>");
+	$("td.jerseyDisplay:contains('"+enAttrPos_JerseyColor+"')").next().find('input').prop("checked", true).click();
+	//SHOW AVLIBLE LETTING OPTIONS BASED ON REVERSE PRINTING
+	var optionXa = '<%=response.write(request.form("optionXa"))%>';
+	if(optionXa == "yes") {
+		$("#variables").append("Lettering Option_Xa: "+optionXa+"<br>");
+		$(".jerseyDisplay2:contains('a:')").parent().prev().find('input').hide();
+	}
+	else {
+		$("#variables").append("Lettering Options_Xa: hide<br>");
+		$(".jerseyDisplay2:contains('a:')").next().find('input').hide();
+	};
+	//SELECT THE LETTERING OPTION
+	var letteringOption = '<%=response.write(request.form("letteringOption"))%>';
+		$("#variables").append("Lettering Option: "+letteringOption+"<br>");
+	$(".jerseyDisplay2 [type='radio']").filter(':visible').eq(letteringOption).prop("checked", true).click();
+	//SIDE COLORS
+	var sideOneColor = '<%=response.write(request.form("sideOneColor"))%>';
+		$("#variables").append("Jersery Side 1 Color: "+sideOneColor+"<br>");
+	var colorOne = '<%=response.write(request.form("colorOne"))%>';
+		$("#variables").append("1st Color: "+colorOne+"<br>");
+	var sideTwoColor = '<%=response.write(request.form("sideTwoColor"))%>';
+		$("#variables").append("Jersery Side 2 Color: "+sideTwoColor+"<br>");
+	var colorTwo = '<%=response.write(request.form("colorTwo"))%>';
+		$("#variables").append("2nd Color: "+colorTwo+"<br>");
+	//one side
+	if(colorTwo == ""){
+		var colorColumn = $("#jerseyLetteringColor table tr td span:contains('"+colorOne+"')").attr('id');
+		if(colorColumn == "spSide1Color") {
+			var sideOneIndex = $("#spSide1Color:contains('"+colorOne+"')").closest('td').index();
+			$("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideOneIndex)+")").each(function(){
+				if($(this).text() == sideOneColor){
+					$(this).next().find('input').prop("checked", true).click();
+				}
+			});
+		}
+		else {
+			var sideTwoIndex = $("#spSide2Color:contains('"+colorOne+"')").closest('td').index();
+			$("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideTwoIndex-2)+")").each(function(){
+				if($(this).text() == sideOneColor){
+					$(this).next().next().next().find('input').prop("checked", true).click();
+				}
+			});
+		};
+	}
+	//two sides
+	else {
+		var sideOneIndex = $("#spSide1Color:contains('"+colorOne+"')").closest('td').index();
+		$("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideOneIndex)+")").each(function(){
+			if($(this).text() == sideOneColor){
+				$(this).next().find('input').prop("checked", true).click();
+			}
+		});
+		var sideTwoIndex = $("#spSide2Color:contains('"+colorTwo+"')").closest('td').index();
+		$("span:contains('"+colorTwo+"')").closest('td').closest("table").find("tr td:nth-child("+(sideTwoIndex-2)+")").each(function(){
+			if($(this).text() == sideTwoColor){
+				$(this).next().next().next().find('input').prop("checked", true).click();
+			}
+		});
+	};
+	//FONT
+	var font = '<%=response.write(request.form("font"))%>';
+		$("#variables").append("Font: "+font+"<br>");
+	$('#jerseyLetteringFont table').find("tr td:nth-child(1)").each(function() {
+		if($(this).text() == font){
+			$(this).next().find('input').prop("checked", true).click();
+		}
+	});
+	//TEAM NAME
+	var teamName = '<%=response.write(request.form("teamName"))%>';
+		$("#variables").append("Team Name: "+teamName+"<br>");
+	$(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName).change();
+	//PLACEMENT
+	var placement = '<%=response.write(request.form("placement"))%>';
+		$("#variables").append("Placement: "+placement+"<br>");
+	if(placement != "") {
+		$(".jerseyDisplay:contains('Location')").find('select').find("option:contains('"+placement+"')").attr('selected', true).change();
+	}
+	else {
+		$(".jerseyDisplay:contains('Location')").find('select').find("option:contains('Not Applicable')").attr('selected', true).change();
+	};
+	//PLAYER NAME LETTERING STYLE
+	var playerLetteringStyle = '<%=response.write(request.form("playerLetteringStyle"))%>';
+		$("#variables").append("Player Name Lettering Style: "+playerLetteringStyle+"<br>");
+	$('#jerseyPlayerOptions table').find("tr td:nth-child(1)").each(function() {
+		if($(this).text() == playerLetteringStyle){
+			$(this).next().find('input').prop("checked", true).click();
+		}
+	});
+	//TEAM NAME DESIGN
+	var nameDesign = '<%=response.write(request.form("nameDesign"))%>';
+		$("#variables").append("Team Name Design: "+nameDesign+"<br>");
+	var nameStyle = '<%=response.write(request.form("nameDesignStyle"))%>';
+		$("#variables").append("Team Name Style: "+nameStyle+"<br>");
+	var graphic = '<%=response.write(request.form("graphic"))%>';
+		$("#variables").append("Graphic: "+graphic+"<br>");
+	var logo = '<%=response.write(request.form("logo"))%>';
+		$("#variables").append("Custom Logo: "+logo+"<br>");
+	//team name style
+	if(nameStyle != "") {
+		$("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr:gt(0):lt(4) td:nth-child(1)").each(function() {
+			if($(this).text() == nameStyle){
+				$(this).next().find('input').prop("checked", true).click();
+			}
+		});
+	};
+	//graphic
+	if(graphic != "") {
+		$("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr:gt(5) td:nth-child(1)").each(function() {
+			if($(this).text() == graphic){
+				$(this).next().find('input').prop("checked", true).click();
+			}
+		});
+	};
+	//custom logo
+	if(logo != "") {
+		$("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr td:nth-child(1)").each(function() {
+			if($(this).text().indexOf(logo) != -1){
+				$(this).next().find('input').prop("checked", true).click();
+			}
+		});
+	};
+	//JERSEY DETAILS
+	var rows = '<%=response.write(request.form("jerseyRows"))%>';
+		$("#variables").append("Number of Rows: "+rows+"<br>");
+	var json_source = '<%=response.write(request.form("json_source"))%>';
+		$("#variables").append("<br>JSON: "+json_source+"<br>");
+	var data = JSON.parse(json_source);
+	var options = { source: data, };
+	var detailsTable = $("<br><table id='row_details'></table>");
+		detailsTable.jsonTable({
+			head : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty'],
+			json : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty']
+		});
+	detailsTable.jsonTableUpdate(options);
+
+	$("#variables").append(detailsTable);
+	$('#row_details tr:eq(0)').remove(); //removes table header
+
+  //run through each row
+  function populateRow(counter, j_size, j_number, j_name, j_qty) {
+  	$("#jerseyOrder tr:eq("+counter+")").find("select option").filter(function () { return $(this).html() == j_size; }).prop('selected', true)
+		$("#jerseyOrder tr:eq("+counter+")").find('input[title*="Player Number"]').val(j_number)
+		$("#jerseyOrder tr:eq("+counter+")").find('input[title*="Player Name"]').val(j_name);
+		$("#jerseyOrder tr:eq("+counter+")").find('input[title*="Quantity"]').val(j_qty);
+  };
+
+	var counter = 2 //starts the row count after the table headers
+  $('#row_details').find('tr').each(function() {
+    var j_size = $(this).find('td:eq(1)').text();
+    var j_number = $(this).find('td:eq(3)').text();
+    var j_name = $(this).find('td:eq(4)').text();
+    var j_qty = $(this).find('td:eq(5)').text();
+    populateRow(counter, j_size, j_number, j_name, j_qty);
+    counter ++
+  });
+
+});
+</script>
+
 </body>
 </html>
 <%

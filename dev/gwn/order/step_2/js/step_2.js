@@ -1514,6 +1514,9 @@ function captureValues() {
     if((number_placement == "back") && ((team_name_design == "letters") || (team_name_design == "letters_graphic") || (logo == "yes"))) {
       option = 4;
     }
+    if((number_placement == "front") && (print_names == "yes") && (team_name_design == "letters")) {
+      option = 5;
+    }
     if((number_placement == "back") && (print_names == "yes") && ((team_name_design == "letters") || (team_name_design == "letters_graphic") || (logo == "yes"))) {
       option = 5;
     }
@@ -1585,7 +1588,7 @@ function captureValues() {
 
     //PLACEMENT
     if($('#placement_select option:selected').val() != "default") {
-      var placement = $('#placement_select option:selected').text();
+      var placement = $("#placement_select option:selected").text();
       $('#placement').val(placement);
     };
 
@@ -1608,7 +1611,7 @@ function captureValues() {
   $('#json_source').val(json_source);
 
   $("#form_results").show();
-  // $('#step_2_form').submit();
+  $('#step_2_form').submit();
 
 
 };

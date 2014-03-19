@@ -298,8 +298,8 @@ function viewLargeJersey2ndSide()
 			pstrValue = theSourceField.options[theSourceField.selectedIndex].value
 		}
 
-		// alert(strTargetField + ": " + pstrValue);
-		// alert(paryTargetField.length);
+		alert(strTargetField + ": " + pstrValue);
+		alert(paryTargetField.length);
 
 		for (var i = 0;  i < paryTargetField.length;  i++)
 		{
