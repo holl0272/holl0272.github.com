@@ -743,7 +743,10 @@ $(document).ready(function() {
     populateRow(counter, j_size, j_number, j_name, j_qty);
     counter ++
   });
+});
 
+$(window).load(function() {
+  $("[name='AddProduct']").click()
 });
 </script>
 

@@ -565,7 +565,7 @@ function buildRows(qty) {
   // });
 
 var numberTimer;
-var doneTypingNumber = 500;
+var doneTypingNumber = 100;
 //on keyup, start the countdown
 $('.number_input').keyup(function(){
   $(this).attr('id', 'temp');
@@ -582,7 +582,7 @@ function doneTyping() {
     $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
     $(this).html(newnumberInput).find('input').focus();
     var numberTimer;
-    var doneTypingNumber = 500;
+    var doneTypingNumber = 100;
     //on keyup, start the countdown
     $('.newnumber_input').keyup(function(){
       $(this).attr('id', 'temp');
@@ -602,7 +602,7 @@ function doneTyping() {
 };
 
 var nameTimer;
-var doneTypingName = 1000;
+var doneTypingName = 2000;
 //on keyup, start the countdown
 $('.name_input').keyup(function(){
   $(this).attr('id', 'temp_name');
@@ -619,7 +619,7 @@ function doneTypingNam() {
     $('.set_name').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
     $(this).html(newnameInput).find('input').focus();
     var nameTimer;
-    var doneTypingName = 1000;
+    var doneTypingName = 2000;
     //on keyup, start the countdown
     $('.newname_input').keyup(function(){
       $(this).attr('id', 'temp_name');
@@ -753,7 +753,7 @@ $('#numbers_front_back').on('change', function() {
   }
   else if($(this).val() == "front_back"){
     // $("#print_name_on_back option[value='no']").prop("selected",true);
-    $('#step_1_print_names').val('no');
+    //$('#step_1_print_names').val('no');
     // $('#print_name_on_back option').prop('disabled',true);
     $("#team_name_design option[value='letters_graphic']").prop("disabled",true);
     $('#step_1_number_placement').val('front_back');

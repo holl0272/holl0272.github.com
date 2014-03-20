@@ -550,121 +550,75 @@ function validateForm(theForm)
 $(document).ready(function() {
   //SET THE PRODUCT COLOR
   var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
-    $("#variables").append("Jersey Color: "+enAttrPos_JerseyColor+"<br>");
-  $("td.jerseyDisplay:contains('"+enAttrPos_JerseyColor+"')").next().find('input').prop("checked", true).click();
-  //SHOW AVLIBLE LETTING OPTIONS BASED ON REVERSE PRINTING
-  var optionXa = '<%=response.write(request.form("optionXa"))%>';
-  if(optionXa == "yes") {
-    $("#variables").append("Lettering Option_Xa: "+optionXa+"<br>");
-    $(".jerseyDisplay2:contains('a:')").parent().prev().find('input').hide();
-  }
-  else {
-    $("#variables").append("Lettering Options_Xa: hide<br>");
-    $(".jerseyDisplay2:contains('a:')").next().find('input').hide();
-  };
-
+  if(enAttrPos_JerseyColor != "") {
+  	$("#variables").append("Jersey Color: "+enAttrPos_JerseyColor+"<br>");
+  	$("td.jerseyDisplay:contains('"+enAttrPos_JerseyColor+"')").next().find('input').prop("checked", true).click();
+ 	};
   //SELECT THE LETTERING OPTION
   var letteringOption = '<%=response.write(request.form("letteringOption"))%>';
-    $("#variables").append("Lettering Option: "+letteringOption+"<br>");
-  $(".jerseyDisplay2 [type='radio']").filter(':visible').eq(letteringOption).prop("checked", true).click();
-  //SIDE COLORS
-  var sideTwoColor = '<%=response.write(request.form("sideTwoColor"))%>';
-  var colorTwo = '<%=response.write(request.form("colorTwo"))%>';
-    $("#variables").append(sideTwoColor+" Side Color: "+colorTwo+"<br>");
-  var sideOneColor = '<%=response.write(request.form("sideOneColor"))%>';
-  var colorOne = '<%=response.write(request.form("colorOne"))%>';
-    $("#variables").append(sideOneColor+" Side Color: "+colorOne+"<br>");
-  //one side
-  if(colorTwo == ""){
-    var colorColumn = $("#jerseyLetteringColor table tr td span:contains('"+colorOne+"')").attr('id');
-    if(colorColumn == "spSide1Color") {
-      var sideOneIndex = $("#spSide1Color:contains('"+colorOne+"')").closest('td').index();
-      $("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideOneIndex)+")").each(function(){
-        if($(this).text() == sideOneColor){
-          $(this).next().find('input').prop("checked", true).click();
-        }
-      });
-    }
-    else {
-      var sideTwoIndex = $("#spSide2Color:contains('"+colorOne+"')").closest('td').index();
-      $("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideTwoIndex-2)+")").each(function(){
-        if($(this).text() == sideOneColor){
-          $(this).next().next().next().find('input').prop("checked", true).click();
-        }
-      });
-    };
-  }
-  //two sides
-  else {
-    var sideOneIndex = $("#spSide1Color:contains('"+colorOne+"')").closest('td').index();
-    $("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideOneIndex)+")").each(function(){
-      if($(this).text() == sideOneColor){
-        $(this).next().find('input').prop("checked", true).click();
-      }
-    });
-    var sideTwoIndex = $("#spSide2Color:contains('"+colorTwo+"')").closest('td').index();
-    $("span:contains('"+colorTwo+"')").closest('td').closest("table").find("tr td:nth-child("+(sideTwoIndex-2)+")").each(function(){
-      if($(this).text() == sideTwoColor){
-        $(this).next().next().next().find('input').prop("checked", true).click();
-      }
-    });
+  if(letteringOption != "") {
+  	$("#variables").append("Lettering Option: "+letteringOption+"<br>");
+  	$("#jerseyLetteringOptions [type='radio']").eq(letteringOption).prop("checked", true).click();
   };
+  //PRINT COLOR
+  var color = '<%=response.write(request.form("sideOneColor"))%>';
+  if(color != "") {
+	  $("#variables").append("Print Color: "+color+"<br>");
+	  $("#jerseyLetteringColor td:contains('"+color+"')").next().next().find('input').prop("checked", true).click();
+	};
   //FONT
   var font = '<%=response.write(request.form("font"))%>';
-    $("#variables").append("Font: "+font+"<br>");
-  $('#jerseyLetteringFont table').find("tr td:nth-child(1)").each(function() {
-    if($(this).text() == font){
-      $(this).next().find('input').prop("checked", true).click();
-    }
-  });
+  if(font != "") {
+		$("#variables").append("Font: "+font+"<br>");
+	  $("#jerseyLetteringFont td:contains('"+font+"')").next().next().find('input').prop("checked", true).click();
+	};
   //TEAM NAME
   var teamName = '<%=response.write(request.form("teamName"))%>';
-    $("#variables").append("Team Name: "+teamName+"<br>");
-  $(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName).change();
+  if(teamName != "") {
+	  $("#variables").append("Team Name: "+teamName+"<br>");
+  	$(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName).change();
+  };
   //PLACEMENT
   var placement = '<%=response.write(request.form("placement"))%>';
-    $("#variables").append("Placement: "+placement+"<br>");
   if(placement != "") {
+    $("#variables").append("Placement: "+placement+"<br>");
     $(".jerseyDisplay:contains('Location')").find('select').find("option:contains('"+placement+"')").attr('selected', true).change();
-  }
-  else {
-    $(".jerseyDisplay:contains('Location')").find('select').find("option:contains('Not Applicable')").attr('selected', true).change();
   };
   //PLAYER NAME LETTERING STYLE
   var playerLetteringStyle = '<%=response.write(request.form("playerLetteringStyle"))%>';
-    $("#variables").append("Player Name Lettering Style: "+playerLetteringStyle+"<br>");
-  $('#jerseyPlayerOptions table').find("tr td:nth-child(1)").each(function() {
-    if($(this).text() == playerLetteringStyle){
-      $(this).next().find('input').prop("checked", true).click();
-    }
-  });
+  if(playerLetteringStyle != "") {
+	  $("#variables").append("Player Name Lettering Style: "+playerLetteringStyle+"<br>");
+	  $("#jerseyPlayerOptions td:contains('"+playerLetteringStyle +"')").next().next().find('input').prop("checked", true).click();
+	};
   //TEAM NAME DESIGN
   var nameDesign = '<%=response.write(request.form("nameDesign"))%>';
-    $("#variables").append("Team Name Design: "+nameDesign+"<br>");
-  var nameStyle = '<%=response.write(request.form("nameDesignStyle"))%>';
-    $("#variables").append("Team Name Style: "+nameStyle+"<br>");
-  var graphic = '<%=response.write(request.form("graphic"))%>';
-    $("#variables").append("Graphic: "+graphic+"<br>");
-  var logo = '<%=response.write(request.form("logo"))%>';
-    $("#variables").append("Custom Logo: "+logo+"<br>");
-  //team name style
   if(nameStyle != "") {
-    $("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr:gt(0):lt(4) td:nth-child(1)").each(function() {
+    $("#variables").append("Team Name Design: "+nameDesign+"<br>");
+  };
+  //TEAM NAME STYLE
+  var nameStyle = '<%=response.write(request.form("nameDesignStyle"))%>';
+  if(nameStyle != "") {
+  	$("#variables").append("Team Name Style: "+nameStyle+"<br>");
+   	$("td.jerseyTitle:contains('Letter')").closest("table").find("tr:gt(0):lt(4) td:nth-child(1)").each(function() {
       if($(this).text() == nameStyle){
-        $(this).next().find('input').prop("checked", true).click();
+        $(this).next().next().find('input').prop("checked", true).click();
       }
     });
   };
-  //graphic
+  //GRAPHIC
+  var graphic = '<%=response.write(request.form("graphic"))%>';
   if(graphic != "") {
-    $("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr:gt(5) td:nth-child(1)").each(function() {
+    $("#variables").append("Graphic: "+graphic+"<br>");
+    $("td.jerseyTitle:contains('Graphics')").closest("table").find("tr:gt(5) td:nth-child(1)").each(function() {
       if($(this).text() == graphic){
-        $(this).next().find('input').prop("checked", true).click();
+        $(this).next().next().find('input').prop("checked", true).click();
       }
     });
   };
-  //custom logo
+  //CUSTOM
+  var logo = '<%=response.write(request.form("logo"))%>';
   if(logo != "") {
+    $("#variables").append("Custom Logo: "+logo+"<br>");
     $("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr td:nth-child(1)").each(function() {
       if($(this).text().indexOf(logo) != -1){
         $(this).next().find('input').prop("checked", true).click();
@@ -705,7 +659,10 @@ $(document).ready(function() {
     populateRow(counter, j_size, j_number, j_name, j_qty);
     counter ++
   });
+});
 
+$(window).load(function() {
+  // $("[name='AddProduct']").click()
 });
 </script>
 

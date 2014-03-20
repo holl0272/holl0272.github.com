@@ -343,3 +343,6 @@ input {
 .info-glow:hover {
   box-shadow: 0 0 10px rgba(17, 1, 59, 0.9);
 }
+#team_name_right_element, #teamLetteringrightColorOverlay {
+  margin-left: -12px;
+}

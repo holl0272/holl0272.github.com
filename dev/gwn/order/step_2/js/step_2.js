@@ -1497,7 +1497,7 @@ function captureValues() {
 
           detailsTable.jsonTableUpdate(options);
 
-          $("#json_table").append(detailsTable);
+          // $("#json_table").append(detailsTable);
 
   if(name != "Mesh Shorts") {
     // LETTERING OPTIONS
@@ -1610,7 +1610,7 @@ function captureValues() {
   //jersey details
   $('#json_source').val(json_source);
 
-  $("#form_results").show();
+  // $("#form_results").show();
   $('#step_2_form').submit();
 
 
