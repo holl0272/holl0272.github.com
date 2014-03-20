@@ -152,6 +152,7 @@ End Sub	'LoadJerseyAttributes
 <meta name="Classification" content="classification">
 
 <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/incae.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfCheckErrors.js" type="text/javascript"></script>
@@ -291,13 +292,250 @@ function validateForm(theForm)
 
 }
 
+body {
+  overflow: hidden;
+
+}
+.black_overlay{
+    opacity: 1 !important;
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index:1001;
+    background-image: url('test/images/splash_bg.jpg');
+/*    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);*/
+}
+.white_content {
+    opacity: 1 !important;;
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: auto;
+    padding: 16px;
+    border: 16px solid #e8d606;
+    background-color: #11013b;
+    color: #cccdce;
+    z-index:1002;
+    overflow: auto;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 900;
+    font-family: 'Lato', sans-serif;
+}
+
+#fadingBarsG{
+margin: 25px auto;
+position:relative;
+width:240px;
+height:29px}
+
+.fadingBarsG{
+position:absolute;
+top:0;
+background-color:#e8d606;
+width:29px;
+height:29px;
+-moz-animation-name:bounce_fadingBarsG;
+-moz-animation-duration:1.7s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:linear;
+-moz-transform:scale(.3);
+-webkit-animation-name:bounce_fadingBarsG;
+-webkit-animation-duration:1.7s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-direction:linear;
+-webkit-transform:scale(.3);
+-ms-animation-name:bounce_fadingBarsG;
+-ms-animation-duration:1.7s;
+-ms-animation-iteration-count:infinite;
+-ms-animation-direction:linear;
+-ms-transform:scale(.3);
+-o-animation-name:bounce_fadingBarsG;
+-o-animation-duration:1.7s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:linear;
+-o-transform:scale(.3);
+animation-name:bounce_fadingBarsG;
+animation-duration:1.7s;
+animation-iteration-count:infinite;
+animation-direction:linear;
+transform:scale(.3);
+}
+
+#fadingBarsG_1{
+left:0;
+-moz-animation-delay:0.68s;
+-webkit-animation-delay:0.68s;
+-ms-animation-delay:0.68s;
+-o-animation-delay:0.68s;
+animation-delay:0.68s;
+}
+
+#fadingBarsG_2{
+left:30px;
+-moz-animation-delay:0.85s;
+-webkit-animation-delay:0.85s;
+-ms-animation-delay:0.85s;
+-o-animation-delay:0.85s;
+animation-delay:0.85s;
+}
+
+#fadingBarsG_3{
+left:60px;
+-moz-animation-delay:1.02s;
+-webkit-animation-delay:1.02s;
+-ms-animation-delay:1.02s;
+-o-animation-delay:1.02s;
+animation-delay:1.02s;
+}
+
+#fadingBarsG_4{
+left:90px;
+-moz-animation-delay:1.19s;
+-webkit-animation-delay:1.19s;
+-ms-animation-delay:1.19s;
+-o-animation-delay:1.19s;
+animation-delay:1.19s;
+}
+
+#fadingBarsG_5{
+left:120px;
+-moz-animation-delay:1.36s;
+-webkit-animation-delay:1.36s;
+-ms-animation-delay:1.36s;
+-o-animation-delay:1.36s;
+animation-delay:1.36s;
+}
+
+#fadingBarsG_6{
+left:150px;
+-moz-animation-delay:1.53s;
+-webkit-animation-delay:1.53s;
+-ms-animation-delay:1.53s;
+-o-animation-delay:1.53s;
+animation-delay:1.53s;
+}
+
+#fadingBarsG_7{
+left:180px;
+-moz-animation-delay:1.7s;
+-webkit-animation-delay:1.7s;
+-ms-animation-delay:1.7s;
+-o-animation-delay:1.7s;
+animation-delay:1.7s;
+}
+
+#fadingBarsG_8{
+left:210px;
+-moz-animation-delay:1.87s;
+-webkit-animation-delay:1.87s;
+-ms-animation-delay:1.87s;
+-o-animation-delay:1.87s;
+animation-delay:1.87s;
+}
+
+@-moz-keyframes bounce_fadingBarsG{
+0%{
+-moz-transform:scale(1);
+background-color:#e8d606;
+}
+
+100%{
+-moz-transform:scale(.3);
+background-color:#11013b;
+}
+
+}
+
+@-webkit-keyframes bounce_fadingBarsG{
+0%{
+-webkit-transform:scale(1);
+background-color:#e8d606;
+}
+
+100%{
+-webkit-transform:scale(.3);
+background-color:#11013b;
+}
+
+}
+
+@-ms-keyframes bounce_fadingBarsG{
+0%{
+-ms-transform:scale(1);
+background-color:#e8d606;
+}
+
+100%{
+-ms-transform:scale(.3);
+background-color:#11013b;
+}
+
+}
+
+@-o-keyframes bounce_fadingBarsG{
+0%{
+-o-transform:scale(1);
+background-color:#e8d606;
+}
+
+100%{
+-o-transform:scale(.3);
+background-color:#11013b;
+}
+
+}
+
+@keyframes bounce_fadingBarsG{
+0%{
+transform:scale(1);
+background-color:#e8d606;
+}
+
+100%{
+transform:scale(.3);
+background-color:#11013b;
+}
+
+}
 </style>
 </head>
 <body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();">
 
+<div id="light" class="white_content">
+  <br>Please wait while we<br>gather your order details...
+  <div id="fadingBarsG">
+    <div id="fadingBarsG_1" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_2" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_3" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_4" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_5" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_6" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_7" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_8" class="fadingBarsG">
+    </div>
+  </div>
+</div>
+<div id="fade" class="black_overlay"></div>
+
 <!--#include file="templateTop.asp"-->
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent">
+<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent" style="opacity: 0;">
   <tr>
     <td>
       <table width="100%" border="0" cellspacing="1" cellpadding="2" class="tdbackgrnd">
@@ -662,7 +900,7 @@ $(document).ready(function() {
 });
 
 $(window).load(function() {
-  // $("[name='AddProduct']").click()
+  $("[name='AddProduct']").delay(5000).click();
 });
 </script>
 
