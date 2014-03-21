@@ -47,7 +47,7 @@ Dim enAttrPos_LetteringStyleName
 Dim enAttrPos_LocationTeam
 Dim enAttrPos_TeamName
 
-	numEntries = 20 'request.form("jerseyRows")
+	numEntries = 20
 	txtProdId = Request.QueryString("product_id")
 	If getProductInfo(txtProdId, enProduct_Exists) Then
 		Call setRecentlyViewedProducts(txtProdId, Request.ServerVariables("SCRIPT_NAME") & "?" & Request.QueryString)
@@ -92,7 +92,7 @@ Dim paryAttributeDetails
 			enAttrPos_NameOnJersey = 8
 			enAttrPos_Number = 9
 			enAttrPos_LetteringStyleName = 10
-			numEntries = 20 'request.form("jerseyRows")
+			numEntries = 20
 
 		Case Else
 	End Select
@@ -150,9 +150,8 @@ End Sub	'LoadJerseyAttributes
 <meta name="Language" content="en">
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
-
-<link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
+<link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/incae.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfCheckErrors.js" type="text/javascript"></script>
@@ -163,10 +162,10 @@ End Sub	'LoadJerseyAttributes
 
 function validateForm(theForm)
 {
-	if (theForm.QUANTITY.type == "text"){theForm.QUANTITY.quantityBox=true;}
-	if (theForm.QUANTITY.type == "select-one"){theForm.selQUANTITY.optional=true;}
+  if (theForm.QUANTITY.type == "text"){theForm.QUANTITY.quantityBox=true;}
+  if (theForm.QUANTITY.type == "select-one"){theForm.selQUANTITY.optional=true;}
 
-	return sfCheck(theForm);
+  return sfCheck(theForm);
 }
 
 <% If getProductInfo(txtProdId, enProduct_Exists) Then Response.Write "prodBasePrice =" & getProductInfo(txtProdId, enProduct_SellPrice) & ";" & vbcrlf %>
@@ -248,54 +247,53 @@ function validateForm(theForm)
 
 }( jQuery ));
 
+
 </script>
 <% writeCurrencyConverterOpeningScript %>
 
 <style>
 .colName
 {
-	display:none;
+  display:none;
 }
 
 .colNumber
 {
-	display:none;
+  display:none;
 }
 
 .colTeam
 {
-	display:none;
+  display:none;
 }
 
 .jerseyStyleOptions
 {
-	background-color: red;
-	border: dashed 1pt black;
-	padding: 1pt 1pt 1pt 1pt;
+  background-color: red;
+  border: dashed 1pt black;
+  padding: 1pt 1pt 1pt 1pt;
 }
 
 .jerseyOptions
 {
-	text-align: left;
-	border: solid 1pt black;
-	background-color: #FFFFFF;
+  text-align: left;
+  border: solid 1pt black;
+  background-color: #FFFFFF;
 }
 
 .jerseyTitle
 {
-	background-color : #A8A396;
-	font-weight: bold;
+  background-color : #A8A396;
+  font-weight: bold;
 }
 
 #jerseyColor
 {
 
 }
-
-body {
-  overflow: hidden;
-
-}
+/*.tdLeftNav, .tdTopBanner, .tdContent {
+	opacity: 0;
+}*/
 .black_overlay{
     opacity: 1 !important;
     display: block;
@@ -305,10 +303,10 @@ body {
     width: 100%;
     height: 100%;
     z-index:1001;
-    background-image: url('test/images/splash_bg.jpg');
-/*    -moz-opacity: 0.8;
+    background-image: url('images/splash_bg.jpg');
+    -moz-opacity: 0.8;
     opacity:.80;
-    filter: alpha(opacity=80);*/
+    filter: alpha(opacity=80);
 }
 .white_content {
     opacity: 1 !important;;
@@ -508,7 +506,7 @@ background-color:#11013b;
 }
 </style>
 </head>
-<body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();">
+<body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();" style="opacity: 0">
 
 <div id="light" class="white_content">
   <br>Please wait while we<br>gather your order details...
@@ -535,7 +533,7 @@ background-color:#11013b;
 
 <!--#include file="templateTop.asp"-->
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent" style="opacity: 0;">
+<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent">
   <tr>
     <td>
       <table width="100%" border="0" cellspacing="1" cellpadding="2" class="tdbackgrnd">
@@ -551,10 +549,7 @@ background-color:#11013b;
 		<!--webbot bot="PurpleText" PREVIEW="Begin Optional Confirmation Message Display" -->
 		<% Call WriteThankYouMessage %>
 		<!--webbot bot="PurpleText" PREVIEW="End Optional Confirmation Message Display" -->
-
-		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="http://dev.gamewearnow.com/addproduct.asp" onSubmit="return validateForm(this);">
-
-		<!-- <form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);"> -->
+		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);">
 		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">
 		<table border="0" width="100%" class="tdContent2" cellpadding="2" cellspacing="0">
 		  <tr>
@@ -616,7 +611,6 @@ background-color:#11013b;
 		<%= WriteJavaScript(mstrssAttributeExtenderjsOut) %>
 <div align="left">
 <!--#include file="detail_FootballDisplay.asp"-->
-
 <form method="post" name="frmDetail" id="frmDetail" action="<%= Session("DomainPath") %>addproduct.asp" onsubmit="return ValidateForm_Jersey(this);">
 <input type="hidden" name="ssMPOPage" id="ssMPOPage" value="1">
 <input type="hidden" name="PRODUCT_ID" id="PRODUCT_ID" value="<%= txtProdId %>">
@@ -634,7 +628,6 @@ background-color:#11013b;
 	<th width="35%">Quantity of Jerseys for this Player</th>
 	</tr>
 	<%
-	If request.form("jerseyRows") > 20 Then numEntries = request.form("jerseyRows") End If
 	For EntryCounter = 1 To numEntries
 		If cblnDebugJersey Then Response.Write "<fieldset><legend>Hidden Entry " & EntryCounter & "</legend>"
 		For jerseyAttributeCounter = 0 To UBound(maryJerseyAttributes)
@@ -779,42 +772,43 @@ background-color:#11013b;
 </td>
 </tr>
 </table>
-
 <div id="variables" style="text-align: left;"></div>
 <!--webbot bot="PurpleText" preview="End Content Section" -->
 <!--#include file="templateBottom.asp"-->
 
 <script>
 $(document).ready(function() {
+
   //SET THE PRODUCT COLOR
   var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
   if(enAttrPos_JerseyColor != "") {
-  	$("#variables").append("Jersey Color: "+enAttrPos_JerseyColor+"<br>");
-  	$("td.jerseyDisplay:contains('"+enAttrPos_JerseyColor+"')").next().find('input').prop("checked", true).click();
- 	};
+    $("#variables").append("Jersey Color: "+enAttrPos_JerseyColor+"<br>");
+    $("td.jerseyDisplay:contains('"+enAttrPos_JerseyColor+"')").next().find('input').prop("checked", true).click();
+  };
   //SELECT THE LETTERING OPTION
   var letteringOption = '<%=response.write(request.form("letteringOption"))%>';
+
   if(letteringOption != "") {
-  	$("#variables").append("Lettering Option: "+letteringOption+"<br>");
-  	$("#jerseyLetteringOptions [type='radio']").eq(letteringOption).prop("checked", true).click();
+    $("#variables").append("Lettering Option: "+letteringOption+"<br>");
+    $("#jerseyLetteringOptions [type='radio']").eq(letteringOption).prop("checked", true).click();
   };
   //PRINT COLOR
   var color = '<%=response.write(request.form("sideOneColor"))%>';
   if(color != "") {
-	  $("#variables").append("Print Color: "+color+"<br>");
-	  $("#jerseyLetteringColor td:contains('"+color+"')").next().next().find('input').prop("checked", true).click();
-	};
+    $("#variables").append("Print Color: "+color+"<br>");
+    $("#jerseyLetteringColor td:contains('"+color+"')").next().next().find('input').prop("checked", true).click();
+  };
   //FONT
   var font = '<%=response.write(request.form("font"))%>';
   if(font != "") {
-		$("#variables").append("Font: "+font+"<br>");
-	  $("#jerseyLetteringFont td:contains('"+font+"')").next().next().find('input').prop("checked", true).click();
-	};
+    $("#variables").append("Font: "+font+"<br>");
+    $("#jerseyLetteringFont td:contains('"+font+"')").next().next().find('input').prop("checked", true).click();
+  };
   //TEAM NAME
   var teamName = '<%=response.write(request.form("teamName"))%>';
   if(teamName != "") {
-	  $("#variables").append("Team Name: "+teamName+"<br>");
-  	$(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName).change();
+    $("#variables").append("Team Name: "+teamName+"<br>");
+    $(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName).change();
   };
   //PLACEMENT
   var placement = '<%=response.write(request.form("placement"))%>';
@@ -825,9 +819,9 @@ $(document).ready(function() {
   //PLAYER NAME LETTERING STYLE
   var playerLetteringStyle = '<%=response.write(request.form("playerLetteringStyle"))%>';
   if(playerLetteringStyle != "") {
-	  $("#variables").append("Player Name Lettering Style: "+playerLetteringStyle+"<br>");
-	  $("#jerseyPlayerOptions td:contains('"+playerLetteringStyle +"')").next().next().find('input').prop("checked", true).click();
-	};
+    $("#variables").append("Player Name Lettering Style: "+playerLetteringStyle+"<br>");
+    $("#jerseyPlayerOptions td:contains('"+playerLetteringStyle +"')").next().next().find('input').prop("checked", true).click();
+  };
   //TEAM NAME DESIGN
   var nameDesign = '<%=response.write(request.form("nameDesign"))%>';
   if(nameStyle != "") {
@@ -836,8 +830,8 @@ $(document).ready(function() {
   //TEAM NAME STYLE
   var nameStyle = '<%=response.write(request.form("nameDesignStyle"))%>';
   if(nameStyle != "") {
-  	$("#variables").append("Team Name Style: "+nameStyle+"<br>");
-   	$("td.jerseyTitle:contains('Letter')").closest("table").find("tr:gt(0):lt(4) td:nth-child(1)").each(function() {
+    $("#variables").append("Team Name Style: "+nameStyle+"<br>");
+    $("td.jerseyTitle:contains('Letter')").closest("table").find("tr:gt(0):lt(4) td:nth-child(1)").each(function() {
       if($(this).text() == nameStyle){
         $(this).next().next().find('input').prop("checked", true).click();
       }
@@ -900,12 +894,17 @@ $(document).ready(function() {
 });
 
 $(window).load(function() {
-  $("[name='AddProduct']").delay(5000).click();
+	$('body').css('opacity', 1);
+
+	setTimeout(function() {
+	  $("[name='AddProduct']").click();
+	}, 2000);
+
 });
 </script>
 
 </body>
 </html>
 <%
-	Call cleanup_dbconnopen
+  Call cleanup_dbconnopen
 %>

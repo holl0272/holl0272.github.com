@@ -143,7 +143,7 @@ Select Case sBtnAction
 		If cblnSF5AE Then Order_AdjustCart 'SFAE b2
 		mblnOrderAltered = True
 
-		mstrPageMessage = "<hr /><h4>The quantites have been updated.</h4><br />"
+		mstrPageMessage = "<h4>The quantites have been updated.</h4><br />"
 
 	Case "SaveToCart"
 		sProdID = Request.Form("sProdID" & iSaveFind)
@@ -186,7 +186,7 @@ Select Case sBtnAction
 		Call setDeleteOrder("odrdttmp", iTmpOrderID)	'delete from sfTmpOrderDetails
 		mblnOrderAltered = True
 
-		mstrPageMessage = "<hr /><h4>" & getProductInfo(sProdID, enProduct_Name) & " has been placed in your saved cart.</h4><p align=""center""><a href=""savecart.asp"" alt=""View your saved cart""><img class=""inputImage"" src=""" & C_BTN08 & """ alt=""View your saved cart""></a></p><br />"
+		mstrPageMessage = "<h4>" & getProductInfo(sProdID, enProduct_Name) & " has been placed in your saved cart.</h4><p align=""center""><a href=""savecart.asp"" alt=""View your saved cart""><img class=""inputImage"" src=""" & C_BTN08 & """ alt=""View your saved cart""></a></p><br />"
 
 	Case "MoveAll"
 		iCustID = custID_cookie
@@ -231,7 +231,7 @@ Select Case sBtnAction
 			mblnOrderAltered = True
 
 			If Len(mstrPageMessage) = 0 Then
-				mstrPageMessage = "<hr /><h4>" & getProductInfo(sProdID, enProduct_Name) & " has been placed in your saved cart.</h4>"
+				mstrPageMessage = "<h4>" & getProductInfo(sProdID, enProduct_Name) & " has been placed in your saved cart.</h4>"
 			Else
 				mstrPageMessage = mstrPageMessage & "<h4>" & getProductInfo(sProdID, enProduct_Name) & " has been placed in your saved cart.</h4>"
 			End If
@@ -257,7 +257,7 @@ Select Case sBtnAction
 		Call setDeleteOrder("odrdttmp", iTmpOrderID)
 		mblnOrderAltered = True
 
-		mstrPageMessage = "<hr /><h4>The selected item has been removed from your cart.</h4><br />"
+		mstrPageMessage = "<h4>The selected item has been removed from your cart.</h4><br />"
 
 End Select	'sBtnAction
 
@@ -284,7 +284,12 @@ End If
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
 
-<link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
+  <link rel="shortcut icon" type="image/png" href="images/favicon.gif">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
+  <link rel="stylesheet" href="test/css/main.css">
+
+  <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
+
 <script language="javascript" src="SFLib/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/incae.js" type="text/javascript"></script>
@@ -346,22 +351,35 @@ function letSelectValue(theSelect,theValue)
 </script>
 <% If cblnSF5AE Then Call Order_ShowInventoryMessage 'SFAE %>
 <% writeCurrencyConverterOpeningScript %>
+<style>
+body {
+	background-image: url('images/splash_bg.jpg');
+	text-align: center;
+}
+</style>
 </head>
 <body <%= mstrBodyStyle %>>
+	<div id="header" style="margin: 2% 0;">
+    <div id="gwn_logo">
+      <a href="dev/index.html" title="Home"><image src="images/gwn_logo.png" alt="GameWearNow Logo"></a>
+    </div>
+    <div id="heading">
+      <span class="title_txt" id="title">CUSTOM JERSEYS FOR<br>YOUR SPORTS TEAM</span>
+        <br>
+      <span class="title_txt" id="sub_title">ORDER SUMMARY</span>
+    </div>
+  </div>
 
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent">
+<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent" style="margin: 0 auto 5%;">
   <tr>
     <td>
       <table width="100%" border="0" cellspacing="1" cellpadding="3">
         <tr>
-          <td align="center" class="tdMiddleTopBanner">Order Summary</td>
-        </tr>
-        <tr>
           <td class="tdBottomTopBanner"><span class="Error"><strong><br>
 			</strong></span>Please review your order as shown below. To modify the quantity of any item ordered,
             input the desired quantity and select the <b>Update Quantity Changes</b>
-            button below. To delete an item click on <b>DELETE</b>.
+            button below. To delete an item click on <b>DELETE</b>.<br><br>
             <%if IsSaveCartActive = 1 then %>
             <!--webbot bot="PurpleText" preview="Begin Save Cart Message" -->
             To save an item to return and purchase at a later time click on <b>
@@ -373,7 +391,7 @@ function letSelectValue(theSelect,theValue)
 		<!--webbot bot="PurpleText" PREVIEW="Begin Optional Confirmation Message Display" -->
 		<%
 			Call WriteThankYouMessage
-			If Len(mstrPageMessage) > 0 Then Response.Write "<tr><td class=""tdContent2"">" & mstrPageMessage & "</td></tr>"
+			If Len(mstrPageMessage) > 0 Then Response.Write "<tr><td class=""tdContent2""><br>" & mstrPageMessage & "</td></tr>"
 		%>
 		<!--webbot bot="PurpleText" PREVIEW="End Optional Confirmation Message Display" -->
         <tr>
@@ -409,9 +427,26 @@ function letSelectValue(theSelect,theValue)
   </tr>
 </table>
 <!--webbot bot="PurpleText" preview="End Content Section" -->
+
+  <div id="footer">
+    <ul id="horizontal-nav">
+      <li id="current_page"><a title="Shopping Cart"><span><image src="images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="#" title="My Account">MY ACCOUNT</a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="test/footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="test/footer/privacy_policy/privacy_policy.html" title="Privacy Policy">PRIVACY POLICY</a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="test/footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
+    </ul>
+  </div>
+
 <script>
 	$(document).ready(function(){
-		$("img[src='images/buttons/continueshop.gif']").parent().attr('href','test/index.html')
+		$('hr').hide();
+		$('.tdAltFont2 a > b').unwrap();
+		$("img[src='images/buttons/continueshop.gif']").css('margin-bottom', '10px').parent().attr('href','test/index.html')
 	});
 </script>
 </body>

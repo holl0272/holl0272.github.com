@@ -75,7 +75,7 @@ Dim paryAttributeDetails
 			maryJerseyAttributes(4) = Array("Team Name", -1, "", 2)
 			maryJerseyAttributes(5) = Array("Team Name Lettering Style", -1, "", 0)
 			maryJerseyAttributes(6) = Array("Lettering Font", -1, "", 0)
-			
+
 			maryJerseyAttributes(7) = Array("Size", -1, "", 1)
 			maryJerseyAttributes(8) = Array("Player Name", -1, "", 3)
 			maryJerseyAttributes(9) = Array("Player Number", -1, "", 3)
@@ -93,7 +93,7 @@ Dim paryAttributeDetails
 			enAttrPos_Number = 9
 			enAttrPos_LetteringStyleName = 10
 			numEntries = 20
-		
+
 		Case Else
 	End Select
 
@@ -115,7 +115,7 @@ Dim paryAttributeDetails
 			End If
 		Next 'i
 	Next 'jerseyAttributeCounter
-	
+
 	If cblnDebugJersey Then
 		Response.Write "<fieldset style=""color:black;background:white""><legend>Jersey Attributes</legend>"
 		For jerseyAttributeCounter = 0 To UBound(maryJerseyAttributes)
@@ -129,7 +129,7 @@ Dim paryAttributeDetails
 		Response.Write "Lettering Style Name: " & enAttrPos_LetteringStyleName & "<br />"
 		Response.Write "</fieldset>"
 	End If
-	
+
 End Sub	'LoadJerseyAttributes
 
 '**********************************************************************************************************
@@ -236,7 +236,7 @@ function validateForm(theForm)
 		<% Call WriteThankYouMessage %>
 		<!--webbot bot="PurpleText" PREVIEW="End Optional Confirmation Message Display" -->
 		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);">
-		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">         
+		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">
 		<table border="0" width="100%" class="tdContent2" cellpadding="2" cellspacing="0">
 		  <tr>
 			<td align="center" valign="top"><%  '= detailImageOut %></td>
@@ -251,17 +251,17 @@ function validateForm(theForm)
 				<%= mstrProductDescription %><br />
 				<%
 				'<strong>%= C_Description %:</strong>&nbsp;
-				'<strong> C_Price :</strong>&nbsp; 
+				'<strong> C_Price :</strong>&nbsp;
 				'If iConverion = 1 Then
-				'	If getProductInfo(txtProdId, enProduct_SaleIsActive) Then 
+				'	If getProductInfo(txtProdId, enProduct_SaleIsActive) Then
 				'		Response.Write "<span class=""itemOnSalePrice""><script>document.write(""" & FormatCurrency(getProductInfo(txtProdId, enProduct_Price)) & " = ("" + OANDAconvert(" & trim(getProductInfo(txtProdId, enProduct_Price)) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script></span><br />"
 				'		Response.Write "<span class=""SalesPrice"">" & C_SPrice & ": <script>document.write(""" & FormatCurrency(getProductInfo(txtProdId, enProduct_SalePrice)) & " = ("" + OANDAconvert(" & trim(getProductInfo(txtProdId, enProduct_SalePrice)) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script></span><br />"
 				'		Response.Write "<span class=""YouSave"">" & C_YSave & ": <script>document.write(""" & FormatCurrency(CDbl(getProductInfo(txtProdId, enProduct_Price))-CDbl(getProductInfo(txtProdId, enProduct_SalePrice))) & " = ("" + OANDAconvert(" & trim(CDbl(getProductInfo(txtProdId, enProduct_Price))-CDbl(getProductInfo(txtProdId, enProduct_SalePrice))) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script></span><br />"
 				'	Else
 				'		Response.Write "<script>document.write(""" & FormatCurrency(getProductInfo(txtProdId, enProduct_Price)) & " = ("" + OANDAconvert(" & trim(getProductInfo(txtProdId, enProduct_Price)) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script>"
-				'	End If 
+				'	End If
 				'Else
-				'	If getProductInfo(txtProdId, enProduct_SaleIsActive) Then 
+				'	If getProductInfo(txtProdId, enProduct_SaleIsActive) Then
 				'		Response.Write "<span class=""itemOnSalePrice"">" & FormatCurrency(getProductInfo(txtProdId, enProduct_Price)) & "</span><br />"
 				'		Response.Write "<span class=""SalesPrice"">" & C_SPrice & ": " & FormatCurrency(getProductInfo(txtProdId, enProduct_SalePrice)) & "</span><br />"
 				'		Response.Write "<span class=""YouSave"">" & C_YSave & ": " & FormatCurrency(CDbl(getProductInfo(txtProdId, enProduct_Price))-CDbl(getProductInfo(txtProdId, enProduct_SalePrice))) & "</span><br />"
@@ -273,7 +273,7 @@ function validateForm(theForm)
 				If cblnSF5AE Then
 					SearchResults_GetProductInventory txtProdId
 					'SearchResults_ShowMTPricesLink txtProdId
-					
+
 					'Response.Write "<hr />"
 					If hasMTP(txtProdId) Then
 						'Response.Write "<table border=0 cellpadding=2 cellspacing=0>"
@@ -282,7 +282,7 @@ function validateForm(theForm)
 						'Response.Write WriteMTPrices(getProductInfo(txtProdId, enProduct_MTP), getProductInfo(txtProdId, enProduct_Price))
 						'Response.Write "</td></tr>"
 						'Response.Write "</table>"
-						
+
 						Response.Write "<div align=""center"">"
 						Response.Write WriteMTPricingTable(txtProdId, "Price Per Jersey (Unlettered)")
 						Response.Write "</div>"
@@ -298,7 +298,7 @@ function validateForm(theForm)
 <div align="left">
 <!--#include file="detail_FootballDisplay.asp"-->
 
-<form method="post" name="frmDetail" id="frmDetail" action="<%= Session("DomainPath") %>addproduct.asp" onsubmit="return ValidateForm_Jersey(this);">      
+<form method="post" name="frmDetail" id="frmDetail" action="<%= Session("DomainPath") %>addproduct.asp" onsubmit="return ValidateForm_Jersey(this);">
 <input type="hidden" name="ssMPOPage" id="ssMPOPage" value="1">
 <input type="hidden" name="PRODUCT_ID" id="PRODUCT_ID" value="<%= txtProdId %>">
 
@@ -383,11 +383,11 @@ function validateForm(theForm)
 	<tr>
 	<td colspan="5" align="center"><input type="image" name="AddProduct" border="0" src="images/buttons/addtocart3.gif" alt="Add To Cart" /></td>
 	</tr>
-	
+
 </table>
 </div><input type="hidden" name="QUANTITY.<%= cstrCustomLogo_ProductID %>" id="customLogo" value="" />
 </form>
-</div>		
+</div>
 
 <!--webbot bot="PurpleText" PREVIEW="Start Dynamic Product - Related Products" -->
 <%
@@ -419,7 +419,7 @@ function validateForm(theForm)
 		If isObject(cnn) Then .Connection = cnn
 		If Err.number > 0 Then Err.Clear
 		On Error Goto 0
-		
+
 		If .LoadDynamicProducts Then
 		%>
 		<br />
@@ -431,7 +431,7 @@ function validateForm(theForm)
 			<td><!--webbot bot="PurpleText" PREVIEW="Start Dynamic Product" --><% .DisplayDynamicProducts %><!--webbot bot="PurpleText" PREVIEW="End Dynamic Product" --></td>
 		</tr>
 		</table>
-		<%		
+		<%
 		End If	'LoadDynamicProducts
 	End With	'mclsDynamicProducts
 	End If	'Len(getProductInfo(txtProdId, enProduct_RelatedProducts)) > 0

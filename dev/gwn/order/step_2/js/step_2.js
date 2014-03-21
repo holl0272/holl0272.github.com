@@ -1612,8 +1612,6 @@ function captureValues() {
 
   // $("#form_results").show();
   $('#step_2_form').submit();
-
-
 };
 
 
