@@ -284,7 +284,6 @@ End If
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
 
-  <link rel="shortcut icon" type="image/png" href="images/favicon.gif">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="test/css/main.css">
 
@@ -353,15 +352,15 @@ function letSelectValue(theSelect,theValue)
 <% writeCurrencyConverterOpeningScript %>
 <style>
 body {
-	background-image: url('images/splash_bg.jpg');
 	text-align: center;
 }
 </style>
 </head>
 <body <%= mstrBodyStyle %>>
-	<div id="header" style="margin: 2% 0;">
+
+	<div id="header" style="margin-bottom: 2%;">
     <div id="gwn_logo">
-      <a href="dev/index.html" title="Home"><image src="images/gwn_logo.png" alt="GameWearNow Logo"></a>
+      <a href="test/index.html" title="Home"><image src="images/gwn_logo.png" alt="GameWearNow Logo"></a>
     </div>
     <div id="heading">
       <span class="title_txt" id="title">CUSTOM JERSEYS FOR<br>YOUR SPORTS TEAM</span>
@@ -432,7 +431,7 @@ body {
     <ul id="horizontal-nav">
       <li id="current_page"><a title="Shopping Cart"><span><image src="images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
       <li class="pipe">|</li>
-      <li class="not_selected"><a href="#" title="My Account">MY ACCOUNT</a></li>
+      <li class="not_selected"><a href="myAccount.asp" title="My Account">MY ACCOUNT</a></li>
       <li class="pipe">|</li>
       <li class="not_selected"><a href="test/footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
       <li class="pipe">|</li>
