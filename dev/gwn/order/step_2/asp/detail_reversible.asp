@@ -183,6 +183,7 @@ End Sub	'LoadJerseyAttributes
 <meta name="Language" content="en">
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
+<link runat="server" rel="shortcut icon" type="image/png" href="favicon.ico">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
 <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
@@ -325,24 +326,19 @@ function validateForm(theForm)
 {
 
 }
-
-body {
-  overflow: hidden;
-
-}
 .black_overlay{
     opacity: 1 !important;
     display: block;
-    position: absolute;
+    position: fixed;
     top: 0%;
     left: 0%;
     width: 100%;
     height: 100%;
     z-index:1001;
     background-image: url('images/splash_bg.jpg');
-/*    -moz-opacity: 0.8;
+    -moz-opacity: 0.8;
     opacity:.80;
-    filter: alpha(opacity=80);*/
+    filter: alpha(opacity=80);
 }
 .white_content {
     opacity: 1 !important;;
@@ -542,7 +538,7 @@ background-color:#11013b;
 }
 </style>
 </head>
-<body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();">
+<body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();" style="opacity: 0">
 
 <div id="light" class="white_content">
   <br>Please wait while we<br>gather your order details...
@@ -983,7 +979,12 @@ $(document).ready(function() {
 });
 
 $(window).load(function() {
-  $("[name='AddProduct']").delay(5000).click();
+    $('body').css('opacity', 1);
+
+    setTimeout(function() {
+      $("[name='AddProduct']").click();
+    }, 2000);
+
 });
 </script>
 

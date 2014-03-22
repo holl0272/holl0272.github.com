@@ -1,7 +1,7 @@
-if(window.innerWidth <= 800 && window.innerHeight <= 600) {
-   $("#init-stylesheet").attr("href", "../../css/narrow.css");
-   $('#wrapper').hide();
- };
+// if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+//    $("#init-stylesheet").attr("href", "../../css/narrow.css");
+//    $('#wrapper').hide();
+//  };
 
 //PARSE THE URL FOR VAR NAMES AND VALUES
 var urlParams;
@@ -25,7 +25,6 @@ var price = urlParams["price"];
 var product_id = urlParams["id"];
 
 $(document).ready(function(){
-$('#wrapper').show();
 
 //NAME
 $('#urlParams_name').html(name);
@@ -313,7 +312,7 @@ function reversableCosts() {
 
 //HOW MANY JERSEYS DO YOU WANT TO ORDER?
 var typingTimer;
-var doneTypingInterval = 3000;
+var doneTypingInterval = 2000;
 //on keyup, start the countdown
 $('#order_qty').keyup(function(){
   calculating();
@@ -337,7 +336,12 @@ function doneTyping() {
   if($('.resize_select').length == 1){
     $('.resize_select').removeClass('resize_select').addClass('size_options');
   }
-  buildRows(qty);
+  if(name != meshShorts) {
+    buildRows(qty);
+  }
+  else {
+    buildRows(1);
+  };
   //populates the qty input in the submit form
   $('#step_1_print_qty').val(qty);
 };
@@ -406,8 +410,8 @@ function calculateCost(qty) {
 
 
 function buildRows(qty) {
-  var header = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td class='numbers_input'></td><td class='numbers_input'>Num</td><td class='names_input' style='min-width:115px'></td><td class='names_input' style='min-width:140px'>Name</td><td></td><td style='min-width:55px'></td><td class='hide'>Qty</td></tr>"
-  var shortsheader = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td></td><td style='min-width:55px'>Qty</td></tr>"
+  var header = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td class='numbers_input'></td><td class='numbers_input'>Num</td><td class='names_input' style='min-width:115px'></td><td class='names_input' style='min-width:140px'>Name</td><td></td><td style='min-width:55px'></td><td class='hide'>Qty</td></tr>";
+  var shortsheader = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td></td><td style='min-width:55px'>Qty</td></tr>";
 
   var row_number = "<td class='row_number'><font></font></td>";
     var sizeSelect = $('.description').filter(":visible").find('.size_select').parent().html();
@@ -430,7 +434,7 @@ function buildRows(qty) {
   }
   else {
     $('#sub_selections table').append(shortsheader);
-    var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_qty+qty_btns+"</tr>";
+    var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_qty+"</tr>";
   };
   //builds rows X qty input
   for (var i = 1; i <= qty; i++) {
@@ -438,11 +442,13 @@ function buildRows(qty) {
   };
   //leading 0 for single digits
   function numberRows() {
-    $(".row_number").each(function(i) {
-      var n = ++i;
-      var row_number = ("0" + n).slice(-2);
-      $(this).find("font").text(row_number);
-    });
+    if(name != meshShorts) {
+      $(".row_number").each(function(i) {
+        var n = ++i;
+        var row_number = ("0" + n).slice(-2);
+        $(this).find("font").text(row_number);
+      });
+    }
   };
   numberRows();
 
@@ -469,6 +475,9 @@ function buildRows(qty) {
   nameCells();
 
   $(".row_qty").each(function() {
+    if(name == meshShorts) {
+      $(this).val(parseInt($('#order_qty').val()));
+    };
     var qty_txt = $(this).val();
     $(this).next("font").text(qty_txt).closest('td').next('td').html(qty_txt);
   });
@@ -489,7 +498,9 @@ function buildRows(qty) {
       $('#sub_selections table tr td').filter(":visible").find('.row_qty').val(qty).next().text(qty);
     };
   };
-  togglePlusLess();
+  if(name != meshShorts) {
+    togglePlusLess();
+  };
 
   $('.plus_one').on('click', function() {
     var qty_plus = Number($(this).parent().prev().prev().val());
@@ -565,7 +576,7 @@ function buildRows(qty) {
   // });
 
 var numberTimer;
-var doneTypingNumber = 100;
+var doneTypingNumber = 2000;
 //on keyup, start the countdown
 $('.number_input').keyup(function(){
   $(this).attr('id', 'temp');
@@ -582,7 +593,7 @@ function doneTyping() {
     $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
     $(this).html(newnumberInput).find('input').focus();
     var numberTimer;
-    var doneTypingNumber = 100;
+    var doneTypingNumber = 2000;
     //on keyup, start the countdown
     $('.newnumber_input').keyup(function(){
       $(this).attr('id', 'temp');
@@ -953,7 +964,12 @@ function handle(table){
     };
     var product_qty = "<td>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'>"+qty+"</font>";
     var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; padding-left:5px; cursor: pointer;'> - </span></td><span>";
-    var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+qty_btns+"</tr>";
+      if(name == meshShorts) {
+        var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+qty_btns+"</tr>";
+      }
+      else {
+        var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+"</tr>";
+      };
 
     $('#jersey_details').append(jersey_row);
   });
@@ -1019,7 +1035,7 @@ function handle(table){
     $(this).closest('td').html(numberInput).on('click', function() {
       $(this).find('input').focus();
       var numberTimer;
-      var doneTypingNumber = 500;
+      var doneTypingNumber = 2000;
       //on keyup, start the countdown
       $('.number_input').keyup(function(){
         $(this).attr('id', 'temp');
@@ -1036,7 +1052,7 @@ function handle(table){
         $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
           $(this).html(newnumberInput).find('input').focus();
           var numberTimer;
-          var doneTypingNumber = 500;
+          var doneTypingNumber = 2000;
           //on keyup, start the countdown
           $('.newnumber_input').keyup(function(){
             $(this).attr('id', 'temp');
@@ -1064,7 +1080,7 @@ function handle(table){
     $(this).closest('td').html(nameInput).on('click', function() {
       $(this).find('input').focus();
       var nameTimer;
-      var doneTypingName = 1000;
+      var doneTypingName = 2000;
       //on keyup, start the countdown
       $('.name_input').keyup(function(){
         $(this).attr('id', 'temp_name');
@@ -1081,7 +1097,7 @@ function handle(table){
         $('.set_name').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).on('click', function() {
           $(this).html(newnameInput).find('input').focus();
           var nameTimer;
-          var doneTypingName = 1000;
+          var doneTypingName = 2000;
           //on keyup, start the countdown
           $('.newname_input').keyup(function(){
             $(this).attr('id', 'temp_name');
@@ -1102,7 +1118,7 @@ function handle(table){
     });
   });
 
-    function togglePlusLess() {
+  function togglePlusLess() {
     var qty = Number($('#order_qty').val());
     $('#sub_selections table tr td .btns').show();
     if($('#sub_selections table tr').filter(":visible").length > 1) {
@@ -1119,7 +1135,9 @@ function handle(table){
       $('#sub_selections table tr td').filter(":visible").find('.row_qty').val(qty).next().text(qty);
     };
   };
-  togglePlusLess();
+  if(name != meshShorts) {
+    togglePlusLess();
+  };
 
   $('.plus_one').on('click', function() {
     var qty = Number($('#order_qty').val());
@@ -1215,8 +1233,14 @@ $('.clear_btn').on('click', function(e) {
 //NEXT STEP BUTTON
 $('.next_btn').on('click', function(e) {
   var msg;
+  if (name != meshShorts) {
   var verify = "Please verify the jersey details you have entered are acurate - click <span class='mock_btn'>NEXT STEP</span> to continue"
   var missing = "The jersey details are incomplete - please review the section above for missing information"
+  }
+  else {
+  var verify = "Please verify the size and quantity you have entered are acurate - click <span class='mock_btn'>NEXT STEP</span> to continue"
+  var missing = "The quantity of shorts or their size selection is incomplete - please review the section above for missing information"
+  }
   var emptyInputs = $('#jersey_details').find('input[type=text]:empty').filter(":visible").length;
   var emptySelects = $('#jersey_details').find('select').length;
   if((emptyInputs > 0) || (emptySelects > 0)) {
@@ -1279,3 +1303,7 @@ function captureValues() {
 
   $('#step_1_form').submit();
 };
+
+$(window).load(function() {
+  $('#wrapper').css('opacity', 1);
+});

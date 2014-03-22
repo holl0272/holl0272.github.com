@@ -67,10 +67,9 @@ Dim mstrMessage
 <meta name="Language" content="en">
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
-
+  <link runat="server" rel="shortcut icon" type="image/png" href="favicon.ico">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
-  <link rel="stylesheet" href="test/css/main.css">
-
+  <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
 <script language="javascript" src="SFLib/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
@@ -125,7 +124,7 @@ body table{
 
 	<div id="header" style="margin: 0 0 2%;">
     <div id="gwn_logo">
-      <a href="test/index.html" title="Home"><image src="images/gwn_logo.png" alt="GameWearNow Logo"></a>
+      <a href="index.html" title="Home"><image src="images/gwn_logo.png" alt="GameWearNow Logo"></a>
     </div>
     <div id="heading">
       <span class="title_txt" id="title">CUSTOM JERSEYS FOR<br>YOUR SPORTS TEAM</span>
@@ -215,11 +214,11 @@ End Select
       <li class="pipe">|</li>
       <li id="current_page"><a title="My Account">MY ACCOUNT</a></li>
       <li class="pipe">|</li>
-      <li class="not_selected"><a href="test/footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
+      <li class="not_selected"><a href="footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
       <li class="pipe">|</li>
-      <li class="not_selected"><a href="test/footer/privacy_policy/privacy_policy.html" title="Privacy Policy">PRIVACY POLICY</a></li>
+      <li class="not_selected"><a href="footer/privacy_policy/privacy_policy.html" title="Privacy Policy">PRIVACY POLICY</a></li>
       <li class="pipe">|</li>
-      <li class="not_selected"><a href="test/footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
+      <li class="not_selected"><a href="footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
     </ul>
   </div>
 

@@ -1,6 +1,5 @@
 if(window.innerWidth <= 800 && window.innerHeight <= 600) {
   $("#init-stylesheet").attr("href", "css/narrow.css");
-  $('#wrapper').hide();
 };
 
 $(document).ready(function(){
@@ -38,8 +37,6 @@ if(isIE) {
 if((os == "Windows") && (isChrome)) {
   $("#os-stylesheet").attr("href", "css/windows.css");
 };
-
-   $('#wrapper').show();
 
 function adjustStyle(width) {
   width = parseInt(width);

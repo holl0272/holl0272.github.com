@@ -31,7 +31,7 @@ Dim attrName, attrNamePrev, icounter, strOut, iAttrNum, strAttrPrice
 Dim mstrProductDescription
 
 	txtProdId = Request.QueryString("product_id")
-
+	
 	Call setRecentlyViewedProducts(txtProdId, Request.ServerVariables("SCRIPT_NAME") & "?" & Request.QueryString)
 
 	If getProductInfo(txtProdId, enProduct_Exists) Then
@@ -101,7 +101,7 @@ function validateForm(theForm)
 		<% Call WriteThankYouMessage %>
 		<!--webbot bot="PurpleText" PREVIEW="End Optional Confirmation Message Display" -->
 		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);">
-		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">
+		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">         
 		<table border="0" width="100%" class="tdContent2" cellpadding="2" cellspacing="0">
 		  <tr>
 			<td align="center" valign="top"><%= detailImageOut %></td>
@@ -117,7 +117,7 @@ function validateForm(theForm)
 					<strong><%= C_VendorNameS %>:</strong>&nbsp;<a href="<%= getMfgVendItem(getProductInfo(txtProdId, enProduct_VendorID), "URL", False) %>" title="<%= getMfgVendItem(getProductInfo(txtProdId, enProduct_VendorID), "MetaTitle", False) %>"><%= getMfgVendItem(getProductInfo(txtProdId, enProduct_VendorID), "Name", False) %></a><br />
 				<% End If %>
 				<strong><%= C_Description %>:</strong>&nbsp;<%= mstrProductDescription %><br />
-
+				 
 				<%
 				If hasMTP(txtProdId) Then
 					Response.Write "<div align=""center"">"
@@ -126,15 +126,15 @@ function validateForm(theForm)
 				Else
 				    Response.Write "<strong>" & C_Price & ":</strong>&nbsp;"
 				    If iConverion = 1 Then
-					    If getProductInfo(txtProdId, enProduct_SaleIsActive) Then
+					    If getProductInfo(txtProdId, enProduct_SaleIsActive) Then 
 						    Response.Write "<span class=""itemOnSalePrice""><script>document.write(""" & FormatCurrency(getProductInfo(txtProdId, enProduct_Price)) & " = ("" + OANDAconvert(" & trim(getProductInfo(txtProdId, enProduct_Price)) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script></span><br />"
 						    Response.Write "<span class=""SalesPrice"">" & C_SPrice & ": <script>document.write(""" & FormatCurrency(getProductInfo(txtProdId, enProduct_SalePrice)) & " = ("" + OANDAconvert(" & trim(getProductInfo(txtProdId, enProduct_SalePrice)) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script></span><br />"
 						    Response.Write "<span class=""YouSave"">" & C_YSave & ": <script>document.write(""" & FormatCurrency(CDbl(getProductInfo(txtProdId, enProduct_Price))-CDbl(getProductInfo(txtProdId, enProduct_SalePrice))) & " = ("" + OANDAconvert(" & trim(CDbl(getProductInfo(txtProdId, enProduct_Price))-CDbl(getProductInfo(txtProdId, enProduct_SalePrice))) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script></span><br />"
 					    Else
 						    Response.Write "<script>document.write(""" & FormatCurrency(getProductInfo(txtProdId, enProduct_Price)) & " = ("" + OANDAconvert(" & trim(getProductInfo(txtProdId, enProduct_Price)) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script>"
-					    End If
+					    End If 
 				    Else
-					    If getProductInfo(txtProdId, enProduct_SaleIsActive) Then
+					    If getProductInfo(txtProdId, enProduct_SaleIsActive) Then 
 						    Response.Write "<span class=""itemOnSalePrice"">" & FormatCurrency(getProductInfo(txtProdId, enProduct_Price)) & "</span><br />"
 						    Response.Write "<span class=""SalesPrice"">" & C_SPrice & ": " & FormatCurrency(getProductInfo(txtProdId, enProduct_SalePrice)) & "</span><br />"
 						    Response.Write "<span class=""YouSave"">" & C_YSave & ": " & FormatCurrency(CDbl(getProductInfo(txtProdId, enProduct_Price))-CDbl(getProductInfo(txtProdId, enProduct_SalePrice))) & "</span><br />"
@@ -160,18 +160,18 @@ function validateForm(theForm)
 					Call DisplayAttributes_New(strOut, MakeFormNameSafe(txtProdId))
 					Response.Write strOut
 					Response.Write "</table>"
-				End If
-
+				End If 
+				
 				' ------------------------
 				' ATTRIBUTE OUTPUT ::: END
 				' ------------------------
 				%>
 				<% If getProductInfo(txtProdId, enProduct_IsActive) Then %>
-
+				 
 				<% If getProductInfo(txtProdId, enProduct_LimitQtyToMTP) Then %>
 				<table class="quantityDisplay">
 				<tr><th colspan="3" class="quantityDisplay">Select a Quantity</th></tr>
-				<%
+				<% 
 				'<input type="hidden" name="QUANTITY" id="QUANTITY" value="1">
 				'<select name="selQUANTITY" id="selQUANTITY" onchange="this.form.QUANTITY.value=this.options[this.options.selectedIndex].value;">
 				'</select>
@@ -250,7 +250,7 @@ function validateForm(theForm)
 			<td><!--webbot bot="PurpleText" PREVIEW="Start Dynamic Product" --><% .DisplayDynamicProducts %><!--webbot bot="PurpleText" PREVIEW="End Dynamic Product" --></td>
 		</tr>
 		</table>
-		<%
+		<%		
 		End If	'LoadDynamicProducts
 	End With	'mclsDynamicProducts
 	End If	'getProductInfo(txtProdId, enProduct_EnableAlsoBought)
@@ -287,7 +287,7 @@ function validateForm(theForm)
 		If isObject(cnn) Then .Connection = cnn
 		If Err.number > 0 Then Err.Clear
 		On Error Goto 0
-
+		
 		If .LoadDynamicProducts Then
 		%>
 		<br />
@@ -299,7 +299,7 @@ function validateForm(theForm)
 			<td><!--webbot bot="PurpleText" PREVIEW="Start Dynamic Product" --><% .DisplayDynamicProducts %><!--webbot bot="PurpleText" PREVIEW="End Dynamic Product" --></td>
 		</tr>
 		</table>
-		<%
+		<%		
 		End If	'LoadDynamicProducts
 	End With	'mclsDynamicProducts
 	End If	'Len(getProductInfo(txtProdId, enProduct_RelatedProducts)) > 0

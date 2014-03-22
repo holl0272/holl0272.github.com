@@ -28,7 +28,7 @@
   </script>
 
 
-  <link rel="shortcut icon" type="image/png" href="../../images/favicon.gif">
+  <link runat="server" rel="shortcut icon" type="image/png" href="../../../favicon.ico">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../sports/css/jerseys.css">
@@ -39,11 +39,10 @@
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
   <link rel="stylesheet" id="browser-stylesheet">
-
 </head>
 <body>
 
-<div id="wrapper">
+<div id="wrapper" style="opacity: 0">
 
   <div id="header">
     <div id="gwn_logo">
@@ -875,7 +874,7 @@
             <table>
               <tr>
                 <td>
-                Your cost per jersey based on your above choices:
+                Your cost per <span class="shorts_show">pair of shorts based on your quantity:</span><span class="shorts_hide">jersey based on your above choices:</span>
                 </td>
                 <td id="calculated">
                 <b>$<span id="price_per_jersey"></span></b>
@@ -933,9 +932,9 @@
       </div>
     </div>
     <ul id="horizontal-nav">
-      <li><a title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
+      <li><a href="../../order.asp" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
       <li class="pipe">|</li>
-      <li><a title="My Account">MY ACCOUNT</a></li>
+      <li><a href="../../myAccount.asp" title="My Account">MY ACCOUNT</a></li>
       <li class="pipe">|</li>
       <li><a href="../../footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
       <li class="pipe">|</li>
@@ -944,6 +943,7 @@
       <li><a href="../../footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
     </ul>
   </div>
+
 </div>
   <script src="../../js/jsonTable.js"></script>
   <script src="../../js/jquery.cookie.js"></script>

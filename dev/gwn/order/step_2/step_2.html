@@ -14,7 +14,7 @@
   <script src="http://malsup.github.com/jquery.form.js"></script>
 
 
-  <link rel="shortcut icon" type="image/png" href="../../images/favicon.gif">
+  <link runat="server" rel="shortcut icon" type="image/png" href="../../../favicon.ico">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../sports/css/jerseys.css">
@@ -25,20 +25,10 @@
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
   <link rel="stylesheet" id="browser-stylesheet">
-
-  <style>
-  #form_results td {
-    padding-right: 5px;
-  }
-  #form_results input {
-    width: 150px;
-  }
-  </style>
-
 </head>
 <body>
 
-<div id="wrapper">
+<div id="wrapper" style="opacity: 0">
 
   <div id="header">
     <div id="gwn_logo">
@@ -572,9 +562,9 @@
       </div>
     </div>
     <ul id="horizontal-nav">
-      <li><a title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
+      <li><a href="../../order.asp" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
       <li class="pipe">|</li>
-      <li><a title="My Account">MY ACCOUNT</a></li>
+      <li><a href="../../myAccount.asp" title="My Account">MY ACCOUNT</a></li>
       <li class="pipe">|</li>
       <li><a href="../../footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
       <li class="pipe">|</li>

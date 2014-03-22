@@ -1,7 +1,7 @@
-if((window.innerWidth <= 800) && (window.innerHeight <= 600)) {
-   $("#init-stylesheet").attr("href", "../../css/narrow.css");
-   $('#wrapper').hide();
- };
+// if((window.innerWidth <= 800) && (window.innerHeight <= 600)) {
+//    $("#init-stylesheet").attr("href", "../../css/narrow.css");
+//    $('#wrapper').hide();
+//  };
 
 //PARSE THE URL FOR VAR NAMES AND VALUES
 var urlParams;
@@ -96,13 +96,13 @@ $(document).ready(function(){
 
   //PRODUCT ID and FORM ACTION
   if(name == "Mesh Shorts") {
-    $('#step_2_form').attr('action', '../../../detail.asp?product_id='+product_id);
+    $('#step_2_form').attr('action', '../../detail.asp?product_id='+product_id);
   }
   else if(rev_prod == "yes") {
-    $('#step_2_form').attr('action', '../../../detail_reversible.asp?product_id='+product_id);
+    $('#step_2_form').attr('action', '../../detail_reversible.asp?product_id='+product_id);
   }
   else {
-    $('#step_2_form').attr('action', '../../../detail_football.asp?product_id='+product_id);
+    $('#step_2_form').attr('action', '../../detail_football.asp?product_id='+product_id);
   }
 
   //JERSEY COLOR
@@ -1774,3 +1774,7 @@ function captureValues() {
   //     $('#upload_info_icon').parent().attr('href', 'images/info/no_file_uploaded.png').attr('title', '');
   //   };
   // };
+
+$(window).load(function() {
+  $('#wrapper').css('opacity', 1);
+});

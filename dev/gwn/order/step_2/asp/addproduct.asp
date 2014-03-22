@@ -379,7 +379,7 @@ Dim pstrURL
 	pstrURL = Replace(pstrURL, "%3D", "=")
 
 	'redirectURL = pstrURL
-	redirectURL = "http://dev.gamewearnow.com/order.asp"
+	redirectURL = "http://www.gamewearnow.com/order.asp"
 
 End Function	'redirectURL
 
