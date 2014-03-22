@@ -198,9 +198,8 @@ function validateForm(theForm)
 {
 	if (theForm.QUANTITY.type == "text"){theForm.QUANTITY.quantityBox=true;}
 	if (theForm.QUANTITY.type == "select-one"){theForm.selQUANTITY.optional=true;}
-
 	return sfCheck(theForm);
-}
+};
 
 <% If getProductInfo(txtProdId, enProduct_Exists) Then Response.Write "prodBasePrice =" & getProductInfo(txtProdId, enProduct_SellPrice) & ";" & vbcrlf %>
 
@@ -582,7 +581,7 @@ background-color:#11013b;
 		<% Call WriteThankYouMessage %>
 		<!--webbot bot="PurpleText" PREVIEW="End Optional Confirmation Message Display" -->
 
-		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="http://dev.gamewearnow.com/addproduct.asp" onSubmit="return validateForm(this);">
+		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);">
 
 		<!-- <form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);"> -->
 		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">
@@ -936,6 +935,7 @@ $(document).ready(function() {
   };
   //custom logo
   if(logo != "") {
+    $(".jerseyDisplay:contains('Team Name: ')").find('input').val(logo).change();
     $("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr td:nth-child(1)").each(function() {
       if($(this).text().indexOf(logo) != -1){
         $(this).next().find('input').prop("checked", true).click();

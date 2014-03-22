@@ -350,7 +350,8 @@ function letSelectValue(theSelect,theValue)
 <script>
 $(document).ready(function() {
 	$('#tblMainContent td').css('padding', '5px');
-})
+	$(".tdContent2 a:contains('immediate')").hide();
+});
 </script>
 
 <% If cblnSF5AE Then Call Order_ShowInventoryMessage 'SFAE %>
@@ -373,9 +374,9 @@ body {
       <span class="title_txt" id="sub_title">ORDER SUMMARY</span>
     </div>
   </div>
-<!--#include file="templateTop.asp"-->
+
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent" style="margin: 0 auto 5%;">
+<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent" style="margin: 0 auto 5%; background-color: white;">
   <tr>
     <td>
       <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -431,7 +432,6 @@ body {
   </tr>
 </table>
 <!--webbot bot="PurpleText" preview="End Content Section" -->
-<!--#include file="templateBottom.asp"-->
 
   <div id="footer">
     <ul id="horizontal-nav">

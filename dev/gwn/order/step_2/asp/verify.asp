@@ -488,7 +488,7 @@ sCCList = getCreditCardList("")
 <meta name="Language" content="en">
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
-  <link runat="server" rel="shortcut icon" type="../image/png" href="favicon.ico">
+  <link runat="server" rel="shortcut icon" type="image/png" href="../favicon.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
@@ -570,6 +570,11 @@ $(document).ready(function() {
 	$('#tblMainContent td').css('padding', '5px');
 })
 </script>
+<style>
+body {
+	text-align: center;
+}
+</style>
 
 <% writeCurrencyConverterOpeningScript %>
 </head>
@@ -586,7 +591,7 @@ $(document).ready(function() {
       <span class="title_txt" id="sub_title">ORDER PROCESSING</span>
     </div>
   </div>
-<!--#include file="templateTop.asp"-->
+
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
 <form method="post" name="frmVerify" ID="frmVerify" action="confirm.asp" onSubmit="<%= sSubmitAction %>">
 <input type="hidden" name="pageSource" id="pageSource" value="verify">
@@ -955,7 +960,7 @@ $(document).ready(function() {
 </table>
 </form>
 <!--webbot bot="PurpleText" preview="End Content Section" -->
-<!--#include file="templateBottom.asp"-->
+
   <div id="footer">
     <ul id="horizontal-nav">
       <li id="current_page"><a title="Shopping Cart"><span><image src="../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>

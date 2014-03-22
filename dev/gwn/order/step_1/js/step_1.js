@@ -576,7 +576,7 @@ function buildRows(qty) {
   // });
 
 var numberTimer;
-var doneTypingNumber = 2000;
+var doneTypingNumber = 1000;
 //on keyup, start the countdown
 $('.number_input').keyup(function(){
   $(this).attr('id', 'temp');
@@ -593,7 +593,7 @@ function doneTyping() {
     $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
     $(this).html(newnumberInput).find('input').focus();
     var numberTimer;
-    var doneTypingNumber = 2000;
+    var doneTypingNumber = 1000;
     //on keyup, start the countdown
     $('.newnumber_input').keyup(function(){
       $(this).attr('id', 'temp');
@@ -1035,7 +1035,7 @@ function handle(table){
     $(this).closest('td').html(numberInput).on('click', function() {
       $(this).find('input').focus();
       var numberTimer;
-      var doneTypingNumber = 2000;
+      var doneTypingNumber = 1000;
       //on keyup, start the countdown
       $('.number_input').keyup(function(){
         $(this).attr('id', 'temp');
@@ -1052,7 +1052,7 @@ function handle(table){
         $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
           $(this).html(newnumberInput).find('input').focus();
           var numberTimer;
-          var doneTypingNumber = 2000;
+          var doneTypingNumber = 1000;
           //on keyup, start the countdown
           $('.newnumber_input').keyup(function(){
             $(this).attr('id', 'temp');
