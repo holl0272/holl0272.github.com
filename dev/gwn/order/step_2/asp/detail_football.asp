@@ -822,7 +822,13 @@ $(document).ready(function() {
   };
   //TEAM NAME DESIGN
   var nameDesign = '<%=response.write(request.form("nameDesign"))%>';
-  if(nameStyle != "") {
+  if(nameDesign != "") {
+    if(nameDesign == "Letters with Graphics") {
+        nameDesign = "Graphics Styles";
+    }
+    else {
+        nameDesign = "Letter Only Styles";
+    };
     $("#variables").append("Team Name Design: "+nameDesign+"<br>");
   };
   //TEAM NAME STYLE
@@ -849,11 +855,8 @@ $(document).ready(function() {
   var logo = '<%=response.write(request.form("logo"))%>';
   if(logo != "") {
     $("#variables").append("Custom Logo: "+logo+"<br>");
-    $("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr td:nth-child(1)").each(function() {
-      if($(this).text().indexOf(logo) != -1){
-        $(this).next().find('input').prop("checked", true).click();
-      }
-    });
+    $(".jerseyDisplay:contains('Team Name: ')").find('input').val(logo).change();
+    $("td.jerseyTitle:contains('Graphics Styles')").closest("table").find("tr:nth-last-child(2)").find('td').next().next().find('input').prop("checked", true).click();
   };
   //JERSEY DETAILS
   var rows = '<%=response.write(request.form("jerseyRows"))%>';

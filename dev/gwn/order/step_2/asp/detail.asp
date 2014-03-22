@@ -301,7 +301,6 @@ background-color:#11013b;
 
 }
 </style>
-</style>
 </head>
 <body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();" style="opacity: 0">
 

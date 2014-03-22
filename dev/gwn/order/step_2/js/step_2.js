@@ -1606,6 +1606,9 @@ function captureValues() {
 
   //JERSEY DETAIL ROW COUNT
   var jerseyRows = $('#json_table tr').length/2-1
+  if(jerseyRows < 1) {
+    jerseyRows = 1
+  }
   $('#jerseyRows').val(jerseyRows);
   //jersey details
   $('#json_source').val(json_source);

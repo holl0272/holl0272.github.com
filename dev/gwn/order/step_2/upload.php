@@ -46,11 +46,11 @@ $headers .= "Content-type: text/html\r\n"; // This tells the server to turn the 
 
 $body = <<<EOD
 <br><hr><br>
-Custom Logo: <a href="http://dev.gamewearnow.com/test/order/step_2/custom_logos/$name">$name</a>
+Custom Logo: <a href="http://www.gamewearnow.com/order/step_2/custom_logos/$name">$name</a>
 <br><br>
-<a href="http://dev.gamewearnow.com/test/order/step_2/download.php?file=$name"><button>DOWNLOAD</button></a>
+<a href="http://www.gamewearnow.com/order/step_2/download.php?file=$name"><button>DOWNLOAD</button></a>
 <br><br>
-To access the GameWearNow Custom Logo Admin Panel <a href="http://dev.gamewearnow.com/test/order/step_2/admin.php">Click Here</a>
+To access the GameWearNow Custom Logo Admin Panel <a href="http://www.gamewearnow.com/order/step_2/admin.php">Click Here</a>
 EOD;
 
 $success = mail($mailto, $emailSubject, $body, $headers); // This tells the server what to send.
