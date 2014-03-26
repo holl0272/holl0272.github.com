@@ -8,13 +8,11 @@
   <meta name="author" content="f-robots.com">
   <meta charset="utf-8">
 
-  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="js/jquery-1.11.0.min.js"></script>
   <script src="js/scripts.js"></script>
 
   <link runat="server" rel="shortcut icon" type="image/png" href="favicon.ico">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" id="init-stylesheet">
   <link rel="stylesheet" id="os-stylesheet">
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
@@ -41,25 +39,46 @@
         <td colspan="2">
           <div id="mobile_btns">
             <div class="mobile_box_btn">
-              <a href="sports/baseball/jerseys/baseball_jerseys.html" title="Baseball Jerseys"><image src="images/baseball_mobile.jpg" alt="Baseball Jerseys" id="baseball_mobile_btn"><span>BASEBALL JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="baseball">
+                <input type="hidden" name="sport" value="baseball">
+                <a title="Baseball Jerseys" onclick="document.getElementById('baseball').submit();"><image src="images/baseball_mobile.jpg" alt="Baseball Jerseys" id="baseball_mobile_btn"><span>BASEBALL JERSEYS</span></a>
+              </form>
             </div>
             <div class="mobile_box_btn">
-              <a href="sports/basketball/jerseys/basketball_jerseys.html" title="Basketball Jerseys"><image src="images/basketball_mobile.jpg" alt="Basketball Jerseys" id="basketball_mobile_btn"><span>BASKETBALL JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="basketball">
+                <input type="hidden" name="sport" value="basketball">
+                <a title="Basketball Jerseys" onclick="document.getElementById('basketball').submit();"><image src="images/basketball_mobile.jpg" alt="Basketball Jerseys" id="basketball_mobile_btn"><span>BASKETBALL JERSEYS</span></a>
+              </form>
             </div>
             <div class="mobile_box_btn">
-              <a href="sports/football/jerseys/football_jerseys.html" title="Football Jerseys"><image src="images/football_mobile.jpg" alt="Football Jerseys" id="football_mobile_btn"><span>FOOTBALL JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="football">
+                <input type="hidden" name="sport" value="football">
+                <a title="Football Jerseys" onclick="document.getElementById('football').submit();"><image src="images/football_mobile.jpg" alt="Football Jerseys" id="football_mobile_btn"><span>FOOTBALL JERSEYS</span></a>
+              </form>
             </div>
             <div class="mobile_box_btn">
-              <a href="sports/lacrosse/jerseys/lacrosse_jerseys.html" title="Lacrosse Jerseys"><image src="images/lacrosse_mobile.jpg" alt="Lacrosse Jerseys" id="lacrosse_mobile_btn"><span>LACROSSE JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="lacrosse">
+                <input type="hidden" name="sport" value="lacrosse">
+                <a title="Lacrosse Jerseys" onclick="document.getElementById('lacrosse').submit();"><image src="images/lacrosse_mobile.jpg" alt="Lacrosse Jerseys" id="lacrosse_mobile_btn"><span>LACROSSE JERSEYS</span></a>
+              </form>
             </div>
             <div class="mobile_box_btn">
-              <a href="sports/soccer/jerseys/soccer_jerseys.html" title="Soccer Jerseys"><image src="images/soccer_mobile.jpg" alt="Soccer Jerseys" id="soccer_mobile_btn"><span>SOCCER JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="soccer">
+                <input type="hidden" name="sport" value="soccer">
+                <a title="Soccer Jerseys" onclick="document.getElementById('soccer').submit();"><image src="images/soccer_mobile.jpg" alt="Soccer Jerseys" id="soccer_mobile_btn"><span>SOCCER JERSEYS</span></a>
+              </form>
             </div>
             <div class="mobile_box_btn">
-              <a href="sports/softball/jerseys/softball_jerseys.html" title="Softball Jerseys"><image src="images/softball_mobile.jpg" alt="Softball Jerseys" id="softball_mobile_btn"><span>SOFTBALL JERSEYS</span><a>
+              <form action="sports/jersey.html" method="get" id="softball">
+                <input type="hidden" name="sport" value="softball">
+                <a title="Softball Jerseys" onclick="document.getElementById('softball').submit();"><image src="images/softball_mobile.jpg" alt="Softball Jerseys" id="softball_mobile_btn"><span>SOFTBALL JERSEYS</span><a>
+              </form>
             </div>
             <div class="mobile_box_btn">
-              <a href="sports/volleyball/jerseys/volleyball_jerseys.html" title="Volleyball Jerseys"><image src="images/volleyball_mobile.jpg" alt="Volleyball Jerseys" id="volleyball_mobile_btn"><span>VOLLEYBALL JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="volleyball">
+                <input type="hidden" name="sport" value="volleyball">
+                <a title="Volleyball Jerseys" onclick="document.getElementById('volleyball').submit();"><image src="images/volleyball_mobile.jpg" alt="Volleyball Jerseys" id="volleyball_mobile_btn"><span>VOLLEYBALL JERSEYS</span></a>
+              </form>
             </div>
             <div class="clear"></div>
             <div class="yellow box_btn" style="float:left;">
@@ -88,25 +107,46 @@
         <td id="desktop_content">
           <div id="box_btns">
             <div class="box_btn">
-              <a href="sports/baseball/jerseys/baseball_jerseys.html" title="Baseball Jerseys"><image src="images/baseball.jpg" alt="Baseball Jerseys" id="baseball_btn"><span><div class="resize">BASEBALL</div> JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="baseball">
+                <input type="hidden" name="sport" value="baseball">
+                <a title="Baseball Jerseys" onclick="document.getElementById('baseball').submit();"><image src="images/baseball.jpg" alt="Baseball Jerseys" id="baseball_btn"><span><div class="resize">BASEBALL</div> JERSEYS</span></a>
+              </form>
             </div>
             <div class="box_btn">
-              <a href="sports/basketball/jerseys/basketball_jerseys.html" title="Basketball Jerseys"><image src="images/basketball.jpg" alt="Basketball Jerseys" id="basketball_btn"><span><div class="resize">BASKETBALL</div> JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="basketball">
+                <input type="hidden" name="sport" value="basketball">
+                <a title="Basketball Jerseys" onclick="document.getElementById('basketball').submit();"><image src="images/basketball.jpg" alt="Basketball Jerseys" id="basketball_btn"><span><div class="resize">BASKETBALL</div> JERSEYS</span></a>
+              </form>
             </div>
             <div class="box_btn">
-              <a href="sports/football/jerseys/football_jerseys.html" title="Football Jerseys"><image src="images/football.jpg" alt="Football Jerseys" id="football_btn"><span><div class="resize">FOOTBALL</div> JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="football">
+                <input type="hidden" name="sport" value="football">
+                <a title="Football Jerseys" onclick="document.getElementById('football').submit();"><image src="images/football.jpg" alt="Football Jerseys" id="football_btn"><span><div class="resize">FOOTBALL</div> JERSEYS</span></a>
+              </form>
             </div>
             <div class="box_btn">
-              <a href="sports/lacrosse/jerseys/lacrosse_jerseys.html" title="Lacrosse Jerseys"><image src="images/lacrosse.jpg" alt="Lacrosse Jerseys" id="lacrosse_btn"><span><div class="resize">LACROSSE</div> JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="lacrosse">
+                <input type="hidden" name="sport" value="lacrosse">
+                <a title="Lacrosse Jerseys" onclick="document.getElementById('lacrosse').submit();"><image src="images/lacrosse.jpg" alt="Lacrosse Jerseys" id="lacrosse_btn"><span><div class="resize">LACROSSE</div> JERSEYS</span></a>
+              </form>
             </div>
             <div class="box_btn">
-              <a href="sports/soccer/jerseys/soccer_jerseys.html" title="Soccer Jerseys"><image src="images/soccer.jpg" alt="Soccer Jerseys" id="soccer_btn"><span><div class="resize">SOCCER</div> JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="soccer">
+                <input type="hidden" name="sport" value="soccer">
+                <a title="Soccer Jerseys" onclick="document.getElementById('soccer').submit();"><image src="images/soccer.jpg" alt="Soccer Jerseys" id="soccer_btn"><span><div class="resize">SOCCER</div> JERSEYS</span></a>
+              </form>
             </div>
             <div class="box_btn">
-              <a href="sports/softball/jerseys/softball_jerseys.html" title="Softball Jerseys"><image src="images/softball.jpg" alt="Softball Jerseys" id="softball_btn"><span><div class="resize">SOFTBALL</div> JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="softball">
+                <input type="hidden" name="sport" value="softball">
+                <a title="Softball Jerseys" onclick="document.getElementById('softball').submit();"><image src="images/softball.jpg" alt="Softball Jerseys" id="softball_btn"><span><div class="resize">SOFTBALL</div> JERSEYS</span></a>
+              </form>
             </div>
             <div class="box_btn">
-              <a href="sports/volleyball/jerseys/volleyball_jerseys.html" title="Volleyball Jerseys"><image src="images/volleyball.jpg" alt="Volleyball Jerseys" id="volleyball_btn"><span><div class="resize">VOLLEYBALL</div> JERSEYS</span></a>
+              <form action="sports/jersey.html" method="get" id="volleyball">
+                <input type="hidden" name="sport" value="volleyball">
+                <a title="Volleyball Jerseys" onclick="document.getElementById('volleyball').submit();"><image src="images/volleyball.jpg" alt="Volleyball Jerseys" id="volleyball_btn"><span><div class="resize">VOLLEYBALL</div> JERSEYS</span></a>
+              </form>
             </div>
             <div class="yellow box_btn">
               <a href="https://www.facebook.com/pages/Gamewearnow/1424922524420187" title="Like Us On Facebook" target="_blank"><image src="images/facebook.jpg" alt="Like Us On Facebook" id="facebook_btn"><span><div class="resize">LIKE US ON</div> <div class="resize">FACEBOOK</div> <div class="resize">FOR SPECIAL</div> <div class="resize">OFFERS!</div></span></a>
@@ -141,12 +181,11 @@
   </div>
 
 </div>
+<script src="https://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
 <script type="text/javascript">
 _uacct = "UA-1278036-1";
 urchinTracker();
-</script>
-<script>
-console.log('legacy')
 </script>
 </body>
 </html>

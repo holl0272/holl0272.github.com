@@ -2,7 +2,7 @@
 <!--#include file="ssmodShipping.asp"-->
 <!--#include file="ssmodShippingZoneBased.asp"-->
 <!--#include file="ssmodBuyersClub.asp"-->
-<!--#include virtual="/ssl/ssGiftCertificateRegister_common.asp"-->
+<!--#include file="/ssl/ssGiftCertificateRegister_common.asp"-->
 <%
 '********************************************************************************
 '*   Sandshot Software Random Product Component									*

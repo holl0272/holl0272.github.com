@@ -1,0 +1,110 @@
+#wrapper {
+  text-align: center;
+  position: relative;
+}
+#gwn_logo {
+  text-align: center;
+  float: none;
+  margin: -25px 0 0 -50px;
+}
+#gwn_logo img {
+  width: 300px !important;
+}
+#heading {
+  display: none;
+}
+#container {
+  text-align: center;
+  margin-top: -50px;
+  margin-bottom: 50px;
+  width: 78.5%;
+  height: auto;
+  margin: 3% auto 5%;
+}
+#container table {
+  margin-top: -50px;
+}
+#left_content {
+  display: none;
+}
+#right_content {
+  padding: 30px 10px 30px 20px;
+}
+#mobile_btns {
+  margin: 0 auto;
+  display: block;
+}
+#mobile_btns {
+  display: inline-block;
+}
+#home_mobile_box_btn {
+  margin-bottom: 25px;
+}
+.mobile_box_btn {
+  vertical-align: middle;
+  margin-bottom: 5px;
+  position: relative;
+}
+.mobile_box_btn img {
+  width: 100% !important;
+  position: relative;
+  opacity: .8;
+}
+.jersey {
+  float: none;
+  width: 290px;
+  margin: 0 auto 25px;
+}
+.jersey_name {
+margin: 10px 0 0;
+text-align: left;
+}
+.mobile_box_btn a:hover img {
+  opacity: 1;
+}
+.mobile_box_btn span {
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  right: 0;
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  margin: auto;
+  color: #e8d606;
+  font-size: 1.3em;
+  font-family: 'Josefin Sans', sans-serif;
+}
+#home_mobile_box_btn span {
+  left: 0;
+}
+.break {
+  display: none;
+}
+.top_link {
+  margin-bottom: 20px;
+}
+ul#vertical-list {
+  list-style-position:inside;
+  margin:0;
+  padding:0;
+  line-height: 4;
+  text-align: left;
+}
+ul#horizontal-nav li {
+  display: block;
+  padding-right: 0px;
+}
+#horizontal-nav a:hover {
+  color: #e8d606;
+}
+.pipe {
+  display: none !important;
+}
+#footer {
+  position: absolute;
+}
+#shopping_cart  {
+  display: none;
+}

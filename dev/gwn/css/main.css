@@ -7,6 +7,7 @@ html, body {
   min-width: 380px;
   background-image: url('../images/splash_bg.jpg');
 }
+
 a {
   text-decoration: none;
 }

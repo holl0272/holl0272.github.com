@@ -1,7 +1,15 @@
-if(window.innerWidth <= 800 && window.innerHeight <= 600) {
- $("#init-stylesheet").attr("href", "css/faqs_narrow.css");
- $('#wrapper').hide();
-};
+WebFontConfig = {
+  google: { families: [ 'Lato:100,400,900:latin', 'Josefin+Sans:100,400,700,400italic,700italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+})();
 
 $(document).ready(function(){
 
@@ -31,8 +39,6 @@ if(isChrome) {
 if(isIE) {
   $("#browser-stylesheet").attr("href", "css/ie.css");
 };
-
-   $('#wrapper').show();
 
 function adjustStyle(width) {
   width = parseInt(width);

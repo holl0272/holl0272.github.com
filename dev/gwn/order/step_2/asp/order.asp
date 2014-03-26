@@ -350,8 +350,7 @@ function letSelectValue(theSelect,theValue)
 <script>
 $(document).ready(function() {
 	$('#tblMainContent td').css('padding', '5px');
-	$(".tdContent2 a:contains('immediate')").hide();
-});
+})
 </script>
 
 <% If cblnSF5AE Then Call Order_ShowInventoryMessage 'SFAE %>
@@ -376,7 +375,7 @@ body {
   </div>
 
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent" style="margin: 0 auto 5%; background-color: white;">
+<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent" style="margin: 0 auto 5%;">
   <tr>
     <td>
       <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -452,7 +451,8 @@ body {
 		$('hr').hide();
 		$('.tdAltFont1 a > b').unwrap();
 		$('.tdAltFont2 a > b').unwrap();
-		$("img[src='images/buttons/continueshop.gif']").css('margin-bottom', '10px').parent().attr('href','index.html')
+		$('#frmCheckout').attr('action', 'http://dev.gamewearnow.com/ssl/process_order.asp');
+		$("img[src='images/buttons/continueshop.gif']").css('margin-bottom', '10px').parent().attr('href','index.html');
 	});
 </script>
 </body>

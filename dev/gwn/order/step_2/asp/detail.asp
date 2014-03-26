@@ -67,7 +67,6 @@ Dim mstrProductDescription
 <script language="javascript" src="SFLib/incae.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfCheckErrors.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfEmailFriend.js" type="text/javascript"></script>
-<script language="javascript" src="SFLib/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script>
   var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
   if(enAttrPos_JerseyColor == "") {
@@ -75,6 +74,7 @@ Dim mstrProductDescription
   };
 </script>
 <script language="javascript" src="SFLib/ssAttributeExtender.js" type="text/javascript"></script>
+<script language="javascript" src="SFLib/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
 function validateForm(theForm)
 {
@@ -576,7 +576,7 @@ background-color:#11013b;
 <!--webbot bot="PurpleText" preview="End Content Section" -->
 <!--#include file="templateBottom.asp"-->
 
-<script id="populate_data">
+<script>
 $(document).ready(function() {
   //SET THE PRODUCT COLOR
   var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
@@ -584,18 +584,18 @@ $(document).ready(function() {
   $("select[name='attr1'] option").filter(function () { return $(this).html() == enAttrPos_JerseyColor; }).prop('selected', true).change();
 
   //SHORTS DETAILS
-  var json_source = '<%=response.write(request.form("json_source"))%>';
-  	$("#variables").append("Jersey Color: "+json_source+"<br>");
-  var data = JSON.parse(json_source);
-  var j_size = data[0].Size
-  var j_qty = data[0].Qty
-    $("#variables").append("Size: "+j_size+"<br>");
-    $("#variables").append("Qty: "+j_qty+"<br>");
-    if(j_size == "XXL") {
-    	j_size = "XXL (Add $2.00)"
-    };
-	$("select[name='attr2'] option:contains("+j_size+")").prop('selected', true).change();
-  $("input[name='QUANTITY']").val(j_qty);
+ //  var json_source = '<%=response.write(request.form("json_source"))%>';
+ //  	$("#variables").append("Jersey Color: "+json_source+"<br>");
+ //  var data = JSON.parse(json_source);
+ //  var j_size = data[0].Size;
+ //  var j_qty = data[0].Qty;
+ //    $("#variables").append("Size: "+j_size+"<br>");
+ //    $("#variables").append("Qty: "+j_qty+"<br>");
+ //    if(j_size == "XXL") {
+ //    	j_size = "XXL (Add $2.00)"
+ //    };
+	// $("select[name='attr2'] option:contains("+j_size+")").prop('selected', true).change();
+ //  $("input[name='QUANTITY']").val(j_qty);
 
   setTimeout(function() {
 	  $("[name='AddProduct']").click();

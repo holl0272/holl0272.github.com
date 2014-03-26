@@ -9,7 +9,7 @@ table td{
 #email_form h3, p {
   white-space: nowrap;
 }
-#email_form td {
+#email_form td, #email_form_narrow td{
   padding: 5px 10px 5px 0;
 }
 #email_form {
@@ -41,17 +41,17 @@ table td{
   text-align: left;
   background-color: white;
 }
-#text_only a {
-  color: blue;
-}
 .select_btn {
   padding: 5px;
-  color: #e8d606 !important;
+  color: #e8d606;
+  margin-top: 10px;
   background-color: #11013b;
   font-family: 'Lato', sans-serif;
 }
 .select_btn:hover{
-  margin: -2px;
-  border: 2px solid yellow;
+  margin: -1px;
+  border: 1px solid yellow;
+  margin-top: 9px;
+  color: #11013b;
+  background-color: #e8d606;
 }
-

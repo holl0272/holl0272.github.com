@@ -8,14 +8,12 @@
   <meta name="author" content="f-robots.com">
   <meta charset="utf-8">
 
-  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="../../js/scripts.js"></script>
+  <script src="../../js/jquery-1.11.0.min.js"></script>
+  <script src="js/contact_us.js"></script>
 
   <link runat="server" rel="shortcut icon" type="image/png" href="../../favicon.ico">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="css/contact_us.css">
-  <link rel="stylesheet" id="init-stylesheet">
   <link rel="stylesheet" id="os-stylesheet">
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
@@ -74,7 +72,11 @@
                   <br>
               </td>
               <td rowspan="4">
-                <form id="email_form" style="display:none;">
+                <form id="email_form" style="display:none;" action="">
+                  <input type="hidden" name="contact_input" class="contact_input" value="">
+                  <input type="hidden" name="reply_email_input" class="replay_email_input" value="">
+                  <input type="hidden" name="subject_input" class="subject_input" value="">
+                  <input type="hidden" name="msg_input" class="msg_input" value="">
                   <table>
                     <tr>
                       <td>
@@ -91,38 +93,38 @@
                         </p>
                       </td>
                       <td class="collapse">
-                        <input type="text" style="width:150px;"/>
+                        <input name="contact" class="contact" type="text" style="width:150px;"/>
                       </td>
                     </tr>
                     <tr class="collapsed">
                       <td>
-                        <input type="text" style="width:150px;"/>
+                        <input name="contact" class="contact" type="text" style="width:150px;"/>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <p>
+                        <p class="email_label">
                           Email Address:
                         </p>
                       </td>
                       <td class="collapse">
-                        <input type="text" style="width:150px;"/>
+                        <input name="reply_email" class="reply_email" type="text" style="width:150px;"/>
                       </td>
                     </tr>
                     <tr class="collapsed">
                       <td>
-                        <input type="text" style="width:150px;"/>
+                        <input name="reply_email" class="reply_email" type="text" style="width:150px;"/>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <p>
+                        <p class="category_label">
                           Category:
                         </p>
                       </td>
                       <td class="collapse">
                         <select>
-                          <option selected="">Please select a category from the list below</option>
+                          <option value="default">Please select a category from the list below</option>
                           <option value="I have a unique or large order">I have a unique or large order</option>
                           <option value="Question about my order">Question about my order</option>
                           <option value="Suggestion">Suggestion</option>
@@ -133,7 +135,7 @@
                     <tr class="collapsed">
                       <td>
                         <select>
-                          <option selected="">Please select a category from the list below</option>
+                          <option value="default">Please select a category from the list below</option>
                           <option value="I have a unique or large order">I have a unique or large order</option>
                           <option value="Question about my order">Question about my order</option>
                           <option value="Suggestion">Suggestion</option>
@@ -148,7 +150,7 @@
                         </p>
                       </td>
                       <td>
-                        <input type="text" style="width:260px;"/>
+                        <input name="other_field" class="other_field" type="text" style="width:260px;"/>
                       </td>
                     </tr>
                     <tr class="other_field_collapsed" style="display:none;">
@@ -160,7 +162,7 @@
                     </tr>
                     <tr class="other_field_collapsed" style="display:none;">
                       <td>
-                        <input type="text" style="width:260px;"/>
+                        <input name="other_field" class="other_field" type="text" style="width:260px;"/>
                       </td>
                     </tr>
                     <tr>
@@ -170,18 +172,18 @@
                         </p>
                       </td>
                       <td class="collapse">
-                        <textarea rows="6" style="width:260px;"></textarea>
+                        <textarea name="msg" class="msg" rows="6" style="width:260px;"></textarea>
                       </td>
                     </tr>
                     <tr class="collapsed">
                       <td>
-                        <textarea rows="6" style="width:260px;"></textarea>
+                        <textarea name="msg" class="msg" rows="6" style="width:260px;"></textarea>
                       </td>
                     </tr>
                     <tr colspan="2">
                       <td>
                         <br class="collapsed">
-                        <a href="#" class="select_btn">SUBMIT</a>
+                        <a class="select_btn" id="submit_contact">SUBMIT</a>
                       </td>
                     </tr>
                   </table>
@@ -215,6 +217,94 @@
                   <br>
               </td>
             </tr>
+            <tr>
+              <td colspan="4">
+                <form id="email_form_narrow" action="send_email.php" method="post" enctype="application/x-www-form-urlencoded">
+                  <input type="hidden" name="contact_input" class="contact_input" value="">
+                  <input type="hidden" name="reply_email_input" class="replay_email_input" value="">
+                  <input type="hidden" name="subject_input" class="subject_input" value="">
+                  <input type="hidden" name="msg_input" class="msg_input" value="">
+                  <table>
+                    <tr>
+                      <td>
+                        <h3>Contact Form</h3>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>
+                          Your Name:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input name="contact" class="contact" type="text" style="width:150px;"/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="email_label">
+                          Email Address:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input name="reply_email" class="reply_email" type="text" style="width:150px;"/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="category_label">
+                          Category:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select>
+                          <option value="default">Please select a category...</option>
+                          <option value="I have a unique or large order">I have a unique or large order</option>
+                          <option value="Question about my order">Question about my order</option>
+                          <option value="Suggestion">Suggestion</option>
+                          <option value="Other Question">Other Question</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr class="other_field_narrow" style="display:none;">
+                      <td>
+                        <p>
+                          Other:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="other_field_narrow" style="display:none;">
+                      <td>
+                        <input name="other_field" class="other_field" type="text" style="width:225px;"/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>
+                          Message:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <textarea name="msg" class="msg" rows="6" style="width:225px;"></textarea>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a class="select_btn" id="submit_contact_narrow">SUBMIT</a>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+              </td>
+            </tr>
           </table>
         </td>
       </tr>
@@ -222,6 +312,11 @@
   </div>
 
   <div id="footer">
+    <div id="slidebottom" class="slide">
+      <div class="inner" style="display:none;">
+        <span id="success_msg"></span>
+      </div>
+    </div>
     <ul id="horizontal-nav">
       <li class="not_selected"><a href="../../order.asp" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
       <li class="pipe">|</li>
@@ -235,6 +330,5 @@
     </ul>
   </div>
 </div>
-  <script src="js/contact_us.js"></script>
 </body>
 </html>

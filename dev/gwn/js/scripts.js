@@ -1,12 +1,21 @@
-if(window.innerWidth <= 800 && window.innerHeight <= 600) {
-  $("#init-stylesheet").attr("href", "css/narrow.css");
-};
+WebFontConfig = {
+  google: { families: [ 'Lato:100,400,900:latin', 'Josefin+Sans:100,400,700,400italic,700italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+})();
 
 $(document).ready(function(){
-var device = navigator.userAgent.toLowerCase();
-var isAndroid = device.indexOf("android") > -1;
-if(isAndroid) {
-  $("#device-stylesheet").attr("href", "css/android.css");
+  var device = navigator.userAgent.toLowerCase();
+  var isAndroid = device.indexOf("android") > -1;
+  if(isAndroid) {
+    $("#device-stylesheet").attr("href", "css/android.css");
 };
 
 var os;
@@ -39,7 +48,6 @@ if((os == "Windows") && (isChrome)) {
 };
 
 function adjustStyle(width) {
-  width = parseInt(width);
     if (width < 508) {
       $("#size-stylesheet").attr("href", "css/narrow.css");
     }
@@ -83,3 +91,5 @@ $('.resize').each(function( index, element ) {
   });
 
 });
+
+
