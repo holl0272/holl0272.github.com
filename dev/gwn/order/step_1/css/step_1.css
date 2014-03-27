@@ -1,3 +1,6 @@
+.mobile {
+  display: none;
+}
 .jersey_name {
   color: #e8d606;
 }
@@ -145,6 +148,9 @@
   text-align: center;
   margin-top:50px;
 }
+#reset_btn_container {
+  float: right;
+}
 .next_btn {
   padding: 5px;
   color: #11013b;
@@ -214,24 +220,6 @@ table#jersey_details {
   -webkit-transform: translateY(-5px);
   -ms-transform: translateY(-5px);
   transform: translateY(-5px);
-}
-
-/* Grow */
-.grow {
-  display: inline-block;
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-  -webkit-transition-property: -webkit-transform;
-  transition-property: transform;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
-.grow:hover {
-  -webkit-transform: scale(1.4);
-  -ms-transform: scale(1.4);
-  transform: scale(1.4);
 }
 
 /* Details Table */

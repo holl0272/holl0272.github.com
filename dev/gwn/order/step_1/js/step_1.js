@@ -1,7 +1,15 @@
-// if(window.innerWidth <= 800 && window.innerHeight <= 600) {
-//    $("#init-stylesheet").attr("href", "../../css/narrow.css");
-//    $('#wrapper').hide();
-//  };
+WebFontConfig = {
+  google: { families: [ 'Lato:100,400,900:latin', 'Josefin+Sans:100,400,700,400italic,700italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+})();
 
 //PARSE THE URL FOR VAR NAMES AND VALUES
 var urlParams;
@@ -25,6 +33,64 @@ var price = urlParams["price"];
 var product_id = urlParams["id"];
 
 $(document).ready(function(){
+
+if(window.innerWidth < 508){
+  $("#size-stylesheet").attr("href", "css/jersey_narrow.css");
+  $('.mobile').show();
+}
+
+var device = navigator.userAgent.toLowerCase();
+var isAndroid = device.indexOf("android") > -1;
+if(isAndroid) {
+  $("#device-stylesheet").attr("href", "css/step_1_android.css");
+};
+
+var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;  // Opera 8.0+
+var isFirefox = typeof InstallTrigger !== 'undefined';  // Firefox 1.0+
+var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;   // At least Safari 3+
+var isChrome = !!window.chrome && !isOpera;     // Chrome 1+
+var isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6
+if(isOpera) {
+  $("#browser-stylesheet").attr("href", "css/opera.css");
+};
+if(isFirefox) {
+  $("#browser-stylesheet").attr("href", "css/firefox.css");
+};
+if(isSafari) {
+  $("#browser-stylesheet").attr("href", "css/safari.css");
+};
+if(isChrome) {
+  $("#browser-stylesheet").attr("href", "css/chrome.css");
+};
+if(isIE) {
+  $("#browser-stylesheet").attr("href", "css/ie.css");
+};
+
+function adjustStyle(width) {
+  width = parseInt(width);
+    if (width < 508) {
+      $("#size-stylesheet").attr("href", "css/step_1_narrow.css");
+      $('.mobile').show();
+    }
+    else {
+      $("#size-stylesheet").attr("href", "");
+      $('.mobile').hide();
+    };
+
+    if(width <= 970) {
+      $('#heading').css({'float':'left','margin-top':'-40px'});
+    }
+    else  {
+      $('#heading').css({'float':'right','margin-top':'0'});
+    };
+};
+
+$(function() {
+    adjustStyle($(this).width());
+    $(window).resize(function() {
+        adjustStyle($(this).width());
+    });
+});
 
 //NAME
 $('#urlParams_name').html(name);
@@ -412,25 +478,32 @@ function calculateCost(qty) {
 function buildRows(qty) {
   var header = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td class='numbers_input'></td><td class='numbers_input'>Num</td><td class='names_input' style='min-width:115px'></td><td class='names_input' style='min-width:140px'>Name</td><td></td><td style='min-width:55px'></td><td class='hide'>Qty</td></tr>";
   var shortsheader = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td></td><td style='min-width:55px'>Qty</td></tr>";
-
   var row_number = "<td class='row_number'><font></font></td>";
+  var row_number_mobile = "<td style='padding-right: 5px;' class='row_number_mobile'><font></font></td>";
     var sizeSelect = $('.description').filter(":visible").find('.size_select').parent().html();
     var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_options').addClass('resize_select').parent().html();
   var product_size = "<td class='size_label'>Size</td><td class='jersey_size'>"+sizeSelect+"</td>";
+  var product_size_mobile = "<td style='padding-right: 5px;' class='size_label'>Size</td><td style='text-align: center;' class='jersey_size'>"+sizeSelect+"</td>";
   var jersey_price = "<td class='jersey_price'></td>";
+  var jersey_price_mobile = "<td style='padding-right: 25px;' class='jersey_price'></td>";
     var numberInput = "<input type='text' class='number_input' style='width: 25px;' maxlength='2'>";
     var newnumberInput = "<input type='text' class='newnumber_input' style='width: 25px;' maxlength='2'>";
   var product_number = "<td class='numbers_input number_label'>Number</td><td class='numbers_input number_reset'>"+numberInput+"</td>";
+  var product_number_mobile = "<td colspan='2' class='numbers_input number_label'>Number</td><td colspan='2' style='padding-left: 10px;' class='numbers_input number_reset'>"+numberInput+"</td>";
     var nameInput = "<input type='text' class='name_input'>";
     var newnameInput = "<input type='text' class='newname_input'>";
   var name_on_jersey = "<td class='names_input name_label'>Name on Jersey</td><td class='names_input name_reset'>"+nameInput+"</td>";
+  var name_on_jersey_mobile = "<td colspan='2' class='names_input name_label'>Name on Jersey</td><td colspan='2' style='padding-left: 10px;' class='names_input name_reset'>"+nameInput+"</td>";
   var product_qty = "<td class='qty_label'>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
+  var product_qty_mobile = "<td style='min-width:139px'>QTY: <input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
   var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; padding-left:5px; cursor: pointer;'> - </span></td><span>";
   var raw_qty = "<td class='hide'></td>";
 
   if(name != meshShorts) {
     $('#sub_selections table').append(header);
-    var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+qty_btns+raw_qty+"</tr>";
+      var jersey_row_desktop = "<tr class='desktop_row'>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+qty_btns+raw_qty+"</tr>";
+      var jersey_row_mobile = "<tr class='mobile mobile_row'>"+row_number_mobile+product_size_mobile+jersey_price_mobile+product_qty_mobile+qty_btns+raw_qty+"</tr><tr class='mobile mobile_row_number'><td></td>"+product_number_mobile+"</tr><tr class='mobile mobile_row_name'><td></td>"+name_on_jersey_mobile+"</tr>";
+      var jersey_row = jersey_row_desktop + jersey_row_mobile;
   }
   else {
     $('#sub_selections table').append(shortsheader);
@@ -448,9 +521,24 @@ function buildRows(qty) {
         var row_number = ("0" + n).slice(-2);
         $(this).find("font").text(row_number);
       });
+      $(".row_number_mobile").each(function() {
+        var row_number_mobile = $(this).parent().prev().find('td:first').text()
+        $(this).find("font").text(row_number_mobile);
+      });
     }
   };
   numberRows();
+
+  $('.mobile_row select').on('change', function() {
+    var mobile_size = $(this).find('option').filter(':selected').val()
+    $(this).closest('tr').prev().find('option').removeAttr('selected').filter(function(index) { return $(this).text() === mobile_size; }).attr('selected', true).change();
+  });
+
+  // $('.mobile_row .jersey_size').on('click', function() {
+  //   $(this).closest('tr').prev().find('.set_size').click();
+  // $(this).closest('tr').prev().find('.jersey_size').html()
+  // });
+
 
   function numberCells() {
     //hides "number" cells if add numbers if init selected is NO
@@ -484,18 +572,18 @@ function buildRows(qty) {
 
   function togglePlusLess() {
     $('#sub_selections table tr td .btns').show();
-    if($('#sub_selections table tr').filter(":visible").length > 1) {
-      $('#sub_selections table tr').filter(":visible").find('.row_qty').next().addClass('count');
-      $('#sub_selections table tr').filter(":visible").last().find('.row_qty').next().removeClass('count');
+    if($("#sub_selections table tr:not('.mobile')").filter(":visible").length > 1) {
+      $("#sub_selections table tr:not('.mobile')").filter(":visible").find('.row_qty').next().addClass('count');
+      $("#sub_selections table tr:not('.mobile')").filter(":visible").last().find('.row_qty').next().removeClass('count');
       var sum = 0;
         $('.count').each(function() {
           sum += Number($(this).text());
         });
       var lastRowQty = qty - sum;
-      $('#sub_selections table tr td').filter(":visible").last().find('.row_qty').val(lastRowQty).next().text(lastRowQty);
+      $("#sub_selections table tr:not('.mobile') td").filter(":visible").last().find('.row_qty').val(lastRowQty).next().text(lastRowQty);
     }
-    else if($('#sub_selections table tr').filter(":visible").length == 1) {
-      $('#sub_selections table tr td').filter(":visible").find('.row_qty').val(qty).next().text(qty);
+    else if($("#sub_selections table tr:not('.mobile')").filter(":visible").length == 1) {
+      $("#sub_selections table tr:not('.mobile') td").filter(":visible").find('.row_qty').val(qty).next().text(qty);
     };
   };
   if(name != meshShorts) {
@@ -505,17 +593,17 @@ function buildRows(qty) {
   $('.plus_one').on('click', function() {
     var qty_plus = Number($(this).parent().prev().prev().val());
     var increase = qty_plus + 1;
-    var rowTwoQty = Number($('#sub_selections table tr').filter(":visible").last().find('.row_qty').val());
+    var rowTwoQty = Number($("#sub_selections table tr:not('.mobile')").filter(":visible").last().find('.row_qty').val());
     var decreaseRowTwoQty = rowTwoQty - 1;
 
     if(increase <= qty){
       $(this).parent().prev().text(increase);
       $(this).parent().prev().prev().val(increase).closest('td').next('td').html(increase);
-      if(($('#sub_selections table tr').filter(":visible").length == 2) && (rowTwoQty > 1)) {
-        $('#sub_selections table tr').filter(":visible").last().find('.row_qty').val(decreaseRowTwoQty).next().text(decreaseRowTwoQty);
+      if(($("#sub_selections table tr:not('.mobile')").filter(":visible").length == 2) && (rowTwoQty > 1)) {
+        $("#sub_selections table tr:not('.mobile')").filter(":visible").last().find('.row_qty').val(decreaseRowTwoQty).next().text(decreaseRowTwoQty);
       }
       else {
-        $('#sub_selections table tr').filter(":visible").last().hide();
+        $("#sub_selections table tr:not('.mobile')").filter(":visible").last().hide();
       };
       togglePlusLess();
     };
@@ -527,7 +615,7 @@ function buildRows(qty) {
     if(decrease > 0){
       $(this).parent().prev().text(decrease);
       $(this).parent().prev().prev().val(decrease).closest('td').next('td').html(decrease);
-      $('#sub_selections table tr').filter(":hidden").first().show();
+      $("#sub_selections table tr:not('.mobile')").filter(":hidden").first().show();
       togglePlusLess();
     };
   });
@@ -559,6 +647,38 @@ function buildRows(qty) {
           $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
         };
         $(this).closest('td').html("<a style='color:#cccdce;'><font class='set_size'>"+resize+"</font></a>");
+        $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')});
+      });
+    });
+  });
+
+  $('.mobile_row .size_select').change(function() {
+    var size = $(this).val();
+    if(size == "XXL"){
+      $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
+    }
+    else if(size == "XXXL"){
+      $(this).closest('td').next('td').html('$'+$('#xxxl_jersey').val());
+    }
+    else {
+      $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
+    };
+    $(this).closest('td').html("<a style='color:#cccdce;'><font class='set_size'>"+size+"</font></a>").closest('tr').prev().find('.jersey_size').html(size);
+    $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
+      $(this).html(resizeSelect);
+      $(this).closest('td').next('td').empty();
+      $('.resize_select').change(function() {
+        var resize = $(this).val();
+        if(resize == "XXL"){
+          $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
+        }
+        else if(resize == "XXXL"){
+          $(this).closest('td').next('td').html('$'+$('#xxxl_jersey').val());
+        }
+        else {
+          $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
+        };
+        $(this).closest('td').html("<a style='color:#cccdce;'><font class='set_size'>"+resize+"</font></a>").closest('tr').prev().find('.jersey_size').text(resize);
         $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')});
       });
     });
@@ -607,7 +727,45 @@ function doneTyping() {
     function doneTypingNum() {
       var newnumber = $('#temp').val();
       $('#temp').closest('td').html("<a style='color:#cccdce;'><font class='set_number'>"+newnumber+"</font></a>");
-      $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')})
+      $('.set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')});
+    };
+  });
+};
+
+var mobile_numberTimer;
+var mobile_doneTypingNumber = 1000;
+//on keyup, start the countdown
+$('.mobile_row_number .number_input').keyup(function(){
+  $(this).attr('id', 'mobile_temp');
+  mobile_numberTimer = setTimeout(mobile_doneTyping, mobile_doneTypingNumber);
+});
+//on keydown, clear the countdown
+$('.mobile_row_number .number_input').keydown(function(){
+  clearTimeout(mobile_numberTimer);
+});
+//user is "finished typing"
+function mobile_doneTyping() {
+  var mobile_number = $('#mobile_temp').val();
+  $('#mobile_temp').closest('tr').prev().prev().find('.number_reset').text(mobile_number);
+  $('#mobile_temp').closest('td').html("<a style='color:#cccdce;'><font class='set_number'>"+mobile_number+"</font></a>")
+    $('.mobile_row_number .set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
+    $(this).html(newnumberInput).find('input').focus();
+    var mobile_numberTimer;
+    var mobile_doneTypingNumber = 1000;
+    //on keyup, start the countdown
+    $('.newnumber_input').keyup(function(){
+      $(this).attr('id', 'temp');
+      mobile_numberTimer = setTimeout(mobile_doneTypingNum, mobile_doneTypingNumber);
+    });
+    //on keydown, clear the countdown
+    $('.newnumber_input').keydown(function(){
+      clearTimeout(mobile_numberTimer);
+    });
+    //user is "finished typing"
+    function mobile_doneTypingNum() {
+      var mobile_newnumber = $('#temp').val();
+      $('#temp').closest('td').html("<a style='color:#cccdce;'><font class='set_number'>"+mobile_newnumber+"</font></a>").closest('tr').prev().prev().find('.number_reset').text(mobile_newnumber);
+      $('.mobile_row_number .set_number').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')});
     };
   });
 };
@@ -645,6 +803,44 @@ function doneTypingNam() {
       var newname = $('#temp_name').val();
       $('#temp_name').closest('td').html("<a style='color:#cccdce;'><font class='set_name'>"+newname+"</font></a>");
       $('.set_name').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td')
+    };
+  });
+};
+
+var mobile_nameTimer;
+var mobile_doneTypingName = 2000;
+//on keyup, start the countdown
+$('.mobile_row_name .name_input').keyup(function(){
+  $(this).attr('id', 'mobile_temp_name');
+  mobile_nameTimer = setTimeout(mobile_doneTypingNam, mobile_doneTypingName);
+});
+//on keydown, clear the countdown
+$('.name_input').keydown(function(){
+  clearTimeout(mobile_nameTimer);
+});
+//user is "finished typing"
+function mobile_doneTypingNam() {
+  var mobile_name = $('#mobile_temp_name').val();
+  $('#mobile_temp_name').closest('tr').prev().prev().prev().find('.name_reset').text(mobile_name);
+  $('#mobile_temp_name').closest('td').html("<a style='color:#cccdce;'><font class='set_name'>"+mobile_name+"</font></a>");
+    $('.mobile_row_name .set_name').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
+    $(this).html(newnameInput).find('input').focus();
+    var mobile_nameTimer;
+    var mobile_doneTypingName = 2000;
+    //on keyup, start the countdown
+    $('.mobile_row_name .newname_input').keyup(function(){
+      $(this).attr('id', 'temp_name');
+      mobile_nameTimer = setTimeout(mobile_doneReTypingName, mobile_doneTypingName);
+    });
+    //on keydown, clear the countdown
+    $('.newname_input').keydown(function(){
+      clearTimeout(nameTimer);
+    });
+    //user is "finished typing"
+    function mobile_doneReTypingName() {
+      var mobile_newname = $('#temp_name').val();
+      $('#temp_name').closest('td').html("<a style='color:#cccdce;'><font class='set_name'>"+mobile_newname+"</font></a>").closest('tr').prev().prev().prev().find('.name_reset').text(mobile_newname);
+      $('.mobile_row_name .set_name').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td')
     };
   });
 };
@@ -1242,7 +1438,7 @@ $('.next_btn').on('click', function(e) {
   var missing = "The quantity of shorts or their size selection is incomplete - please review the section above for missing information"
   }
   var emptyInputs = $('#jersey_details').find('input[type=text]:empty').filter(":visible").length;
-  var emptySelects = $('#jersey_details').find('select').length;
+  var emptySelects = $('#jersey_details').find('select').filter(":visible").length;
   if((emptyInputs > 0) || (emptySelects > 0)) {
     msg = missing;
   }
@@ -1274,10 +1470,11 @@ else {
 //CAPTURE VALUES AND SUBMIT FORM TO STEP 2
 function captureValues() {
   $('.btns').closest('td').find('span').remove();
+  $('tr.mobile').hide();
   $.removeCookie('returnJSON', { path: '/' });
   var detailsToJSON = $('#jersey_details').tableToJSON();
   var data = JSON.stringify(detailsToJSON);
-  $('<input type="hidden" name="json"/>').val(data).appendTo('#step_1_form');
+  $('<input type="text" name="json"/>').val(data).appendTo('#step_1_form');
 
   //url vars
   $('#step_1_url').val(window.location.href)
@@ -1301,9 +1498,5 @@ function captureValues() {
       $.removeCookie('logoPath', { path: '/' });
     };
 
-  $('#step_1_form').submit();
+  // $('#step_1_form').submit();
 };
-
-$(window).load(function() {
-  $('#wrapper').css('opacity', 1);
-});

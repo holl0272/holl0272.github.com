@@ -8,33 +8,17 @@
   <meta name="author" content="f-robots.com">
   <meta charset="utf-8">
 
-  <script src="../../js/jquery-1.10.2.min.js"></script>
-  <script src="../../js/scripts.js"></script>
+  <script src="../../js/jquery-1.11.0.min.js"></script>
   <script src="../../js/lightbox-2.6.min.js"></script>
-
-  <script>
-  /**
-   * tabletojson
-   * jQuery plugin that reads an HTML table and returns a javascript object representing the values and columns of the table
-   *
-   * @author Daniel White
-   * @copyright Daniel White 2013
-   * @license MIT <https://github.com/lightswitch05/table-to-json/blob/master/MIT-LICENSE>
-   * @link https://github.com/lightswitch05/table-to-json
-   * @module tabletojson
-   * @version 0.6.0
-   */
-  (function(e){e.fn.tableToJSON=function(t){var n={ignoreColumns:[1,4,6,8,9],onlyColumns:null,ignoreHiddenRows:!0,headings:null};t=e.extend(n,t);var r=function(e){return e!==undefined&&e!==null?!0:!1},i=function(n){return r(t.onlyColumns)?e.inArray(n,t.onlyColumns)===-1:e.inArray(n,t.ignoreColumns)!==-1},s=function(t,n){var r={};return e.each(n,function(e,n){e<t.length&&(r[t[e]]=n)}),r},o=function(t){var n=[];return e(t).children("td,th").each(function(t,s){if(!i(t)){var o=e(s).data("override"),u=e.trim(e(s).text());n[n.length]=r(o)?o:u}}),n},u=function(e){var n=e.find("tr:first").first();return r(t.headings)?t.headings:o(n)},a=function(n,i){var u=[];return n.children("tbody,*").children("tr").each(function(n,a){if(n!==0||r(t.headings))if(e(a).is(":visible")||!t.ignoreHiddenRows)u[u.length]=s(i,o(a))}),u},f=u(this);return a(this,f)}})(jQuery);
-  </script>
-
+  <script src="../../js/jsonTable.js"></script>
+  <script src="../../js/tabletojson.js"></script>
+  <script src="../../js/jquery.cookie.js"></script>
 
   <link runat="server" rel="shortcut icon" type="image/png" href="../../../favicon.ico">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../sports/css/jerseys.css">
   <link rel="stylesheet" href="css/step_1.css">
   <link rel="stylesheet" href="css/lightbox.css">
-  <link rel="stylesheet" id="init-stylesheet">
   <link rel="stylesheet" id="os-stylesheet">
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
@@ -42,7 +26,7 @@
 </head>
 <body>
 
-<div id="wrapper" style="opacity: 0">
+<div id="wrapper">
 
   <div id="header">
     <div id="gwn_logo">
@@ -56,10 +40,9 @@
   </div>
 
   <div id="container">
-    <table>
-<!--
+    <table id="mobile_table" class="mobile" style="display: none;">
       <tr>
-        <td colspan="2">
+        <td>
           <div id="mobile_btns">
             <div class="mobile_box_btn">
               <div id="baseball_box_mobile" class="sport_box_mobile">
@@ -84,13 +67,14 @@
                 <image src="../../images/volleyball_mobile.jpg" alt="Volleyball Jerseys" id="volleyball_mobile_btn"><span>VOLLEYBALL JERSEYS</span>
               </div>
             </div>
-            <div class="mobile_box_btn">
+            <div id="home_mobile_box_btn" class="mobile_box_btn">
               <a href="../../index.html" title="Choose A Different Sport"><image src="../../sports/images/plain_grey_box_mobile.jpg" alt="Choose A Different Sport" id="home_mobile_box"><span id="home_mobile_btn">CHOOSE A DIFFERENT SPORT</span></a>
             </div>
           </div>
         </td>
       </tr>
--->
+    </table>
+    <table class="mobile_fix">
       <tr>
         <td id="left_content">
           <div id="box_btns">
@@ -395,6 +379,7 @@
             </div>
             <div class="clear"></div>
             <form id="color_container">
+              <span class="mobile"><b>Touch the Swatch to Select that Color</b></span>
               <div id="color_select">
                 <div class="color_option" id="birch_solid_option">
                   <div class="color_selectors">
@@ -811,16 +796,20 @@
             <span class="spacer">Order 12 for $<font id="urlParams_price_12"></font> each</span>
             <span class="spacer">Order 36 or more for $<font id="urlParams_price_36"></font></span>
           </div>
+          <div class="mobile clear"></div>
           <div id="selections">
             <font color="#cccdce">ORDER OPTIONS</font><br>
+              <div class="line_break mobile"></div>
             HOW MANY <span class="shorts_show">SHORTS</span><span class="shorts_hide">JERSEYS</span> DO YOU WANT TO ORDER?
             <input type="text" class="input_num" style="float:right;" id="order_qty" placeholder="0"><br>
+              <div class="line_break mobile"></div>
             <div class="shorts_hide">
             DO YOU WANT TO PRINT NUMBERS ON THE JERSEYS?
             <select style="float:right;" id="print_numbers_select">
               <option value="no" selected>No</option>
               <option value="yes">Yes</option>
             </select><br>
+              <div class="line_break mobile"></div>
             <span id="print_numbers_yes">
               WANT TO PRINT NUMBERS ON FRONT AND BACK?
               <span class="add_on  reversable" id="numbers_front_back_cost">[ Additional: $<span></span>.00 ]</span>
@@ -829,13 +818,16 @@
                 <option value="front">Front Only</option>
                 <option value="front_back">Front & Back</option>
               </select><br>
+              <div class="line_break mobile"></div>
             </span>
+              <div class="line_break mobile"></div>
             DO YOU WANT TO PRINT NAMES ON THE BACK OF JERSEYS?
             <span class="add_on  reversable" id="print_name_on_back_cost">[ Additional: $<span></span>.00 ]</span>
             <select style="float:right;" id="print_name_on_back">
               <option value="no" selected>No</option>
               <option value="yes">Yes</option>
             </select><br>
+              <div class="line_break mobile"></div>
             <span id="reversible">
               PRINT ON BOTH SIDES OF THE JERSEY?
               <span class="remove_span" id="reversible_only_note">( Reversible jerseys only )</span>
@@ -844,7 +836,9 @@
                 <option value="no" selected>No</option>
                 <option value="yes">Yes</option>
               </select><br>
+              <div class="line_break mobile"></div>
             </span>
+              <div class="line_break mobile"></div>
             <span id="name_design">
               WHAT DO YOU WANT FOR YOUR TEAM NAME DESIGN?
               <span class="add_on  reversable" id="team_name_design_cost">[ Additional: $<span></span>.00 ]</span>
@@ -854,6 +848,7 @@
                 <option value="letters_graphic">Letters & Graphic</option>
               </select><br>
             </span>
+              <div class="line_break mobile"></div>
             <span id="custom_logo_line">
               DO YOU WANT TO SUPPLY YOUR OWN TEAM LOGO?
               <span class="remove_span" id="custom_logo_note">( One time $35 fee )</span>
@@ -864,8 +859,9 @@
                 <option value="yes">Yes</option>
               </select><br>
             </span>
+              <div class="line_break mobile"></div>
           </div>
-            <div style="float: right;">
+            <div id="reset_btn_container">
               <a class="reset_btn">RESET</a>
             </div>
             <div class="clear"></div>
@@ -945,8 +941,6 @@
   </div>
 
 </div>
-  <script src="../../js/jsonTable.js"></script>
-  <script src="../../js/jquery.cookie.js"></script>
   <script src="js/step_1.js"></script>
 </body>
 </html>

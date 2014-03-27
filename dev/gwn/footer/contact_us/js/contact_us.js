@@ -209,7 +209,6 @@ function validateForm() {
   };
 };
 
-
 $('#submit_contact').on('click', function(){
   if((($(".reply_email").filter(":visible").val().indexOf("@") != -1) && ($(".reply_email").filter(":visible").val().indexOf(".") != -1) && ($(".reply_email").filter(":visible").val().length >= 7)) && ($('select').val() != "")){
     var contact = $('.contact').val();
