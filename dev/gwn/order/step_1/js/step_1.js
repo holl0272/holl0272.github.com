@@ -481,10 +481,11 @@ function buildRows(qty) {
   var shortsheader = "<tr class='transparent'><td>#</td><td></td><td style='min-width:80px'>Size</td><td style='min-width:50px'>Price</td><td></td><td style='min-width:55px'>Qty</td></tr>";
   var row_number = "<td class='row_number'><font></font></td>";
   var row_number_mobile = "<td style='padding-right: 5px;' class='row_number_mobile'><font></font></td>";
+  var row_number_shorts_mobile = "<td style='padding: 0 5px 0 25px;' class='row_number_mobile'><font></font></td>";
     var sizeSelect = $('.description').filter(":visible").find('.size_select').parent().html();
-    var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_select').addClass('resize_select').parent().html();
+    var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_options').addClass('resize_select').parent().html();
   var product_size = "<td class='size_label'>Size</td><td class='jersey_size'>"+sizeSelect+"</td>";
-  var product_size_mobile = "<td style='padding-right: 5px;' class='size_label'>Size</td><td style='text-align: center;' class='jersey_size'>"+sizeSelect+"</td>";
+  var product_size_mobile = "<td style='padding-right: 10px;' class='size_label'>Size</td><td style='text-align: left; min-width: 90px;' class='jersey_size_mobile'>"+sizeSelect+"</td>";
   var jersey_price = "<td class='jersey_price'></td>";
   var jersey_price_mobile = "<td style='padding-right: 25px;' class='jersey_price'></td>";
     var numberInput = "<input type='text' class='number_input' style='width: 25px;' maxlength='2'>";
@@ -508,9 +509,23 @@ function buildRows(qty) {
       var jersey_row = jersey_row_desktop + jersey_row_mobile;
   }
   else {
+    if($('.mobile').filter(':visible').length > 0) {
+      $('#sub_selections table').append('<br>');
+    };
+
     $('#sub_selections table').append(shortsheader);
-    var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_qty+"</tr>";
+    if($('.mobile').filter(':visible').length == 0) {
+     var jersey_row = "<tr>"+row_number+product_size+jersey_price+product_qty+"</tr>";
+    }
+    else {
+      var jersey_row = "<tr>"+row_number_shorts_mobile+product_size_mobile+jersey_price_mobile+product_qty_mobile+"</tr>";
+    };
   };
+
+  if($('#sub_selections table tr').length != 0) {
+    $("#detail_instructions").show();
+  };
+
   //builds rows X qty input
   for (var i = 1; i <= qty; i++) {
     $('#sub_selections table').append(jersey_row);
@@ -532,13 +547,9 @@ function buildRows(qty) {
   numberRows();
 
   $('.mobile_row select').on('change', function() {
-    var mobile_size = $(this).find('option').filter(':selected').val()
+    var mobile_size = $(this).find('option').filter(':selected').val();
     $(this).closest('tr').prev().find('option').removeAttr('selected').filter(function(index) { return $(this).text() === mobile_size; }).attr('selected', true).change();
   });
-
-  // $('.mobile_row .jersey_size').on('click', function() {
-  //   $(this).html(sizeSelect);
-  // });
 
   function numberCells() {
     //hides "number" cells if add numbers if init selected is NO
@@ -684,7 +695,7 @@ function buildRows(qty) {
     };
   });
 
-  $('.size_select').change(function() {
+  $('.jersey_size .size_select').change(function() {
     var size = $(this).val();
     if(size == "XXL"){
       $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
@@ -716,8 +727,7 @@ function buildRows(qty) {
     });
   });
 
-  $('.mobile_row select').change(function() {
-    alert('change1');
+  $('.jersey_size_mobile .size_select').change(function() {
     var size = $(this).val();
     if(size == "XXL"){
       $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
@@ -729,30 +739,25 @@ function buildRows(qty) {
       $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
     };
     $(this).closest('td').html("<a style='color:#cccdce;'><font class='set_size'>"+size+"</font></a>").closest('tr').prev().find('.jersey_size').html(size);
-    // $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
-    $('.mobile_row .set_size').closest('td').on('click', function(e) {
-      $(this).html(resizeSelect);
-      alert('change2')
-      e.preventDefault;
+    $('.set_size').closest('td').on('click', function() {
+      $(this).closest('td').empty().css('min-width', 0);
       $(this).closest('td').next('td').empty();
-        $('.mobile_row .resize_select').change(function() {
-            alert('change3');
+      $(this).closest('td').next('td').html(resizeSelect);
+      $(this).closest('td').next('td').find('select').on('change', function() {
         var resize = $(this).val();
+        $(this).closest('tr').find('.jersey_size_mobile').css('min-width', '90px').html("<a style='color:#cccdce;'><font class='set_size'>"+resize+"</font></a>").closest('tr').prev().find('.jersey_size').text(resize);
         if(resize == "XXL"){
-          $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
+          $(this).closest('td').html('$'+$('#xxl_jersey').val());
         }
         else if(resize == "XXXL"){
-          $(this).closest('td').next('td').html('$'+$('#xxxl_jersey').val());
+          $(this).closest('td').html('$'+$('#xxxl_jersey').val());
         }
         else {
-          $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
+          $(this).closest('td').html('$'+$('#jersey_price').val());
         };
-        $(this).closest('td').html("<a style='color:#cccdce;'><font class='set_size'>"+resize+"</font></a>").closest('tr').prev().find('.jersey_size').text(resize);
-        // $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')});
       });
     });
   });
-
 
   // $('.number_input').on('blur', function() {
   //   var number = $(this).val();
@@ -1505,13 +1510,19 @@ $('.next_btn').on('click', function(e) {
     var missing = "The jersey details are incomplete - please review the section above for missing information"
     }
     else {
-    var verify = "Please verify the jersey details<br>you have entered are acurate<br>Click <span class='mock_btn'>NEXT STEP</span> to continue"
-    var missing = "The jersey details are incomplete<br>Please review the section above<br>for missing information"
+    var verify = "Please verify the jersey details<br>you have entered are acurate<br><br>Click <span class='mock_btn'>NEXT STEP</span> to continue"
+    var missing = "The jersey details are incomplete<br><br>Please review the section above<br>for missing information"
     };
   }
   else {
-  var verify = "Please verify the size and quantity you have entered are acurate - click <span class='mock_btn'>NEXT STEP</span> to continue"
-  var missing = "The quantity of shorts or their size selection is incomplete - please review the section above for missing information"
+    if($('.mobile').css('display') == 'none') {
+      var verify = "Please verify the size and quantity you have entered is acurate - click <span class='mock_btn'>NEXT STEP</span> to continue"
+      var missing = "The quantity of shorts or their size selection is incomplete - please review the section above for missing information"
+    }
+    else {
+      var verify = "Please verify the size and quantity<br>you have entered is acurate<br><br>Click <span class='mock_btn'>NEXT STEP</span> to continue"
+      var missing = "The quantity of shorts or<br>their size selection is incomplete<br>Please review the section above<br>for missing information"
+    };
   }
   var emptyInputs = $('#jersey_details').find('input[type=text]:empty').filter(":visible").length;
   var emptySelects = $('#jersey_details').find('select').filter(":visible").length;
@@ -1573,6 +1584,5 @@ function captureValues() {
       $.removeCookie('logoName', { path: '/' });
       $.removeCookie('logoPath', { path: '/' });
     };
-alert(data);
-  // $('#step_1_form').submit();
+  $('#step_1_form').submit();
 };

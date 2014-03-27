@@ -20,6 +20,9 @@
   height: auto;
   margin: 3% auto 10%;
 }
+#detail_instructions {
+  display: none;
+}
 .mobile {
   display: block;
 }
