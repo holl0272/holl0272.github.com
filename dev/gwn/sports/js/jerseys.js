@@ -83,18 +83,31 @@ $("#home_mobile_box_btn").show();
 
 //DESCRIPTIONS
 var classicJerseyProd = $(".Classic_Jersey");
+  $(".Classic_Jersey form input[name='sport']").val(sport);
 var dazzleMicroProd = $(".Dazzle_Micro_Mesh_Jersey");
+  $(".Dazzle_Micro_Mesh_Jersey form input[name='sport']").val(sport);
 var fullButtonProd = $(".Full_Button_Mesh_Jersey");
+  $(".Full_Button_Mesh_Jersey form input[name='sport']").val(sport);
 var gameDayProd = $(".Football_Game_Day_Jersey");
+  $(".Football_Game_Day_Jersey form input[name='sport']").val(sport);
 var gameDazzleProd = $(".Game_Dazzle_Reversible_Jersey");
+  $(".Game_Dazzle_Reversible_Jersey form input[name='sport']").val(sport);
 var meshJerseyProd = $(".Mesh_Jersey");
+  $(".Mesh_Jersey form input[name='sport']").val(sport);
 var meshShortsProd = $(".Mesh_Shorts");
+  $(".Mesh_Shorts form input[name='sport']").val(sport);
 var mwReversibleProd = $(".Moisture_Wicking_Reversible_Jersey");
+  $(".Moisture_Wicking_Reversible_Jersey form input[name='sport']").val(sport);
 var mwtShirtProd = $(".Moisture_Wicking_T_Shirt");
+  $(".Moisture_Wicking_T_Shirt form input[name='sport']").val(sport);
 var reversibleJerseyProd = $(".Reversible_Jersey");
+  $(".Reversible_Jersey form input[name='sport']").val(sport);
 var three_quarter_sleeveProd = $(".3_4_Sleeve_Jersey");
+  $(".3_4_Sleeve_Jersey form input[name='sport']").val(sport);
 var twoButtonProd = $(".Two-Button_Jersey");
+  $(".Two-Button_Jersey form input[name='sport']").val(sport);
 var tShirtProd = $(".T_Shirt");
+  $(".T_Shirt form input[name='sport']").val(sport);
 
 $('.jersey').hide();
 

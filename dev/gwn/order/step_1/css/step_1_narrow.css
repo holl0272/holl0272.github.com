@@ -1,6 +1,7 @@
 #wrapper {
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 #gwn_logo {
   text-align: center;
@@ -133,9 +134,21 @@ line-height: 1.5;
 }
 #custom_logo_note {
   font-weight: 100;
+  margin-left: 20px;
 }
 .slide .inner {
   line-height: 1.5;
+}
+#save_clear_btns {
+  float: left;
+  width: auto;
+}
+.next_btn {
+  float: right;
+  margin-top: -40px;
+}
+.next_btn:hover {
+  margin-top: -40px;
 }
 ul#vertical-list {
   list-style-position:inside;

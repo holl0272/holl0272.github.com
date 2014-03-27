@@ -221,7 +221,9 @@ table#jersey_details {
   -ms-transform: translateY(-5px);
   transform: translateY(-5px);
 }
-
+#save_clear_btns {
+  width: 100%;
+}
 /* Details Table */
 #sub_selections table  {
   width: auto;

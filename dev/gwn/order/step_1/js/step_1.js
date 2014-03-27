@@ -1,3 +1,4 @@
+
 WebFontConfig = {
   google: { families: [ 'Lato:100,400,900:latin', 'Josefin+Sans:100,400,700,400italic,700italic:latin' ] }
   };
@@ -481,7 +482,7 @@ function buildRows(qty) {
   var row_number = "<td class='row_number'><font></font></td>";
   var row_number_mobile = "<td style='padding-right: 5px;' class='row_number_mobile'><font></font></td>";
     var sizeSelect = $('.description').filter(":visible").find('.size_select').parent().html();
-    var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_options').addClass('resize_select').parent().html();
+    var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_select').addClass('resize_select').parent().html();
   var product_size = "<td class='size_label'>Size</td><td class='jersey_size'>"+sizeSelect+"</td>";
   var product_size_mobile = "<td style='padding-right: 5px;' class='size_label'>Size</td><td style='text-align: center;' class='jersey_size'>"+sizeSelect+"</td>";
   var jersey_price = "<td class='jersey_price'></td>";
@@ -497,12 +498,13 @@ function buildRows(qty) {
   var product_qty = "<td class='qty_label'>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
   var product_qty_mobile = "<td style='min-width:139px'>QTY: <input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
   var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; padding-left:5px; cursor: pointer;'> - </span></td><span>";
+  var qty_btns_mobile = "<span class='btns'><span class='mobile_plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='mobile_less_one' style='font-weight: bold; padding-left:5px; cursor: pointer;'> - </span></td><span>";
   var raw_qty = "<td class='hide'></td>";
 
   if(name != meshShorts) {
     $('#sub_selections table').append(header);
       var jersey_row_desktop = "<tr class='desktop_row'>"+row_number+product_size+jersey_price+product_number+name_on_jersey+product_qty+qty_btns+raw_qty+"</tr>";
-      var jersey_row_mobile = "<tr class='mobile mobile_row'>"+row_number_mobile+product_size_mobile+jersey_price_mobile+product_qty_mobile+qty_btns+raw_qty+"</tr><tr class='mobile mobile_row_number'><td></td>"+product_number_mobile+"</tr><tr class='mobile mobile_row_name'><td></td>"+name_on_jersey_mobile+"</tr>";
+      var jersey_row_mobile = "<tr class='mobile mobile_row'>"+row_number_mobile+product_size_mobile+jersey_price_mobile+product_qty_mobile+qty_btns_mobile+raw_qty+"</tr><tr class='mobile mobile_row_number' style='padding-top: 5px;'><td style='padding-right: 20px;'>&nbsp;</td>"+product_number_mobile+"</tr><tr class='mobile mobile_row_name' style='padding-top: 5px;'><td style='padding-right: 20px;'>&nbsp;</td>"+name_on_jersey_mobile+"</tr>";
       var jersey_row = jersey_row_desktop + jersey_row_mobile;
   }
   else {
@@ -535,10 +537,8 @@ function buildRows(qty) {
   });
 
   // $('.mobile_row .jersey_size').on('click', function() {
-  //   $(this).closest('tr').prev().find('.set_size').click();
-  // $(this).closest('tr').prev().find('.jersey_size').html()
+  //   $(this).html(sizeSelect);
   // });
-
 
   function numberCells() {
     //hides "number" cells if add numbers if init selected is NO
@@ -572,7 +572,7 @@ function buildRows(qty) {
 
   function togglePlusLess() {
     $('#sub_selections table tr td .btns').show();
-    if($("#sub_selections table tr:not('.mobile')").filter(":visible").length > 1) {
+    if($("#sub_selections table tr:gt(0):not('.mobile')").filter(":visible").length > 1) {
       $("#sub_selections table tr:not('.mobile')").filter(":visible").find('.row_qty').next().addClass('count');
       $("#sub_selections table tr:not('.mobile')").filter(":visible").last().find('.row_qty').next().removeClass('count');
       var sum = 0;
@@ -580,9 +580,14 @@ function buildRows(qty) {
           sum += Number($(this).text());
         });
       var lastRowQty = qty - sum;
+        if(lastRowQty <= 0){
+          lastRowQty = 1
+        };
       $("#sub_selections table tr:not('.mobile') td").filter(":visible").last().find('.row_qty').val(lastRowQty).next().text(lastRowQty);
+
+      $("#sub_selections table tr:not('.mobile')").filter(":visible").last().find('.btns').hide();
     }
-    else if($("#sub_selections table tr:not('.mobile')").filter(":visible").length == 1) {
+    else if($("#sub_selections table tr:gt(0):not('.mobile')").filter(":visible").length == 1) {
       $("#sub_selections table tr:not('.mobile') td").filter(":visible").find('.row_qty').val(qty).next().text(qty);
     };
   };
@@ -620,6 +625,65 @@ function buildRows(qty) {
     };
   });
 
+  function mobile_togglePlusLess() {
+    $('#sub_selections table tr.mobile_row td .btns').show();
+    if($("#sub_selections table tr.mobile_row").filter(":visible").length > 1) {
+      $("#sub_selections table tr:not('.desktop_row')").filter(":visible").find('.row_qty').next().addClass('count');
+      $("#sub_selections table tr:not('.desktop_row')").filter(":visible").last().find('.row_qty').next().removeClass('count');
+      var sum = 0;
+        $('.count').each(function() {
+          sum += Number($(this).text());
+        });
+      var lastRowQty = qty - sum;
+      if(lastRowQty <= 0){
+        lastRowQty = 1
+      };
+      $("#sub_selections table tr:not('.desktop_row') td").filter(":visible").last().find('.row_qty').val(lastRowQty).next().text(lastRowQty);
+      if(lastRowQty == 1){
+        $("#sub_selections table tr.mobile_row").filter(":visible").last().find('.btns').hide();
+      };
+    }
+    else if($("#sub_selections table tr.mobile_row").filter(":visible").length == 1) {
+      $("#sub_selections table tr:not('.desktop_row') td").filter(":visible").find('.row_qty').val(qty).next().text(qty);
+    };
+  };
+  if(name != meshShorts) {
+    mobile_togglePlusLess();
+  };
+
+  $('.mobile_plus_one').on('click', function() {
+    var qty_plus = Number($(this).parent().prev().prev().val());
+    var increase = qty_plus + 1;
+    var rowTwoQty = Number($("#sub_selections table tr.mobile_row").filter(":visible").last().find('.row_qty').val());
+    var decreaseRowTwoQty = rowTwoQty - 1;
+
+    if(increase <= qty){
+      $(this).parent().prev().text(increase);
+      $(this).parent().prev().prev().val(increase).closest('td').next('td').html(increase);
+      if(($("#sub_selections table tr.mobile_row").filter(":visible").length == 2) && (rowTwoQty > 1)) {
+        $("#sub_selections table tr.mobile_row").filter(":visible").last().find('.row_qty').val(decreaseRowTwoQty).next().text(decreaseRowTwoQty);
+      }
+      else {
+        $("#sub_selections table tr.mobile_row").filter(":visible").last().prev().hide();
+        $("#sub_selections table tr.mobile_row").filter(":visible").last().hide().next().hide().next().hide()
+      };
+      mobile_togglePlusLess();
+    };
+    // $("#sub_selections table tr.mobile_row").filter(":visible").last().find('.btns').hide();
+  });
+
+  $('.mobile_less_one').on('click', function() {
+    var qty_less = Number($(this).parent().prev().prev().val());
+    var decrease = qty_less - 1;
+    if(decrease > 0){
+      $(this).parent().prev().text(decrease);
+      $(this).parent().prev().prev().val(decrease).closest('td').next('td').html(decrease);
+      $("#sub_selections table tr.mobile_row").filter(":hidden").first().prev().show();
+      $("#sub_selections table tr.mobile_row").filter(":hidden").first().show().next().show().next().show();
+      mobile_togglePlusLess();
+    };
+  });
+
   $('.size_select').change(function() {
     var size = $(this).val();
     if(size == "XXL"){
@@ -652,7 +716,8 @@ function buildRows(qty) {
     });
   });
 
-  $('.mobile_row .size_select').change(function() {
+  $('.mobile_row select').change(function() {
+    alert('change1');
     var size = $(this).val();
     if(size == "XXL"){
       $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
@@ -664,10 +729,14 @@ function buildRows(qty) {
       $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
     };
     $(this).closest('td').html("<a style='color:#cccdce;'><font class='set_size'>"+size+"</font></a>").closest('tr').prev().find('.jersey_size').html(size);
-    $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
+    // $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')}).closest('td').on('click', function() {
+    $('.mobile_row .set_size').closest('td').on('click', function(e) {
       $(this).html(resizeSelect);
+      alert('change2')
+      e.preventDefault;
       $(this).closest('td').next('td').empty();
-      $('.resize_select').change(function() {
+        $('.mobile_row .resize_select').change(function() {
+            alert('change3');
         var resize = $(this).val();
         if(resize == "XXL"){
           $(this).closest('td').next('td').html('$'+$('#xxl_jersey').val());
@@ -679,10 +748,11 @@ function buildRows(qty) {
           $(this).closest('td').next('td').html('$'+$('#jersey_price').val());
         };
         $(this).closest('td').html("<a style='color:#cccdce;'><font class='set_size'>"+resize+"</font></a>").closest('tr').prev().find('.jersey_size').text(resize);
-        $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')});
+        // $('.set_size').parent().mouseover(function(){$(this).removeAttr('style').addClass('float')});
       });
     });
   });
+
 
   // $('.number_input').on('blur', function() {
   //   var number = $(this).val();
@@ -1414,7 +1484,7 @@ $('.reset_btn').on('click', function(e) {
 
 //CANCEL BUTTON
 $('.cancel_btn').on('click', function() {
-  var href = "../../sports/"+sport+"/jerseys/"+sport+"_jerseys.html";
+  var href = "../../sports/jersey.html?sport="+sport;
   window.location = href;
 });
 
@@ -1430,8 +1500,14 @@ $('.clear_btn').on('click', function(e) {
 $('.next_btn').on('click', function(e) {
   var msg;
   if (name != meshShorts) {
-  var verify = "Please verify the jersey details you have entered are acurate - click <span class='mock_btn'>NEXT STEP</span> to continue"
-  var missing = "The jersey details are incomplete - please review the section above for missing information"
+   if($('.mobile').css('display') == 'none') {
+    var verify = "Please verify the jersey details you have entered are acurate - click <span class='mock_btn'>NEXT STEP</span> to continue"
+    var missing = "The jersey details are incomplete - please review the section above for missing information"
+    }
+    else {
+    var verify = "Please verify the jersey details<br>you have entered are acurate<br>Click <span class='mock_btn'>NEXT STEP</span> to continue"
+    var missing = "The jersey details are incomplete<br>Please review the section above<br>for missing information"
+    };
   }
   else {
   var verify = "Please verify the size and quantity you have entered are acurate - click <span class='mock_btn'>NEXT STEP</span> to continue"
@@ -1474,7 +1550,7 @@ function captureValues() {
   $.removeCookie('returnJSON', { path: '/' });
   var detailsToJSON = $('#jersey_details').tableToJSON();
   var data = JSON.stringify(detailsToJSON);
-  $('<input type="text" name="json"/>').val(data).appendTo('#step_1_form');
+  $('<input type="hidden" name="json"/>').val(data).appendTo('#step_1_form');
 
   //url vars
   $('#step_1_url').val(window.location.href)
@@ -1497,6 +1573,6 @@ function captureValues() {
       $.removeCookie('logoName', { path: '/' });
       $.removeCookie('logoPath', { path: '/' });
     };
-
+alert(data);
   // $('#step_1_form').submit();
 };
