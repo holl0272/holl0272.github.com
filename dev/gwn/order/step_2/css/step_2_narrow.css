@@ -62,7 +62,6 @@ input[type="radio"] {
 }
 #color_select {
   margin-top: -20px;
-  display: inline-block;
 }
 .color {
   display: none;
@@ -106,6 +105,7 @@ input[type="radio"] {
 }
 #home_mobile_box_btn span {
   left: 0;
+  font-size: 1.2em;
 }
 .break {
   display: none;
@@ -128,9 +128,6 @@ line-height: 1.5;
 }
 #reset_btn_container {
   float: left;
-}
-#price_calc {
-  text-align: left;
 }
 #sub_selections table {
   border-collapse: collapse;
@@ -176,4 +173,29 @@ ul#horizontal-nav li {
 }
 #shopping_cart  {
   display: none;
+}
+#front {
+  float: none;
+}
+#back {
+  float: none;
+  margin-right: 0;
+}
+#front_elements img.left {
+  margin-left: 12px;
+}
+#back_elements img.left {
+  margin-left: 5px;
+}
+img.left.chest {
+  padding-top: 10px;
+}
+#front_elements img.right {
+  margin-left: 15px;
+}
+#back_elements img.right {
+  margin-left: 15px;
+}
+img.right.chest {
+  padding-top: 10px;
 }

@@ -8,19 +8,18 @@
   <meta name="author" content="f-robots.com">
   <meta charset="utf-8">
 
-  <script src="../../js/jquery-1.10.2.min.js"></script>
-  <script src="../../js/scripts.js"></script>
+  <script src="../../js/jquery-1.11.0.min.js"></script>
   <script src="../../js/lightbox-2.6.min.js"></script>
-  <script src="http://malsup.github.com/jquery.form.js"></script>
-
+  <script src="../../js/jquery.form.min.js"></script>
+  <script src="../../js/jsonTable.js"></script>
+  <script src="../../js/tabletojson.js"></script>
+  <script src="../../js/jquery.cookie.js"></script>
 
   <link runat="server" rel="shortcut icon" type="image/png" href="../../../favicon.ico">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../sports/css/jerseys.css">
   <link rel="stylesheet" href="css/step_2.css">
   <link rel="stylesheet" href="css/lightbox.css">
-  <link rel="stylesheet" id="init-stylesheet">
   <link rel="stylesheet" id="os-stylesheet">
   <link rel="stylesheet" id="size-stylesheet">
   <link rel="stylesheet" id="device-stylesheet">
@@ -42,10 +41,9 @@
   </div>
 
   <div id="container">
-    <table>
-<!--
+    <table id="mobile_table" class="mobile" style="display: none;">
       <tr>
-        <td colspan="2">
+        <td>
           <div id="mobile_btns">
             <div class="mobile_box_btn">
               <div id="baseball_box_mobile" class="sport_box_mobile">
@@ -70,13 +68,14 @@
                 <image src="../../images/volleyball_mobile.jpg" alt="Volleyball Jerseys" id="volleyball_mobile_btn"><span>VOLLEYBALL JERSEYS</span>
               </div>
             </div>
-            <div class="mobile_box_btn">
-              <a href="javascript:history.back()" title="Choose A Different Sport"><image src="../../sports/images/plain_grey_box_mobile.jpg" alt="Choose A Different Sport" id="home_mobile_box"><span id="home_mobile_btn">BACK TO ORDER OPTIONS</span></a>
+            <div id="home_mobile_box_btn" class="mobile_box_btn">
+              <a class="return_to_step_1" title="Choose A Different Sport"><image src="../../sports/images/plain_grey_box_mobile.jpg" alt="Choose A Different Sport" id="home_mobile_box"><span id="home_mobile_btn">BACK TO YOUR ORDER OPTIONS</span></a>
             </div>
           </div>
         </td>
       </tr>
--->
+    </table>
+    <table class="mobile_fix">
       <tr>
         <td id="left_content">
           <div id="box_btns">
@@ -110,6 +109,7 @@
         <td id="right_content">
           <div id="selections">
             <font>DESIGN OPTIONS</font><br>
+            <div class="line_break mobile"></div>
             <div id="resulting_rows">
               CHOOSE YOUR <span class="non_logo_span">LETTERING</span> COLOR
               <div class="dropdown">
@@ -133,6 +133,8 @@
                 </select>
                 <div class="clear"></div>
               </div><br>
+                   <div class="line_break mobile"><br></div>
+                                 <div class="clear"></div>
               <div id="rev_prod_side_row">
                 CHOOSE THE SIDE OF THE JERSEY YOU WANT TO APPLY PRINTING
                 <div class="dropdown">
@@ -142,6 +144,8 @@
                   </select>
                   <div class="clear"></div>
                 </div><br>
+                                          <div class="line_break mobile"><br></div>
+                                 <div class="clear"></div>
               </div>
               <div id="rev_row">
                 LETTERING COLOR FOR THE INSIDE (Reversible jersey only)
@@ -166,6 +170,8 @@
                   </select>
                   <div class="clear"></div>
                 </div><br>
+                                          <div class="line_break mobile"><br></div>
+                                 <div class="clear"></div>
               </div>
               <div id="font_row">
                 LETTERING FONT FOR <span id="team_name_span">TEAM NAME</span><span id="both_spans">&nbsp;AND&nbsp;</span><span id="player_names_span">PLAYER NAMES</span>
@@ -181,6 +187,8 @@
                   </select>
                   <div class="clear"></div>
                 </div><br>
+                                          <div class="line_break mobile"><br></div>
+                                 <div class="clear"></div>
               </div>
               <div id="print_names_row">
                 PLAYER NAME LETTERING STYLE
@@ -193,6 +201,8 @@
                   </select>
                   <div class="clear"></div>
                 </div><br>
+                                          <div class="line_break mobile"><br></div>
+                                 <div class="clear"></div>
               </div>
               <div id="team_name_row">
                 ENTER YOUR TEAM NAME
@@ -201,6 +211,8 @@
                   <input type="text" style=" width: 125px; float:right;" id="team_name_input" placeholder="EAGLES">
                   <div class="clear"></div>
                 </div><br>
+                                          <div class="line_break mobile"><br></div>
+                                 <div class="clear"></div>
               </div>
               <div id="graphic_row">
                 TEAM NAME & GRAPHIC OPTIONS
@@ -211,6 +223,8 @@
                   </select>
                   <div class="clear"></div>
                 </div><br>
+                                          <div class="line_break mobile"><br></div>
+                                 <div class="clear"></div>
               </div>
               <div class="logo_row">
                 UPLOAD YOUR LOGO
@@ -221,6 +235,8 @@
                   </div>
                   <div class="clear"></div>
                 </div><br>
+                                          <div class="line_break mobile"><br></div>
+                                 <div class="clear"></div>
               </div>
               <div id="team_lettering_row">
                 TEAM NAME LETTERING STYLE
@@ -235,6 +251,8 @@
                   </select>
                   <div class="clear"></div>
                 </div><br>
+                                          <div class="line_break mobile"><br></div>
+                                 <div class="clear"></div>
               </div>
               <div id="placement_row">
                 DESIGN PLACEMENT
@@ -247,6 +265,8 @@
                   </select>
                   <div class="clear"></div>
                 </div><br>
+                                          <div class="line_break mobile"><br></div>
+                                 <div class="clear"></div>
               </div>
               <div style="float: right; margin: 10px 27px 0 0;">
                 <a class="reset_btn">RESET</a>
@@ -256,8 +276,10 @@
             <div id="no_results" style="display:none;">
               YOUR CURRENT ORDER DOES NOT REQUIRE ANY DESIGN OPTIONS
               <br>
+                <div class="line_break mobile"></div>
               <span class="shorts">CLICK THE <font style="color: #e8d606; font-weight:bold"><b>&nbsp;FINALIZE ORDER&nbsp;</b></font> BUTTON BELOW TO CONTINUE</span>
               <span class="not_shorts"> RETURN <a href="javascript:window.history.back(-1)" class="return_to_step_1" style="color: #e8d606;"><b>&nbsp;BACK TO YOUR ORDER OPTIONS&nbsp;</b></a> TO MAKE ADDITIONAL SELECTIONS</span>
+                <div class="line_break mobile"></div>
             </div>
             <div class="clear"></div>
           </div>
@@ -326,35 +348,30 @@
           </div>
 
           <div style="width:100%;">
+            <div style="float: right;">
+              <a href="javascript: window.history.go(-3)" class="cancel_btn">CANCEL&nbsp;&nbsp;X</a>
+            </div>
+            <div class="mobile clear"></div>
             <div style="float:left;" class="jersey_name" id="urlParams_name">
               <!--urlParams["name"]-->
             </div>
-            <div style="float: right;">
-              <div style="float: right;">
-                <a href="javascript: window.history.go(-3)" class="cancel_btn">CANCEL&nbsp;&nbsp;X</a>
-              </div>
-<!--
-                <div class="btn_spacer">&nbsp;</div>
-              <div style="float: right;">
-                <a href="#" class="save_btn">SAVE</a>
-              </div>
--->
+              <div class="clear"></div>
             </div>
-            <div class="clear"></div>
           </div>
           <div style="background-color: white; width:100%; display:inline-block;  margin:10px 0 10px 0; padding-bottom:20px">
             <div class="disclaimer not_shorts">
               <span>Your team name and font selection will not appear in this preview.</span>
             </div>
             <div id="image_container" stye="float:none;"> <!--dev style-->
-              <div style="position: relative; left:0; top:0; float: left;" id="front">
+              <div id="front">
                 <a href="" data-lightbox="product_img_front" title="">
                   <image src="" alt="Product Image Front" id="product_img_front" class="product_img" style="position: relative; top: 0; left: 0;">
                     <div id="front_elements"></div>
                   <image style="display:none;" src="" id="product_img_front_large" class="lightbox_img">
                 </a><!--urlParams["img"]-->
               </div>
-              <div style="position: relative; left:0; top:0; float: right; margin-right: 30px;" id="back">
+                <div class="line_break mobile"><br></div>
+              <div id="back">
                 <a href="" data-lightbox="product_img_back" title="">
                   <image src="" alt="Product Image Back" id="product_img_back" class="product_img">
                     <div id="back_elements"></div>
@@ -362,9 +379,6 @@
                 </a>
               </div>
             </div>
-
-
-
           <div class="clear"></div>
           </div>
 
@@ -573,53 +587,7 @@
       <li><a href="../../footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
     </ul>
   </div>
-
 </div>
-  <script>
-  $(document).ready(function()
-  {
-
-      var options = {
-      beforeSend: function()
-      {
-          $("#progress").show();
-          //clear everything
-          $("#bar").width('0%');
-          $("#message").html("<image src='images/loader.gif' alt='Loader'>");
-          $("#percent").html("0%");
-      },
-      uploadProgress: function(event, position, total, percentComplete)
-      {
-          $("#bar").width(percentComplete+'%');
-          $("#percent").html(percentComplete+'%');
-
-      },
-      success: function()
-      {
-          $("#bar").width('100%');
-          $("#percent").html('100%');
-
-      },
-      complete: function(response)
-      {
-          $("#message").html("<font color='#32cd32'>"+response.responseText+"</font>");
-          $('#upload_info_icon').attr('src', 'images/info/check.png');
-          $('.upload_inner').delay(2000).slideToggle();
-      },
-      error: function()
-      {
-          $("#message").html("<font color='red'> ERROR: unable to upload your custom logo</font>");
-          $('#upload_info_icon').attr('src', 'images/info/info.png')
-      }
-
-  };
-
-       $("#myForm").ajaxForm(options);
-
-  });
-  </script>
-  <script src="../../js/jsonTable.js"></script>
-  <script src="../../js/jquery.cookie.js"></script>
   <script src="js/step_2.js"></script>
 </body>
 </html>

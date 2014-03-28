@@ -14,6 +14,7 @@
   <script src="../../js/tabletojson.js"></script>
   <script src="../../js/jquery.cookie.js"></script>
 
+
   <link runat="server" rel="shortcut icon" type="image/png" href="../../../favicon.ico">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../sports/css/jerseys.css">
@@ -24,7 +25,6 @@
   <link rel="stylesheet" id="device-stylesheet">
   <link rel="stylesheet" id="browser-stylesheet">
 
-    <script src="js/step_1.js"></script>
 </head>
 <body>
 
@@ -109,13 +109,13 @@
         </td>
         <td id="right_content">
           <div style="width:100%;">
+            <div style="float: right;">
+              <a class="cancel_btn">CANCEL&nbsp;&nbsp;X</a>
+            </div>
+            <div class="mobile clear"></div>
             <div style="float:left;" class="jersey_name" id="urlParams_name">
               <!--urlParams["name"]-->
             </div>
-            <div style="float: right;">
-              <div style="float: right;">
-                <a class="cancel_btn">CANCEL&nbsp;&nbsp;X</a>
-              </div>
               <div class="clear"></div>
             </div>
           </div>
@@ -944,5 +944,6 @@
   </div>
 
 </div>
+  <script src="js/step_1.js"></script>
 </body>
 </html>

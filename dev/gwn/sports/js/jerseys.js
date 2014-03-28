@@ -11,6 +11,12 @@ WebFontConfig = {
     s.parentNode.insertBefore(wf, s);
 })();
 
+if(window.innerWidth < 508){
+  $("#size-stylesheet").attr("href", "css/jersey_narrow.css");
+  $("#mobile").hide();
+  $("#desktop").show();
+};
+
 var os;
 if(navigator.appVersion.indexOf("Win") != -1) os = "Windows";
 if(navigator.appVersion.indexOf("Mac") != -1) os = "Mac";
@@ -40,6 +46,39 @@ if((os == "Windows") && (isChrome)) {
   $("#os-stylesheet").attr("href", "css/windows.css");
 };
 
+var device = navigator.userAgent.toLowerCase();
+var isAndroid = device.indexOf("android") > -1;
+if(isAndroid) {
+  $("#device-stylesheet").attr("href", "css/android.css");
+};
+
+function adjustStyle(width) {
+    if (width < 508) {
+      $("#size-stylesheet").attr("href", "css/jersey_narrow.css");
+      $("#mobile").show();
+      $("#desktop").hide();
+    }
+    else {
+      $("#size-stylesheet").attr("href", "");
+      $("#mobile").hide();
+      $("#desktop").show();
+    };
+
+    if(width <= 970) {
+      $('#heading').css({'float':'left','margin-top':'-40px'});
+    }
+    else  {
+      $('#heading').css({'float':'right','margin-top':'0'});
+    };
+};
+
+$(function() {
+    adjustStyle($(this).width());
+    $(window).resize(function() {
+        adjustStyle($(this).width());
+    });
+});
+
 //PARSE THE URL FOR VAR NAMES AND VALUES
 var urlParams;
 (window.onpopstate = function () {
@@ -63,12 +102,6 @@ var pageTitle = (sport).replace(/(^|\s)\S/g, function(match) {
 $('#title').html("GWN: "+pageTitle+" Jerserys");
 
 $(document).ready(function(){
-
-if(window.innerWidth < 508){
-  $("#size-stylesheet").attr("href", "css/jersey_narrow.css");
-  $("#mobile").hide();
-  $("#desktop").show();
-};
 
 //NAME
 $('#urlParams_name').html(name);
@@ -102,7 +135,7 @@ var mwtShirtProd = $(".Moisture_Wicking_T_Shirt");
   $(".Moisture_Wicking_T_Shirt form input[name='sport']").val(sport);
 var reversibleJerseyProd = $(".Reversible_Jersey");
   $(".Reversible_Jersey form input[name='sport']").val(sport);
-var three_quarter_sleeveProd = $(".3_4_Sleeve_Jersey");
+var three_quarter_sleeveProd = $(".Three_Quarter_Sleeve_Jersey");
   $(".3_4_Sleeve_Jersey form input[name='sport']").val(sport);
 var twoButtonProd = $(".Two-Button_Jersey");
   $(".Two-Button_Jersey form input[name='sport']").val(sport);
@@ -160,39 +193,6 @@ else if(sport == "volleyball") {
   mwtShirtProd.show();
   tShirtProd.show();
 };
-
-var device = navigator.userAgent.toLowerCase();
-var isAndroid = device.indexOf("android") > -1;
-if(isAndroid) {
-  $("#device-stylesheet").attr("href", "css/android.css");
-};
-
-function adjustStyle(width) {
-    if (width < 508) {
-      $("#size-stylesheet").attr("href", "css/jersey_narrow.css");
-      $("#mobile").show();
-      $("#desktop").hide();
-    }
-    else {
-      $("#size-stylesheet").attr("href", "");
-      $("#mobile").hide();
-      $("#desktop").show();
-    };
-
-    if(width <= 970) {
-      $('#heading').css({'float':'left','margin-top':'-40px'});
-    }
-    else  {
-      $('#heading').css({'float':'right','margin-top':'0'});
-    };
-};
-
-$(function() {
-    adjustStyle($(this).width());
-    $(window).resize(function() {
-        adjustStyle($(this).width());
-    });
-});
 
 function randomColor() {
   var birch = "birch";

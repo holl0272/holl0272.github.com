@@ -12,31 +12,8 @@ WebFontConfig = {
     s.parentNode.insertBefore(wf, s);
 })();
 
-//PARSE THE URL FOR VAR NAMES AND VALUES
-var urlParams;
-(window.onpopstate = function () {
-    var match,
-        pl     = /\+/g,  // Regex for replacing addition symbol with a space
-        search = /([^&=]+)=?([^&]*)/g,
-        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-        query  = window.location.search.substring(1);
-
-    urlParams = {};
-    while (match = search.exec(query))
-       urlParams[decode(match[1])] = decode(match[2]);
-})();
-
-//URL VARS
-var name = urlParams["name"];
-var sport = urlParams["sport"];
-var img = urlParams["img"];
-var price = urlParams["price"];
-var product_id = urlParams["id"];
-
-$(document).ready(function(){
-
 if(window.innerWidth < 508){
-  $("#size-stylesheet").attr("href", "css/jersey_narrow.css");
+  $("#size-stylesheet").attr("href", "css/step_1_narrow.css");
   $('.mobile').show();
 }
 
@@ -92,6 +69,29 @@ $(function() {
         adjustStyle($(this).width());
     });
 });
+
+//PARSE THE URL FOR VAR NAMES AND VALUES
+var urlParams;
+(window.onpopstate = function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+})();
+
+//URL VARS
+var name = urlParams["name"];
+var sport = urlParams["sport"];
+var img = urlParams["img"];
+var price = urlParams["price"];
+var product_id = urlParams["id"];
+
+$(document).ready(function(){
 
 //NAME
 $('#urlParams_name').html(name);
@@ -485,7 +485,7 @@ function buildRows(qty) {
     var sizeSelect = $('.description').filter(":visible").find('.size_select').parent().html();
     var resizeSelect = $('.description').filter(":visible").find('.size_select').removeClass('size_options').addClass('resize_select').parent().html();
   var product_size = "<td class='size_label'>Size</td><td class='jersey_size'>"+sizeSelect+"</td>";
-  var product_size_mobile = "<td style='padding-right: 10px;' class='size_label'>Size</td><td style='text-align: left; min-width: 90px;' class='jersey_size_mobile'>"+sizeSelect+"</td>";
+  var product_size_mobile = "<td style='padding-right: 10px;' class='size_label'>Size</td><td style='text-align: left; min-width: 80px;' class='jersey_size_mobile'>"+sizeSelect+"</td>";
   var jersey_price = "<td class='jersey_price'></td>";
   var jersey_price_mobile = "<td style='padding-right: 25px;' class='jersey_price'></td>";
     var numberInput = "<input type='text' class='number_input' style='width: 25px;' maxlength='2'>";
@@ -745,7 +745,7 @@ function buildRows(qty) {
       $(this).closest('td').next('td').html(resizeSelect);
       $(this).closest('td').next('td').find('select').on('change', function() {
         var resize = $(this).val();
-        $(this).closest('tr').find('.jersey_size_mobile').css('min-width', '90px').html("<a style='color:#cccdce;'><font class='set_size'>"+resize+"</font></a>").closest('tr').prev().find('.jersey_size').text(resize);
+        $(this).closest('tr').find('.jersey_size_mobile').css('min-width', '80px').html("<a style='color:#cccdce;'><font class='set_size'>"+resize+"</font></a>").closest('tr').prev().find('.jersey_size').text(resize);
         if(resize == "XXL"){
           $(this).closest('td').html('$'+$('#xxl_jersey').val());
         }
