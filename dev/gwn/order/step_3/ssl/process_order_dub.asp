@@ -298,46 +298,15 @@ End If
 <meta name="Language" content="en">
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
-<link runat="server" rel="shortcut icon" type="image/png" href="favicon.ico">
+  <link runat="server" rel="shortcut icon" type="../image/png" href="favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,400,900|Josefin+Sans:100,400,700,400italic,700italic">
+  <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
-<link rel="stylesheet" href="css/main.css">
+<script language="javascript" src="../SFLib/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfCheckErrors.js" type="text/javascript"></script>
 <script language="javascript" src="ssShippingRates.js" type="text/javascript"></script>
-<script language="javascript" src="../SFLib/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
-
-	$(document).ready(function() {
-
-	var media = navigator.userAgent.toLowerCase();
-	var isMobile = media.indexOf("mobile") > -1;
-	if(isMobile) {
-		$('#horizontal-nav li').css('padding-right', '10px');
-	};
-
-		WebFontConfig = {
-		  google: { families: [ 'Lato:100,400,900:latin', 'Josefin+Sans:100,400,700,400italic,700italic:latin' ] }
-		  };
-		  (function() {
-		    var wf = document.createElement('script');
-		    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-		      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-		    wf.type = 'text/javascript';
-		    wf.async = 'true';
-		    var s = document.getElementsByTagName('script')[0];
-		    s.parentNode.insertBefore(wf, s);
-		})();
-
-		$('table.tdTopBanner').next().css('margin', '0 auto 10%');
-
-		$(".not_selected").hover(
-		  function() {
-		    $('#current_page a').css('color','#cccdce');
-		  }, function() {
-		    $('#current_page a').css('color','#e8d606');
-		  }
-		);
-	});
 
 function validateEmails(theForm)
 {
@@ -630,25 +599,42 @@ function setShippingSameAsBilling(theElement)
 	theForm.ShipFax.disabled = (theForm.matchBillingAddress.checked);
 	theForm.ShipEmail.disabled = (theForm.matchBillingAddress.checked);
 	*/
+
 }
 </script>
+
+<script>
+$(document).ready(function() {
+	$('.tdAltFont1 a > b').unwrap();
+	$('.tdAltFont2 a > b').unwrap();
+	$('#tblMainContent td').css('padding', '5px');
+})
+</script>
+
 <% writeCurrencyConverterOpeningScript %>
+
+<style>
+body {
+	text-align: center;
+}
+</style>
 </head>
 
 <body <%= mstrBodyStyle %>>
 
-	<div id="header">
+		<div id="header" style="margin-bottom: 2%;">
     <div id="gwn_logo">
-      <a href="index.html" title="Home"><image src="images/gwn_logo.png" alt="GameWearNow Logo" style="margin-left: -25px;"></a>
+      <a href="../index.html" title="Home"><image src="../images/gwn_logo.png" alt="GameWearNow Logo"></a>
     </div>
     <div id="heading">
       <span class="title_txt" id="title">CUSTOM JERSEYS FOR<br>YOUR SPORTS TEAM</span>
+        <br>
+      <span class="title_txt" id="sub_title">ORDER PROCESSING</span>
     </div>
   </div>
 
-<!--#include file="templateTop.asp"-->
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent">
+<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent" style="margin: 0 auto 5%;">
   <tr>
     <td>
       <table border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -1195,22 +1181,19 @@ You should see a small key (Netscape) or lock (IE) indicating that your browser 
           </tr>
         </table>
 <!--webbot bot="PurpleText" preview="End Content Section" -->
-<!--#include file="templateBottom.asp"-->
-
-	<div id="footer">
+  <div id="footer">
     <ul id="horizontal-nav">
-      <li id="current_page"><a href="../order.asp" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
+      <li id="current_page"><a title="Shopping Cart"><span><image src="../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
       <li class="pipe">|</li>
       <li class="not_selected"><a href="../myAccount.asp" title="My Account">MY ACCOUNT</a></li>
       <li class="pipe">|</li>
       <li class="not_selected"><a href="../footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
       <li class="pipe">|</li>
-      <li class="not_selected"><a href="../footer/privacy_policy/privacy_policy.html" title="Contact Us">PRIVACY POLICY</a></li>
+      <li class="not_selected"><a href="../footer/privacy_policy/privacy_policy.html" title="Privacy Policy">PRIVACY POLICY</a></li>
       <li class="pipe">|</li>
       <li class="not_selected"><a href="../footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
     </ul>
   </div>
-
 </body>
 </html>
 <% Call CleanupPageObjects %>

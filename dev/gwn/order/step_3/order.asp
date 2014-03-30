@@ -404,6 +404,9 @@ select {
 input[type=submit] {
 	margin-bottom: 10px;
 }
+img[name=continue_search] {
+	padding: 20px 0 0 0;
+}
 </style>
 
 </head>
@@ -415,8 +418,6 @@ input[type=submit] {
     </div>
     <div id="heading">
       <span class="title_txt" id="title">CUSTOM JERSEYS FOR<br>YOUR SPORTS TEAM</span>
-<!--         <br>
-      <span class="title_txt" id="sub_title">ORDER SUMMARY</span> -->
     </div>
   </div>
 
@@ -485,15 +486,15 @@ input[type=submit] {
 
 	<div id="footer">
     <ul id="horizontal-nav">
-      <li id="current_page"><a href="../../order.asp" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
+      <li id="current_page"><a href="order.asp" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
       <li class="pipe">|</li>
-      <li class="not_selected"><a href="../../myAccount.asp" title="My Account">MY ACCOUNT</a></li>
+      <li class="not_selected"><a href="myAccount.asp" title="My Account">MY ACCOUNT</a></li>
       <li class="pipe">|</li>
-      <li class="not_selected"><a href="../../footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
+      <li class="not_selected"><a href="footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
       <li class="pipe">|</li>
-      <li class="not_selected"><a href="../../footer/privacy_policy/privacy_policy.html" title="Contact Us">PRIVACY POLICY</a></li>
+      <li class="not_selected"><a href="footer/privacy_policy/privacy_policy.html" title="Contact Us">PRIVACY POLICY</a></li>
       <li class="pipe">|</li>
-      <li class="not_selected"><a href="../../footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
+      <li class="not_selected"><a href="footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
     </ul>
   </div>
 </body>
