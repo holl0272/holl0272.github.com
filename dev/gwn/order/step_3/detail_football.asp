@@ -320,24 +320,19 @@ function validateForm(theForm)
     overflow: hidden;
 }
 .white_content {
-    opacity: 1 !important;;
-    display: block;
-    position: absolute;
-    top: 25%;
-    left: 20%;
-    width: auto;
-    height: auto;
-    padding: 50px;
+    position: relative;
+    width: 70%;
+    padding: 50px 0;
     border: 16px solid #e8d606;
     background-color: #11013b;
     color: #cccdce;
     z-index:1002;
-    overflow: auto;
     border-radius: 10px;
     text-align: center;
     font-size: 3.5em;
     font-weight: 900;
     font-family: 'Lato', sans-serif;
+    margin: 10% auto 0;
 }
 
 #fadingBarsG{
@@ -518,28 +513,28 @@ background-color:#11013b;
 </style>
 </head>
 <body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();" style="opacity: 0; overflow: hidden;">
-
-<div id="light" class="white_content">
-  Please wait while we<br>gather your order details
-  <div id="fadingBarsG">
-    <div id="fadingBarsG_1" class="fadingBarsG">
+  <div id="light" class="white_content">
+    Please wait while we<br>gather your order details
+    <div id="fadingBarsG">
+      <div id="fadingBarsG_1" class="fadingBarsG">
+      </div>
+      <div id="fadingBarsG_2" class="fadingBarsG">
+      </div>
+      <div id="fadingBarsG_3" class="fadingBarsG">
+      </div>
+      <div id="fadingBarsG_4" class="fadingBarsG">
+      </div>
+      <div id="fadingBarsG_5" class="fadingBarsG">
+      </div>
+      <div id="fadingBarsG_6" class="fadingBarsG">
+      </div>
+      <div id="fadingBarsG_7" class="fadingBarsG">
+      </div>
+      <div id="fadingBarsG_8" class="fadingBarsG">
+      </div>
     </div>
-    <div id="fadingBarsG_2" class="fadingBarsG">
-    </div>
-    <div id="fadingBarsG_3" class="fadingBarsG">
-    </div>
-    <div id="fadingBarsG_4" class="fadingBarsG">
-    </div>
-    <div id="fadingBarsG_5" class="fadingBarsG">
-    </div>
-    <div id="fadingBarsG_6" class="fadingBarsG">
-    </div>
-    <div id="fadingBarsG_7" class="fadingBarsG">
-    </div>
-    <div id="fadingBarsG_8" class="fadingBarsG">
-    </div>
+    <div class="clear"></div>
   </div>
-</div>
 <div id="fade" class="black_overlay"></div>
 
 <!--#include file="templateTop.asp"-->

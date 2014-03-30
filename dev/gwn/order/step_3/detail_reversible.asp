@@ -353,24 +353,19 @@ function validateForm(theForm)
     overflow: hidden;
 }
 .white_content {
-    opacity: 1 !important;;
-    display: block;
-    position: absolute;
-    top: 25%;
-    left: 20%;
-    width: auto;
-    height: auto;
-    padding: 50px;
+    position: relative;
+    width: 70%;
+    padding: 50px 0;
     border: 16px solid #e8d606;
     background-color: #11013b;
     color: #cccdce;
     z-index:1002;
-    overflow: auto;
     border-radius: 10px;
     text-align: center;
     font-size: 3.5em;
     font-weight: 900;
     font-family: 'Lato', sans-serif;
+    margin: 10% auto 0;
 }
 
 #fadingBarsG{
