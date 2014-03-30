@@ -180,6 +180,10 @@
 .remove_span {
   padding-left: 10px;
 }
+#reset_btn_container {
+float: right;
+margin: 10px 27px 0 0;
+}
 #finalize_order {
   text-align: center;
   margin-top:25px;

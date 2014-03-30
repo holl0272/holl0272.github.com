@@ -60,18 +60,12 @@ Dim mstrProductDescription
 <meta name="Language" content="en">
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
-<link runat="server" rel="shortcut icon" type="image/png" href="favicon.ico">
+
 <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/incae.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfCheckErrors.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfEmailFriend.js" type="text/javascript"></script>
-<script>
-  var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
-  if(enAttrPos_JerseyColor == "") {
-  	$("#populate_data").remove();
-  };
-</script>
 <script language="javascript" src="SFLib/ssAttributeExtender.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
@@ -98,7 +92,6 @@ function validateForm(theForm)
 }
 
 <% If getProductInfo(txtProdId, enProduct_Exists) Then Response.Write "prodBasePrice =" & getProductInfo(txtProdId, enProduct_SellPrice) & ";" & vbcrlf %>
-
 </script>
 <% writeCurrencyConverterOpeningScript %>
 
@@ -116,16 +109,17 @@ function validateForm(theForm)
     -moz-opacity: 0.8;
     opacity:.80;
     filter: alpha(opacity=80);
+    overflow: hidden;
 }
 .white_content {
     opacity: 1 !important;;
     display: block;
     position: absolute;
     top: 25%;
-    left: 25%;
-    width: 50%;
+    left: 20%;
+    width: auto;
     height: auto;
-    padding: 16px;
+    padding: 50px;
     border: 16px solid #e8d606;
     background-color: #11013b;
     color: #cccdce;
@@ -133,7 +127,7 @@ function validateForm(theForm)
     overflow: auto;
     border-radius: 10px;
     text-align: center;
-    font-size: 2em;
+    font-size: 3.5em;
     font-weight: 900;
     font-family: 'Lato', sans-serif;
 }
@@ -315,10 +309,10 @@ background-color:#11013b;
 }
 </style>
 </head>
-<body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();">
+<body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();" style="opacity: 0;  overflow: hidden;">
 
-<div id="light" class="white_content">
-  <br>Please wait while we<br>gather your order details...
+  <div id="light" class="white_content">
+  Please wait while we<br>gather your order details
   <div id="fadingBarsG">
     <div id="fadingBarsG_1" class="fadingBarsG">
     </div>
@@ -585,40 +579,48 @@ background-color:#11013b;
 </td>
 </tr>
 </table>
-<div id="variables" style="text-align: left; border:1px solid red;"></div>
 <!--webbot bot="PurpleText" preview="End Content Section" -->
 <!--#include file="templateBottom.asp"-->
 
-<script>
+<div id="variables" style="text-align: left; border:1px solid red;"></div>
+
+<script id="populate_data">
 $(document).ready(function() {
   //SET THE PRODUCT COLOR
   var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
-  	$("#variables").append("Jersey Color: "+enAttrPos_JerseyColor+"<br>");
-  $("select[name='attr1'] option").filter(function () { return $(this).html() == enAttrPos_JerseyColor; }).prop('selected', true).change();
+  if(enAttrPos_JerseyColor != "") {
+     $("#variables").append("Jersey Color: "+enAttrPos_JerseyColor+"<br>");
+     $("select[name='attr1'] option").removeAttr('selected');
+     $("select[name='attr1'] option:contains('"+enAttrPos_JerseyColor+"')").attr('selected', true).change()
 
-  //SHORTS DETAILS
- //  var json_source = '<%=response.write(request.form("json_source"))%>';
- //  	$("#variables").append("Jersey Color: "+json_source+"<br>");
- //  var data = JSON.parse(json_source);
- //  var j_size = data[0].Size;
- //  var j_qty = data[0].Qty;
- //    $("#variables").append("Size: "+j_size+"<br>");
- //    $("#variables").append("Qty: "+j_qty+"<br>");
- //    if(j_size == "XXL") {
- //    	j_size = "XXL (Add $2.00)"
- //    };
-	// $("select[name='attr2'] option:contains("+j_size+")").prop('selected', true).change();
- //  $("input[name='QUANTITY']").val(j_qty);
+    //SHORTS DETAILS
+    var json_source = '<%=response.write(request.form("json_source"))%>';
+      $("#variables").append("Jersey Details: "+json_source+"<br>");
+    var data = JSON.parse(json_source);
+    var j_size = data[0].Size
+    var j_qty = data[0].Qty
+      $("#variables").append("Size: "+j_size+"<br>");
+      $("#variables").append("Qty: "+j_qty+"<br>");
+      if(j_size == "XXL") {
+        j_size = "XXL (Add $2.00)"
+      };
+    $("select[name='attr2'] option").removeAttr('selected');
+    $("select[name='attr2'] option").filter(function () { return $(this).html() === j_size; }).prop('selected', true).change();
+    $("input[name='QUANTITY']").val(j_qty);
 
-//   setTimeout(function() {
-// 	  $("[name='AddProduct']").click();
-// 	}, 2000);
+    setTimeout(function() {
+      $("[name='AddProduct']").click();
+    }, 2000);
+  }
+  else {
+    window.location.href = 'order.asp';
+  }
+});
 
-// });
+$(window).load(function() {
+  $('body').css('opacity', 1);
 
-// $(window).load(function() {
-// 	$('body').css('opacity', 1);
-// });
+});
 </script>
 
 </body>

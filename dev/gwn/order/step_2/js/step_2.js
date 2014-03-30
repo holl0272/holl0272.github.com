@@ -12,9 +12,12 @@ WebFontConfig = {
     s.parentNode.insertBefore(wf, s);
 })();
 
-if($(window).resize().outerWidth() < 508){
+if($(window).width() < 500) {
   $("#size-stylesheet").attr("href", "css/step_2_narrow.css");
   $('.mobile').show();
+  $(window).load(function(){
+    $('#mobile_table').show();
+  });
 }
 
 var device = navigator.userAgent.toLowerCase();
@@ -1366,9 +1369,16 @@ $(document).ready(function(){
   //FINALIZE BUTTON
   $('.finalize_btn').on('click', function(e) {
     var msg;
-    var blank = "There are no design options avalible for this order - please click <span class='mock_btn'>BACK TO YOUR ORDER OPTIONS</span> to continue"
-    var verify = "Please verify the jersey details you have entered are acurate - click <span class='mock_btn'>FINALIZE ORDER</span> to continue"
-    var missing = "Not all design options have been selected - please review the section above for missing information"
+    if($('.mobile').css('display') == 'none') {
+      var blank = "There are no design options avalible for this order - please click <span class='mock_btn'>BACK TO YOUR ORDER OPTIONS</span> to continue"
+      var verify = "Please verify the jersey details you have entered are acurate - click <span class='mock_btn'>FINALIZE ORDER</span> to continue"
+      var missing = "Not all design options have been selected - please review the section above for missing information"
+    }
+    else {
+      var blank = "There are no design options<br>avalible for this order<br>To continue, please click<br><span class='mock_btn'>BACK TO YOUR ORDER OPTIONS</span>"
+      var verify = "Please verify the jersey details<br>you have entered are acurate<br><br>Click <span class='mock_btn'>FINALIZE ORDER<</span> to continue"
+      var missing = "The jersey details are incomplete<br><br>Please review the section above<br>for missing information"
+    };
     var infoIcon = $(".info_btn[src*='info/info.png']").filter(":visible").length;
     var blankIcon = $(".info_btn").filter(":visible").length
     if(name != "Mesh Shorts") {
@@ -1836,6 +1846,3 @@ function captureValues() {
   //   };
   // };
 
-$(window).load(function() {
-  $('#wrapper').css('opacity', 1);
-});

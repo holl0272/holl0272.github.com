@@ -520,7 +520,7 @@ background-color:#11013b;
 <body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();" style="opacity: 0; overflow: hidden;">
 
 <div id="light" class="white_content">
-  <br>Please wait while we<br>gather your order details...
+  Please wait while we<br>gather your order details
   <div id="fadingBarsG">
     <div id="fadingBarsG_1" class="fadingBarsG">
     </div>

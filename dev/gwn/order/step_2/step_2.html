@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<div id="wrapper" style="opacity: 0">
+<div id="wrapper">
 
   <div id="header">
     <div id="gwn_logo">
@@ -227,6 +227,7 @@
                                  <div class="clear"></div>
               </div>
               <div class="logo_row">
+                <div class="line_break mobile"></div>
                 UPLOAD YOUR LOGO
                 <div class="dropdown">
                   <a href="" data-lightbox="custom_logo" title="" id="js-preview"><img src="images/info/info.png" class="info_btn" id="upload_info_icon"></a>
@@ -235,7 +236,7 @@
                   </div>
                   <div class="clear"></div>
                 </div><br>
-                                          <div class="line_break mobile"><br></div>
+                                          <div class="line_break mobile"></div>
                                  <div class="clear"></div>
               </div>
               <div id="team_lettering_row">
@@ -268,7 +269,7 @@
                                           <div class="line_break mobile"><br></div>
                                  <div class="clear"></div>
               </div>
-              <div style="float: right; margin: 10px 27px 0 0;">
+              <div id="reset_btn_container">
                 <a class="reset_btn">RESET</a>
               </div>
               <div class="clear"></div>
@@ -304,8 +305,11 @@
                     </div>
                   </div>
                   <div id="upload_step_two" class="upload_form_section">
-                    <span>
+                    <span class="desktop">
                       Please select a file from your system by clicking the button below.
+                    </span>
+                    <span class="mobile">
+                      Please select a image from your phone by clicking the button below.
                     </span>
                     <br><br>
                     <div id="upload_btns">
@@ -316,6 +320,7 @@
                       <div id="upload_btns_half_step">
                         <a id="upload_step_two_next" type="button" class="upload_btn btn_spacer" style="float:left; padding: 5px;">UPLOAD</a>
                         <a id="upload_step_two_view" type="button" class="upload_btn btn_spacer" style="float:left; padding: 5px;">VIEW FILE</a>
+                        <div class="mobile clear"><br></div>
                         <a id="upload_step_two_again" type="button" class="upload_btn" style="float:left; padding: 5px;">CHOSE ANOTHER FILE</a>
                         <a type="button" class="cancel_form_btn" style="float:right; margin-top:0px">CANCEL</a>
                       </div>
@@ -588,6 +593,6 @@
     </ul>
   </div>
 </div>
-  <script src="js/step_2.js"></script>
+    <script src="js/step_2.js"></script>
 </body>
 </html>

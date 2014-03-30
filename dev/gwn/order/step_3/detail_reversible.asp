@@ -49,7 +49,7 @@ Dim enAttrPos_LocationTeam
 Dim enAttrPos_TeamName
 Dim enAttrPos_LetteringColor_Side2
 
-	numEntries = 20
+	numEntries = 20 'request.form("jerseyRows")
 	txtProdId = Request.QueryString("product_id")
 	If getProductInfo(txtProdId, enProduct_Exists) Then
 		Call setRecentlyViewedProducts(txtProdId, Request.ServerVariables("SCRIPT_NAME") & "?" & Request.QueryString)
@@ -81,8 +81,8 @@ Dim paryAttributeDetails
 			enAttrPos_NameOnJersey = i:  i = i + 1
 			enAttrPos_Number = i:  i = i + 1
 			enAttrPos_LetteringStyleName = i:  i = i + 1
-			numEntries = 20
-		
+			numEntries = 20 'request.form("jerseyRows")
+
 			ReDim maryJerseyAttributes(i-1)
 			'Attribute Name, Position, Default Value
 			maryJerseyAttributes(enAttrPos_JerseyColor) =           Array("Jersey Color", -1, "", 0)
@@ -108,7 +108,7 @@ Dim paryAttributeDetails
 			maryJerseyAttributes(4) = Array("Team Name", -1, "", 2)
 			maryJerseyAttributes(5) = Array("Team Name Lettering Style", -1, "", 0)
 			maryJerseyAttributes(6) = Array("Lettering Font", -1, "", 0)
-			
+
 			maryJerseyAttributes(7) = Array("Size", -1, "", 1)
 			maryJerseyAttributes(8) = Array("Player Name", -1, "", 3)
 			maryJerseyAttributes(9) = Array("Player Number", -1, "", 3)
@@ -125,8 +125,8 @@ Dim paryAttributeDetails
 			enAttrPos_NameOnJersey = 8
 			enAttrPos_Number = 9
 			enAttrPos_LetteringStyleName = 10
-			numEntries = 20
-		
+			numEntries = 20 'request.form("jerseyRows")
+
 		Case Else
 	End Select
 
@@ -148,7 +148,7 @@ Dim paryAttributeDetails
 			End If
 		Next 'i
 	Next 'jerseyAttributeCounter
-	
+
 	If cblnDebugJersey Then
 		Response.Write "<fieldset style=""color:black;background:white""><legend>Jersey Attributes</legend>"
 		For jerseyAttributeCounter = 0 To UBound(maryJerseyAttributes)
@@ -162,7 +162,7 @@ Dim paryAttributeDetails
 		Response.Write "Lettering Style Name: " & enAttrPos_LetteringStyleName & "<br />"
 		Response.Write "</fieldset>"
 	End If
-	
+
 End Sub	'LoadJerseyAttributes
 
 '**********************************************************************************************************
@@ -183,24 +183,116 @@ End Sub	'LoadJerseyAttributes
 <meta name="Language" content="en">
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
-
+<link runat="server" rel="shortcut icon" type="image/png" href="favicon.ico">
 <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/incae.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfCheckErrors.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfEmailFriend.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/ssAttributeExtender.js" type="text/javascript"></script>
+<script language="javascript" src="SFLib/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
+
+WebFontConfig = {
+  google: { families: [ 'Lato:100,400,900:latin', 'Josefin+Sans:100,400,700,400italic,700italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+})();
 
 function validateForm(theForm)
 {
 	if (theForm.QUANTITY.type == "text"){theForm.QUANTITY.quantityBox=true;}
 	if (theForm.QUANTITY.type == "select-one"){theForm.selQUANTITY.optional=true;}
-
 	return sfCheck(theForm);
-}
+};
 
 <% If getProductInfo(txtProdId, enProduct_Exists) Then Response.Write "prodBasePrice =" & getProductInfo(txtProdId, enProduct_SellPrice) & ";" & vbcrlf %>
+
+(function ( $ ) {
+
+    $.fn.jsonTable = function( options ) {
+        var settings = $.extend({
+            head: [],
+            json:[]
+        }, options, { table: this } );
+
+        table = this;
+
+        table.data("settings",settings);
+
+        if (table.find("thead").length == 0) {
+            table.append($("<thead></thead>").append("<tr></tr>"));
+        }
+
+        if (table.find("thead").find("tr").length == 0) {
+            table.find("thead").append("<tr></tr>");
+        }
+
+        if (table.find("tbody").length == 0) {
+            table.append($("<tbody></tbody>"));
+        }
+
+        $.each(settings.head, function(i, header) {
+            table.find("thead").find("tr").append("<th>"+header+"</th>");
+        });
+
+        return table;
+    };
+
+    $.fn.jsonTableUpdate = function( options ){
+        var opt = $.extend({
+            source: undefined,
+            rowClass: undefined,
+            callback: undefined
+        }, options );
+        var settings = this.data("settings");
+
+        if(typeof opt.source == "string")
+        {
+            $.get(opt.source, function(data) {
+                $.fn.updateFromObj(data,settings,opt.rowClass, opt.callback);
+            });
+        }
+        else if(typeof opt.source == "object")
+        {
+            $.fn.updateFromObj(opt.source,settings, opt.rowClass, opt.callback);
+        }
+    }
+
+    $.fn.updateFromObj = function(obj,settings,rowClass, callback){
+        settings.table.find("tbody").empty();
+        $.each(obj, function(i,line) {
+            var tableRow = $("<tr></tr>").addClass(rowClass);
+
+            $.each(settings.json, function(j, identity) {
+                if(identity == '*') {
+                    tableRow.append($("<td>"+(i+1)+"</td>"));
+                }
+                else {
+                    tableRow.append($("<td>" + line[this] + "</td>"));
+                }
+            });
+            settings.table.append(tableRow);
+        });
+
+
+        if (typeof callback === "function") {
+            callback();
+        }
+
+        $(window).trigger('resize');
+    }
+
+}( jQuery ));
+
+
 
 </script>
 <% writeCurrencyConverterOpeningScript %>
@@ -208,51 +300,284 @@ function validateForm(theForm)
 <style>
 .colName
 {
-	display:none;
+  display:none;
 }
 
 .colNumber
 {
-	display:none;
+  display:none;
 }
 
 .colTeam
 {
-	display:none;
+  display:none;
 }
 
 .jerseyStyleOptions
 {
-	background-color: red;
-	border: dashed 1pt black;
-	padding: 1pt 1pt 1pt 1pt;
+  background-color: red;
+  border: dashed 1pt black;
+  padding: 1pt 1pt 1pt 1pt;
 }
 
 .jerseyOptions
 {
-	text-align: left;
-	border: solid 1pt black;
-	background-color: #FFFFFF;
+  text-align: left;
+  border: solid 1pt black;
+  background-color: #FFFFFF;
 }
 
 .jerseyTitle
 {
-	background-color : #A8A396;
-	font-weight: bold;
+  background-color : #A8A396;
+  font-weight: bold;
 }
 
 #jerseyColor
 {
 
 }
+.black_overlay{
+    opacity: 1 !important;
+    display: block;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index:1001;
+    background-image: url('images/splash_bg.jpg');
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+    overflow: hidden;
+}
+.white_content {
+    opacity: 1 !important;;
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    width: auto;
+    height: auto;
+    padding: 50px;
+    border: 16px solid #e8d606;
+    background-color: #11013b;
+    color: #cccdce;
+    z-index:1002;
+    overflow: auto;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 3.5em;
+    font-weight: 900;
+    font-family: 'Lato', sans-serif;
+}
 
+#fadingBarsG{
+margin: 25px auto;
+position:relative;
+width:240px;
+height:29px}
+
+.fadingBarsG{
+position:absolute;
+top:0;
+background-color:#e8d606;
+width:29px;
+height:29px;
+-moz-animation-name:bounce_fadingBarsG;
+-moz-animation-duration:1.7s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:linear;
+-moz-transform:scale(.3);
+-webkit-animation-name:bounce_fadingBarsG;
+-webkit-animation-duration:1.7s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-direction:linear;
+-webkit-transform:scale(.3);
+-ms-animation-name:bounce_fadingBarsG;
+-ms-animation-duration:1.7s;
+-ms-animation-iteration-count:infinite;
+-ms-animation-direction:linear;
+-ms-transform:scale(.3);
+-o-animation-name:bounce_fadingBarsG;
+-o-animation-duration:1.7s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:linear;
+-o-transform:scale(.3);
+animation-name:bounce_fadingBarsG;
+animation-duration:1.7s;
+animation-iteration-count:infinite;
+animation-direction:linear;
+transform:scale(.3);
+}
+
+#fadingBarsG_1{
+left:0;
+-moz-animation-delay:0.68s;
+-webkit-animation-delay:0.68s;
+-ms-animation-delay:0.68s;
+-o-animation-delay:0.68s;
+animation-delay:0.68s;
+}
+
+#fadingBarsG_2{
+left:30px;
+-moz-animation-delay:0.85s;
+-webkit-animation-delay:0.85s;
+-ms-animation-delay:0.85s;
+-o-animation-delay:0.85s;
+animation-delay:0.85s;
+}
+
+#fadingBarsG_3{
+left:60px;
+-moz-animation-delay:1.02s;
+-webkit-animation-delay:1.02s;
+-ms-animation-delay:1.02s;
+-o-animation-delay:1.02s;
+animation-delay:1.02s;
+}
+
+#fadingBarsG_4{
+left:90px;
+-moz-animation-delay:1.19s;
+-webkit-animation-delay:1.19s;
+-ms-animation-delay:1.19s;
+-o-animation-delay:1.19s;
+animation-delay:1.19s;
+}
+
+#fadingBarsG_5{
+left:120px;
+-moz-animation-delay:1.36s;
+-webkit-animation-delay:1.36s;
+-ms-animation-delay:1.36s;
+-o-animation-delay:1.36s;
+animation-delay:1.36s;
+}
+
+#fadingBarsG_6{
+left:150px;
+-moz-animation-delay:1.53s;
+-webkit-animation-delay:1.53s;
+-ms-animation-delay:1.53s;
+-o-animation-delay:1.53s;
+animation-delay:1.53s;
+}
+
+#fadingBarsG_7{
+left:180px;
+-moz-animation-delay:1.7s;
+-webkit-animation-delay:1.7s;
+-ms-animation-delay:1.7s;
+-o-animation-delay:1.7s;
+animation-delay:1.7s;
+}
+
+#fadingBarsG_8{
+left:210px;
+-moz-animation-delay:1.87s;
+-webkit-animation-delay:1.87s;
+-ms-animation-delay:1.87s;
+-o-animation-delay:1.87s;
+animation-delay:1.87s;
+}
+
+@-moz-keyframes bounce_fadingBarsG{
+0%{
+-moz-transform:scale(1);
+background-color:#e8d606;
+}
+
+100%{
+-moz-transform:scale(.3);
+background-color:#11013b;
+}
+
+}
+
+@-webkit-keyframes bounce_fadingBarsG{
+0%{
+-webkit-transform:scale(1);
+background-color:#e8d606;
+}
+
+100%{
+-webkit-transform:scale(.3);
+background-color:#11013b;
+}
+
+}
+
+@-ms-keyframes bounce_fadingBarsG{
+0%{
+-ms-transform:scale(1);
+background-color:#e8d606;
+}
+
+100%{
+-ms-transform:scale(.3);
+background-color:#11013b;
+}
+
+}
+
+@-o-keyframes bounce_fadingBarsG{
+0%{
+-o-transform:scale(1);
+background-color:#e8d606;
+}
+
+100%{
+-o-transform:scale(.3);
+background-color:#11013b;
+}
+
+}
+
+@keyframes bounce_fadingBarsG{
+0%{
+transform:scale(1);
+background-color:#e8d606;
+}
+
+100%{
+transform:scale(.3);
+background-color:#11013b;
+}
+
+}
 </style>
 </head>
-<body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();">
+<body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();" style="opacity: 0; overflow: hidden;">
+
+<center><div id="light" class="white_content">
+  Please wait while we<br>gather your order details
+  <div id="fadingBarsG">
+    <div id="fadingBarsG_1" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_2" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_3" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_4" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_5" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_6" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_7" class="fadingBarsG">
+    </div>
+    <div id="fadingBarsG_8" class="fadingBarsG">
+    </div>
+  </div>
+</div></center>
+<div id="fade" class="black_overlay"></div>
 
 <!--#include file="templateTop.asp"-->
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent">
+<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent" style="opacity: 0;">
   <tr>
     <td>
       <table width="100%" border="0" cellspacing="1" cellpadding="2" class="tdbackgrnd">
@@ -268,8 +593,11 @@ function validateForm(theForm)
 		<!--webbot bot="PurpleText" PREVIEW="Begin Optional Confirmation Message Display" -->
 		<% Call WriteThankYouMessage %>
 		<!--webbot bot="PurpleText" PREVIEW="End Optional Confirmation Message Display" -->
+
 		<form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);">
-		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">         
+
+		<!-- <form method="post" name="<%= MakeFormNameSafe(txtProdId) %>" action="<%= C_HomePath %>addproduct.asp" onSubmit="return validateForm(this);"> -->
+		<input TYPE="hidden" NAME="PRODUCT_ID" VALUE="<%= txtProdId %>">
 		<table border="0" width="100%" class="tdContent2" cellpadding="2" cellspacing="0">
 		  <tr>
 			<td align="center" valign="top"><%  '= detailImageOut %></td>
@@ -284,17 +612,17 @@ function validateForm(theForm)
 				<%= mstrProductDescription %><br />
 				<%
 				'<strong>%= C_Description %:</strong>&nbsp;
-				'<strong> C_Price :</strong>&nbsp; 
+				'<strong> C_Price :</strong>&nbsp;
 				'If iConverion = 1 Then
-				'	If getProductInfo(txtProdId, enProduct_SaleIsActive) Then 
+				'	If getProductInfo(txtProdId, enProduct_SaleIsActive) Then
 				'		Response.Write "<span class=""itemOnSalePrice""><script>document.write(""" & FormatCurrency(getProductInfo(txtProdId, enProduct_Price)) & " = ("" + OANDAconvert(" & trim(getProductInfo(txtProdId, enProduct_Price)) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script></span><br />"
 				'		Response.Write "<span class=""SalesPrice"">" & C_SPrice & ": <script>document.write(""" & FormatCurrency(getProductInfo(txtProdId, enProduct_SalePrice)) & " = ("" + OANDAconvert(" & trim(getProductInfo(txtProdId, enProduct_SalePrice)) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script></span><br />"
 				'		Response.Write "<span class=""YouSave"">" & C_YSave & ": <script>document.write(""" & FormatCurrency(CDbl(getProductInfo(txtProdId, enProduct_Price))-CDbl(getProductInfo(txtProdId, enProduct_SalePrice))) & " = ("" + OANDAconvert(" & trim(CDbl(getProductInfo(txtProdId, enProduct_Price))-CDbl(getProductInfo(txtProdId, enProduct_SalePrice))) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script></span><br />"
 				'	Else
 				'		Response.Write "<script>document.write(""" & FormatCurrency(getProductInfo(txtProdId, enProduct_Price)) & " = ("" + OANDAconvert(" & trim(getProductInfo(txtProdId, enProduct_Price)) & ", " & chr(34) & CurrencyISO & chr(34) & ") + "")"");</script>"
-				'	End If 
+				'	End If
 				'Else
-				'	If getProductInfo(txtProdId, enProduct_SaleIsActive) Then 
+				'	If getProductInfo(txtProdId, enProduct_SaleIsActive) Then
 				'		Response.Write "<span class=""itemOnSalePrice"">" & FormatCurrency(getProductInfo(txtProdId, enProduct_Price)) & "</span><br />"
 				'		Response.Write "<span class=""SalesPrice"">" & C_SPrice & ": " & FormatCurrency(getProductInfo(txtProdId, enProduct_SalePrice)) & "</span><br />"
 				'		Response.Write "<span class=""YouSave"">" & C_YSave & ": " & FormatCurrency(CDbl(getProductInfo(txtProdId, enProduct_Price))-CDbl(getProductInfo(txtProdId, enProduct_SalePrice))) & "</span><br />"
@@ -306,7 +634,7 @@ function validateForm(theForm)
 				If cblnSF5AE Then
 					SearchResults_GetProductInventory txtProdId
 					'SearchResults_ShowMTPricesLink txtProdId
-					
+
 					'Response.Write "<hr />"
 					If hasMTP(txtProdId) Then
 						'Response.Write "<table border=0 cellpadding=2 cellspacing=0>"
@@ -315,7 +643,7 @@ function validateForm(theForm)
 						'Response.Write WriteMTPrices(getProductInfo(txtProdId, enProduct_MTP), getProductInfo(txtProdId, enProduct_Price))
 						'Response.Write "</td></tr>"
 						'Response.Write "</table>"
-						
+
 						Response.Write "<div align=""center"">"
 						Response.Write WriteMTPricingTable(txtProdId, "Price Per Jersey (Unlettered)")
 						Response.Write "</div>"
@@ -331,7 +659,7 @@ function validateForm(theForm)
 <div align="left">
 <!--#include file="detail_ReversibleDisplay.asp"-->
 
-<form method="post" name="frmDetail" ID="frmDetail" action="<%= Session("DomainPath") %>addproduct.asp" onsubmit="return ValidateForm_Jersey(this);">      
+<form method="post" name="frmDetail" ID="frmDetail" action="<%= Session("DomainPath") %>addproduct.asp" onsubmit="return ValidateForm_Jersey(this);">
 <input type="hidden" name="ssMPOPage" ID="ssMPOPage" value="1">
 <input type="hidden" name="PRODUCT_ID" ID="PRODUCT_ID" value="<%= txtProdId %>">
 
@@ -348,6 +676,7 @@ function validateForm(theForm)
 	<th width="35%">Quantity of Jerseys for this Player</th>
 	</tr>
 	<%
+  If request.form("jerseyRows") > 20 Then numEntries = request.form("jerseyRows") End If
 	For EntryCounter = 1 To numEntries
 		If cblnDebugJersey Then Response.Write "<fieldset><legend>Hidden Entry " & EntryCounter & "</legend>"
 		For jerseyAttributeCounter = 0 To UBound(maryJerseyAttributes)
@@ -416,11 +745,14 @@ function validateForm(theForm)
 	<tr>
 	<td colspan="5" align="center"><input type="image" name="AddProduct" border="0" src="images/buttons/addtocart3.gif" alt="Add To Cart" /></td>
 	</tr>
-	
+
 </table>
+
+<div id="json_table"></div>
+
 </div><input type="hidden" name="QUANTITY.<%= cstrCustomLogo_ProductID %>" id="customLogo" value="" />
 </form>
-</div>		
+</div>
 
 <!--webbot bot="PurpleText" PREVIEW="Start Dynamic Product - Related Products" -->
 <%
@@ -452,7 +784,7 @@ function validateForm(theForm)
 		If isObject(cnn) Then .Connection = cnn
 		If Err.number > 0 Then Err.Clear
 		On Error Goto 0
-		
+
 		If .LoadDynamicProducts Then
 		%>
 		<br />
@@ -464,7 +796,7 @@ function validateForm(theForm)
 			<td><!--webbot bot="PurpleText" PREVIEW="Start Dynamic Product" --><% .DisplayDynamicProducts %><!--webbot bot="PurpleText" PREVIEW="End Dynamic Product" --></td>
 		</tr>
 		</table>
-		<%		
+		<%
 		End If	'LoadDynamicProducts
 	End With	'mclsDynamicProducts
 	End If	'Len(getProductInfo(txtProdId, enProduct_RelatedProducts)) > 0
@@ -492,8 +824,184 @@ function validateForm(theForm)
 </td>
 </tr>
 </table>
+
+<div id="variables" style="text-align: left;"></div>
 <!--webbot bot="PurpleText" preview="End Content Section" -->
 <!--#include file="templateBottom.asp"-->
+
+<script>
+$(document).ready(function() {
+
+  //SET THE PRODUCT COLOR
+  var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
+    $("#variables").append("Jersey Color: "+enAttrPos_JerseyColor+"<br>");
+  $("td.jerseyDisplay:contains('"+enAttrPos_JerseyColor+"')").next().find('input').prop("checked", true).click();
+  //SHOW AVLIBLE LETTING OPTIONS BASED ON REVERSE PRINTING
+  var optionXa = '<%=response.write(request.form("optionXa"))%>';
+  if(optionXa == "yes") {
+    $("#variables").append("Lettering Option_Xa: "+optionXa+"<br>");
+    $(".jerseyDisplay2:contains('a:')").parent().prev().find('input').hide();
+  }
+  else {
+    $("#variables").append("Lettering Options_Xa: hide<br>");
+    $(".jerseyDisplay2:contains('a:')").next().find('input').hide();
+  };
+
+  //SELECT THE LETTERING OPTION
+  var letteringOption = '<%=response.write(request.form("letteringOption"))%>';
+    $("#variables").append("Lettering Option: "+letteringOption+"<br>");
+  $(".jerseyDisplay2 [type='radio']").filter(':visible').eq(letteringOption).prop("checked", true).click();
+  //SIDE COLORS
+  var sideTwoColor = '<%=response.write(request.form("sideTwoColor"))%>';
+  var colorTwo = '<%=response.write(request.form("colorTwo"))%>';
+    $("#variables").append(sideTwoColor+" Side Color: "+colorTwo+"<br>");
+  var sideOneColor = '<%=response.write(request.form("sideOneColor"))%>';
+  var colorOne = '<%=response.write(request.form("colorOne"))%>';
+    $("#variables").append(sideOneColor+" Side Color: "+colorOne+"<br>");
+  //one side
+  if(colorTwo == ""){
+    var colorColumn = $("#jerseyLetteringColor table tr td span:contains('"+colorOne+"')").attr('id');
+    if(colorColumn == "spSide1Color") {
+      var sideOneIndex = $("#spSide1Color:contains('"+colorOne+"')").closest('td').index();
+      $("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideOneIndex)+")").each(function(){
+        if($(this).text() == sideOneColor){
+          $(this).next().find('input').prop("checked", true).click();
+        }
+      });
+    }
+    else {
+      var sideTwoIndex = $("#spSide2Color:contains('"+colorOne+"')").closest('td').index();
+      $("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideTwoIndex-2)+")").each(function(){
+        if($(this).text() == sideOneColor){
+          $(this).next().next().next().find('input').prop("checked", true).click();
+        }
+      });
+    };
+  }
+  //two sides
+  else {
+    var sideOneIndex = $("#spSide1Color:contains('"+colorOne+"')").closest('td').index();
+    $("span:contains('"+colorOne+"')").closest('td').closest("table").find("tr td:nth-child("+(sideOneIndex)+")").each(function(){
+      if($(this).text() == sideOneColor){
+        $(this).next().find('input').prop("checked", true).click();
+      }
+    });
+    var sideTwoIndex = $("#spSide2Color:contains('"+colorTwo+"')").closest('td').index();
+    $("span:contains('"+colorTwo+"')").closest('td').closest("table").find("tr td:nth-child("+(sideTwoIndex-2)+")").each(function(){
+      if($(this).text() == sideTwoColor){
+        $(this).next().next().next().find('input').prop("checked", true).click();
+      }
+    });
+  };
+  //FONT
+  var font = '<%=response.write(request.form("font"))%>';
+    $("#variables").append("Font: "+font+"<br>");
+  $('#jerseyLetteringFont table').find("tr td:nth-child(1)").each(function() {
+    if($(this).text() == font){
+      $(this).next().find('input').prop("checked", true).click();
+    }
+  });
+  //TEAM NAME
+  var teamName = '<%=response.write(request.form("teamName"))%>';
+    $("#variables").append("Team Name: "+teamName+"<br>");
+  $(".jerseyDisplay:contains('Team Name: ')").find('input').val(teamName).change();
+  //PLACEMENT
+  var placement = '<%=response.write(request.form("placement"))%>';
+    $("#variables").append("Placement: "+placement+"<br>");
+  if(placement != "") {
+    $(".jerseyDisplay:contains('Location')").find('select').find("option:contains('"+placement+"')").attr('selected', true).change();
+  }
+  else {
+    $(".jerseyDisplay:contains('Location')").find('select').find("option:contains('Not Applicable')").attr('selected', true).change();
+  };
+  //PLAYER NAME LETTERING STYLE
+  var playerLetteringStyle = '<%=response.write(request.form("playerLetteringStyle"))%>';
+    $("#variables").append("Player Name Lettering Style: "+playerLetteringStyle+"<br>");
+  $('#jerseyPlayerOptions table').find("tr td:nth-child(1)").each(function() {
+    if($(this).text() == playerLetteringStyle){
+      $(this).next().find('input').prop("checked", true).click();
+    }
+  });
+  //TEAM NAME DESIGN
+  var nameDesign = '<%=response.write(request.form("nameDesign"))%>';
+    $("#variables").append("Team Name Design: "+nameDesign+"<br>");
+  var nameStyle = '<%=response.write(request.form("nameDesignStyle"))%>';
+    $("#variables").append("Team Name Style: "+nameStyle+"<br>");
+  var graphic = '<%=response.write(request.form("graphic"))%>';
+    $("#variables").append("Graphic: "+graphic+"<br>");
+  var logo = '<%=response.write(request.form("logo"))%>';
+    $("#variables").append("Custom Logo: "+logo+"<br>");
+  //team name style
+  if(nameStyle != "") {
+    $("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr:gt(0):lt(4) td:nth-child(1)").each(function() {
+      if($(this).text() == nameStyle){
+        $(this).next().find('input').prop("checked", true).click();
+      }
+    });
+  };
+  //graphic
+  if(graphic != "") {
+    $("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr:gt(5) td:nth-child(1)").each(function() {
+      if($(this).text() == graphic){
+        $(this).next().find('input').prop("checked", true).click();
+      }
+    });
+  };
+  //custom logo
+  if(logo != "") {
+    $(".jerseyDisplay:contains('Team Name: ')").find('input').val(logo).change();
+    $("td.jerseyTitle:contains('"+nameDesign+"')").closest("table").find("tr td:nth-child(1)").each(function() {
+      if($(this).text().indexOf(logo) != -1){
+        $(this).next().find('input').prop("checked", true).click();
+      }
+    });
+  };
+  //JERSEY DETAILS
+  var rows = '<%=response.write(request.form("jerseyRows"))%>';
+    $("#variables").append("Number of Rows: "+rows+"<br>");
+  var json_source = '<%=response.write(request.form("json_source"))%>';
+    $("#variables").append("<br>JSON: "+json_source+"<br>");
+  var data = JSON.parse(json_source);
+  var options = { source: data, };
+  var detailsTable = $("<br><table id='row_details'></table>");
+    detailsTable.jsonTable({
+      head : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty'],
+      json : ['#', 'Size', 'Price', 'Num', 'Name', 'Qty']
+    });
+  detailsTable.jsonTableUpdate(options);
+
+  $("#variables").append(detailsTable);
+  $('#row_details tr:eq(0)').remove(); //removes table header
+
+  //run through each row
+  function populateRow(counter, j_size, j_number, j_name, j_qty) {
+    $("#jerseyOrder tr:eq("+counter+")").find("select option").filter(function () { return $(this).html() == j_size; }).prop('selected', true)
+    $("#jerseyOrder tr:eq("+counter+")").find('input[title*="Player Number"]').val(j_number)
+    $("#jerseyOrder tr:eq("+counter+")").find('input[title*="Player Name"]').val(j_name);
+    $("#jerseyOrder tr:eq("+counter+")").find('input[title*="Quantity"]').val(j_qty);
+  };
+
+  var counter = 2 //starts the row count after the table headers
+  $('#row_details').find('tr').each(function() {
+    var j_size = $(this).find('td:eq(1)').text();
+    var j_number = $(this).find('td:eq(3)').text();
+    var j_name = $(this).find('td:eq(4)').text();
+    var j_qty = $(this).find('td:eq(5)').text();
+    populateRow(counter, j_size, j_number, j_name, j_qty);
+    counter ++
+  });
+});
+
+$(window).load(function() {
+  $('body').css('opacity', 1);
+
+    setTimeout(function() {
+      $("[name='AddProduct']").click();
+    }, 2000);
+
+});
+</script>
+
 </body>
 </html>
 <%

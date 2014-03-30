@@ -18,13 +18,16 @@
   text-align: center;
   width: 315px;
   height: auto;
-  margin: 3% auto 10%;
+  margin: 3% auto 15%;
 }
 #detail_instructions {
   display: none;
 }
 .mobile {
   display: block;
+}
+.desktop {
+  display: none;
 }
 .desktop_row {
   opacity: 0;
@@ -150,6 +153,18 @@ line-height: 1.5;
 }
 .next_btn:hover {
   margin-top: -40px;
+}
+#upload_info_icon {
+  margin-top: -6px;
+}
+.file-upload-input {
+  width: auto;
+}
+#cancel_form_btn_half_step {
+  margin-bottom: -20px;
+}
+#progress {
+  width: auto;
 }
 ul#vertical-list {
   list-style-position:inside;

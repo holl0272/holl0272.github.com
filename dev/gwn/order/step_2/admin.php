@@ -31,7 +31,7 @@
   }
   #container {
     padding: 20px 0;
-    background-color: white;
+    margin: -20px auto 0;
   }
   font {
     font-weight: bold;
@@ -195,7 +195,7 @@
   </div>
 
   <div id="container">
-    <table id="myTable" class="tablesorter">
+    <table id="myTable" class="tablesorter" style="padding: 10px 25px 25px;">
       <thead>
         <tr>
           <th class="sorter-false"></th>

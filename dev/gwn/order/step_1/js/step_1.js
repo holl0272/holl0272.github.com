@@ -12,7 +12,7 @@ WebFontConfig = {
     s.parentNode.insertBefore(wf, s);
 })();
 
-if(window.innerWidth < 508){
+if($(window).width() < 500){
   $("#size-stylesheet").attr("href", "css/step_1_narrow.css");
   $('.mobile').show();
 }
@@ -488,8 +488,8 @@ function buildRows(qty) {
   var product_size_mobile = "<td style='padding-right: 10px;' class='size_label'>Size</td><td style='text-align: left; min-width: 80px;' class='jersey_size_mobile'>"+sizeSelect+"</td>";
   var jersey_price = "<td class='jersey_price'></td>";
   var jersey_price_mobile = "<td style='padding-right: 25px;' class='jersey_price'></td>";
-    var numberInput = "<input type='text' class='number_input' style='width: 25px;' maxlength='2'>";
-    var newnumberInput = "<input type='text' class='newnumber_input' style='width: 25px;' maxlength='2'>";
+    var numberInput = "<input type='tel' class='number_input' style='width: 25px;' maxlength='2'>";
+    var newnumberInput = "<input type='tel' class='newnumber_input' style='width: 25px;' maxlength='2'>";
   var product_number = "<td class='numbers_input number_label'>Number</td><td class='numbers_input number_reset'>"+numberInput+"</td>";
   var product_number_mobile = "<td colspan='2' class='numbers_input number_label'>Number</td><td colspan='2' style='padding-left: 10px;' class='numbers_input number_reset'>"+numberInput+"</td>";
     var nameInput = "<input type='text' class='name_input'>";
@@ -497,7 +497,7 @@ function buildRows(qty) {
   var name_on_jersey = "<td class='names_input name_label'>Name on Jersey</td><td class='names_input name_reset'>"+nameInput+"</td>";
   var name_on_jersey_mobile = "<td colspan='2' class='names_input name_label'>Name on Jersey</td><td colspan='2' style='padding-left: 10px;' class='names_input name_reset'>"+nameInput+"</td>";
   var product_qty = "<td class='qty_label'>Quantity</td><td><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
-  var product_qty_mobile = "<td style='min-width:139px'>QTY: <input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
+  var product_qty_mobile = "<td style='padding-right: 5px;'>QTY:</td><td style='min-width: 60px;''><input type='hidden' class='row_qty' value='1'><font style='padding-right: 10px;'></font>";
   var qty_btns = "<span class='btns'><span class='plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='less_one' style='font-weight: bold; padding-left:5px; cursor: pointer;'> - </span></td><span>";
   var qty_btns_mobile = "<span class='btns'><span class='mobile_plus_one' style='font-weight: bold; padding: 0 5px; cursor: pointer;'> + </span><span class='mobile_less_one' style='font-weight: bold; padding-left:5px; cursor: pointer;'> - </span></td><span>";
   var raw_qty = "<td class='hide'></td>";
@@ -1213,7 +1213,7 @@ function handle(table){
     var size = $(this).find('td:eq(1)').text();
     var price = $(this).find('td:eq(2)').text();
     var number = $(this).find('td:eq(3)').text();
-    var numberInput = "<input type='text' class='number_input return_number' style='width: 25px;' maxlength='2'>";
+    var numberInput = "<input type='tel' class='number_input return_number' style='width: 25px;' maxlength='2'>";
     var nameInput = "<input type='text' class='name_input return_name' style='width: 150px;'>";
     var name = $(this).find('td:eq(4)').text();
     var qty = $(this).find('td:eq(5)').text();
