@@ -135,6 +135,10 @@ Dim mstrErrorMessage
       });
     };
     $("a[title='Return to home page']").attr('href', 'index.html');
+
+    $(window).load(function() {
+      $('#tdContent').css('opacity', 1);
+    });
   });
 
 <!--
@@ -198,6 +202,7 @@ body {
 }
 #tdContent {
   margin: 0 auto 5%;
+  opacity: 0;
 }
 #tblCategoryMenu, .tdTopBanner, .tdLeftNav {
   display: none;
@@ -233,7 +238,7 @@ input {
 
 <body <%= mstrBodyStyle %>>
 
-    <div id="header">
+  <div id="header">
     <div id="gwn_logo">
       <a href="index.html" title="Home"><image src="images/gwn_logo.png" alt="GameWearNow Logo" style="margin-left: -25px;"></a>
     </div>

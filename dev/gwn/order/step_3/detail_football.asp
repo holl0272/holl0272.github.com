@@ -513,6 +513,7 @@ background-color:#11013b;
 </style>
 </head>
 <body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();" style="opacity: 0; overflow: hidden;">
+<!-- <body <%= mstrBodyStyle %> onload="theCustomImage.src = getCustomImagePath();"> -->
   <div id="light" class="white_content">
     Please wait while we<br>gather your order details
     <div id="fadingBarsG">
@@ -784,7 +785,6 @@ background-color:#11013b;
 
 <script>
 $(document).ready(function() {
-
   //SET THE PRODUCT COLOR
   var enAttrPos_JerseyColor = '<%=response.write(request.form("enAttrPos_JerseyColor"))%>';
   if(enAttrPos_JerseyColor != "") {
@@ -793,7 +793,6 @@ $(document).ready(function() {
   };
   //SELECT THE LETTERING OPTION
   var letteringOption = '<%=response.write(request.form("letteringOption"))%>';
-
   if(letteringOption != "") {
     $("#variables").append("Lettering Option: "+letteringOption+"<br>");
     $("#jerseyLetteringOptions [type='radio']").eq(letteringOption).prop("checked", true).click();
@@ -900,16 +899,16 @@ $(document).ready(function() {
     populateRow(counter, j_size, j_number, j_name, j_qty);
     counter ++
   });
+
+  $(window).load(function() {
+    $('body').css('opacity', 1);
+
+   setTimeout(function() {
+     $("[name='AddProduct']").click();
+   }, 2000);
+  });
 });
 
-$(window).load(function() {
-	$('body').css('opacity', 1);
-
-	setTimeout(function() {
-	  $("[name='AddProduct']").click();
-	}, 2000);
-
-});
 </script>
 
 </body>

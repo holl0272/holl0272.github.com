@@ -1,11 +1,11 @@
 <%@ Language=VBScript %>
-<%	Option Explicit 
+<%	Option Explicit
 	Response.Buffer = True
 	Server.ScriptTimeout = 300
 
 '********************************************************************************
 '*
-'*   addproduct.asp - 
+'*   addproduct.asp -
 '*   Release Version:	1.00.001
 '*   Release Date:		January 10, 2003
 '*   Revision Date:		February 5, 2003
@@ -17,19 +17,19 @@
 '*
 '*   This file's origins are addproduct.asp
 '*   from LaGarde, Incorporated. It has been heavily modified by Sandshot Software
-'*   with permission from LaGarde, Incorporated who has NOT released any of the 
+'*   with permission from LaGarde, Incorporated who has NOT released any of the
 '*   original copyright protections. As such, this is a derived work covered by
 '*   the copyright provisions of both companies.
 '*
 '*   LaGarde, Incorporated Copyright Statement                                                                           *
 '*   The contents of this file is protected under the United States copyright
-'*   laws and is confidential and proprietary to LaGarde, Incorporated.  Its 
-'*   use ordisclosure in whole or in part without the expressed written 
+'*   laws and is confidential and proprietary to LaGarde, Incorporated.  Its
+'*   use ordisclosure in whole or in part without the expressed written
 '*   permission of LaGarde, Incorporated is expressly prohibited.
 '*   (c) Copyright 2000, 2001 by LaGarde, Incorporated.  All rights reserved.
-'*   
+'*
 '*   Sandshot Software Copyright Statement
-'*   The contents of this file are protected by United States copyright laws 
+'*   The contents of this file are protected by United States copyright laws
 '*   as an unpublished work. No part of this file may be used or disclosed
 '*   without the express written permission of Sandshot Software.
 '*   (c) Copyright 2004 Sandshot Software.  All rights reserved.
@@ -37,7 +37,7 @@
 %>
 <!--#include file="incCoreFiles.asp"-->
 <script language="javascript" src="SFLib/sfCookieCheck.js"></script>
-<%   
+<%
 
 '**********************************************************
 '	Developer notes
@@ -92,7 +92,7 @@ End If
 
 mblnRedirectToLogin = False
 
-' Collect variables passed from the Form 
+' Collect variables passed from the Form
 
 mblnSaveCart = CBool(Len(Trim(Request.Form("SaveCart.x"))) > 0)
 
@@ -146,10 +146,10 @@ Dim sTmpAttrName
 
 	Call DebugRecordSplitTime("Beginning add products to cart")
 	pblnOldPage = CBool(Len(Trim(Request.Form("Order_Flag"))) > 0)
-	pstrReturningFromLogin = Request.QueryString("logedin") 
+	pstrReturningFromLogin = Request.QueryString("logedin")
 	sReferer = visitor_REFERER & "," & vistor_HTTP_REFERER & "," & visitor_REMOTE_ADDR
 	pblnSuccess = False
-	
+
 	plngNumProductsToAdd = numberProductsToAddToCart()
 	For i = 0 To plngNumProductsToAdd
 		Call DebugRecordSplitTime("Getting product " & i & " (" & sProdID & ") information to add to cart . . .")
@@ -161,7 +161,7 @@ Dim sTmpAttrName
 
 			If Not IsNumeric(iQuantity) Then iQuantity = 1
 			maryCartAdditions(i)(enCartItem_QtyToAdd) = iQuantity
-			
+
 			'Now determine the Gift Wrap quantities
 			If CBool(Request.Form("chkGiftWrap." & sProdID) = "1") Then
 				plngGiftWrapQuantity = iQuantity
@@ -171,7 +171,7 @@ Dim sTmpAttrName
 				plngGiftWrapQuantity = 0
 			End If
 			maryCartAdditions(i)(enCartItem_QtyToGW) = iQuantity
-			
+
 			Call setCookie_sfSearch
 			Call setCookie_sfAddProduct
 
@@ -185,8 +185,8 @@ Dim sTmpAttrName
   				End If
 
 				If Len(Trim(aProdValues(0))) > 0 Then
-				
-					If getProductInfo(sProdID, enProduct_Exists) Then 
+
+					If getProductInfo(sProdID, enProduct_Exists) Then
 						aProdValues(1) = getProductInfo(sProdID, enProduct_Message)
 						aProdValues(2) = getProductInfo(sProdID, enProduct_AttrNum)
 						aProdValues(3) = getProductInfo(sProdID, enProduct_ShipIsActive)
@@ -205,7 +205,7 @@ Dim sTmpAttrName
 								Call getProductInventoryLevel(CleanAttributeArray(maryCartAdditions(i)(enCartItem_AttributeArray)))
 								Call DebugRecordSplitTime("Product " & i & " (" & sProdID & ") inventory level retrieved")
 							End If
-							
+
 							maryCartAdditions(i)(enCartItem_prodID) = sProdID
 							maryCartAdditions(i)(enCartItem_prodName) = aProdValues(0)
 							If adminGlobalConfirmationMessageIsactive Then
@@ -214,21 +214,21 @@ Dim sTmpAttrName
 								maryCartAdditions(i)(enCartItem_Upsell) = getProductInfo(sProdID, enProduct_Message)
 							End If
 							aProdAttr = maryCartAdditions(i)(enCartItem_AttributeArray)
-							
+
 							maryCartAdditions(i)(enCartItem_QtyInStock) = getProductInfo(sProdID, enProduct_invenInStock)
 							maryCartAdditions(i)(enCartItem_invenbBackOrder) = getProductInfo(sProdID, enProduct_invenbBackOrder)
 							maryCartAdditions(i)(enCartItem_invenbTracked) = getProductInfo(sProdID, enProduct_invenbTracked)
 
 							'-------------------------------------------------------------------------------
-							' This shows whether there is a previous order or a new order. 
+							' This shows whether there is a previous order or a new order.
 							' New Products are treated like new orders but can be gathered together through
-							' the session variable SessionCartID     
+							' the session variable SessionCartID
 							'-------------------------------------------------------------------------------
 							Call DebugRecordSplitTime("Checking for existing temp order . . .")
 							iTmpOrderDetailId = getOrderID("odrdttmp", "odrattrtmp", sProdID, aProdAttr, iProdAttrNum, plngCurrentQty)
 							Call DebugRecordSplitTime("Temp order retrieved")
 							maryCartAdditions(i)(enCartItem_QtyInCart) = plngCurrentQty
-							
+
 							If vDebug = 1 Then
 								If Len(CStr(iTmpOrderDetailID)) > 0  Then
 									If iTmpOrderDetailID = -1 Then
@@ -239,7 +239,7 @@ Dim sTmpAttrName
 								Else
 									Response.Write "<h4><font color=red>Error setting temporary cart detail</font></h4>"
 								End If
-								
+
 								Response.Write "<fieldset><legend>Product " & maryCartAdditions(i)(enCartItem_prodID) & "</legend>"
 								Response.Write "enCartItem_prodName: " & maryCartAdditions(i)(enCartItem_prodName) & "<br />"
 								Response.Write "enCartItem_QtyToAdd: " & maryCartAdditions(i)(enCartItem_QtyToAdd) & "<br />"
@@ -250,39 +250,39 @@ Dim sTmpAttrName
 								Response.Write "enCartItem_invenbBackOrder: " & maryCartAdditions(i)(enCartItem_invenbBackOrder) & "<br />"
 								Response.Write "enCartItem_Upsell: " & maryCartAdditions(i)(enCartItem_Upsell) & "<br />"
 								Response.Write "enCartItem_AddType: " & maryCartAdditions(i)(enCartItem_AddType) & "<br />"
-								
+
 								Response.Write "</fieldset>"
 							End If	'vDebug = 1
-						
+
 							If Len(iTmpOrderDetailID) > 0  Then
 
 								If mblnSaveCart Then
 									If Not isLoggedIn Then
 										' If no cookie with custID, direct to Login
-										' Write to saved with custID of 0			  
+										' Write to saved with custID of 0
 										Call DebugRecordSplitTime("Checking for existing temp order . . .")
 										Call DebugRecordSplitTime("Temp order retrieved")
 										Call getSavedTable(aProdAttr, sProdID, iQuantity, 0, sReferer)
 										mblnRedirectToLogin = True
-									Else		
+									Else
 										' Check for existing SessionCartId, -1 is returned if not found
 										iSvdCartID = getOrderID("odrdtsvd", "odrattrsvd", sProdID, aProdAttr, iProdAttrNum, plngCurrentQty)
 										If vDebug = 1 Then Response.Write "<p>Saved Cart Found or Not Found -- Record " & iSvdCartID
-							
+
 										If Len(CStr(iSvdCartID)) > 0 Then
-											If iSvdCartID < 0 Then						
-												If vDebug = 1 Then Response.Write "<h2><font face=verdana color=#334455>Prior Record Not Found</h2></font>"						
+											If iSvdCartID < 0 Then
+												If vDebug = 1 Then Response.Write "<h2><font face=verdana color=#334455>Prior Record Not Found</h2></font>"
 												Call getSavedTable(aProdAttr,sProdID,iQuantity,custID_cookie,sReferer)
-											Else				
-												If vDebug = 1 Then Response.Write "<h2><font face=verdana color=#334455>Adding to Existing Saved Cart</h2> <br />SvdCartID = " & iSvdCartID  
+											Else
+												If vDebug = 1 Then Response.Write "<h2><font face=verdana color=#334455>Adding to Existing Saved Cart</h2> <br />SvdCartID = " & iSvdCartID
 												Call setUpdateQuantity("odrdtsvd",iQuantity,iSvdCartID)
-											End If		
+											End If
 										Else
 											Response.Write "<p>Number of attributes not equal to the product specs or database writing error"
 										End If	'Len(CStr(iSvdCartID)) > 0
-									End If	' End No Cookie If	
+									End If	' End No Cookie If
 								Else
-								
+
 									'Process Inventory
 									If maryCartAdditions(i)(enCartItem_invenbTracked) = 1 Then
 									If CBool(maryCartAdditions(i)(enCartItem_QtyToAdd) + maryCartAdditions(i)(enCartItem_QtyInCart) > maryCartAdditions(i)(enCartItem_QtyInStock)) AND CBool(maryCartAdditions(i)(enCartItem_invenbTracked) = 1) Then
@@ -300,26 +300,26 @@ Dim sTmpAttrName
 									End If
 									End If
 									maryCartAdditions(i)(enCartItem_QtyAdded) = iQuantity
-								
+
   									If Len(getProductInfo(sProdID, enProduct_NamePlural)) > 0 And maryCartAdditions(i)(enCartItem_QtyAdded) > 1 Then
   										maryCartAdditions(i)(enCartItem_prodName) = getProductInfo(sProdID, enProduct_NamePlural)
   									Else
   										maryCartAdditions(i)(enCartItem_prodName) = getProductInfo(sProdID, enProduct_Name)
   									End If
 
-									If (iTmpOrderDetailID < 1) Then 
+									If (iTmpOrderDetailID < 1) Then
 										If vDebug = 1 Then Response.Write "<h2><font face=verdana color=#334455>New Order Item</h2>"
 										Call DebugRecordSplitTime("getTmpTable . . .")
-										iTmpOrderDetailID = getTmpTable(aProdAttr, sProdID, iQuantity, sReferer, aProdValues(3))		 
+										iTmpOrderDetailID = getTmpTable(aProdAttr, sProdID, iQuantity, sReferer, aProdValues(3))
 										Call DebugRecordSplitTime("getTmpTable complete")
 									ElseIf (iTmpOrderDetailID > 0 AND iTmpOrderDetailID <> "") Then
 										If vDebug = 1 Then Response.Write "<h2><font face=""verdana"" color=""#334455"">Adding to Existing Cart: Found OrderID = " & iTmpOrderDetailId & "</font></h2>"
 										Call DebugRecordSplitTime("setUpdateQuantity . . .")
-										Call setUpdateQuantity("odrdttmp", iQuantity, iTmpOrderDetailId)				
+										Call setUpdateQuantity("odrdttmp", iQuantity, iTmpOrderDetailId)
 										Call DebugRecordSplitTime("setUpdateQuantity complete")
 									End If	' End Add Product If
 									maryCartAdditions(i)(enCartItem_tmpOrderDetailId) = iTmpOrderDetailId
-									
+
 									'Now for the gift wrap
 									If cblnSF5AE Then
 										Call DebugRecordSplitTime("AddProduct_WriteTmpOrderDetailsAE . . .")
@@ -328,8 +328,8 @@ Dim sTmpAttrName
 									End If
 								End If	' mblnSaveCart
 							Else
-								Response.Write "<br />Unknown ActionType Occurred or Database writing error"	
-								Response.End	
+								Response.Write "<br />Unknown ActionType Occurred or Database writing error"
+								Response.End
 							End If	'Len(iTmpOrderDetailID) > 0
 						End If	'getProductInfo(sProdID, enProduct_IsActive) = 0
 					Else
@@ -350,9 +350,9 @@ Dim sTmpAttrName
 
 		End	If 'Len(iQuantity) > 0
 	Next	'i
-	
+
 	addProductsToCart = pblnSuccess
-	
+
 	If Not pblnSuccess Then maryCartAdditions = "<font class=""Content_Large""><b>No quantity was selected!</b></font><p>Please enter a quantity for at least one product.</p>"
 	Call setCartAdditionResultsToSession
 
@@ -377,10 +377,11 @@ Dim pstrURL
 	End If
 	'added for ISAPI Rewrite
 	pstrURL = Replace(pstrURL, "%3D", "=")
-	
-	redirectURL = pstrURL
+
+	'redirectURL = pstrURL
+	redirectURL = "order.asp"
 
 End Function	'redirectURL
 
 '**********************************************************
-%>  
+%>

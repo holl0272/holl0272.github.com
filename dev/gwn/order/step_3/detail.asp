@@ -586,7 +586,7 @@ $(document).ready(function() {
   if(enAttrPos_JerseyColor != "") {
      $("#variables").append("Jersey Color: "+enAttrPos_JerseyColor+"<br>");
      $("select[name='attr1'] option").removeAttr('selected');
-     $("select[name='attr1'] option:contains('"+enAttrPos_JerseyColor+"')").attr('selected', true).change()
+     $("select[name='attr1'] option:contains('"+enAttrPos_JerseyColor+"')").attr('selected', true);
 
     //SHORTS DETAILS
     var json_source = '<%=response.write(request.form("json_source"))%>';
@@ -600,7 +600,7 @@ $(document).ready(function() {
         j_size = "XXL (Add $2.00)"
       };
     $("select[name='attr2'] option").removeAttr('selected');
-    $("select[name='attr2'] option").filter(function () { return $(this).html() === j_size; }).prop('selected', true).change();
+    $("select[name='attr2'] option").filter(function () { return $(this).html() === j_size; }).prop('selected', true);
     $("input[name='QUANTITY']").val(j_qty);
 
     setTimeout(function() {

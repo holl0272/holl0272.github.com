@@ -15,19 +15,19 @@
 '*
 '*   This file's origins is verify.asp APPVERSION: 50.4014.0.9
 '*   from LaGarde, Incorporated. It has been heavily modified by Sandshot Software
-'*   with permission from LaGarde, Incorporated who has NOT released any of the 
+'*   with permission from LaGarde, Incorporated who has NOT released any of the
 '*   original copyright protections. As such, this is a derived work covered by
 '*   the copyright provisions of both companies.
 '*
 '*   LaGarde, Incorporated Copyright Statement
 '*   The contents of this file is protected under the United States copyright
-'*   laws and is confidential and proprietary to LaGarde, Incorporated.  Its 
-'*   use ordisclosure in whole or in part without the expressed written 
+'*   laws and is confidential and proprietary to LaGarde, Incorporated.  Its
+'*   use ordisclosure in whole or in part without the expressed written
 '*   permission of LaGarde, Incorporated is expressly prohibited.
 '*   (c) Copyright 2000, 2001 by LaGarde, Incorporated.  All rights reserved.
-'*   
+'*
 '*   Sandshot Software Copyright Statement
-'*   The contents of this file are protected by United States copyright laws 
+'*   The contents of this file are protected by United States copyright laws
 '*   as an unpublished work. No part of this file may be used or disclosed
 '*   without the express written permission of Sandshot Software.
 '*   (c) Copyright 2004 Sandshot Software.  All rights reserved.
@@ -42,8 +42,8 @@
 <!--#include file="SFLib/incVerify.asp"-->
 <!--#include file="SFLib/incCC.asp"-->
 <!--#include file="SFLib/processor_PayPalWebPayments.asp"-->
-<!--#include file="SFLib/ssclsCustomer.asp"--> 
-<!--#include file="SFLib/ssclsCustomerShipAddress.asp"--> 
+<!--#include file="SFLib/ssclsCustomer.asp"-->
+<!--#include file="SFLib/ssclsCustomerShipAddress.asp"-->
 <!--#include file="SFLib/ssincCustomFormValues.asp"-->
 <%
 
@@ -86,7 +86,7 @@ Dim sSubmitActionAE, sSubmitAction, Path
 		End Select
 
 	End Function	'CheckNoStateForCountry
-	
+
 	'**********************************************************
 
 	Sub collectCustomerBillingDetail()
@@ -127,7 +127,7 @@ Dim sSubmitActionAE, sSubmitAction, Path
 		End If
 
 	End Sub	'collectCustomerBillingDetail
-	
+
 	'**********************************************************
 
 	Sub collectCustomerShippingDetail()
@@ -149,13 +149,13 @@ Dim sSubmitActionAE, sSubmitAction, Path
 		sShipCustPhone				= Trim(Request.Form("ShipPhone"))
 		sShipCustFax				= Trim(Request.Form("ShipFax"))
 		sShipCustEmail				= Trim(Request.Form("ShipEmail"))
-				
+
 		pblnMinimumRequiredShippingFields = CBool(Len(sShipCustFirstName)>0 And _
-												  Len(sShipCustLastName)>0 And _  
-												  (Len(sShipCustAddress1)>0 Or Len(sShipCustAddress2)>0)And _  
-												  Len(sShipCustCity)>0 And _  
-												  Len(sShipCustState)>0 And _  
-												  Len(sShipCustZip)>0 And _  
+												  Len(sShipCustLastName)>0 And _
+												  (Len(sShipCustAddress1)>0 Or Len(sShipCustAddress2)>0)And _
+												  Len(sShipCustCity)>0 And _
+												  Len(sShipCustState)>0 And _
+												  Len(sShipCustZip)>0 And _
 												  Len(sShipCustCountry)>0)
 
 		'this check is to suppress the error which results from the check above
@@ -193,13 +193,13 @@ Dim sSubmitActionAE, sSubmitAction, Path
 				sShipCustFax = .CustFax
 				sShipCustEmail = .CustEmail
 			End	With	'mclsCustomer
-			
+
 			sShipCustStateName			= sCustStateName
 			sShipCustCountryName		= Trim(sCustCountryName)
 		End If
 
 	End Sub	'collectCustomerShippingDetail
-	
+
 	'**********************************************************
 
 	Sub cleanupPageObjects
@@ -210,9 +210,9 @@ Dim sSubmitActionAE, sSubmitAction, Path
 		Set mclsCustomerShipAddress = Nothing
 		Set mclsCartTotal = Nothing
 		Call cleanup_dbconnopen
-		
+
 		If Err.number <> 0 Then Err.Clear
-		
+
 	End Sub	'cleanupPageObjects
 
 '**********************************************************
@@ -230,10 +230,10 @@ Dim sSubmitActionAE, sSubmitAction, Path
 If Request.Form("pageSource") = "process_order" Then
 	Call PayPalExpressCheckout_verify	'added for Sandshot Software's PayPal WebPayments Pro Integration
 	Call collectCustomerBillingDetail
-					
+
 	Set mclsCustomer = New clsCustomer
 	Set mclsCustomer.Connection = cnn
-	' Check if custID exists 
+	' Check if custID exists
 
 	If isValidRecordID(visitorLoggedInCustomerID) Then
 		If mclsCustomer.LoadCustomer(visitorLoggedInCustomerID) Then
@@ -271,7 +271,7 @@ If Request.Form("pageSource") = "process_order" Then
 		.custEmail = sCustEmail
 		.custIsSubscribed = sCustSubscribed
 		.custLastAccess = Now()
-		
+
 		If iCustID = 0 Then
 			If Len(sPassword) = 0 Then sPassword = generatePassword()
 			.custPasswd = sPassword
@@ -287,7 +287,7 @@ If Request.Form("pageSource") = "process_order" Then
 			.custTimesAccessed = .custTimesAccessed + 1
 			If Not .Update Then Call addValidationError(.Message)
 		End If	'iCustID = 0
-		
+
 		sCustStateName = .stateName
 		sCustCountryName = .countryName
 
@@ -296,14 +296,14 @@ If Request.Form("pageSource") = "process_order" Then
 		Call cleanupPageObjects
 		Call returnValidationErrorToSender("process_order.asp")
 	End If
-	
+
 	Call collectCustomerShippingDetail
 	Set mclsCustomerShipAddress = New clsCustomerShipAddress
 	With mclsCustomerShipAddress
 		.Connection = cnn
-		
+
 		If CStr(VisitorShipAddressID) <> "0" And Len(CStr(VisitorShipAddressID)) > 0 Then Call .LoadAddress(VisitorShipAddressID)
-		
+
 		.CustID = mclsCustomer.custID
 		.FirstName = sShipCustFirstName
 		.MiddleInitial = sShipCustMiddleInitial
@@ -333,7 +333,7 @@ If Request.Form("pageSource") = "process_order" Then
 		Call cleanupPageObjects
 		Call returnValidationErrorToSender("process_order.asp")
 	End If
-	
+
 	'Collect the form variables
 	sPaymentMethod = Request.Form("paymentmethod")
 	iShipMethod = Request.Form("Shipping")
@@ -353,9 +353,9 @@ Else
 			sCustLastName		= .custLastName
 			sCustCompany		= .custCompany
 			sCustAddress1		= .custAddr1
-			sCustAddress2		= .custAddr2	   
+			sCustAddress2		= .custAddr2
 			sCustCity			= .custCity
-			sCustState			= .custState		
+			sCustState			= .custState
 			sCustZip			= .custZip
 			sCustCountry		= .custCountry
 			sCustPhone			= .custPhone
@@ -385,7 +385,7 @@ Else
 			sShipCustLastName		= .LastName
 			sShipCustCompany		= .Company
 			sShipCustAddress1		= .Addr1
-			sShipCustAddress2		= .Addr2	   
+			sShipCustAddress2		= .Addr2
 			sShipCustCity			= .City
 			sShipCustState			= .State
 			sShipCustZip			= .Zip
@@ -405,7 +405,7 @@ Else
 			End If
 		End If
 	End	With	'mclsCustomerShipAddress
-	
+
 	'Collect the form variables
 	sPaymentMethod = visitorPaymentmethod
 	iShipMethod = visitorPreferredShippingCode
@@ -428,13 +428,13 @@ With mclsCartTotal
 
 	.ShipMethodCode = iShipMethod
 	.LoadAllShippingMethods = False
-	
+
 	.LoadCartContents
 	.checkInventoryLevels
 	'.writeDebugCart
-	
+
 	'.displayOrder_CheckoutView
-	
+
 	If .isEmptyCart Then
 		Session.Abandon
 		Call cleanupPageObjects	'Clean up before the redirect
@@ -443,7 +443,7 @@ With mclsCartTotal
 		Call cleanupPageObjects	'Clean up before the redirect
 		Response.Redirect(adminDomainName & "order.asp")
 	End If
-	
+
 End With	'mclsCartTotal
 
 sTransMethod = adminTransMethod
@@ -455,12 +455,12 @@ If mclsCartTotal.AmountDue > 0 Then
 		sSubmitAction = "this.CardExpiryMonth.special = true;this.CardExpiryYear.special = true;" & sSubmitAction
 		'sSubmitAction = "this.CardStartMonth.optional = true;this.CardStartYear.optional = true;;this.CardIssueNumber.optional = true;" & sSubmitAction
 		If cstrCCV_Optional And Len(cstrCCVFieldName) > 0 Then sSubmitAction = "this.payCardCCV.optional = true;" & sSubmitAction
-	Elseif sPaymentMethod = cstrPhoneFaxTerm OR sPaymentMethod = cstrCODTerm Then 
+	Elseif sPaymentMethod = cstrPhoneFaxTerm OR sPaymentMethod = cstrCODTerm Then
 		sSubmitAction ="" ' "this.CardType.optional = true;this.CardName.special = true;this.CardNumber.special = true;this.CardExpiryMonth.special = true;this.CardExpiryYear.special = true;this.CheckNumber.special = true;this.BankName.special = true;this.RoutingNumber.special = true;this.CheckingAccountNumber.special = true;this.POName.special = true;this.PONumber.special = true;return sfCheck(this);"
-	Elseif sPaymentMethod = cstrECheckTerm  Then 
+	Elseif sPaymentMethod = cstrECheckTerm  Then
 		'sSubmitAction = "return Check_EC_PO('CheckNumber', this);"
 		sSubmitAction = "return ECheck(this);"
-	Elseif sPaymentMethod = cstrPOTerm  Then 
+	Elseif sPaymentMethod = cstrPOTerm  Then
 		sSubmitAction = "return POCheck(POName.value, PONumber.value);"
 	Else
 		sSubmitAction = "return sfCheck(this);"
@@ -488,18 +488,56 @@ sCCList = getCreditCardList("")
 <meta name="Language" content="en">
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
-
+<link runat="server" rel="shortcut icon" type="image/png" href="../favicon.ico">
 <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
-
+<link rel="stylesheet" href="../css/main.css">
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfCheckErrors.js" type="text/javascript"></script>
+<script language="javascript" src="../SFLib/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
+
+	$(document).ready(function() {
+
+	var media = navigator.userAgent.toLowerCase();
+	var isMobile = media.indexOf("mobile") > -1;
+	if(isMobile) {
+		$('#horizontal-nav li').css('padding-right', '10px');
+	};
+
+		WebFontConfig = {
+		  google: { families: [ 'Lato:100,400,900:latin', 'Josefin+Sans:100,400,700,400italic,700italic:latin' ] }
+		  };
+		  (function() {
+		    var wf = document.createElement('script');
+		    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+		      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+		    wf.type = 'text/javascript';
+		    wf.async = 'true';
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(wf, s);
+		})();
+
+		$('table.tdTopBanner').next().css('margin', '0 auto 10%');
+		$('td.tdTopBanner:gt(5)').css('display', 'none');
+		$('.tdContent2:first').css('padding', '10px');
+		if($("font:contains('Error')").length > 0) {
+			$("font:contains('Error')").closest('table').css('display', 'none');
+		};
+		$(".not_selected").hover(
+		  function() {
+		    $('#current_page a').css('color','#cccdce');
+		  }, function() {
+		    $('#current_page a').css('color','#e8d606');
+		  }
+		);
+	});
+
 <!--
 
 function ValidateMe(txtbox)
-  {                     
+  {
      if(txtbox.value != "")
-      {  
+      {
        var sval;
        if(txtbox.name == 'CardExpiryMonth')
         {
@@ -509,16 +547,16 @@ function ValidateMe(txtbox)
             alert("Please enter a valid expiration month");
             txtbox.focus();
             return false;
-           } 
+           }
          if(sval < 10 && sval.length == 1 )
-           {   
-             txtbox.value = "0" + sval;           
-           } 
+           {
+             txtbox.value = "0" + sval;
+           }
       }
      if(txtbox.name == 'CardExpiryYear')
-      {   
-        var d = new Date();                           
-        var yy = (d.getFullYear());  
+      {
+        var d = new Date();
+        var yy = (d.getFullYear());
         var mm = (d.getMonth() +1);
         sval = txtbox.value
         if(document.frmVerify.CardExpiryMonth.value == "")
@@ -531,9 +569,9 @@ function ValidateMe(txtbox)
           alert("Enter a valid 4 Digit Date ");
           txtbox.focus();
           return false;
-         }  
+         }
         if(sval < yy)
-         { 
+         {
           alert("Date is not Valid");
           txtbox.focus();
           return false;
@@ -546,7 +584,7 @@ function ValidateMe(txtbox)
    }
        return true;
 }
-					
+
 var alreadyProcessed=false;
 function initiateConfirmation(theForm)
 {
@@ -560,10 +598,51 @@ function initiateConfirmation(theForm)
 }
 //-->
 </SCRIPT>
+
+<style>
+body {
+	background-image: url('../images/splash_bg.jpg');
+	text-align: center;
+}
+table.tdTopBanner {
+	display: none;
+}
+.inputImage {
+	padding: 10px;
+}
+.tdContent {
+	background-image: none;
+}
+input[type='text'] {
+	margin: 10px;
+}
+input[type='radio'] {
+	margin: 10px;
+}
+input[type='image'] {
+	margin-bottom: 10px;
+}
+textarea, select {
+	margin: 10px;
+}
+img {
+	margin-bottom: 10px;
+}
+</style>
+
 <% writeCurrencyConverterOpeningScript %>
 </head>
 
 <body <%= mstrBodyStyle %>>
+
+	<div id="header">
+    <div id="gwn_logo">
+      <a href="../index.html" title="Home"><image src="../images/gwn_logo.png" alt="GameWearNow Logo" style="margin-left: -25px;"></a>
+    </div>
+    <div id="heading">
+      <span class="title_txt" id="title">CUSTOM JERSEYS FOR<br>YOUR SPORTS TEAM</span>
+    </div>
+  </div>
 
 <!--#include file="templateTop.asp"-->
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
@@ -573,7 +652,7 @@ function initiateConfirmation(theForm)
 <input type="hidden" name="PayPalPayerID" id="PayPalPayerID" value="<%= PayPalPayerID %>">
 <% Call WriteCustomHiddenFormFields %>
 
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent">
+<table border="0" cellspacing="15" cellpadding="0" id="tblMainContent"  style="margin: 0px auto;">
   <tr>
     <td>
       <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -590,7 +669,7 @@ function initiateConfirmation(theForm)
           <td class="tdContent2"><%= displayValidationError %></td>
         </tr>
         <tr>
-          <td class="tdContent2" width="100%">        
+          <td class="tdContent2" width="100%">
               <% mclsCartTotal.displayOrder_CheckoutView %>
           </td>
         </tr>
@@ -600,7 +679,7 @@ function initiateConfirmation(theForm)
 
         <!--Customer Information -->
         <tr>
-          <td width="100%" class="tdContent2">   
+          <td width="100%" class="tdContent2">
             <table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr>
 		        <td colspan="2" width="100%" class="tdContentBar" align="left">Customer Information</td>
@@ -652,29 +731,29 @@ function initiateConfirmation(theForm)
 
         <!--Special Instructions-->
         <tr>
-          <td width="100%" class="tdContent2">   
+          <td width="100%" class="tdContent2">
 			<table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr>
 	            <td width="100%" colspan="2" class="tdContentBar" align="left">Special Instructions</td>
-              </tr>           
+              </tr>
               <%If Len(sInstructions) = 0 Then %>
               <tr><td align="left" height="40" valign="middle"><i>None Specified</i></td></tr>
-              <% Else %>  
-              <tr><td align="left" height="40" valign="middle"><font class="ECheck"><%= sInstructions %></font></td></tr>    
+              <% Else %>
+              <tr><td align="left" height="40" valign="middle"><font class="ECheck"><%= sInstructions %></font></td></tr>
               <% End If %>
 			</table>
 		  </td>
-        </tr> 
-		  
+        </tr>
+
         <!-- Payment Selection -->
         <% If mclsCartTotal.AmountDue > 0 And ((sTransMethod <> "15" or sTransMethod <> "18") AND (sPaymentMethod <> "Credit Card" OR sPaymentMethod <> "PayPal")) Then %>
            <tr>
-             <td width="100%" class="tdContent2"> 
-		    	             
-           <% If (sPaymentMethod = "Credit Card" AND sTransMethod <> "15" AND sTransMethod <> "18") Then 
+             <td width="100%" class="tdContent2">
+
+           <% If (sPaymentMethod = "Credit Card" AND sTransMethod <> "15" AND sTransMethod <> "18") Then
 				Call displayCreditCardPayment
 			  ElseIf sPaymentMethod = "PayPal WebPayments" Then
-		   %>	
+		   %>
 			      <table class="tdContent2" border="0" width="100%" cellpadding="0" cellspacing="0">
 			        <tr>
 			          <td width="100%" colspan="2">
@@ -691,9 +770,9 @@ function initiateConfirmation(theForm)
 			          </td>
 			        </tr>
 			       </table>
-		   <%	
+		   <%
 			  ElseIf sPaymentMethod = cstrPhoneFaxTerm Then
-		   %>	
+		   %>
 			      <table class="tdContent2" border="0" width="100%" cellpadding="2" cellspacing="0">
 			        <tr>
 			          <td width="100%" colspan="2">
@@ -758,15 +837,15 @@ function initiateConfirmation(theForm)
 		        <tr>
 			      <td colspan="2" width="100%" class="tdContentBar">COD Payment Method</td>
 		        </tr>
-		        <tr>	
+		        <tr>
 			      <td colspan="2" align="center" valign="middle">
 			        <p style="margin-top:20pt">COD payment method</p>
 			        <p style="margin-top:20pt"></p>
 			      </td>
 		        </tr>
-		      </table>    
+		      </table>
            <%End If%>
-				</td></tr>       
+				</td></tr>
         <% End If 'mclsCartTotal.AmountDue > 0 And ((sTransMethod <> "15" or sTransMethod <> "18") AND (sPaymentMethod <> "Credit Card" OR sPaymentMethod <> "PayPal")) %>
 
                  <% Sub displayCreditCardPayment %>
@@ -796,7 +875,7 @@ function initiateConfirmation(theForm)
 			        <% If False Then %>
 			        <tr>
 			          <td align="right"><b>Start Date:</b></td>
-			          <td align="left"> 
+			          <td align="left">
 			          <select name="CardStartMonth" id="CardStartMonth" title="Start Month" style="<%= C_FORMDESIGN%>">
 			            <option value=""></option>
 			            <option value="01">01 - Jan</option>
@@ -823,7 +902,7 @@ function initiateConfirmation(theForm)
 			        <% End If %>
 			        <tr>
 			          <td><b>Expiration Date<font color="#FF0000">*</font>:</b></td>
-			          <td align="left"> 
+			          <td align="left">
 			          <select name="CardExpiryMonth" ID="CardExpiryMonth" title="Credit Card Month" style="<%= C_FORMDESIGN%>">
 			            <option value="">Month</option>
 			            <option value="01">01 - Jan</option>
@@ -890,12 +969,12 @@ function initiateConfirmation(theForm)
 					  </tr>
 					  <tr>
 						<td align="left"><font class="ECheck"><b>Bank Routing Number <font color="#FF0000">*</font>:</b></font></td>
-						<td align="left"><font class="ECheck"><input type="Text" name="RoutingNumber" title="Routing Number" size="30" style="<%= C_FORMDESIGN%>"></font></td>		
+						<td align="left"><font class="ECheck"><input type="Text" name="RoutingNumber" title="Routing Number" size="30" style="<%= C_FORMDESIGN%>"></font></td>
 					  </tr>
 					  <tr>
 						<td colspan="2" height="20"></td>
-					  </tr>	
-					</table>  
+					  </tr>
+					</table>
 				  </td></tr>
 				</table>
                  <% End Sub	'displayECheckPayment %>
@@ -905,10 +984,10 @@ function initiateConfirmation(theForm)
 				<tr>
 					<td colspan="2" width="100%" class="tdContentBar">Purchase Order Payment Information</td>
 				</tr>
-				<tr>	
+				<tr>
 					<td align="left"><font class="ECheck"><b>Purchase Order Name <font color="#FF0000">*</font>:</b></font></td>
 					<td align="left"><input type="text" size="25" name="POName" title="PO Name" class="formDesign" value="<%= mclsCustomer.DisplayName %>"></td>
-				</tr>	
+				</tr>
 				<tr>
 					<td align="left"><font class="ECheck"><b>PO Purchase Number <font color="#FF0000">*</font>:</b></font></td>
 					<td align="left"><input type="text" size="25" name="PONumber" title="PO Number" class="formDesign"></td>
@@ -916,18 +995,18 @@ function initiateConfirmation(theForm)
 				<tr>
 					<td colspan="2"><p style="margin-top:10pt">&nbsp;</p></td>
 				</tr>
-				</table>  			            
+				</table>
                  <% End Sub	'displayPOPayment %>
 
         <tr>
-          <td width="100%" class="tdContent2" valign="top" align="center">   
+          <td width="100%" class="tdContent2" valign="top" align="center">
             <% If sPaymentMethod <> "InternetCash" OR  (sTransMethod <> "15" AND sPaymentMethod <> "Credit Card")Then %>
 		    <input type="image" class="inputImage" src="<%= C_BTN05 %>" name="verify">
-	        <% ElseIf sPaymentMethod = "InternetCash" Then %>		
+	        <% ElseIf sPaymentMethod = "InternetCash" Then %>
 		    <font class="ECheck">You are using <b>InternetCash</b> to pay for your purchase, please enter payment information in the popup window and press continue.</font>
-            <% End If %>                        
+            <% End If %>
           </td>
-        </tr> 
+        </tr>
       </table>
     </td>
   </tr>
@@ -935,6 +1014,21 @@ function initiateConfirmation(theForm)
 </form>
 <!--webbot bot="PurpleText" preview="End Content Section" -->
 <!--#include file="templateBottom.asp"-->
+
+	<div id="footer">
+    <ul id="horizontal-nav">
+      <li id="current_page"><a href="../order.asp" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="../myAccount.asp" title="My Account">MY ACCOUNT</a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="../footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="../footer/privacy_policy/privacy_policy.html" title="Contact Us">PRIVACY POLICY</a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="../footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
+    </ul>
+  </div>
+
 </body>
 </html>
 <% Call cleanupPageObjects %>

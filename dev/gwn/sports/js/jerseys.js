@@ -136,9 +136,9 @@ var mwtShirtProd = $(".Moisture_Wicking_T_Shirt");
 var reversibleJerseyProd = $(".Reversible_Jersey");
   $(".Reversible_Jersey form input[name='sport']").val(sport);
 var three_quarter_sleeveProd = $(".Three_Quarter_Sleeve_Jersey");
-  $(".3_4_Sleeve_Jersey form input[name='sport']").val(sport);
-var twoButtonProd = $(".Two-Button_Jersey");
-  $(".Two-Button_Jersey form input[name='sport']").val(sport);
+  $(".Three_Quarter_Sleeve_Jersey form input[name='sport']").val(sport);
+var twoButtonProd = $(".Two_Button_Jersey");
+  $(".Two_Button_Jersey form input[name='sport']").val(sport);
 var tShirtProd = $(".T_Shirt");
   $(".T_Shirt form input[name='sport']").val(sport);
 

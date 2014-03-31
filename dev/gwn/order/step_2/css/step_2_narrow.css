@@ -196,6 +196,9 @@ ul#horizontal-nav li {
   float: none;
   margin-right: 0;
 }
+#front_elements img {
+  margin-left: 12px;
+}
 #front_elements img.left {
   margin-left: 12px;
 }
@@ -208,9 +211,15 @@ img.left.chest {
 #front_elements img.right {
   margin-left: 15px;
 }
+#back_elements img {
+  margin-left: 12px;
+}
 #back_elements img.right {
   margin-left: 15px;
 }
 img.right.chest {
+  padding-top: 10px;
+}
+.chest {
   padding-top: 10px;
 }

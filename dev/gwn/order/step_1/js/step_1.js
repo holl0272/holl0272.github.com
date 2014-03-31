@@ -487,7 +487,7 @@ function buildRows(qty) {
   var product_size = "<td class='size_label'>Size</td><td class='jersey_size'>"+sizeSelect+"</td>";
   var product_size_mobile = "<td style='padding-right: 10px;' class='size_label'>Size</td><td style='text-align: left; min-width: 80px;' class='jersey_size_mobile'>"+sizeSelect+"</td>";
   var jersey_price = "<td class='jersey_price'></td>";
-  var jersey_price_mobile = "<td style='padding-right: 25px;' class='jersey_price'></td>";
+  var jersey_price_mobile = "<td style='padding-right: 25px; min-width: 50px;' class='jersey_price'></td>";
     var numberInput = "<input type='tel' class='number_input' style='width: 25px;' maxlength='2'>";
     var newnumberInput = "<input type='tel' class='newnumber_input' style='width: 25px;' maxlength='2'>";
   var product_number = "<td class='numbers_input number_label'>Number</td><td class='numbers_input number_reset'>"+numberInput+"</td>";

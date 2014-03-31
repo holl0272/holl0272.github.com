@@ -82,6 +82,18 @@
   top: 0;
   left: 0;
 }
+.chest {
+  padding-top: 10px;
+}
+#front_elements img {
+  margin-left: 2px;
+}
+.lb-container .back_element {
+  margin-left: 2px;
+}
+/*#back_elements img {
+  margin-left: 2px;
+}*/
 #color_container {
   text-align: center;
   margin-bottom: 10px;

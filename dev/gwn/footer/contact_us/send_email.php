@@ -2,7 +2,7 @@
 /* These are the variable that tell the subject of the email and where the email will be sent.*/
 
 $emailSubject = $_POST['subject'];
-$mailto = 'holl0272@gmail.com';
+$mailto = 'contactus@gamewearnow.com';
 
 /* These will gather what the user has typed into the fieled. */
 

@@ -298,9 +298,9 @@ End If
 <meta name="Language" content="en">
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
-<link runat="server" rel="shortcut icon" type="image/png" href="favicon.ico">
+<link runat="server" rel="shortcut icon" type="image/png" href="../favicon.ico">
 <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="../css/main.css">
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
 <script language="javascript" src="SFLib/sfCheckErrors.js" type="text/javascript"></script>
 <script language="javascript" src="ssShippingRates.js" type="text/javascript"></script>
@@ -329,7 +329,8 @@ End If
 		})();
 
 		$('table.tdTopBanner').next().css('margin', '0 auto 10%');
-
+		$('td.tdTopBanner:gt(5)').css('display', 'none');
+		$('.tdContent2:first').css('padding', '10px');
 		$(".not_selected").hover(
 		  function() {
 		    $('#current_page a').css('color','#cccdce');
@@ -632,6 +633,38 @@ function setShippingSameAsBilling(theElement)
 	*/
 }
 </script>
+
+<style>
+body {
+	background-image: url('../images/splash_bg.jpg');
+	text-align: center;
+}
+table.tdTopBanner {
+	display: none;
+}
+.inputImage {
+	padding: 10px;
+}
+input[type='text'] {
+	margin: 10px;
+}
+input[type='password'] {
+	margin: 10px;
+}
+input[type='radio'] {
+	margin: 10px;
+}
+input[type='image'] {
+	margin-bottom: 10px;
+}
+textarea, select {
+	margin: 10px;
+}
+img {
+	margin-bottom: 10px;
+}
+</style>
+
 <% writeCurrencyConverterOpeningScript %>
 </head>
 
@@ -639,7 +672,7 @@ function setShippingSameAsBilling(theElement)
 
 	<div id="header">
     <div id="gwn_logo">
-      <a href="index.html" title="Home"><image src="images/gwn_logo.png" alt="GameWearNow Logo" style="margin-left: -25px;"></a>
+      <a href="../index.html" title="Home"><image src="../images/gwn_logo.png" alt="GameWearNow Logo" style="margin-left: -25px;"></a>
     </div>
     <div id="heading">
       <span class="title_txt" id="title">CUSTOM JERSEYS FOR<br>YOUR SPORTS TEAM</span>
@@ -648,7 +681,7 @@ function setShippingSameAsBilling(theElement)
 
 <!--#include file="templateTop.asp"-->
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent">
+<table border="0" cellspacing="15" cellpadding="0" id="tblMainContent" style="margin: 0px auto;">
   <tr>
     <td>
       <table border="0" cellspacing="0" cellpadding="0" width="100%">

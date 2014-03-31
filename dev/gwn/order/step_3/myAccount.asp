@@ -113,7 +113,12 @@ Dim mstrMessage
 			});
     };
 		$("a[title='Return to home page']").attr('href', 'index.html');
-  });
+
+		$(window).load(function() {
+			$('#tdContent').css('opacity', 1);
+			$('#tblMainContent').css('opacity', 1);
+		});
+	});
 </script>
 
 <style>
@@ -123,6 +128,7 @@ body {
 }
 #tdContent {
 	margin: 0 auto 5%;
+	opacity: 0;
 }
 #tblCategoryMenu, .tdTopBanner, .tdLeftNav {
 	display: none;
@@ -134,7 +140,7 @@ body {
 	padding: 25px;
 }
 .tdContent2 table {
-margin-top: 10px;
+	margin-top: 10px;
 }
 .inputImage {
 	padding: 10px;
@@ -143,6 +149,11 @@ margin-top: 10px;
 .myAccount {
 	margin-top: -5px;
 }
+.tbl {
+	margin: 0 auto;
+	background-color: white;
+	width: 100%;
+}
 input {
 	margin: 10px;
 }
@@ -150,6 +161,9 @@ ul {
 	list-style: none;
 	margin-left: 10px;
 	line-height: 2;
+}
+#footer ul {
+	line-height: 1;
 }
 select#custState, select#custCountry {
 	margin-left: 10px;
@@ -173,7 +187,7 @@ select#custState, select#custCountry {
 
 <!--#include file="templateTop.asp"-->
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="15" cellpadding="0" id="tblMainContent" width="801px">
+<table border="0" cellspacing="15" cellpadding="0" id="tblMainContent" width="801px" style="opacity: 0;">
 		<tr>
 		<td>
 

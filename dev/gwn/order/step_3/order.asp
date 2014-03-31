@@ -322,6 +322,8 @@ End If
 		    $('#current_page a').css('color','#e8d606');
 		  }
 		);
+		$("img[alt='Continue Shopping']").parent().attr('href', 'index.html');
+		$("img[name='continue_search']").parent().attr('href', 'index.html');
 	});
 
 var noState_State = "N/A";
@@ -392,11 +394,17 @@ body {
 #tblCategoryMenu, .tdTopBanner, .tdLeftNav {
 	display: none;
 }
+#divShippingHandlingCalculatorWrapper {
+	text-align: center;
+}
 .inputImage {
 	padding: 10px;
 }
 .tdAltFont1, .tdAltFont2 {
 	padding-top: 5px;
+}
+.tdContent2 {
+	text-align: -webkit-center;
 }
 select {
 	margin: 10px;
@@ -423,7 +431,7 @@ img[name=continue_search] {
 
 <!--#include file="templateTop.asp"-->
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent">
+<table border="0" cellspacing="15" cellpadding="0" id="tblMainContent">
   <tr>
     <td>
       <table width="100%" border="0" cellspacing="15" cellpadding="3">

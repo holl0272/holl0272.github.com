@@ -15,19 +15,19 @@
 '*
 '*   This file's origins is confirm.asp
 '*   from LaGarde, Incorporated. It has been heavily modified by Sandshot Software
-'*   with permission from LaGarde, Incorporated who has NOT released any of the 
+'*   with permission from LaGarde, Incorporated who has NOT released any of the
 '*   original copyright protections. As such, this is a derived work covered by
 '*   the copyright provisions of both companies.
 '*
 '*   LaGarde, Incorporated Copyright Statement
 '*   The contents of this file is protected under the United States copyright
-'*   laws and is confidential and proprietary to LaGarde, Incorporated.  Its 
-'*   use ordisclosure in whole or in part without the expressed written 
+'*   laws and is confidential and proprietary to LaGarde, Incorporated.  Its
+'*   use ordisclosure in whole or in part without the expressed written
 '*   permission of LaGarde, Incorporated is expressly prohibited.
 '*   (c) Copyright 2000, 2001 by LaGarde, Incorporated.  All rights reserved.
-'*   
+'*
 '*   Sandshot Software Copyright Statement
-'*   The contents of this file are protected by United States copyright laws 
+'*   The contents of this file are protected by United States copyright laws
 '*   as an unpublished work. No part of this file may be used or disclosed
 '*   without the express written permission of Sandshot Software.
 '*   (c) Copyright 2004 Sandshot Software.  All rights reserved.
@@ -43,8 +43,8 @@
 <!--#include file="SFLib/incCC.asp"-->
 <!--#include file="SFLib/processor.asp"-->
 <!--#include file="SFLib/ssclsPayPal.asp"-->
-<!--#include file="SFLib/ssclsCustomer.asp"--> 
-<!--#include file="SFLib/ssclsCustomerShipAddress.asp"--> 
+<!--#include file="SFLib/ssclsCustomer.asp"-->
+<!--#include file="SFLib/ssclsCustomerShipAddress.asp"-->
 <!--#include file="SFLib/ssincCustomFormValues.asp"-->
 <!--#include file="SFLib/ssmodDownload.asp"-->
 <!--#include file="confirm_Email.asp"-->
@@ -84,14 +84,14 @@ Dim aReferer(2)
 Dim mblnPostBack	'is this being called from a non-integrated payment processor (ie. PayPal, WorldPay, etc.)
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'	The following constant, proc_live, controls the status of 
+'	The following constant, proc_live, controls the status of
 '	all payment processors supported:
 '
 		Const proc_live = 1 'is 'live' mode
 '		Const proc_live = 0 'is 'test' mode
 '
-'	Before your store goes live, you are encouraged to run 
-'	an order through with the constant set to 0 for testing.	
+'	Before your store goes live, you are encouraged to run
+'	an order through with the constant set to 0 for testing.
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 Dim sPhoneFaxPayType, iPhoneFaxType
@@ -114,9 +114,9 @@ Dim iPayID, iAddrID, sShipMethodName, iOrderID
 		Set mclsCustomerShipAddress = Nothing
 		Set mclsCartTotal = Nothing
 		Call cleanup_dbconnopen
-		
+
 		If Err.number <> 0 Then Err.Clear
-		
+
 	End Sub	'cleanupPageObjects
 
 '**********************************************************
@@ -159,9 +159,9 @@ With mclsCustomer
 		sCustLastName		= .custLastName
 		sCustCompany		= .custCompany
 		sCustAddress1		= .custAddr1
-		sCustAddress2		= .custAddr2	   
+		sCustAddress2		= .custAddr2
 		sCustCity			= .custCity
-		sCustState			= .custState		
+		sCustState			= .custState
 		sCustZip			= .custZip
 		sCustCountry		= .custCountry
 		sCustPhone			= .custPhone
@@ -185,7 +185,7 @@ With mclsCustomerShipAddress
 		sShipCustLastName		= .LastName
 		sShipCustCompany		= .Company
 		sShipCustAddress1		= .Addr1
-		sShipCustAddress2		= .Addr2	   
+		sShipCustAddress2		= .Addr2
 		sShipCustCity			= .City
 		sShipCustState			= .State
 		sShipCustZip			= .Zip
@@ -212,12 +212,12 @@ With mclsCartTotal
 
 	.ShipMethodCode = visitorPreferredShippingCode
 	.LoadAllShippingMethods = False
-	
+
 	.LoadCartContents
 	.checkInventoryLevels
 	sShipMethodName = .ShipMethodName
-	'.writeDebugCart	
-	
+	'.writeDebugCart
+
 	If .isEmptyCart Then
 		Session.Abandon
 		Call cleanupPageObjects	'Clean up before the redirect
@@ -226,42 +226,42 @@ With mclsCartTotal
 		Call cleanupPageObjects	'Clean up before the redirect
 		Response.Redirect(adminDomainName & "order.asp")
 	End If
-	
+
 End With	'mclsCartTotal
 
 'This section is disabled which means
 'INTERNETCASH, PAYPAL, WORLDPAY, AND ???CSVP Disabled
 If True Then
-	mblnPostBack = False		
+	mblnPostBack = False
 Else
 	If Request.QueryString("message") <> "" Then
 		Call InternetCashResp
-		mblnPostBack = True		
+		mblnPostBack = True
 	ElseIf Request.Form("custom") <> "" Then
 		Call PayPalResp("1") ' #321
-		mblnPostBack = True		
+		mblnPostBack = True
 	ElseIf Request("CSVPOSRESPONSE") <> "" Then
 		Call CSVPOSResp
-		mblnPostBack = True		
-	ElseIf Request.QueryString("wpresponse") <> "" Then 
+		mblnPostBack = True
+	ElseIf Request.QueryString("wpresponse") <> "" Then
 		Call WorldPayResp("1") ' #321
-		mblnPostBack = True		
+		mblnPostBack = True
 	Else
-		mblnPostBack = False		
+		mblnPostBack = False
 	End If
-	
+
 	'This section is disabled which means
 	'INTERNETCASH, PAYPAL, WORLDPAY, AND ???CSVP Disabled
 	If False Then
 		If Request.item("custom") <> "" Then
 			Call PayPalResp("2")
-		ElseIf Request.QueryString("wpresponse") <> "" Then 
+		ElseIf Request.QueryString("wpresponse") <> "" Then
 			Call WorldPayResp("2")
 		End If
 	End If
 
 End If
-	
+
 If Not mblnPostBack Then
 
 	With Request
@@ -275,18 +275,18 @@ If Not mblnPostBack Then
 		If Len(sCustCardType) > 0 Then sCustCardTypeName = getTransactionName(sCustCardType)
 		sCustCardExpiry = sCustCardExpiryMonth & "/" & sCustCardExpiryYear
 		mstrPayCardCCV = Trim(.Form("payCardCCV"))
-		
+
 		'for eCheck
 		iRoutingNumber = Trim(.Form("RoutingNumber"))
 		sBankName = Trim(.Form("BankName"))
 		iCheckNumber = Trim(.Form("CheckNumber"))
 		iCheckingAccountNumber = Trim(.Form("CheckingAccountNumber"))
-		
+
 		'for PO
 		sPOName = Trim(.Form("POName"))
 		iPONumber = Trim(.Form("PONumber"))
 	End With	'Request
-	
+
 	iPayID = 0	'Set default
 	If mclsCartTotal.AmountDue = 0 Then
 		'pass payment verification
@@ -305,7 +305,7 @@ If Not mblnPostBack Then
 			Call cleanupPageObjects
 			Call returnValidationErrorToSender("verify.asp")
 		End If
-		
+
 		iPayID = setPayments(iCustID, sCustCardType, sCustCardName, sCustCardNumber, sCustCardExpiryMonth, sCustCardExpiryYear, iCC)
 	ElseIf sPaymentMethod	= cstrECheckTerm Then
 		If Len(iRoutingNumber) = 0 Then Call addValidationError("<em>Bank Routing Number</em> is a required field")
@@ -324,14 +324,14 @@ If Not mblnPostBack Then
 			sPhoneFaxPayType = cstrPOTerm
 		Else
 			sPhoneFaxPayType = "Phone/Fax"
-		End If			 
+		End If
 	End If
 
 	If hasValidationError Then
 		Call cleanupPageObjects
 		Call returnValidationErrorToSender("verify.asp")
 	End If
-	
+
 End If	'Not mblnPostBack
 
 sTotalPrice = mclsCartTotal.SubTotalWithDiscount
@@ -347,7 +347,7 @@ sShipInstructions = visitorInstructions
 iOrderID = visitorOrderID
 'Get the preliminary order number
 If sPaymentMethod = "Credit Card" AND (sTransMethod <> "15" AND sTransMethod <> "18") Then
-	iOrderID = setOrderInitial(iOrderID, iCustID,iPayID,iAddrID,sPaymentMethod,"","","","","","",sShipMethodName,sTotalSTax,sTotalCTax,sHandling,sShipping,sTotalPrice,sGrandTotal,sShipInstructions,"",aReferer)		
+	iOrderID = setOrderInitial(iOrderID, iCustID,iPayID,iAddrID,sPaymentMethod,"","","","","","",sShipMethodName,sTotalSTax,sTotalCTax,sHandling,sShipping,sTotalPrice,sGrandTotal,sShipInstructions,"",aReferer)
 Elseif sPaymentMethod = cstrECheckTerm Then
 	iOrderID = setOrderInitial(iOrderID, iCustID,iPayID,iAddrID,sPaymentMethod,iRoutingNumber,sBankName,iCheckNumber,iCheckingAccountNumber,"","",sShipMethodName,sTotalSTax,sTotalCTax,sHandling,sShipping,sTotalPrice,sGrandTotal,sShipInstructions,"",aReferer)
 Elseif sPaymentMethod = cstrPOTerm Then
@@ -403,17 +403,17 @@ If cdbl(sGrandTotal) > 0 Then
 			Case Else:
 				sProcErrMsg = SimulatedProcessor(proc_live)
 		End Select
-	
+
 		'For debugging
 		'If sCustCardNumber = "4111111111111111" Then sProcErrMsg = ""
 		'sProcErrMsg = "Invalid Address"
 		If Len(Session("ssDebug_PreventOrderCompletion")) > 0 Then sProcErrMsg = "Order Processing Disabled for Debugging"
-		
+
 	ElseIf sPaymentMethod = "PayPal" Then
-	
+
 	Else
 		'To do? add validation for other payment methods?
-	End If  
+	End If
 End If
 
 'For testing
@@ -428,7 +428,7 @@ End If
 If goodProcessorResponse(1) Then
 
 	'Expire CustID before processing order
-	Call expireCookie_sfCustomer       	
+	Call expireCookie_sfCustomer
 
 	Call mclsCartTotal.finalizeCart(iOrderID)
 
@@ -441,25 +441,25 @@ If goodProcessorResponse(1) Then
 		Call SaveBuyersClubOrder(cnn, iOrderID)
 		If (sPaymentMethod = "PayPal Transaction" OR sPaymentMethod = "PayPal") Then Call saveFreeGift(iOrderID)
 
-		' Begin email 
+		' Begin email
 		If goodProcessorResponse(3) Then Call sendOrderConfirmationEmails(sCustEmail)
-		
+
 		Call setCookie_ReturningOrder(iOrderID)	'Set Cookie For NewOrder Page
 	End If
 
 End If	'Len(sProcErrMsg) = 0
-	  
+
 If iPhoneFaxType = "1" Then DeleteOrder iOrderId
-   
+
 'Time To Clean up
 If goodProcessorResponse(4) Then
 	Call setVisitorOrderID(0)
-	
+
 	'Keeps login status
 	Call updateVisitorOrderVerification(visitorLoggedInCustomerID, 0, 0, visitorPreferredShippingCode, "")
 	'Automatically resets login status
 	'Call updateVisitorOrderVerification(0, 0, 0, visitorPreferredShippingCode, "")
-	
+
 	Call expireCookie_sfCustomer
 
 End If
@@ -482,18 +482,92 @@ End If
 <meta name="Language" content="en">
 <meta name="distribution" content="Global">
 <meta name="Classification" content="classification">
-
+<link runat="server" rel="shortcut icon" type="image/png" href="../favicon.ico">
 <link rel="stylesheet" href="include_commonElements/styles.css" type="text/css">
-
+<link rel="stylesheet" href="../css/main.css">
 <script language="javascript" src="SFLib/common.js" type="text/javascript"></script>
+<script language="javascript" src="../SFLib/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+
+	$(document).ready(function() {
+
+	var media = navigator.userAgent.toLowerCase();
+	var isMobile = media.indexOf("mobile") > -1;
+	if(isMobile) {
+		$('#horizontal-nav li').css('padding-right', '10px');
+	};
+
+		WebFontConfig = {
+		  google: { families: [ 'Lato:100,400,900:latin', 'Josefin+Sans:100,400,700,400italic,700italic:latin' ] }
+		  };
+		  (function() {
+		    var wf = document.createElement('script');
+		    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+		      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+		    wf.type = 'text/javascript';
+		    wf.async = 'true';
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(wf, s);
+		})();
+
+		$('table.tdTopBanner').next().css('margin', '0 auto 10%');
+		$('td.tdTopBanner:gt(5)').css('display', 'none');
+		$('.tdContent2:first').css('padding', '10px');
+		$(".not_selected").hover(
+		  function() {
+		    $('#current_page a').css('color','#cccdce');
+		  }, function() {
+		    $('#current_page a').css('color','#e8d606');
+		  }
+		);
+	});
+</script>
+
+<style>
+body {
+	background-image: url('../images/splash_bg.jpg');
+	text-align: center;
+}
+table.tdTopBanner {
+	display: none;
+}
+.inputImage {
+	padding: 10px;
+}
+input[type='text'] {
+	margin: 10px;
+}
+input[type='radio'] {
+	margin: 10px;
+}
+input[type='image'] {
+	margin-bottom: 10px;
+}
+textarea, select {
+	margin: 10px;
+}
+img {
+	margin-bottom: 10px;
+}
+</style>
+
 <% writeCurrencyConverterOpeningScript %>
 </head>
 
 <body onload="confirm_onload()" <%= mstrBodyStyle %>>
 
+	<div id="header">
+    <div id="gwn_logo">
+      <a href="../index.html" title="Home"><image src="../images/gwn_logo.png" alt="GameWearNow Logo" style="margin-left: -25px;"></a>
+    </div>
+    <div id="heading">
+      <span class="title_txt" id="title">CUSTOM JERSEYS FOR<br>YOUR SPORTS TEAM</span>
+    </div>
+  </div>
+
 <!--#include file="templateTop.asp"-->
 <!--webbot bot="PurpleText" preview="Begin Content Section" -->
-<table border="0" cellspacing="0" cellpadding="0" id="tblMainContent">
+<table border="0" cellspacing="15" cellpadding="0" id="tblMainContent" style="margin: 0px auto;">
 	  <tr>
     	<td>
 	      <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -517,12 +591,12 @@ End If
 	        </tr>
 			<% End If 'sPaymentMethod = cstrPhoneFaxTerm Then %>
     	    <tr>
-	    	  <td align="center" class="tdContent2" width="100%" colspan="2">        
-            	<table border="0" width="100%" cellspacing="0" cellpadding="4">            
+	    	  <td align="center" class="tdContent2" width="100%" colspan="2">
+            	<table border="0" width="100%" cellspacing="0" cellpadding="4">
 	              <% If iPhoneFaxType <> 1 Then %>
 	              <tr align="center">
-					  <td colspan="4" width="100%" align="center">				
-						<table width="85%"  cellpadding="1" cellspacing="0" border="0" class="tdBottomTopBanner">   
+					  <td colspan="4" width="100%" align="center">
+						<table width="85%"  cellpadding="1" cellspacing="0" border="0" class="tdBottomTopBanner">
 						  <tr>
 							<td align="center" width="100%">
 							  <table width="100%"  cellpadding="8" cellspacing="0" class="tdContentBar">
@@ -530,7 +604,7 @@ End If
 								  <td align="center" width="100%" class="tdAltBG1"><font class="Content_Large">
 								    <% If goodProcessorResponse(4) Then %>
 								    <b>Your Order ID is <%= iOrderID %></b>
-								    </font> 
+								    </font>
 								    <br />
 								    <font size="-1"> <b>Please print out or write down this number for future reference. </b></font>
 								    <% Else %>
@@ -546,16 +620,16 @@ End If
 					    </tr>
 					  </table>
 				    </td>
-				  </tr>            
+				  </tr>
 	              <% End If	'iPhoneFaxType <> 1 %>
-                  
+
                   <% If goodProcessorResponse(4) Then %>
 				  <tr>
 				    <td width="100%" colspan="4" class="tdContent2"><% mclsCartTotal.displayOrder_CheckoutView %></td>
 				  </tr>
                   <%
                   If mclsCartTotal.hasDownloadableItems Then
-					If mlngFraudScore <= clngFraudThreshhold_ImmediateDownload Then	
+					If mlngFraudScore <= clngFraudThreshhold_ImmediateDownload Then
 						Call authorizeDownloadsByOrder(iOrderID)
 					%>
 					<tr>
@@ -596,8 +670,8 @@ End If
 					          <tr>
 						        <td align="left" colspan="2"><font class="ECheck"><%= sCustCity & " "%> <%= sCustStateName %>, <%= sCustZip %></font></td>
 					          </tr>
-					          <tr>	
-						        <td align="left" colspan="2"><font class="ECheck"><%= sCustCountryName %></font></td>						
+					          <tr>
+						        <td align="left" colspan="2"><font class="ECheck"><%= sCustCountryName %></font></td>
 					          </tr>
 					          <tr>
 						        <td align="left" colspan="2" height="10"></td>
@@ -612,13 +686,13 @@ End If
 						          <td align="center"><font class="ECheck2">Electronically Signed By: <b><%= sCustFirstName & " " & sCustLastName %></b></font>
 						            <hr size="1" width="100%" class="tdAltBG1">
 						          </td>
-					              </tr>	
+					              </tr>
 					              <tr>
 						            <td align="left" colspan="2"><b><font class="ECheck"><%= sBankName %></font></b></td>
 					              </tr>
 					              <tr>
 				      					<td colspan="2" align="center" class="tdAltBG1"><font class="ECheck2">Payment Authorized by Account Holder. Indemnification Agreement Provided by Depositor.</font></td>
-				      				</tr>	
+				      				</tr>
 					                <tr>
 						              <td colspan="2" align="center"><font class="ECheck2"><b><%= iRoutingNumber %>::<%= iCheckingAccountNumber %> </b></font></td>
 						              </tr>
@@ -640,10 +714,10 @@ End If
 			                          <td width="100%" class="tdContentBar">Phone/Fax Printout</td>
 			                        </tr>
 			                      </table>
-		                        </td></tr>	
-	
+		                        </td></tr>
+
 	                          <!--Customer Information -->
-	                          <tr><td width="100%" class="tdContent2" colspan="2">   
+	                          <tr><td width="100%" class="tdContent2" colspan="2">
 	                              <table border="0" width="100%" cellspacing="0" cellpadding="2">
 	                                <tr>
 		                              <td><b>Billing:</b></td>
@@ -660,12 +734,12 @@ End If
 	                                <tr>
 		                              <td><%= sCustAddress1 %></td>
 		                              <td><%= sShipCustAddress1 %></td>
-	                                </tr>       
+	                                </tr>
                                     <%If sCustAddress2 <> "" Then%>
-   	                                <tr>	
+   	                                <tr>
    		                              <td><%= sCustAddress2 %></td>
                                       <td><%= sShipCustAddress2%></td>
-                                    </tr>    
+                                    </tr>
                                     <%End If%>
 	                                <tr>
 		                              <td><%= sCustCity%>,&nbsp;<%= sCustStateName %>,&nbsp;<%= sCustZip%></td>
@@ -688,7 +762,7 @@ End If
     	                              <td><%= sShipCustEmail %></td>
                                     </tr>
                                     <tr>
-			                          <td width="100%" align="left" colspan="4">	
+			                          <td width="100%" align="left" colspan="4">
 			                            <br /><b>Special Instructions:</b></td>
 		                            </tr>
 		                            <tr>
@@ -698,12 +772,12 @@ End If
 
 	                            </td>
 	                          </tr>
-	
-	                          <tr><td width="100%" class="tdContent2" colspan="2">   
+
+	                          <tr><td width="100%" class="tdContent2" colspan="2">
 	                              <table border="0" width="100%" cellspacing="0" cellpadding="2">
 	                                <% 	If sPhoneFaxPayType = "Credit Card" Then %>
 		                            <tr>
-			                          <td width="100%" align="left" colspan="4">	
+			                          <td width="100%" align="left" colspan="4">
 			                            <br /><b>Credit Card information:</b></td>
 		                            </tr>
 		                            <tr>
@@ -713,10 +787,10 @@ End If
 		                            <tr>
 			                          <td align="left">Credit Card Number:</td><td align="left"><%= sCustCardNumber %></td>
 			                          <td align="left">Credit Card Expiration Date:</td><td align="left"><%= sCustCardExpiry %></td>
-		                            </tr>		
+		                            </tr>
 	                                <%	ElseIf sPhoneFaxPayType = cstrECheckTerm Then %>
 		                            <tr>
-			                          <td width="100%" align="left" colspan="4">	
+			                          <td width="100%" align="left" colspan="4">
 			                            <br /><b>e-Check information:</b></td>
 		                            </tr>
 		                            <tr>
@@ -726,15 +800,15 @@ End If
 		                            <tr>
 			                          <td>Bank Name:</td> <td align="left"><%= sBankName %></td>
 			                          <td>Routing Number:</td> <td align="left"><%= iRoutingNumber %></td>
-		                            </tr>	
+		                            </tr>
 		                            <tr>
 			                          <td height="20" colspan="4">&nbsp;</td>
 		                            </tr>
-		                            <tr><td width="100%" colspan="4" align="center">	
+		                            <tr><td width="100%" colspan="4" align="center">
 			                            <table border="1" width="95%" class="tdAltBG2" cellpadding="1" cellspacing="0" align="center">
 				                          <tr>
 				                            <td align="center" class="tdAltBG1"><font class="ECheck2">Payment Authorized by Account Holder. Indemnification Agreement Provided by Depositor.</font></td>
-				                            </tr>	
+				                            </tr>
 				                            <tr><td>
 					                            <table border="0" cellpadding="4" cellspacing="0" width="100%" align="center">
 					                              <tr>
@@ -744,12 +818,12 @@ End If
 					                              <tr>
 						                            <td align="left" colspan="2"><font class="ECheck"><%= sCustAddress1 %>
 						                              <br /><%= sCustAddress2 %></font></td>
-					
+
 					                                <tr>
 						                              <td align="left" colspan="2"><font class="ECheck"><%= sCustCity & " "%> <%= sCustStateName %>, <%= sCustZip %></font></td>
 					                                </tr>
-					                                <tr>	
-						                              <td align="left" colspan="2"><font class="ECheck"><%= sCustCountryName %></font></td>						
+					                                <tr>
+						                              <td align="left" colspan="2"><font class="ECheck"><%= sCustCountryName %></font></td>
 					                                </tr>
 					                                <tr>
 						                              <td align="left" colspan="2" height="10"></td>
@@ -762,7 +836,7 @@ End If
 						                                <td width="50%" height="20">&nbsp;</td>
 						                                <td align="center"><font class="ECheck2">Electronically Signed By: <b><%= sCustFirstName & " " & sCustLastName %></b></font>
 						                                  <hr size="1" width="100%" class="tdAltBG1"></td>
-					                                    </tr>	
+					                                    </tr>
 					                                    <tr>
 						                                  <td align="left" colspan="2"><b><font class="ECheck"><%= sBankName %></font></b></td>
 					                                    </tr>
@@ -774,11 +848,11 @@ End If
 					                                  </table>
 			                                        </td></tr>
 			                                    </table>
-		                                      </td></tr></table>		
-	                                    </td></tr>	
+		                                      </td></tr></table>
+	                                    </td></tr>
 	                                    <% ElseIf sPhoneFaxPayType = cstrPOTerm Then %>
 	                                    <tr>
-		                                  <td width="100%" align="left" colspan="4">	
+		                                  <td width="100%" align="left" colspan="4">
 		                                    <br /><b>Purchase Order information:</b></td>
 	                                    </tr>
 	                                    <tr>
@@ -811,26 +885,7 @@ function confirm_onload()
 -->
 </script>
 
-<% If Len(cstrOvertureID) > 0 Then %>
-<script language="javascript" type="text/javascript">
-<!-- Overture Services Inc. 07/15/2003
-var cc_tagVersion = "1.0";
-var cc_accountID = "<%= cstrOvertureID %>";
-var cc_marketID =  "0";
-var cc_protocol="http";
-var cc_subdomain = "convctr";
-if(location.protocol == "https:")
-{
-	cc_protocol="https";
-	cc_subdomain="convctrs";
-}
-var cc_queryStr = "?" + "ver=" + cc_tagVersion + "&aID=" + cc_accountID + "&mkt=" + cc_marketID +"&ref=" + escape(document.referrer);
-var cc_imageUrl = cc_protocol + "://" + cc_subdomain + ".overture.com/images/cc/cc.gif" + cc_queryStr;
-var cc_imageObject = new Image();
-cc_imageObject.src = cc_imageUrl;
-// -->
-</script>
-<% End If	'Len(cstrOvertureID) > 0 %>
+
 
 <% If Len(cstrGoogleAdwords_conversion_id) > 0 Then %>
 <!-- Google Conversion Code -->
@@ -867,6 +922,21 @@ google_conversion_label = "Purchase";
 </textarea>
 </form>
 <% End If	'Len(cstrGoogleAnalytics_uacct) > 0 %>
+
+	<div id="footer">
+    <ul id="horizontal-nav">
+      <li id="current_page"><a href="../order.asp" title="Shopping Cart"><span><image src="../../images/shopping_cart.png" alt="Shopping Cart" id="shopping_cart">MY SHOPPING CART</span></a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="../myAccount.asp" title="My Account">MY ACCOUNT</a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="../footer/faqs/faqs.html" title="FAQ's">FAQ'S</a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="../footer/privacy_policy/privacy_policy.html" title="Contact Us">PRIVACY POLICY</a></li>
+      <li class="pipe">|</li>
+      <li class="not_selected"><a href="../footer/contact_us/contact_us.html" title="Contact Us">CONTACT US <font>(877) 796-6639</font></a></li>
+    </ul>
+  </div>
+
 </body>
 
 </html>

@@ -295,7 +295,7 @@ background-color:#11013b;
 <body <%= mstrBodyStyle %> >
 
 <div id="light" class="white_content">
-  <br>Thank you for visiting gamewearnow.com<br>We will be performing maintenance on Saturday, March 22nd<br>We apologize for the inconvenience
+  <br>Thank you for visiting gamewearnow.com<br>We will be performing maintenance<br>Sunday evening, March 30th<br>We apologize for the inconvenience
 
   <div id="fadingBarsG">
     <div id="fadingBarsG_1" class="fadingBarsG">
